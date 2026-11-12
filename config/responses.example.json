@@ -1,0 +1,6 @@
+{
+  "_source": "占位响应模板。真实响应字段以抓包日志与 Assembly-CSharp 反汇编为准，不得把推测值当成官方结构。",
+  "_note": "骨架阶段业务接口留空对象；补齐时在 docs/api_schema.md 登记字段来源（抓包 / dump / 推测）。",
+  "common/getRevisions": {},
+  "common/getPlayerParams": {}
+}
