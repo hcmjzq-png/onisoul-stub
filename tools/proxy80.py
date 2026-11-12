@@ -42,19 +42,21 @@ class Handler(socketserver.BaseRequestHandler):
     upstream_port = 18080
 
     def _read_request(self) -> tuple[str, str, dict[str, str], bytes] | None:
-        line = self.request.makefile("rb").readline()
+        # 只创建一次读取流：socket 的 makefile 各对象独立缓冲，反复新建会丢失已预读的数据。
+        rfile = self.request.makefile("rb")
+        line = rfile.readline()
         if not line:
             return None
         method, path, _ver = line.decode("latin1").split(" ", 2)
         headers: dict[str, str] = {}
         while True:
-            h = self.request.makefile("rb").readline()
+            h = rfile.readline()
             if not h or h in (b"\r\n", b"\n"):
                 break
             k, _, v = h.partition(b":")
             headers[k.decode("latin1").strip().lower()] = v.decode("latin1").strip()
         length = int(headers.get("content-length") or 0)
-        body = self.request.makefile("rb").read(length) if length > 0 else b""
+        body = rfile.read(length) if length > 0 else b""
         return method, path, headers, body
 
     def handle(self) -> None:
@@ -104,14 +106,18 @@ class Handler(socketserver.BaseRequestHandler):
         })
 
     def _send(self, status: int, body: bytes, headers: dict[str, str]) -> None:
-        self.request.sendall(f"HTTP/1.1 {status} OK\r\n".encode("latin1"))
-        for k, v in headers.items():
-            if k.lower() in ("connection", "transfer-encoding", "content-length"):
-                continue
-            self.request.sendall(f"{k}: {v}\r\n".encode("latin1"))
-        self.request.sendall(f"Content-Length: {len(body)}\r\n".encode())
-        self.request.sendall(b"Connection: close\r\n\r\n")
-        self.request.sendall(body)
+        # 客户端主动断开（BrokenPipe/reset）属正常，静默处理，不刷异常堆栈。
+        try:
+            self.request.sendall(f"HTTP/1.1 {status} OK\r\n".encode("latin1"))
+            for k, v in headers.items():
+                if k.lower() in ("connection", "transfer-encoding", "content-length"):
+                    continue
+                self.request.sendall(f"{k}: {v}\r\n".encode("latin1"))
+            self.request.sendall(f"Content-Length: {len(body)}\r\n".encode())
+            self.request.sendall(b"Connection: close\r\n\r\n")
+            self.request.sendall(body)
+        except OSError:
+            pass
 
 
 class Server(socketserver.ThreadingTCPServer):
