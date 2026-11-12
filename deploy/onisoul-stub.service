@@ -1,0 +1,26 @@
+[Unit]
+Description=OniSoul stub server (API + static assets)
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/onisoul
+Environment=ONI_ROOT=/opt/onisoul
+Environment=ONI_CONFIG_DIR=/opt/onisoul/config
+Environment=ONI_DATA_DIR=/opt/onisoul/data
+Environment=ONI_LOG_DIR=/opt/onisoul/logs
+Environment=ONI_DB_HOST=127.0.0.1
+Environment=ONI_DB_PORT=3306
+Environment=ONI_DB_NAME=game_db
+Environment=ONI_DB_USER=game_app
+# 密码不写进 unit；部署时用 systemd EnvironmentFile 注入（文件权限 600，属 root）。
+EnvironmentFile=-/etc/onisoul/stub.env
+ExecStart=/usr/bin/python3 -m app.main --host 127.0.0.1 --port 18080
+Restart=on-failure
+RestartSec=3
+StandardOutput=append:/opt/onisoul/logs/stub-systemd.log
+StandardError=append:/opt/onisoul/logs/stub-systemd.log
+
+[Install]
+WantedBy=multi-user.target

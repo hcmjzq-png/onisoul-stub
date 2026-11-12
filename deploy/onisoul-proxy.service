@@ -1,0 +1,17 @@
+[Unit]
+Description=OniSoul port 80 proxy -> stub 18080
+After=network.target onisoul-stub.service
+Wants=onisoul-stub.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/onisoul
+Environment=ONI_ROOT=/opt/onisoul
+Environment=ONI_LOG_DIR=/opt/onisoul/logs
+ExecStart=/usr/bin/python3 /opt/onisoul/tools/proxy80.py --listen 80 --upstream 18080
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
