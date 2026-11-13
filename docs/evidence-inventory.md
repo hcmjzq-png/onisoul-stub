@@ -63,6 +63,13 @@
 - 来源：解包自原厂 `tableAssets.unity3d`（LZMA 解压后 100,194,188 字节）。
 - 重点表（`_清单.md`）：`character.json`（3,814 id）、`characterGrade.json`、`characterLevel.json`（850 id）、`building.json`（1,343 id）、`building_level.json`（2,183 id）、`equip.json`、`quest_1_index.json`、`defines.json`（111 id）。
 - 样例核验：`defines.json` 结构为 `{"defines": {"<id>": {"id": …, "value": …}}}`，内容为常量键值（如 `quest_work_limit=20`、`username_min_length=1`、`username_max_length=10`、`soul_limit=60000`、`level_limit=15`），未见旧 stub 注入字段。
+- 字节一致性核验（2026-11-13，UnityPy 1.25.4 解析原厂 `tableAssets.unity3d`，Unity 3.5.6f4）：
+  - bundle 内 TextAsset 共 1070 个；磁盘 JSON 1061 个。
+  - 1048 张的 `m_Script` 原始字节与磁盘文件逐字节一致。
+  - 13 张 bundle 段略大于磁盘，差值恰好等于被清理的 MiniJSON 尾逗号；删除尾逗号后与磁盘逐字节一致，字段值未改动。
+  - 磁盘独有 0 张：不存在 bundle 之外、由旧 stub 编造的表。
+  - bundle 内 9 张未落盘：8 张被标准 JSON 解析拒收（非法转义 / 控制字符 / 分隔符，原厂 MiniJSON 容忍；错误与 `_errors.txt` 逐条对应）；`bot.json`（bot NPC 主数据表）为旧导出脚本切分遗漏。二者原始字节仍在 bundle，需要时可经 UnityPy 单独导出，不引用磁盘派生件。
+  - 基准 `tableAssets.raw`（100,194,188 字节）即该 bundle 解压后内容；纯标准库手解析在 Message / 布局表上受字符串内括号干扰，其段长差异未采信，最终以 UnityPy 结构解析为准。
 
 ### 2.2 其他 B 级辅助素材（`analysis\` 内）
 
@@ -72,7 +79,7 @@
 
 ### 2.3 B 级待验证项
 
-- 表 JSON 与 `tableAssets.unity3d` 内原始字节的一致性，需回解原始 bundle 抽查哈希后确认。
+- 表 JSON 与 bundle 原始字节一致性：**已核验**（见 §2.1「字节一致性核验」）——1048 张逐字节一致，13 张仅尾逗号清理（语义等价），磁盘无 bundle 外文件。
 - 带版本后缀的文件（`shop_item_all5/all6/all7/…`、`navigator_monica5…9` 等）分别对应哪个客户端版本，尚未核对。
 - 表内数值用于 Stub 初始值前，需与客户端 dll 中的默认值交叉印证。
 
