@@ -37,7 +37,7 @@ def payload(api: str) -> dict[str, Any]:
             continue
         if "<" in key or ">" in key:  # 动态键（<id>.field 之类），无法静态展开
             continue
-        body[key] = _DEFAULT[typ]
+        body[key] = _DEFAULT.get(typ, {})
     return body
 
 

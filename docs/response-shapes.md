@@ -10,12 +10,12 @@
 
 | 接口 | 客户端读取点 |
 |---|---|
-| `auction/auctionCardSale` | `AuctionDataManager.cs:GetMySellingCardsFromServer` |
-| `auction/auctionResourceSale` | `AuctionDataManager.cs:GetMySellingResourceFromServer` |
+| `auction/auctionCardSale` | `AuctionDataManager.cs:OnGetMySellingCards` |
+| `auction/auctionResourceSale` | `AuctionDataManager.cs:OnGetMySellingResources` |
 | `common/getCharacters` | `DeckConflateCards.cs:createStatus` |
-| `common/getEquips` | `DeckConflateCards_Equip.cs:setup` |
-| `common/getSelectCharacters` | `QuestDataCache.cs:calcDeckParameter` |
-| `common/getTactics` | `DeckConflateCards_Tactics.cs:setup` |
+| `common/getEquips` | `DeckConflateCards.cs:createStatus` |
+| `common/getSelectCharacters` | `PlayerDeck.cs:getCharacters` |
+| `common/getTactics` | `DeckConflateCards.cs:createStatus` |
 | `dailymission/getDailyMission` | `DailyMissionScene.cs:Start` |
 | `deck/getProtectedCharacterIds` | `DeckScene.cs:OnEnable` |
 | `deck/getProtectedEquipIds` | `DeckScene.cs:OnEnable` |
@@ -25,15 +25,21 @@
 | `friend/findFriends` | `FriendListWindow.cs:getFindData` |
 | `friend/getFriends` | `FriendListWindow.cs:getFriendData` |
 | `politic/building/getDrafts` | `UserStatus.cs:setDraftInfo` |
-| `politic/support_item/usePotions` | `PoliticItemInventory.cs:useItem` |
 | `politic/waterborneTrade/getStatus` | `PoliticMissionProgressList.cs:updateWaterTradeList` |
 | `quest/checkEmergencyQuest` | `EmergencyQuestChecker.cs:sendRequest` |
-| `quest/getChapterData` | `PluginQuestDataManager.cs:onGetStoryProgress` |
 | `quest/getQuestCompleteFlags` | `PluginQuestDataManager.cs:onGetStoryProgress` |
 | `quest/getQuestProgress` | `QuestDataCache.cs:setQuestParameter` |
 
 依据来自客户端反编译回调的方法体，不在本 PR 中扩展未经证实的接口。新增裸映射
 接口时必须先补客户端读取点，再加入 `BARE_MAP_EVIDENCE`。
+
+证据格式固定为 `<文件名>.cs:<方法名>`。可用以下命令对完整反编译源码逐条
+检查文件存在且方法有真实声明，拒绝仅“方法名在文件中出现”的调用点证据：
+
+```bash
+python tools/verify_response_shape_evidence.py \
+  --source /path/to/analysis_full/il_csharp/app
+```
 
 ## 不是裸映射
 
@@ -41,6 +47,10 @@
 envelope 和类型化占位字段：
 
 - `deck/getAvatarCharacters`：`PoliticAvatorCache.cs:setup` 读取 `baseId`、`grade`、`voice`。
+- `politic/support_item/usePotions`：`DailyMissionScene.cs:convertRewardByUsePotionsAPIResult`
+  读取根级 `result` 并展开奖励。
+- `quest/getChapterData`：`PluginRunner_DoEvent.cs:onQuestChapterData` 读取
+  `clearCount`、`complete`、`maxStep`、`step`。
 - `siege/getBrief`：`siegeBriefMenuDesc.cs:setup` 读取 `day`、`stage`、`isEntry`、
   `winner` 等键。
 - `siege/getSiegeStatus`：`vsSetting_Siege.cs:getSiegeSituation` 读取 `selfDeck`、

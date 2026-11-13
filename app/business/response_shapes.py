@@ -21,12 +21,12 @@ class ResponseShape(str, Enum):
 # Each entry is backed by a callback that enumerates the response root and casts
 # every value to Hashtable. Empty maps are valid "no records" placeholders.
 BARE_MAP_EVIDENCE: dict[str, str] = {
-    "auction/auctionCardSale": "AuctionDataManager.cs:GetMySellingCardsFromServer",
-    "auction/auctionResourceSale": "AuctionDataManager.cs:GetMySellingResourceFromServer",
+    "auction/auctionCardSale": "AuctionDataManager.cs:OnGetMySellingCards",
+    "auction/auctionResourceSale": "AuctionDataManager.cs:OnGetMySellingResources",
     "common/getCharacters": "DeckConflateCards.cs:createStatus",
-    "common/getEquips": "DeckConflateCards_Equip.cs:setup",
-    "common/getSelectCharacters": "QuestDataCache.cs:calcDeckParameter",
-    "common/getTactics": "DeckConflateCards_Tactics.cs:setup",
+    "common/getEquips": "DeckConflateCards.cs:createStatus",
+    "common/getSelectCharacters": "PlayerDeck.cs:getCharacters",
+    "common/getTactics": "DeckConflateCards.cs:createStatus",
     "dailymission/getDailyMission": "DailyMissionScene.cs:Start",
     "deck/getProtectedCharacterIds": "DeckScene.cs:OnEnable",
     "deck/getProtectedEquipIds": "DeckScene.cs:OnEnable",
@@ -36,10 +36,8 @@ BARE_MAP_EVIDENCE: dict[str, str] = {
     "friend/findFriends": "FriendListWindow.cs:getFindData",
     "friend/getFriends": "FriendListWindow.cs:getFriendData",
     "politic/building/getDrafts": "UserStatus.cs:setDraftInfo",
-    "politic/support_item/usePotions": "PoliticItemInventory.cs:useItem",
     "politic/waterborneTrade/getStatus": "PoliticMissionProgressList.cs:updateWaterTradeList",
     "quest/checkEmergencyQuest": "EmergencyQuestChecker.cs:sendRequest",
-    "quest/getChapterData": "PluginQuestDataManager.cs:onGetStoryProgress",
     "quest/getQuestCompleteFlags": "PluginQuestDataManager.cs:onGetStoryProgress",
     "quest/getQuestProgress": "QuestDataCache.cs:setQuestParameter",
 }
@@ -50,6 +48,8 @@ BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)
 # values. They must keep the normal envelope and typed contract placeholders.
 SCALAR_ROOT_EVIDENCE: dict[str, str] = {
     "deck/getAvatarCharacters": "PoliticAvatorCache.cs:setup",
+    "politic/support_item/usePotions": "DailyMissionScene.cs:convertRewardByUsePotionsAPIResult",
+    "quest/getChapterData": "PluginRunner_DoEvent.cs:onQuestChapterData",
     "siege/getBrief": "siegeBriefMenuDesc.cs:setup",
     "siege/getSiegeStatus": "vsSetting_Siege.cs:getSiegeSituation",
     "trophy/getTrophyProgress": "TrophyWindow.cs:load",
