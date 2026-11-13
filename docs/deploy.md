@@ -97,7 +97,7 @@ journalctl -u onisoul-stub  -n 50 --no-pager
 journalctl -u onisoul-proxy -n 50 --no-pager
 ```
 
-- 抓包报文：`/opt/onisoul/logs/capture-YYYYMMDD.jsonl`。
+- 代理调试报文：`/opt/onisoul/logs/capture-YYYYMMDD.jsonl`。
 - 会话 / 玩家表：`accounts`、`sessions`、`players`（见 `db/schema.sql`）。
 
 ## 回滚
