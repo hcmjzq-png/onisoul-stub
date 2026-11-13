@@ -35,11 +35,13 @@
 
 | 目标场景 | 触发端点数 |
 |---|---|
-| `politic` | 7 |
+| `politic` | 5 |
 | `vsBattle` | 3 |
 | `deck` | 1 |
 | `migrationLogin` | 1 |
 | `strategy` | 1 |
+
+10 个端点共触发 11 次（`debug/debugCreateEquip` 一个回调里连切 `politic` 与 `deck`）。计的是**端点**不是调用次数：同一端点方法体里重复出现的同名 `process(...)` 只算一次。
 
 从 `common/getRevisions`、`auth/gameLogin`、`auth/guestLogin`、`common/getPlayerEntity` 出发做深度 3 的可达分析，**可达端点数为 0** —— 这几条启动链的回调体里不直接发下一个请求，而是 `transitionScene` 换场景，由新场景的 `Awake/Start` 重新发起请求批次（`TableLoad` → `BootUp` → `title` → `politic`）。
 
@@ -79,6 +81,18 @@ quest/executeQuestEx         turfWar/getTurfWarResultLog
 | `politic/mission/getStatesFromAllMissions` | `missions` |
 
 完整清单见 `behavior_contract.tsv` 的 `guarded_keys` 列。
+
+## 抽取保真度
+
+650 个调用点里：
+
+| 情况 | 数量 | 影响 |
+|---|---|---|
+| 精确定位到方法体 | 570 | 副作用字段可信 |
+| 只定位到类体（退化） | 75 | 方法体没匹配上（重载 / 匿名类 / 缩进异常），退化成整类体扫描，**会带入同类其它方法**的调用，`service_calls`、`guards` 可能偏多 |
+| 完全定位不到 | 5 | 类名对不上，该端点只有 `matched_sites` 计数 |
+
+退化的 75 个集中在 `DeckConflate*`、`DeckSale`、`HTMLMailBox` 等 49 个类。这些端点的行为字段按「可能混入同类其它方法的副作用」读，不要当成精确事实。
 
 ## 表列定义
 
