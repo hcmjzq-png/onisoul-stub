@@ -1,8 +1,8 @@
 # OniSoul Stub
 
-鬼武者魂（Onimusha Soul / OniSoul）PC 版复刻用 Stub 服务端。客户端经 80 端口代理转发到本 Stub；协议与响应字段由客户端 `Assembly-CSharp.dll` 反汇编与抓包整理。
+鬼武者魂（Onimusha Soul / OniSoul）PC 版复刻用 Stub 服务端。客户端经 80 端口代理转发到本 Stub；接口与响应字段待从客户端 bundle 实测反推，当前为分层骨架。
 
-> 当前状态：**分层骨架**。传输 / 协议 / 会话 / 状态 / 注册表已落地并通过协议层单测；具体业务接口与响应字段待 dump / 抓包补齐（见 `docs/architecture.md` 的 TODO）。
+> 当前状态：**分层骨架**。传输 / 协议 / 会话 / 状态 / 注册表已落地并通过协议层单测；业务接口与响应字段待从客户端 bundle 核对补齐（见 `docs/architecture.md` 的 TODO）。
 
 ## 目录
 
@@ -10,13 +10,13 @@
 onisoul-stub/
 ├── app/
 │   ├── main.py               # 服务入口
-│   ├── config.py            # 环境变量配置
+│   ├── config.py             # 环境变量配置
 │   ├── db.py                 # MySQL 连接层
 │   ├── protocol/            # 信封解析、统一响应、错误码
-│   ├── transport/            # HTTP 路由分发
-│   ├── sessions/             # 账号 / 会话表
+│   ├── transport/           # HTTP 路由分发
+│   ├── sessions/            # 账号 / 会话表
 │   ├── state/               # 玩家状态（整行 JSON）
-│   └── business/             # 接口注册表与业务规则
+│   └── business/            # 接口注册表与业务规则
 ├── db/schema.sql            # MySQL 建库建表
 ├── config/                  # 响应模板（示例）
 ├── tools/proxy80.py         # 80 → 18080 转发代理
