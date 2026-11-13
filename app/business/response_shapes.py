@@ -20,12 +20,15 @@ class ResponseShape(str, Enum):
 
 # Each entry is backed by a callback that enumerates the response root and casts
 # every value to Hashtable. Empty maps are valid "no records" placeholders.
+# Shared enumerators are allowed when several endpoints consume through the same
+# helper: `DeckConflateCards.createStatus` is used by common/getCharacters,
+# common/getEquips and common/getTactics.
 BARE_MAP_EVIDENCE: dict[str, str] = {
     "auction/auctionCardSale": "AuctionDataManager.cs:OnGetMySellingCards",
     "auction/auctionResourceSale": "AuctionDataManager.cs:OnGetMySellingResources",
     "common/getCharacters": "DeckConflateCards.cs:createStatus",
     "common/getEquips": "DeckConflateCards.cs:createStatus",
-    "common/getSelectCharacters": "PlayerDeck.cs:getCharacters",
+    "common/getSelectCharacters": "QuestDataCache.cs:calcDeckParameter",
     "common/getTactics": "DeckConflateCards.cs:createStatus",
     "dailymission/getDailyMission": "DailyMissionScene.cs:Start",
     "deck/getProtectedCharacterIds": "DeckScene.cs:OnEnable",
@@ -46,6 +49,8 @@ BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)
 
 # These callbacks read named keys from the response root and unbox scalar
 # values. They must keep the normal envelope and typed contract placeholders.
+# This mapping is evidence bookkeeping only: `shape_for()` decides by
+# `BARE_MAP_ENDPOINTS`, and everything outside it already defaults to envelope.
 SCALAR_ROOT_EVIDENCE: dict[str, str] = {
     "deck/getAvatarCharacters": "PoliticAvatorCache.cs:setup",
     "politic/support_item/usePotions": "DailyMissionScene.cs:convertRewardByUsePotionsAPIResult",
