@@ -28,7 +28,6 @@ debug/debugGradeUpBuildings	1	called	ignored	PoliticDebugMenu.cs:200（回调体
 debug/debugRankingNationalPowerAddScoreWithSwitch	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/debugRentalNavigatorBarelyExpiration	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/debugResetCreditStepCount	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-debug/dedicate	4	called	hands_to_callee:callback	MightOfNationDialog.cs
 debug/forceCompleteQuest	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/forceFeedbackFriendOffer	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/forceProgressGiganticChain	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在

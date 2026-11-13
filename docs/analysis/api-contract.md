@@ -26,11 +26,11 @@
 |---|---|
 | 端点总数（= `httpCall` 唯一字面量） | 402 |
 | 已抽出响应字段 | 279 |
-| 被调用但回调体不读命名键 | 70 |
+| 被调用但回调体不读命名键 | 69 |
 | 本客户端从不调用（无调用点） | 53 |
-| 唯一响应键 | 453 |
-| 带类型响应键 | 328 |
-| 带可选标记（`ContainsKey` 保护） | 74 |
+| 唯一响应键 | 456 |
+| 带类型响应键 | 334 |
+| 带可选标记（`ContainsKey` 保护） | 73 |
 | 一端点多方法（参数取并集） | 10 |
 | 带序号模板键的请求 | 4 |
 | 带常量枚举的请求 | 14 |
@@ -66,8 +66,8 @@
 | 端点完整性 | 契约↔源码字面量双向对账 | 402↔402，0 差；唯一非字面量命中是 `private void httpCall(string api,...)` 方法定义本身 |
 | 方法归属 | 花括号配对定位方法体 | 445/445 个真实方法全部定位（另 6 个 `public delegate` 声明非方法） |
 | 参数正确性 | 用方法体重算参数并集，与表对比 | 差异 6 项，已全部修正（见下） |
-| 字段真实性 | 1068 个键逐个回查源码字面量 | 0 个找不到；`verify/final_check.txt` 是 990 键时期的快照，当前键数/类型数/结构类问题以 `python3 tools/contract_check.py` 输出为准（1068 键 / 584 带类型 / 0 问题） |
-| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 584 处带类型读取，0 冲突 |
+| 字段真实性 | 1075 个键逐个回查源码字面量 | 0 个找不到；`verify/final_check.txt` 是 990 键时期的快照，当前键数/类型数/结构类问题以 `python3 tools/contract_check.py` 输出为准（1075 键 / 594 带类型 / 0 问题） |
+| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 594 处带类型读取，0 冲突 |
 | 表结构与编码 | 9 列齐整 / UTF-8 无 BOM / 仅 LF / 无重复端点 / `key_count` 与条目数一致 | 全部通过 |
 | 键名一致性 | 回包键不得与同端点请求参数同名 | 5 例经核对为**回显读取**（客户端读回自己发过的值），非错误 |
 | 方向一致性 | 键必须出现在「回包路径」而非「请求构造路径」 | `politic/waterborneTrade/send` 两处疑似请求侧复用，已排除未并入 |
@@ -94,6 +94,13 @@
    `giganticRaidBossPoint` / `hp` / `damage` / `needPoint.0..2` 补进了 `giganticRaidBossInformation`；
    该端点的 `monsterId` 原先无类型（占位会整键跳过，`giganticRaidBossScene.cs:130` 的
    `hashtable["monsterId"].ToString()` 会 NRE），按 `createBg(string)` → `getMenuBg(string)` 的口径定成 `string`。
+* `unguarded_gaps.tsv` 的 104 条候选缺口已逐条判读（明细见 `docs/analysis/unguarded_gaps_verdicts.tsv`，
+  口径见 `unguarded-reads.md`）：69 条读的不是回包、31 条读的是另一端点回包、4 条真缺口。
+  本批据此补 5 处：`debug/dedicate.score`、`deck/extendCharacterStore.possessionLimits(+.character)`、
+   `quest/clearObstacle.uses(+.category)`、`battle/executeBattle.executeInfo(+.step)`、
+   `politic/support_item/getPotions.potions(+.potion0000102.amount)`；同时剔除
+   `strategy/getStrategyCommandInfo` 上 2 个消息表污染键。键数 1068→1075，带类型 584→594，
+   唯一 453→456，可选 74→73。
 
 ## 常量枚举（Stub 必须按此校验，不能任意填）
 
@@ -162,11 +169,11 @@ debug/debugLogin               username: debug
 
 ## 已知缺口
 
-零字段端点共 123 个，逐个给出处置，全量清单见 `verify/no_key_final.txt`：
+零字段端点共 122 个，逐个给出处置，全量清单见 `verify/no_key_final.txt`：
 
 - **53 个无调用点**：`app/` 内不存在 `.方法名(` 的调用点，只有 `WebApiClient` 自己的包装方法，说明本客户端从不触发。契约参数取自 `WebApiClient` 方法本身。
   （注意：早期口径按「`httpCall` 站点数」判定被调用，把包装方法算进去了，因此曾误报为 55 个。）
-- **70 个有调用但不读命名键**：形态已全部归清（70 条，`shape` 无一留空）：
+- **69 个有调用但不读命名键**：形态已全部归清（69 条，`shape` 无一留空）：
   - `ignored` 26：回调体只置状态位、切场景、改本地 UI，完全不读回包（本轮逐条核实，见下节「口径差」）；
   - `iterates_no_key_name` 5：`foreach` 遍历后取 `item.Key` 当数据 id（如 `deck/getProtectedCharacterIds`），外层键名由服务端决定；
   - `hands_to_callee` 10：原样交给下游方法（`resetItems` / `createPlayerData` / `getQuestProgress` / `cancelWaterTrade` 等），已追一层仍未读到键；
@@ -263,7 +270,7 @@ debug/debugLogin               username: debug
   清单已改 `no_call_site`。
 - **2 条过期**：`battle/getRaidBossLogs`、`turfWar/receiveTurfWarReward` 已在此前批次拿到响应键，已从清单移除。
 
-结论：这 26 个端点回 `{}` 安全，零字段 123 = 53 无调用点 + 70 有调用点（其中 26 条即本次核清的「有调用但不读键」）。
+结论：这 26 个端点回 `{}` 安全，零字段 122 = 53 无调用点 + 69 有调用点（其中 26 条即本次核清的「有调用但不读键」）。
 三条口径不变量由 `tests/test_no_key_inventory.py` 守住：清单行数 == 契约零字段端点数、`usage` 与 `call_sites` 同向、
 有调用点的行必须给出形态。
 
