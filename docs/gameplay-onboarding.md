@@ -26,6 +26,13 @@
 - `auth/createPlayer` 成功后写 `entity.created = true`。
 - 后续登录返回 `succeeded: true`，客户端直接下发玩家状态。
 
+`entity.cap` 表示 `playerLevel` 的最大等级，武将容量由
+`possessionLimits.character` 单独承载。账号、token、playerId 与玩家 JSON 均由现有
+`sessions` / `state` 持久层保存。
+
+`deck/getAvatarCharacters` 返回完整武将状态映射；主城立绘只读取其中的
+`baseId / grade / voice`，后续编成和详情仍可复用 `atk / def / int / level / exp / skills`。
+
 ## 任务链
 
 任务定义来自 `politicMission.json`，服务端不写死任务 1～4 的条件与奖励：
@@ -37,6 +44,11 @@
 
 任务奖励只在首次进入 `closed` 时发放。资源类 `item11_*` 写入资源余额，图纸类
 `item04_*` 通过 `item04.parameterId` 映射为 `draftId`，建造成功后从库存扣除。
+stub 奖励按每组 `countNmin` 发放，`ratioNmax > 0` 表示该组存在；这是确定性测试口径，
+不实现线上随机区间。
+
+新号基础状态是系统任务 `0: C`，即公告栏 `unlockMessageBoard` 出生可用；任务 1
+由客户端 `IsAutoStart` 唤醒，不伪造任务 0～4 的完成状态。
 
 ## 地图建筑
 
@@ -45,6 +57,21 @@
 建筑记录包含客户端 `PoliticBuildingParameter.set` 需要的字段：
 
 `buildingTypeId / level / exp / deployedMapKey / status / remainedClickCount / durability`
+
+`submitBuildTask` 的 `remainedClickCount` 直接取 `draft.progressCount`。正数时客户端每次
+点击调用 `progressBuildTask`，递减到 0 后才进入 `completeTasks`；0 才允许一步完工。
+
+初始城图纸 `draft2000002` 不是客户端 reset 清单中的初始库存。由于任务 2 必须有城，
+这里只发放任务所需的最小一张；来源与限制在代码常量旁明确标注。
+
+## 错误与并发
+
+bare-map 端点认证失败时返回 `{"errorReason": "..."}`，让客户端
+`GameRestarter.isError` 在消费数据前接管错误。
+
+`players.state_json` 带 `_revision`。保存前在事务中 `SELECT ... FOR UPDATE`，版本不一致
+抛出 `StateConflictError`。进程内还会按 `playerId` 串行化 handler，避免
+`getPlayerParams`、任务推进和建造读改写互相覆盖。
 
 ## 回归
 

@@ -90,6 +90,7 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertTrue(params["succeeded"])
         self.assertEqual(params["entity"]["username"], "new-player")
         self.assertEqual(params["entity"]["country"], "country01")
+        self.assertEqual(params["entity"]["cap"], 2)
         self.assertEqual(params["actionPoints"]["politicPoint"]["point"], 25)
         self.assertEqual(params["resources"]["gold"]["amount"], 0)
         self.assertEqual(params["characterCount"], 4.0)
@@ -109,6 +110,8 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertIn("baseId", first)
         self.assertIn("grade", first)
         self.assertIn("voice", first)
+        self.assertIn("atk", first)
+        self.assertIn("skills", first)
         self.assertNotIn("succeeded", avatars)
 
         map_data = self.service.get_map_data({}, session)
@@ -207,6 +210,57 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertTrue(first_login_again["succeeded"])
         self.assertEqual(first_login_again["playerId"], first["playerId"])
 
+    def test_create_player_validates_country_navigator_and_name(self):
+        login = self.service.dev_login({"username": "validation-player"}, None)
+        session = {"playerId": login["playerId"], "token": login["token"]}
+        base = {
+            "username": "validation-player",
+            "countryId": "country01",
+            "navigatorId": "navi8000101",
+            "colorIndex": "color1",
+        }
+        self.assertFalse(
+            self.service.create_player({**base, "username": ""}, session)["succeeded"]
+        )
+        self.assertFalse(
+            self.service.create_player({**base, "countryId": "bad"}, session)["succeeded"]
+        )
+        self.assertFalse(
+            self.service.create_player(
+                {**base, "navigatorId": "bad"}, session
+            )["succeeded"]
+        )
+        self.assertFalse(
+            self.service.create_player({**base, "colorIndex": "bad"}, session)[
+                "succeeded"
+            ]
+        )
+
+    def test_positive_progress_count_requires_each_click(self):
+        session = self._login_and_create()
+        self.states.rows[session["playerId"]]["drafts"]["draft2000028"] = 1
+        result = self.service.submit_build_task(
+            {"draftId": "draft2000028", "originCoord": [1, 1]}, session
+        )
+        self.assertEqual(result["building"]["status"], "building")
+        self.assertEqual(result["building"]["remainedClickCount"], 2)
+
+        first = self.service.progress_build_task(
+            {"buildingId": result["buildingId"]}, session
+        )
+        self.assertEqual(first["remainedClickCount"], 1)
+        second = self.service.progress_build_task(
+            {"buildingId": result["buildingId"]}, session
+        )
+        self.assertEqual(second["remainedClickCount"], 0)
+
+        stored = self.states.load(session["playerId"])["buildings"][result["buildingId"]]
+        self.assertEqual(stored["status"], "building")
+        completed = self.service.complete_tasks(
+            {"buildingIds": [result["buildingId"]]}, session
+        )
+        self.assertEqual(completed["buildings"][result["buildingId"]]["status"], "none")
+
     def test_registered_handlers_do_not_require_db_for_anonymous_shape_checks(self):
         registry = Registry()
         self.service.register(registry).register_contract_defaults()
@@ -217,11 +271,11 @@ class GameplayFlowTest(unittest.TestCase):
 
         status, drafts = registry.dispatch("politic/building/getDrafts", {}, None)
         self.assertEqual(status, 200)
-        self.assertEqual(drafts, {})
+        self.assertEqual(drafts, {"errorReason": "authentication required"})
 
         status, avatars = registry.dispatch("deck/getAvatarCharacters", {}, None)
         self.assertEqual(status, 200)
-        self.assertEqual(avatars, {})
+        self.assertEqual(avatars, {"errorReason": "authentication required"})
 
     def test_reproducible_gameplay_smoke_tool(self):
         stdout = StringIO()

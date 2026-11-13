@@ -55,7 +55,8 @@
 - `players(player_id PK, state_json JSON, updated_at)`
 
 玩家状态是嵌套 dict，按 `player_id` 整行序列化为 JSON 存储；业务层仍按 dict 操作，
-持久层不拆关系表。时间字段统一 epoch 秒（DOUBLE）。
+持久层不拆关系表。时间字段统一 epoch 秒（DOUBLE）。状态 JSON 带 `_revision`，
+`save()` 使用行锁和版本比较拒绝陈旧快照。
 
 ## 未决 / TODO
 

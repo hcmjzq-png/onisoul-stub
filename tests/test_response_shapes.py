@@ -27,7 +27,7 @@ class ResponseShapeTest(unittest.TestCase):
             self.assertIn(":", evidence)
 
     def test_bare_map_placeholder_has_no_envelope(self):
-        registry = build_registry()
+        registry = Registry().register_contract_defaults()
         for api in response_shapes.BARE_MAP_ENDPOINTS:
             with self.subTest(api=api):
                 status, body = registry.dispatch(api, {}, None)

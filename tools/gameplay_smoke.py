@@ -76,6 +76,11 @@ def main(argv: list[str] | None = None) -> int:
     params = service.get_player_params({}, session)
     if params["characterCount"] <= 0:
         raise RuntimeError("createPlayer produced no characters")
+    expected_cap = max(int(key) for key in service._table("playerLevel"))
+    if params["entity"]["cap"] != expected_cap:
+        raise RuntimeError(
+            f"entity.cap={params['entity']['cap']} does not match max level {expected_cap}"
+        )
     map_data = service.get_map_data({}, session)
     if "size" not in map_data["map"]:
         raise RuntimeError("getMapData did not return map size")

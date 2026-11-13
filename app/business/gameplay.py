@@ -5,6 +5,7 @@ import copy
 import datetime as dt
 import json
 import re
+import threading
 import time
 from collections.abc import Callable
 from typing import Any
@@ -109,6 +110,8 @@ class GameplayService:
         self.save_state = save_state or state.save
         self.session_store = session_store or sessions
         self.missions = MissionChain(self.catalog)
+        self._locks: dict[str, threading.RLock] = {}
+        self._locks_guard = threading.Lock()
 
     def register(self, registry: Registry) -> Registry:
         handlers = {
@@ -135,8 +138,27 @@ class GameplayService:
             "politic/task/submitBuildTask": self.submit_build_task,
         }
         for api, handler in handlers.items():
-            registry.register(api, handler)
+            registry.register(api, self._guard(api, handler))
         return registry
+
+    def _lock_for(self, player_id: str) -> threading.RLock:
+        with self._locks_guard:
+            return self._locks.setdefault(player_id, threading.RLock())
+
+    def _guard(self, api: str, handler: Callable[..., dict[str, Any]]) -> Callable[..., dict[str, Any]]:
+        def guarded(
+            params: dict[str, Any], session: dict[str, Any] | None
+        ) -> dict[str, Any]:
+            player_id = self._player_id(session)
+            if not player_id:
+                return handler(params, session)
+            with self._lock_for(player_id):
+                try:
+                    return handler(params, session)
+                except state.StateConflictError:
+                    return self._failure(api, "state changed concurrently; retry")
+
+        return guarded
 
     def _failure(
         self,
@@ -145,6 +167,8 @@ class GameplayService:
         *,
         payload: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
+        if response_shapes.shape_for(api) is response_shapes.ResponseShape.BARE_MAP:
+            return {"errorReason": message}
         body = placeholders.payload(api)
         body.update(payload or {})
         body.update(
@@ -179,6 +203,15 @@ class GameplayService:
         rows = self._table("playerLevel")
         return rows.get(str(level)) or {}
 
+    def _max_level(self) -> int:
+        levels = []
+        for key in self._table("playerLevel"):
+            try:
+                levels.append(int(key))
+            except (TypeError, ValueError):
+                continue
+        return max(levels, default=1)
+
     def _table(self, name: str) -> dict[str, Any]:
         try:
             return self.catalog.load(name)
@@ -196,7 +229,7 @@ class GameplayService:
                 "country": "",
                 "level": 1,
                 "exp": 0,
-                "cap": int(level.get("maxCharacter") or 0),
+                "cap": self._max_level(),
                 "currentMapKey": "map001",
                 "maxMapCount": 1,
             },
@@ -292,7 +325,7 @@ class GameplayService:
             player["resources"][resource_key]["maxAmount"] = int(
                 level.get(level_key) or 0
             )
-        player["entity"]["cap"] = int(level.get("maxCharacter") or 0)
+        player["entity"]["cap"] = self._max_level()
         map_count = sum(bool(level.get(f"mapSize{i}")) for i in range(5))
         player["entity"]["maxMapCount"] = max(1, map_count)
 
@@ -485,14 +518,27 @@ class GameplayService:
         player_id = self._player_id(session)
         if not player_id:
             return self._failure("auth/createPlayer", "authentication required")
+        username = str(params.get("username") or "").strip()
+        country = str(params.get("countryId") or "").strip()
+        navigator_id = str(params.get("navigatorId") or "").strip()
+        color_index = str(params.get("colorIndex") or DEFAULT_COLOR).strip()
+        if not username:
+            return self._failure("auth/createPlayer", "username is required")
+        if country not in self._table("beginning_equipment"):
+            return self._failure("auth/createPlayer", "invalid countryId")
+        navigators = self._table("navigator")
+        if navigators and navigator_id not in navigators:
+            return self._failure("auth/createPlayer", "invalid navigatorId")
+        if not re.fullmatch(r"color[0-9]+", color_index):
+            return self._failure("auth/createPlayer", "invalid colorIndex")
         player, _dirty = self._load(player_id)
         if not player["entity"].get("created"):
             player = self._create_player(
                 player_id,
-                username=str(params.get("username") or ""),
-                country=str(params.get("countryId") or ""),
-                navigator_id=str(params.get("navigatorId") or ""),
-                color_index=str(params.get("colorIndex") or ""),
+                username=username,
+                country=country,
+                navigator_id=navigator_id,
+                color_index=color_index,
             )
         self._save(player, player_id)
         return self._success("auth/createPlayer", {"playerId": player_id})
@@ -578,16 +624,12 @@ class GameplayService:
     ) -> dict[str, Any]:
         found = self._session_player("deck/getAvatarCharacters", session)
         if isinstance(found, dict):
-            return {}
+            return found
         _player_id, player, dirty = found
         if dirty:
             self._save(player, _player_id)
         result = {
-            character_id: {
-                "baseId": str(record.get("baseId") or ""),
-                "grade": float(record.get("grade") or 1),
-                "voice": str(record.get("voice") or ""),
-            }
+            character_id: _deep(record)
             for character_id, record in (player.get("characters") or {}).items()
             if isinstance(record, dict)
         }
@@ -782,7 +824,7 @@ class GameplayService:
     ) -> dict[str, Any]:
         found = self._session_player("politic/building/getDrafts", session)
         if isinstance(found, dict):
-            return {}
+            return found
         _player_id, player, dirty = found
         if dirty:
             self._save(player, _player_id)
@@ -962,7 +1004,7 @@ class GameplayService:
             "y": y,
             "deployedMapKey": str(player["entity"].get("currentMapKey") or "map001"),
             "status": "none" if completed else "building",
-            "remainedClickCount": 0,
+            "remainedClickCount": 0 if completed else int(draft.get("progressCount") or 0),
             "durability": int(row.get("durability") or 10001),
         }
         player["buildings"][str(instance_id)] = record

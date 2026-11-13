@@ -9,3 +9,4 @@ politicMission.json	politicMission	PoliticMissionTableAccessor
 reward01_politic.json	reward01_politic	RewardTableAccessor
 reward99_country.json	reward99_country	RewardTableAccessor
 item04.json	item04	ItemsTableAccessor
+navigator.json	navigator	NavigatorTableAccessor
