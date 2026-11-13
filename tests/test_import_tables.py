@@ -63,6 +63,47 @@ class ImportTablesTest(unittest.TestCase):
             )
             self.assertIn("ready=2 missing=1 invalid=0", stdout.getvalue())
 
+    def test_server_manifest_imports_runtime_only_tables(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            source = root / "source"
+            dest = root / "dest"
+            source.mkdir()
+            client_manifest = root / "table_list.tsv"
+            client_manifest.write_text(
+                "table_file\troot_key\taccessor_classes\n"
+                "building.json\tbuilding\tBuildingsTableAccessor\n",
+                encoding="utf-8",
+            )
+            server_manifest = root / "server_tables.tsv"
+            server_manifest.write_text(
+                "table_file\troot_key\taccessor_classes\tpurpose\n"
+                "item04.json\titem04\tItemsTableAccessor\tdrafts\n",
+                encoding="utf-8",
+            )
+            (source / "hash.unity3d__building.json").write_text(
+                json.dumps({"building": {}}), encoding="utf-8"
+            )
+            (source / "hash.unity3d__item04.json").write_text(
+                json.dumps({"item04": {}}), encoding="utf-8"
+            )
+            with redirect_stdout(StringIO()):
+                code = import_tables.main(
+                    [
+                        "--source",
+                        str(source),
+                        "--dest",
+                        str(dest),
+                        "--manifest",
+                        str(client_manifest),
+                        "--server-manifest",
+                        str(server_manifest),
+                    ]
+                )
+            self.assertEqual(code, 0)
+            self.assertTrue((dest / "building.json").is_file())
+            self.assertTrue((dest / "item04.json").is_file())
+
 
 if __name__ == "__main__":
     unittest.main()

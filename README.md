@@ -2,9 +2,8 @@
 
 鬼武者魂（Onimusha Soul / OniSoul）PC 版复刻用 Stub 服务端。客户端经 80 端口代理转发到本 Stub；接口与响应字段待从客户端 bundle 实测反推，当前为分层骨架。
 
-> 当前状态：**运行时基础层已接通**。402 个端点契约占位、普通/裸映射响应形态、
-> PC 静态资源路由和 108 张配置表加载器已落地；业务语义仍为空，真实 handler
-> 逐个覆盖同名注册项即可（见 `docs/analysis/`）。
+> 当前状态：**首个玩法闭环已接通**。登录、玩家状态、主城地图、建造和任务 1～4
+> 已由真实 handler 处理；其余端点继续使用契约占位响应。
 
 ## 目录
 
@@ -20,6 +19,8 @@ onisoul-stub/
 │   ├── state/               # 玩家状态（整行 JSON）
 │   ├── tables.py            # 按 108 张表清单加载 / 校验 / 热重载
 │   └── business/            # 注册表、契约读取、占位响应
+│       ├── gameplay.py      # 登录 / 玩家 / 主城 / 任务 1～4
+│       ├── mission_chain.py # 官方 politicMission 任务链
 │       ├── registry.py      # api 路径 → handler，可批量登记契约占位
 │       ├── contract.py      # 直接读 docs/analysis 的 tsv（唯一事实来源）
 │       ├── response_shapes.py # 普通 envelope / 裸映射
@@ -79,6 +80,9 @@ python3 tools/contract_check.py     # 端点/边/批次/类型覆盖的只读检
 
 ```bash
 PYTHONPATH=. python -m unittest discover -s tests
+
+# 用真实表目录跑建号 -> 任务 1～4（内存状态，不写 MySQL）
+python tools/gameplay_smoke.py --table-dir assets/pc/tables
 ```
 
 `tests/test_contract_batches.py` 覆盖：402 个端点全部 200、未知路径 404、已声明类型的响应键
@@ -93,7 +97,8 @@ python tools/import_tables.py --source /path/to/extracted/tables
 资源目录通过 `ONI_PC_WEB_DIR`、`ONI_PC_BUNDLE_DIR`、`ONI_PC_CACHE_DIR`、
 `ONI_TABLE_DIR` 配置，目录内容不入库。当前清单 108 张表中客户端包内实测
 可取得 106 张，仅缺 `combo.json`、`strategy_battlefield.json`；
-见 `docs/tables.md`。
+另有 4 张服务端运行时表由 `docs/analysis/server_tables.tsv` 管理。见
+`docs/tables.md` 和 `docs/gameplay-onboarding.md`。
 
 ## 部署
 

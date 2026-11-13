@@ -112,6 +112,10 @@ class TableCatalogTest(unittest.TestCase):
         issues = catalog.check()
         self.assertTrue(any(issue.startswith("checksum drift: building.json") for issue in issues))
 
+    def test_default_catalog_also_loads_server_only_manifest(self):
+        catalog = TableCatalog(self.tables)
+        self.assertEqual(catalog.resolve("item04").file, "item04.json")
+
 
 if __name__ == "__main__":
     unittest.main()
