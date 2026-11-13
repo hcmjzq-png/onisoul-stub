@@ -107,9 +107,12 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
   消息表 / 请求入参（`color1..color5`、`items`、`enable`、`mailIds`），
   与 104 条判读里的误报同源——**真正需要补键的接近 0**。
 * **已声明但无类型的键 481**（`verify/untyped_backlog.tsv`）：能靠 `dump` 的 `cast` 列
-  唯一定型的只有 **31** 个，**450 个没有 cast 证据**（客户端读键后没做强转，或类型在
-  `HashAccessor.getString/getInt` 这类访问器里）。所以「补类型」不能只靠扫描器，
-  要么回客户端看访问器调用，要么接受 450 个裸键继续裸着。
+  唯一定型的 **31** 个**已补类型**（25 `Hashtable` / 4 `string` / 2 `double`，带类型键
+  627→658），**450 个没有 cast 证据**（客户端读键后没做强转，或类型在 `HashAccessor.getInt/getString`
+  这类访问器里）。这 450 个不能只靠仓里的 dump：客户端一次性抽出了
+  `read_context.tsv` / `key_type_profile.tsv` / `type_evidence.tsv`（本机
+  `C:\Users\74378\gap_scan_round2\`，不入仓），按键聚合后 **716/867 个键有单一定型证据**，
+  合并后即可把这批补齐；合并口径按键名对齐。
 
 ## 四类已在代码里确认的误报
 

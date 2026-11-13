@@ -18,7 +18,7 @@ auction/auctionResourceSearch	status*			no_cast_evidence
 auction/auctionStatus	status*			no_cast_evidence
 auth/keepAliveContainer	isCreatedPlayer			no_cast_evidence
 auth/keepAliveContainer	loginHash			no_cast_evidence
-battle/captchaVsBattle	successful	Hashtable	Hashtable	single_cast
+battle/captchaVsBattle	successful	Hashtable	Hashtable	typed
 battle/executeBattle	 + name + 			no_cast_evidence
 battle/executeBattle	additional			no_cast_evidence
 battle/executeBattle	commandResult*			no_cast_evidence
@@ -26,13 +26,13 @@ battle/getRaidBossDetail	id			no_cast_evidence
 battle/getRaidBossDetail	name			no_cast_evidence
 battle/getRaidBossDetail	playerId			no_cast_evidence
 battle/getRaidBossLogs	<id>.amount			no_cast_evidence
-battle/getVcode	VCodeImage	Hashtable	Hashtable	single_cast
+battle/getVcode	VCodeImage	Hashtable	Hashtable	typed
 battle/getVsReplayData	 + name + 			no_cast_evidence
 battle/getVsReplayData	additional			no_cast_evidence
 battle/getVsReplayData	commandResult*			no_cast_evidence
 battle/sendRescueRequest	RAIDBOSS_MSG_FRIEND_HELP			no_cast_evidence
 battle/sendRescueRequest	RAIDBOSS_MSG_FRIEND_NOTHELP			no_cast_evidence
-common/getBriefOfNationalPower	dedicationRanking	Hashtable	Hashtable	single_cast
+common/getBriefOfNationalPower	dedicationRanking	Hashtable	Hashtable	typed
 common/getPlayerCogid	playerId			no_cast_evidence
 community/bbs/closeBbs	guid			no_cast_evidence
 community/bbs/closeThread	guid			no_cast_evidence
@@ -64,14 +64,14 @@ community/bbs/openThread	guid			no_cast_evidence
 community/bbs/postComment	guid			no_cast_evidence
 community/libs/bbsSession	sess_key			no_cast_evidence
 dailymission/getDailyMission	amount			no_cast_evidence
-dailymission/getDailyMission	curCount	string	string	single_cast
+dailymission/getDailyMission	curCount	string	string	typed
 dailymission/getDailyMission	getPoint			no_cast_evidence
-dailymission/getDailyMission	itemId	Hashtable	Hashtable	single_cast
+dailymission/getDailyMission	itemId	Hashtable	Hashtable	typed
 dailymission/getDailyMission	point*			no_cast_evidence
 dailymission/getDailyMission	state			no_cast_evidence
 dailymission/getDailyMission	totalCount			no_cast_evidence
-dailymission/getDailyMissionReward	Result	Hashtable	Hashtable	single_cast
-dailymission/getPoint	Result	Hashtable	Hashtable	single_cast
+dailymission/getDailyMissionReward	Result	Hashtable	Hashtable	typed
+dailymission/getPoint	Result	Hashtable	Hashtable	typed
 debug/debugCreateQuestEncount	 + name + 			no_cast_evidence
 debug/devLogin	playerId*			no_cast_evidence
 deck/extendCharacterStore	extendLimit			no_cast_evidence
@@ -79,21 +79,21 @@ deck/extendCharacterStore	extendSlot			no_cast_evidence
 deck/extendCharacterStore	nextOpenLimit			no_cast_evidence
 deck/extendCharacterStore	now			no_cast_evidence
 deck/getAvatarCharacters	 + name + 			no_cast_evidence
-deck/getCharactersInStore	extendSlot	double	double	single_cast
-deck/getDeckBonus	id	Hashtable	Hashtable	single_cast
+deck/getCharactersInStore	extendSlot	double	double	typed
+deck/getDeckBonus	id	Hashtable	Hashtable	typed
 deck/getDecks	4			no_cast_evidence
 deck/getDecks	equip			no_cast_evidence
 deck/gradeUpCharacter	id			no_cast_evidence
 deck/gradeUpCharacter	images			no_cast_evidence
 deck/gradeUpEquip	id			no_cast_evidence
 deck/inheritCharacterSkill	0			no_cast_evidence
-deck/inheritCharacterSkill	removeCharacterId	Hashtable	Hashtable	single_cast
+deck/inheritCharacterSkill	removeCharacterId	Hashtable	Hashtable	typed
 deck/sellCharacters	sellPrice			no_cast_evidence
 deck/sellEquips	sellPrice			no_cast_evidence
 deck/sellTactics	sellPrice			no_cast_evidence
 deck/setDecks	0			no_cast_evidence
 deck/setSkillSlot	amount			no_cast_evidence
-deck/setSkillSlot	category	Hashtable	Hashtable	single_cast
+deck/setSkillSlot	category	Hashtable	Hashtable	typed
 deck/setSkillcoins	skillCoins			no_cast_evidence
 depletionmission/drawDepletionItem	Result			no_cast_evidence
 friend/cancelFriendOffer	0			no_cast_evidence
@@ -116,9 +116,9 @@ friend/getFriends	guid			no_cast_evidence
 friend/getFriends	playerIds			no_cast_evidence
 friend/sendFriendOffer	0			no_cast_evidence
 friend/sendFriendOffer	guid			no_cast_evidence
-friend/task/accelerateFriendProduceTask	acceleratecount	Hashtable	Hashtable	single_cast
+friend/task/accelerateFriendProduceTask	acceleratecount	Hashtable	Hashtable	typed
 friend/updateFriendData	guid			no_cast_evidence
-friend/visitFriendMap	friendInfo	Hashtable	Hashtable	single_cast
+friend/visitFriendMap	friendInfo	Hashtable	Hashtable	typed
 giganticRaidBoss/getGiganticRaidBossBattleResult	additionalResult			no_cast_evidence
 invitation/getMyCode	myCode			no_cast_evidence
 mailbox/getMailBody	body			no_cast_evidence
@@ -175,21 +175,21 @@ politic/task/submitSerialBuildAndComplete	y			no_cast_evidence
 ranking/getBriefOfBattle	 + name + 			no_cast_evidence
 ranking/getBriefOfBattle	isCurrent			no_cast_evidence
 ranking/getBriefOfBattle	ranksize			no_cast_evidence
-ranking/getBriefOfBattle	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfBattle	unit	Hashtable	Hashtable	typed
 ranking/getBriefOfBattleDaily	 + name + 			no_cast_evidence
 ranking/getBriefOfBattleDaily	isCurrent			no_cast_evidence
 ranking/getBriefOfBattleDaily	ranksize			no_cast_evidence
-ranking/getBriefOfBattleDaily	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfBattleDaily	unit	Hashtable	Hashtable	typed
 ranking/getBriefOfBrawn	 + name + 			no_cast_evidence
 ranking/getBriefOfBrawn	isCurrent			no_cast_evidence
 ranking/getBriefOfBrawn	ranksize			no_cast_evidence
-ranking/getBriefOfBrawn	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfBrawn	unit	Hashtable	Hashtable	typed
 ranking/getBriefOfCountriesInGiganticRaidBoss	 + name + 			no_cast_evidence
 ranking/getBriefOfCountryBattle	 + name + 			no_cast_evidence
 ranking/getBriefOfDedication	 + name + 			no_cast_evidence
 ranking/getBriefOfDedication	isCurrent			no_cast_evidence
 ranking/getBriefOfDedication	ranksize			no_cast_evidence
-ranking/getBriefOfDedication	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfDedication	unit	Hashtable	Hashtable	typed
 ranking/getBriefOfDedicationMonthly	 + name + 			no_cast_evidence
 ranking/getBriefOfDedicationMonthly	aroundRank			no_cast_evidence
 ranking/getBriefOfGiganticRaidBoss	 + name + 			no_cast_evidence
@@ -203,23 +203,23 @@ ranking/getBriefOfNationalRanking	ranksize			no_cast_evidence
 ranking/getBriefOfRaidBoss	 + name + 			no_cast_evidence
 ranking/getBriefOfRaidBoss	isCurrent			no_cast_evidence
 ranking/getBriefOfRaidBoss	ranksize			no_cast_evidence
-ranking/getBriefOfRaidBoss	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfRaidBoss	unit	Hashtable	Hashtable	typed
 ranking/getBriefOfRaidBossDaily	 + name + 			no_cast_evidence
 ranking/getBriefOfRaidBossDaily	aroundRank			no_cast_evidence
 ranking/getBriefOfRaidBossDaily	isCurrent			no_cast_evidence
 ranking/getBriefOfRaidBossDaily	ranksize			no_cast_evidence
-ranking/getBriefOfRaidBossDaily	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfRaidBossDaily	unit	Hashtable	Hashtable	typed
 ranking/getBriefOfRaidBossNational	 + name + 			no_cast_evidence
 ranking/getBriefOfRaidBossNational	isCurrent			no_cast_evidence
 ranking/getBriefOfRaidBossNational	ranksize			no_cast_evidence
 ranking/getBriefOfRandomQuest	 + name + 			no_cast_evidence
 ranking/getBriefOfRandomQuest	isCurrent			no_cast_evidence
 ranking/getBriefOfRandomQuest	ranksize			no_cast_evidence
-ranking/getBriefOfRandomQuest	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfRandomQuest	unit	Hashtable	Hashtable	typed
 ranking/getBriefOfSiege	 + name + 			no_cast_evidence
 ranking/getBriefOfSiege	isCurrent			no_cast_evidence
 ranking/getBriefOfSiege	ranksize			no_cast_evidence
-ranking/getBriefOfSiege	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfSiege	unit	Hashtable	Hashtable	typed
 ranking/getDailyRankersInBattle	rank			no_cast_evidence
 ranking/getDailyRankersInRaidBoss	rank			no_cast_evidence
 ranking/getDailyRankersInTurfWar	rank			no_cast_evidence
@@ -247,7 +247,7 @@ ranking/getRankersInStrategy	isCurrent			no_cast_evidence
 ranking/getRankersInStrategy	rank			no_cast_evidence
 ranking/getRankersInStrategy	ranksize			no_cast_evidence
 ranking/getRankersInStrategy	score			no_cast_evidence
-ranking/getRankersInStrategy	unit	Hashtable	Hashtable	single_cast
+ranking/getRankersInStrategy	unit	Hashtable	Hashtable	typed
 ranking/getRankersInStrategyForMypage	 + name + 			no_cast_evidence
 ranking/getRankersInStrategyPie	 + name + 			no_cast_evidence
 ranking/getRankersInStrategyPie	captionFileName			no_cast_evidence
@@ -275,14 +275,14 @@ ranking/getRankersOfCountriesInGiganticRaidBoss	rank			no_cast_evidence
 ranking/getRankersOfCountriesInGiganticRaidBoss	ranksize			no_cast_evidence
 ranking/getRankersOfCountriesInGiganticRaidBoss	score			no_cast_evidence
 ranking/getRankersOfCountriesInGiganticRaidBoss	size			no_cast_evidence
-ranking/getRankersOfCountriesInGiganticRaidBoss	unit	Hashtable	Hashtable	single_cast
+ranking/getRankersOfCountriesInGiganticRaidBoss	unit	Hashtable	Hashtable	typed
 ranking/getRankersOfCountriesInGiganticRaidBoss	username			no_cast_evidence
 ranking/getRankersOfMaxDamageInGiganticRaidBoss	 + name + 			no_cast_evidence
 ranking/getRankersOfMaxDamageInGiganticRaidBoss	isCurrent			no_cast_evidence
 ranking/getRankersOfMaxDamageInGiganticRaidBoss	rank			no_cast_evidence
 ranking/getRankersOfMaxDamageInGiganticRaidBoss	ranksize			no_cast_evidence
 ranking/getRankersOfMaxDamageInGiganticRaidBoss	score			no_cast_evidence
-ranking/getRankersOfMaxDamageInGiganticRaidBoss	unit	Hashtable	Hashtable	single_cast
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	unit	Hashtable	Hashtable	typed
 ranking/getRankingOfCountriesInBattle	 + name + 			no_cast_evidence
 ranking/getRankingOfCountriesInBattle	captionFileName			no_cast_evidence
 ranking/getRankingOfCountriesInBattle	countryRanking			no_cast_evidence
@@ -293,7 +293,7 @@ ranking/getRankingOfCountriesInBattle	rank			no_cast_evidence
 ranking/getRankingOfCountriesInBattle	score			no_cast_evidence
 ranking/getRankingOfCountriesInBattle	size			no_cast_evidence
 ranking/getRankingOfCountriesInBattle	username			no_cast_evidence
-ranking/getRecordOfCountryInBattle	countryId	Hashtable	Hashtable	single_cast
+ranking/getRecordOfCountryInBattle	countryId	Hashtable	Hashtable	typed
 ranking/getTopRankersInTurfWar	rankers			no_cast_evidence
 siege/discharge	stage			no_cast_evidence
 siege/getPairings	 + name + 			no_cast_evidence
@@ -306,7 +306,7 @@ siege/getSiegeResultLog	victoryPoint			no_cast_evidence
 siege/getSiegeStatus	stage			no_cast_evidence
 siege/lookSiegeResult	bonus			no_cast_evidence
 siege/lookSiegeResult	victoryPoint			no_cast_evidence
-siege/openingBet	charge	Hashtable	Hashtable	single_cast
+siege/openingBet	charge	Hashtable	Hashtable	typed
 strategy/command/attack	aroundEffect			no_cast_evidence
 strategy/command/attack	command			no_cast_evidence
 strategy/command/attack	currentForceSize			no_cast_evidence
@@ -328,7 +328,7 @@ strategy/command/buildCastle	playerCounts*			no_cast_evidence
 strategy/command/buildCastle	proficiency			no_cast_evidence
 strategy/command/buildCastle	rivalId*			no_cast_evidence
 strategy/command/cancelMarch	base			no_cast_evidence
-strategy/command/cancelMarch	nextOperableTime	double	double	single_cast
+strategy/command/cancelMarch	nextOperableTime	double	double	typed
 strategy/command/cancelMarch	operatedTime			no_cast_evidence
 strategy/command/cancelMarch	position			no_cast_evidence
 strategy/command/changeBase	aroundEffect			no_cast_evidence
@@ -440,14 +440,14 @@ strategy/getStrategyBattleLogs	turn			no_cast_evidence
 strategy/getStrategyCellLogs	 + name + 			no_cast_evidence
 strategy/getStrategyCellLogs	posName			no_cast_evidence
 strategy/getStrategyCellLogs	size			no_cast_evidence
-strategy/getStrategyCommandInfo	buildingId	string	string	single_cast
+strategy/getStrategyCommandInfo	buildingId	string	string	typed
 strategy/getStrategyCommandInfo	food			no_cast_evidence
-strategy/getStrategyCommandInfo	forceSizes	Hashtable	Hashtable	single_cast
+strategy/getStrategyCommandInfo	forceSizes	Hashtable	Hashtable	typed
 strategy/getStrategyCommandInfo	gold			no_cast_evidence
 strategy/getStrategyCommandInfo	iron			no_cast_evidence
-strategy/getStrategyCommandInfo	occupied	string	string	single_cast
+strategy/getStrategyCommandInfo	occupied	string	string	typed
 strategy/getStrategyCommandInfo	route			no_cast_evidence
-strategy/getStrategyCommandInfo	terrainId	string	string	single_cast
+strategy/getStrategyCommandInfo	terrainId	string	string	typed
 strategy/getStrategyCommandInfo	wood			no_cast_evidence
 strategy/getStrategyPairings	atk1			no_cast_evidence
 strategy/getStrategyPairings	atk1Rank			no_cast_evidence
