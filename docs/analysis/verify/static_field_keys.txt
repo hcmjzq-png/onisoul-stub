@@ -1,0 +1,4 @@
+endpoint	static_handoff	keys
+common/getLoginStampSheet	LoginBounusMenu.LoginHash	loginSheet
+common/stampLoginSheet	LoginBounusMenu.LoginHash	loginSheet
+netCafe/exchangeNpoint	result_.hash	normStatus

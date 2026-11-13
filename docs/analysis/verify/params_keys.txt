@@ -1,0 +1,37 @@
+方法体定位成功: 445 个
+端点被方法覆盖数: 402
+一端点多方法(必须 union): 10
+    common/dedicate                          dedicateBuilding,dedicateCharacter,dedicateEquip,dedicateGold,dedicateTactics
+    politic/task/completeTasks               completeTask,completeTasks
+    politic/task/cancelTasks                 cancelTask,cancelTasks
+    battle/executeBattle                     executeBattle,executeBattleGiganticRaidBoss,executeBattleMonster,executeBattleNPC,executeBattleOutBreak,executeBattlePlayer,executeBattleQuest,executeBattleRaidBoss,executeBattleSiege,executeBattleStrategy
+    giganticRaidBoss/getGiganticRaidBossEventResult getGiganticRaidBossEventResult,getGiganticRaidBossEventResultLog
+    battle/getVsBattleLogs                   getStrategyBattleLogs,getTurfWarLogs,getVsBattleLogs
+
+契约有、源码重算无: 2
+    auction/auctionCardSearchName            ['character_id']
+    auction/auctionCardSearchSkill           ['skill_id']
+源码重算有、契约无: 4
+    auction/auctionCardSearchName            ['name']
+    auction/auctionCardSearchSkill           ['skill']
+    battle/executeBattle                     ['buildingId', 'command', 'difficulty', 'encountId', 'entry', 'monsterId', 'npcId', 'questType', 'requestPhase']
+    politic/mission/changeState              ['missionIds', 'states']
+
+--- 带常量取值的参数（Stub 需按此校验）
+battle/executeBattle                     {"battleType": ["ATTEMPT_BATTLE", "BOSS_BATTLE", "GIGANTIC_RAIDBOSS_BATTLE", "NPC_BATTLE", "PLAYER_BATTLE", "QUEST_BATTLE", "RAIDBOSS_BATTLE", "SIEGE_
+battle/getTurfWarReplayData              {"type": ["turfWar"]}
+battle/getVsBattleLogs                   {"type": ["strategy", "turfWar", "vs"]}
+common/dedicate                          {"category": ["building", "character", "equip", "gold", "tactics"]}
+debug/debugLogin                         {"username": ["debug"]}
+giganticRaidBoss/getGiganticRaidBossEventResult {"term": ["current", "last"]}
+politic/map/getMapData                   {"assets": ["map0"]}
+quest/checkEmergencyQuest                {"questType": ["event3"]}
+quest/executeQuestEx                     {"assets": ["map0"]}
+quest/executeQuestEx2                    {"assets": ["map0"]}
+ranking/getRankersInNationalRanking      {"rankingPeriod": ["all", "weekly"]}
+trophy/completeTrophy                    {"access": ["giganticRaidBoss", "mypage", "raidBoss"]}
+trophy/getTrophyProgress                 {"access": ["giganticRaidBoss", "mypage", "raidBoss"]}
+trophy/messageWindowTrophy               {"access": ["mypage"]}
+
+响应键总数: 345
+在客户端源码中找不到字面量的键: 0

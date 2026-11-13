@@ -1,0 +1,75 @@
+动态键共 78 处，涉及文件 22 个
+request   ManualBuilding<N>          PluginPoliticSetting.cs            hashtable
+request   ManualBuilding<N>          PluginTaskManager.cs               hashtable
+request   ManualCount<N>             PluginPoliticSetting.cs            hashtable
+request   ManualCount<N>             PluginTaskManager.cs               hashtable
+request   ManualProduce<N>           PluginPoliticSetting.cs            hashtable
+request   ManualProduce<N>           PluginTaskManager.cs               hashtable
+request   character_id<N>            WebApiClient.cs                    hashtable
+request   event2:<N>                 PluginQuestDataManager.cs          list
+request   event:<N>                  PluginQuestDataManager.cs          list
+request   skill_id<N>                WebApiClient.cs                    hashtable
+response  Card<id>                   BattleResultManager.cs             spliteMap
+response  chapter<num>               QuestStorySelector.cs              if ((int)(double)completeFlags
+response  color<id>                  NavigatorTableAccessor.cs          return (string)hashtable
+response  combineMax<foodGrade>      CharacterGradeTableAccessor.cs     return (int)(double)hashtable
+response  combineMin<foodGrade>      CharacterGradeTableAccessor.cs     return (int)(double)hashtable
+response  conditionArgs<index>       PoliticMissionTableOne.cs          return (ArrayList)table_
+response  conditionCheckers<index>   PoliticMissionTableOne.cs          return (ArrayList)table_
+response  conditionCount<index>      PoliticMissionTableOne.cs          return (int)(double)table_
+response  conditionGrades<index>     PoliticMissionTableOne.cs          return (ArrayList)table_
+response  conditionLevels<index>     PoliticMissionTableOne.cs          return (ArrayList)table_
+response  conditionTargets<index>    PoliticMissionTableOne.cs          return (ArrayList)table_
+response  conditionTypes<index>      PoliticMissionTableOne.cs          return (ArrayList)table_
+response  creditGift<priceRankKey>   BoosterPackTableAccessor.cs        return (int)(double)hashtable
+response  creditSingle<priceRankKey> BoosterPackTableAccessor.cs        return (int)(double)hashtable
+response  day<i>                     siegeBriefMenuDesc.cs              Winner[i] = (string)hashtable
+response  displayIcon<index>         PoliticMissionTableOne.cs          return (string)table_
+response  gradeMax<fablicGrade>      CharacterGradeTableAccessor.cs     return (int)(double)hashtable
+response  gradeMin<fablicGrade>      CharacterGradeTableAccessor.cs     return (int)(double)hashtable
+response  gradeMin<foodGrade>        EquipGradeTableAccessor.cs         return (int)(double)hashtable
+response  id<i>                      DebugMakeCharacterMenu.cs          ("skill1_{0:D5}_01", int.Parse((string)characterInfo_.skills
+response  id<i>                      DebugMakeCharacterMenu.cs          empty = GUILayout.TextField((string)characterInfo_.skills
+response  id<i>                      DebugMakeCharacterMenu.cs          empty2 = (string)characterInfo_.skills
+response  id<i>                      DebugMakeCharacterMenu.cs          if (empty2 != (string)characterInfo_.skills
+response  id<i>                      DebugMakeCharacterMenu.cs          if (string.Empty == (string)characterInfo_.skills
+response  id<i>                      DebugMakeCharacterMenu.cs          skills
+response  id<i>                      DebugMakeEquipMenu.cs              skills
+response  id<j>                      DebugMakeCharacterMenu.cs          ("skill1_{0:D5}_01", int.Parse((string)characterInfo_.skills
+response  id<j>                      DebugMakeCharacterMenu.cs          = string.Format("skill1_{0:D5}_01", int.Parse((string)skills
+response  id<j>                      DebugMakeCharacterMenu.cs          if (!(string.Empty == (string)skills
+response  id<j>                      DebugMakeCharacterMenu.cs          if (string.Empty != (string)characterInfo_.skills
+response  id<j>                      DebugMakeCharacterMenu.cs          skills
+response  id<j>                      DebugMakeEquipMenu.cs              if (!(string.Empty == (string)skills
+response  id<j>                      DebugMakeEquipMenu.cs              skills
+response  id<j>                      DebugMakeEquipMenu.cs              string.Format("eskill1_{0:D5}_01", int.Parse((string)skills
+response  id<num2>                   DebugMakeEquipMenu.cs              if (string.Empty != (string)equipInfo_.skills
+response  id<num2>                   DebugMakeEquipMenu.cs              mat("eskill1_{0:D5}_01", int.Parse((string)equipInfo_.skills
+response  id<num>                    DebugMakeEquipMenu.cs              empty = GUILayout.TextField((string)equipInfo_.skills
+response  id<num>                    DebugMakeEquipMenu.cs              empty2 = (string)equipInfo_.skills
+response  id<num>                    DebugMakeEquipMenu.cs              if (empty2 != (string)equipInfo_.skills
+response  id<num>                    DebugMakeEquipMenu.cs              if (string.Empty == (string)equipInfo_.skills
+response  id<num>                    DebugMakeEquipMenu.cs              mat("eskill1_{0:D5}_01", int.Parse((string)equipInfo_.skills
+response  image<imageNo>             QuestCharacterTableAccessor.cs     return hashtable
+response  learning<i>                DebugMakeCharacterMenu.cs          empty = GUILayout.TextField((string)characterInfo_.skills
+response  learning<i>                DebugMakeCharacterMenu.cs          skills
+response  learning<i>                DebugMakeEquipMenu.cs              skills
+response  learning<j>                DebugMakeCharacterMenu.cs          (string)characterInfo_.skills
+response  learning<num2>             DebugMakeEquipMenu.cs              (string)equipInfo_.skills
+response  learning<num>              DebugMakeEquipMenu.cs              empty = GUILayout.TextField((string)equipInfo_.skills
+response  lv<level>                  KokugiScene.cs                     Instance.getMessage(hashtable["desc"].ToString()), hashtable
+response  map<mapId>                 BuildingErrantryTableAccessor.cs   return (string)hashtable
+response  map<mapId>                 BuildingWaterBorneTradeTableAccessor.cs return (string)hashtable
+response  map<mapId>                 BuildingsTableAccessor.cs          return (bool)hashtable
+response  mapSize<mapId>             PlayerLevelTableAccessor.cs        return (ArrayList)hashtable
+response  name<i>                    DebugMakeCharacterMenu.cs          GUILayout.Label((string)characterInfo_.skills
+response  name<i>                    DebugMakeCharacterMenu.cs          characterInfo_.skills
+response  name<i>                    DebugMakeCharacterMenu.cs          skills
+response  name<i>                    DebugMakeEquipMenu.cs              skills
+response  name<num>                  DebugMakeEquipMenu.cs              GUILayout.Label((string)equipInfo_.skills
+response  name<num>                  DebugMakeEquipMenu.cs              equipInfo_.skills
+response  slot_grade<slot>           BoosterPack_InfoTableAccessor.cs   int.TryParse(hashtable
+response  slot_img<slot>             BoosterPack_InfoTableAccessor.cs   return (string)hashtable
+response  slot_pos<slot>             BoosterPack_InfoTableAccessor.cs   return (ArrayList)hashtable
+response  slot_rot<slot>             BoosterPack_InfoTableAccessor.cs   return (ArrayList)hashtable
+response  team<j>                    StrategyLogAnalizer.cs             hashtable
