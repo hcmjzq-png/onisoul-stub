@@ -2,14 +2,15 @@ endpoints	402
 matched	343
 unmatched	59
 with_scene_ops	10
+scene_triggers	11
 with_windows	40
 with_state_writes	18
 with_guards	68
 edges	416
 nodes_with_outedge	110
 
-# scene 目标分布
-politic	7
+# scene 目标分布（按端点去重）
+politic	5
 vsBattle	3
 deck	1
 migrationLogin	1

@@ -35,11 +35,13 @@
 
 | 目标场景 | 触发端点数 |
 |---|---|
-| `politic` | 7 |
+| `politic` | 5 |
 | `vsBattle` | 3 |
 | `deck` | 1 |
 | `migrationLogin` | 1 |
 | `strategy` | 1 |
+
+10 个端点共触发 11 次（`debug/debugCreateEquip` 一个回调里连切 `politic` 与 `deck`）。计的是**端点**不是调用次数：同一端点方法体里重复出现的同名 `process(...)` 只算一次。
 
 从 `common/getRevisions`、`auth/gameLogin`、`auth/guestLogin`、`common/getPlayerEntity` 出发做深度 3 的可达分析，**可达端点数为 0** —— 这几条启动链的回调体里不直接发下一个请求，而是 `transitionScene` 换场景，由新场景的 `Awake/Start` 重新发起请求批次（`TableLoad` → `BootUp` → `title` → `politic`）。
 

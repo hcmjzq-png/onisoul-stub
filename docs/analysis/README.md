@@ -46,7 +46,7 @@
 |---|---|
 | 端点→端点调用边 | 416 条，110 个端点有出边 |
 | 无入边的端点（只能由界面或启动流程发起） | 10 个 |
-| 直接 `transitionScene` 的端点 | 10 个（politic 7 / vsBattle 3 / deck 1 / migrationLogin 1 / strategy 1） |
+| 直接 `transitionScene` 的端点 | 10 个（politic 5 / vsBattle 3 / deck 1 / migrationLogin 1 / strategy 1，共 11 次切换） |
 | 启动链（getRevisions、gameLogin、guestLogin、getPlayerEntity）深度 3 可达端点 | 0 —— 流程由场景切换驱动，不是回调链驱动 |
 | 有键守卫的端点 | 68（响应键出现在 `if` 条件里） |
 | 资源前缀目录 | 46 个，其中 9 个在画质档 1/2 走 `assets2/` |
