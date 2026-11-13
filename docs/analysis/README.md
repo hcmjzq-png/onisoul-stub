@@ -32,6 +32,8 @@
 | `verify/no_key_final.txt` | 123 个零字段端点的逐条处置（52 无调用点 + 71 不读命名键） |
 | `verify/final_check.txt` | 推送前完整性检查结果（结构 / 编码 / 分隔符 / 键回查 / 类型冲突） |
 | `verify/summary.json` | 计数汇总 |
+| `unguarded-reads.md` | 无守卫读键扫描：两段式流水线、基线数字、四类误报实证、抽验记录 |
+| `unguarded_gaps.tsv` | 扫描 + 契约对账产物：105 条候选行 / 70 个端点（`endpoint / callsite / missing_keys / first_evidence`） |
 
 ## 当前覆盖
 
@@ -71,3 +73,5 @@ E 盘旧目录、安卓、PS3 素材一律不采信、不入仓。
 ## 重跑前置
 
 `api-contract.md` 的「重跑」一节列了脚本顺序；前提是本地已存在反编译产物 `analysis_full/il_csharp/app/`。
+
+无守卫读键扫描用 `tools/unguarded_reads.py`（`dump` 出读取点、`gap` 出候选缺口），同一份 dump 可反复对账，换契约表不必重扫 2034 个 `.cs`；口径与误报机制见 `unguarded-reads.md`。
