@@ -2,7 +2,7 @@
 
 给任务 #7「接口响应字段核对与补齐」用的一把尺子：把反编译树里所有 `["命名键"]` 形式的
 读取点抽出来，先判方法内有没有同键 `ContainsKey` 守卫，再和契约表 `response_keys` 对账，
-输出「客户端无守卫读、契约没声明」的候选行。目的是把「会崩客户端的键」从 1056 个候选里
+输出「客户端无守卫读、契约没声明」的候选行。目的是把「会崩客户端的键」从 1074 个候选里
 再筛一遍，而不是靠人肉扫 2034 个 `.cs`。
 
 **结论先行**：这把尺子能复用，但只有方法级精度。104 条候选行里抽验的 3 条全部是误报，
@@ -69,12 +69,13 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 
 | 候选行 | 判决 | 依据 |
 |---|---|---|
-| `turfWar/getWarSituation` / `TurfWarBriefCache.setup` / `closeWarTime,status` | 误报 | `table` 是 `activeEvents_["turfWar"]`（`StatusView.cs:480-520`），不是该端点响应根 |
+| `turfWar/getWarSituation` / `TurfWarBriefCache.setup` / `closeWarTime,status` | 误报 | `table` 是 `activeEvents_["turfWar"]`（`StatusView.cs:480-520`），不是该端点响应根。**但同一回调里另有真缺口**：`(Hashtable)result["selfBelong"]` 之后直接取值（`TurfWarBriefCache.cs:362-370`），已补（见下） |
 | `quest/getQuestBossPunish` / `QuestScriptCommand.startQuest` / `obstacle` | 误报 | `encountWorks["obstacle"]` 来自 `getQuestEncountWorks`（`QuestScriptCommand.cs:429-442`） |
 | `common/getServerTime` / `StatusView.resetStatus` / `actionPoints,entity,resources` | 误报 | `StatusView.cs:286` 在 `getPlayerParams` 回调分支里，与 `getServerTime` 无关 |
 
 ## 从误报上下文里反推出的真缺口（可进 #7）
 
+* `turfWar/getWarSituation`：回调读 `selfBelong`（`TurfWarBriefCache.cs:362-370`）、`bonus`（`:325-338`）、`situation.global.advantage`（`:203-205`）、`isMovable`（`:235`）、`situation.battlefields`（`:94-104`）、`battleRules`（`:171-173`），契约原先只声明 3 个根键、且无嵌套。**已补 18 个键 + 战况 handler**（`fca4a6c` 之后的批次）。
 * `common/getEventStatuses` 的 `turfWar` 子表：契约只声明 `turfWar:Hashtable`，
   客户端实际要 `status`（`string`）与 `closeWarTime`（按 `double` 读、转 `long`）——
   见 `TurfWarBriefCache.cs:353-354`。`strategy` / `siege` / `giganticRaidBoss` 同理，

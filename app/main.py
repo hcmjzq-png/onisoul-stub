@@ -11,6 +11,7 @@ import argparse
 
 from app import config, db
 from app.business.gameplay import GameplayService
+from app.business.turf_war import register as register_turf_war
 from app.business.registry import Registry
 from app.transport import http_server
 
@@ -22,6 +23,7 @@ def build_registry() -> Registry:
     """
     registry = Registry()
     GameplayService().register(registry)
+    register_turf_war(registry)
     return registry.register_contract_defaults()
 
 
