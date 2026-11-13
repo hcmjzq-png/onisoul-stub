@@ -20,6 +20,15 @@ class ResponseShapeTest(unittest.TestCase):
             response_shapes.BARE_MAP_ENDPOINTS
             & set(response_shapes.SCALAR_ROOT_EVIDENCE)
         )
+        unknown_exact = sorted(
+            set(response_shapes.EXACT_BODY_ENDPOINTS) - set(contract.endpoints())
+        )
+        self.assertEqual(unknown_exact, [])
+        self.assertFalse(
+            response_shapes.EXACT_BODY_ENDPOINTS
+            & (response_shapes.BARE_MAP_ENDPOINTS
+               | set(response_shapes.SCALAR_ROOT_EVIDENCE))
+        )
         for evidence in {
             **response_shapes.BARE_MAP_EVIDENCE,
             **response_shapes.SCALAR_ROOT_EVIDENCE,
@@ -49,12 +58,13 @@ class ResponseShapeTest(unittest.TestCase):
                 }
                 self.assertTrue(fields)
                 for key in fields:
-                    self.assertIn(key, body)
+                    ok, _ = contract.lookup(body, key)
+                    self.assertTrue(ok, key)
 
     def test_every_envelope_endpoint_keeps_envelope_and_typed_keys(self):
         registry = Registry().register_contract_defaults()
         for api in contract.endpoints():
-            if api in response_shapes.BARE_MAP_ENDPOINTS:
+            if response_shapes.shape_for(api) is not response_shapes.ResponseShape.ENVELOPE:
                 continue
             with self.subTest(api=api):
                 status, body = registry.dispatch(api, {}, None)
@@ -70,7 +80,8 @@ class ResponseShapeTest(unittest.TestCase):
                         or ">" in key
                     ):
                         continue
-                    self.assertIn(key, body)
+                    ok, _ = contract.lookup(body, key)
+                    self.assertTrue(ok, key)
 
     def test_envelope_placeholder_keeps_timestamp_and_success(self):
         registry = Registry().register_contract_defaults()

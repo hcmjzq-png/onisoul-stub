@@ -29,7 +29,7 @@
 | `verify/types.txt` | 响应字段类型自洽性 |
 | `verify/dynamic_keys.txt` | 78 处动态拼接键（请求模板键 + 表访问器键） |
 | `verify/static_field_keys.txt` | 静态字段跨类传递的 3 个端点 |
-| `verify/no_key_final.txt` | 124 个零字段端点的逐条处置（52 无调用点 + 72 不读命名键） |
+| `verify/no_key_final.txt` | 123 个零字段端点的逐条处置（52 无调用点 + 71 不读命名键） |
 | `verify/final_check.txt` | 推送前完整性检查结果（结构 / 编码 / 分隔符 / 键回查 / 类型冲突） |
 | `verify/summary.json` | 计数汇总 |
 
