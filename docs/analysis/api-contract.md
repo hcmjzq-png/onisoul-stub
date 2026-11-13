@@ -179,13 +179,15 @@ debug/debugLogin               username: debug
 
 验证方式：全仓扫描 `.setMapName(` / `.getFriendMapData(` 共 3 处调用（`UserStatus.cs:1377`、`mypageCastleTownRename.cs:128`、`Politic.cs:318`），实参都是 3 个，全部落在 `...2` 路径上；2 参重载在本客户端没有调用点。
 
+`setMapName2` 的根形态取决于客户端容器，容器链已静态定死：`Configs.Container` 只在 `setContainer` 赋值（`Configs.cs:1317`，表里没有的字符串回落 `none`），唯一运行时入口是 `SessionKeeper.cs:138-141` 读 `gameLogin` 响应的 `container` 字段；本 Stub `app/business/gameplay.py:492` 显式回 `"container": "none"`，所以生效的是非 ymbga 分支，正确响应是 `{}`。若将来改回 ymbga，需把该端点移出 `BARE_MAP_EVIDENCE` 并改回 `{"succeeded": true}`。
+
 本轮补进契约表与占位响应的键（`response_keys` 用点号表示嵌套层级）：
 
 | 端点 | 新增 / 整形 | 依据（`文件:行`） |
 |---|---|---|
 | `friend/getFriendMapData2` | `completecount:double`、`acceleratecount:double`、`friendInfo:Hashtable`、`friendInfo.turfWar:Hashtable`、`friendInfo.turfWar.team:string` | `Politic.cs:318` 起回调；`(int)(double)` 直接拆箱，`friendInfo → turfWar → team` 三级无守卫 |
 | `turfWar/receiveTurfWarReward` | `schedule{open,close}`、`gainRedSoul`、`rank`、`score`、`defenseScore`、`global{end{score,rank,defenseScore},daily}`、`battlefield{end,daily}`、`bonuses` | `TurfWarResultRenderer.cs:62-90`、`:92`、`:116`、`:152` |
-| `politic/map/setMapName2` | 根形态改为「精确响应体」：只回 `{"succeeded": true}`，不注入 `now` | `UserStatus.cs:1379-1403` 按 `Keys.Count` 判成功 |
+| `politic/map/setMapName2` | 根形态改为「裸映射」：回 `{}`（`Keys.Count == 0`） | `UserStatus.cs:1396-1402` 非 ymbga 分支只数键个数；容器链见下 |
 
 同族结果渲染器一并补齐（它们的 `schedule` 是复数秒，缺一层就崩）：
 
@@ -209,19 +211,25 @@ debug/debugLogin               username: debug
 
 - `contract.lookup(body, key)`：按点号取路径值，供不变量测试与排障共用；
 - `placeholders._assign()`：按点号造嵌套字典；
-- `response_shapes` 增加第三种根形态 `EXACT`（目前只有 `politic/map/setMapName2`），
-  `test_shape_rules_are_known_disjoint_endpoints` 断言三种形态互不相交。
+- `response_shapes` 只需要两种根形态：`politic/map/setMapName2` 直接归入 `BARE_MAP_EVIDENCE`
+  （它读的是根表键数，不是命名键），`test_shape_rules_are_known_disjoint_endpoints` 断言
+  裸映射与标量根两张证据表不相交。
 
 仍未补 / 未验证：
 
-- `politic/map/setMapName2` 走哪个成功分支取决于客户端 `Configs.Container`：ymbga 容器要求
-  `Keys.Count == 1`，非 ymbga 分支要求 `Keys.Count == 0`。`Configs.cs:1275` 默认 `none`，容器值由
-  `setContainer:1317` 运行时注入，静态无法定论；`{"succeeded": true}` 只是两分支都不会崩的公共解
-  （若真机走 ymbga 容器，该分支仍判失败，属语义层待实现）。
-- `SiegeResultRenderer.getRankString(0)` / `getRankBonusIcon(0)` 与 `convertVictoryPoint` 的空
-  `winner` 路径，只做了静态判断，没在真机验证。
-- `turfWar/receiveTurfWarReward` 的 `bonuses` 元素内部（`fieldWon` / `teamWon`）未补：`convertBonus`
-  在 `Count == 0` 时短路，占位给空表即可。
+本轮复核掉的静态疑点（原列为「未验证」）：
+
+- `SiegeResultRenderer.getRankString(0)` / `getRankBonusIcon(0)` 都有 `val <= 0` 守卫
+  （`SiegeResultRenderer.cs:24-27`、`:33-36`），rank 占位给 0 安全；
+- `TurfWarResultRenderer.convertBonus` 在 `Count == 0` 时短路并 `return`
+  （`TurfWarResultRenderer.cs:98-103`），`fieldWon` / `teamWon` 也都走 `ContainsKey`，所以
+  `bonuses` 给空表安全——但 `:97` 的 `res.Add("victory", false)` 仍意味着 `victory` 不能预置。
+
+仍未验证：
+
+- `politic/map/setMapName2` 在 ymbga 容器下的分支（`UserStatus.cs:1379-1394`）没有对应实现：
+  本 Stub 固定 `container: none`，这条分支只在服务端改回 ymbga 时才生效；
+- 上述结论都是静态推断，没有真机单次启动验证。
 
 ### 处置清单的口径差（27 条）
 

@@ -20,15 +20,6 @@ class ResponseShapeTest(unittest.TestCase):
             response_shapes.BARE_MAP_ENDPOINTS
             & set(response_shapes.SCALAR_ROOT_EVIDENCE)
         )
-        unknown_exact = sorted(
-            set(response_shapes.EXACT_BODY_ENDPOINTS) - set(contract.endpoints())
-        )
-        self.assertEqual(unknown_exact, [])
-        self.assertFalse(
-            response_shapes.EXACT_BODY_ENDPOINTS
-            & (response_shapes.BARE_MAP_ENDPOINTS
-               | set(response_shapes.SCALAR_ROOT_EVIDENCE))
-        )
         for evidence in {
             **response_shapes.BARE_MAP_EVIDENCE,
             **response_shapes.SCALAR_ROOT_EVIDENCE,

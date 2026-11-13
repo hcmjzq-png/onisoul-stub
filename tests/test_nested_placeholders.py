@@ -42,14 +42,17 @@ class NestedPlaceholderTest(unittest.TestCase):
         self.assertEqual(siege["schedule"]["close"], 0.0)
 
 
-class ExactBodyTest(unittest.TestCase):
-    def test_set_map_name_returns_single_key(self) -> None:
+class BareMapBodyTest(unittest.TestCase):
+    def test_set_map_name_returns_empty_map(self) -> None:
         body = response_shapes.success(
             "politic/map/setMapName2", placeholders.payload("politic/map/setMapName2")
         )
-        # UserStatus.cs:1393 数 Keys.Count：只允许 succeeded 一个键，且不能有 now
-        self.assertEqual(sorted(body), ["succeeded"])
-        self.assertTrue(body["succeeded"])
+        # UserStatus.cs:1401 数 Keys.Count：必须为 0，任何键（含 now）都会判失败
+        self.assertEqual(body, {})
+        self.assertEqual(
+            response_shapes.shape_for("politic/map/setMapName2"),
+            response_shapes.ResponseShape.BARE_MAP,
+        )
 
     def test_other_endpoints_keep_envelope(self) -> None:
         body = response_shapes.success("common/getPlayerParams", {"entity": {}})
