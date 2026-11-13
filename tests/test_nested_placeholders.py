@@ -129,5 +129,26 @@ class ResultRendererKeyTest(unittest.TestCase):
         self.assertIsInstance(payload["record"]["globalTotalScore"], str)
         self.assertIsInstance(payload["winner"], dict)
 
+    def test_event_statuses_root_has_only_submaps(self) -> None:
+        """根上只有四个事件子表。
+
+        6 个调用点全部只读子表（StatusView.cs:490/500/510/520、giganticRaidBossScene.cs:66、
+        Strategy.cs:75、StrategySelect.cs:55、PluginRunner_DoBattleSiege.cs:266-271）；
+        曾经混进根上的 chain/phase/punishPoint/monsterId/attackList/needPoint/endTime 其实读的是
+        giganticRaidBoss/getGiganticRaidBossInformation（giganticRaidBossScene.cs:120-130），
+        a/b/current/max 读的是 strategy/getStrategyBrief（StrategySelect.cs:102-110）。
+        """
+        payload = placeholders.payload("common/getEventStatuses")
+        self.assertEqual(sorted(payload), ["giganticRaidBoss", "siege", "strategy", "turfWar"])
+
+    def test_gigantic_raid_boss_information_reads(self) -> None:
+        # giganticRaidBossStatus.cs:22-27 needPoint 里按下标取 3 档难度
+        # :35-36 hp / damage；giganticRaidBossScene.cs:132-133 giganticRaidBossPoint.status
+        payload = placeholders.payload("giganticRaidBoss/getGiganticRaidBossInformation")
+        self.assertEqual(payload["needPoint"], {"0": 0, "1": 0, "2": 0})
+        self.assertEqual(payload["giganticRaidBossPoint"]["status"], "")
+        self.assertIsInstance(payload["hp"], int)
+        self.assertIsInstance(payload["damage"], int)
+
 if __name__ == "__main__":
     unittest.main()

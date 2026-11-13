@@ -3,7 +3,7 @@
 目的只有一个：客户端拿到 200 + 结构合法的 JSON，而不是 404，从而能继续走流程去
 请求下一批接口；等某个端点被真正实现时，用业务 handler 覆盖同名注册项即可。
 
-只填**源码里取到类型**的键（588 个 / 1074 键中的一部分；点号表示嵌套路径，客户端按 `hash["a"]["b"]` 分两层读的情形也靠它还原）；没有类型的键不猜，避免给错类型
+只填**源码里取到类型**的键（584 个 / 1068 键中的一部分；点号表示嵌套路径，客户端按 `hash["a"]["b"]` 分两层读的情形也靠它还原）；没有类型的键不猜，避免给错类型
 让客户端 `(int)hash["x"]` 直接抛异常。根响应形态由 response_shapes 决定：普通接口
 使用 envelope，已验证会遍历根表的接口返回裸映射。
 """
@@ -42,6 +42,10 @@ def _assign(body: dict[str, Any], dotted: str, value: Any) -> None:
             child = {}
             box[part] = child
         box = child
+    if isinstance(value, dict) and isinstance(box.get(parts[-1]), dict):
+        # 父键（`needPoint:Hashtable`）与子键（`needPoint.0`）同在契约里时，
+        # 谁先谁后都不该把对方清空。
+        return
     box[parts[-1]] = value
 
 

@@ -28,8 +28,8 @@
 | 已抽出响应字段 | 279 |
 | 被调用但回调体不读命名键 | 70 |
 | 本客户端从不调用（无调用点） | 53 |
-| 唯一响应键 | 447 |
-| 带类型响应键 | 321 |
+| 唯一响应键 | 453 |
+| 带类型响应键 | 328 |
 | 带可选标记（`ContainsKey` 保护） | 74 |
 | 一端点多方法（参数取并集） | 10 |
 | 带序号模板键的请求 | 4 |
@@ -66,8 +66,8 @@
 | 端点完整性 | 契约↔源码字面量双向对账 | 402↔402，0 差；唯一非字面量命中是 `private void httpCall(string api,...)` 方法定义本身 |
 | 方法归属 | 花括号配对定位方法体 | 445/445 个真实方法全部定位（另 6 个 `public delegate` 声明非方法） |
 | 参数正确性 | 用方法体重算参数并集，与表对比 | 差异 6 项，已全部修正（见下） |
-| 字段真实性 | 1074 个键逐个回查源码字面量 | 0 个找不到；`verify/final_check.txt` 是 990 键时期的快照，当前键数/类型数/结构类问题以 `python3 tools/contract_check.py` 输出为准（1074 键 / 588 带类型 / 0 问题） |
-| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 588 处带类型读取，0 冲突 |
+| 字段真实性 | 1068 个键逐个回查源码字面量 | 0 个找不到；`verify/final_check.txt` 是 990 键时期的快照，当前键数/类型数/结构类问题以 `python3 tools/contract_check.py` 输出为准（1068 键 / 584 带类型 / 0 问题） |
+| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 584 处带类型读取，0 冲突 |
 | 表结构与编码 | 9 列齐整 / UTF-8 无 BOM / 仅 LF / 无重复端点 / `key_count` 与条目数一致 | 全部通过 |
 | 键名一致性 | 回包键不得与同端点请求参数同名 | 5 例经核对为**回显读取**（客户端读回自己发过的值），非错误 |
 | 方向一致性 | 键必须出现在「回包路径」而非「请求构造路径」 | `politic/waterborneTrade/send` 两处疑似请求侧复用，已排除未并入 |
@@ -80,6 +80,20 @@
    - `common/dedicate` 由 5 个方法发出（character / building / tactics / equip / gold）。
 2. **同一方法按分支发不同端点**：`getFriendMapData` / `getFriendMapData2`、`setMapName` / `setMapName2`。原先以方法名为主键，第二个端点被吞掉，端点总数因此少 2。
 3. **模板键被当成字面量键**：`hashtable.Add("character_id" + num, ...)` 实际发出 `character_id1..N`，`skill_id` 同理。
+4. **方法级归属误挂**（`common/getEventStatuses` 根上 13 个键）。该端点有 6 个调用点
+   （`StatusView.cs:485`、`giganticRaidBossScene.cs:63`、`Strategy.cs:72`、`StrategySelect.cs:52`、
+   `PluginRunner_DoBattleSiege.cs:259`、`BoardBody.cs:830`），全部只读四个事件子表——
+   `StatusView.cs:490/500/510/520` 与 `giganticRaidBossScene.cs:66`、`Strategy.cs:75`、
+   `StrategySelect.cs:55`、`PluginRunner_DoBattleSiege.cs:266-271`。根上的
+   `attackList` / `chain` / `phase` / `punishPoint` / `monsterId` / `needPoint` / `endTime` 读的是
+   `giganticRaidBoss/getGiganticRaidBossInformation` 的回包（`giganticRaidBossScene.cs:120-130`、
+   `giganticRaidBossStatus.cs:22-36`），`a` / `b` / `current` / `max` 读的是
+   `strategy/getStrategyBrief` 的回包（`StrategySelect.cs:102-110`），`status` / `isEntry` 读的是各子表内的同名键
+   （`PluginRunner_DoBattleSiege.cs:269-271`、`StrategyDataCache.cs:196-197`）。这 13 个根键已从
+   `common/getEventStatuses` 剔除，键数 1074→1068；同一批核对里把该端点确实缺的
+   `giganticRaidBossPoint` / `hp` / `damage` / `needPoint.0..2` 补进了 `giganticRaidBossInformation`；
+   该端点的 `monsterId` 原先无类型（占位会整键跳过，`giganticRaidBossScene.cs:130` 的
+   `hashtable["monsterId"].ToString()` 会 NRE），按 `createBg(string)` → `getMenuBg(string)` 的口径定成 `string`。
 
 ## 常量枚举（Stub 必须按此校验，不能任意填）
 
