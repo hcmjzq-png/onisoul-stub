@@ -89,6 +89,8 @@ deck/getProtectedCharacterIds	deck/getProtectedEquipIds	getProtectEquips
 deck/getProtectedEquipIds	deck/getDeckBonus	getDeckBonus
 deck/getProtectedEquipIds	deck/getDecks	getDecks
 deck/getProtectedEquipIds	deck/getProtectedCharacterIds	getProtectCharacters
+friend/getFriendMapData	friend/getFriendMapData2	getFriendMapData
+friend/getFriendMapData	friend/visitFriendMap	visitFriendMap
 friend/getFriendMapData2	friend/getFriendMapData	getFriendMapData
 friend/getFriendMapData2	friend/visitFriendMap	visitFriendMap
 friend/getFriendProfile	deck/getAvatarCharacters	getAvatarCharacters
@@ -130,6 +132,7 @@ politic/errantry/send3	politic/map/switchMap	switchMap
 politic/map/getMapData	deck/getAvatarCharacters	getAvatarCharacters
 politic/map/getMapData	politic/building/raiseBuildingEventOfBattle	raiseBuildingEventOfBattle
 politic/map/getMapData	politic/map/switchMap	switchMap
+politic/map/setMapName	politic/map/setMapName2	setMapName
 politic/map/setMapName2	politic/map/setMapName	setMapName
 politic/map/switchMap	politic/building/levelUpBuildings	levelUpBuildings
 politic/map/switchMap	politic/errantry/send3	sendErrantry
@@ -387,3 +390,4 @@ strategy/getStrategyPersonalLogs	strategy/getStrategyCellLogs	getStrategyCellLog
 turfWar/entryBattlefield	turfWar/moveBattlefield	moveTurfWarBattlefield
 turfWar/getTurfWarResultLog	turfWar/receiveTurfWarReward	getTurnfWarRceiveTurfWarReward
 turfWar/moveBattlefield	turfWar/entryBattlefield	entryTurfWarBattlefield
+turfWar/receiveTurfWarReward	turfWar/getTurfWarResultLog	getTurfWarResultLog

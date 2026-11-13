@@ -26,8 +26,8 @@
 |---|---|
 | 端点总数（= `httpCall` 唯一字面量） | 402 |
 | 已抽出响应字段 | 278 |
-| 被调用但回调体不读命名键 | 45 |
-| 本客户端从不调用（无调用点） | 79 |
+| 被调用但回调体不读命名键 | 72 |
+| 本客户端从不调用（无调用点） | 52 |
 | 唯一响应键 | 382 |
 | 带类型响应键 | 250 |
 | 带可选标记（`ContainsKey` 保护） | 57 |
@@ -150,16 +150,33 @@ debug/debugLogin               username: debug
 
 零字段端点共 124 个，逐个给出处置，全量清单见 `verify/no_key_final.txt`：
 
-- **79 个无调用点**：`app/` 内不存在 `.方法名(` 的调用点，只有 `WebApiClient` 自己的包装方法，说明本客户端从不触发。契约参数取自 `WebApiClient` 方法本身。
+- **52 个无调用点**：`app/` 内不存在 `.方法名(` 的调用点，只有 `WebApiClient` 自己的包装方法，说明本客户端从不触发。契约参数取自 `WebApiClient` 方法本身。
   （注意：早期口径按「`httpCall` 站点数」判定被调用，把包装方法算进去了，因此曾误报为 55 个。）
-- **45 个有调用但不读命名键**，五种形态：
+- **72 个有调用但不读命名键**：其中 46 条在 `verify/no_key_final.txt` 里已分形态（下表合计 46），其余 26 条形态待补：
   - `iterates_no_key_name` 5：`foreach` 遍历后取 `item.Key` 当数据 id（如 `deck/getProtectedCharacterIds`），外层键名由服务端决定；
   - `hands_to_callee` 12：原样交给下游方法（`resetItems` / `createPlayerData` / `getQuestProgress` / `cancelWaterTrade` 等），已追一层仍未读到键；
   - `responder_elsewhere` 15：回调体在另一栈帧构造，追 3 层未及；
   - `null_check_only` 3、`count_only` 1、`ui_only` 1、`other` 9：只判空、只取 `.Count`、只喂 UI。
-  - 这 45 个回 `{}` 不会导致崩溃（客户端不做命名读取），但会导致**界面为空**，属运行验证可确认的残余项。
+  - 这 72 个回 `{}` 不会导致崩溃（客户端不做命名读取），但会导致**界面为空**，属运行验证可确认的残余项。
 - **模板键的响应侧**：`hashtable["day" + i]` 这类已按上面「嵌套键」处理；其余 `*TableAccessor` 里的动态键读的是**配置表**，不是回包，未列入。
 - `friend/getPlayerEntry` 方法发出的是 `common/getPlayerEntity`，名称不一致，原文如此，未改动。
+
+### 补录调用点后新发现的三处缺口（未补）
+
+2026-11-13 补录三个漏记调用点（`friend/getFriendMapData`、`politic/map/setMapName`、`turfWar/receiveTurfWarReward`）后，回调体才被真正读到：其中两处直接拆箱根键，按「零字段 → 只回 `succeeded`/`now`」的现有实现会崩。
+
+| 端点 | 证据（`文件:方法`） | 读到的根键 |
+|---|---|---|
+| `friend/getFriendMapData` | `Politic.cs:resetFriendMap`（`Politic.cs:318` 调用） | `completecount`、`acceleratecount`（`(int)(double)((Hashtable)result)[...]` 直接拆箱，无守卫）；`friendInfo`；`map` / `buildings` / `tasks`（`if (result != null)` 内取 `Hashtable`）。同一回调里 `new PoliticMapInfo((Hashtable)result)` 另读 `currentMapId` / `mapProfiles` / `activeMapIds`（`ContainsKey` 保护） |
+| `turfWar/receiveTurfWarReward` | `TurfWarResultRenderer.cs:load`（`:228` 调拼写错误的 `getTurnfWarRceiveTurfWarReward`）→ `TurfWarResultRenderer.convertHtmlParameter` | `schedule`（内含 `open` / `close`）、`gainRedSoul`、`rank`、`score`、`defenseScore`、`global`、`battlefield`；`convertBonus` 再读 `bonuses` |
+| `politic/map/setMapName` | `UserStatus.cs:setMapName`（`:1377` 调用） | `succeeded`（envelope 已含）；另用 `((Hashtable)result).Keys.Count == 1` 判定成功，多回一个 `now` 就走 false 分支 |
+
+补齐需要嵌套占位（`schedule` 里必须有 `open` / `close`），留作下一批「响应键补齐」。
+
+### 处置清单的口径差（27 条）
+
+`verify/no_key_final.txt` 的 `usage` 列沿用早期按 `.<方法名>(` 字面点判定的口径，仍把 27 个已有 `call_sites` 的零字段端点记作 `no_call_site`（例：`auth/createPlayer` 在 `BootUp.dummyPlayerCreate` 被调用，`debug/*` 一批在 `PoliticDebugMenu` / `DebugMakeCharacterMenu` 被调用）。上面「52 无调用点 / 72 有调用点」按契约表 `call_sites` 列统计，与清单口径的逐条对账留作下一批。
+
 - 上述「未读字段 / 未调用」均为静态结论，要变成确定结论只能靠单次启动实测或类型级数据流分析。
 
 ## 重跑

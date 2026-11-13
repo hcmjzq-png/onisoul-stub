@@ -11,11 +11,9 @@
   debug/debugLogin
   debug/devLogin
   mailbox/getMailBody
-  politic/map/setMapName2
   politic/waterborneTrade/send
   siege/discharge
-  turfWar/getTurfWarResultLog
-共 8 个
+共 6 个
 
 ## 出度 >= 8 的端点（一个回调里连发多个请求）
   quest/getQuestProgress                         14  battle/getRaidBossEntries common/getSelectCharacters debug/debugOpenQuest debug/forceProgressQuest debug/reset

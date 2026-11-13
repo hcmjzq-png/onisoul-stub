@@ -152,7 +152,7 @@ friend/feedbackFriendOffer	feedbackFriendOffer	friendPlayerId,reply,token			0;re
 friend/findFriends	findFriends	conditions,token,type				0	FriendListWindow.getFindData	1
 friend/findFriendsAndSend	getFindFriendsAndSend	friendMax,token			FRIEND_MSG_AUTOSEND	1	FriendListMissionWindow.getSendData	1
 friend/getFriendMap	getFriendMap	friendPlayerId,token				0		0
-friend/getFriendMapData	getFriendMapData	friendPlayerId,token				0		0
+friend/getFriendMapData	getFriendMapData	friendPlayerId,token				0	Politic.resetFriendMap	1
 friend/getFriendMapData2	getFriendMapData	friendPlayerId,mapId,token			acceleratecount;buildings:Hashtable;completecount;deployedMapKey:string;friendInfo;height:double;map:Hashtable;occupiedGrids:Hashtable;producings:Hashtable;size:Hashtable*;tasks:Hashtable;team:string;turfWar:Hashtable;width:double	14	Politic.resetFriendMap	1
 friend/getFriendProfile	getFriendProfile	forHTML,friendPlayerId,token			 + name + ;attribute;country;countryId;func;guid;habits;limit;message;playerId;rank	11	FriendListFirstWindow.createFriendList|FriendSpcWindow.createSpecObj|HTMLBbsMediator.getFriendProfile|HTMLRanking.callTestFriendProfile|HTMLRanking.callTestFriendProfile#responder="dummy,debug302"|HTMLRankingMediator.getFriendProfile|HTMLUtil.getFriendProfile|Politic.resetMapRanking	8
 friend/getFriends	getFriends	option,token			guid;playerIds	2	FriendListWindow.getFriendData|HTMLBbsMediator.getFriends|vsSetting.Start|vsSetting_Siege.Start	4
@@ -224,7 +224,7 @@ politic/map/getMap	getMap	token				0		0
 politic/map/getMapData	getMapData	assets,token		{"assets": ["map0"]}	buildingEvents:Hashtable;buildings:Hashtable;deployedMapKey:string;expiredNavigators:Hashtable*;navigators:Hashtable*;producings:Hashtable;tasks:Hashtable	7	PluginPoliticDataManager.getMapData|Politic.resetMap|Politic.sendRequestGetMapData	3
 politic/map/relocateEnded	relocateBuildings	relocatedGrids,token				0	PoliticFSMRelocate.checkChangeMode2	1
 politic/map/setBackground	setBackground	farGround,mapId,nearGround,token				0	mypageBgSelectWindow.phaseBgItemdecide	1
-politic/map/setMapName	setMapName	mapName,token				0		0
+politic/map/setMapName	setMapName	mapName,token				0	UserStatus.setMapName	1
 politic/map/setMapName2	setMapName	mapId,mapName,token			succeeded:bool	1	UserStatus.setMapName|mypageCastleTownRename.onOk	2
 politic/map/switchMap	switchMap	mapId,token				0	PluginPoliticDataManager.getMapData|PluginRunner_DoHarvest.RequestHarvest|PluginRunner_DoHarvest.RequestHarvest#responder=mapid,null|PluginRunner_DoTrade.RequestErrantry|PluginRunner_DoTrade.RequestErrantry#responder=mapid,null|PluginRunner_LevelUp.RequestLevelup|PluginRunner_LevelUp.RequestLevelup#responder=mapid,null|PluginScene.BackPolitic|PoliticFSMChangeMap.switchMap	9
 politic/mission/changeState	changePoliticMissionState	missionId,missionIds,state,states,token			mission:Hashtable;reward:Hashtable;toInbox:Hashtable*	3	PoliticMissionProgressList.makeUpdateStatusList	1
@@ -400,4 +400,4 @@ turfWar/getSelfSituation	getTurfWarSelfSituation	token				0		0
 turfWar/getTurfWarResultLog	getTurfWarResultLog	token			battlefield:Hashtable;bonuses:Hashtable;close:double;defenseScore:double;fieldWon:double*;gainRedSoul;global:Hashtable;open:double;rank:double;schedule:Hashtable;score:double;teamWon:double*;victory	13	TurfWarResultRenderer.load	1
 turfWar/getWarSituation	getTurfWarSituation	token			battlefield:string;selfBelong:Hashtable;team:string	3	BoardBody.reqWebTurfWarSituation|BoardBody.reqWebTurfWarSituation#responder=responder|TurfWarBriefCache.setup	3
 turfWar/moveBattlefield	moveTurfWarBattlefield	battlefield,token				0	TurfWarWorldMap.onEntryBattlefield	1
-turfWar/receiveTurfWarReward	getTurfWarResult|getTurnfWarRceiveTurfWarReward	token				0		0
+turfWar/receiveTurfWarReward	getTurfWarResult|getTurnfWarRceiveTurfWarReward	token				0	TurfWarResultRenderer.load	1

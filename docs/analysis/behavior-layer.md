@@ -21,15 +21,15 @@
 | 指标 | 数量 |
 |---|---|
 | 端点总数 | 402 |
-| 定位到调用点方法体 | 347 |
-| 无调用点（`call_sites` 为空） | 55 |
+| 定位到调用点方法体 | 350 |
+| 无调用点（`call_sites` 为空） | 52 |
 | 有场景切换证据 | 9 |
 | 有窗口操作证据 | 37 |
 | 有状态写入证据 | 16 |
 | 有键守卫证据 | 67 |
-| 端点→端点边 | 388 |
-| 有出边的端点 | 103 |
-| 无入边的端点（只能由界面/启动流程发起） | 8 |
+| 端点→端点边 | 392 |
+| 有出边的端点 | 106 |
+| 无入边的端点（只能由界面/启动流程发起） | 6 |
 
 ## 关键事实一：流程是「场景驱动」，不是「回调链驱动」
 
@@ -101,6 +101,8 @@ politic/waterborneTrade/send  siege/discharge  turfWar/getTurfWarResultLog
 | 旧：单修饰符正则 + 整类体退化 + 只扫顶层 | 416 | 110 | 40 | 18 | 68 | 10 |
 | 中：多修饰符正则，仍只扫顶层 | 388 | 103 | 37 | 16 | 67 | 9 |
 | 新：多修饰符正则 + 递归扫 2034 个文件 | 388 | 103 | 37 | 16 | 67 | 9 |
+
+> 说明：上面两行是当时快照。补录 3 个漏记调用点（`friend/getFriendMapData`、`politic/map/setMapName`、`turfWar/receiveTurfWarReward`）后，同口径重跑为 392 条边 / 106 个有出边端点；正文计数已按重跑值更新。
 
 第二段差额是旧正则误退到整类体时混入的同类其它方法调用。第三段补的 537 个文件（`PoliticBuildingState` 等）里只有状态机类，命中 4 个此前漏掉的端点（`friend/task/completeFriendTasks`、`politic/task/completeTasks`、`politic/task/progressBuildTask`、`politic/task/submitProduceTask`），它们的方法体只调 `RpcQueue.reliable`，不产生新边，所以边数不变。
 

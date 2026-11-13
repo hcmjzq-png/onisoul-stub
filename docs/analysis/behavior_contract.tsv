@@ -152,7 +152,7 @@ friend/feedbackFriendOffer	2	-	-	RpcQueue.reliable	-	result	-
 friend/findFriends	1	-	-	RpcQueue.reliable	-	-	-
 friend/findFriendsAndSend	1	-	-	RpcQueue.reliable	-	-	-
 friend/getFriendMap	0	-	-	-	-	-	-
-friend/getFriendMapData	0	-	-	-	-	-	-
+friend/getFriendMapData	1	-	-	RpcQueue.reliable	-	-	friend/getFriendMapData2;friend/visitFriendMap
 friend/getFriendMapData2	1	-	-	RpcQueue.reliable	-	-	friend/getFriendMapData;friend/visitFriendMap
 friend/getFriendProfile	8	-	-	SoundPlayer.sePlay;RpcQueue.reliable	PoliticFSMChangeFriendMap.UserInfo;PoliticFSMChangeFriendMap.RequestMapNo	-	deck/getAvatarCharacters
 friend/getFriends	4	-	-	RpcQueue.reliable;StreamingSceneChanger.PrevSceneName;Fader.play;GloabalObjectRead.StatusObject	-	-	deck/getDeckBonus
@@ -224,7 +224,7 @@ politic/map/getMap	0	-	-	-	-	-	-
 politic/map/getMapData	3	-	-	WebApiClient.Token	-	navigators;expiredNavigators	deck/getAvatarCharacters;politic/building/raiseBuildingEventOfBattle;politic/map/switchMap
 politic/map/relocateEnded	1	-	-	RpcQueue.reliable	-	-	-
 politic/map/setBackground	1	-	-	RpcQueue.reliable	-	-	-
-politic/map/setMapName	0	-	-	-	-	-	-
+politic/map/setMapName	1	-	-	RpcQueue.reliable;Configs.Container	-	-	politic/map/setMapName2
 politic/map/setMapName2	2	-	-	RpcQueue.reliable;Configs.Container;SoundPlayer.sePlay	-	-	politic/map/setMapName
 politic/map/switchMap	9	politic	-	RpcQueue.reliable;PluginTaskManager.SendPluginData;WebApiClient.ForceQueueMode;SoundPlayer.sePlay;StreamingSceneChanger.process	-	-	politic/building/levelUpBuildings;politic/errantry/send3;politic/map/getMapData;politic/task/completeTasks
 politic/mission/changeState	1	-	-	SoundPlayer.sePlay;RpcQueue.reliable	-	-	-
@@ -400,4 +400,4 @@ turfWar/getSelfSituation	0	-	-	-	-	-	-
 turfWar/getTurfWarResultLog	1	-	-	RpcQueue.reliable	-	-	turfWar/receiveTurfWarReward
 turfWar/getWarSituation	3	-	-	RpcQueue.reliable	-	team	-
 turfWar/moveBattlefield	1	-	-	RpcQueue.reliable	-	-	turfWar/entryBattlefield
-turfWar/receiveTurfWarReward	0	-	-	-	-	-	-
+turfWar/receiveTurfWarReward	1	-	-	RpcQueue.reliable	-	-	turfWar/getTurfWarResultLog

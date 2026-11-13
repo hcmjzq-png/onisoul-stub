@@ -13,7 +13,7 @@
 | `behavior-layer.md` | 行为层：端点回调的副作用（场景切换 / 窗口 / 服务调用 / 状态写入 / 键守卫）、端点调用图、启动链结论 |
 | `resource-layer.md` | 资源层：三个 host 的来源、资源 URL 与 MD5 规则、46 个前缀目录、表数据格式与 108 张表清单 |
 | `behavior_contract.tsv` | 402 个端点的行为契约，一端点一行；8 列，列定义见 `behavior-layer.md` |
-| `api_call_graph.tsv` | 388 条端点→端点调用边（from_endpoint / to_endpoint / via_method） |
+| `api_call_graph.tsv` | 392 条端点→端点调用边（from_endpoint / to_endpoint / via_method） |
 | `behavior_stats.txt` | 行为层计数、场景目标分布、出度榜 |
 | `behavior_chains.txt` | 启动链可达性、无入边端点、高扇出端点清单 |
 | `resource_contract.tsv` | 363 条资源名（146 字面量 / 217 运行时决定） |
@@ -28,7 +28,7 @@
 | `verify/types.txt` | 响应字段类型自洽性 |
 | `verify/dynamic_keys.txt` | 78 处动态拼接键（请求模板键 + 表访问器键） |
 | `verify/static_field_keys.txt` | 静态字段跨类传递的 3 个端点 |
-| `verify/no_key_final.txt` | 124 个零字段端点的逐条处置（79 无调用点 + 45 不读命名键） |
+| `verify/no_key_final.txt` | 124 个零字段端点的逐条处置（52 无调用点 + 72 不读命名键） |
 | `verify/final_check.txt` | 推送前完整性检查结果（结构 / 编码 / 分隔符 / 键回查 / 类型冲突） |
 | `verify/summary.json` | 计数汇总 |
 
@@ -38,16 +38,16 @@
 |---|---|
 | 端点总数（= `httpCall` 唯一字面量） | 402 |
 | 已抽出响应字段 | 278 |
-| 有调用但回调体不读命名键 | 45 |
-| 本客户端从不调用（无调用点） | 79 |
+| 有调用但回调体不读命名键 | 72 |
+| 本客户端从不调用（无调用点） | 52 |
 | 唯一响应键 / 带类型 / 带可选标记 | 382 / 250 / 57 |
 
 ## 行为层与资源层要点
 
 | 事实 | 数值 / 结论 |
 |---|---|
-| 端点→端点调用边 | 388 条，103 个端点有出边 |
-| 无入边的端点（只能由界面或启动流程发起） | 8 个 |
+| 端点→端点调用边 | 392 条，106 个端点有出边 |
+| 无入边的端点（只能由界面或启动流程发起） | 6 个 |
 | 直接 `transitionScene` 的端点 | 9 个（politic 4 / vsBattle 3 / deck 1 / migrationLogin 1 / strategy 1，共 10 次切换） |
 | 启动链（getRevisions、gameLogin、guestLogin、getPlayerEntity）深度 3 可达端点 | 0 —— 流程由场景切换驱动，不是回调链驱动 |
 | 有键守卫的端点 | 67（响应键出现在 `if` 条件里） |

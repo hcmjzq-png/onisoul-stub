@@ -1,8 +1,8 @@
 {
   "endpoints": 402,
   "multi_method_endpoints": 10,
-  "with_response_keys": 240,
+  "with_response_keys": 278,
   "param_nonempty": 400,
-  "template_key_endpoints": 2,
+  "template_key_endpoints": 4,
   "const_endpoints": 14
 }
