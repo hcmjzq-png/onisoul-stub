@@ -54,8 +54,10 @@ def _not_modified(value: str, last_modified: float | None) -> bool:
 def _byte_range(value: str, length: int) -> tuple[int, int] | None:
     if not value:
         return None
-    if not value.lower().startswith("bytes=") or "," in value:
+    if not value.lower().startswith("bytes="):
         raise ValueError("unsupported range")
+    if "," in value:
+        return None
     spec = value[6:].strip()
     start_text, separator, end_text = spec.partition("-")
     if not separator:

@@ -21,32 +21,39 @@ class ResponseShape(str, Enum):
 # Each entry is backed by a callback that enumerates the response root and casts
 # every value to Hashtable. Empty maps are valid "no records" placeholders.
 BARE_MAP_EVIDENCE: dict[str, str] = {
-    "auction/auctionCardSale": "客户端枚举响应根表",
-    "auction/auctionResourceSale": "客户端枚举响应根表",
-    "common/getCharacters": "DeckConflateCards.createStatus",
-    "common/getEquips": "客户端枚举响应根表",
-    "common/getSelectCharacters": "QuestDataCache.calcDeckParameter",
-    "common/getTactics": "客户端枚举响应根表",
-    "dailymission/getDailyMission": "每日任务回调两层枚举响应",
-    "deck/getAvatarCharacters": "PoliticAvatorCache.setup",
-    "deck/getProtectedCharacterIds": "客户端枚举响应根表",
-    "deck/getProtectedEquipIds": "客户端枚举响应根表",
-    "deck/setCharacterProtect": "客户端枚举响应根表",
-    "deck/setDecks": "DeckMake.deckSave 以 Count 判定成功",
-    "deck/setEquipProtect": "客户端枚举响应根表",
-    "friend/findFriends": "客户端枚举响应根表",
-    "friend/getFriends": "客户端枚举响应根表",
-    "politic/building/getDrafts": "UserStatus.setDraftInfo",
-    "politic/support_item/usePotions": "客户端枚举响应根表",
-    "politic/waterborneTrade/getStatus": "PoliticMissionProgressList.updateWaterTradeList",
-    "quest/checkEmergencyQuest": "EmergencyQuestChecker.sendRequest",
-    "quest/getChapterData": "PluginQuestDataManager.onGetStoryProgress",
-    "quest/getQuestCompleteFlags": "PluginQuestDataManager.onGetStoryProgress",
-    "quest/getQuestProgress": "QuestDataCache.setQuestParameter",
-    "siege/getSiegeStatus": "客户端枚举响应根表",
+    "auction/auctionCardSale": "AuctionDataManager.cs:GetMySellingCardsFromServer",
+    "auction/auctionResourceSale": "AuctionDataManager.cs:GetMySellingResourceFromServer",
+    "common/getCharacters": "DeckConflateCards.cs:createStatus",
+    "common/getEquips": "DeckConflateCards_Equip.cs:setup",
+    "common/getSelectCharacters": "QuestDataCache.cs:calcDeckParameter",
+    "common/getTactics": "DeckConflateCards_Tactics.cs:setup",
+    "dailymission/getDailyMission": "DailyMissionScene.cs:Start",
+    "deck/getProtectedCharacterIds": "DeckScene.cs:OnEnable",
+    "deck/getProtectedEquipIds": "DeckScene.cs:OnEnable",
+    "deck/setCharacterProtect": "CharacterConflatePreview_Character.cs:protectOrRelease",
+    "deck/setDecks": "DeckMake.cs:deckSave",
+    "deck/setEquipProtect": "CharacterConflatePreview_Equip.cs:protectOrRelease",
+    "friend/findFriends": "FriendListWindow.cs:getFindData",
+    "friend/getFriends": "FriendListWindow.cs:getFriendData",
+    "politic/building/getDrafts": "UserStatus.cs:setDraftInfo",
+    "politic/support_item/usePotions": "PoliticItemInventory.cs:useItem",
+    "politic/waterborneTrade/getStatus": "PoliticMissionProgressList.cs:updateWaterTradeList",
+    "quest/checkEmergencyQuest": "EmergencyQuestChecker.cs:sendRequest",
+    "quest/getChapterData": "PluginQuestDataManager.cs:onGetStoryProgress",
+    "quest/getQuestCompleteFlags": "PluginQuestDataManager.cs:onGetStoryProgress",
+    "quest/getQuestProgress": "QuestDataCache.cs:setQuestParameter",
 }
 
 BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)
+
+# These callbacks read named keys from the response root and unbox scalar
+# values. They must keep the normal envelope and typed contract placeholders.
+SCALAR_ROOT_EVIDENCE: dict[str, str] = {
+    "deck/getAvatarCharacters": "PoliticAvatorCache.cs:setup",
+    "siege/getBrief": "siegeBriefMenuDesc.cs:setup",
+    "siege/getSiegeStatus": "vsSetting_Siege.cs:getSiegeSituation",
+    "trophy/getTrophyProgress": "TrophyWindow.cs:load",
+}
 
 
 def shape_for(api: str) -> ResponseShape:

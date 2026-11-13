@@ -57,7 +57,7 @@ class TableCatalog:
         self.manifest_path = Path(manifest_path or MANIFEST_PATH).resolve()
         self._entries = self._read_manifest()
         self._by_root = {entry.root_key: entry for entry in self._entries.values()}
-        self._cache: dict[str, tuple[tuple[int, int], Any]] = {}
+        self._cache: dict[str, tuple[tuple[int, int], Any, str]] = {}
         self._lock = threading.RLock()
 
     def _read_manifest(self) -> dict[str, TableEntry]:
@@ -102,6 +102,10 @@ class TableCatalog:
 
     def load(self, name: str) -> dict[str, Any]:
         """Load one table and return the value stored under its declared root key."""
+        root, _digest = self._load_with_digest(name)
+        return root
+
+    def _load_with_digest(self, name: str) -> tuple[dict[str, Any], str]:
         entry = self.resolve(name)
         path = self.table_dir / entry.file
         try:
@@ -115,7 +119,7 @@ class TableCatalog:
         with self._lock:
             cached = self._cache.get(entry.file)
             if cached and cached[0] == signature:
-                return cached[1]
+                return cached[1], cached[2]
 
         try:
             raw = path.read_bytes()
@@ -124,6 +128,7 @@ class TableCatalog:
             raise MissingTableError(f"missing table: {entry.file}") from exc
         except (OSError, MiniJsonError) as exc:
             raise InvalidTableError(f"invalid table {entry.file}: {exc}") from exc
+        digest = hashlib.sha256(raw).hexdigest()
 
         if not isinstance(document, dict) or entry.root_key not in document:
             raise InvalidTableError(
@@ -136,8 +141,8 @@ class TableCatalog:
             )
 
         with self._lock:
-            self._cache[entry.file] = (signature, root)
-        return root
+            self._cache[entry.file] = (signature, root, digest)
+        return root, digest
 
     def missing(self) -> list[str]:
         return sorted(
@@ -152,19 +157,12 @@ class TableCatalog:
         expected = self._imported_hashes()
         for entry in self._entries.values():
             try:
-                self.load(entry.file)
+                _root, actual = self._load_with_digest(entry.file)
             except TableError as exc:
                 issues.append(str(exc))
                 continue
             digest = expected.get(entry.file)
             if digest:
-                try:
-                    actual = hashlib.sha256(
-                        (self.table_dir / entry.file).read_bytes()
-                    ).hexdigest()
-                except OSError as exc:
-                    issues.append(f"cannot read table {entry.file}: {exc}")
-                    continue
                 if actual != digest:
                     issues.append(
                         f"checksum drift: {entry.file} "

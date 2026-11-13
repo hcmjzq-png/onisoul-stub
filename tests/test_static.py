@@ -120,6 +120,16 @@ class StaticHttpTest(unittest.TestCase):
                     self.assertEqual(response.status, 206)
                     self.assertEqual(response.read(), b"erv")
 
+                with urlopen(
+                    Request(
+                        f"{base}/client/app.html",
+                        headers={"Range": "bytes=0-1,3-4"},
+                    ),
+                    timeout=5,
+                ) as response:
+                    self.assertEqual(response.status, 200)
+                    self.assertEqual(response.read(), b"served")
+
                 with self.assertRaises(HTTPError) as caught:
                     urlopen(
                         Request(

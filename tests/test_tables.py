@@ -84,7 +84,12 @@ class TableCatalogTest(unittest.TestCase):
             (FIXTURES / "multi_document.json").read_bytes()
         )
         catalog = TableCatalog(self.tables, self.manifest)
-        self.assertEqual(catalog.load("building"), {"b1": {"id": "b1", "flags": [True, False]}})
+        with self.assertLogs("app.minijson", level="DEBUG") as captured:
+            self.assertEqual(
+                catalog.load("building"),
+                {"b1": {"id": "b1", "flags": [True, False]}},
+            )
+        self.assertIn("trailing bytes", "\n".join(captured.output))
 
     def test_import_manifest_checksum_drift_is_reported(self):
         path = self.tables / "building.json"
