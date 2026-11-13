@@ -28,8 +28,8 @@
 | 已抽出响应字段 | 279 |
 | 被调用但回调体不读命名键 | 69 |
 | 本客户端从不调用（无调用点） | 53 |
-| 唯一响应键 | 456 |
-| 带类型响应键 | 334 |
+| 唯一响应键 | 487 |
+| 带类型响应键 | 365 |
 | 带可选标记（`ContainsKey` 保护） | 73 |
 | 一端点多方法（参数取并集） | 10 |
 | 带序号模板键的请求 | 4 |
@@ -66,8 +66,8 @@
 | 端点完整性 | 契约↔源码字面量双向对账 | 402↔402，0 差；唯一非字面量命中是 `private void httpCall(string api,...)` 方法定义本身 |
 | 方法归属 | 花括号配对定位方法体 | 445/445 个真实方法全部定位（另 6 个 `public delegate` 声明非方法） |
 | 参数正确性 | 用方法体重算参数并集，与表对比 | 差异 6 项，已全部修正（见下） |
-| 字段真实性 | 1075 个键逐个回查源码字面量 | 0 个找不到；`verify/final_check.txt` 是 990 键时期的快照，当前键数/类型数/结构类问题以 `python3 tools/contract_check.py` 输出为准（1075 键 / 594 带类型 / 0 问题） |
-| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 594 处带类型读取，0 冲突 |
+| 字段真实性 | 1107 个键逐个回查源码字面量 | 0 个找不到；`verify/final_check.txt` 是 990 键时期的快照，当前键数/类型数/结构类问题以 `python3 tools/contract_check.py` 输出为准（1107 键 / 626 带类型 / 0 问题） |
+| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 626 处带类型读取，0 冲突 |
 | 表结构与编码 | 9 列齐整 / UTF-8 无 BOM / 仅 LF / 无重复端点 / `key_count` 与条目数一致 | 全部通过 |
 | 键名一致性 | 回包键不得与同端点请求参数同名 | 5 例经核对为**回显读取**（客户端读回自己发过的值），非错误 |
 | 方向一致性 | 键必须出现在「回包路径」而非「请求构造路径」 | `politic/waterborneTrade/send` 两处疑似请求侧复用，已排除未并入 |
@@ -95,12 +95,19 @@
    该端点的 `monsterId` 原先无类型（占位会整键跳过，`giganticRaidBossScene.cs:130` 的
    `hashtable["monsterId"].ToString()` 会 NRE），按 `createBg(string)` → `getMenuBg(string)` 的口径定成 `string`。
 * `unguarded_gaps.tsv` 的 104 条候选缺口已逐条判读（明细见 `docs/analysis/unguarded_gaps_verdicts.tsv`，
-  口径见 `unguarded-reads.md`）：69 条读的不是回包、31 条读的是另一端点回包、4 条真缺口。
+  口径见 `unguarded-reads.md`）：67 条读的不是回包、33 条读的是另一端点回包、4 条真缺口。
   本批据此补 5 处：`debug/dedicate.score`、`deck/extendCharacterStore.possessionLimits(+.character)`、
    `quest/clearObstacle.uses(+.category)`、`battle/executeBattle.executeInfo(+.step)`、
    `politic/support_item/getPotions.potions(+.potion0000102.amount)`；同时剔除
    `strategy/getStrategyCommandInfo` 上 2 个消息表污染键。键数 1068→1075，带类型 584→594，
    唯一 453→456，可选 74→73。
+* 判读带出的两个宿主缺口也一并补上：`battle/executeBattle` 补 `executeInfo.missionPoint` 与
+  `eventInfo` 家族（`eventInfo` / `eventType` / `obstacleInfo.amount,needAmount,type,category` /
+  `treasureInfo.keyItemId,keyItemCount,haveCount,treasureId,rewardId`）+ `rewardInfo` / `bonusInfo` 共 16 键，
+  依据 `PluginQuestStepHelper.cs:28-49`（`ProcessQuestStep` 的 `hash` 就是 `executeBattle` 回调对象）与
+  `:186-192`、`:312-318`；`strategy/getStrategyStatus` 补 `self` + 13 子键与 `cell` + `cell.attackLogs`（16 键），
+  依据 `StrategyDataCache.cs:24-90` 与 `Strategy.cs:128-249`。键数 1075→1107，带类型 594→626，
+  唯一 456→487，可选仍 73。
 
 ## 常量枚举（Stub 必须按此校验，不能任意填）
 

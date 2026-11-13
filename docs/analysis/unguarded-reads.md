@@ -8,7 +8,7 @@
 **结论先行**：这把尺子能复用，但只有方法级精度——它按「类名.方法名」归属读键，
 同一方法里读任何 hashtable 都会被挂到该方法的端点上，所以它给的是**候选**不是结论。
 104 条候选已于 2026-11-14 逐条判读完毕（每条带 `file:line` 依据，见
-`docs/analysis/unguarded_gaps_verdicts.tsv`）：**69 条读的不是回包、31 条读的是另一端点回包、
+`docs/analysis/unguarded_gaps_verdicts.tsv`）：**67 条读的不是回包、33 条读的是另一端点回包、
 只有 4 条是真缺口**。真缺口与逆推出来的 `common/getEventStatuses` / `turfWar/getWarSituation`
 嵌套字段都已补进契约。
 
@@ -42,8 +42,8 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 | (调用点,键) 对 | 503 |
 | 对账命中已声明 | 149 |
 | 候选缺口行 / 涉及端点 | **104 / 69** |
-| 判读：读的不是回包（`not_response`） | 69 |
-| 判读：读的是另一端点回包（`other_endpoint`） | 31 |
+| 判读：读的不是回包（`not_response`） | 67 |
+| 判读：读的是另一端点回包（`other_endpoint`） | 33 |
 | 判读：真缺口（`real_gap`） | 4 |
 
 产物 `unguarded_gaps.tsv`（105 行含表头；`friend/getFriendMapData` 的调用点归属修正后，原先算在它头上的那一行随之消失）列：
@@ -79,8 +79,8 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 
 | verdict | 行数 | 含义 |
 |---|---|---|
-| `not_response` | 69 | 读的不是响应：请求参数回读、本地入参 / 任务参数、写侧赋值、配置表访问器、UI 对话框结果、本地构造表、插件事件哈希 |
-| `other_endpoint` | 31 | 读的确实是回包，但属于另一个端点（方法级归属错）；`real_owner` 列给出真端点 |
+| `not_response` | 67 | 读的不是响应：请求参数回读、本地入参 / 任务参数、写侧赋值、配置表访问器、UI 对话框结果、本地构造表 |
+| `other_endpoint` | 33 | 读的确实是回包，但属于另一个端点（方法级归属错）；`real_owner` 列给出真端点 |
 | `real_gap` | 4 | 契约确实缺键，本批已补 |
 
 抽样对照（三类机制的代表行）：
@@ -93,6 +93,7 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 | `battle/executeBattle` / `BattleLogManager.getParameterFromServerForDebug` / `debug,monsterId` | `not_response`（写侧） | `BattleLogManager.cs:5214-5219` 先 `info["monsterId"]=` / `info["debug"]=` 再发请求 |
 | `deck/getDecks` / `PluginRunner_DoBattleSiege.Init` / `BattleMoney` | `not_response`（任务参数） | `PluginRunner_DoBattleSiege.cs:28` 读 `task.TaskParams["BattleMoney"]` |
 | `navigator/getNavigatorDetails` / `getNavigatorDetails` / `color1..color5` | `not_response`（debug 自造） | `NavigatorChangeSelect.cs:339-356` 在 `isDebugMode()` 分支里自己 new 一个 hashtable |
+| `quest/clearObstacle` / `PluginQuestStepHelper.OnObstacle` / `obstacleInfo.*` | `other_endpoint` → `battle/executeBattle` | `ProcessQuestStep` 的 `hash` 是 `executeBattle` 回调对象（`PluginRunner_DoDreamSpace.cs:117`），`eventInfo` 是它的一级键 |
 
 ## 真缺口（本批已补进契约）
 
@@ -108,17 +109,28 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 `STRATEGY_MSG_COMMAND_CONSCRIPT_INFO0` / `STRATEGY_MSG_COMMAND_TRAINING_INFO0` 是消息表取值
 （`StrategyCommandSelector.cs:281`、`:306` 走 `StrategyLayoutMessageTableAccessor`），不是回包键。
 
-## 仍未取证（不入表，留档）
+## 判读带出来的两个宿主缺口（本批已补）
 
-* 事件哈希嵌套子表：`quest/clearObstacle` 行的 `obstacleInfo.amount / needAmount / type / category`
-  （`PluginQuestStepHelper.cs:186-192`）与 `quest/openTreasureBox` 行的 `treasureInfo.*`
-  （`:312-318`、`QuestScriptCommand.cs:655-662`），`eventInfo` 由
-  `QuestAreaTableAccessor.EventType` 分发（`PluginQuestStepHelper.cs:108-128`），
-  既不是 `clearObstacle` 也不是 `openTreasureBox` 的回包；其宿主端点尚未定死。
-* `strategy/getStrategyStatus` 缺整个 `self` 子表：`strategy/isAlive` 行的
-  `selfData["command"] / ["route"]`（`StrategyHUDController.cs:976-986`）读的是
-  `StrategyDataCache.SelfData` = `updateData["self"]`（`StrategyDataCache.cs:80-90`），
-  而 `updateData` 来自 `getStrategyStatus` 回调（`Strategy.cs:128-161`）。
+* 事件哈希的宿主是 `battle/executeBattle`：`PluginQuestStepHelper.ProcessQuestStep(... , Hashtable hash, ...)`
+  的 `hash` 就是 `executeBattle` 回调对象（`PluginRunner_DoDreamSpace.cs:100/117` 传同一个 `hashtable`），
+  它在 `:36-40` 直接读 `executeInfo.missionPoint`、`eventInfo`、`rewardInfo`、`bonusInfo`；
+  `eventInfo` 再按 `eventType` 分发（`PluginQuestStepHelper.cs:91-128`），
+  `obstacleInfo.amount/needAmount/type/category`（`:186-192`）与
+  `treasureInfo.keyItemId/keyItemCount/haveCount/treasureId/rewardId`（`:312-318`、
+  `QuestScriptCommand.cs:655-662`）都是它的嵌套键。已补 16 键。
+* `strategy/getStrategyStatus` 缺 `self` / `cell` 子表：`StrategyDataCache.SelfData` = `updateData["self"]`
+  （`StrategyDataCache.cs:80-90`），`updateData` 只在 `Strategy.resetAllData` 赋值
+  （`Strategy.cs:239-249`），来源是 `getStrategyStatus` 回调（`:128-161）。该子表原先整块未声明，
+  `self` 缺失时 `SelfData` 为 null（`Strategy.cs:251-252` 之后连续取键）。已补 `self` + 13 个有 cast 证据的
+  子键，另补 `cell` + `cell.attackLogs`（`StrategyCellLog.cs:126`）。
+
+## 仍未取证（留档，不入表）
+
+* `eventInfo` 的其它事件分支（`item` / `character` / `enemy` / `boss` / `playerBattle`）各自的嵌套键未逐一取证，
+  本批只补到 `obstacle` 与 `treasureBox` 两支。
+* `strategy/getStrategyStatus` 的 `map` 子表：`StrategyDataCache.MapData`（`:24-34`）存在访问器，
+  但全仓没有 `MapData["字面键"]` / 对应局部变量的字面读，键由表访问器动态拼出，未能取证，
+  因此只按 `cell` / `self` 两支落表。
 
 ## 从误报上下文里反推出的真缺口（可进 #7）
 

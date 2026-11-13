@@ -31,7 +31,16 @@ REAL_GAP_KEYS = {
         "possessionLimits.character:Hashtable",
     ],
     "quest/clearObstacle": ["uses:Hashtable", "uses.category:string"],
-    "battle/executeBattle": ["executeInfo:Hashtable", "executeInfo.step:double"],
+    "battle/executeBattle": [
+        "executeInfo:Hashtable",
+        "executeInfo.step:double",
+        "executeInfo.missionPoint:double",
+        "eventInfo:Hashtable",
+        "eventInfo.obstacleInfo:Hashtable",
+        "eventInfo.treasureInfo:Hashtable",
+        "rewardInfo:Hashtable",
+        "bonusInfo:Hashtable",
+    ],
     "politic/support_item/getPotions": [
         "potions:Hashtable",
         "potions.potion0000102:Hashtable",
@@ -52,6 +61,15 @@ OWNER_KEYS = {
     "quest/getChapterData": ["clearCount:double"],
     "inbox/getParcels": ["parcels", "totalCount"],
     "common/getPlayerParams": ["actionPoints:Hashtable", "entity:Hashtable", "resources:Hashtable"],
+    "battle/executeBattle": ["eventInfo:Hashtable", "eventInfo.eventType:double", "rewardInfo:Hashtable"],
+    "strategy/getStrategyStatus": [
+        "self:Hashtable",
+        "self.team:string",
+        "self.route:Hashtable",
+        "self.isAlive:bool",
+        "cell:Hashtable",
+        "cell.attackLogs:Hashtable",
+    ],
 }
 
 # 判读为「消息表污染」，契约里必须没有
@@ -110,7 +128,7 @@ class GapVerdictsTest(unittest.TestCase):
         for row in self.verdicts:
             counts[row["verdict"]] += 1
         self.assertEqual(len(self.verdicts), 104)
-        self.assertEqual(counts, {"not_response": 69, "other_endpoint": 31, "real_gap": 4})
+        self.assertEqual(counts, {"not_response": 67, "other_endpoint": 33, "real_gap": 4})
 
     def test_real_gap_keys_are_declared(self) -> None:
         for ep, keys in REAL_GAP_KEYS.items():

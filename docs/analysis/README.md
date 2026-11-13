@@ -34,7 +34,7 @@
 | `verify/summary.json` | 计数汇总 |
 | `unguarded-reads.md` | 无守卫读键扫描：两段式流水线、基线数字、四类误报实证、抽验记录 |
 | `unguarded_gaps.tsv` | 扫描 + 契约对账产物：104 条候选行 / 69 个端点（`endpoint / callsite / missing_keys / first_evidence`） |
-| `unguarded_gaps_verdicts.tsv` | 上表的逐行判读结论：69 读的不是回包 / 31 归属另一端点 / 4 真缺口（`endpoint / callsite / missing_keys / verdict / real_owner / evidence`） |
+| `unguarded_gaps_verdicts.tsv` | 上表的逐行判读结论：67 读的不是回包 / 33 归属另一端点 / 4 真缺口（`endpoint / callsite / missing_keys / verdict / real_owner / evidence`） |
 
 ## 当前覆盖
 
@@ -44,7 +44,7 @@
 | 已抽出响应字段 | 279 |
 | 有调用但回调体不读命名键 | 69 |
 | 本客户端从不调用（无调用点） | 53 |
-| 唯一响应键 / 带类型 / 带可选标记 | 456 / 334 / 73 |
+| 唯一响应键 / 带类型 / 带可选标记 | 487 / 365 / 73 |
 
 ## 行为层与资源层要点
 
