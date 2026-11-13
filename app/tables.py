@@ -1,8 +1,9 @@
 """PC 客户端配置表加载器。
 
-表文件不进入 Git。运行时只接受 ``docs/analysis/table_list.tsv`` 清单中的
-108 张表，并按文件 mtime 热加载。每个 JSON 文件都必须以清单声明的 root key
-包住表记录，例如 ``{"building": {...}}``。
+表文件不进入 Git。运行时接受 ``docs/analysis/table_list.tsv`` 的 108 张客户端表，
+并合并 ``server_tables.tsv`` 中的服务端玩法依赖表；按文件 mtime 热加载。
+每个 JSON 文件都必须以清单声明的 root key 包住表记录，例如
+``{"building": {...}}``。
 """
 from __future__ import annotations
 
@@ -20,6 +21,9 @@ from app import paths
 from app.minijson import MiniJsonError, parse_json_document
 
 MANIFEST_PATH = Path(__file__).resolve().parents[1] / "docs" / "analysis" / "table_list.tsv"
+SERVER_MANIFEST_PATH = (
+    Path(__file__).resolve().parents[1] / "docs" / "analysis" / "server_tables.tsv"
+)
 
 
 class TableError(RuntimeError):
@@ -52,38 +56,52 @@ class TableCatalog:
         self,
         table_dir: str | os.PathLike[str] | None = None,
         manifest_path: str | os.PathLike[str] | None = None,
+        extra_manifest_paths: tuple[str | os.PathLike[str], ...] | None = None,
     ) -> None:
         self.table_dir = Path(table_dir or paths.TABLE_DIR).resolve()
         self.manifest_path = Path(manifest_path or MANIFEST_PATH).resolve()
-        self._entries = self._read_manifest()
+        if extra_manifest_paths is None:
+            extra_manifest_paths = (
+                (SERVER_MANIFEST_PATH,) if manifest_path is None else ()
+            )
+        self.extra_manifest_paths = tuple(
+            Path(path).resolve() for path in extra_manifest_paths
+        )
+        self._entries = self._read_manifests(
+            (self.manifest_path, *self.extra_manifest_paths)
+        )
         self._by_root = {entry.root_key: entry for entry in self._entries.values()}
         self._cache: dict[str, tuple[tuple[int, int], Any, str]] = {}
         self._lock = threading.RLock()
 
-    def _read_manifest(self) -> dict[str, TableEntry]:
-        if not self.manifest_path.is_file():
-            raise TableError(f"table manifest not found: {self.manifest_path}")
-
+    def _read_manifests(self, paths: tuple[Path, ...]) -> dict[str, TableEntry]:
         entries: dict[str, TableEntry] = {}
-        with io.open(self.manifest_path, encoding="utf-8", newline="") as handle:
-            for row in csv.DictReader(handle, delimiter="\t"):
-                name = (row.get("table_file") or "").strip()
-                root_key = (row.get("root_key") or "").strip()
-                if not name or not root_key:
-                    continue
-                if Path(name).name != name:
-                    raise TableError(f"unsafe table filename in manifest: {name!r}")
-                entries[name] = TableEntry(
-                    file=name,
-                    root_key=root_key,
-                    accessors=tuple(
-                        item.strip()
-                        for item in (row.get("accessor_classes") or "").split(",")
-                        if item.strip()
-                    ),
-                )
+        for path in paths:
+            if not path.is_file():
+                raise TableError(f"table manifest not found: {path}")
+            with io.open(path, encoding="utf-8", newline="") as handle:
+                for row in csv.DictReader(handle, delimiter="\t"):
+                    name = (row.get("table_file") or "").strip()
+                    root_key = (row.get("root_key") or "").strip()
+                    if not name or not root_key:
+                        continue
+                    if Path(name).name != name:
+                        raise TableError(f"unsafe table filename in manifest: {name!r}")
+                    previous = entries.get(name)
+                    entry = TableEntry(
+                        file=name,
+                        root_key=root_key,
+                        accessors=tuple(
+                            item.strip()
+                            for item in (row.get("accessor_classes") or "").split(",")
+                            if item.strip()
+                        ),
+                    )
+                    if previous is not None and previous != entry:
+                        raise TableError(f"conflicting table manifest entry: {name}")
+                    entries[name] = entry
         if not entries:
-            raise TableError(f"table manifest is empty: {self.manifest_path}")
+            raise TableError("table manifests are empty")
         return entries
 
     @property

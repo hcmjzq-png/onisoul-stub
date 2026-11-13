@@ -19,7 +19,7 @@ if str(ROOT) not in sys.path:
 
 from app import paths  # noqa: E402
 from app.minijson import MiniJsonError, parse_json_document  # noqa: E402
-from app.tables import MANIFEST_PATH  # noqa: E402
+from app.tables import MANIFEST_PATH, SERVER_MANIFEST_PATH  # noqa: E402
 
 
 def sha256(path: Path) -> str:
@@ -113,6 +113,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--source", required=True, help="directory containing extracted JSON tables")
     parser.add_argument("--dest", default=str(paths.TABLE_DIR), help="runtime table directory")
     parser.add_argument("--manifest", default=str(MANIFEST_PATH), help="client table manifest TSV")
+    parser.add_argument(
+        "--server-manifest",
+        default=None,
+        help="optional server-only table manifest TSV",
+    )
     parser.add_argument("--check-only", action="store_true", help="validate without copying")
     parser.add_argument("--strict", action="store_true", help="return failure when manifest tables are missing")
     parser.add_argument("--json", action="store_true", help="print a machine-readable report")
@@ -125,12 +130,27 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(f"source directory not found: {source}")
     if not manifest.is_file():
         parser.error(f"manifest not found: {manifest}")
+    manifests = [manifest]
+    if args.server_manifest or manifest == MANIFEST_PATH.resolve():
+        server_manifest = Path(
+            args.server_manifest or SERVER_MANIFEST_PATH
+        ).resolve()
+        if not server_manifest.is_file():
+            parser.error(f"server manifest not found: {server_manifest}")
+        manifests.append(server_manifest)
 
     if not args.check_only:
         dest.mkdir(parents=True, exist_ok=True)
 
     try:
-        rows = read_manifest(manifest)
+        rows = []
+        seen: set[str] = set()
+        for current_manifest in manifests:
+            for row in read_manifest(current_manifest):
+                name = row["table_file"].strip()
+                if name not in seen:
+                    rows.append(row)
+                    seen.add(name)
     except ValueError as exc:
         parser.error(str(exc))
     declared = {row["table_file"].strip() for row in rows}
@@ -186,7 +206,7 @@ def main(argv: list[str] | None = None) -> int:
     missing = sum(record["status"] == "missing" for record in records)
     invalid = sum(record["status"] == "invalid" for record in records)
     report = {
-        "manifest": str(manifest),
+        "manifest": [str(path) for path in manifests],
         "source": str(source),
         "dest": str(dest),
         "manifest_count": len(records),

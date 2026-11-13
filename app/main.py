@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 
 from app import config, db
+from app.business.gameplay import GameplayService
 from app.business.registry import Registry
 from app.transport import http_server
 
@@ -19,7 +20,9 @@ def build_registry() -> Registry:
 
     占位响应的意义是让客户端「不撞 404、能继续走下一批请求」；业务语义仍为空。
     """
-    return Registry().register_contract_defaults()
+    registry = Registry()
+    GameplayService().register(registry)
+    return registry.register_contract_defaults()
 
 
 def main(argv: list[str] | None = None) -> int:

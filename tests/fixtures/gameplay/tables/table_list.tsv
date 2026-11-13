@@ -1,0 +1,12 @@
+table_file	root_key	accessor_classes
+playerLevel.json	playerLevel	PlayerLevelTableAccessor
+beginning_equipment.json	beginning_equipment	BeginningEquipmentAccessor
+item01.json	item01	ItemsTableAccessor
+character.json	character	CharacterTableAccessor
+draft.json	draft	DraftTableAccessor
+building.json	building	BuildingsTableAccessor
+politicMission.json	politicMission	PoliticMissionTableAccessor
+reward01_politic.json	reward01_politic	RewardTableAccessor
+reward99_country.json	reward99_country	RewardTableAccessor
+item04.json	item04	ItemsTableAccessor
+navigator.json	navigator	NavigatorTableAccessor

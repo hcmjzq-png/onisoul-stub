@@ -17,6 +17,7 @@
 | `common/getSelectCharacters` | `QuestDataCache.cs:calcDeckParameter` |
 | `common/getTactics` | `DeckConflateCards.cs:createStatus` |
 | `dailymission/getDailyMission` | `DailyMissionScene.cs:Start` |
+| `deck/getAvatarCharacters` | `Politic.cs:resetMap` |
 | `deck/getProtectedCharacterIds` | `DeckScene.cs:OnEnable` |
 | `deck/getProtectedEquipIds` | `DeckScene.cs:OnEnable` |
 | `deck/setCharacterProtect` | `CharacterConflatePreview_Character.cs:protectOrRelease` |
@@ -62,7 +63,6 @@ python tools/verify_response_shape_evidence.py \
 以下端点的契约键位于根级，回调按 key 读取并拆箱，而不是遍历根表。它们继续使用
 envelope 和类型化占位字段：
 
-- `deck/getAvatarCharacters`：`PoliticAvatorCache.cs:setup` 读取 `baseId`、`grade`、`voice`。
 - `politic/support_item/usePotions`：`DailyMissionScene.cs:convertRewardByUsePotionsAPIResult`
   读取根级 `result` 并展开奖励。
 - `quest/getChapterData`：`PluginRunner_DoEvent.cs:onQuestChapterData` 读取

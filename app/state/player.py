@@ -17,9 +17,14 @@ from app import db
 DEFAULT_PLAYER_ID = "1"
 
 
+class StateConflictError(RuntimeError):
+    """The caller attempted to save a stale player snapshot."""
+
+
 def _default_state(player_id: str) -> dict[str, Any]:
     return {
         "version": 1,
+        "_revision": 0,
         "entity": {
             "playerId": str(player_id or DEFAULT_PLAYER_ID),
             "created": False,
@@ -50,23 +55,55 @@ def load(player_id: str = DEFAULT_PLAYER_ID) -> dict[str, Any]:
     if not isinstance(data, dict):
         return _default_state(pid)
     data.setdefault("entity", {})["playerId"] = pid
+    try:
+        data["_revision"] = int(data.get("_revision") or 0)
+    except (TypeError, ValueError):
+        data["_revision"] = 0
     return data
 
 
 def save(state: dict[str, Any], player_id: str = DEFAULT_PLAYER_ID) -> None:
-    """整行 upsert。"""
+    """Save a player snapshot using optimistic revision checking."""
     pid = str(player_id or DEFAULT_PLAYER_ID)
     now = time.time()
-    payload = json.dumps(state, ensure_ascii=False)
+    try:
+        expected_revision = int(state.get("_revision") or 0)
+    except (TypeError, ValueError):
+        expected_revision = 0
     with db.connection() as con:
         with con.cursor() as cur:
             cur.execute(
-                """
-                INSERT INTO players (player_id, state_json, updated_at)
-                VALUES (%s, %s, %s)
-                ON DUPLICATE KEY UPDATE
-                    state_json = VALUES(state_json),
-                    updated_at = VALUES(updated_at)
-                """,
-                (pid, payload, now),
+                "SELECT state_json FROM players WHERE player_id = %s FOR UPDATE",
+                (pid,),
             )
+            row = cur.fetchone()
+            current_revision = 0
+            if row:
+                raw = row["state_json"]
+                current = json.loads(raw) if isinstance(raw, str) else raw
+                if isinstance(current, dict):
+                    try:
+                        current_revision = int(current.get("_revision") or 0)
+                    except (TypeError, ValueError):
+                        current_revision = 0
+            if row and current_revision != expected_revision:
+                raise StateConflictError(
+                    f"player {pid} revision changed: "
+                    f"expected {expected_revision}, found {current_revision}"
+                )
+
+            next_revision = expected_revision + 1
+            state["_revision"] = next_revision
+            payload = json.dumps(state, ensure_ascii=False)
+            if row:
+                cur.execute(
+                    "UPDATE players SET state_json = %s, updated_at = %s "
+                    "WHERE player_id = %s",
+                    (payload, now, pid),
+                )
+            else:
+                cur.execute(
+                    "INSERT INTO players (player_id, state_json, updated_at) "
+                    "VALUES (%s, %s, %s)",
+                    (pid, payload, now),
+                )

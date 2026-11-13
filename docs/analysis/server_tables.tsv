@@ -1,0 +1,5 @@
+table_file	root_key	accessor_classes	purpose
+item01.json	item01	ItemsTableAccessor	beginning_equipment character item ids to base character ids
+item04.json	item04	ItemsTableAccessor	draft reward items to draft ids
+reward01_politic.json	reward01_politic	RewardTableAccessor	politic mission clear rewards
+reward99_country.json	reward99_country	RewardTableAccessor	country_*_self reward resolution

@@ -22,6 +22,8 @@
 | state | `state/player.py` | 玩家状态整行 JSON 读写；`players` 表 |
 | business | `business/registry.py` | api 路径 → handler 注册表；业务规则在此逐个实现 |
 | business | `business/response_shapes.py` | 区分普通 envelope 与客户端要求的裸映射响应 |
+| business | `business/gameplay.py` | 登录、玩家、主城、建造与新手任务 1～4 |
+| business | `business/mission_chain.py` | 按 `politicMission.json` 计算任务状态与解锁位 |
 | tables | `tables.py` | 按 108 张表清单加载 JSON，校验 root key 并热重载 |
 | 装配 | `main.py` | 读配置、建注册表、起 HTTP 服务；可选 `--init-schema` 建表 |
 
@@ -32,6 +34,9 @@
 3. `Registry.dispatch(api, params, session)` 找 handler；未知接口 404，未实现 501，异常 500。
 4. handler 返回最终响应 dict；普通接口经 `response_shapes.success` 注入
    `succeeded` / `now`，裸映射接口不注入。
+
+生产注册表先登记真实玩法 handler，再用契约占位补齐全量 402 端点。
+登录与玩家状态依据账号对应的 `players.state_json`，不使用全局新号/老号开关。
 
 ## 静态请求
 
@@ -50,7 +55,8 @@
 - `players(player_id PK, state_json JSON, updated_at)`
 
 玩家状态是嵌套 dict，按 `player_id` 整行序列化为 JSON 存储；业务层仍按 dict 操作，
-持久层不拆关系表。时间字段统一 epoch 秒（DOUBLE）。
+持久层不拆关系表。时间字段统一 epoch 秒（DOUBLE）。状态 JSON 带 `_revision`，
+`save()` 使用行锁和版本比较拒绝陈旧快照。
 
 ## 未决 / TODO
 

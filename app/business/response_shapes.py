@@ -31,6 +31,7 @@ BARE_MAP_EVIDENCE: dict[str, str] = {
     "common/getSelectCharacters": "QuestDataCache.cs:calcDeckParameter",
     "common/getTactics": "DeckConflateCards.cs:createStatus",
     "dailymission/getDailyMission": "DailyMissionScene.cs:Start",
+    "deck/getAvatarCharacters": "Politic.cs:resetMap",
     "deck/getProtectedCharacterIds": "DeckScene.cs:OnEnable",
     "deck/getProtectedEquipIds": "DeckScene.cs:OnEnable",
     "deck/setCharacterProtect": "CharacterConflatePreview_Character.cs:protectOrRelease",
@@ -52,7 +53,6 @@ BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)
 # This mapping is evidence bookkeeping only: `shape_for()` decides by
 # `BARE_MAP_ENDPOINTS`, and everything outside it already defaults to envelope.
 SCALAR_ROOT_EVIDENCE: dict[str, str] = {
-    "deck/getAvatarCharacters": "PoliticAvatorCache.cs:setup",
     "politic/support_item/usePotions": "DailyMissionScene.cs:convertRewardByUsePotionsAPIResult",
     "quest/getChapterData": "PluginRunner_DoEvent.cs:onQuestChapterData",
     "siege/getBrief": "siegeBriefMenuDesc.cs:setup",

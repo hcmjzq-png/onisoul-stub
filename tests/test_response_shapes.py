@@ -27,7 +27,7 @@ class ResponseShapeTest(unittest.TestCase):
             self.assertIn(":", evidence)
 
     def test_bare_map_placeholder_has_no_envelope(self):
-        registry = build_registry()
+        registry = Registry().register_contract_defaults()
         for api in response_shapes.BARE_MAP_ENDPOINTS:
             with self.subTest(api=api):
                 status, body = registry.dispatch(api, {}, None)
@@ -35,7 +35,7 @@ class ResponseShapeTest(unittest.TestCase):
                 self.assertEqual(body, {})
 
     def test_scalar_root_endpoints_keep_typed_contract_keys(self):
-        registry = build_registry()
+        registry = Registry().register_contract_defaults()
         for api in response_shapes.SCALAR_ROOT_EVIDENCE:
             with self.subTest(api=api):
                 status, body = registry.dispatch(api, {}, None)
@@ -52,7 +52,7 @@ class ResponseShapeTest(unittest.TestCase):
                     self.assertIn(key, body)
 
     def test_every_envelope_endpoint_keeps_envelope_and_typed_keys(self):
-        registry = build_registry()
+        registry = Registry().register_contract_defaults()
         for api in contract.endpoints():
             if api in response_shapes.BARE_MAP_ENDPOINTS:
                 continue
@@ -73,7 +73,8 @@ class ResponseShapeTest(unittest.TestCase):
                     self.assertIn(key, body)
 
     def test_envelope_placeholder_keeps_timestamp_and_success(self):
-        status, body = build_registry().dispatch("common/getServerTime", {}, None)
+        registry = Registry().register_contract_defaults()
+        status, body = registry.dispatch("common/getServerTime", {}, None)
         self.assertEqual(status, 200)
         self.assertIs(body["succeeded"], True)
         self.assertIsInstance(body["now"], float)
