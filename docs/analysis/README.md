@@ -10,6 +10,16 @@
 |---|---|
 | `api_contract.tsv` | 402 个 api 端点契约，一端点一行；列定义见 `api-contract.md` |
 | `api-contract.md` | 列定义、十六类抽取手段、交叉校验、嵌套结构、常量枚举、缺口清单 |
+| `behavior-layer.md` | 行为层：端点回调的副作用（场景切换 / 窗口 / 服务调用 / 状态写入 / 键守卫）、端点调用图、启动链结论 |
+| `resource-layer.md` | 资源层：三个 host 的来源、资源 URL 与 MD5 规则、46 个前缀目录、表数据格式与 108 张表清单 |
+| `behavior_contract.tsv` | 402 个端点的行为契约，一端点一行；8 列，列定义见 `behavior-layer.md` |
+| `api_call_graph.tsv` | 416 条端点→端点调用边（from_endpoint / to_endpoint / via_method） |
+| `behavior_stats.txt` | 行为层计数、场景目标分布、出度榜 |
+| `behavior_chains.txt` | 启动链可达性、无入边端点、高扇出端点清单 |
+| `resource_contract.tsv` | 363 条资源名（146 字面量 / 217 运行时决定） |
+| `asset_prefixes.tsv` | 46 个前缀 → 目录 + 三档根目录（9 个在画质档 1/2 走 `assets2/`） |
+| `table_list.tsv` | 客户端 `reset()` 要求的 108 张配置表（文件名 / 根键 / 访问器） |
+| `resource_hosts.txt` | 三个 host 与平台、语言常量的出处 |
 | `verify/endpoints.txt` | 端点清单双向对账（契约↔源码字面量） |
 | `verify/channels.txt` | `WebApiClient` 之外的网络通道（资源下载 / 截图上传 / IRC） |
 | `verify/params_keys.txt` | 用方法体范围重算参数后的差异与常量枚举 |
@@ -29,6 +39,20 @@
 | 有调用但回调体不读命名键 | 45 |
 | 本客户端从不调用（无调用点） | 79 |
 | 唯一响应键 / 带类型 / 带可选标记 | 382 / 250 / 57 |
+
+## 行为层与资源层要点
+
+| 事实 | 数值 / 结论 |
+|---|---|
+| 端点→端点调用边 | 416 条，110 个端点有出边 |
+| 无入边的端点（只能由界面或启动流程发起） | 10 个 |
+| 直接 `transitionScene` 的端点 | 10 个（politic 7 / vsBattle 3 / deck 1 / migrationLogin 1 / strategy 1） |
+| 启动链（getRevisions、gameLogin、guestLogin、getPlayerEntity）深度 3 可达端点 | 0 —— 流程由场景切换驱动，不是回调链驱动 |
+| 有键守卫的端点 | 68（响应键出现在 `if` 条件里） |
+| 资源前缀目录 | 46 个，其中 9 个在画质档 1/2 走 `assets2/` |
+| 资源名 | 363 条（146 字面量 / 217 运行时决定） |
+| 配置表格式 | JSON TextAsset（`load2`/`get2` 全代码 0 调用点，msgpack + CRC32 路径为死代码） |
+| 客户端要求的表 | 108 张，见 `table_list.tsv` |
 
 ## 不入仓
 

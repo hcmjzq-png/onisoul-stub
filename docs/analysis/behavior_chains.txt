@@ -1,0 +1,47 @@
+## 从 common/getRevisions 出发（深度≤3），可达 0 个端点
+
+## 从 auth/gameLogin 出发（深度≤3），可达 0 个端点
+
+## 从 auth/guestLogin 出发（深度≤3），可达 0 个端点
+
+## 从 common/getPlayerEntity 出发（深度≤3），可达 0 个端点
+
+## 无入边的端点（不会被其它端点触发，只能由界面/启动流程直接发起）
+  auth/createPlayer
+  debug/debugLogin
+  debug/devLogin
+  deck/powerUpCharacter
+  inbox/getParcels
+  navigator/activateNavigator
+  politic/map/setMapName2
+  politic/waterborneTrade/send
+  quest/executeQuestEx
+  turfWar/getTurfWarResultLog
+共 10 个
+
+## 出度 >= 8 的端点（一个回调里连发多个请求）
+  deck/getDecks                                  14  battle/executeBattle common/getCharacters common/getEventStatuses common/getSelectCharacters deck/getAvatarCha
+  quest/getQuestProgress                         14  battle/getRaidBossEntries common/getSelectCharacters debug/debugOpenQuest debug/forceProgressQuest debug/reset
+  ranking/getBriefOfRaidBossDaily                13  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getRankersInStrategy                   13  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getBriefOfBattle                       12  ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ranking/getBriefOfNationalR
+  ranking/getBriefOfBattleDaily                  12  ranking/getBriefOfBattle ranking/getBriefOfBrawn ranking/getBriefOfDedication ranking/getBriefOfNationalRankin
+  ranking/getBriefOfBrawn                        12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfDedication ranking/getBriefOfNational
+  ranking/getBriefOfDedication                   12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfNationalRanki
+  ranking/getBriefOfNationalRanking              12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getBriefOfRaidBoss                     12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getBriefOfRaidBossNational             12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getBriefOfRandomQuest                  12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getBriefOfSiege                        12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getRankersOfCountriesInGiganticRaidBoss 12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  ranking/getRankersOfMaxDamageInGiganticRaidBoss 12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
+  politic/mission/getStatesFromAllMissions        9  battle/getRaidBossEntries politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/errantry
+  battle/getRaidBossEntries                       8  politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/errantry/getStatus3 politic/missio
+  politic/building/getBuildCounts                 8  battle/getRaidBossEntries politic/edict/getMissionsInProgress politic/errantry/getStatus3 politic/mission/getM
+  politic/edict/getMissionsInProgress             8  battle/getRaidBossEntries politic/building/getBuildCounts politic/errantry/getStatus3 politic/mission/getMissi
+  politic/errantry/getStatus3                     8  battle/getRaidBossEntries politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/mission/
+  politic/mission/getMissionsInProgress           8  battle/getRaidBossEntries politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/errantry
+  politic/waterborneTrade/getStatus               8  battle/getRaidBossEntries politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/errantry
+  quest/getQuestCompleteFlags                     8  battle/getRaidBossEntries politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/errantry
+  deck/getAvatarCharacters                        6  common/getSelectCharacters deck/getDecks friend/getFriendProfile politic/building/raiseBuildingEventOfBattle p
+  common/getSelectCharacters                      4  common/getCharacters deck/getAvatarCharacters deck/getDecks quest/getQuestProgress
