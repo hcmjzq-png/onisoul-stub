@@ -10,8 +10,6 @@ common/getSelectCharacters	QuestDataCache.process	baseId	QuestDataCache.cs:620(s
 common/getServerTime	Configs.GetUserInfo	playerId	Configs.cs:1335
 common/getServerTime	StatusView.resetStatus	actionPoints,entity,resources	StatusView.cs:286(Hashtable)
 common/getTactics	vsSetting_Siege.playerCharacterSet	grade	vsSetting_Siege.cs:417(int)((double)
-debug/resetDedication	MightOfNationDialog.OnGUI	score	MightOfNationDialog.cs:433(Hashtable)
-deck/extendCharacterStore	DeckAddMaxCharacter.createAddCharacterWindow	character	DeckAddMaxCharacter.cs:151(Hashtable)
 deck/getDeckBonus	DeckScene.OnEnable	inheritPoint,possessionLimits,skillCoins	DeckScene.cs:248(int)((double)
 deck/getDecks	DeckScene.OnEnable	bonus,id	DeckScene.cs:231(Hashtable)
 deck/getDecks	QuestDataCache.process	baseId	QuestDataCache.cs:620(string)
@@ -26,7 +24,6 @@ politic/task/accelerateProduceTask	PoliticBuilding.accelerateProduceTask	acceler
 quest/checkCompleteQuestEx	PluginRunner_DoDreamSpace.onQuestExecute	executeInfo,step	PluginRunner_DoDreamSpace.cs:101(Hashtable)
 quest/checkCompleteQuestEx	PluginRunner_DoOniQuest.onQuestExecute	executeInfo,step	PluginRunner_DoOniQuest.cs:162(Hashtable)
 quest/clearObstacle	PluginQuestStepHelper.OnObstacle	amount,category,needAmount,obstacleInfo,type	PluginQuestStepHelper.cs:189(int)((double)
-quest/clearObstacle	QuestScriptCommand.clearObstacle	category	QuestScriptCommand.cs:2210(string)
 quest/getQuestBossPunish	QuestScriptCommand.startQuest	obstacle	QuestScriptCommand.cs:442(Hashtable)
 quest/getQuestEncount	QuestScriptCommand.startQuest	obstacle,script	QuestScriptCommand.cs:442(Hashtable)
 quest/getQuestEncountWorks	QuestScriptCommand.startQuest	script	QuestScriptCommand.cs:467(string)

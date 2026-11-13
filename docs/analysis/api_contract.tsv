@@ -111,7 +111,7 @@ debug/forceFeedbackFriendOffer	debug_forceFeedbackFriendOffer	receivePlayerId,re
 debug/forceProgressGiganticChain	debug_ForceProgressGiganticChain	token				0		0
 debug/forceProgressGiganticPhase	debug_ForceProgressGiganticPhase	token				0		0
 debug/forceProgressQuest	forceProgressQuest	area,chapter,questId,questType,token				0	QuestStoryAreaSelector.OnGUI|QuestStorySelector.OnGUI|QuestTypeSelector.OnGUI	3
-debug/resetDedication	debug_resetDedicateScore	token			nationalPower:double	1	MightOfNationDialog.OnGUI	1
+debug/resetDedication	debug_resetDedicateScore	token			nationalPower:double;score:double	2	MightOfNationDialog.OnGUI	1
 debug/resetPlayer	resetPlayer	isCreatePlayer,token				0	PoliticDebugMenu.debugResetPlayer	1
 debug/resetQuest	resetQuest	token				0	QuestTypeSelector.OnGUI	1
 debug/setQuestStep	setQuestStep	areaId,chapterId,questId,questType,step,token				0	Quest.OnGUI	1

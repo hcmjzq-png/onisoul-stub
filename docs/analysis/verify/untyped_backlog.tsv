@@ -1,0 +1,482 @@
+endpoint	key	type_hint	observed_casts	status
+auction/auctionCardBrowse	status*			no_cast_evidence
+auction/auctionCardBuy	status*			no_cast_evidence
+auction/auctionCardOffShelf	status*			no_cast_evidence
+auction/auctionCardOnShelf	status*			no_cast_evidence
+auction/auctionCardSearchArmy	status*			no_cast_evidence
+auction/auctionCardSearchFaction	status*			no_cast_evidence
+auction/auctionCardSearchGender	status*			no_cast_evidence
+auction/auctionCardSearchGrade	status*			no_cast_evidence
+auction/auctionCardSearchName	status*			no_cast_evidence
+auction/auctionCardSearchSkill	status*			no_cast_evidence
+auction/auctionResourceBrowse	status*			no_cast_evidence
+auction/auctionResourceBuy	status*			no_cast_evidence
+auction/auctionResourceOffShelf	status*			no_cast_evidence
+auction/auctionResourceOnShelf	status*			no_cast_evidence
+auction/auctionResourceSale	status*			no_cast_evidence
+auction/auctionResourceSearch	status*			no_cast_evidence
+auction/auctionStatus	status*			no_cast_evidence
+auth/keepAliveContainer	isCreatedPlayer			no_cast_evidence
+auth/keepAliveContainer	loginHash			no_cast_evidence
+battle/captchaVsBattle	successful	Hashtable	Hashtable	single_cast
+battle/executeBattle	 + name + 			no_cast_evidence
+battle/executeBattle	additional			no_cast_evidence
+battle/executeBattle	commandResult*			no_cast_evidence
+battle/getRaidBossDetail	id			no_cast_evidence
+battle/getRaidBossDetail	name			no_cast_evidence
+battle/getRaidBossDetail	playerId			no_cast_evidence
+battle/getRaidBossLogs	<id>.amount			no_cast_evidence
+battle/getVcode	VCodeImage	Hashtable	Hashtable	single_cast
+battle/getVsReplayData	 + name + 			no_cast_evidence
+battle/getVsReplayData	additional			no_cast_evidence
+battle/getVsReplayData	commandResult*			no_cast_evidence
+battle/sendRescueRequest	RAIDBOSS_MSG_FRIEND_HELP			no_cast_evidence
+battle/sendRescueRequest	RAIDBOSS_MSG_FRIEND_NOTHELP			no_cast_evidence
+common/getBriefOfNationalPower	dedicationRanking	Hashtable	Hashtable	single_cast
+common/getPlayerCogid	playerId			no_cast_evidence
+community/bbs/closeBbs	guid			no_cast_evidence
+community/bbs/closeThread	guid			no_cast_evidence
+community/bbs/createBbs	guid			no_cast_evidence
+community/bbs/createThread	guid			no_cast_evidence
+community/bbs/deleteBbs	guid			no_cast_evidence
+community/bbs/deleteComment	guid			no_cast_evidence
+community/bbs/deleteThread	guid			no_cast_evidence
+community/bbs/getBbsId	guid			no_cast_evidence
+community/bbs/getBbsList	guid			no_cast_evidence
+community/bbs/infoComment	 + name + 			no_cast_evidence
+community/bbs/infoComment	comment			no_cast_evidence
+community/bbs/infoComment	guid			no_cast_evidence
+community/bbs/infoThread	 + name + 			no_cast_evidence
+community/bbs/infoThread	description			no_cast_evidence
+community/bbs/infoThread	guid			no_cast_evidence
+community/bbs/infoThread	name			no_cast_evidence
+community/bbs/listComment	 + name + 			no_cast_evidence
+community/bbs/listComment	comment			no_cast_evidence
+community/bbs/listComment	guid			no_cast_evidence
+community/bbs/listComment	nextPage*			no_cast_evidence
+community/bbs/listComment	prevPage*			no_cast_evidence
+community/bbs/listThread	 + name + 			no_cast_evidence
+community/bbs/listThread	description			no_cast_evidence
+community/bbs/listThread	guid			no_cast_evidence
+community/bbs/listThread	name			no_cast_evidence
+community/bbs/openBbs	guid			no_cast_evidence
+community/bbs/openThread	guid			no_cast_evidence
+community/bbs/postComment	guid			no_cast_evidence
+community/libs/bbsSession	sess_key			no_cast_evidence
+dailymission/getDailyMission	amount			no_cast_evidence
+dailymission/getDailyMission	curCount	string	string	single_cast
+dailymission/getDailyMission	getPoint			no_cast_evidence
+dailymission/getDailyMission	itemId	Hashtable	Hashtable	single_cast
+dailymission/getDailyMission	point*			no_cast_evidence
+dailymission/getDailyMission	state			no_cast_evidence
+dailymission/getDailyMission	totalCount			no_cast_evidence
+dailymission/getDailyMissionReward	Result	Hashtable	Hashtable	single_cast
+dailymission/getPoint	Result	Hashtable	Hashtable	single_cast
+debug/debugCreateQuestEncount	 + name + 			no_cast_evidence
+debug/devLogin	playerId*			no_cast_evidence
+deck/extendCharacterStore	extendLimit			no_cast_evidence
+deck/extendCharacterStore	extendSlot			no_cast_evidence
+deck/extendCharacterStore	nextOpenLimit			no_cast_evidence
+deck/extendCharacterStore	now			no_cast_evidence
+deck/getAvatarCharacters	 + name + 			no_cast_evidence
+deck/getCharactersInStore	extendSlot	double	double	single_cast
+deck/getDeckBonus	id	Hashtable	Hashtable	single_cast
+deck/getDecks	4			no_cast_evidence
+deck/getDecks	equip			no_cast_evidence
+deck/gradeUpCharacter	id			no_cast_evidence
+deck/gradeUpCharacter	images			no_cast_evidence
+deck/gradeUpEquip	id			no_cast_evidence
+deck/inheritCharacterSkill	0			no_cast_evidence
+deck/inheritCharacterSkill	removeCharacterId	Hashtable	Hashtable	single_cast
+deck/sellCharacters	sellPrice			no_cast_evidence
+deck/sellEquips	sellPrice			no_cast_evidence
+deck/sellTactics	sellPrice			no_cast_evidence
+deck/setDecks	0			no_cast_evidence
+deck/setSkillSlot	amount			no_cast_evidence
+deck/setSkillSlot	category	Hashtable	Hashtable	single_cast
+deck/setSkillcoins	skillCoins			no_cast_evidence
+depletionmission/drawDepletionItem	Result			no_cast_evidence
+friend/cancelFriendOffer	0			no_cast_evidence
+friend/dissolutionFriend	0			no_cast_evidence
+friend/dissolutionFriend	guid			no_cast_evidence
+friend/feedbackFriendOffer	0			no_cast_evidence
+friend/findFriendsAndSend	FRIEND_MSG_AUTOSEND			no_cast_evidence
+friend/getFriendProfile	 + name + 			no_cast_evidence
+friend/getFriendProfile	attribute			no_cast_evidence
+friend/getFriendProfile	country			no_cast_evidence
+friend/getFriendProfile	countryId			no_cast_evidence
+friend/getFriendProfile	func			no_cast_evidence
+friend/getFriendProfile	guid			no_cast_evidence
+friend/getFriendProfile	habits			no_cast_evidence
+friend/getFriendProfile	limit			no_cast_evidence
+friend/getFriendProfile	message			no_cast_evidence
+friend/getFriendProfile	playerId			no_cast_evidence
+friend/getFriendProfile	rank			no_cast_evidence
+friend/getFriends	guid			no_cast_evidence
+friend/getFriends	playerIds			no_cast_evidence
+friend/sendFriendOffer	0			no_cast_evidence
+friend/sendFriendOffer	guid			no_cast_evidence
+friend/task/accelerateFriendProduceTask	acceleratecount	Hashtable	Hashtable	single_cast
+friend/updateFriendData	guid			no_cast_evidence
+friend/visitFriendMap	friendInfo	Hashtable	Hashtable	single_cast
+giganticRaidBoss/getGiganticRaidBossBattleResult	additionalResult			no_cast_evidence
+invitation/getMyCode	myCode			no_cast_evidence
+mailbox/getMailBody	body			no_cast_evidence
+mailbox/getMailBody	func			no_cast_evidence
+mailbox/getMailHeaders	 + name + 			no_cast_evidence
+mailbox/getMailHeaders	func			no_cast_evidence
+mailbox/getMailHeaders	time			no_cast_evidence
+mailbox/sendMails	 + name + 			no_cast_evidence
+mailbox/sendMails	fails			no_cast_evidence
+mailbox/sendMails	func			no_cast_evidence
+mailbox/sendMails	guid			no_cast_evidence
+mailbox/sendMails	outHash			no_cast_evidence
+mailbox/sendMails	sendFailedUserCount			no_cast_evidence
+mailbox/sendMails	toMailer			no_cast_evidence
+navigator/hireNavigator	 + name + 			no_cast_evidence
+netCafe/exchangeNpoint	normStatus			no_cast_evidence
+politic/boosterPack/buy	amount			no_cast_evidence
+politic/boosterPack/buyWithItem	amount			no_cast_evidence
+politic/boosterPack/getRemains	busho			no_cast_evidence
+politic/building/levelUpBuildings	output_buildings*			no_cast_evidence
+politic/kokugi/develop	point			no_cast_evidence
+politic/kokugi/develop	usedPoint			no_cast_evidence
+politic/kokugi/getStatus	kokugiPoint			no_cast_evidence
+politic/kokugi/getStatus	levelRate			no_cast_evidence
+politic/kokugi/getStatus	selfPoint			no_cast_evidence
+politic/mypage/getArtifactSeries	pageMax			no_cast_evidence
+politic/mypage/getArtifactSeries	series			no_cast_evidence
+politic/mypage/getJewelSeries	pageMax			no_cast_evidence
+politic/mypage/getJewelSeries	series			no_cast_evidence
+politic/mypage/getMigratePlanCountryStatus	country			no_cast_evidence
+politic/mypage/getMigratePlanCountryStatus	rank			no_cast_evidence
+politic/mypage/playNineGridGacha	resources*			no_cast_evidence
+politic/shop/buyShopItem	DialogCode			no_cast_evidence
+politic/shop/buyShopItem	SceneId			no_cast_evidence
+politic/shop/buyShopItem	errorReason			no_cast_evidence
+politic/shop/buyShopItem	resources			no_cast_evidence
+politic/shop/buyShopItemFromNationalPower	DialogCode			no_cast_evidence
+politic/shop/buyShopItemFromNationalPower	SceneId			no_cast_evidence
+politic/shop/buyShopItemFromNationalPower	errorReason			no_cast_evidence
+politic/shop/buyShopItemFromNationalPower	resources			no_cast_evidence
+politic/shop/getShopItems	recommendedItems			no_cast_evidence
+politic/shop/getShopItemsFromNationalPower	recommendedItems			no_cast_evidence
+politic/shop/getShopItemsFromNationalPower	shopItems			no_cast_evidence
+politic/shop/sellBuildings	buildings*			no_cast_evidence
+politic/support_item/useDopingRemoveItem	addItems			no_cast_evidence
+politic/support_item/useDopingRemoveItem	changeItems			no_cast_evidence
+politic/support_item/useDopingRemoveItem	character			no_cast_evidence
+politic/task/accelerateProduceTask	DirectMessage			no_cast_evidence
+politic/task/submitBuildAndComplete	buildingId*			no_cast_evidence
+politic/task/submitBuildTask	buildingId*			no_cast_evidence
+politic/task/submitSerialBuildAndComplete	buildingId*			no_cast_evidence
+politic/task/submitSerialBuildAndComplete	x			no_cast_evidence
+politic/task/submitSerialBuildAndComplete	y			no_cast_evidence
+ranking/getBriefOfBattle	 + name + 			no_cast_evidence
+ranking/getBriefOfBattle	isCurrent			no_cast_evidence
+ranking/getBriefOfBattle	ranksize			no_cast_evidence
+ranking/getBriefOfBattle	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfBattleDaily	 + name + 			no_cast_evidence
+ranking/getBriefOfBattleDaily	isCurrent			no_cast_evidence
+ranking/getBriefOfBattleDaily	ranksize			no_cast_evidence
+ranking/getBriefOfBattleDaily	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfBrawn	 + name + 			no_cast_evidence
+ranking/getBriefOfBrawn	isCurrent			no_cast_evidence
+ranking/getBriefOfBrawn	ranksize			no_cast_evidence
+ranking/getBriefOfBrawn	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfCountriesInGiganticRaidBoss	 + name + 			no_cast_evidence
+ranking/getBriefOfCountryBattle	 + name + 			no_cast_evidence
+ranking/getBriefOfDedication	 + name + 			no_cast_evidence
+ranking/getBriefOfDedication	isCurrent			no_cast_evidence
+ranking/getBriefOfDedication	ranksize			no_cast_evidence
+ranking/getBriefOfDedication	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfDedicationMonthly	 + name + 			no_cast_evidence
+ranking/getBriefOfDedicationMonthly	aroundRank			no_cast_evidence
+ranking/getBriefOfGiganticRaidBoss	 + name + 			no_cast_evidence
+ranking/getBriefOfKokudaka	 + name + 			no_cast_evidence
+ranking/getBriefOfKokudaka	aroundRank			no_cast_evidence
+ranking/getBriefOfMaxDamageInGiganticRaidBoss	 + name + 			no_cast_evidence
+ranking/getBriefOfNationalPower	 + name + 			no_cast_evidence
+ranking/getBriefOfNationalRanking	 + name + 			no_cast_evidence
+ranking/getBriefOfNationalRanking	isCurrent			no_cast_evidence
+ranking/getBriefOfNationalRanking	ranksize			no_cast_evidence
+ranking/getBriefOfRaidBoss	 + name + 			no_cast_evidence
+ranking/getBriefOfRaidBoss	isCurrent			no_cast_evidence
+ranking/getBriefOfRaidBoss	ranksize			no_cast_evidence
+ranking/getBriefOfRaidBoss	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfRaidBossDaily	 + name + 			no_cast_evidence
+ranking/getBriefOfRaidBossDaily	aroundRank			no_cast_evidence
+ranking/getBriefOfRaidBossDaily	isCurrent			no_cast_evidence
+ranking/getBriefOfRaidBossDaily	ranksize			no_cast_evidence
+ranking/getBriefOfRaidBossDaily	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfRaidBossNational	 + name + 			no_cast_evidence
+ranking/getBriefOfRaidBossNational	isCurrent			no_cast_evidence
+ranking/getBriefOfRaidBossNational	ranksize			no_cast_evidence
+ranking/getBriefOfRandomQuest	 + name + 			no_cast_evidence
+ranking/getBriefOfRandomQuest	isCurrent			no_cast_evidence
+ranking/getBriefOfRandomQuest	ranksize			no_cast_evidence
+ranking/getBriefOfRandomQuest	unit	Hashtable	Hashtable	single_cast
+ranking/getBriefOfSiege	 + name + 			no_cast_evidence
+ranking/getBriefOfSiege	isCurrent			no_cast_evidence
+ranking/getBriefOfSiege	ranksize			no_cast_evidence
+ranking/getBriefOfSiege	unit	Hashtable	Hashtable	single_cast
+ranking/getDailyRankersInBattle	rank			no_cast_evidence
+ranking/getDailyRankersInRaidBoss	rank			no_cast_evidence
+ranking/getDailyRankersInTurfWar	rank			no_cast_evidence
+ranking/getRankersInBattle	rank			no_cast_evidence
+ranking/getRankersInBrawn	 + name + 			no_cast_evidence
+ranking/getRankersInDedication	rank			no_cast_evidence
+ranking/getRankersInGiganticRaidBoss	rank			no_cast_evidence
+ranking/getRankersInKokudaka	 + name + 			no_cast_evidence
+ranking/getRankersInNationalPower	 + name + 			no_cast_evidence
+ranking/getRankersInNationalPower	hiddenAround			no_cast_evidence
+ranking/getRankersInNationalPower	hiddenEntry			no_cast_evidence
+ranking/getRankersInNationalPower	invaride			no_cast_evidence
+ranking/getRankersInNationalPower	myrank			no_cast_evidence
+ranking/getRankersInNationalPower	rank			no_cast_evidence
+ranking/getRankersInNationalPower	score			no_cast_evidence
+ranking/getRankersInNationalPower	size			no_cast_evidence
+ranking/getRankersInNationalPower	username			no_cast_evidence
+ranking/getRankersInNationalRanking	 + name + 			no_cast_evidence
+ranking/getRankersInRaidBoss	rank			no_cast_evidence
+ranking/getRankersInRaidBossNational	 + name + 			no_cast_evidence
+ranking/getRankersInRandomQuest	 + name + 			no_cast_evidence
+ranking/getRankersInSiege	 + name + 			no_cast_evidence
+ranking/getRankersInStrategy	 + name + 			no_cast_evidence
+ranking/getRankersInStrategy	isCurrent			no_cast_evidence
+ranking/getRankersInStrategy	rank			no_cast_evidence
+ranking/getRankersInStrategy	ranksize			no_cast_evidence
+ranking/getRankersInStrategy	score			no_cast_evidence
+ranking/getRankersInStrategy	unit	Hashtable	Hashtable	single_cast
+ranking/getRankersInStrategyForMypage	 + name + 			no_cast_evidence
+ranking/getRankersInStrategyPie	 + name + 			no_cast_evidence
+ranking/getRankersInStrategyPie	captionFileName			no_cast_evidence
+ranking/getRankersInStrategyPie	countryRanking			no_cast_evidence
+ranking/getRankersInStrategyPie	hiddenAround			no_cast_evidence
+ranking/getRankersInStrategyPie	hiddenEntry			no_cast_evidence
+ranking/getRankersInStrategyPie	hiddenPreButton			no_cast_evidence
+ranking/getRankersInStrategyPie	invaride			no_cast_evidence
+ranking/getRankersInStrategyPie	myrank			no_cast_evidence
+ranking/getRankersInStrategyPie	rank			no_cast_evidence
+ranking/getRankersInStrategyPie	score			no_cast_evidence
+ranking/getRankersInStrategyPie	size			no_cast_evidence
+ranking/getRankersInStrategyPie	username			no_cast_evidence
+ranking/getRankersInTurfWar	rank			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	 + name + 			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	captionFileName			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	countryRanking			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	hiddenAround			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	hiddenEntry			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	hiddenPreButton			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	invaride			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	isCurrent			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	myrank			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	rank			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	ranksize			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	score			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	size			no_cast_evidence
+ranking/getRankersOfCountriesInGiganticRaidBoss	unit	Hashtable	Hashtable	single_cast
+ranking/getRankersOfCountriesInGiganticRaidBoss	username			no_cast_evidence
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	 + name + 			no_cast_evidence
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	isCurrent			no_cast_evidence
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	rank			no_cast_evidence
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	ranksize			no_cast_evidence
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	score			no_cast_evidence
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	unit	Hashtable	Hashtable	single_cast
+ranking/getRankingOfCountriesInBattle	 + name + 			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	captionFileName			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	countryRanking			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	hiddenEntry			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	invaride			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	myrank			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	rank			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	score			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	size			no_cast_evidence
+ranking/getRankingOfCountriesInBattle	username			no_cast_evidence
+ranking/getRecordOfCountryInBattle	countryId	Hashtable	Hashtable	single_cast
+ranking/getTopRankersInTurfWar	rankers			no_cast_evidence
+siege/discharge	stage			no_cast_evidence
+siege/getPairings	 + name + 			no_cast_evidence
+siege/getPairings	atk1			no_cast_evidence
+siege/getPairings	atk1Rank			no_cast_evidence
+siege/getPairings	isMe			no_cast_evidence
+siege/getPairings	size			no_cast_evidence
+siege/getSiegeResultLog	bonus			no_cast_evidence
+siege/getSiegeResultLog	victoryPoint			no_cast_evidence
+siege/getSiegeStatus	stage			no_cast_evidence
+siege/lookSiegeResult	bonus			no_cast_evidence
+siege/lookSiegeResult	victoryPoint			no_cast_evidence
+siege/openingBet	charge	Hashtable	Hashtable	single_cast
+strategy/command/attack	aroundEffect			no_cast_evidence
+strategy/command/attack	command			no_cast_evidence
+strategy/command/attack	currentForceSize			no_cast_evidence
+strategy/command/attack	isAlive			no_cast_evidence
+strategy/command/attack	isExecuted*			no_cast_evidence
+strategy/command/attack	nextOperableTime			no_cast_evidence
+strategy/command/attack	operatedTime			no_cast_evidence
+strategy/command/attack	playerCounts*			no_cast_evidence
+strategy/command/attack	proficiency			no_cast_evidence
+strategy/command/attack	rivalId*			no_cast_evidence
+strategy/command/buildCastle	aroundEffect			no_cast_evidence
+strategy/command/buildCastle	command			no_cast_evidence
+strategy/command/buildCastle	currentForceSize			no_cast_evidence
+strategy/command/buildCastle	isAlive			no_cast_evidence
+strategy/command/buildCastle	isExecuted*			no_cast_evidence
+strategy/command/buildCastle	nextOperableTime			no_cast_evidence
+strategy/command/buildCastle	operatedTime			no_cast_evidence
+strategy/command/buildCastle	playerCounts*			no_cast_evidence
+strategy/command/buildCastle	proficiency			no_cast_evidence
+strategy/command/buildCastle	rivalId*			no_cast_evidence
+strategy/command/cancelMarch	base			no_cast_evidence
+strategy/command/cancelMarch	nextOperableTime	double	double	single_cast
+strategy/command/cancelMarch	operatedTime			no_cast_evidence
+strategy/command/cancelMarch	position			no_cast_evidence
+strategy/command/changeBase	aroundEffect			no_cast_evidence
+strategy/command/changeBase	command			no_cast_evidence
+strategy/command/changeBase	currentForceSize			no_cast_evidence
+strategy/command/changeBase	isAlive			no_cast_evidence
+strategy/command/changeBase	isExecuted*			no_cast_evidence
+strategy/command/changeBase	nextOperableTime			no_cast_evidence
+strategy/command/changeBase	operatedTime			no_cast_evidence
+strategy/command/changeBase	playerCounts*			no_cast_evidence
+strategy/command/changeBase	proficiency			no_cast_evidence
+strategy/command/changeBase	rivalId*			no_cast_evidence
+strategy/command/conscript	aroundEffect			no_cast_evidence
+strategy/command/conscript	command			no_cast_evidence
+strategy/command/conscript	currentForceSize			no_cast_evidence
+strategy/command/conscript	isAlive			no_cast_evidence
+strategy/command/conscript	isExecuted*			no_cast_evidence
+strategy/command/conscript	nextOperableTime			no_cast_evidence
+strategy/command/conscript	operatedTime			no_cast_evidence
+strategy/command/conscript	playerCounts*			no_cast_evidence
+strategy/command/conscript	proficiency			no_cast_evidence
+strategy/command/conscript	rivalId*			no_cast_evidence
+strategy/command/march2	aroundEffect			no_cast_evidence
+strategy/command/march2	command			no_cast_evidence
+strategy/command/march2	currentForceSize			no_cast_evidence
+strategy/command/march2	isAlive			no_cast_evidence
+strategy/command/march2	isExecuted*			no_cast_evidence
+strategy/command/march2	nextOperableTime			no_cast_evidence
+strategy/command/march2	operatedTime			no_cast_evidence
+strategy/command/march2	playerCounts*			no_cast_evidence
+strategy/command/march2	proficiency			no_cast_evidence
+strategy/command/march2	rivalId*			no_cast_evidence
+strategy/command/revenge	aroundEffect			no_cast_evidence
+strategy/command/revenge	command			no_cast_evidence
+strategy/command/revenge	currentForceSize			no_cast_evidence
+strategy/command/revenge	isAlive			no_cast_evidence
+strategy/command/revenge	isExecuted*			no_cast_evidence
+strategy/command/revenge	nextOperableTime			no_cast_evidence
+strategy/command/revenge	operatedTime			no_cast_evidence
+strategy/command/revenge	playerCounts*			no_cast_evidence
+strategy/command/revenge	proficiency			no_cast_evidence
+strategy/command/revenge	rivalId*			no_cast_evidence
+strategy/command/strategize	aroundEffect			no_cast_evidence
+strategy/command/strategize	command			no_cast_evidence
+strategy/command/strategize	currentForceSize			no_cast_evidence
+strategy/command/strategize	isAlive			no_cast_evidence
+strategy/command/strategize	isExecuted*			no_cast_evidence
+strategy/command/strategize	nextOperableTime			no_cast_evidence
+strategy/command/strategize	operatedTime			no_cast_evidence
+strategy/command/strategize	playerCounts*			no_cast_evidence
+strategy/command/strategize	proficiency			no_cast_evidence
+strategy/command/strategize	rivalId*			no_cast_evidence
+strategy/command/supply	aroundEffect			no_cast_evidence
+strategy/command/supply	command			no_cast_evidence
+strategy/command/supply	currentForceSize			no_cast_evidence
+strategy/command/supply	isAlive			no_cast_evidence
+strategy/command/supply	isExecuted*			no_cast_evidence
+strategy/command/supply	nextOperableTime			no_cast_evidence
+strategy/command/supply	operatedTime			no_cast_evidence
+strategy/command/supply	playerCounts*			no_cast_evidence
+strategy/command/supply	proficiency			no_cast_evidence
+strategy/command/supply	rivalId*			no_cast_evidence
+strategy/command/traceroute	route			no_cast_evidence
+strategy/command/training	aroundEffect			no_cast_evidence
+strategy/command/training	command			no_cast_evidence
+strategy/command/training	currentForceSize			no_cast_evidence
+strategy/command/training	isAlive			no_cast_evidence
+strategy/command/training	isExecuted*			no_cast_evidence
+strategy/command/training	nextOperableTime			no_cast_evidence
+strategy/command/training	operatedTime			no_cast_evidence
+strategy/command/training	playerCounts*			no_cast_evidence
+strategy/command/training	proficiency			no_cast_evidence
+strategy/command/training	rivalId*			no_cast_evidence
+strategy/getMercenaryEmployInfo	kokudaka			no_cast_evidence
+strategy/getMercenaryEmployInfo	maxForceSize			no_cast_evidence
+strategy/getMercenaryEmployInfo	regularSoldier			no_cast_evidence
+strategy/getStrategyActionLogs2	 + name + 			no_cast_evidence
+strategy/getStrategyActionLogs2	posName			no_cast_evidence
+strategy/getStrategyActionLogs2	size			no_cast_evidence
+strategy/getStrategyBattleLogs	 + name + 			no_cast_evidence
+strategy/getStrategyBattleLogs	afterForceSize			no_cast_evidence
+strategy/getStrategyBattleLogs	battleRule			no_cast_evidence
+strategy/getStrategyBattleLogs	battleRuleTarget			no_cast_evidence
+strategy/getStrategyBattleLogs	blueSoul			no_cast_evidence
+strategy/getStrategyBattleLogs	command			no_cast_evidence
+strategy/getStrategyBattleLogs	consumeResources			no_cast_evidence
+strategy/getStrategyBattleLogs	contributionRatios			no_cast_evidence
+strategy/getStrategyBattleLogs	friends			no_cast_evidence
+strategy/getStrategyBattleLogs	other			no_cast_evidence
+strategy/getStrategyBattleLogs	otherAfterForceSize			no_cast_evidence
+strategy/getStrategyBattleLogs	otherDamage			no_cast_evidence
+strategy/getStrategyBattleLogs	otherPreForceSize			no_cast_evidence
+strategy/getStrategyBattleLogs	palms			no_cast_evidence
+strategy/getStrategyBattleLogs	party			no_cast_evidence
+strategy/getStrategyBattleLogs	posName			no_cast_evidence
+strategy/getStrategyBattleLogs	posX			no_cast_evidence
+strategy/getStrategyBattleLogs	posY			no_cast_evidence
+strategy/getStrategyBattleLogs	posid			no_cast_evidence
+strategy/getStrategyBattleLogs	preForceSize			no_cast_evidence
+strategy/getStrategyBattleLogs	proc			no_cast_evidence
+strategy/getStrategyBattleLogs	procNum			no_cast_evidence
+strategy/getStrategyBattleLogs	proficiencies			no_cast_evidence
+strategy/getStrategyBattleLogs	size			no_cast_evidence
+strategy/getStrategyBattleLogs	skill			no_cast_evidence
+strategy/getStrategyBattleLogs	skillBusho			no_cast_evidence
+strategy/getStrategyBattleLogs	skillId			no_cast_evidence
+strategy/getStrategyBattleLogs	total			no_cast_evidence
+strategy/getStrategyBattleLogs	turn			no_cast_evidence
+strategy/getStrategyCellLogs	 + name + 			no_cast_evidence
+strategy/getStrategyCellLogs	posName			no_cast_evidence
+strategy/getStrategyCellLogs	size			no_cast_evidence
+strategy/getStrategyCommandInfo	buildingId	string	string	single_cast
+strategy/getStrategyCommandInfo	food			no_cast_evidence
+strategy/getStrategyCommandInfo	forceSizes	Hashtable	Hashtable	single_cast
+strategy/getStrategyCommandInfo	gold			no_cast_evidence
+strategy/getStrategyCommandInfo	iron			no_cast_evidence
+strategy/getStrategyCommandInfo	occupied	string	string	single_cast
+strategy/getStrategyCommandInfo	route			no_cast_evidence
+strategy/getStrategyCommandInfo	terrainId	string	string	single_cast
+strategy/getStrategyCommandInfo	wood			no_cast_evidence
+strategy/getStrategyPairings	atk1			no_cast_evidence
+strategy/getStrategyPairings	atk1Rank			no_cast_evidence
+strategy/getStrategyPairings	attacker1Point			no_cast_evidence
+strategy/getStrategyPairings	attackerPoint			no_cast_evidence
+strategy/getStrategyPairings	defenderPoint			no_cast_evidence
+strategy/getStrategyPairings	func			no_cast_evidence
+strategy/getStrategyPairings	isMe			no_cast_evidence
+strategy/getStrategyPairings	loseReward			no_cast_evidence
+strategy/getStrategyPairings	loseRewardNum			no_cast_evidence
+strategy/getStrategyPairings	size			no_cast_evidence
+strategy/getStrategyPairings	winReward			no_cast_evidence
+strategy/getStrategyPairings	winRewardNum			no_cast_evidence
+strategy/getStrategyPersonalLogs	 + name + 			no_cast_evidence
+strategy/getStrategyPersonalLogs	fieldName			no_cast_evidence
+strategy/getStrategyPersonalLogs	size			no_cast_evidence
+strategy/getStrategyPromptReport	 + name + 			no_cast_evidence
+strategy/getStrategyWinLossRecords	atk1			no_cast_evidence
+strategy/getStrategyWinLossRecords	atk1Rank			no_cast_evidence
+strategy/getStrategyWinLossRecords	attacker1Point			no_cast_evidence
+strategy/getStrategyWinLossRecords	attackerPoint			no_cast_evidence
+strategy/getStrategyWinLossRecords	category			no_cast_evidence
+strategy/getStrategyWinLossRecords	date			no_cast_evidence
+strategy/getStrategyWinLossRecords	defenderPoint			no_cast_evidence
+strategy/getStrategyWinLossRecords	func			no_cast_evidence
+strategy/getStrategyWinLossRecords	info			no_cast_evidence
+strategy/getStrategyWinLossRecords	isMe			no_cast_evidence
+strategy/getStrategyWinLossRecords	size			no_cast_evidence
+strategy/getStrategyWinLossRecords	winner			no_cast_evidence
+trophy/getTrophyProgress	level			no_cast_evidence
+turfWar/getTurfWarResultLog	gainRedSoul			no_cast_evidence
+turfWar/getTurfWarResultLog	victory			no_cast_evidence
