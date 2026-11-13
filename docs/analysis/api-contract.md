@@ -166,12 +166,13 @@ debug/debugLogin               username: debug
 
 - **53 个无调用点**：`app/` 内不存在 `.方法名(` 的调用点，只有 `WebApiClient` 自己的包装方法，说明本客户端从不触发。契约参数取自 `WebApiClient` 方法本身。
   （注意：早期口径按「`httpCall` 站点数」判定被调用，把包装方法算进去了，因此曾误报为 55 个。）
-- **70 个有调用但不读命名键**：其中 46 条在 `verify/no_key_final.txt` 里已分形态（下表合计 46），其余 24 条形态待补：
+- **70 个有调用但不读命名键**：形态已全部归清（70 条，`shape` 无一留空）：
+  - `ignored` 26：回调体只置状态位、切场景、改本地 UI，完全不读回包（本轮逐条核实，见下节「口径差」）；
   - `iterates_no_key_name` 5：`foreach` 遍历后取 `item.Key` 当数据 id（如 `deck/getProtectedCharacterIds`），外层键名由服务端决定；
-  - `hands_to_callee` 12：原样交给下游方法（`resetItems` / `createPlayerData` / `getQuestProgress` / `cancelWaterTrade` 等），已追一层仍未读到键；
+  - `hands_to_callee` 10：原样交给下游方法（`resetItems` / `createPlayerData` / `getQuestProgress` / `cancelWaterTrade` 等），已追一层仍未读到键；
   - `responder_elsewhere` 15：回调体在另一栈帧构造，追 3 层未及；
   - `null_check_only` 3、`count_only` 1、`ui_only` 1、`other` 9：只判空、只取 `.Count`、只喂 UI。
-  - 这 71 个回 `{}` 不会导致崩溃（客户端不做命名读取），但会导致**界面为空**，属运行验证可确认的残余项。
+  - 这 70 个回 `{}` 不会导致崩溃（客户端不做命名读取），但可能导致**界面为空**，属运行验证可确认的残余项。
 - **模板键的响应侧**：`hashtable["day" + i]` 这类已按上面「嵌套键」处理；其余 `*TableAccessor` 里的动态键读的是**配置表**，不是回包，未列入。
 - `friend/getPlayerEntry` 方法发出的是 `common/getPlayerEntity`，名称不一致，原文如此，未改动。
 
@@ -247,9 +248,24 @@ debug/debugLogin               username: debug
   本 Stub 固定 `container: none`，这条分支只在服务端改回 ymbga 时才生效；
 - 上述结论都是静态推断，没有真机单次启动验证。
 
-### 处置清单的口径差（27 条）
+### 处置清单的口径差（27 条，已逐条核清）
 
-`verify/no_key_final.txt` 的 `usage` 列沿用早期按 `.<方法名>(` 字面点判定的口径，仍把 27 个已有 `call_sites` 的零字段端点记作 `no_call_site`（例：`auth/createPlayer` 在 `BootUp.dummyPlayerCreate` 被调用，`debug/*` 一批在 `PoliticDebugMenu` / `DebugMakeCharacterMenu` 被调用）。上面「53 无调用点 / 70 有调用点」按契约表 `call_sites` 列统计，与清单口径的逐条对账留作下一批。
+`verify/no_key_final.txt` 的 `usage` 列原按 `.<方法名>(` 字面点判定，与契约 `call_sites` 对不上，差异正好 27 条，现已逐条核对完毕：
+
+- **26 条清单记 `no_call_site`、契约有调用点**：调用点全部真实存在，且回调体不读回包——
+  `auth/createPlayer`（`BootUp.cs:182` / `LoginEnvironment.cs:295`，只 `transitionScene`）、
+  `auth/refreshToken`（`BoosterPackScene.cs:77`，只弹充值窗）、
+  `debug/addItems`（`DebugMakeCharacterMenu.cs:164` / `DebugMakeEquipMenu.cs:145` / `PoliticDebugMenu.cs:73`、`:89`，回调体为空）、
+  `debug/debugCreateEquip`（`DebugMakeEquipMenu.cs:221`、`:329`，只复位 `canMake_`）、
+  `debug/setQuestStep`（`Quest.cs:116`，空回调）等，全部归入 `ignored`，清单已改成 `called` 并补 `file:line`。
+- **1 条方向相反**：`friend/getFriendMapData` 清单记 `called` / `hands_to_callee:PoliticMapInfo,visitFriendMap`，
+  但 2 参重载无调用点（`WebApiClient.cs:2688`，三实参落 `:2697`，归 `getFriendMapData2` / `visitFriendMap`），
+  清单已改 `no_call_site`。
+- **2 条过期**：`battle/getRaidBossLogs`、`turfWar/receiveTurfWarReward` 已在此前批次拿到响应键，已从清单移除。
+
+结论：这 26 个端点回 `{}` 安全，零字段 123 = 53 无调用点 + 70 有调用点（其中 26 条即本次核清的「有调用但不读键」）。
+三条口径不变量由 `tests/test_no_key_inventory.py` 守住：清单行数 == 契约零字段端点数、`usage` 与 `call_sites` 同向、
+有调用点的行必须给出形态。
 
 - 上述「未读字段 / 未调用」均为静态结论，要变成确定结论只能靠单次启动实测或类型级数据流分析。
 

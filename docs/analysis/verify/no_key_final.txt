@@ -1,9 +1,8 @@
 endpoint	external_refs	usage	shape	evidence_file
 admin/inbox/present	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 auction/auctionCardSale	1	called	responder_elsewhere	AuctionDataManager.cs
-auth/createPlayer	2	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-auth/refreshToken	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-battle/getRaidBossLogs	1	called	hands_to_callee:resetItems	mypageRasetsu.cs
+auth/createPlayer	2	called	ignored	BootUp.cs:182 / LoginEnvironment.cs:295（回调体不读响应键）
+auth/refreshToken	1	called	ignored	BoosterPackScene.cs:77（回调体不读响应键）
 battle/getTurfWarReplayData	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 battle/getVsCountryRecords	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 battle/removeRaidBossWork	2	called	null_check_only	RaidBossScene.cs
@@ -14,18 +13,18 @@ common/getPlayerEntity	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 W
 common/getResources	2	called	responder_elsewhere	JsonTableAccessorCore.cs
 common/getShopcredit2	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 common/periodicInquiry	1	called	responder_elsewhere	PeriodicRounder.cs
-debug/addCollections	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-debug/addItems	4	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-debug/clearBuildings	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+debug/addCollections	1	called	ignored	mypage.cs:343（回调体不读响应键）
+debug/addItems	4	called	ignored	DebugMakeCharacterMenu.cs:164 / DebugMakeEquipMenu.cs:145 / PoliticDebugMenu.cs:73 / PoliticDebugMenu.cs:89（回调体不读响应键）
+debug/clearBuildings	1	called	ignored	PoliticDebugMenu.cs:445（回调体不读响应键）
 debug/clearLastMigrateTime	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-debug/debugAccelerateProduceTask	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-debug/debugAddBuildingExp	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-debug/debugCreateCharacter	2	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-debug/debugCreateEquip	2	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+debug/debugAccelerateProduceTask	1	called	ignored	PoliticDebugMenu.cs:194（回调体不读响应键）
+debug/debugAddBuildingExp	1	called	ignored	PoliticDebugMenu.cs:188（回调体不读响应键）
+debug/debugCreateCharacter	2	called	ignored	DebugMakeCharacterMenu.cs:221 / :241（回调体不读响应键）
+debug/debugCreateEquip	2	called	ignored	DebugMakeEquipMenu.cs:221 / :329（回调体不读响应键）
 debug/debugCreateRaidBossWork	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/debugDeleteAllEquip	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/debugGetQuestCompleteFlags	1	called	hands_to_callee:Add	QuestDataCache.cs
-debug/debugGradeUpBuildings	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+debug/debugGradeUpBuildings	1	called	ignored	PoliticDebugMenu.cs:200（回调体不读响应键）
 debug/debugRankingNationalPowerAddScoreWithSwitch	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/debugRentalNavigatorBarelyExpiration	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/debugResetCreditStepCount	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
@@ -35,9 +34,9 @@ debug/forceFeedbackFriendOffer	0	no_call_site	-	app/ 内无 .<method>( 调用点
 debug/forceProgressGiganticChain	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/forceProgressGiganticPhase	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 debug/forceProgressQuest	4	called	hands_to_callee:debug_openQuest,getQuestProgress	QuestTypeSelector.cs
-debug/resetPlayer	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+debug/resetPlayer	1	called	ignored	PoliticDebugMenu.cs:464（回调体不读响应键）
 debug/resetQuest	1	called	hands_to_callee:getQuestProgress	QuestTypeSelector.cs
-debug/setQuestStep	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+debug/setQuestStep	1	called	ignored	Quest.cs:116（回调体不读响应键）
 debug/withdrawTurfWar	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 deck/getCharacterStoreInfo	1	called	other	DeckScene.cs
 deck/getFormation	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
@@ -51,12 +50,12 @@ depletionmission/getDepletionMission	1	called	responder_elsewhere	DailyMissionTa
 friend/building/getFriendProductsByBuilding	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 friend/findFriends	1	called	hands_to_callee:createPlayerData	FriendListWindow.cs
 friend/getFriendMap	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-friend/getFriendMapData	1	called	hands_to_callee:PoliticMapInfo,visitFriendMap	Politic.cs
+friend/getFriendMapData	1	no_call_site	-	WebApiClient.cs:2688（2 参重载无调用点，3 实参落 :2697）
 friend/getVisitFriendLogs	2	called	other	mypageRecord.cs
-friend/setGuestMap	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-giganticRaidBoss/entryGiganticRaidBoss	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+friend/setGuestMap	1	called	ignored	mypageCastleTownUpdate.cs:132（回调体不读响应键）
+giganticRaidBoss/entryGiganticRaidBoss	1	called	ignored	giganticRaidBossScene.cs:89（回调体不读响应键）
 mailbox/deleteMails	2	called	responder_elsewhere	HTMLMailBoxMediator.cs
-navigator/activateNavigator	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+navigator/activateNavigator	1	called	ignored	NavigatorChangeSelect.cs:500（回调体不读响应键）
 navigator/getNavigatorDetails	1	called	other	NavigatorChangeSelect.cs
 navigator/getNavigators	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 plugin/addPluginLog	1	called	responder_elsewhere	PluginLogManager.cs
@@ -67,23 +66,23 @@ politic/building/getBuildings	0	no_call_site	-	app/ 内无 .<method>( 调用点�
 politic/building/getDrafts	4	called	iterates_no_key_name	PoliticDebugConstructionMenu.cs
 politic/building/getHarvestCounts	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 politic/edict/setWorkingValue	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-politic/errantry/call3	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+politic/errantry/call3	1	called	ignored	PoliticErrantryEntryWindow.cs:222（回调体不读响应键）
 politic/errantry/send3	2	called	responder_elsewhere	PluginRunner_DoTrade.cs
-politic/fixMapProduct	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+politic/fixMapProduct	1	called	ignored	PoliticDebugMenu.cs:476（回调体不读响应键）
 politic/kokugi/addPoint	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 politic/lottery/getSouls	1	called	other	onikujiWork.cs
-politic/map/cleanup	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+politic/map/cleanup	1	called	ignored	TitleRestoreUserData.cs:14（回调体不读响应键）
 politic/map/getMap	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-politic/map/relocateEnded	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-politic/map/setBackground	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+politic/map/relocateEnded	1	called	ignored	PoliticFSMRelocate.cs:182（回调体不读响应键）
+politic/map/setBackground	1	called	ignored	mypageBgSelectWindow.cs:140（回调体不读响应键）
 politic/map/setMapName	2	called	hands_to_callee:onFinished	UserStatus.cs
 politic/map/switchMap	6	called	responder_elsewhere	PluginPoliticDataManager.cs
-politic/mission/setWorkingValue	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+politic/mission/setWorkingValue	1	called	ignored	PoliticMissionProgressStatus.cs:417（回调体不读响应键）
 politic/mypage/claimReward	1	called	responder_elsewhere	NineGridDataManager.cs
 politic/mypage/getCharacterCollection	1	called	count_only	mypageLibrary.cs
 politic/mypage/getCredit2Logs	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 politic/mypage/getNineGridInfo	1	called	responder_elsewhere	NineGridDataManager.cs
-politic/mypage/migrate	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+politic/mypage/migrate	1	called	ignored	MigrateComfirmation.cs:142（回调体不读响应键）
 politic/shop/buyShopItemCredit	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 politic/shop/getShopItemsCredit	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 politic/task/cancelTasks	2	called	responder_elsewhere	PoliticMenuWindow.cs
@@ -111,16 +110,15 @@ ranking/getMyRankInTurfWar	0	no_call_site	-	app/ 内无 .<method>( 调用点，�
 ranking/getRankersAroundMeInTurfWar	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 siege/enter	2	called	responder_elsewhere	PluginRunner_DoBattleSiege.cs
 strategy/command/march	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-strategy/command/returnBase	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-strategy/entryStrategy	2	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+strategy/command/returnBase	1	called	ignored	StrategyCommandSelector.cs:503（回调体不读响应键）
+strategy/entryStrategy	2	called	ignored	Strategy.cs:110 / StrategySelect.cs:232（回调体不读响应键）
 strategy/getStrategyActionLogs	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 strategy/getStrategyLogs	1	called	null_check_only	StrategyLogManager.cs
 strategy/getStrategyOverview	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 strategy/getStrategyPairingsChat	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 strategy/lookStrategyResult	1	called	hands_to_callee:create	PoliticButton.cs
 trophy/messageWindowTrophy	1	called	other	TrophyWindow.cs
-turfWar/entryBattlefield	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
+turfWar/entryBattlefield	1	called	ignored	TurfWarWorldMap.cs:321（回调体不读响应键）
 turfWar/getSelfRecord	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 turfWar/getSelfSituation	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-turfWar/moveBattlefield	1	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-turfWar/receiveTurfWarReward	1	called	hands_to_callee:convertHtmlParameter,callback	TurfWarResultRenderer.cs
+turfWar/moveBattlefield	1	called	ignored	TurfWarWorldMap.cs:310（回调体不读响应键）
