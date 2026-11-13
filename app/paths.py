@@ -15,3 +15,9 @@ ROOT_DIR = _env("ONI_ROOT", os.path.dirname(APP_DIR))
 CONFIG_DIR = _env("ONI_CONFIG_DIR", os.path.join(ROOT_DIR, "config"))
 DATA_DIR = _env("ONI_DATA_DIR", os.path.join(ROOT_DIR, "data"))
 LOG_DIR = _env("ONI_LOG_DIR", os.path.join(ROOT_DIR, "logs"))
+
+# PC 客户端资源与配置表（均不入库）
+PC_WEB_DIR = _env("ONI_PC_WEB_DIR", os.path.join(ROOT_DIR, "assets", "pc", "web"))
+PC_BUNDLE_DIR = _env("ONI_PC_BUNDLE_DIR", os.path.join(ROOT_DIR, "assets", "pc", "bundles"))
+PC_CACHE_DIR = _env("ONI_PC_CACHE_DIR", os.path.join(ROOT_DIR, "assets", "pc", "cache"))
+TABLE_DIR = _env("ONI_TABLE_DIR", os.path.join(ROOT_DIR, "assets", "pc", "tables"))

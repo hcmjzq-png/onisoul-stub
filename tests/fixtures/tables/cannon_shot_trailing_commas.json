@@ -1,0 +1,14 @@
+{ "cannon_shot": {
+  "cannonShot00001": {
+    "id": "cannonShot00001",
+    "name": "CANNONSHOT_MSG_00001_NAME",
+    "category": "damage",
+    "value": 100000,
+  },
+  "cannonShot00002": {
+    "id": "cannonShot00002",
+    "name": "CANNONSHOT_MSG_00002_NAME",
+    "category": "chain",
+    "value": 49,
+  },
+}, }

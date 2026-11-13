@@ -1,6 +1,7 @@
 """接口注册表：api 路径 → 业务 handler。
 
-Handler 签名：handler(params: dict, session: dict | None) -> dict（响应体）。
+Handler 签名：handler(params: dict, session: dict | None) -> dict（最终响应体）。
+注册表不会二次包装 handler 返回值；普通 envelope 与裸映射都由 handler 自己决定。
 
 两类登记方式：
     register(api, handler)            真实业务实现，优先级最高

@@ -2,7 +2,9 @@
 
 鬼武者魂（Onimusha Soul / OniSoul）PC 版复刻用 Stub 服务端。客户端经 80 端口代理转发到本 Stub；接口与响应字段待从客户端 bundle 实测反推，当前为分层骨架。
 
-> 当前状态：**契约层已接通**。传输 / 协议 / 会话 / 状态 / 注册表 + 402 个端点的契约占位响应已落地；业务语义仍为空，真实 handler 逐个覆盖同名注册项即可（见 `docs/analysis/`）。
+> 当前状态：**运行时基础层已接通**。402 个端点契约占位、普通/裸映射响应形态、
+> PC 静态资源路由和 108 张配置表加载器已落地；业务语义仍为空，真实 handler
+> 逐个覆盖同名注册项即可（见 `docs/analysis/`）。
 
 ## 目录
 
@@ -16,14 +18,17 @@ onisoul-stub/
 │   ├── transport/           # HTTP 路由分发
 │   ├── sessions/            # 账号 / 会话表
 │   ├── state/               # 玩家状态（整行 JSON）
+│   ├── tables.py            # 按 108 张表清单加载 / 校验 / 热重载
 │   └── business/            # 注册表、契约读取、占位响应
 │       ├── registry.py      # api 路径 → handler，可批量登记契约占位
 │       ├── contract.py      # 直接读 docs/analysis 的 tsv（唯一事实来源）
+│       ├── response_shapes.py # 普通 envelope / 裸映射
 │       └── placeholders.py  # 按契约类型生成「形状合法、语义为空」的响应
 ├── db/schema.sql            # MySQL 建库建表
 ├── config/                  # 响应模板（示例）
 ├── tools/proxy80.py         # 80 → 18080 转发代理
 ├── tools/contract_check.py  # 契约一致性检查（端点 / 边 / 批次 / 类型覆盖）
+├── tools/import_tables.py   # 只导入清单内的 108 张配置表
 ├── deploy/                  # systemd 单元
 ├── docs/                    # 架构与接口文档
 └── tests/                   # 协议层单测
@@ -58,6 +63,9 @@ python -m app.main
 这样客户端请求任何已知接口都拿到 200 + 结构合法的 JSON，可以继续走下一批请求，而不是撞 404。
 真实实现只要 `registry.register(api, handler)` 覆盖同名项即可。
 
+已验证会被客户端逐项遍历根表的接口必须返回裸映射，不能注入
+`succeeded` / `now`；清单与客户端读取点见 `docs/response-shapes.md`。
+
 批次定义（`contract.batches()`，共 108 个）：
 
 - `scene:<name>`：5 个。触发该场景切换的端点 + 它切换后一帧内会连带的端点。
@@ -75,6 +83,17 @@ PYTHONPATH=. python -m unittest discover -s tests
 
 `tests/test_contract_batches.py` 覆盖：402 个端点全部 200、未知路径 404、已声明类型的响应键
 存在且 Python 类型一致、388 条边两端都已登记、108 个批次成员全部已知。
+
+静态资源与配置表：
+
+```bash
+python tools/import_tables.py --source /path/to/extracted/tables
+```
+
+资源目录通过 `ONI_PC_WEB_DIR`、`ONI_PC_BUNDLE_DIR`、`ONI_PC_CACHE_DIR`、
+`ONI_TABLE_DIR` 配置，目录内容不入库。当前清单 108 张表中客户端包内实测
+可取得 106 张，仅缺 `combo.json`、`strategy_battlefield.json`；
+见 `docs/tables.md`。
 
 ## 部署
 

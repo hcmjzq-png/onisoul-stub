@@ -4,8 +4,8 @@
     - docs/analysis 的 tsv 与 app/business/contract_data.json 不漂移
     - 402 个端点全部可派发且返回 200
     - 响应里已声明类型的键，Python 类型与契约一致
-    - 416 条端点→端点边的两端都可派发（按调用图批量发请求时不会 404）
-    - 115 个批次（5 场景 + 110 扇出）成员全部已知
+    - 388 条端点→端点边的两端都可派发（按调用图批量发请求时不会 404）
+    - 108 个批次（5 场景 + 103 扇出）成员全部已知
 """
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ import unittest
 from pathlib import Path
 
 from app.business import contract
+from app.business import response_shapes
 from app.main import build_registry
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -73,6 +74,8 @@ class ContractDataTest(unittest.TestCase):
         bad = []
         for api in contract.endpoints():
             status, body = self.reg.dispatch(api, {}, None)
+            if response_shapes.shape_for(api) is response_shapes.ResponseShape.BARE_MAP:
+                continue
             for field in contract.response(api):
                 key, typ = field["key"], field["type"]
                 if not typ or "<" in key or ">" in key or key in {"succeeded", "now"}:
