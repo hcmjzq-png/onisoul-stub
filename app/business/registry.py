@@ -1,11 +1,7 @@
 """接口注册表：api 路径 → 业务 handler。
 
 Handler 签名：handler(params: dict, session: dict | None) -> dict（响应体）。
-骨架阶段不登记具体游戏接口；待客户端 dump / 抓包核对字段后，在此逐个注册。
-
-已知接口线索（来自早期反汇编，路径与参数待复核，见 docs/api_spec.md）：
-    auth/gameLogin、debug/devLogin、auth/createPlayer、auth/registerName、
-    common/getPlayerParams、common/getActionPoints、politic/map/getMapData …
+骨架阶段不登记具体游戏接口；待从客户端 bundle 核对路径与字段后，在此逐个注册。
 """
 from __future__ import annotations
 
