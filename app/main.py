@@ -15,7 +15,7 @@ from app.transport import http_server
 
 
 def build_registry() -> Registry:
-    """注册业务接口。骨架阶段为空，待 dump / 抓包后在此填充。"""
+    """注册业务接口。骨架阶段为空，待从客户端 bundle 核对后在此填充。"""
     return Registry()
 
 
