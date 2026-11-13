@@ -1,0 +1,33 @@
+endpoints	402
+matched	343
+unmatched	59
+with_scene_ops	10
+with_windows	40
+with_state_writes	18
+with_guards	68
+edges	416
+nodes_with_outedge	110
+
+# scene 目标分布
+politic	7
+vsBattle	3
+deck	1
+migrationLogin	1
+strategy	1
+
+# 出度最高端点
+deck/getDecks	14
+quest/getQuestProgress	14
+ranking/getBriefOfRaidBossDaily	13
+ranking/getRankersInStrategy	13
+ranking/getBriefOfRandomQuest	12
+ranking/getBriefOfRaidBossNational	12
+ranking/getBriefOfSiege	12
+ranking/getRankersOfCountriesInGiganticRaidBoss	12
+ranking/getBriefOfBattleDaily	12
+ranking/getBriefOfDedication	12
+ranking/getBriefOfRaidBoss	12
+ranking/getBriefOfBattle	12
+ranking/getBriefOfBrawn	12
+ranking/getBriefOfNationalRanking	12
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	12

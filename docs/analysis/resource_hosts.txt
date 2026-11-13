@@ -1,0 +1,17 @@
+# 三个端点（全部由 settingTable_ 决定，改表即可指向 Stub）
+API   http://{webHost}/api/{endpoint}            webHost  = settingTable_["web"]
+资源  http://{assetHost}/client/{platform}/{lang}/{convertedPath}
+      assetHost = settingTable_["asset"]，platform = Configs.Platform = "pc"
+IRC   {ircHost}，密码 settingTable_["ircPass"]
+
+# 资源 URL 组装（Loader.getHashFilePath）
+真实路径 = convertUrl(name)  →  {root}/{dir}/{name}.unity3d（前缀命中时）
+服务端文件名 = {dir}/{MD5(文件主名)}{扩展名}?r={RevisionNo*10+Performance}
+缓存下载 = name ∈ FileDataBase → WWW.LoadFromCacheOrDownload(url, RevisionNo)
+重试 = 10 次 / 3s；URL 含 assets2 时走 AssetPathConverter.convertUrlHP 换路径
+并发 = 10；超时 = configs.downloadTimeOut_
+
+# 前缀目录表见 asset_prefixes.tsv（46 条）
+# 主 bundle 名（客户端硬编码）
+  globalAssets.unity3d  出现 5 次
+  assets/scene/tableAssets.unity3d  出现 1 次
