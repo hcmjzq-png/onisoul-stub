@@ -15,8 +15,11 @@ from app.transport import http_server
 
 
 def build_registry() -> Registry:
-    """注册业务接口。骨架阶段为空，待从客户端 bundle 核对后在此填充。"""
-    return Registry()
+    """注册业务接口：先按契约表登记 402 个端点的占位响应，真实实现在此之前登记。
+
+    占位响应的意义是让客户端「不撞 404、能继续走下一批请求」；业务语义仍为空。
+    """
+    return Registry().register_contract_defaults()
 
 
 def main(argv: list[str] | None = None) -> int:
