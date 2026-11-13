@@ -33,6 +33,26 @@ class NestedPlaceholderTest(unittest.TestCase):
         # ((Hashtable)result)["friendInfo"]["turfWar"]["team"] 三级取值
         self.assertEqual(payload["friendInfo"]["turfWar"]["team"], "")
 
+    def test_event_status_submaps(self) -> None:
+        """StatusView.cs:488-520 用 isEventOpen(ContainsKey) 选子表，子表一存在就进各自 setup，
+        四个 setup 都无守卫拆箱（`(long)(double)table["closeTime"]`），缺键即 NRE。"""
+        payload = placeholders.payload("common/getEventStatuses")
+        for name in ("turfWar", "strategy", "siege", "giganticRaidBoss"):
+            self.assertIsInstance(payload[name], dict)
+        # TurfWarBriefCache.cs:353-354 + getTime:454-469
+        self.assertEqual(payload["turfWar"]["status"], "")
+        self.assertEqual(payload["turfWar"]["closeWarTime"], 0.0)
+        self.assertEqual(payload["turfWar"]["resultCloseTime"], 0.0)
+        # StrategyDataCache.cs:196-198 + getTime:168-178
+        self.assertIs(payload["strategy"]["isEntry"], False)
+        self.assertEqual(payload["strategy"]["endTime"], 0.0)
+        # SiegeBriefDataCache.cs:164-167 + getTime:173-183
+        self.assertEqual(payload["siege"]["advantage"], "")
+        self.assertEqual(payload["siege"]["resultCloseTime"], 0.0)
+        # GiganticRaidBossDataCache.cs:111-116 + getTime:82-92
+        self.assertIs(payload["giganticRaidBoss"]["isEntry"], False)
+        self.assertEqual(payload["giganticRaidBoss"]["closeTime"], 0.0)
+
     def test_raid_and_siege_schedule_shapes(self) -> None:
         raid = placeholders.payload("giganticRaidBoss/getGiganticRaidBossEventResult")
         # GiganticRaidBossResultRenderer.cs:25-26 用的是 open / end

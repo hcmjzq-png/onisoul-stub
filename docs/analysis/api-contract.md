@@ -25,12 +25,12 @@
 | 指标 | 数量 |
 |---|---|
 | 端点总数（= `httpCall` 唯一字面量） | 402 |
-| 已抽出响应字段 | 278 |
-| 被调用但回调体不读命名键 | 72 |
-| 本客户端从不调用（无调用点） | 52 |
-| 唯一响应键 | 382 |
-| 带类型响应键 | 250 |
-| 带可选标记（`ContainsKey` 保护） | 57 |
+| 已抽出响应字段 | 279 |
+| 被调用但回调体不读命名键 | 70 |
+| 本客户端从不调用（无调用点） | 53 |
+| 唯一响应键 | 431 |
+| 带类型响应键 | 305 |
+| 带可选标记（`ContainsKey` 保护） | 74 |
 | 一端点多方法（参数取并集） | 10 |
 | 带序号模板键的请求 | 4 |
 | 带常量枚举的请求 | 14 |
@@ -66,8 +66,8 @@
 | 端点完整性 | 契约↔源码字面量双向对账 | 402↔402，0 差；唯一非字面量命中是 `private void httpCall(string api,...)` 方法定义本身 |
 | 方法归属 | 花括号配对定位方法体 | 445/445 个真实方法全部定位（另 6 个 `public delegate` 声明非方法） |
 | 参数正确性 | 用方法体重算参数并集，与表对比 | 差异 6 项，已全部修正（见下） |
-| 字段真实性 | 1035 个键逐个回查源码字面量 | 0 个找不到（见 `verify/final_check.txt`） |
-| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 549 处带类型读取，0 冲突 |
+| 字段真实性 | 1056 个键逐个回查源码字面量 | 0 个找不到（见 `verify/final_check.txt`） |
+| 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 570 处带类型读取，0 冲突 |
 | 表结构与编码 | 9 列齐整 / UTF-8 无 BOM / 仅 LF / 无重复端点 / `key_count` 与条目数一致 | 全部通过 |
 | 键名一致性 | 回包键不得与同端点请求参数同名 | 5 例经核对为**回显读取**（客户端读回自己发过的值），非错误 |
 | 方向一致性 | 键必须出现在「回包路径」而非「请求构造路径」 | `politic/waterborneTrade/send` 两处疑似请求侧复用，已排除未并入 |
@@ -150,9 +150,9 @@ debug/debugLogin               username: debug
 
 零字段端点共 123 个，逐个给出处置，全量清单见 `verify/no_key_final.txt`：
 
-- **52 个无调用点**：`app/` 内不存在 `.方法名(` 的调用点，只有 `WebApiClient` 自己的包装方法，说明本客户端从不触发。契约参数取自 `WebApiClient` 方法本身。
+- **53 个无调用点**：`app/` 内不存在 `.方法名(` 的调用点，只有 `WebApiClient` 自己的包装方法，说明本客户端从不触发。契约参数取自 `WebApiClient` 方法本身。
   （注意：早期口径按「`httpCall` 站点数」判定被调用，把包装方法算进去了，因此曾误报为 55 个。）
-- **71 个有调用但不读命名键**：其中 46 条在 `verify/no_key_final.txt` 里已分形态（下表合计 46），其余 25 条形态待补：
+- **70 个有调用但不读命名键**：其中 46 条在 `verify/no_key_final.txt` 里已分形态（下表合计 46），其余 24 条形态待补：
   - `iterates_no_key_name` 5：`foreach` 遍历后取 `item.Key` 当数据 id（如 `deck/getProtectedCharacterIds`），外层键名由服务端决定；
   - `hands_to_callee` 12：原样交给下游方法（`resetItems` / `createPlayerData` / `getQuestProgress` / `cancelWaterTrade` 等），已追一层仍未读到键；
   - `responder_elsewhere` 15：回调体在另一栈帧构造，追 3 层未及；
@@ -188,6 +188,8 @@ debug/debugLogin               username: debug
 | `friend/getFriendMapData2` | `completecount:double`、`acceleratecount:double`、`friendInfo:Hashtable`、`friendInfo.turfWar:Hashtable`、`friendInfo.turfWar.team:string` | `Politic.cs:318` 起回调；`(int)(double)` 直接拆箱，`friendInfo → turfWar → team` 三级无守卫 |
 | `turfWar/receiveTurfWarReward` | `schedule{open,close}`、`gainRedSoul`、`rank`、`score`、`defenseScore`、`global{end{score,rank,defenseScore},daily}`、`battlefield{end,daily}`、`bonuses` | `TurfWarResultRenderer.cs:62-90`、`:92`、`:116`、`:152` |
 | `politic/map/setMapName2` | 根形态改为「裸映射」：回 `{}`（`Keys.Count == 0`） | `UserStatus.cs:1396-1402` 非 ymbga 分支只数键个数；容器链见下 |
+| `common/getEventStatuses` | 四个事件子表补嵌套键：`turfWar{status,closeWarTime,endWarTime,updateTime,resultCloseTime}`、`strategy{isEntry,status,closeTime,endTime,resultCloseTime}`、`siege{isEntry,status,advantage,closeTime,endTime,resultCloseTime}`、`giganticRaidBoss{isEntry,status,closeTime,endTime,resultCloseTime}` | `TurfWarBriefCache.cs:353-354` / `:454-469`、`StrategyDataCache.cs:196-198` / `:168-178`、`SiegeBriefDataCache.cs:164-167` / `:173-183`、`GiganticRaidBossDataCache.cs:111-116` / `:82-92`：`StatusView.isEventOpen` 只判 `ContainsKey`，子表一旦存在就进各自的 `setup`，`(long)(double)table[...]` 无守卫拆箱，缺键即 NRE |
+| `friend/getFriendMapData` | `call_sites` 清空、`call_count` 归 0（2 参重载无调用点） | `WebApiClient.cs:2688` 定义 2 参；全仓唯一 `.getFriendMapData(` 调用在 `Politic.cs:318` 传 3 个实参，落 `WebApiClient.cs:2697`（`friend/getFriendMapData2`）；`Politic.cs:322` 另一个调用是 `visitFriendMap` |
 
 同族结果渲染器一并补齐（它们的 `schedule` 是复数秒，缺一层就崩）：
 
@@ -233,7 +235,7 @@ debug/debugLogin               username: debug
 
 ### 处置清单的口径差（27 条）
 
-`verify/no_key_final.txt` 的 `usage` 列沿用早期按 `.<方法名>(` 字面点判定的口径，仍把 27 个已有 `call_sites` 的零字段端点记作 `no_call_site`（例：`auth/createPlayer` 在 `BootUp.dummyPlayerCreate` 被调用，`debug/*` 一批在 `PoliticDebugMenu` / `DebugMakeCharacterMenu` 被调用）。上面「52 无调用点 / 72 有调用点」按契约表 `call_sites` 列统计，与清单口径的逐条对账留作下一批。
+`verify/no_key_final.txt` 的 `usage` 列沿用早期按 `.<方法名>(` 字面点判定的口径，仍把 27 个已有 `call_sites` 的零字段端点记作 `no_call_site`（例：`auth/createPlayer` 在 `BootUp.dummyPlayerCreate` 被调用，`debug/*` 一批在 `PoliticDebugMenu` / `DebugMakeCharacterMenu` 被调用）。上面「53 无调用点 / 70 有调用点」按契约表 `call_sites` 列统计，与清单口径的逐条对账留作下一批。
 
 - 上述「未读字段 / 未调用」均为静态结论，要变成确定结论只能靠单次启动实测或类型级数据流分析。
 
