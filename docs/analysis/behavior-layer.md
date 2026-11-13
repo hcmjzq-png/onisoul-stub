@@ -82,6 +82,18 @@ quest/executeQuestEx         turfWar/getTurfWarResultLog
 
 完整清单见 `behavior_contract.tsv` 的 `guarded_keys` 列。
 
+## 抽取保真度
+
+650 个调用点里：
+
+| 情况 | 数量 | 影响 |
+|---|---|---|
+| 精确定位到方法体 | 570 | 副作用字段可信 |
+| 只定位到类体（退化） | 75 | 方法体没匹配上（重载 / 匿名类 / 缩进异常），退化成整类体扫描，**会带入同类其它方法**的调用，`service_calls`、`guards` 可能偏多 |
+| 完全定位不到 | 5 | 类名对不上，该端点只有 `matched_sites` 计数 |
+
+退化的 75 个集中在 `DeckConflate*`、`DeckSale`、`HTMLMailBox` 等 49 个类。这些端点的行为字段按「可能混入同类其它方法的副作用」读，不要当成精确事实。
+
 ## 表列定义
 
 | 列 | 含义 |

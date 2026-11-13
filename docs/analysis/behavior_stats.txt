@@ -1,6 +1,9 @@
 endpoints	402
 matched	343
 unmatched	59
+sites_exact	570
+sites_class_fallback	75
+sites_unresolved	5
 with_scene_ops	10
 scene_triggers	11
 with_windows	40
