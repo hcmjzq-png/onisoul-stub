@@ -1,0 +1,21 @@
+callsite	receiver	origin	evidence
+HTMLRankingMediator_*	args	html_request	HTML 请求入参回读：getRequestParameterValue(args, "turn")
+HTMLRankingMediator_*	localHash	write	本地组装的请求参数哈希，`localHash["aroundRank"] = ...` 写侧
+HTMLBbsMediator.getIconURL	input.hash	html_request	HTML 表单入参 `input.hash["playerIds"]`
+HTMLBbsMediator.sendMails	input.hash	html_request	HTML 表单入参 `input.hash["to"]`
+HTMLMailCore.sendMails	hash	html_request	收件人 / 附件由调用方构造后传入（HTMLMailCore.cs:29）
+HTMLMailCore.deleteMails	hash	html_request	邮件 ID 列表由调用方传入（HTMLMailCore.cs:112）
+InboxReader.reload	argv	html_request	mypage 入口参数 argv["start"] / argv["end"]
+PluginRunner_DoBattleNormal.Init	task.TaskParams	task_param	任务参数表 `task.TaskParams["BattleMoney"]` 等
+PluginRunner_DoBattleSiege.Init	task.TaskParams	task_param	任务参数表 `task.TaskParams["BattleMoney"]`
+mypageSelfIntroduction.confirmCallback	resultHash	dialog_result	`WindowController.WindowResult.hash` 对话框返回值
+DebugMakeEquipMenu.OnGUI	equipInfo_.status	config_table	debug 菜单自造的装备表 `equipInfo_.status[...]`
+mypage.debugAddColections	hashtable	config_table	配置表 `table.get(text)["items"]`
+PoliticDebugMenu.debug_ItemCategoryAdd	hashtable	config_table	配置表访问器 `tableAccessor.get(key)["enable"]`
+MightOfNationDialog.OnGUI	table_	local_build	方法内自建的 `table_`，键既读又写（`table_["dedication"] = ...`）
+NavigatorChangeSelect.getNavigatorDetails	hashtable	debug_build	`isDebugMode()` 分支里新 new 的 hashtable，`["color1".."color5"]` 逐个赋值
+StrategyMoveableRegionSelector.createConfirmDialog	*	message_table	该方法的读全部来自消息表 `instance["STRATEGY_MSG_*"]`、UI 选择参数 `selectIcon_.Parameter` 与其它端点回包子表（`cellBattleContribution` / `consumption`），没有一条是本端点回包
+StrategyStrategizeRegionSelector.createConfirmDialog	*	message_table	消息表 `instance["STRATEGY_MSG_*"]`
+HTMLBoosterMediator.addCardInfoHash	*	config_table	全部读自表访问器 `instance3.getDeckBonus(parameterId, key)["..."]`
+vsSetting_Siege.playerCharacterSet	charactersTable	html_request	equip / tactics 是玩家在 vs 编成界面填的请求侧参数
+StrategyCommandSelector.createConfirmDialog	*	message_table	该方法的读来自消息表 instance["STRATEGY_MSG_COMMAND_TRAINING_INFO0"]，不是端点回包

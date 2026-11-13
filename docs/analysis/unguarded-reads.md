@@ -10,7 +10,9 @@
 104 条候选已于 2026-11-14 逐条判读完毕（每条带 `file:line` 依据，见
 `docs/analysis/unguarded_gaps_verdicts.tsv`）：**67 条读的不是回包、33 条读的是另一端点回包、
 只有 4 条是真缺口**。真缺口与逆推出来的 `common/getEventStatuses` / `turfWar/getWarSituation`
-嵌套字段都已补进契约。
+嵌套字段都已补进契约。判读完成后又把 67 条误报的**来源特征**做成了机械规则
+（`gap --filter origin`），再跑一遍候选只剩 **36 行 / 27 个端点**——这 36 行就是
+「33 条归属错 + 3 条真缺口」的全部，不含任何「读的不是回包」的行。
 
 ## 复现
 
@@ -18,10 +20,15 @@
 python3 tools/unguarded_reads.py dump --src <il_csharp/app> --out reads.tsv
 python3 tools/unguarded_reads.py gap  --dump reads.tsv \
     --contract docs/analysis/api_contract.tsv \
+    --receivers docs/analysis/verify/gap_receivers.tsv \
+    --origins   docs/analysis/verify/gap_origins.tsv \
+    --filter origin \
     --out docs/analysis/unguarded_gaps.tsv
 ```
 
 * 仅标准库，Python 3；`<il_csharp/app>` 是 `ilspycmd` 反编译产物（2034 个 `.cs`，不入仓）。
+* 去掉 `--filter origin`（以及后两个参数）就是**过滤前**的口径，产出 104 行候选快照；
+  两种口径共用同一份 dump，`dump` 段的 3835 / 3345 / 3009 不受影响。
 * `dump` 可单独复用：一张 `file / class / method / line / key / cast / guarded / snippet`
   的表，`cast` 是 `[` 前面紧邻的强转（`(int)((double)` 之类，能看出读的是 `double`
   还是 `Hashtable`），`guarded=1` 表示方法体内出现过 `ContainsKey("同一键")`。
@@ -41,13 +48,41 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 | 其中在扫描结果里有读取的调用点 | 206 |
 | (调用点,键) 对 | 503 |
 | 对账命中已声明 | 149 |
-| 候选缺口行 / 涉及端点 | **104 / 69** |
+| 候选缺口行 / 涉及端点（过滤前，2026-11-14 判读时的快照） | **104 / 69** |
+| 同上，按当前契约复跑（`--filter none`） | 105 / 69（多出的一行是 `strategy/getStrategyCommandInfo` 上 `StrategyCommandSelector.createConfirmDialog` 读的 `STRATEGY_MSG_COMMAND_TRAINING_INFO0`，判读台账建立时还没有这行，已被来源过滤按 `message_table` 剔除） |
+| 来源过滤剔除的键 | 157（`write` 35 / `html_request` 52 / `config_table` 41 / `message_table` 17 / `dialog_result` 7 / `task_param` 4 / `local_build` 1） |
+| **候选缺口行 / 涉及端点（过滤后）** | **36 / 27** |
 | 判读：读的不是回包（`not_response`） | 67 |
 | 判读：读的是另一端点回包（`other_endpoint`） | 33 |
 | 判读：真缺口（`real_gap`） | 4 |
 
-产物 `unguarded_gaps.tsv`（105 行含表头；`friend/getFriendMapData` 的调用点归属修正后，原先算在它头上的那一行随之消失）列：
+产物 `unguarded_gaps.tsv`（37 行含表头，过滤后口径；过滤前的 105 行快照见上表，
+`friend/getFriendMapData` 的调用点归属修正后，原先算在它头上的那一行随之消失）列：
 `endpoint / callsite / missing_keys / first_evidence`。
+
+## 来源过滤（`--filter origin`）
+
+误报不是随机噪声，都能落到「读的接收者是哪来的」这一个问题上。所以过滤不去改扫描器，
+而是让它读两张**取证表**：
+
+* `docs/analysis/verify/gap_receivers.tsv`——候选涉及的 178 个 (调用点,键) 的接收者取证：
+  `callsite / key / line / receiver / write`。`receiver` 是 `["键"]` 前面那个表达式
+  （`args`、`input.hash`、`task.TaskParams`、`table_`、`selfData`、`instance`…），
+  `write=W` 表示这一处是 `ht["k"] = ...` 写侧。客户端一次性抽取，不入仓源码。
+* `docs/analysis/verify/gap_origins.tsv`——非回包来源表：`callsite / receiver / origin / evidence`，
+  `callsite` 支持 `fnmatch`（`HTMLRankingMediator_*`），`receiver` 为 `*` 表示整个调用点的读
+  都不是端点回包。`origin` 词表：`write` / `html_request` / `task_param` / `config_table` /
+  `dialog_result` / `local_build` / `debug_build` / `message_table`。
+
+`gap` 的判定只有两条，都只看这两张表：①某键的所有出现都是写侧 → 剔除；②任一次出现的接收者
+命中来源表 → 剔除。**没被取证覆盖的 (调用点,键) 一律保留**（宁漏不误杀），所以 D 类
+（「读的是另一端点回包」）机械上分不出来，仍留在候选里——这正是过滤后还剩 36 行的原因，
+也正好和台账里 33 条 `other_endpoint` + 3 条 `real_gap` 对得上。
+
+更新方式：新增候选若来自新调用点，先补 `gap_receivers.tsv` 的接收者行；确认不是回包再往
+`gap_origins.tsv` 加一行（必须带 `file:line` 证据）。`tests/test_gap_verdicts.py` 会校验
+两张表的调用点都在契约 `call_sites` 里、`origin` 在词表里、以及**每个被剔除的键都能在这两张表
+里找到出处**——过滤掉的键必须可解释，不能靠人眼。
 
 ## 四类已在代码里确认的误报
 
@@ -73,9 +108,12 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 
 ## 104 条逐条判读（2026-11-14 完成）
 
-逐行结论落在 `docs/analysis/unguarded_gaps_verdicts.tsv`（104 行，六列
-`endpoint / callsite / missing_keys / verdict / real_owner / evidence`），每行都给到
-`file:line` 依据与归属结论。
+逐行结论落在 `docs/analysis/unguarded_gaps_verdicts.tsv`（104 行，七列
+`endpoint / callsite / missing_keys / verdict / real_owner / evidence / filter`），每行都给到
+`file:line` 依据与归属结论；`filter` 列标出该行在**来源过滤后**的去向：`dropped` 67 行
+（读的不是回包，已被 `--filter origin` 剔除）、`kept` 36 行（过滤后仍是候选）、
+`mixed` 1 行（`debug/dedicate`：`dedication` / `nationalPower` 是本地写被剔除，
+`score` 已补进契约，该行不再产生候选）。
 
 | verdict | 行数 | 含义 |
 |---|---|---|
@@ -148,7 +186,8 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 ## 还没做（别把上面的数字当普查结论）
 
 * 104 条候选行已全部逐条读码判读（67 `not_response` / 33 `other_endpoint` / 4 `real_gap`），
-  但仍有两类嵌套子表没定宿主端点（见上「仍未取证」），别把 4 这个数字当成缺口总量。
+  来源过滤后候选降到 36 行；但 `eventInfo` 的其余事件分支与 `getStrategyStatus.map`
+  两类嵌套子表仍未取证（见上「仍未取证」），别把 4 这个数字当成缺口总量。
 * 不覆盖：DTO / 构造函数里的读取（`AdversaryData` 一类）、跨方法传播的守卫、
   动态拼出的键（`string.Format` 等）、表访问器键。
 * `cast` 列会带 `(text)` / `(key)` / `(notify)` 这类 ilspy 对局部变量的写法，不影响键判定。

@@ -23,10 +23,17 @@ gap：只取契约表 `call_sites` 里的 `Class.method`，把它们的**无守�
 * 只匹配 `call_sites` 里那个方法本身：DTO/构造函数里的读取不计入。
 * 读的对象不一定是响应根：形参、请求参数回读、文案常量（`STRATEGY_MSG_*`）
   都会被当成响应键读，属误报。
+
+来源过滤（`gap --filter origin --receivers ... --origins ...`）：候选里 67/104 是这类误报，
+它们的共同特征是「读的接收者不是本端点的回包对象」。`--receivers` 给 (调用点,键) 的接收者
+取证（`receiver` 是 `["键"]` 前的表达式，`write=W` 表示写侧），`--origins` 给
+「这个接收者不是回包」的来源类别；命中即剔除该键，**没被取证覆盖的一律保留**。
+不加 `--filter`（默认 `none`）就是过滤前口径，产出 104 行快照；`dump` 段两者共用、数字不变。
 """
 import argparse
 import collections
 import csv
+import fnmatch
 import io
 import os
 import re
@@ -42,6 +49,19 @@ KEY_RE = re.compile(r'\["([A-Za-z_][A-Za-z0-9_]*)"\]')
 CAST_RE = re.compile(r"\(([A-Za-z_][A-Za-z0-9_]*)\)")
 CALLSITE_RE = re.compile(r"^[A-Za-z_]\w*\.[A-Za-z_]\w*$")
 RESERVED = {"succeeded", "now", "errorReason"}
+RECEIVER_FIELDS = ["callsite", "key", "line", "receiver", "write"]
+ORIGIN_FIELDS = ["callsite", "receiver", "origin", "evidence"]
+# 读的不是响应回包的来源类别（--filter origin 的 denylist 词表）
+ORIGINS = {
+    "write",          # 写侧：`ht["k"] = ...`，不是读
+    "html_request",   # HTML 表单 / 请求参数回读
+    "task_param",     # 任务参数（task.TaskParams）
+    "config_table",   # 配置表访问器
+    "dialog_result",  # UI 对话框结果哈希
+    "local_build",    # 方法内自建的临时表
+    "debug_build",    # debug 分支自造的表
+    "message_table",  # 消息表（STRATEGY_MSG_* 等）
+}
 SNIPPET_MAX = 70
 BODY_LIMIT = 4000
 FIELDS = ["file", "class", "method", "line", "key", "cast", "guarded", "snippet"]
@@ -157,6 +177,44 @@ def cmd_dump(args):
     print("写出 %s" % args.out)
 
 
+def load_receivers(path):
+    """(callsite, key) -> [(receiver, write)]"""
+    occ = collections.defaultdict(list)
+    for r in csv.DictReader(io.open(path, encoding="utf-8"), delimiter="\t"):
+        occ[(r["callsite"], r["key"])].append((r.get("receiver", ""), r.get("write", "R")))
+    return occ
+
+
+def load_origins(path):
+    rows = []
+    for r in csv.DictReader(io.open(path, encoding="utf-8"), delimiter="\t"):
+        if r["origin"] not in ORIGINS:
+            raise SystemExit("origins 表里的 origin 不在词表：%s" % r["origin"])
+        rows.append((r["callsite"], r["receiver"], r["origin"]))
+    return rows
+
+
+def origin_of(site, key, receivers, origins):
+    """判定该 (调用点, 键) 的读取来源；返回 drop 类别或 None。
+
+    两条机械规则，都只依赖 --receivers 里的 receiver 列与 --origins 表：
+    1) 该键的所有出现都是写侧（`...["k"] = `）→ write；
+    2) 任一次出现的接收者命中 origins 行（callsite 支持 fnmatch，receiver 为 `*` 表示整站点）。
+    没被取证覆盖的 (调用点, 键) 一律保留，宁漏不误杀。
+    """
+    occ = receivers.get((site, key), [])
+    if occ and all(w == "W" for _, w in occ):
+        return "write"
+    for pat, want, origin in origins:
+        if not fnmatch.fnmatchcase(site, pat):
+            continue
+        if want == "*":
+            return origin
+        if any(recv == want for recv, _w in occ):
+            return origin
+    return None
+
+
 def cmd_gap(args):
     reader = csv.DictReader(io.open(args.dump, encoding="utf-8"), delimiter="\t")
     rows = [r for r in reader]
@@ -169,26 +227,43 @@ def cmd_gap(args):
         if site in sites:
             reads[site].setdefault(r["key"], r)
 
+    receivers = load_receivers(args.receivers) if args.receivers else {}
+    origins = load_origins(args.origins) if args.origins else []
+    dropped = collections.Counter()
+    dropped_keys = 0
+
     covered = gap = 0
     out_rows = []
     for site, keys in reads.items():
         for ep, roots in sites[site]:
-            miss = [k for k in keys if k not in roots and k not in RESERVED]
-            if not miss:
+            keep = {}
+            for k, r in keys.items():
+                if k in roots or k in RESERVED:
+                    continue
+                why = origin_of(site, k, receivers, origins) if args.filter == "origin" else None
+                if why:
+                    dropped[why] += 1
+                    dropped_keys += 1
+                    continue
+                keep[k] = r
+            if not keep:
                 covered += 1
                 continue
             gap += 1
-            first = keys[sorted(miss)[0]]
+            first = keep[sorted(keep)[0]]
             out_rows.append({
                 "endpoint": ep,
                 "callsite": site,
-                "missing_keys": ",".join(sorted(miss)),
+                "missing_keys": ",".join(sorted(keep)),
                 "first_evidence": "%s.cs:%s%s" % (first["class"], first["line"], first["cast"]),
             })
     ordered = sorted(out_rows, key=lambda r: (r["endpoint"], r["callsite"]))
     write_tsv(args.out, GAP_FIELDS, ordered)
     print("dump 读取点 %d，契约调用点 %d，其中有读取的 %d"
           % (len(rows), len(sites), len(reads)))
+    if args.filter == "origin":
+        print("来源过滤：剔除键 %d（%s）"
+              % (dropped_keys, "、".join("%s=%d" % (k, v) for k, v in sorted(dropped.items())) or "-"))
     print("对账：命中声明 %d，候选缺口行 %d（%d 个端点）"
           % (covered, gap, len({r["endpoint"] for r in ordered})))
     print("写出 %s" % args.out)
@@ -205,8 +280,17 @@ def main(argv):
     p.add_argument("--dump", required=True, help="dump 模式产出的 reads.tsv")
     p.add_argument("--contract", required=True, help="docs/analysis/api_contract.tsv")
     p.add_argument("--out", required=True)
+    p.add_argument("--filter", choices=["none", "origin"], default="none",
+                   help="origin：按 --receivers/--origins 剔除读的不是回包的键")
+    p.add_argument("--receivers",
+                   help="接收者取证表（callsite/key/line/receiver/write），filter=origin 时必填")
+    p.add_argument("--origins",
+                   help="非回包来源表（callsite/receiver/origin/evidence），filter=origin 时必填")
     p.set_defaults(func=cmd_gap)
     args = ap.parse_args(argv)
+    if args.mode == "gap" and args.filter == "origin" and not (args.receivers and args.origins):
+        print("filter=origin 需要同时给 --receivers 与 --origins", file=sys.stderr)
+        return 2
     if args.mode == "dump" and not os.path.isdir(args.src):
         print("源目录不存在：%s" % args.src, file=sys.stderr)
         return 2

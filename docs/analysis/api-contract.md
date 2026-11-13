@@ -94,8 +94,7 @@
    `giganticRaidBossPoint` / `hp` / `damage` / `needPoint.0..2` 补进了 `giganticRaidBossInformation`；
    该端点的 `monsterId` 原先无类型（占位会整键跳过，`giganticRaidBossScene.cs:130` 的
    `hashtable["monsterId"].ToString()` 会 NRE），按 `createBg(string)` → `getMenuBg(string)` 的口径定成 `string`。
-* `unguarded_gaps.tsv` 的 104 条候选缺口已逐条判读（明细见 `docs/analysis/unguarded_gaps_verdicts.tsv`，
-  口径见 `unguarded-reads.md`）：67 条读的不是回包、33 条读的是另一端点回包、4 条真缺口。
+* `unguarded_gaps.tsv` 的 104 条候选缺口已逐条判读（明细见 `docs/analysis/unguarded_gaps_verdicts.tsv`，口径见 `unguarded-reads.md`）：67 条读的不是回包、33 条读的是另一端点回包、4 条真缺口。
   本批据此补 5 处：`debug/dedicate.score`、`deck/extendCharacterStore.possessionLimits(+.character)`、
    `quest/clearObstacle.uses(+.category)`、`battle/executeBattle.executeInfo(+.step)`、
    `politic/support_item/getPotions.potions(+.potion0000102.amount)`；同时剔除
@@ -108,6 +107,9 @@
   `:186-192`、`:312-318`；`strategy/getStrategyStatus` 补 `self` + 13 子键与 `cell` + `cell.attackLogs`（16 键），
   依据 `StrategyDataCache.cs:24-90` 与 `Strategy.cs:128-249`。键数 1075→1107，带类型 594→626，
   唯一 456→487，可选仍 73。
+* 判读结论又反向做成了候选过滤（`tools/unguarded_reads.py gap --filter origin`，依据
+  `verify/gap_receivers.tsv` + `verify/gap_origins.tsv`）：剔除 157 个「读的不是回包」的键，
+  候选 104→36 条 / 27 个端点；`dump` 段基线（3835 / 3345 / 3009）不变，契约键数与端点数不受影响。
 
 ## 常量枚举（Stub 必须按此校验，不能任意填）
 

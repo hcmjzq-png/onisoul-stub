@@ -1,105 +1,105 @@
-endpoint	callsite	missing_keys	verdict	real_owner	evidence
-battle/executeBattle	BattleLogManager.getParameterFromServerForDebug	debug,monsterId	not_response	写侧赋值	BattleLogManager.cs:5214-5219 先 info["monsterId"]=…/info["debug"]=… 再发请求，扫描器把写当读
-battle/executeBattle	PluginRunner_DoBattleNormal.onGetRivals	rivals	other_endpoint	battle/getRivals2	PluginRunner_DoBattleNormal.cs:123-126 回调来自 getRivals2；该端点已声明 rivals:Hashtable
-battle/executeBattle	vsSetting.executeSkipBattle	id	other_endpoint	deck/getDeckBonus	vsSetting.cs:751-772 deckBonus_=getDeckBonus 回包；:762 读 deckBonus_["deck"][..]["id"]；该端点已声明 id
-battle/getSelfRecord	CountryRanking.setup	countryId,rank	other_endpoint	ranking/getRecordOfCountryInBattle	CountryRanking.cs:105-138 won/lost/rank/timestamp/neighboring 来自 getRecordOfCountryInBattle 回包；该端点已声明 rank
-battle/getSelfRecord	CountryRanking.setupForSkipBattle	countryId,rank	other_endpoint	ranking/getRecordOfCountryInBattle	CountryRanking.cs:212 同一回包对象读 countryId；该端点已声明 countryId
-battle/getSelfRecord	PluginRunner_DoBattleNormal.Init	BattleMoney,BattleSiege,BattleTenka	not_response	请求侧 TaskParams	PluginRunner_DoBattleNormal.cs:29-31 读 task.TaskParams[BattleMoney/BattleSiege/BattleTenka]，是插件任务参数不是回包
-battle/getSelfRecord	PluginRunner_DoBattleNormal.onBattleResult	bonus,defenderName,log,payment,result,winner	other_endpoint	battle/executeBattle	PluginRunner_DoBattleNormal.cs:166-173 log/result/bonus/payment/winner/defenderName 来自 executeBattle 回包；该端点已声明全部
-battle/getSelfRecord	decisiveBattleSituation.setup	advantage,battlefield,battlefields,east,eastPoint,team,west,westPoint	other_endpoint	turfWar/getWarSituation	decisiveBattleSituation.cs:92-97 读 situation/battlefields 子表；该端点已声明 situation.battlefields.<field>.east/…/advantage 与 team/battlefield
-common/getEquips	vsSetting_Siege.playerCharacterSet	amount,tactics	other_endpoint	common/getTactics	vsSetting_Siege.cs:389-399 amount 来自 getTactics 回包；该端点已声明 amount
-common/getSelectCharacters	QuestDataCache.process	baseId	other_endpoint	deck/getAvatarCharacters	QuestDataCache.cs:599-620 baseId 来自 getAvatarCharacters 回包；该端点已声明 baseId:string
-common/getServerTime	Configs.GetUserInfo	playerId	other_endpoint	common/getPlayerEntity	Configs.cs:1332-1335 playerId 来自 getPlayerCogid/getPlayerEntity 回包对象；该端点已声明 playerId
-common/getServerTime	StatusView.resetStatus	actionPoints,entity,resources	other_endpoint	common/getPlayerParams	StatusView.cs:282-287 entity/actionPoints/resources 来自 getPlayerParams 回包；该端点已声明三键
-common/getTactics	vsSetting_Siege.playerCharacterSet	equip,grade	other_endpoint	common/getEquips	vsSetting_Siege.cs:409-419 grade 来自 getEquips 回包；该端点已声明 grade；charactersTable["equip"] 是请求侧
-debug/addCollections	mypage.debugAddColections	items	not_response	配置表	mypage.cs:334 table.get(text)["items"]，table 是本地配置表访问器
-debug/addItems	PoliticDebugMenu.debug_ItemCategoryAdd	enable	not_response	配置表	PoliticDebugMenu.cs:64 tableAccessor.get(key)["enable"]，本地表
-debug/debugCreateEquip	DebugMakeEquipMenu.OnGUI	atk,grade,level	not_response	请求侧/本地数据	DebugMakeEquipMenu.cs:233-247 equipInfo_.status["atk"/"grade"/"level"]，调试菜单自填
-debug/debugCreateQuestEncount	BattleLogManager.getParameterFromServerForDebug	debug,monsterId	not_response	写侧赋值	BattleLogManager.cs:5219 同一次写侧赋值，非读回包
-debug/dedicate	MightOfNationDialog.OnGUI	dedication,nationalPower,score	real_gap		MightOfNationDialog.cs:433 读 res["score"]（debug 回调回包）；契约 0 键；table_["dedication"/"nationalPower"] 是本地写
-debug/resetDedication	MightOfNationDialog.OnGUI	dedication,score	real_gap		同 MightOfNationDialog.cs:433 的 score 读，与 debug/dedicate 同一回包键
-deck/extendCharacterStore	DeckAddMaxCharacter.createAddCharacterWindow	character,possessionLimits	real_gap		DeckAddMaxCharacter.cs:147-151 读 possessionLimits → possessionLimits["character"]；契约仅 4 键
-deck/getAvatarCharacters	HTMLBbsMediator.getIconURL	playerIds	not_response	HTML 输入	HTMLBbsMediator.cs:485 input.hash["playerIds"]，调用参数
-deck/getDeckBonus	DeckScene.OnEnable	inheritPoint,possessionLimits,skillCoins	other_endpoint	deck/getDecks	DeckScene.cs:241-255 inheritPoint/possessionLimits/skillCoins 来自 getDecks 回包；该端点已声明三键
-deck/getDeckBonus	HTMLBoosterMediator.addCardInfoHash	DeckAtk,DeckDef,DeckInt,amount,atk,attrib,category,def,icon,iconADIs,iconNum,intel,name,path,rarity,sex,type,yomi	not_response	配置表/本地表	HTMLBoosterMediator.cs:131-133 instance3.getDeckBonus(...) 是本地表访问器与 UI 自造表
-deck/getDeckBonus	HTMLBoosterMediator.addCardInfoHash	DeckAtk,DeckDef,DeckInt,amount,atk,attrib,category,def,icon,iconADIs,iconNum,intel,name,path,rarity,sex,type,yomi	not_response	配置表/本地表	HTMLBoosterMediator.cs:131-133 instance3.getDeckBonus(...) 是本地表访问器与 UI 自造表
-deck/getDecks	DeckScene.OnEnable	bonus,id	other_endpoint	deck/getDeckBonus	DeckScene.cs:205-239 deck[..][..]["id"/"bonus"] 来自 getDeckBonus 回包；该端点已声明 id/bonus
-deck/getDecks	PluginRunner_DoBattleSiege.Init	BattleMoney	not_response	请求侧 TaskParams	PluginRunner_DoBattleSiege.cs:28 读 task.TaskParams["BattleMoney"]
-deck/getDecks	QuestDataCache.process	baseId	other_endpoint	deck/getAvatarCharacters	QuestDataCache.cs:620 baseId 来自 getAvatarCharacters 回包；该端点已声明
-deck/getDecks	StrategySelect.setup	a,b,current,max	other_endpoint	strategy/getStrategyBrief	StrategySelect.cs:102-110 a/b/current/max 来自 getStrategyBrief 回包；该端点已声明 4 键
-deck/getProtectedCharacterIds	DeckScene.OnEnable	bonus,id,inheritPoint,possessionLimits,skillCoins	other_endpoint	deck/getDeckBonus;deck/getDecks	DeckScene.cs:231/248-253 的 bonus/id 与 inheritPoint/possessionLimits/skillCoins 分属两端点，均已声明
-deck/getProtectedEquipIds	DeckScene.OnEnable	bonus,id,inheritPoint,possessionLimits,skillCoins	other_endpoint	deck/getDeckBonus;deck/getDecks	同上：DeckScene.OnEnable 内连续调用 getDeckBonus 与 getDecks
-friend/getFriends	vsSetting.Start	bonus,id	other_endpoint	deck/getDeckBonus	vsSetting.cs:101 deckBonus 回包读 id/bonus；该端点已声明
-friend/task/accelerateFriendProduceTask	PoliticBuilding.accelerateProduceTask	DirectMessage	not_response	本地构造	PoliticBuilding.cs:730 new Hashtable{ ["DirectMessage"]=… } 是本地组装的通知体
-friend/visitFriendMap	Politic.resetFriendMap	acceleratecount,completecount	other_endpoint	friend/getFriendMapData2	Politic.cs:318-321 acceleratecount/completecount 来自 getFriendMapData(3 参) 回包；该端点已声明两键
-inbox/getParcels	InboxReader.reload	end,start	not_response	请求侧入参	InboxReader.cs:150-151 argv["start"/"end"]
-inbox/resolveParcels	PluginRunner_DoReceiveMail.onGetParcels	parcels,totalCount	other_endpoint	inbox/getParcels	PluginRunner_DoReceiveMail.cs:25-31 totalCount/parcels 来自 getParcels 回包；该端点已声明
-mailbox/deleteMails	HTMLMailCore.deleteMails	mailIds	not_response	HTML 输入	HTMLMailCore.cs:110-112 MiniJSON.JsonDecode(inJson)["mailIds"]
-mailbox/sendMails	HTMLBbsMediator.sendMails	to	not_response	HTML 输入	HTMLBbsMediator.cs:752-760 input.hash["to"]
-mailbox/sendMails	HTMLMailCore.sendMails	to	not_response	HTML 输入	HTMLMailCore.cs:28-29 MiniJSON.JsonDecode(inJson)["to"]
-navigator/getNavigatorDetails	NavigatorChangeSelect.getNavigatorDetails	color1,color2,color3,color4,color5	not_response	debug 自造	NavigatorChangeSelect.cs:339-356 isDebugMode 下自造 color1..color5
-politic/mypage/setSelfIntroduction	mypageSelfIntroduction.confirmCallback	keyIndex1,keyIndex2,keyIndex3,text,valueIndex1,valueIndex2,valueIndex3	not_response	本地对话框	mypageSelfIntroduction.cs:72-82 read WindowController.WindowResult.hash，非回包
-politic/support_item/usePotions	QuestScriptCommand.checkQuestActionPoint	amount,potions	other_endpoint	politic/support_item/getPotions	QuestScriptCommand.cs:1606-1613 potions/potion0000102/amount 来自 getPotions 回包
-politic/task/accelerateProduceTask	PoliticBuilding.accelerateProduceTask	acceleratecount	other_endpoint	friend/task/accelerateFriendProduceTask	PoliticBuilding.cs:744-755 acceleratecount 来自 accelerateFriendProduceTask 回包；该端点已声明
-quest/checkCompleteQuestEx	PluginRunner_DoDreamSpace.onQuestExecute	executeInfo,step	other_endpoint	battle/executeBattle	PluginRunner_DoDreamSpace.cs:98-102 onQuestExecute(obj) 的 obj 是 executeBattle 回包，读 executeInfo.step
-quest/checkCompleteQuestEx	PluginRunner_DoOniQuest.onQuestExecute	executeInfo,step	other_endpoint	battle/executeBattle	PluginRunner_DoOniQuest.cs:159-163 同上
-quest/clearObstacle	PluginQuestStepHelper.OnObstacle	amount,category,needAmount,obstacleInfo,type	other_endpoint	battle/executeBattle	PluginQuestStepHelper.cs:28-49 ProcessQuestStep 的 hash 就是 executeBattle 回包（PluginRunner_DoDreamSpace.cs:117 传 hashtable，同 :100 obj）；eventInfo 是它的一级键，obstacleInfo.amount/needAmount/type/category 见 :186-192
-quest/clearObstacle	QuestScriptCommand.clearObstacle	category,uses	real_gap		QuestScriptCommand.cs:2180-2210 res=clearObstacle 回包，读 res["uses"]→uses["category"]；契约仅 isSuccess
-quest/getQuestBossPunish	QuestScriptCommand.startQuest	obstacle	other_endpoint	quest/getQuestEncountWorks	QuestScriptCommand.cs:429-442 obstacle 来自 getQuestEncountWorks 回包；该端点已声明 obstacle
-quest/getQuestEncount	QuestScriptCommand.startQuest	obstacle,script	other_endpoint	quest/getQuestEncountWorks;quest/getQuestBossPunish	同一 startQuest 序列：obstacle 属 getQuestEncountWorks，script 属 getQuestBossPunish（:467）；均已声明
-quest/getQuestEncountWorks	QuestScriptCommand.startQuest	script	other_endpoint	quest/getQuestBossPunish	QuestScriptCommand.cs:455-467 script 来自 getQuestBossPunish 回包；该端点已声明 script:string
-quest/getQuestProgress	QuestDataCache.process	baseId	other_endpoint	deck/getAvatarCharacters	QuestDataCache.cs:620 baseId 来自 getAvatarCharacters 回包；该端点已声明
-quest/openQuest	PluginRunner_DoEvent.onQuestChapterData	clearCount	other_endpoint	quest/getChapterData	PluginRunner_DoEvent.cs:82-89 clearCount 来自 getQuestChapterData 回包；该端点已声明 clearCount:double
-quest/openTreasureBox	PluginQuestStepHelper.CallOpenTreasure	haveCount,keyItemCount,keyItemId,treasureId,treasureInfo	other_endpoint	battle/executeBattle	同一 executeBattle 回包的 eventInfo.treasureInfo；PluginQuestStepHelper.cs:312-318、QuestScriptCommand.cs:655-662 同源
-ranking/getBriefOfDedicationMonthly	HTMLRankingMediator_Delivery.getRankersAroundMeInDeliveryMonthly	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getBriefOfKokudaka	HTMLRankingMediator_Kokudaka.getAroundRankersInKokudaka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getBriefOfNationalRanking	HTMLRewardMediator.requestCore	unit	not_response	写侧赋值	HTMLRewardMediator.cs:218-230 hashtable["unit"] = string.Empty（HTML 展示用注入字段）
-ranking/getBriefOfRaidBossDaily	HTMLRankingMediator_RaidBoss.getDailyAroundRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getBriefOfRaidBossNational	HTMLRewardMediator.requestCore	unit	not_response	写侧赋值	同上 HTMLRewardMediator.cs:221/229 写侧
-ranking/getDailyRankersInBattle	HTMLRankingMediator_Battle.getDailyTopRankersInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getDailyRankersInBattle	HTMLRankingMediator_Battle.getRankersAroundMeInBattleDaily	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]（同 :79/:99 模板）
-ranking/getDailyRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getDailyAroundRankersInRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getDailyRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getDailyTopRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getDailyRankersInTurfWar	HTMLRankingMediator_Tenka.getDailyTopRankersInTenka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getDailyRankersInTurfWar	HTMLRankingMediator_Tenka.getRankersAroundMeInTenkaDaily	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getMonthlyRankersInDedication	HTMLRankingMediator_Delivery.getRankersAroundMeInDeliveryMonthly	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]（:99）
-ranking/getMonthlyRankersInDedication	HTMLRankingMediator_Delivery.getTopRankersInDeliveryMonthly	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInBattle	HTMLRankingMediator_Battle.getRankersAroundMeInBattle	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInBattle	HTMLRankingMediator_Battle.getTopRankersInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInBrawn	HTMLRankingMediator_Saga.getAroundRankersInSaga	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInBrawn	HTMLRankingMediator_Saga.getTopRankersInSaga	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInDedication	HTMLRankingMediator_Delivery.getRankersAroundMeInDelivery	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInDedication	HTMLRankingMediator_Delivery.getTopRankersInDelivery	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInGiganticRaidBoss	HTMLRankingMediator_GiganticRaidBoss.getAroundRankersInGiganticRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInGiganticRaidBoss	HTMLRankingMediator_GiganticRaidBoss.getTopRankersInGiganticRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInKokudaka	HTMLRankingMediator_Kokudaka.getAroundRankersInKokudaka	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInKokudaka	HTMLRankingMediator_Kokudaka.getTopRankersInKokudaka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInNationalPower	HTMLRankingMediator_NationalPower.getRankersAroundMeInNationalPower	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInNationalPower	HTMLRankingMediator_NationalPower.getRankingOfCountriesInNationalPower	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInNationalRanking	HTMLRankingMediator_NationalRanking.getAroundRankersInNationalRanking	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInNationalRanking	HTMLRankingMediator_NationalRanking.getTopRankersInNationalRanking	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getAroundRankersInRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getTopRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInRaidBossNational	HTMLRankingMediator_RaidBossNational.getAroundRankersInRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInRaidBossNational	HTMLRankingMediator_RaidBossNational.getTopRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInRandomQuest	HTMLRankingMediator_GenmuStep.getRankersAroundMeInGenmuStep	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInRandomQuest	HTMLRankingMediator_GenmuStep.getTopRankersInGenmuStep	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInSiege	HTMLRankingMediator_Siege.getAroundRankersInSiege	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInSiege	HTMLRankingMediator_Siege.getTopRankersInSiege	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInStrategy	HTMLRankingMediator_Strategy.getAroundRankersInStrategy	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInStrategy	HTMLRankingMediator_Strategy.getTopRankersInStrategy	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInStrategyForMypage	HTMLRankingMediator_Strategy.getAroundRankersInStrategy	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInStrategyForMypage	HTMLRankingMediator_Strategy.getTopRankersInStrategy	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInStrategyPie	HTMLRankingMediator_StrategyRate.getRankingOfStrategyRateInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersInTurfWar	HTMLRankingMediator_Tenka.getRankersAroundMeInTenka	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersInTurfWar	HTMLRankingMediator_Tenka.getTopRankersInTenka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersOfCountriesInGiganticRaidBoss	HTMLRankingMediator_GiganticPoint.getRankingOfGiganticPoint	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankersOfMaxDamageInGiganticRaidBoss	HTMLRankingMediator_GiganticMaxDamage.getAroundRankersInMaxDamageGiganticRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]
-ranking/getRankersOfMaxDamageInGiganticRaidBoss	HTMLRankingMediator_GiganticMaxDamage.getTopRankersOfMaxDamageInGiganticRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-ranking/getRankingOfCountriesInBattle	HTMLRankingMediator_Country.getRankingOfCountriesInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参
-siege/getPairings	HTMLSiegeMediator.request	func	not_response	写侧赋值	HTMLSiegeMediator.cs:66-68 hash["func"] = array[0]（请求体注入）
-strategy/command/traceroute	StrategyMoveableRegionSelector.createConfirmDialog	STRATEGY_MSG_COMMAND_MARCH_UNREACHABLE,STRATEGY_MSG_CONFIRM_COMMAND1_HOUR_MINUTES,STRATEGY_MSG_CONFIRM_COMMAND1_MINUTES,a,b,buildingId,food,forceSizes,gold,iron,wood	not_response	消息表 + 他端点回包	StrategyMoveableRegionSelector.cs:196-212 消息表键 + 读 consumption/cellBattleContribution（属 getStrategyCommandInfo，已声明 gold/food/iron/wood/a/b/forceSizes/buildingId）
-strategy/getStrategyCommandInfo	StrategyMoveableRegionSelector.createConfirmDialog	STRATEGY_MSG_COMMAND_MARCH_UNREACHABLE,STRATEGY_MSG_CONFIRM_COMMAND1_HOUR_MINUTES,STRATEGY_MSG_CONFIRM_COMMAND1_MINUTES	not_response	消息表	StrategyMoveableRegionSelector.cs:198-203 StrategyLayoutMessageTableAccessor[key] 取 STRATEGY_MSG_* 文本，非回包
-strategy/getStrategyCommandInfo	StrategyStrategizeRegionSelector.createConfirmDialog	STRATEGY_MSG_COMMAND_REVENGE_INFO1,STRATEGY_MSG_COMMAND_STRATEGIZE_INFO1	not_response	消息表	StrategyStrategizeRegionSelector.cs:208-217 同上消息表取 STRATEGY_MSG_*
-strategy/isAlive	StrategyHUDController.transitionLogWindowUpdate	command,route	other_endpoint	strategy/getStrategyStatus	StrategyHUDController.cs:976-986 读 cache.SelfData=updateData["self"]（StrategyDataCache.cs:80-90），updateData 来自 getStrategyStatus 回调（Strategy.cs:128-161）；该端点尚无 self 子表，待后续取证
-turfWar/getWarSituation	TurfWarBriefCache.setup	closeWarTime,status	other_endpoint	common/getEventStatuses	TurfWarBriefCache.cs:346-354 读事件状态表 turfWar.status/closeWarTime；属 getEventStatuses 子表（已补）
+endpoint	callsite	missing_keys	verdict	real_owner	evidence	filter
+battle/executeBattle	BattleLogManager.getParameterFromServerForDebug	debug,monsterId	not_response	写侧赋值	BattleLogManager.cs:5214-5219 先 info["monsterId"]=…/info["debug"]=… 再发请求，扫描器把写当读	dropped
+battle/executeBattle	PluginRunner_DoBattleNormal.onGetRivals	rivals	other_endpoint	battle/getRivals2	PluginRunner_DoBattleNormal.cs:123-126 回调来自 getRivals2；该端点已声明 rivals:Hashtable	kept
+battle/executeBattle	vsSetting.executeSkipBattle	id	other_endpoint	deck/getDeckBonus	vsSetting.cs:751-772 deckBonus_=getDeckBonus 回包；:762 读 deckBonus_["deck"][..]["id"]；该端点已声明 id	kept
+battle/getSelfRecord	CountryRanking.setup	countryId,rank	other_endpoint	ranking/getRecordOfCountryInBattle	CountryRanking.cs:105-138 won/lost/rank/timestamp/neighboring 来自 getRecordOfCountryInBattle 回包；该端点已声明 rank	kept
+battle/getSelfRecord	CountryRanking.setupForSkipBattle	countryId,rank	other_endpoint	ranking/getRecordOfCountryInBattle	CountryRanking.cs:212 同一回包对象读 countryId；该端点已声明 countryId	kept
+battle/getSelfRecord	PluginRunner_DoBattleNormal.Init	BattleMoney,BattleSiege,BattleTenka	not_response	请求侧 TaskParams	PluginRunner_DoBattleNormal.cs:29-31 读 task.TaskParams[BattleMoney/BattleSiege/BattleTenka]，是插件任务参数不是回包	dropped
+battle/getSelfRecord	PluginRunner_DoBattleNormal.onBattleResult	bonus,defenderName,log,payment,result,winner	other_endpoint	battle/executeBattle	PluginRunner_DoBattleNormal.cs:166-173 log/result/bonus/payment/winner/defenderName 来自 executeBattle 回包；该端点已声明全部	kept
+battle/getSelfRecord	decisiveBattleSituation.setup	advantage,battlefield,battlefields,east,eastPoint,team,west,westPoint	other_endpoint	turfWar/getWarSituation	decisiveBattleSituation.cs:92-97 读 situation/battlefields 子表；该端点已声明 situation.battlefields.<field>.east/…/advantage 与 team/battlefield	kept
+common/getEquips	vsSetting_Siege.playerCharacterSet	amount,tactics	other_endpoint	common/getTactics	vsSetting_Siege.cs:389-399 amount 来自 getTactics 回包；该端点已声明 amount	kept
+common/getSelectCharacters	QuestDataCache.process	baseId	other_endpoint	deck/getAvatarCharacters	QuestDataCache.cs:599-620 baseId 来自 getAvatarCharacters 回包；该端点已声明 baseId:string	kept
+common/getServerTime	Configs.GetUserInfo	playerId	other_endpoint	common/getPlayerEntity	Configs.cs:1332-1335 playerId 来自 getPlayerCogid/getPlayerEntity 回包对象；该端点已声明 playerId	kept
+common/getServerTime	StatusView.resetStatus	actionPoints,entity,resources	other_endpoint	common/getPlayerParams	StatusView.cs:282-287 entity/actionPoints/resources 来自 getPlayerParams 回包；该端点已声明三键	kept
+common/getTactics	vsSetting_Siege.playerCharacterSet	equip,grade	other_endpoint	common/getEquips	vsSetting_Siege.cs:409-419 grade 来自 getEquips 回包；该端点已声明 grade；charactersTable["equip"] 是请求侧	kept
+debug/addCollections	mypage.debugAddColections	items	not_response	配置表	mypage.cs:334 table.get(text)["items"]，table 是本地配置表访问器	dropped
+debug/addItems	PoliticDebugMenu.debug_ItemCategoryAdd	enable	not_response	配置表	PoliticDebugMenu.cs:64 tableAccessor.get(key)["enable"]，本地表	dropped
+debug/debugCreateEquip	DebugMakeEquipMenu.OnGUI	atk,grade,level	not_response	请求侧/本地数据	DebugMakeEquipMenu.cs:233-247 equipInfo_.status["atk"/"grade"/"level"]，调试菜单自填	dropped
+debug/debugCreateQuestEncount	BattleLogManager.getParameterFromServerForDebug	debug,monsterId	not_response	写侧赋值	BattleLogManager.cs:5219 同一次写侧赋值，非读回包	dropped
+debug/dedicate	MightOfNationDialog.OnGUI	dedication,nationalPower,score	real_gap		MightOfNationDialog.cs:433 读 res["score"]（debug 回调回包）；契约 0 键；table_["dedication"/"nationalPower"] 是本地写	mixed
+debug/resetDedication	MightOfNationDialog.OnGUI	dedication,score	real_gap		同 MightOfNationDialog.cs:433 的 score 读，与 debug/dedicate 同一回包键	kept
+deck/extendCharacterStore	DeckAddMaxCharacter.createAddCharacterWindow	character,possessionLimits	real_gap		DeckAddMaxCharacter.cs:147-151 读 possessionLimits → possessionLimits["character"]；契约仅 4 键	kept
+deck/getAvatarCharacters	HTMLBbsMediator.getIconURL	playerIds	not_response	HTML 输入	HTMLBbsMediator.cs:485 input.hash["playerIds"]，调用参数	dropped
+deck/getDeckBonus	DeckScene.OnEnable	inheritPoint,possessionLimits,skillCoins	other_endpoint	deck/getDecks	DeckScene.cs:241-255 inheritPoint/possessionLimits/skillCoins 来自 getDecks 回包；该端点已声明三键	kept
+deck/getDeckBonus	HTMLBoosterMediator.addCardInfoHash	DeckAtk,DeckDef,DeckInt,amount,atk,attrib,category,def,icon,iconADIs,iconNum,intel,name,path,rarity,sex,type,yomi	not_response	配置表/本地表	HTMLBoosterMediator.cs:131-133 instance3.getDeckBonus(...) 是本地表访问器与 UI 自造表	dropped
+deck/getDeckBonus	HTMLBoosterMediator.addCardInfoHash	DeckAtk,DeckDef,DeckInt,amount,atk,attrib,category,def,icon,iconADIs,iconNum,intel,name,path,rarity,sex,type,yomi	not_response	配置表/本地表	HTMLBoosterMediator.cs:131-133 instance3.getDeckBonus(...) 是本地表访问器与 UI 自造表	dropped
+deck/getDecks	DeckScene.OnEnable	bonus,id	other_endpoint	deck/getDeckBonus	DeckScene.cs:205-239 deck[..][..]["id"/"bonus"] 来自 getDeckBonus 回包；该端点已声明 id/bonus	kept
+deck/getDecks	PluginRunner_DoBattleSiege.Init	BattleMoney	not_response	请求侧 TaskParams	PluginRunner_DoBattleSiege.cs:28 读 task.TaskParams["BattleMoney"]	dropped
+deck/getDecks	QuestDataCache.process	baseId	other_endpoint	deck/getAvatarCharacters	QuestDataCache.cs:620 baseId 来自 getAvatarCharacters 回包；该端点已声明	kept
+deck/getDecks	StrategySelect.setup	a,b,current,max	other_endpoint	strategy/getStrategyBrief	StrategySelect.cs:102-110 a/b/current/max 来自 getStrategyBrief 回包；该端点已声明 4 键	kept
+deck/getProtectedCharacterIds	DeckScene.OnEnable	bonus,id,inheritPoint,possessionLimits,skillCoins	other_endpoint	deck/getDeckBonus;deck/getDecks	DeckScene.cs:231/248-253 的 bonus/id 与 inheritPoint/possessionLimits/skillCoins 分属两端点，均已声明	kept
+deck/getProtectedEquipIds	DeckScene.OnEnable	bonus,id,inheritPoint,possessionLimits,skillCoins	other_endpoint	deck/getDeckBonus;deck/getDecks	同上：DeckScene.OnEnable 内连续调用 getDeckBonus 与 getDecks	kept
+friend/getFriends	vsSetting.Start	bonus,id	other_endpoint	deck/getDeckBonus	vsSetting.cs:101 deckBonus 回包读 id/bonus；该端点已声明	kept
+friend/task/accelerateFriendProduceTask	PoliticBuilding.accelerateProduceTask	DirectMessage	not_response	本地构造	PoliticBuilding.cs:730 new Hashtable{ ["DirectMessage"]=… } 是本地组装的通知体	dropped
+friend/visitFriendMap	Politic.resetFriendMap	acceleratecount,completecount	other_endpoint	friend/getFriendMapData2	Politic.cs:318-321 acceleratecount/completecount 来自 getFriendMapData(3 参) 回包；该端点已声明两键	kept
+inbox/getParcels	InboxReader.reload	end,start	not_response	请求侧入参	InboxReader.cs:150-151 argv["start"/"end"]	dropped
+inbox/resolveParcels	PluginRunner_DoReceiveMail.onGetParcels	parcels,totalCount	other_endpoint	inbox/getParcels	PluginRunner_DoReceiveMail.cs:25-31 totalCount/parcels 来自 getParcels 回包；该端点已声明	kept
+mailbox/deleteMails	HTMLMailCore.deleteMails	mailIds	not_response	HTML 输入	HTMLMailCore.cs:110-112 MiniJSON.JsonDecode(inJson)["mailIds"]	dropped
+mailbox/sendMails	HTMLBbsMediator.sendMails	to	not_response	HTML 输入	HTMLBbsMediator.cs:752-760 input.hash["to"]	dropped
+mailbox/sendMails	HTMLMailCore.sendMails	to	not_response	HTML 输入	HTMLMailCore.cs:28-29 MiniJSON.JsonDecode(inJson)["to"]	dropped
+navigator/getNavigatorDetails	NavigatorChangeSelect.getNavigatorDetails	color1,color2,color3,color4,color5	not_response	debug 自造	NavigatorChangeSelect.cs:339-356 isDebugMode 下自造 color1..color5	dropped
+politic/mypage/setSelfIntroduction	mypageSelfIntroduction.confirmCallback	keyIndex1,keyIndex2,keyIndex3,text,valueIndex1,valueIndex2,valueIndex3	not_response	本地对话框	mypageSelfIntroduction.cs:72-82 read WindowController.WindowResult.hash，非回包	dropped
+politic/support_item/usePotions	QuestScriptCommand.checkQuestActionPoint	amount,potions	other_endpoint	politic/support_item/getPotions	QuestScriptCommand.cs:1606-1613 potions/potion0000102/amount 来自 getPotions 回包	kept
+politic/task/accelerateProduceTask	PoliticBuilding.accelerateProduceTask	acceleratecount	other_endpoint	friend/task/accelerateFriendProduceTask	PoliticBuilding.cs:744-755 acceleratecount 来自 accelerateFriendProduceTask 回包；该端点已声明	kept
+quest/checkCompleteQuestEx	PluginRunner_DoDreamSpace.onQuestExecute	executeInfo,step	other_endpoint	battle/executeBattle	PluginRunner_DoDreamSpace.cs:98-102 onQuestExecute(obj) 的 obj 是 executeBattle 回包，读 executeInfo.step	kept
+quest/checkCompleteQuestEx	PluginRunner_DoOniQuest.onQuestExecute	executeInfo,step	other_endpoint	battle/executeBattle	PluginRunner_DoOniQuest.cs:159-163 同上	kept
+quest/clearObstacle	PluginQuestStepHelper.OnObstacle	amount,category,needAmount,obstacleInfo,type	other_endpoint	battle/executeBattle	PluginQuestStepHelper.cs:28-49 ProcessQuestStep 的 hash 就是 executeBattle 回包（PluginRunner_DoDreamSpace.cs:117 传 hashtable，同 :100 obj）；eventInfo 是它的一级键，obstacleInfo.amount/needAmount/type/category 见 :186-192	kept
+quest/clearObstacle	QuestScriptCommand.clearObstacle	category,uses	real_gap		QuestScriptCommand.cs:2180-2210 res=clearObstacle 回包，读 res["uses"]→uses["category"]；契约仅 isSuccess	kept
+quest/getQuestBossPunish	QuestScriptCommand.startQuest	obstacle	other_endpoint	quest/getQuestEncountWorks	QuestScriptCommand.cs:429-442 obstacle 来自 getQuestEncountWorks 回包；该端点已声明 obstacle	kept
+quest/getQuestEncount	QuestScriptCommand.startQuest	obstacle,script	other_endpoint	quest/getQuestEncountWorks;quest/getQuestBossPunish	同一 startQuest 序列：obstacle 属 getQuestEncountWorks，script 属 getQuestBossPunish（:467）；均已声明	kept
+quest/getQuestEncountWorks	QuestScriptCommand.startQuest	script	other_endpoint	quest/getQuestBossPunish	QuestScriptCommand.cs:455-467 script 来自 getQuestBossPunish 回包；该端点已声明 script:string	kept
+quest/getQuestProgress	QuestDataCache.process	baseId	other_endpoint	deck/getAvatarCharacters	QuestDataCache.cs:620 baseId 来自 getAvatarCharacters 回包；该端点已声明	kept
+quest/openQuest	PluginRunner_DoEvent.onQuestChapterData	clearCount	other_endpoint	quest/getChapterData	PluginRunner_DoEvent.cs:82-89 clearCount 来自 getQuestChapterData 回包；该端点已声明 clearCount:double	kept
+quest/openTreasureBox	PluginQuestStepHelper.CallOpenTreasure	haveCount,keyItemCount,keyItemId,treasureId,treasureInfo	other_endpoint	battle/executeBattle	同一 executeBattle 回包的 eventInfo.treasureInfo；PluginQuestStepHelper.cs:312-318、QuestScriptCommand.cs:655-662 同源	kept
+ranking/getBriefOfDedicationMonthly	HTMLRankingMediator_Delivery.getRankersAroundMeInDeliveryMonthly	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getBriefOfKokudaka	HTMLRankingMediator_Kokudaka.getAroundRankersInKokudaka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getBriefOfNationalRanking	HTMLRewardMediator.requestCore	unit	not_response	写侧赋值	HTMLRewardMediator.cs:218-230 hashtable["unit"] = string.Empty（HTML 展示用注入字段）	dropped
+ranking/getBriefOfRaidBossDaily	HTMLRankingMediator_RaidBoss.getDailyAroundRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getBriefOfRaidBossNational	HTMLRewardMediator.requestCore	unit	not_response	写侧赋值	同上 HTMLRewardMediator.cs:221/229 写侧	dropped
+ranking/getDailyRankersInBattle	HTMLRankingMediator_Battle.getDailyTopRankersInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getDailyRankersInBattle	HTMLRankingMediator_Battle.getRankersAroundMeInBattleDaily	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]（同 :79/:99 模板）	dropped
+ranking/getDailyRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getDailyAroundRankersInRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getDailyRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getDailyTopRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getDailyRankersInTurfWar	HTMLRankingMediator_Tenka.getDailyTopRankersInTenka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getDailyRankersInTurfWar	HTMLRankingMediator_Tenka.getRankersAroundMeInTenkaDaily	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getMonthlyRankersInDedication	HTMLRankingMediator_Delivery.getRankersAroundMeInDeliveryMonthly	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]（:99）	dropped
+ranking/getMonthlyRankersInDedication	HTMLRankingMediator_Delivery.getTopRankersInDeliveryMonthly	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInBattle	HTMLRankingMediator_Battle.getRankersAroundMeInBattle	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInBattle	HTMLRankingMediator_Battle.getTopRankersInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInBrawn	HTMLRankingMediator_Saga.getAroundRankersInSaga	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInBrawn	HTMLRankingMediator_Saga.getTopRankersInSaga	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInDedication	HTMLRankingMediator_Delivery.getRankersAroundMeInDelivery	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInDedication	HTMLRankingMediator_Delivery.getTopRankersInDelivery	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInGiganticRaidBoss	HTMLRankingMediator_GiganticRaidBoss.getAroundRankersInGiganticRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInGiganticRaidBoss	HTMLRankingMediator_GiganticRaidBoss.getTopRankersInGiganticRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInKokudaka	HTMLRankingMediator_Kokudaka.getAroundRankersInKokudaka	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInKokudaka	HTMLRankingMediator_Kokudaka.getTopRankersInKokudaka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInNationalPower	HTMLRankingMediator_NationalPower.getRankersAroundMeInNationalPower	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInNationalPower	HTMLRankingMediator_NationalPower.getRankingOfCountriesInNationalPower	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInNationalRanking	HTMLRankingMediator_NationalRanking.getAroundRankersInNationalRanking	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInNationalRanking	HTMLRankingMediator_NationalRanking.getTopRankersInNationalRanking	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getAroundRankersInRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInRaidBoss	HTMLRankingMediator_RaidBoss.getTopRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInRaidBossNational	HTMLRankingMediator_RaidBossNational.getAroundRankersInRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInRaidBossNational	HTMLRankingMediator_RaidBossNational.getTopRankersInRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInRandomQuest	HTMLRankingMediator_GenmuStep.getRankersAroundMeInGenmuStep	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInRandomQuest	HTMLRankingMediator_GenmuStep.getTopRankersInGenmuStep	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInSiege	HTMLRankingMediator_Siege.getAroundRankersInSiege	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInSiege	HTMLRankingMediator_Siege.getTopRankersInSiege	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInStrategy	HTMLRankingMediator_Strategy.getAroundRankersInStrategy	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInStrategy	HTMLRankingMediator_Strategy.getTopRankersInStrategy	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInStrategyForMypage	HTMLRankingMediator_Strategy.getAroundRankersInStrategy	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInStrategyForMypage	HTMLRankingMediator_Strategy.getTopRankersInStrategy	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInStrategyPie	HTMLRankingMediator_StrategyRate.getRankingOfStrategyRateInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersInTurfWar	HTMLRankingMediator_Tenka.getRankersAroundMeInTenka	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersInTurfWar	HTMLRankingMediator_Tenka.getTopRankersInTenka	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersOfCountriesInGiganticRaidBoss	HTMLRankingMediator_GiganticPoint.getRankingOfGiganticPoint	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	HTMLRankingMediator_GiganticMaxDamage.getAroundRankersInMaxDamageGiganticRaidBoss	aroundRank,turn	not_response	本地请求参数	localHash["aroundRank"]	dropped
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	HTMLRankingMediator_GiganticMaxDamage.getTopRankersOfMaxDamageInGiganticRaidBoss	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+ranking/getRankingOfCountriesInBattle	HTMLRankingMediator_Country.getRankingOfCountriesInBattle	turn	not_response	HTML 请求参数	args["turn"]：HTMLRankingMediator_*.cs 排名请求入参	dropped
+siege/getPairings	HTMLSiegeMediator.request	func	not_response	写侧赋值	HTMLSiegeMediator.cs:66-68 hash["func"] = array[0]（请求体注入）	dropped
+strategy/command/traceroute	StrategyMoveableRegionSelector.createConfirmDialog	STRATEGY_MSG_COMMAND_MARCH_UNREACHABLE,STRATEGY_MSG_CONFIRM_COMMAND1_HOUR_MINUTES,STRATEGY_MSG_CONFIRM_COMMAND1_MINUTES,a,b,buildingId,food,forceSizes,gold,iron,wood	not_response	消息表 + 他端点回包	StrategyMoveableRegionSelector.cs:196-212 消息表键 + 读 consumption/cellBattleContribution（属 getStrategyCommandInfo，已声明 gold/food/iron/wood/a/b/forceSizes/buildingId）	dropped
+strategy/getStrategyCommandInfo	StrategyMoveableRegionSelector.createConfirmDialog	STRATEGY_MSG_COMMAND_MARCH_UNREACHABLE,STRATEGY_MSG_CONFIRM_COMMAND1_HOUR_MINUTES,STRATEGY_MSG_CONFIRM_COMMAND1_MINUTES	not_response	消息表	StrategyMoveableRegionSelector.cs:198-203 StrategyLayoutMessageTableAccessor[key] 取 STRATEGY_MSG_* 文本，非回包	dropped
+strategy/getStrategyCommandInfo	StrategyStrategizeRegionSelector.createConfirmDialog	STRATEGY_MSG_COMMAND_REVENGE_INFO1,STRATEGY_MSG_COMMAND_STRATEGIZE_INFO1	not_response	消息表	StrategyStrategizeRegionSelector.cs:208-217 同上消息表取 STRATEGY_MSG_*	dropped
+strategy/isAlive	StrategyHUDController.transitionLogWindowUpdate	command,route	other_endpoint	strategy/getStrategyStatus	StrategyHUDController.cs:976-986 读 cache.SelfData=updateData["self"]（StrategyDataCache.cs:80-90），updateData 来自 getStrategyStatus 回调（Strategy.cs:128-161）；该端点尚无 self 子表，待后续取证	kept
+turfWar/getWarSituation	TurfWarBriefCache.setup	closeWarTime,status	other_endpoint	common/getEventStatuses	TurfWarBriefCache.cs:346-354 读事件状态表 turfWar.status/closeWarTime；属 getEventStatuses 子表（已补）	kept
