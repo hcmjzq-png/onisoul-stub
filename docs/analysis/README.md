@@ -19,6 +19,8 @@
 | `resource_contract.tsv` | 363 条资源名（146 字面量 / 217 运行时决定） |
 | `asset_prefixes.tsv` | 46 个前缀 → 目录 + 三档根目录（9 个在画质档 1/2 走 `assets2/`） |
 | `table_list.tsv` | 客户端 `reset()` 要求的 108 张配置表（文件名 / 根键 / 访问器） |
+| `table_schema.tsv` | 客户端要求的 108 张表的字段结构（106 张命中，32,999 条记录，`fields` 列 `名:类型` 分号分隔） |
+| `table_inventory.tsv` | 包里全部 1112 个 JSON 资产清单（40 stringtable / 106 客户端引用 / 966 未引用） |
 | `resource_hosts.txt` | 三个 host 与平台、语言常量的出处 |
 | `verify/endpoints.txt` | 端点清单双向对账（契约↔源码字面量） |
 | `verify/channels.txt` | `WebApiClient` 之外的网络通道（资源下载 / 截图上传 / IRC） |
@@ -52,7 +54,8 @@
 | 资源前缀目录 | 46 个，其中 9 个在画质档 1/2 走 `assets2/` |
 | 资源名 | 363 条（146 字面量 / 217 运行时决定） |
 | 配置表格式 | JSON TextAsset（`load2`/`get2` 全代码 0 调用点，msgpack + CRC32 路径为死代码） |
-| 客户端要求的表 | 108 张，见 `table_list.tsv` |
+| 客户端要求的表 | 108 张，见 `table_list.tsv`；其中 106 张已从包内 JSON 解出字段结构（`table_schema.tsv`） |
+| 包内 JSON 表资产 | 1112 个（40 stringtable / 106 客户端引用 / 966 未引用），见 `table_inventory.tsv` |
 
 ## 不入仓
 

@@ -124,10 +124,29 @@ building.json                  building
 
 **这就是 Stub 里 `tableAssets.unity3d` 必须包含的资源名清单**：AssetBundle 内部每个 TextAsset 的名字等于第一列（`xxx.json`），内容 JSON 的顶层键等于第二列。
 
+## 表内容在包里，不需要等运行时（`table_schema.tsv` / `table_inventory.tsv`）
+
+包内 `app/cache` 解出的 textassets 里有 **1112 个 JSON TextAsset**，命名形如 `<bundle前缀>.unity3d__<asset名>.json`：
+
+| 类别 | 数量 |
+|---|---|
+| stringtable 类（本地化字符串） | 40 |
+| 客户端 `TableAccessor` 引用的表 | 106 |
+| 未被客户端引用的 JSON 资产 | 966 |
+
+`table_inventory.tsv` 是全部 1112 条的清单（`asset_name / json_root / record_count / field_count / bytes / client_referenced / accessor_root_key`）；`table_schema.tsv` 是其中**客户端引用的 108 张表**的字段结构。
+
+- 命中 **106 / 108**：共 **32,999 条记录**，平均 **12.3 个字段/表**。
+- 结构统一为 `{rootKey: {id: {...}}}`——`json_root` 与 `*TableAccessor.reset("xxx.json", "rootKey")` 的第二参数**逐条比对 0 不一致**，说明 accessor 声明的根键就是数据真根键。
+- 缺 2 张：`combo.json`（包内无任何 combo 命名的 JSON 资产）、`strategy_battlefield.json`（包里只有 `strategy_battlefield_catalogue.json`，是另一张表，不是同一个根键）。
+- 解析要点：表 JSON 由 MiniJSON 写出，**含尾逗号**（`,}` / `,]`），标准 `json.loads` 会报 `Illegal trailing comma`，需先 `re.sub(r',\s*([}\]])', r'\1', raw)`；另有极少数文件是多段 JSON 拼接，需 `raw_decode` 取首段。
+
+**对 Stub 的意义**：`tableAssets.unity3d` 不再需要手编占位数据，可直接用这 106 张真实表打包（TextAsset 名逐字 `xxx.json`、内容顶层键即 `json_root`）；`db/schema.sql` 的字段也可从 `table_schema.tsv` 的 `fields` 列派生。剩下 966 个未引用 JSON 属于服务端/未启用功能的数据，客户端不读，可以忽略。
+
 ## Stub 侧最小实现
 
 1. 静态文件服务挂在 `http://{assetHost}/client/pc/jp/`，按目录前缀匹配，忽略文件名与 `?r=`。
-2. 提供 `globalAssets.unity3d`、`assets/scene/tableAssets.unity3d`（108 张 JSON 打成 TextAsset，名字逐字 `xxx.json`）。
+2. 提供 `globalAssets.unity3d`、`assets/scene/tableAssets.unity3d`（108 张 JSON 打成 TextAsset，名字逐字 `xxx.json`；其中 106 张可直接取自 `table_schema.tsv` 对应的真实数据）。
 3. 画质档 1/2 的 9 个前缀目录（`assets2/`）也要能命中，或直接把配置的 Performance 固定为 0。
 4. `common/getRevisions` 回 `{root, unity, server, table}` 四个整数，客户端拿它们做缓存版本号；任一变化都会触发重新下载。
 
@@ -140,3 +159,4 @@ building.json                  building
 - `MD5.Compute` 用的是什么变体（是否带 salt）未逐字节核对；建议 Stub 直接忽略文件名，回避这个问题。
 - 客户端请求的语言目录 `{language}` 取自 `Configs.Language`，其取值来自运行环境/配置表，未在本次抽取中确认默认值（日服包预期 `jp`）。
 - `resource_contract.tsv` 里 217 条运行时决定的名字没有展开成可能值集合（要展开需要追拼接表达式）。
+- 表数据只做到「字段名 + 类型 + 记录数」，104 MB 原始 JSON 不入仓；字段语义（外键、枚举、位标志）尚未逐表标注。

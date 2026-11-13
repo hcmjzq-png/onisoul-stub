@@ -1,0 +1,1113 @@
+asset_name	json_root	record_count	field_count	bytes	client_referenced	accessor_root_key
+scr1_000012_01_stringtable	message	0	0	14	no	
+scr1_000012_02_stringtable	message	0	0	14	no	
+scr1_000012_03_stringtable	message	0	0	14	no	
+scr1_000005_01_stringtable	message	0	0	14	no	
+scr1_000005_02_stringtable	message	0	0	14	no	
+scr1_000005_03_stringtable	message	0	0	14	no	
+accelerate_produce_task	accelerate_produce_task	5	4	613	yes	accelerate_produce_task
+artifactSeries	artifactSeries	470	8	180978	yes	artifactSeries
+artifactSeriesMessage	message	112	2	15983	no	
+battleCost	battleCost	192	8	29536	yes	battleCost
+battleViewerMessage	message	11	3	1454	no	
+beginning_equipment	beginning_equipment	48	16	23187	yes	beginning_equipment
+boardMessage	message	50	3	6543	no	
+booster_1217bp	booster_1217bp	1	6	165	no	
+booster_1224bp	booster_1224bp	1	6	165	no	
+booster_140107bp	booster_140107bp	1	6	167	no	
+booster_140114bp	booster_140114bp	1	6	167	no	
+booster_140121bp	booster_140121bp	1	6	167	no	
+booster_140128bp	booster_140128bp	1	6	167	no	
+booster_140128bpa	booster_140128bpa	1	6	168	no	
+booster_140211bp	booster_140211bp	1	6	167	no	
+booster_140225bp	booster_140225bp	1	6	167	no	
+booster_3pigs	booster_3pigs	3	6	446	no	
+booster_all_keyitem_001_gift1	booster_all_keyitem_001_gift1	1	6	180	no	
+booster_all_keyitem_001_gift2	booster_all_keyitem_001_gift2	1	6	180	no	
+booster_all_keyitem_001_gift3	booster_all_keyitem_001_gift3	1	6	180	no	
+booster_all_keyitem_001_gift4	booster_all_keyitem_001_gift4	1	6	180	no	
+booster_all_keyitem_001_gift5	booster_all_keyitem_001_gift5	1	6	180	no	
+booster_all_keyitem_001_gift6	booster_all_keyitem_001_gift6	1	6	180	no	
+booster_all_keyitem_001_gift7	booster_all_keyitem_001_gift7	1	6	180	no	
+booster_basara_001_pack	booster_basara_001_pack	15	6	2148	no	
+booster_basara_001_pack2	booster_basara_001_pack2	15	6	2149	no	
+booster_basara_001_packa	booster_basara_001_packa	15	6	2149	no	
+booster_basara_001_packb	booster_basara_001_packb	15	6	2149	no	
+booster_capcomheroines_001_gift1	booster_capcomheroines_001_gift1	15	6	2157	no	
+booster_capcomheroines_001_pack	booster_capcomheroines_001_pack	18	6	2579	no	
+booster_capcomheroines_001_pack2	booster_capcomheroines_001_pack2	15	6	2157	no	
+booster_capcomheroines_001_packa	booster_capcomheroines_001_packa	15	6	2157	no	
+booster_capcomheroines_001_packb	booster_capcomheroines_001_packb	15	6	2157	no	
+booster_g1duckx1	booster_g1duckx1	1	6	167	no	
+booster_g2duckx1	booster_g2duckx1	1	6	167	no	
+booster_g3duckx1	booster_g3duckx1	1	6	167	no	
+booster_heros_001_pack	booster_heros_001_pack	15	6	2147	no	
+booster_holystonehellx5	booster_holystonehellx5	1	6	174	no	
+booster_holystonehellx7	booster_holystonehellx7	1	6	174	no	
+booster_holystonespx5	booster_holystonespx5	1	6	172	no	
+booster_holystonespx7	booster_holystonespx7	1	6	172	no	
+booster_honnoujinohen_001_packa	booster_honnoujinohen_001_packa	15	6	2171	no	
+booster_hyakkaryoran_001_pack	booster_hyakkaryoran_001_pack	15	6	2154	no	
+booster_hyakkaryoran_001_pack2	booster_hyakkaryoran_001_pack2	15	6	2170	no	
+booster_hyakkaryoran_001_packa	booster_hyakkaryoran_001_packa	15	6	2155	no	
+booster_hyakkaryoran_001_packb	booster_hyakkaryoran_001_packb	15	6	2155	no	
+booster_hyakkaryoran_001_packc	booster_hyakkaryoran_001_packc	15	6	2155	no	
+booster_hyakkaryoran_002_pack	booster_hyakkaryoran_002_pack	15	6	2154	no	
+booster_hyakkaryoran_002_pack2	booster_hyakkaryoran_002_pack2	15	6	2155	no	
+booster_hyakkaryoran_002_packa	booster_hyakkaryoran_002_packa	15	6	2155	no	
+booster_hyakkaryoran_002_packb	booster_hyakkaryoran_002_packb	15	6	2155	no	
+booster_hyakkaryoran_002_packc	booster_hyakkaryoran_002_packc	15	6	2155	no	
+booster_hyakkaryoran_003_gift1	booster_hyakkaryoran_003_gift1	1	6	181	no	
+booster_hyakkaryoran_003_pack	booster_hyakkaryoran_003_pack	15	6	2154	no	
+booster_hyakkaryoran_003_pack2	booster_hyakkaryoran_003_pack2	15	6	2155	no	
+booster_hyakkaryoran_003_packa	booster_hyakkaryoran_003_packa	15	6	2155	no	
+booster_hyakkaryoran_003_packb	booster_hyakkaryoran_003_packb	15	6	2155	no	
+booster_hyakkaryoran_003_packc	booster_hyakkaryoran_003_packc	15	6	2155	no	
+booster_infocharas	booster_infocharas	1	25	596	yes	booster_infocharas
+booster_kagurahono_001_packa	booster_kagurahono_001_packa	15	6	2153	no	
+booster_kantoufooun_001_packa	booster_kantoufooun_001_packa	15	6	2154	no	
+booster_kyushugoma_001_pack	booster_kyushugoma_001_pack	15	6	2152	no	
+booster_kyushugoma_001_pack2	booster_kyushugoma_001_pack2	15	6	2153	no	
+booster_kyushugoma_001_packa	booster_kyushugoma_001_packa	15	6	2153	no	
+booster_kyushugoma_001_packb	booster_kyushugoma_001_packb	15	6	2153	no	
+booster_ouutairan_001_pack	booster_ouutairan_001_pack	15	6	2151	no	
+booster_ouutairan_001_pack2	booster_ouutairan_001_pack2	15	6	2152	no	
+booster_ouutairan_001_packa	booster_ouutairan_001_packa	15	6	2152	no	
+booster_ouutairan_001_packb	booster_ouutairan_001_packb	15	6	2152	no	
+booster_ouutairan_001_packc	booster_ouutairan_001_packc	15	6	2152	no	
+booster_ouutairan_002_pack	booster_ouutairan_002_pack	15	6	2151	no	
+booster_ouutairan_002_pack2	booster_ouutairan_002_pack2	15	6	2152	no	
+booster_ouutairan_002_packa	booster_ouutairan_002_packa	15	6	2152	no	
+booster_ouutairan_002_packb	booster_ouutairan_002_packb	15	6	2152	no	
+booster_ouutairan_002_packc	booster_ouutairan_002_packc	15	6	2152	no	
+booster_pack_category	booster_pack_category	2	2	144	no	
+booster_pack_credit_step_range	booster_pack_credit_step_range	2	6	272	no	
+booster_packs	booster_packs	69	37	68504	yes	booster_packs
+booster_packs_message				26809	no	
+booster_rekishijin_001_packa	booster_rekishijin_001_packa	15	6	2153	no	
+booster_rekishijin_001_packb	booster_rekishijin_001_packb	15	6	2153	no	
+booster_rekishijin_pack	booster_rekishijin_pack	30	6	4263	no	
+booster_rekishijin_pack2	booster_rekishijin_pack2	15	6	2149	no	
+booster_ryukogekitotsu_001_pack	booster_ryukogekitotsu_001_pack	30	6	4271	no	
+booster_ryukogekitotsu_001_pack2	booster_ryukogekitotsu_001_pack2	15	6	2157	no	
+booster_ryukogekitotsu_001_packa	booster_ryukogekitotsu_001_packa	15	6	2157	no	
+booster_ryukogekitotsu_001_packb	booster_ryukogekitotsu_001_packb	15	6	2157	no	
+booster_ryukogekitotsu_001_packc	booster_ryukogekitotsu_001_packc	15	6	2157	no	
+booster_shikokuchinkon_001_gift2	booster_shikokuchinkon_001_gift2	1	6	183	no	
+booster_shikokuchinkon_001_pack	booster_shikokuchinkon_001_pack	15	6	2171	no	
+booster_shikokuchinkon_001_pack2	booster_shikokuchinkon_001_pack2	15	6	2172	no	
+booster_shikokuchinkon_001_packa	booster_shikokuchinkon_001_packa	15	6	2157	no	
+booster_shikokuchinkon_001_packb	booster_shikokuchinkon_001_packb	15	6	2157	no	
+booster_shikokuchinkon_001_packc	booster_shikokuchinkon_001_packc	15	6	2157	no	
+booster_step_0822_gift1	booster_step_0822_gift1	1	6	174	no	
+booster_step_0822_gift2	booster_step_0822_gift2	1	6	174	no	
+booster_step_0822_gift3	booster_step_0822_gift3	1	6	174	no	
+booster_step_0822_gift4	booster_step_0822_gift4	1	6	174	no	
+booster_tenkafubu_001_pack	booster_tenkafubu_001_pack	30	6	4266	no	
+booster_tenkafubu_001_pack2	booster_tenkafubu_001_pack2	15	6	2152	no	
+booster_tenkafubu_001_packa	booster_tenkafubu_001_packa	15	6	2152	no	
+booster_tenkafubu_001_packb	booster_tenkafubu_001_packb	15	6	2152	no	
+booster_tenkafubu_001_packc	booster_tenkafubu_001_packc	15	6	2152	no	
+booster_wazakeisyou_001_packa	booster_wazakeisyou_001_packa	15	6	2154	no	
+bot	bot	470	10	146090	no	
+botMessage	message	470	2	43585	no	
+building	building	1343	34	1262590	yes	building
+buildingModel	buildingModel	2696	2	258451	yes	buildingModel
+building_errantry	building_errantry	255	4	38310	yes	building_errantry
+building_event	building_event	671	8	197177	yes	building_event
+building_event_raise_rate_of_battle	building_event_raise_rate_of_battle	100	24	52707	yes	building_event_raise_rate_of_battle
+building_evolutions	building_evolutions	224	3	28711	yes	building_evolutions
+building_level	building_level	2183	6	349850	yes	building_level
+building_max_level	building_max_level	89	2	5657	no	
+building_waterborne_trade	building_waterborne_trade	1	4	176	yes	building_waterborne_trade
+cannon_shot	cannon_shot	8	5	1416	yes	cannon_shot
+capcomTwMessage	message	124	2	13912	no	
+castle_compareFarmHouse	castle_compareFarmHouse	8	5	1194	no	
+castle_compareGrade	castle_compareGrade	10	3	808	no	
+castle_compareGrade_castle	castle_compareGrade_castle	10	3	815	no	
+castle_compareMerchantHouse	castle_compareMerchantHouse	8	5	1262	no	
+castle_compareSwordHouse	castle_compareSwordHouse	10	5	1271	no	
+castle_compareTechnicalHouse	castle_compareTechnicalHouse	8	5	1279	no	
+charaDuckGrade	charaDuckGrade	10	43	8787	no	
+character	character	3814	24	2263361	yes	character
+characterGrade	characterGrade	10	43	8787	yes	characterGrade
+characterLevel	characterLevel	850	10	147390	yes	characterLevel
+characterMessage	message	155	2	14581	no	
+characterVoice	characterVoice	338	25	510596	yes	characterVoice
+chatCountryMessage	message	470	2	49228	no	
+check_exceed_time	check_exceed_time	6	2	308	yes	check_exceed_time
+cog_debugPlayerIds	cog_debugPlayerIds	300	2	16158	no	
+commonEffect	commonEffect	54	23	35446	yes	commonEffect
+commonEffectMessage	message	102	2	13219	no	
+countryMessage	message	290	2	27770	no	
+countryRank	countryRank	10	28	6754	yes	countryRank
+countryRankMessage	message	20	2	2221	no	
+country_setting	country_setting	47	13	35461	yes	country_setting
+crontab				3665	no	
+daily_mission	daily_mission	85	2	8645	yes	daily_mission
+deckMessage	message	312	2	37425	no	
+defines	defines	111	2	9934	yes	defines
+draft	draft	837	9	239760	yes	draft
+edictMission	edictMission	1172	13	617011	yes	edictMission
+edict_mission_raise_rate	edict_mission_raise_rate	100	44	94763	yes	edict_mission_raise_rate
+enlargeCharacterLimitMessage	message	4	2	454	no	
+enlarge_character_limit	enlarge_character_limit	4	7	825	yes	enlarge_character_limit
+enlarge_character_limit5	enlarge_character_limit5	4	7	823	no	
+enlarge_character_limit59	enlarge_character_limit59	4	7	826	no	
+enlarge_character_limit6	enlarge_character_limit6	4	7	825	no	
+enlarge_character_limit69	enlarge_character_limit69	4	7	826	no	
+enlarge_character_limit7	enlarge_character_limit7	4	7	825	no	
+enlarge_character_limit79	enlarge_character_limit79	4	7	826	no	
+enlarge_character_limit8	enlarge_character_limit8	4	7	825	no	
+enlarge_character_limit9	enlarge_character_limit9	4	7	825	no	
+enlarge_equip_limit	enlarge_equip_limit	2	7	420	no	
+equip	equip	72	19	27283	yes	equip
+equipGrade	equipGrade	10	44	8998	yes	equipGrade
+equipLevel	equipLevel	850	6	101762	yes	equipLevel
+equipPowerUpRank	equipPowerUpRank	5	3	300	no	
+equipSkill	equipSkill	117	26	80908	yes	equipSkill
+equipSkillLot	equipSkillLot	64	97	103619	no	
+equipSkillMessage	message	405	2	48232	no	
+errantry	errantry	6	10	2053	yes	errantry
+errantry1hokuyou	errantry1hokuyou	6	10	2163	no	
+errantry2musasino	errantry2musasino	6	10	2176	no	
+errantry3tyuubu	errantry3tyuubu	6	10	2150	no	
+errantry4kamigata	errantry4kamigata	6	10	2176	no	
+errantry5setonai	errantry5setonai	6	10	2163	no	
+errantry6nangoku	errantry6nangoku	6	10	2163	no	
+errantry_result_0001	errantry_result_0001	54	5	9457	no	
+errantry_result_0002	errantry_result_0002	54	5	9457	no	
+errantry_result_0003	errantry_result_0003	54	5	9457	no	
+errantry_result_0004	errantry_result_0004	54	5	9457	no	
+errantry_result_0005	errantry_result_0005	54	5	9457	no	
+errantry_result_0006	errantry_result_0006	54	5	9457	no	
+errantry_result_0007	errantry_result_0007	54	5	9457	no	
+errantry_result_0008	errantry_result_0008	54	5	9457	no	
+errantry_result_0009	errantry_result_0009	54	5	9457	no	
+errantry_result_0010	errantry_result_0010	54	5	9457	no	
+errantry_result_0011	errantry_result_0011	54	5	9457	no	
+errantry_result_0012	errantry_result_0012	54	5	9457	no	
+errorMessage	message	12	2	2361	no	
+eventCoef	eventCoef	10	2	815	yes	eventCoef
+friendMessage	message	80	2	8677	no	
+friend_complete_level	friend_complete_level	11	2	525	yes	friend_complete_level
+giganticLuckyCount	giganticLuckyCount	4000	5	565777	yes	giganticLuckyCount
+giganticParticipationReward	giganticParticipationReward	65	3	6624	yes	giganticParticipationReward
+giganticRaidBoss	giganticRaidBoss	25	34	27803	yes	giganticRaidBoss
+giganticRaidBossCountryRank	giganticRaidBossCountryRank	47	2	2493	no	
+giganticRaidBossLevel	giganticRaidBossLevel	100	7	14511	no	
+giganticRaidBoss_trophy	giganticRaidBoss_trophy	9	7	2754	yes	giganticRaidBoss_trophy
+gigantic_text_log	gigantic_text_log	35	5	7589	yes	gigantic_text_log
+habit	habit	48	3	5462	yes	habit
+inboxMessage	message	71	2	12849	no	
+inventoryMessage	message	13	2	1721	no	
+invitationMessage	message	19	2	3332	no	
+invitation_achievement_credit	invitation_achievement_credit	6	5	1489	no	
+invitation_achievement_level	invitation_achievement_level	3	5	746	no	
+item01	item01	3819	11	1294546	no	
+item01Message	message	11442	2	1242210	no	
+item02	item02	10	12	3165	no	
+item03	item03	595	12	203699	no	
+item03Message	message	1190	2	154167	no	
+item04	item04	837	12	282165	no	
+item04Message	message	1674	2	187157	no	
+item05	item05	837	12	295499	no	
+item05Message	message	1	2	96	no	
+item06	item06	10	12	3066	no	
+item07	item07	231	12	79441	no	
+item07Message	message	462	2	47621	no	
+item08	item08	1035	12	345706	no	
+item08Message	message	2070	2	220454	no	
+item09	item09	2632	12	941896	no	
+item09Message				303500	no	
+item10	item10	39	12	12730	no	
+item10Message	message	39	2	3248	no	
+item11	item11	35	12	10772	no	
+item11Message	message	19	2	1631	no	
+item12	item12	43	12	14636	no	
+item12Message	message	86	2	9289	no	
+item13	item13	6	12	2026	no	
+item13Message	message	10	2	1115	no	
+item14	item14	51	12	17345	no	
+item14Message	message	100	2	11198	no	
+item15	item15	8	12	2784	no	
+item15Message	message	16	2	1736	no	
+item16	item16	72	12	24352	no	
+item16Message	message	130	2	14852	no	
+itemIdToShopId	itemIdToShopId	1733	3	156602	yes	itemIdToShopId
+itemMessage	message	2397	2	213700	no	
+jewelSeries	jewelSeries	261	8	84184	yes	jewelSeries
+jewelSeriesMessage	message	522	2	65231	no	
+kokugi	kokugi	22	14	7536	yes	kokugi
+kokugiEffectMessage	message	44	2	6164	no	
+kokugiLevel	kokugiLevel	5	6	549	yes	kokugiLevel
+kokugiMessage	message	21	2	2584	no	
+lesson	lesson	24	8	6257	yes	lesson
+lessonMessage	message	13	2	1343	no	
+lessonMissionMessage	message	32	3	3501	no	
+limitedTimeBonus	limitedTimeBonus	69	13	22451	yes	limitedTimeBonus
+loginMessage	message	8	3	1263	no	
+loginNoticeMenuMessage	message	10	3	1546	no	
+login_colormap	login_colormap	47	4	5388	yes	login_colormap
+login_country	login_country	47	3	4020	yes	login_country
+login_notice_menu	login_notice_menu	5	7	1025	yes	login_notice_menu
+lottery	lottery	7	4	768	yes	lottery
+lottery_black	lottery_black	202	4	21492	no	
+lottery_blue	lottery_blue	137	4	14468	no	
+lottery_darkness	lottery_oni	11	2	769	no	
+lottery_green	lottery_green	74	4	7896	no	
+lottery_oni	lottery_oni	85	4	9076	no	
+lottery_red	lottery_oni	11	2	769	no	
+lottery_turf_war	lottery_turf_war	44	4	4713	no	
+lottery_white	lottery_white	119	4	12462	no	
+lottery_yellow	lottery_yellow	81	4	8603	no	
+map_expansion0	map_expansion0	50	51	41554	no	
+map_expansion1	map_expansion1	40	41	29184	no	
+map_expansion2	map_expansion2	28	29	13424	no	
+mightOfNationMessage	message	31	2	4865	no	
+migrate	migrate	1	4	133	yes	migrate
+mission_battle_s_001	mission_battle_s_001	106	32	78059	no	
+mission_battle_s_002	mission_battle_s_002	100	32	73929	no	
+mission_battle_s_index	mission_battle_s_index	10	20	5463	no	
+monsterMessage	message	1020	2	106207	no	
+monsterSkill	monsterSkill	400	20	221948	yes	monsterSkill
+monster_event_1	monster_event_1	1726	4	255561	no	
+monster_event_2	monster_event_2	742	4	110312	no	
+monster_event_21	monster_event_21	240	4	35633	no	
+monster_event_3	monster_event_3	220	4	32616	no	
+monster_event_4	monster_event_4	72	4	10747	no	
+monster_event_61	monster_event_61	46	4	6892	no	
+monster_politic_1	monster_politic_1	100	4	14223	no	
+monster_random2_1	monster_random2_1	2000	4	298780	no	
+monster_random_1	monster_random_1	2000	4	298518	no	
+monster_story_1	monster_story_1	722	4	102510	no	
+monster_story_2	monster_story_2	740	4	105296	no	
+monster_story_3	monster_story_3	180	4	25659	no	
+music	music	41	3	4097	yes	music
+mypageMessage				33781	no	
+mypage_trophy	mypage_trophy	65	7	17503	yes	mypage_trophy
+nationalShopItemMessage	message	76	2	8702	no	
+national_power_goal	national_power_goal	11	5	1953	yes	national_power_goal
+national_power_goalMessage	message	22	2	2776	no	
+national_power_shop_item	national_power_shop_item	38	17	17734	yes	national_power_shop_item
+navigator	navigator	11	28	8666	yes	navigator
+navigatorChangeMessage				1303	no	
+navigatorMessage	message	22	2	2101	no	
+navigatorMessageGenmaFemale	naviMessage	5941	2	807022	no	
+navigatorMessageGenmaMale	naviMessage	5941	2	807039	no	
+navigatorMessageHumanFemale	naviMessage	5941	2	813006	no	
+navigatorMessageHumanMale	naviMessage	5941	2	813009	no	
+navigatorMessageMorrigan	naviMessage	5941	2	806973	no	
+navigatorMessageOniFemale	naviMessage	5941	2	813012	no	
+navigatorMessageOniMale	naviMessage	5941	2	813013	no	
+navigatorMessageRyuukyuFemale	naviMessage	5941	2	812948	no	
+navigatorMessageRyuukyuMale	naviMessage	5941	2	812954	no	
+navigatorVoice	navigatorVoice	20	32	55376	yes	navigatorVoice
+navigator_monica5	navigator_monica5	11	28	8673	no	
+navigator_monica59	navigator_monica59	11	28	8674	no	
+navigator_monica6	navigator_monica6	11	28	8673	no	
+navigator_monica69	navigator_monica69	11	28	8675	no	
+navigator_monica7	navigator_monica7	11	28	8674	no	
+navigator_monica79	navigator_monica79	11	28	8675	no	
+navigator_monica8	navigator_monica8	11	28	8674	no	
+navigator_monica9	navigator_monica9	11	28	8674	no	
+normRewardMessage	message	14	2	2187	no	
+notice_url	notice_url	5	10	2767	yes	notice_url
+npc	npc	5	15	2028	no	
+npcCharacter	npcCharacter	5	13	1462	no	
+onikujiMessage	message	22	2	2427	no	
+onoff_table	onoff_table	31	7	4817	yes	onoff_table
+pbsm1_setting	pbsm1_setting	6	5	911	yes	pbsm1_setting
+playerLevel	playerLevel	100	19	41512	yes	playerLevel
+playerLevelupMessage	levelupMessage	12	2	1452	yes	levelupMessage
+plugin_time	plugin_time	3	5	409	yes	plugin_time
+politicMessage				130492	no	
+politicMission	politicMission	535	39	658343	yes	politicMission
+politicMissionYahooMobage	politicMissionYahooMobage	1	39	1207	no	
+politic_deck_bonus	politic_deck_bonus	33	3	2399	no	
+politic_deck_forces	politic_deck_forces	8	3	727	no	
+potion	potion	215	9	50113	yes	potion
+potionMessage	message	219	2	21242	no	
+product	product	1288	18	756081	yes	product
+ptw_debugPlayerIds	ptw_debugPlayerIds	480	2	24738	no	
+pyd_debugPlayerIds	pyd_debugPlayerIds	51	2	2613	no	
+questBanner	questBanner	6	4	1035	yes	questBanner
+questCharacter	questCharacter	844	14	285608	yes	questCharacter
+questCharacterVoice	questCharacterVoice	14	13	5807	yes	questCharacterVoice
+questMessage	message	51	3	7033	no	
+questSelectMessage	message	36	3	5442	no	
+quest_1_0000	quest_1_0000	10	36	7929	no	
+quest_1_0000_reward	quest_1_0000_reward	16	61	19336	no	
+quest_1_0001	quest_1_0001	750	36	853192	no	
+quest_1_0001_reward	quest_1_0001_reward	244	61	303096	no	
+quest_1_0002	quest_1_0002	750	36	855061	no	
+quest_1_0002_reward	quest_1_0002_reward	220	61	270048	no	
+quest_1_0003	quest_1_0003	750	36	877515	no	
+quest_1_0003_reward	quest_1_0003_reward	220	61	270048	no	
+quest_1_0004	quest_1_0004	750	36	886724	no	
+quest_1_0004_reward	quest_1_0004_reward	220	61	270048	no	
+quest_1_0005	quest_1_0005	750	36	882059	no	
+quest_1_0005_reward	quest_1_0005_reward	220	61	270048	no	
+quest_1_0006	quest_1_0006	750	36	884212	no	
+quest_1_0006_reward	quest_1_0006_reward	220	61	270048	no	
+quest_1_0007	quest_1_0007	750	36	886122	no	
+quest_1_0007_reward	quest_1_0007_reward	220	61	270048	no	
+quest_1_0008	quest_1_0008	750	36	899720	no	
+quest_1_0008_reward	quest_1_0008_reward	220	61	270048	no	
+quest_1_0009	quest_1_0009	750	36	886528	no	
+quest_1_0009_reward	quest_1_0009_reward	220	61	270048	no	
+quest_1_0010	quest_1_0010	750	36	894520	no	
+quest_1_0010_reward	quest_1_0010_reward	220	61	270048	no	
+quest_1_0011	quest_1_0011	750	36	894937	no	
+quest_1_0011_reward	quest_1_0011_reward	220	61	270048	no	
+quest_1_0012	quest_1_0012	750	36	885730	no	
+quest_1_0012_reward	quest_1_0012_reward	220	61	270048	no	
+quest_1_0013	quest_1_0013	750	36	880921	no	
+quest_1_0013_reward	quest_1_0013_reward	220	61	270048	no	
+quest_1_0014	quest_1_0014	750	36	888608	no	
+quest_1_0014_reward	quest_1_0014_reward	220	61	270048	no	
+quest_1_0015	quest_1_0015	750	36	887111	no	
+quest_1_0015_reward	quest_1_0015_reward	220	61	270048	no	
+quest_1_0016	quest_1_0016	750	36	891601	no	
+quest_1_0016_reward	quest_1_0016_reward	220	61	270048	no	
+quest_1_0017	quest_1_0017	750	36	900180	no	
+quest_1_0017_reward	quest_1_0017_reward	220	61	270048	no	
+quest_1_0018	quest_1_0018	150	36	180221	no	
+quest_1_0018_reward	quest_1_0018_reward	60	61	74712	no	
+quest_1_0019	quest_1_0019	750	36	894538	no	
+quest_1_0019_reward	quest_1_0019_reward	220	61	270152	no	
+quest_1_0020	quest_1_0020	750	36	898418	no	
+quest_1_0020_reward	quest_1_0020_reward	220	61	270152	no	
+quest_1_0021	quest_1_0021	150	36	177967	no	
+quest_1_0021_reward	quest_1_0021_reward	56	61	69592	no	
+quest_1_0022	quest_1_0022	750	36	894207	no	
+quest_1_0022_reward	quest_1_0022_reward	220	61	270152	no	
+quest_1_0023	quest_1_0023	750	36	952202	no	
+quest_1_0023_reward	quest_1_0023_reward	220	61	270152	no	
+quest_1_0024	quest_1_0024	150	36	177967	no	
+quest_1_0024_reward	quest_1_0024_reward	56	61	69592	no	
+quest_1_0998	quest_1_0998	750	36	556093	no	
+quest_1_0998_reward	quest_1_0998_reward	220	61	270048	no	
+quest_1_0999	quest_1_0999	12	36	9762	no	
+quest_1_0999_reward	quest_1_0999_reward	107	61	121367	no	
+quest_1_enable	quest_1_enable	83	2	3652	no	
+quest_1_index	quest_1_index	315	24	194180	no	
+quest_1_indexMessage	message	241	2	26078	no	
+quest_2_0001	quest_2_0001	501	36	573857	no	
+quest_2_0001_reward	quest_2_0001_reward	32	61	40662	no	
+quest_2_0002	quest_2_0002	501	36	574876	no	
+quest_2_0002_reward	quest_2_0002_reward	32	61	40712	no	
+quest_2_0003	quest_2_0003	501	36	575212	no	
+quest_2_0003_reward	quest_2_0003_reward	32	61	40716	no	
+quest_2_0004	quest_2_0004	501	36	575212	no	
+quest_2_0004_reward	quest_2_0004_reward	32	61	40716	no	
+quest_2_0005	quest_2_0005	501	36	575212	no	
+quest_2_0005_reward	quest_2_0005_reward	32	61	40716	no	
+quest_2_enable	quest_2_enable	5	2	234	no	
+quest_2_index	quest_2_index	25	23	12233	no	
+quest_2_indexMessage	message	61	2	6349	no	
+quest_3_0001	quest_3_0001	150	36	146802	no	
+quest_3_0001_reward	quest_3_0001_reward	14	61	17935	no	
+quest_3_0002	quest_3_0002	150	36	155229	no	
+quest_3_0002_reward	quest_3_0002_reward	15	61	19293	no	
+quest_3_0003	quest_3_0003	120	36	122363	no	
+quest_3_0003_reward	quest_3_0003_reward	18	61	22956	no	
+quest_3_0005	quest_3_0005	150	36	155384	no	
+quest_3_0005_reward	quest_3_0005_reward	14	61	17952	no	
+quest_3_0006	quest_3_0006	150	36	156409	no	
+quest_3_0006_reward	quest_3_0006_reward	15	61	19304	no	
+quest_3_0007	quest_3_0007	120	36	123868	no	
+quest_3_0007_reward	quest_3_0007_reward	18	61	22956	no	
+quest_3_0009	quest_3_0009	150	36	153969	no	
+quest_3_0009_reward	quest_3_0009_reward	14	61	17975	no	
+quest_3_0010	quest_3_0010	150	36	155696	no	
+quest_3_0010_reward	quest_3_0010_reward	14	61	17935	no	
+quest_3_0011	quest_3_0011	150	36	159924	no	
+quest_3_0011_reward	quest_3_0011_reward	15	61	19293	no	
+quest_3_0013	quest_3_0013	150	36	160516	no	
+quest_3_0013_reward	quest_3_0013_reward	14	61	17952	no	
+quest_3_0014	quest_3_0014	150	36	159316	no	
+quest_3_0014_reward	quest_3_0014_reward	15	61	19293	no	
+quest_3_0015	quest_3_0015	2	36	1790	no	
+quest_3_0015_reward	quest_3_0015_reward	4	61	4868	no	
+quest_3_0016	quest_3_0016	3	36	2487	no	
+quest_3_0016_reward	quest_3_0016_reward	5	61	6182	no	
+quest_3_0017	quest_3_0017	6	36	4844	no	
+quest_3_0017_reward	quest_3_0017_reward	3	61	3777	no	
+quest_3_0018	quest_3_0018	6	36	4823	no	
+quest_3_0018_reward	quest_3_0018_reward	3	61	3777	no	
+quest_3_0019	quest_3_0019	3	36	2487	no	
+quest_3_0019_reward	quest_3_0019_reward	5	61	6182	no	
+quest_3_0020	quest_3_0020	18	36	14136	no	
+quest_3_0020_reward	quest_3_0020_reward	5	61	6257	no	
+quest_3_0021	quest_3_0021	6	36	4843	no	
+quest_3_0021_reward	quest_3_0021_reward	3	61	3829	no	
+quest_3_0022	quest_3_0022	31	36	26513	no	
+quest_3_0022_reward	quest_3_0022_reward	21	61	25492	no	
+quest_3_0023	quest_3_0023	9	36	11001	no	
+quest_3_0023_reward	quest_3_0023_reward	2	61	2371	no	
+quest_3_0040	quest_3_0040	150	36	159263	no	
+quest_3_0040_reward	quest_3_0040_reward	14	61	17948	no	
+quest_3_0041	quest_3_0041	150	36	161862	no	
+quest_3_0041_reward	quest_3_0041_reward	14	61	17948	no	
+quest_3_0042	quest_3_0042	150	36	163164	no	
+quest_3_0042_reward	quest_3_0042_reward	14	61	17924	no	
+quest_3_0043	quest_3_0043	10	41	11083	no	
+quest_3_0043_reward	quest_3_0043_reward	16	61	20296	no	
+quest_3_0044	quest_3_0044	10	41	11073	no	
+quest_3_0044_reward	quest_3_0044_reward	16	61	20296	no	
+quest_3_0045	quest_3_0045	10	41	11103	no	
+quest_3_0045_reward	quest_3_0045_reward	16	61	20296	no	
+quest_3_0046	quest_3_0046	2	41	2458	no	
+quest_3_0046_reward	quest_3_0046_reward	12	61	15173	no	
+quest_3_0047	quest_3_0047	150	36	161808	no	
+quest_3_0047_reward	quest_3_0047_reward	14	61	17950	no	
+quest_3_0048	quest_3_0048	150	36	160640	no	
+quest_3_0048_reward	quest_3_0048_reward	15	61	19224	no	
+quest_3_0049	quest_3_0049	150	36	159870	no	
+quest_3_0049_reward	quest_3_0049_reward	14	61	17938	no	
+quest_3_0050	quest_3_0050	120	36	124567	no	
+quest_3_0050_reward	quest_3_0050_reward	18	61	22956	no	
+quest_3_0051	quest_3_0051	120	36	127541	no	
+quest_3_0051_reward	quest_3_0051_reward	18	61	22956	no	
+quest_3_0052	quest_3_0052	120	36	126679	no	
+quest_3_0052_reward	quest_3_0052_reward	18	61	22956	no	
+quest_3_0053	quest_3_0053	120	36	128009	no	
+quest_3_0053_reward	quest_3_0053_reward	18	61	22956	no	
+quest_3_0054	quest_3_0054	120	36	129401	no	
+quest_3_0054_reward	quest_3_0054_reward	18	61	22956	no	
+quest_3_0055	quest_3_0055	120	36	127724	no	
+quest_3_0055_reward	quest_3_0055_reward	18	61	22956	no	
+quest_3_0056	quest_3_0056	120	36	130238	no	
+quest_3_0056_reward	quest_3_0056_reward	18	61	22956	no	
+quest_3_0057	quest_3_0057	120	36	129362	no	
+quest_3_0057_reward	quest_3_0057_reward	18	61	22956	no	
+quest_3_0058	quest_3_0058	120	36	128570	no	
+quest_3_0058_reward	quest_3_0058_reward	18	61	22956	no	
+quest_3_0059	quest_3_0059	120	36	126392	no	
+quest_3_0059_reward	quest_3_0059_reward	18	61	22956	no	
+quest_3_0060	quest_3_0060	120	36	130292	no	
+quest_3_0060_reward	quest_3_0060_reward	18	61	22950	no	
+quest_3_0061	quest_3_0061	120	36	128510	no	
+quest_3_0061_reward	quest_3_0061_reward	18	61	22950	no	
+quest_3_0062	quest_3_0062	120	36	128538	no	
+quest_3_0062_reward	quest_3_0062_reward	18	61	22950	no	
+quest_3_0063	quest_3_0063	120	36	129003	no	
+quest_3_0063_reward	quest_3_0063_reward	18	61	22950	no	
+quest_3_0064	quest_3_0064	120	36	124438	no	
+quest_3_0064_reward	quest_3_0064_reward	18	61	22950	no	
+quest_3_0065	quest_3_0065	120	36	129777	no	
+quest_3_0065_reward	quest_3_0065_reward	18	61	22950	no	
+quest_3_0066	quest_3_0066	120	36	126329	no	
+quest_3_0066_reward	quest_3_0066_reward	18	61	22950	no	
+quest_3_0067	quest_3_0067	120	36	124359	no	
+quest_3_0067_reward	quest_3_0067_reward	18	61	22950	no	
+quest_3_0068	quest_3_0068	120	36	127332	no	
+quest_3_0068_reward	quest_3_0068_reward	18	61	22950	no	
+quest_3_0069	quest_3_0069	120	36	124011	no	
+quest_3_0069_reward	quest_3_0069_reward	18	61	22950	no	
+quest_3_0070	quest_3_0070	120	36	123500	no	
+quest_3_0070_reward	quest_3_0070_reward	18	61	22950	no	
+quest_3_0071	quest_3_0071	120	36	123514	no	
+quest_3_0071_reward	quest_3_0071_reward	18	61	22950	no	
+quest_3_0072	quest_3_0072	120	36	123505	no	
+quest_3_0072_reward	quest_3_0072_reward	18	61	22950	no	
+quest_3_0073	quest_3_0073	120	36	130650	no	
+quest_3_0073_reward	quest_3_0073_reward	18	61	22950	no	
+quest_3_0074	quest_3_0074	120	36	123929	no	
+quest_3_0074_reward	quest_3_0074_reward	18	61	22950	no	
+quest_3_0075	quest_3_0075	120	36	123489	no	
+quest_3_0075_reward	quest_3_0075_reward	18	61	22950	no	
+quest_3_0076	quest_3_0076	120	36	125032	no	
+quest_3_0076_reward	quest_3_0076_reward	18	61	22950	no	
+quest_3_0077	quest_3_0077	120	36	130135	no	
+quest_3_0077_reward	quest_3_0077_reward	18	61	22950	no	
+quest_3_0078	quest_3_0078	120	36	124259	no	
+quest_3_0078_reward	quest_3_0078_reward	18	61	22950	no	
+quest_3_0079	quest_3_0079	120	36	130060	no	
+quest_3_0079_reward	quest_3_0079_reward	18	61	22950	no	
+quest_3_0080	quest_3_0080	120	36	123480	no	
+quest_3_0080_reward	quest_3_0080_reward	18	61	22950	no	
+quest_3_0081	quest_3_0081	120	36	126850	no	
+quest_3_0081_reward	quest_3_0081_reward	18	61	22950	no	
+quest_3_0082	quest_3_0082	121	36	129058	no	
+quest_3_0082_reward	quest_3_0082_reward	18	61	22950	no	
+quest_3_0083	quest_3_0083	121	36	130851	no	
+quest_3_0083_reward	quest_3_0083_reward	18	61	22950	no	
+quest_3_0084	quest_3_0084	121	36	129249	no	
+quest_3_0084_reward	quest_3_0084_reward	18	61	22950	no	
+quest_3_0085	quest_3_0085	121	36	130764	no	
+quest_3_0085_reward	quest_3_0085_reward	18	61	22950	no	
+quest_3_0086	quest_3_0086	120	36	126879	no	
+quest_3_0086_reward	quest_3_0086_reward	18	61	22950	no	
+quest_3_0087	quest_3_0087	120	36	123255	no	
+quest_3_0087_reward	quest_3_0087_reward	18	61	22950	no	
+quest_3_0088	quest_3_0088	120	36	123345	no	
+quest_3_0088_reward	quest_3_0088_reward	18	61	22950	no	
+quest_3_0089	quest_3_0089	120	36	123745	no	
+quest_3_0089_reward	quest_3_0089_reward	18	61	22950	no	
+quest_3_0090	quest_3_0090	120	36	130141	no	
+quest_3_0090_reward	quest_3_0090_reward	18	61	22950	no	
+quest_3_0091	quest_3_0091	120	36	129954	no	
+quest_3_0091_reward	quest_3_0091_reward	18	61	22950	no	
+quest_3_0092	quest_3_0092	120	36	129103	no	
+quest_3_0092_reward	quest_3_0092_reward	18	61	22950	no	
+quest_3_0093	quest_3_0093	120	36	129876	no	
+quest_3_0093_reward	quest_3_0093_reward	18	61	22950	no	
+quest_3_0094	quest_3_0094	120	36	129951	no	
+quest_3_0094_reward	quest_3_0094_reward	18	61	22950	no	
+quest_3_0095	quest_3_0095	150	36	158728	no	
+quest_3_0095_reward	quest_3_0095_reward	14	61	17905	no	
+quest_3_0096	quest_3_0096	3	36	2487	no	
+quest_3_0096_reward	quest_3_0096_reward	5	61	6116	no	
+quest_3_0097	quest_3_0097	150	36	161027	no	
+quest_3_0097_reward	quest_3_0097_reward	17	61	21933	no	
+quest_3_0098	quest_3_0098	85	36	61829	no	
+quest_3_0098_reward	quest_3_0098_reward	2	61	2479	no	
+quest_3_0099	quest_3_0099	150	36	160066	no	
+quest_3_0099_reward	quest_3_0099_reward	14	61	17948	no	
+quest_3_0100	quest_3_0100	150	36	159850	no	
+quest_3_0100_reward	quest_3_0100_reward	14	61	17959	no	
+quest_3_0101	quest_3_0101	3	36	2487	no	
+quest_3_0101_reward	quest_3_0101_reward	5	61	6182	no	
+quest_3_0102	quest_3_0102	3	36	2487	no	
+quest_3_0102_reward	quest_3_0102_reward	5	61	6182	no	
+quest_3_0103	quest_3_0103	85	36	66696	no	
+quest_3_0103_reward	quest_3_0103_reward	6	61	7413	no	
+quest_3_0104	quest_3_0104	2	36	1785	no	
+quest_3_0104_reward	quest_3_0104_reward	4	61	4861	no	
+quest_3_0105	quest_3_0105	150	36	160602	no	
+quest_3_0105_reward	quest_3_0105_reward	14	61	17952	no	
+quest_3_0106	quest_3_0106	150	36	158967	no	
+quest_3_0106_reward	quest_3_0106_reward	14	61	17952	no	
+quest_3_0107	quest_3_0107	6	36	4835	no	
+quest_3_0107_reward	quest_3_0107_reward	3	61	3716	no	
+quest_3_0109	quest_3_0109	18	36	14123	no	
+quest_3_0109_reward	quest_3_0109_reward	5	61	6188	no	
+quest_3_0111	quest_3_0111	150	36	161112	no	
+quest_3_0111_reward	quest_3_0111_reward	14	61	17943	no	
+quest_3_0112	quest_3_0112	150	36	161905	no	
+quest_3_0112_reward	quest_3_0112_reward	14	61	17914	no	
+quest_3_0113	quest_3_0113	150	36	160804	no	
+quest_3_0113_reward	quest_3_0113_reward	14	61	17914	no	
+quest_3_0114	quest_3_0114	150	36	160772	no	
+quest_3_0114_reward	quest_3_0114_reward	14	61	17914	no	
+quest_3_0115	quest_3_0115	150	36	161956	no	
+quest_3_0115_reward	quest_3_0115_reward	14	61	17914	no	
+quest_3_0116	quest_3_0116	150	36	161531	no	
+quest_3_0116_reward	quest_3_0116_reward	14	61	17914	no	
+quest_3_0117	quest_3_0117	52	36	41777	no	
+quest_3_0117_reward	quest_3_0117_reward	5	61	6027	no	
+quest_3_0118	quest_3_0118	15	36	11183	no	
+quest_3_0118_reward	quest_3_0118_reward	4	61	4837	no	
+quest_3_0119	quest_3_0119	40	36	29507	no	
+quest_3_0119_reward	quest_3_0119_reward	4	61	4730	no	
+quest_3_0120	quest_3_0120	150	36	154578	no	
+quest_3_0120_reward	quest_3_0120_reward	6	61	7386	no	
+quest_3_0121	quest_3_0121	16	36	13050	no	
+quest_3_0121_reward	quest_3_0121_reward	6	61	7499	no	
+quest_3_0122	quest_3_0122	16	36	13052	no	
+quest_3_0122_reward	quest_3_0122_reward	6	61	7511	no	
+quest_3_0123	quest_3_0123	16	36	13052	no	
+quest_3_0123_reward	quest_3_0123_reward	6	61	7511	no	
+quest_3_0124	quest_3_0124	16	36	13052	no	
+quest_3_0124_reward	quest_3_0124_reward	6	61	7516	no	
+quest_3_0126	quest_3_0126	41	36	32300	no	
+quest_3_0126_reward	quest_3_0126_reward	6	61	7261	no	
+quest_3_0127	quest_3_0127	50	36	39311	no	
+quest_3_0127_reward	quest_3_0127_reward	5	61	6239	no	
+quest_3_0128	quest_3_0128	85	36	61611	no	
+quest_3_0128_reward	quest_3_0128_reward	2	61	2459	no	
+quest_3_0129	quest_3_0129	100	36	72339	no	
+quest_3_0129_reward	quest_3_0129_reward	2	61	2504	no	
+quest_3_0130	quest_3_0130	150	36	165362	no	
+quest_3_0130_reward	quest_3_0130_reward	14	61	17957	no	
+quest_3_0131	quest_3_0131	150	36	164027	no	
+quest_3_0131_reward	quest_3_0131_reward	14	61	17879	no	
+quest_3_0132	quest_3_0132	150	36	163067	no	
+quest_3_0132_reward	quest_3_0132_reward	14	61	17957	no	
+quest_3_0133	quest_3_0133	150	36	165239	no	
+quest_3_0133_reward	quest_3_0133_reward	14	61	17879	no	
+quest_3_0134	quest_3_0134	150	36	164651	no	
+quest_3_0134_reward	quest_3_0134_reward	14	61	17879	no	
+quest_3_0137	quest_3_0137	1	41	1296	no	
+quest_3_0137_reward	quest_3_0137_reward	3	61	3398	no	
+quest_3_0138	quest_3_0138	16	36	12662	no	
+quest_3_0138_reward	quest_3_0138_reward	5	61	6029	no	
+quest_3_0139	quest_3_0139	16	36	12637	no	
+quest_3_0139_reward	quest_3_0139_reward	5	61	6044	no	
+quest_3_0140	quest_3_0140	16	36	12584	no	
+quest_3_0140_reward	quest_3_0140_reward	5	61	6093	no	
+quest_3_0141	quest_3_0141	150	36	160696	no	
+quest_3_0141_reward	quest_3_0141_reward	14	61	17910	no	
+quest_3_0142	quest_3_0142	150	36	162174	no	
+quest_3_0142_reward	quest_3_0142_reward	14	61	17921	no	
+quest_3_0143	quest_3_0143	150	36	161957	no	
+quest_3_0143_reward	quest_3_0143_reward	14	61	17910	no	
+quest_3_0144	quest_3_0144	150	36	162760	no	
+quest_3_0144_reward	quest_3_0144_reward	14	61	17910	no	
+quest_3_0145	quest_3_0145	150	36	162987	no	
+quest_3_0145_reward	quest_3_0145_reward	14	61	17915	no	
+quest_3_0146	quest_3_0146	150	36	163930	no	
+quest_3_0146_reward	quest_3_0146_reward	14	61	17913	no	
+quest_3_0147	quest_3_0147	150	36	162335	no	
+quest_3_0147_reward	quest_3_0147_reward	14	61	17919	no	
+quest_3_0148	quest_3_0148	7	41	6175	no	
+quest_3_0148_reward	quest_3_0148_reward	5	61	6245	no	
+quest_3_0149	quest_3_0149	15	36	11914	no	
+quest_3_0149_reward	quest_3_0149_reward	5	61	5997	no	
+quest_3_0150	quest_3_0150	15	36	11914	no	
+quest_3_0150_reward	quest_3_0150_reward	5	61	6009	no	
+quest_3_0151	quest_3_0151	15	36	11914	no	
+quest_3_0151_reward	quest_3_0151_reward	5	61	6107	no	
+quest_3_0152	quest_3_0152	15	36	11914	no	
+quest_3_0152_reward	quest_3_0152_reward	5	61	6069	no	
+quest_3_0153	quest_3_0153	15	36	11914	no	
+quest_3_0153_reward	quest_3_0153_reward	5	61	6077	no	
+quest_3_0154	quest_3_0154	15	36	11914	no	
+quest_3_0154_reward	quest_3_0154_reward	5	61	6101	no	
+quest_3_0155	quest_3_0155	15	36	11914	no	
+quest_3_0155_reward	quest_3_0155_reward	5	61	5981	no	
+quest_3_0156	quest_3_0156	15	36	11914	no	
+quest_3_0156_reward	quest_3_0156_reward	5	61	5989	no	
+quest_3_0157	quest_3_0157	15	36	11914	no	
+quest_3_0157_reward	quest_3_0157_reward	5	61	5993	no	
+quest_3_0158	quest_3_0158	15	36	11914	no	
+quest_3_0158_reward	quest_3_0158_reward	5	61	6069	no	
+quest_3_0159	quest_3_0159	15	36	11914	no	
+quest_3_0159_reward	quest_3_0159_reward	5	61	6101	no	
+quest_3_0160	quest_3_0160	15	36	11914	no	
+quest_3_0160_reward	quest_3_0160_reward	5	61	6101	no	
+quest_3_0161	quest_3_0161	150	36	161935	no	
+quest_3_0161_reward	quest_3_0161_reward	14	61	17913	no	
+quest_3_0162	quest_3_0162	150	36	159500	no	
+quest_3_0162_reward	quest_3_0162_reward	14	61	17922	no	
+quest_3_0163	quest_3_0163	150	36	160774	no	
+quest_3_0163_reward	quest_3_0163_reward	14	61	17911	no	
+quest_3_0164	quest_3_0164	150	36	160376	no	
+quest_3_0164_reward	quest_3_0164_reward	14	61	17911	no	
+quest_3_0181	quest_3_0181	150	36	158326	no	
+quest_3_0181_reward	quest_3_0181_reward	14	61	17912	no	
+quest_3_0182	quest_3_0182	150	36	161206	no	
+quest_3_0182_reward	quest_3_0182_reward	14	61	17912	no	
+quest_3_0183	quest_3_0183	150	36	161656	no	
+quest_3_0183_reward	quest_3_0183_reward	14	61	17912	no	
+quest_3_0184	quest_3_0184	150	36	159843	no	
+quest_3_0184_reward	quest_3_0184_reward	14	61	17912	no	
+quest_3_0185	quest_3_0185	150	36	159787	no	
+quest_3_0185_reward	quest_3_0185_reward	14	61	17912	no	
+quest_3_0186	quest_3_0186	150	36	161532	no	
+quest_3_0186_reward	quest_3_0186_reward	14	61	17912	no	
+quest_3_0187	quest_3_0187	15	36	13712	no	
+quest_3_0187_reward	quest_3_0187_reward	44	61	51623	no	
+quest_3_0189	quest_3_0189	50	36	39327	no	
+quest_3_0189_reward	quest_3_0189_reward	5	61	6239	no	
+quest_3_0190	quest_3_0190	50	36	37105	no	
+quest_3_0190_reward	quest_3_0190_reward	4	61	4858	no	
+quest_3_0191	quest_3_0191	70	36	51932	no	
+quest_3_0191_reward	quest_3_0191_reward	5	61	6110	no	
+quest_3_0192	quest_3_0192	90	36	70674	no	
+quest_3_0192_reward	quest_3_0192_reward	3	61	3708	no	
+quest_3_0198	quest_3_0198	40	36	30876	no	
+quest_3_0198_reward	quest_3_0198_reward	7	61	8601	no	
+quest_3_0201	quest_3_0201	150	36	161062	no	
+quest_3_0201_reward	quest_3_0201_reward	17	61	21943	no	
+quest_3_0202	quest_3_0202	150	36	162693	no	
+quest_3_0202_reward	quest_3_0202_reward	14	61	17938	no	
+quest_3_0203	quest_3_0203	150	36	164851	no	
+quest_3_0203_reward	quest_3_0203_reward	14	61	17938	no	
+quest_3_0204	quest_3_0204	150	36	165084	no	
+quest_3_0204_reward	quest_3_0204_reward	14	61	17946	no	
+quest_3_0205	quest_3_0205	150	36	161894	no	
+quest_3_0205_reward	quest_3_0205_reward	14	61	17946	no	
+quest_3_0206	quest_3_0206	150	36	162823	no	
+quest_3_0206_reward	quest_3_0206_reward	14	61	17923	no	
+quest_3_0207	quest_3_0207	150	36	160640	no	
+quest_3_0207_reward	quest_3_0207_reward	14	61	17946	no	
+quest_3_0208	quest_3_0208	150	36	161042	no	
+quest_3_0208_reward	quest_3_0208_reward	14	61	17905	no	
+quest_3_0252	quest_3_0252	1	36	884	no	
+quest_3_0252_reward	quest_3_0252_reward	2	61	2443	no	
+quest_3_0253	quest_3_0253	1	36	884	no	
+quest_3_0253_reward	quest_3_0253_reward	2	61	2437	no	
+quest_3_0254	quest_3_0254	1	36	884	no	
+quest_3_0254_reward	quest_3_0254_reward	2	61	2411	no	
+quest_3_0255	quest_3_0255	1	36	885	no	
+quest_3_0255_reward	quest_3_0255_reward	2	61	2431	no	
+quest_3_0256	quest_3_0256	1	36	1012	no	
+quest_3_0256_reward	quest_3_0256_reward	1	61	1188	no	
+quest_3_0271	quest_3_0271	60	36	68767	no	
+quest_3_0271_reward	quest_3_0271_reward	15	61	19202	no	
+quest_3_0272	quest_3_0272	60	36	66694	no	
+quest_3_0272_reward	quest_3_0272_reward	15	61	19234	no	
+quest_3_0273	quest_3_0273	60	36	67497	no	
+quest_3_0273_reward	quest_3_0273_reward	15	61	19234	no	
+quest_3_0274	quest_3_0274	60	36	67186	no	
+quest_3_0274_reward	quest_3_0274_reward	15	61	19234	no	
+quest_3_0275	quest_3_0275	60	36	67557	no	
+quest_3_0275_reward	quest_3_0275_reward	15	61	19223	no	
+quest_3_0301	quest_3_0301	150	36	169909	no	
+quest_3_0301_reward	quest_3_0301_reward	14	61	17879	no	
+quest_3_0302	quest_3_0302	150	36	163699	no	
+quest_3_0302_reward	quest_3_0302_reward	14	61	17879	no	
+quest_3_0303	quest_3_0303	150	36	164941	no	
+quest_3_0303_reward	quest_3_0303_reward	14	61	17879	no	
+quest_3_0304	quest_3_0304	150	36	165355	no	
+quest_3_0304_reward	quest_3_0304_reward	14	61	17879	no	
+quest_3_enable	quest_3_enable	418	2	19764	no	
+quest_3_index	quest_3_index	305	31	238549	no	
+quest_3_indexMessage				99035	no	
+quest_4_0001	quest_4_0001	101	36	97525	no	
+quest_4_0001_reward	quest_4_0001_reward	48	61	61443	no	
+quest_4_0002	quest_4_0002	101	36	97633	no	
+quest_4_0002_reward	quest_4_0002_reward	48	61	61491	no	
+quest_4_0003	quest_4_0003	101	36	97831	no	
+quest_4_0003_reward	quest_4_0003_reward	48	61	61499	no	
+quest_4_0004	quest_4_0004	101	36	97831	no	
+quest_4_0004_reward	quest_4_0004_reward	48	61	61501	no	
+quest_4_0005	quest_4_0005	101	36	97831	no	
+quest_4_0005_reward	quest_4_0005_reward	48	61	61503	no	
+quest_4_enable	quest_4_enable	5	2	234	no	
+quest_4_index	quest_4_index	25	23	12138	no	
+quest_4_indexMessage	message	61	2	6442	no	
+quest_5_0016	quest_5_0016	150	36	160781	no	
+quest_5_0016_reward	quest_5_0016_reward	14	61	17952	no	
+quest_5_0017	quest_5_0017	150	36	162096	no	
+quest_5_0017_reward	quest_5_0017_reward	14	61	17956	no	
+quest_5_0018	quest_5_0018	150	36	161708	no	
+quest_5_0018_reward	quest_5_0018_reward	14	61	17956	no	
+quest_5_0019	quest_5_0019	150	36	158783	no	
+quest_5_0019_reward	quest_5_0019_reward	14	61	17956	no	
+quest_5_0020	quest_5_0020	150	36	161066	no	
+quest_5_0020_reward	quest_5_0020_reward	14	61	17956	no	
+quest_5_0021	quest_5_0021	150	36	162329	no	
+quest_5_0021_reward	quest_5_0021_reward	14	61	17956	no	
+quest_5_0022	quest_5_0022	150	36	162951	no	
+quest_5_0022_reward	quest_5_0022_reward	14	61	17956	no	
+quest_5_0023	quest_5_0023	150	36	160744	no	
+quest_5_0023_reward	quest_5_0023_reward	14	61	17956	no	
+quest_5_0024	quest_5_0024	150	36	161696	no	
+quest_5_0024_reward	quest_5_0024_reward	14	61	17958	no	
+quest_5_0025	quest_5_0025	150	36	161605	no	
+quest_5_0025_reward	quest_5_0025_reward	14	61	17958	no	
+quest_5_0026	quest_5_0026	150	36	161238	no	
+quest_5_0026_reward	quest_5_0026_reward	14	61	17958	no	
+quest_5_0027	quest_5_0027	150	36	162849	no	
+quest_5_0027_reward	quest_5_0027_reward	14	61	17958	no	
+quest_5_0028	quest_5_0028	150	36	161513	no	
+quest_5_0028_reward	quest_5_0028_reward	14	61	17952	no	
+quest_5_0029	quest_5_0029	150	36	161596	no	
+quest_5_0029_reward	quest_5_0029_reward	14	61	17956	no	
+quest_5_0030	quest_5_0030	150	36	160961	no	
+quest_5_0030_reward	quest_5_0030_reward	14	61	17956	no	
+quest_5_0031	quest_5_0031	150	36	160870	no	
+quest_5_0031_reward	quest_5_0031_reward	14	61	17956	no	
+quest_5_0032	quest_5_0032	150	36	161502	no	
+quest_5_0032_reward	quest_5_0032_reward	14	61	17952	no	
+quest_5_0033	quest_5_0033	150	36	162522	no	
+quest_5_0033_reward	quest_5_0033_reward	14	61	17956	no	
+quest_5_0034	quest_5_0034	150	36	163080	no	
+quest_5_0034_reward	quest_5_0034_reward	14	61	17956	no	
+quest_5_0035	quest_5_0035	150	36	162832	no	
+quest_5_0035_reward	quest_5_0035_reward	14	61	17956	no	
+quest_5_0036	quest_5_0036	150	36	161962	no	
+quest_5_0036_reward	quest_5_0036_reward	14	61	17952	no	
+quest_5_0037	quest_5_0037	150	36	161926	no	
+quest_5_0037_reward	quest_5_0037_reward	14	61	17956	no	
+quest_5_0038	quest_5_0038	150	36	161487	no	
+quest_5_0038_reward	quest_5_0038_reward	14	61	17956	no	
+quest_5_0039	quest_5_0039	150	36	162248	no	
+quest_5_0039_reward	quest_5_0039_reward	14	61	17956	no	
+quest_5_0041	quest_5_0041	150	36	111540	no	
+quest_5_0041_reward	quest_5_0041_reward	14	61	17950	no	
+quest_5_0042	quest_5_0042	150	36	111539	no	
+quest_5_0042_reward	quest_5_0042_reward	14	61	17950	no	
+quest_5_0043	quest_5_0043	150	36	111481	no	
+quest_5_0043_reward	quest_5_0043_reward	14	61	17950	no	
+quest_5_0044	quest_5_0044	150	36	111212	no	
+quest_5_0044_reward	quest_5_0044_reward	14	61	17950	no	
+quest_5_0045	quest_5_0045	150	36	111609	no	
+quest_5_0045_reward	quest_5_0045_reward	14	61	17950	no	
+quest_5_0046	quest_5_0046	150	36	111476	no	
+quest_5_0046_reward	quest_5_0046_reward	14	61	17950	no	
+quest_5_0047	quest_5_0047	150	36	111303	no	
+quest_5_0047_reward	quest_5_0047_reward	14	61	17950	no	
+quest_5_0048	quest_5_0048	150	36	111650	no	
+quest_5_0048_reward	quest_5_0048_reward	14	61	17950	no	
+quest_5_0049	quest_5_0049	150	36	110703	no	
+quest_5_0049_reward	quest_5_0049_reward	14	61	17950	no	
+quest_5_0050	quest_5_0050	150	36	110703	no	
+quest_5_0050_reward	quest_5_0050_reward	14	61	17950	no	
+quest_5_0051	quest_5_0051	150	36	110703	no	
+quest_5_0051_reward	quest_5_0051_reward	14	61	17950	no	
+quest_5_0052	quest_5_0052	150	36	110703	no	
+quest_5_0052_reward	quest_5_0052_reward	14	61	17950	no	
+quest_5_enable	quest_5_enable	100	2	4400	no	
+quest_5_index	quest_5_index	100	31	78126	no	
+quest_5_indexMessage	message	200	2	24036	no	
+quest_6_0001	quest_6_0001	10	41	11083	no	
+quest_6_0001_reward	quest_6_0001_reward	16	61	20307	no	
+quest_6_0002	quest_6_0002	10	41	11073	no	
+quest_6_0002_reward	quest_6_0002_reward	16	61	20307	no	
+quest_6_0003	quest_6_0003	10	41	11103	no	
+quest_6_0003_reward	quest_6_0003_reward	16	61	20307	no	
+quest_6_0004	quest_6_0004	2	41	2361	no	
+quest_6_0004_reward	quest_6_0004_reward	2	61	2534	no	
+quest_6_0005	quest_6_0005	1	41	992	no	
+quest_6_0005_reward	quest_6_0005_reward	3	61	3812	no	
+quest_6_0006	quest_6_0006	15	41	12387	no	
+quest_6_0006_reward	quest_6_0006_reward	14	61	17929	no	
+quest_6_0007	quest_6_0007	1	41	1530	no	
+quest_6_0007_reward	quest_6_0007_reward	2	61	2373	no	
+quest_6_0008	quest_6_0008	1	41	988	no	
+quest_6_0008_reward	quest_6_0008_reward	1	61	1214	no	
+quest_6_0009	quest_6_0009	1	41	988	no	
+quest_6_0009_reward	quest_6_0009_reward	1	61	1214	no	
+quest_6_0010	quest_6_0010	1	41	988	no	
+quest_6_0010_reward	quest_6_0010_reward	1	61	1214	no	
+quest_6_0011	quest_6_0011	1	41	1530	no	
+quest_6_0011_reward	quest_6_0011_reward	2	61	2520	no	
+quest_6_0012	quest_6_0012	2	41	1879	no	
+quest_6_0012_reward	quest_6_0012_reward	3	61	3632	no	
+quest_6_0013	quest_6_0013	7	41	6170	no	
+quest_6_0013_reward	quest_6_0013_reward	5	61	6245	no	
+quest_6_0014	quest_6_0014	62	41	60151	no	
+quest_6_0014_reward	quest_6_0014_reward	15	61	17772	no	
+quest_6_0015	quest_6_0015	4	36	3296	no	
+quest_6_0015_reward	quest_6_0015_reward	3	61	3664	no	
+quest_6_0016	quest_6_0016	4	36	3286	no	
+quest_6_0016_reward	quest_6_0016_reward	3	61	3664	no	
+quest_6_0017	quest_6_0017	30	36	22209	no	
+quest_6_0017_reward	quest_6_0017_reward	3	61	3560	no	
+quest_6_0018	quest_6_0018	801	36	604394	no	
+quest_6_0018_reward	quest_6_0018_reward	2	79	3088	no	
+quest_6_0019	quest_6_0019	801	36	654394	no	
+quest_6_0019_reward	quest_6_0019_reward	4	61	5006	no	
+quest_6_0020	quest_6_0020	40	36	29309	no	
+quest_6_0020_reward	quest_6_0020_reward	3	61	3560	no	
+quest_6_0021	quest_6_0021	301	36	236892	no	
+quest_6_0021_reward	quest_6_0021_reward	3	61	3579	no	
+quest_6_0022	quest_6_0022	1	36	806	no	
+quest_6_0022_reward	quest_6_0022_reward	1	61	1293	no	
+quest_6_0023	quest_6_0023	21	36	16167	no	
+quest_6_0023_reward	quest_6_0023_reward	4	61	4941	no	
+quest_6_0024	quest_6_0024	126	36	99217	no	
+quest_6_0024_reward	quest_6_0024_reward	5	61	5998	no	
+quest_6_0025	quest_6_0025	1	36	806	no	
+quest_6_0025_reward	quest_6_0025_reward	1	61	1293	no	
+quest_6_0026	quest_6_0026	20	36	14748	no	
+quest_6_0026_reward	quest_6_0026_reward	2	61	2416	no	
+quest_6_enable	quest_6_enable	100	2	4500	no	
+quest_6_index	quest_6_index	100	31	78401	no	
+quest_6_indexMessage	message	200	2	22816	no	
+quest_6_notice	quest_6_notice	1	1	155	no	
+raidBoss	raidBoss	147	48	198487	yes	raidBoss
+raidBossBattle	raidBossBattle	10	2	902	yes	raidBossBattle
+raidBossEncount	raidBossEncount	52	6	12435	no	
+raidBossLevel	raidBossLevel	100	14	28995	no	
+raidBossMessage	message	105	3	15888	no	
+raidBoss_trophy	raidBoss_trophy	35	7	9550	yes	raidBoss_trophy
+ranking	ranking	54	8	16579	yes	ranking
+rankingMessage	message	284	3	45868	no	
+ranking_html	ranking_html	55	3	10756	yes	ranking_html
+ranking_reward	ranking_reward	187	6	36119	yes	ranking_reward
+ranking_reward_weekly	ranking_reward_weekly	6	6	1282	yes	ranking_reward_weekly
+rankingitemselection	rankingitemselection	40	3	4842	yes	rankingitemselection
+region	region	7	3	1238	yes	region
+reward01_politic	reward01_politic	2476	61	3097457	no	
+reward02_battle	reward02_battle	403	61	497046	no	
+reward03_questIndex	reward03_questIndex	136	61	174355	no	
+reward04_mypage	reward04_mypage	1462	61	1723627	no	
+reward05_etc	reward05_etc	2	61	2562	no	
+reward06_trophy	reward06_trophy	168	61	209813	no	
+reward07_errantry	reward07_errantry	120	61	147900	no	
+reward08_ranking	reward08_ranking	49	61	60839	no	
+reward08_ranking_current	reward08_ranking_current	123	61	151213	no	
+reward08_ranking_next	reward08_ranking_next	123	61	151210	no	
+reward10_invitation	reward10_invitation	9	61	10941	no	
+reward11_treasurebox	reward11_treasurebox	9	61	11580	no	
+reward12_waterborne_trade	reward12_waterborne_trade	18	61	21992	no	
+reward13_strategy	reward13_strategy	9	61	10605	no	
+reward14_lesson	reward14_lesson	24	61	29132	no	
+reward15_gigantic	reward15_gigantic	114	61	138535	no	
+reward16_kokugi	reward16_kokugi	25	61	29454	no	
+reward99_country	reward99_country	284	48	454994	no	
+shopCastleToCountry	shop	47	2	3445	yes	shop
+shopItemMessage				49307	no	
+shopMessage	message	65	2	5744	no	
+shop_item	shop_item	120	18	58994	yes	shop_item
+shop_item_all5	shop_item_all5	117	18	57410	no	
+shop_item_all59	shop_item_all59	117	18	57412	no	
+shop_item_all6	shop_item_all6	117	18	57411	no	
+shop_item_all69	shop_item_all69	117	18	57414	no	
+shop_item_all7	shop_item_all7	117	18	57413	no	
+shop_item_all79	shop_item_all79	117	18	57420	no	
+shop_item_all8	shop_item_all8	117	18	57419	no	
+shop_item_all9	shop_item_all9	117	18	57419	no	
+shop_item_bg	shop_item_bg	8	10	2602	yes	shop_item_bg
+shop_item_country	shop_item_country	7	48	11137	yes	shop_item_country
+shop_item_etc69	shop_item_etc69	117	18	57434	no	
+shop_item_etc7	shop_item_etc7	117	18	57438	no	
+shop_item_etc79	shop_item_etc79	117	18	57434	no	
+shop_item_etc8	shop_item_etc8	117	18	57438	no	
+shop_item_key69	shop_item_key69	117	18	57438	no	
+shop_item_key7	shop_item_key7	117	18	57440	no	
+shop_item_key79	shop_item_key79	117	18	57438	no	
+shop_item_key8	shop_item_key8	117	18	57440	no	
+shop_item_potion69	shop_item_potion69	117	18	57433	no	
+shop_item_potion7	shop_item_potion7	117	18	57439	no	
+shop_item_potion79	shop_item_potion79	117	18	57439	no	
+shop_item_potion8	shop_item_potion8	117	18	57442	no	
+shop_item_recommended	shop_item_recommended	6	3	640	no	
+siegeBattle_trophy	siegeBattle_trophy	18	7	5062	yes	siegeBattle_trophy
+siegeBriefMessage	message	24	2	2771	no	
+siege_bet_rate	siege_bet_rate	3	3	276	yes	siege_bet_rate
+skill	skill	4129	32	3532453	yes	skill
+skillLevel	skillLevel	100	7	14154	yes	skillLevel
+skillMessage	message	11760	3	1669750	no	
+skillRefreshG2	skillRefreshG2	200	3	17710	no	
+skillRefreshG4	skillRefreshG4	235	3	20790	no	
+skillRefreshG6	skillRefreshG6	158	3	14014	no	
+skill_slot_payment	skill_slot_payment	6	3	547	yes	skill_slot_payment
+soundEffect	soundEffect	250	5	30934	yes	soundEffect
+ssBanner	ssBanner	2	2	201	yes	ssBanner
+stq998_1998_reward	stq998_1998_reward	220	61	269607	no	
+strategyBattle_trophy	strategyBattle_trophy	11	7	3247	yes	strategyBattle_trophy
+strategyLogMessage	message	20	3	2142	no	
+strategyMessage	message	224	2	30885	no	
+strategy_armywalk_rate	strategy_armywalk_rate	3	7	430	yes	strategy_armywalk_rate
+strategy_battlefield_catalogue	strategy_battlefield_catalogue	40	18	43704	yes	strategy_battlefield_catalogue
+strategy_command	strategy_command	14	11	4791	yes	strategy_command
+strategy_command_build_castle_step	strategy_command_build_castle_step	1	3	130	yes	strategy_command_build_castle_step
+strategy_friend_bonus	strategy_friend_bonus	81	2	3615	no	
+strategy_layout0	table	59	1	3470	no	
+strategy_layout01Message	message	100	2	6295	no	
+strategy_layout02Message	message	100	2	6292	no	
+strategy_layout03Message	message	100	2	6256	no	
+strategy_layout04Message	message	100	2	6266	no	
+strategy_layout05Message	message	100	2	6263	no	
+strategy_layout06Message	message	100	2	6221	no	
+strategy_layout07Message	message	100	2	6280	no	
+strategy_layout08Message	message	100	2	6256	no	
+strategy_layout09Message	message	100	2	6271	no	
+strategy_layout1	table	100	2	5521	no	
+strategy_layout10	table	100	2	5625	no	
+strategy_layout10Message	message	100	2	6289	no	
+strategy_layout11	table	100	2	5632	no	
+strategy_layout11Message	message	100	2	6262	no	
+strategy_layout12	table	100	2	5577	no	
+strategy_layout12Message	message	100	2	6292	no	
+strategy_layout13	table	100	2	5664	no	
+strategy_layout13Message	message	100	2	6226	no	
+strategy_layout14	table	100	2	5665	no	
+strategy_layout14Message	message	100	2	6304	no	
+strategy_layout15	table	100	2	5682	no	
+strategy_layout15Message	message	100	2	6184	no	
+strategy_layout16	table	100	2	5574	no	
+strategy_layout16Message	message	100	2	6301	no	
+strategy_layout17	table	100	2	5595	no	
+strategy_layout17Message	message	100	2	6289	no	
+strategy_layout18	table	100	2	5532	no	
+strategy_layout18Message	message	100	2	6301	no	
+strategy_layout19	table	100	2	5645	no	
+strategy_layout19Message	message	100	2	6233	no	
+strategy_layout1Message	message	100	2	6058	no	
+strategy_layout2	table	100	2	5556	no	
+strategy_layout20	table	59	1	3470	no	
+strategy_layout21	table	59	1	3470	no	
+strategy_layout22	table	59	1	3470	no	
+strategy_layout23	table	59	1	3470	no	
+strategy_layout24	table	59	1	3470	no	
+strategy_layout25	table	59	1	3470	no	
+strategy_layout26	table	59	1	3470	no	
+strategy_layout27	table	59	1	3470	no	
+strategy_layout28	table	59	1	3470	no	
+strategy_layout29	table	59	1	3470	no	
+strategy_layout3	table	100	2	5600	no	
+strategy_layout30	table	59	1	3470	no	
+strategy_layout31	table	59	1	3470	no	
+strategy_layout32	table	59	1	3470	no	
+strategy_layout33	table	59	1	3470	no	
+strategy_layout34	table	59	1	3470	no	
+strategy_layout35	table	59	1	3470	no	
+strategy_layout36	table	59	1	3470	no	
+strategy_layout37	table	59	1	3470	no	
+strategy_layout38	table	59	1	3470	no	
+strategy_layout39	table	59	1	3470	no	
+strategy_layout4	table	100	2	5599	no	
+strategy_layout40	table	59	1	3470	no	
+strategy_layout5	table	100	2	5655	no	
+strategy_layout6	table	100	2	5678	no	
+strategy_layout7	table	100	2	5596	no	
+strategy_layout8	table	100	2	5626	no	
+strategy_layout9	table	100	2	5576	no	
+strategy_terrain	strategy_terrain	14	8	2919	yes	strategy_terrain
+systemMessage	message	143	2	17416	no	
+tactics	tactics	595	31	482468	yes	tactics
+tipsMessage	message	100	2	14934	no	
+trophy	trophy	18	7	4687	no	
+trophyMessage	message	139	2	17038	no	
+trophy_setting	trophy_setting	15	3	1488	yes	trophy_setting
+turfWarBattle_trophy	turfWarBattle_trophy	13	7	3770	yes	turfWarBattle_trophy
+turfWarMessage	message	353	3	46251	no	
+turf_war_battlefield	turf_war_battlefield	3	17	2982	yes	turf_war_battlefield
+turf_war_battlefield_catalog	turf_war_battlefield_catalog	111	11	43293	yes	turf_war_battlefield_catalog
+turf_war_ranking_reward	turf_war_ranking_reward	60	5	10247	no	
+voiceActorMessage	message	286	2	29520	no	
+vsBattleRankBonus	vsBattleRankBonus	47	19	21663	yes	vsBattleRankBonus
+vsBattleRankBonusMessage	message	47	2	5726	no	
+vsBattle_trophy	vsBattle_trophy	10	7	2700	yes	vsBattle_trophy
+vsSettingMessage	message	48	2	5124	no	
+waterborne_trade	waterborne_trade	1	12	439	no	
+waterborne_trade_effects	waterborne_trade_effects	5	4	580	no	
+waterborne_trade_result_0001	waterborne_trade_result_0001	59	6	11813	no	
+waterborne_trade_result_0002	waterborne_trade_result_0002	59	6	11918	no	
+waterborne_trade_result_0003	waterborne_trade_result_0003	59	6	11813	no	
+waterborne_trade_result_0004	waterborne_trade_result_0004	59	6	11813	no	
+waterborne_trade_warship	waterborne_trade_warship	21	4	3192	no	
+ymbgaPoliticMessage	message	1	2	106	no	
+ymbga_navigatorMessageGenmaFemale	naviMessage	1	2	127	no	
+ymbga_navigatorMessageGenmaMale	naviMessage	1	2	127	no	
+ymbga_navigatorMessageHumanFemale	naviMessage	1	2	127	no	
+ymbga_navigatorMessageHumanMale	naviMessage	1	2	127	no	
+ymbga_navigatorMessageMorrigan	naviMessage	1	2	127	no	
+ymbga_navigatorMessageOniFemale	naviMessage	1	2	127	no	
+ymbga_navigatorMessageOniMale	naviMessage	1	2	127	no	
+ymbga_navigatorMessageRyuukyuFemale	naviMessage	1	2	127	no	
+ymbga_navigatorMessageRyuukyuMale	naviMessage	1	2	127	no	
+scr1_000006_01_stringtable	message	0	0	14	no	
+scr1_000006_02_stringtable	message	0	0	14	no	
+scr1_000006_03_stringtable	message	0	0	14	no	
+scr1_000002_01_stringtable	message	0	0	14	no	
+scr1_000002_02_stringtable	message	0	0	14	no	
+scr1_000002_03_stringtable	message	0	0	14	no	
+scr1_000001_01_stringtable	message	0	0	14	no	
+scr1_000001_02_stringtable	message	0	0	14	no	
+scr1_000001_03_stringtable	message	0	0	14	no	
+scr1_000003_01_stringtable	message	0	0	14	no	
+scr1_000003_02_stringtable	message	0	0	14	no	
+scr1_000003_03_stringtable	message	0	0	14	no	
+scr1_000007_01_stringtable	message	0	0	14	no	
+scr1_000007_02_stringtable	message	0	0	14	no	
+scr1_000007_03_stringtable	message	0	0	14	no	
+scr1_000010_01_stringtable	message	0	0	14	no	
+scr1_000010_02_stringtable	message	0	0	14	no	
+scr1_000010_03_stringtable	message	0	0	14	no	
+scr1_000011_01_stringtable	message	0	0	14	no	
+scr1_000011_02_stringtable	message	0	0	14	no	
+scr1_000011_03_stringtable	message	0	0	14	no	
+scr2_000002_01_stringtable	message	0	0	14	no	
+scr1_000004_01_stringtable	message	0	0	14	no	
+scr1_000004_02_stringtable	message	0	0	14	no	
+scr1_000004_03_stringtable	message	0	0	14	no	
+AtlasBuild	atlasbundle	47	9	16992	no	
+assetbundle	assetbundle	63	5	12584	yes	assetbundle
+scr1_000485_01_stringtable	message	0	0	14	no	
+scr1_000485_02_stringtable	message	0	0	14	no	
+scr1_000485_03_stringtable	message	0	0	14	no	
+scr1_000008_01_stringtable	message	0	0	14	no	
+scr1_000008_02_stringtable	message	0	0	14	no	
+scr1_000008_03_stringtable	message	0	0	14	no	
+scr1_000009_01_stringtable	message	0	0	14	no	
+scr1_000009_02_stringtable	message	0	0	14	no	
+scr1_000009_03_stringtable	message	0	0	14	no	
