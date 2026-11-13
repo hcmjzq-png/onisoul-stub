@@ -5,23 +5,24 @@
 ## 方法与口径
 
 1. 端点 → 调用点：沿用 `api_contract.tsv` 的 `call_sites` 列，格式是 `类.方法`（多个用 `|` 分隔，部分带 `#responder=形参` 标注）。
-2. 调用点 → 方法体：先按 `class X { ... }` 花括号范围定位类体，再在类体内按「任意缩进 + 多个修饰符 + 返回类型 + 方法名 + `(`」定位方法体。修饰符支持叠加（`protected override`、`public static async` 等），此前只允许单个修饰符，导致 75 个调用点误退到整类体扫描。
-3. 从方法体里抽五类副作用：
+2. 源码范围：`app/` 下**递归**全部 2034 个 `.cs`（含 `PoliticBuildingState/`、`MsgPack/`、`Script/`、`MiniJSON2/` 等 10 个子目录）；只扫顶层 1497 个会漏掉 `StateBuilding` / `StateAutoProduce` / `StateManualProduce` 这类状态机类。
+3. 调用点 → 方法体：先按 `class X { ... }` 花括号范围定位类体，再在类体内按「任意缩进 + 多个修饰符 + 返回类型 + 方法名 + `(`」定位方法体。修饰符支持叠加（`protected override`、`public static async` 等），此前只允许单个修饰符，导致 75 个调用点误退到整类体扫描。
+4. 从方法体里抽五类副作用：
    - `scene_ops`：`transitionScene("x")` / `process("x")`
    - `windows`：`WindowController>.Instance.xxx(`（窗口创建/开关）
    - `service_calls`：`ServiceLocator<T>.Instance.method`
    - `state_writes`：`类.字段 =`（静态状态、缓存、单例属性）
    - `guarded_keys`：`if (...)` 行里出现的本端点响应键 → 该键驱动分支
-4. 端点 → 端点边：方法体里出现 `webApiClient.xxx(` / `client.xxx(` / `ServiceLocator<WebApiClient>.Instance.xxx(`，按 `xxx` 回查端点表。
-5. 只有**取到精确方法体**才记账；方法体定位不到的调用点不参与副作用抽取，避免把同类其它方法的调用混进来。
+5. 端点 → 端点边：方法体里出现 `webApiClient.xxx(` / `client.xxx(` / `ServiceLocator<WebApiClient>.Instance.xxx(`，按 `xxx` 回查端点表。
+6. 只有**取到精确方法体**才记账；方法体定位不到的调用点不参与副作用抽取，避免把同类其它方法的调用混进来。
 
 ## 覆盖
 
 | 指标 | 数量 |
 |---|---|
 | 端点总数 | 402 |
-| 定位到调用点方法体 | 343 |
-| 无调用点（`call_sites` 为空） | 59 |
+| 定位到调用点方法体 | 347 |
+| 无调用点（`call_sites` 为空） | 55 |
 | 有场景切换证据 | 9 |
 | 有窗口操作证据 | 37 |
 | 有状态写入证据 | 16 |
@@ -89,11 +90,19 @@ politic/waterborneTrade/send  siege/discharge  turfWar/getTurfWarResultLog
 
 | 情况 | 数量 | 影响 |
 |---|---|---|
-| 精确定位到方法体 | 645 | 副作用字段可信 |
+| 精确定位到方法体 | 650 | 副作用字段可信 |
 | 只定位到类体（退化） | 0 | 修正修饰符正则后已消除 |
-| 完全定位不到 | 5 | 类名对不上，该端点只有 `matched_sites` 计数 |
+| 完全定位不到 | 0 | 补上子目录后已消除 |
 
-修正前后对比（同一批源码，仅方法体正则不同）：边 416 → 388、有出边端点 110 → 103、窗口 40 → 37、状态写入 18 → 16、键守卫 68 → 67、场景端点 10 → 9。差额全部是旧正则误退到整类体时混入的同类其它方法调用。
+修正前后对比（同一批源码，仅抽取口径不同）：
+
+| 口径 | 边 | 有出边端点 | 窗口 | 状态写入 | 键守卫 | 场景端点 |
+|---|---|---|---|---|---|---|
+| 旧：单修饰符正则 + 整类体退化 + 只扫顶层 | 416 | 110 | 40 | 37 | 68 | 10 |
+| 中：多修饰符正则，仍只扫顶层 | 388 | 103 | 37 | 16 | 67 | 9 |
+| 新：多修饰符正则 + 递归扫 2034 个文件 | 388 | 103 | 37 | 16 | 67 | 9 |
+
+第二段差额是旧正则误退到整类体时混入的同类其它方法调用。第三段补的 537 个文件（`PoliticBuildingState` 等）里只有状态机类，命中 4 个此前漏掉的端点（`friend/task/completeFriendTasks`、`politic/task/completeTasks`、`politic/task/progressBuildTask`、`politic/task/submitProduceTask`），它们的方法体只调 `RpcQueue.reliable`，不产生新边，所以边数不变。
 
 ## 表列定义
 
@@ -111,6 +120,6 @@ politic/waterborneTrade/send  siege/discharge  turfWar/getTurfWarResultLog
 ## 已知局限
 
 1. 只做语法级抽取：`transitionScene` 的实参如果是变量、或场景切换发生在协程 `yield` 之后的分支里，抓不到。
-2. 5 个调用点完全定位不到（类名与文件名对不上），对应端点在本表里只有计数没有副作用。
+2. 650 个调用点全部定位到方法体，无退化、无未定位。
 3. 嵌套 lambda 内的 API 调用能被抓到（同一方法体文本），但跨方法传递的 delegate 抓不到。
 4. 本表不判断「效果是否成功」的运行时分叉，只给静态证据。

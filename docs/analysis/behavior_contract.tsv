@@ -160,7 +160,7 @@ friend/getVisitFriendLogs	2	-	-	RpcQueue.reliable	-	-	-
 friend/sendFriendOffer	2	-	-	RpcQueue.reliable	-	-	-
 friend/setGuestMap	1	-	-	RpcQueue.reliable	-	-	-
 friend/task/accelerateFriendProduceTask	1	-	createMessageWindow;setMaskCamera;createMessageWindowCL	RpcQueue.predicable;WindowController.createMessageWindow;WindowController.setMaskCamera;WindowController.createMessageWindowCL	-	errno	politic/task/accelerateProduceTask
-friend/task/completeFriendTasks	0	-	-	-	-	-	-
+friend/task/completeFriendTasks	1	-	-	RpcQueue.reliable	-	-	-
 friend/updateFriendData	3	-	-	RpcQueue.reliable	-	-	-
 friend/visitFriendMap	1	-	-	RpcQueue.reliable	-	-	friend/getFriendMapData;friend/getFriendMapData2
 giganticRaidBoss/entryGiganticRaidBoss	1	-	-	RpcQueue.reliable	-	-	common/getEventStatuses
@@ -267,14 +267,14 @@ politic/support_item/usePotions	8	-	-	SoundPlayer.sePlay;RpcQueue.predicable;Rpc
 politic/support_item/useSkillPotion	1	-	-	RpcQueue.reliable	-	-	-
 politic/task/accelerateProduceTask	6	-	createMessageWindow;setMaskCamera;createMessageWindowCL	RpcQueue.predicable;WindowController.createMessageWindow;WindowController.setMaskCamera;WindowController.createMessageWindowCL	-	-	friend/task/accelerateFriendProduceTask
 politic/task/cancelTasks	3	-	-	RpcQueue.reliable	-	-	-
-politic/task/completeTasks	0	-	-	-	-	-	-
+politic/task/completeTasks	2	-	-	RpcQueue.reliable	-	-	-
 politic/task/getTasksInCurrentMap	0	-	-	-	-	-	-
-politic/task/progressBuildTask	0	-	-	-	-	-	-
+politic/task/progressBuildTask	1	-	-	RpcQueue.reliable	-	-	-
 politic/task/submitBuildAndComplete	1	-	setMaskCamera;Clear;createMessageWindowCL	SoundPlayer.sePlay;RpcQueue.reliable;WindowController.setMaskCamera;WindowController.Clear;WindowController.createMessageWindowCL	-	buildingId	-
 politic/task/submitBuildTask	1	-	-	SoundPlayer.sePlay;RpcQueue.reliable;ClockTimer.Sec	-	buildingId	-
 politic/task/submitBulkBuildAndComplete	1	-	-	RpcQueue.reliable	-	-	-
 politic/task/submitBulkProduceTasks	3	-	-	RpcQueue.reliable;SoundPlayer.sePlay	-	-	-
-politic/task/submitProduceTask	0	-	-	-	-	-	-
+politic/task/submitProduceTask	1	-	-	RpcQueue.reliable	-	-	-
 politic/task/submitSerialBuildAndComplete	1	-	-	SoundPlayer.sePlay;RpcQueue.reliable	-	buildingId	-
 politic/task/submitSerialBuildTask	0	-	-	-	-	-	-
 politic/waterborneTrade/call	1	-	-	RpcQueue.reliable	-	-	-
