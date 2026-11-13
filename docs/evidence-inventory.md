@@ -51,9 +51,9 @@
 ### 1.3 A 级待验证项
 
 - 三个 apk 的数字签名尚未核验；MD5 一致只证明文件自 README 记录后未变，**不等于签名有效**。
-- `pc_dll` / `cs_orig.dll` 的提取来源与对应客户端版本未追溯记录。
+- `pc_dll` / `cs_orig.dll`：TypeDef 类集合与 pcweb 相同，已核验属 PC 组（见 §5.3）；对应客户端版本与 PE IL 差异仍待验证。
 - `work\_cur`（3906KB）派生自哪一组原始 dll、被改动了什么，尚未做 diff。
-- `firstpass` dll（`Assembly-CSharp-firstpass.dll`）未纳入本轮哈希比对。
+- `firstpass` dll：已纳入比对，73/73 类命中 bundle（见 §5.3）。
 
 ## 2. B 级：原厂静态表与配置
 
@@ -113,11 +113,52 @@
 - `analysis\data_bin_*`（密码分析、解压探测、keystream 等 JSON / py）。
 - 用户已指示：Dat.bin 用途未明，本轮不纳入分析。
 
-## 5. 安装包归属待核验
+## 5. PC 安装包解包核验（2026-11-13）
 
-- 文件：`C:\Users\74378\Downloads\OniSoul_Setup_20140712.exe`，653,677,906 字节，MD5 `EB3FAE6F7C785736C0211278FCC8DA29`。
-- `downloads\README.txt` 记录的国服 PC 微端（613 MB）MD5 为 `f306b379c19d59ca9a722f50a129e3b3`，与上述不符。
-- 文件大小对应 README 所述「不删档测试客户端 623.4 MB（2014-07-16）」，但该包 README 未记录 MD5，**归属待解包核验**。
+### 5.1 安装包与壳结构
+
+- 文件：`C:\Users\74378\Downloads\OniSoul_Setup_20140712.exe`，653,677,906 字节，MD5 `EB3FAE6F7C785736C0211278FCC8DA29`（复核一致）。
+- 安装器：Inno Setup 5.2.0。解包（innoextract 1.9）后判定为 **Unity WebPlayer 网页端封装壳**：Qt4（QtCore4 / QtGui4 / QtNetwork4 / QtWebKit4）+ WebKitBrowser + UnityWebPlayer + Mono 运行时（Alpha3.x.x / Stable3.x.x 双版本）。
+- 包内**无独立业务 PE 程序集**（无 `Assembly-CSharp.dll`）；本地 dll 全为框架 / 运行时（Qt、WebKit、ICU、Mono mscorlib/System、UnityEngine、CrossDomainPolicyParser）。业务 C# 元数据以 MonoScript 形式存在于主 bundle `app.unity3d`，IL 不随安装包以独立 PE 分发。
+- `app\data.bin`（503 MiB）：按指示本轮不纳入（见 §4.1）。
+
+### 5.2 渠道与入口配置（包内原始文件）
+
+| 文件 | 字段 | 值 |
+|---|---|---|
+| `app\config.ini`（正式） | FinalUrl | `http://game-onisoul.86joy.com/client/app.html` |
+| `app\config.ini`（正式） | StartUrl | `http://passport.86joy.com/index.php/gwz/client/login/` |
+| `app\Cantainer\config.ini`（测试容器） | FinalUrl | `http://114.141.133.203/client/app.html` |
+| `app\Cantainer\config.ini`（测试容器） | StartUrl | `http://test12242013.86joy.com/index.php/gwz/client/login/` |
+
+- cache 159 个 WebPlayer 缓存条目（41.0 MiB），下载主机：`client-onisoul.86joy.com` 129、`game-onisoul.86joy.com` 18、`passport.86joy.com` 9、`static.86joy.com` 2、Unity 修订检查 1。
+- 资源路径前缀 `/client/pc/jp/assets/<bgm|building|cch|chara|item|mission|pbg|pbm|product|questBanner|scene|scr|se|vse>/<md5>.unity3d?r=306620`；主 bundle `http://game-onisoul.86joy.com/client/app.unity3d?revision=30662007`。
+- 时间戳：app.html URL `now=1405175929` = 2014-07-12 22:38:49 +08（与安装包名 `20140712` 吻合）；WebPlayer 缓存 `__info` `1416209126` = 2014-11-17 15:25:26（缓存写入时间，晚于打包日）。
+- 运行时版本（WebPlayer 播放器 info.plist，非游戏工程版本）：loader 4.3.5f1；mono / player Alpha 4.3.6f1、Stable 4.3.7f1。游戏工程 bundle 版本见 §2.1（Unity 3.5.6f4）。
+
+### 5.3 程序集归属核验（bundle MonoScript 元数据 vs PE dll TypeDef）
+
+- 主 bundle 指纹：2383 对象、1958 MonoScript；程序集分布：`Assembly-CSharp.dll` 1869、`Assembly-CSharp-firstpass.dll` 73、`Assembly-UnityScript.dll` 12、`PlayMaker.dll` 3、`bgmusic.dll` 1。
+- 比对方法：dnfile 0.18.0 读各 PE `TypeDef` 类名集合，与 bundle MonoScript 类名集合求交。
+
+| 候选 dll（§1.1 组） | TypeDef 类数 | 与 bundle 主程序集交集 | 覆盖率 | Jaccard |
+|---|---:|---:|---:|---:|
+| pc_dll `B27BE6995D07248F` | 3751 | 1829/1869 | 0.9786 | 0.4825 |
+| pcweb `B56773EDA9CE95D4` | 3751 | 1829/1869 | 0.9786 | 0.4825 |
+| ps3 `05003A56450698B0` | 3956 | 1666 | 0.8914 | 0.4006 |
+| apk 1.00.13 / gwz / `_cur` / managed / apk_x | 3081 | 1133 | 0.6062 | 0.2968 |
+| apk v18 `88C763F2004A50D5` | 3182 | 1131 | 0.6051 | 0.2885 |
+
+- 附属程序集命中：firstpass 73/73、UnityScript 12/12、PlayMaker 3/3、bgmusic 1/1，全部一致。
+- **结论**：本包业务程序集结构属 **PC 组（pc_dll / pcweb）**，与 apk、PS3 组明确区分。
+- 40 个主程序集未命中类：字节层核验其中 21 个类名存在于主 dll（嵌套类 / 泛型，TypeDef 简单名规范化未匹配）；其余为 NGUI 库类、Unity 旧网络视图封装、嵌套表参数结构，分布于未随 `pcweb\asm` 导出的附属库或嵌套类型——待后续反编译细化。
+- 三份 `app.unity3d`（本包 cache 切片、E 盘 `dist\OniSoul-PC-Direct\app.original.unity3d`、E 盘 `work\pcweb\client\app.unity3d`）对象统计逐项相同（2383 对象 / 1958 MonoScript），脚本集合 1958/1958、双向差集为 0；bundle 字节哈希互不相同（缓存层 / 打包 revision 差异），元数据层一致。
+
+### 5.4 仍未决（待验证）
+
+- pc_dll 与 pcweb 两份 PE 哈希不同（4477 KB / 4312 KB）但 TypeDef 类集合相同；WebPlayer 壳形态与 `work\pcweb\asm\`（同目录含 `webplayer_win.dll` 运行时与 client html）吻合。**本包具体对应哪一份 PE，bundle 元数据无法区分**：pc_dll 组配合 LocalBridge 桥接壳（`dist\OniSoul-LocalBridge`），pcweb 组配合 WebPlayer 网页客户端（`dist\OniSoul-PC-Direct`），待 PE IL 层 diff 或版本资源核验。
+- 游戏自身版本号（1.00.x）未在包内直读；`revision=30662007` 是资源修订号，非客户端版本号。主壳 exe 版本资源未提取（文件名 GBK 乱码）。
+- README 记录的 613 MB 微端 MD5 `f306b379c19d59ca9a722f50a129e3b3` 仍与本包不符；本包大小对应 README「不删档测试客户端 623.4 MB（2014-07-16）」描述，包内日期戳为 2014-07-12。
 
 ## 6. 停运背景（README 二手记录，未独立核验）
 
