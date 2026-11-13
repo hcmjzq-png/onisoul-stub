@@ -3,8 +3,8 @@
 存储模型：players 表每行一个 player_id，整份嵌套状态序列化为 state_json。
 业务层拿到的仍是 dict；持久层只负责整行读 / 整行写，不把状态拆成关系表。
 
-TODO(待客户端 dump / 抓包补齐)：初始状态的业务字段（行动点、资源、武将、
-建筑、任务进度、编成等）目前只给最小占位，不得在未核对官方数据前编造初始数值。
+TODO(待从客户端 bundle 核对)：初始状态业务字段目前只给最小占位；bundle 未核对前
+不编造键名与初始数值。
 """
 from __future__ import annotations
 
@@ -27,8 +27,8 @@ def _default_state(player_id: str) -> dict[str, Any]:
             "country": "",
             "level": 1,
         },
-        # TODO: 按官方表补齐 actionPoints / resources / counters / buildings /
-        #       occupiedGrids / produce / items / drafts / missions / characters / decks 等键。
+        # TODO: 初始业务字段（行动点、资源、武将、建筑、任务、编成等）待从客户端
+        #       bundle 核对后补齐；未核对前不加键、不写初始数值。
     }
 
 
