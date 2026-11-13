@@ -1,0 +1,14 @@
+rows	402
+header_cols	9
+with_keys	278
+zero_keys	124
+keys_total	990
+keys_typed	492
+keys_unique	381
+request_param_collisions	5
+problems	0
+REQCOLLIDE	auth/guestLogin	loginHash:string
+REQCOLLIDE	politic/building/deployBuilding	buildingId:double
+REQCOLLIDE	politic/task/submitBulkBuildAndComplete	originCoords:Hashtable
+REQCOLLIDE	quest/openQuest	questType:string
+REQCOLLIDE	strategy/command/attack	command
