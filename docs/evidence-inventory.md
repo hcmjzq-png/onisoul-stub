@@ -33,11 +33,10 @@
 
 - 2383 对象、1958 MonoScript；程序集分布：`Assembly-CSharp.dll` 1869、`Assembly-CSharp-firstpass.dll` 73、`Assembly-UnityScript.dll` 12、`PlayMaker.dll` 3、`bgmusic.dll` 1。
 
-## 2. 不采信范围（污染源）
+## 2. 采信边界
 
-- E 盘 `work\`、`analysis\`、`dist\`、`server\`、`panel\`、`build\`、`assets_serve\`、`unity_build\`、`_recover\`、`_attic\`、`_incoming\`、`_extract\`、`deploy-cloud\`、`.workbuddy\`、`.dshwolf\` 及独立恢复快照目录内的 PE、bundle、JSON、日志、本地 db、脚本、截图，均为旧 stub 时代派生产物，来源未核验：**不作为 Stub 接口路径、参数字段、响应结构或初始数值的依据，不迁移、不入仓**。
-- 仓内不收录上述旧目录的程序集哈希分组与跨平台对照。
-- 旧目录解出的静态表 JSON 同属此列；待从客户端原始 bundle 重新导出并核验后再定级，本轮不采信。
+- 除本安装包直接解出的内容外，其他目录与来源的 PE、bundle、JSON、日志、数据库、脚本、截图等素材一律不采信、不迁移、不入仓。
+- 接口路径、参数字段、响应结构与初始数值只以客户端 bundle 实测为准；bundle 未核对前标注「待验证」，不写成事实。
 
 ## 3. 硬限制
 
