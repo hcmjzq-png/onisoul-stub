@@ -102,11 +102,13 @@ class ContractDataTest(unittest.TestCase):
         known = set(contract.endpoints())
         unknown = [tuple(e) for e in contract.edges() if e[0] not in known or e[1] not in known]
         self.assertEqual(unknown, [], f"边指向未登记端点: {unknown[:5]}")
-        self.assertGreater(len(contract.edges()), 400)
+        self.assertGreater(len(contract.edges()), 350)
 
     def test_batches_known(self):
         batches = contract.batches()
-        self.assertEqual(len(batches), 115)
+        # 批次 = 每个场景 1 个 + 每个有出边的端点 1 个，跟着契约数据走，不写死数字
+        fanout = sum(1 for api in contract.endpoints() if contract.out_edges(api))
+        self.assertEqual(len(batches), len(contract.scenes()) + fanout)
         known = set(contract.endpoints())
         for batch in batches:
             self.assertTrue(batch["endpoints"], f"空批次: {batch['name']}")

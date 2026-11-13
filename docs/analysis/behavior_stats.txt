@@ -1,37 +1,36 @@
 endpoints	402
 matched	343
 unmatched	59
-sites_exact	570
-sites_class_fallback	75
-sites_unresolved	5
-with_scene_ops	10
-scene_triggers	11
-with_windows	40
-with_state_writes	18
-with_guards	68
-edges	416
-nodes_with_outedge	110
+with_scene_ops	9
+with_windows	37
+with_state_writes	16
+with_guards	67
+edges	388
+nodes_with_outedge	103
 
-# scene 目标分布（按端点去重）
-politic	5
+# scene 目标分布
+politic	4
 vsBattle	3
 deck	1
 migrationLogin	1
 strategy	1
 
 # 出度最高端点
-deck/getDecks	14
 quest/getQuestProgress	14
-ranking/getBriefOfRaidBossDaily	13
 ranking/getRankersInStrategy	13
-ranking/getBriefOfRandomQuest	12
-ranking/getBriefOfRaidBossNational	12
+ranking/getBriefOfRaidBossDaily	13
 ranking/getBriefOfSiege	12
+ranking/getBriefOfNationalRanking	12
 ranking/getRankersOfCountriesInGiganticRaidBoss	12
+ranking/getBriefOfBrawn	12
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	12
+ranking/getBriefOfRaidBoss	12
 ranking/getBriefOfBattleDaily	12
 ranking/getBriefOfDedication	12
-ranking/getBriefOfRaidBoss	12
+ranking/getBriefOfRandomQuest	12
 ranking/getBriefOfBattle	12
-ranking/getBriefOfBrawn	12
-ranking/getBriefOfNationalRanking	12
-ranking/getRankersOfMaxDamageInGiganticRaidBoss	12
+ranking/getBriefOfRaidBossNational	12
+politic/mission/getStatesFromAllMissions	9
+sites_exact	645
+sites_class_fallback	0
+sites_unresolved	5

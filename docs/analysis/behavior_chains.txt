@@ -10,17 +10,14 @@
   auth/createPlayer
   debug/debugLogin
   debug/devLogin
-  deck/powerUpCharacter
-  inbox/getParcels
-  navigator/activateNavigator
+  mailbox/getMailBody
   politic/map/setMapName2
   politic/waterborneTrade/send
-  quest/executeQuestEx
+  siege/discharge
   turfWar/getTurfWarResultLog
-共 10 个
+共 8 个
 
 ## 出度 >= 8 的端点（一个回调里连发多个请求）
-  deck/getDecks                                  14  battle/executeBattle common/getCharacters common/getEventStatuses common/getSelectCharacters deck/getAvatarCha
   quest/getQuestProgress                         14  battle/getRaidBossEntries common/getSelectCharacters debug/debugOpenQuest debug/forceProgressQuest debug/reset
   ranking/getBriefOfRaidBossDaily                13  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
   ranking/getRankersInStrategy                   13  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
@@ -37,6 +34,7 @@
   ranking/getRankersOfMaxDamageInGiganticRaidBoss 12  ranking/getBriefOfBattle ranking/getBriefOfBattleDaily ranking/getBriefOfBrawn ranking/getBriefOfDedication ra
   politic/mission/getStatesFromAllMissions        9  battle/getRaidBossEntries politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/errantry
   battle/getRaidBossEntries                       8  politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/errantry/getStatus3 politic/missio
+  deck/getDecks                                   8  common/getCharacters common/getSelectCharacters deck/getAvatarCharacters deck/getDeckBonus deck/getProtectedCh
   politic/building/getBuildCounts                 8  battle/getRaidBossEntries politic/edict/getMissionsInProgress politic/errantry/getStatus3 politic/mission/getM
   politic/edict/getMissionsInProgress             8  battle/getRaidBossEntries politic/building/getBuildCounts politic/errantry/getStatus3 politic/mission/getMissi
   politic/errantry/getStatus3                     8  battle/getRaidBossEntries politic/building/getBuildCounts politic/edict/getMissionsInProgress politic/mission/
