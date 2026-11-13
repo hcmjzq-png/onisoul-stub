@@ -172,10 +172,12 @@ debug/debugLogin               username: debug
 | `getFriendMapData(string, Responder)` `:2688` | `friend/getFriendMapData` | 无（本客户端不触发 2 参版本） |
 | `getFriendMapData(string, int, Responder)` `:2697` | `friend/getFriendMapData2` | `Politic.cs:318 resetFriendMap` |
 | `setMapName(string, Responder)` `:695` | `politic/map/setMapName` | 无（本客户端不触发 2 参版本） |
-| `setMapName(int, string, Responder)` `:704` | `politic/map/setMapName2` | `UserStatus.cs:1377 setMapName` |
+| `setMapName(int, string, Responder)` `:704` | `politic/map/setMapName2` | `UserStatus.cs:1377 setMapName`、`mypageCastleTownRename.cs:128 onOk` |
 | `getTurnfWarRceiveTurfWarReward(Responder)` `:2834` | `turfWar/receiveTurfWarReward` | `TurfWarResultRenderer.cs:228` |
 
 所以键补在 `...2` 两条路径上；`friend/getFriendMapData`、`politic/map/setMapName` 维持零字段。
+
+验证方式：全仓扫描 `.setMapName(` / `.getFriendMapData(` 共 3 处调用（`UserStatus.cs:1377`、`mypageCastleTownRename.cs:128`、`Politic.cs:318`），实参都是 3 个，全部落在 `...2` 路径上；2 参重载在本客户端没有调用点。
 
 本轮补进契约表与占位响应的键（`response_keys` 用点号表示嵌套层级）：
 
