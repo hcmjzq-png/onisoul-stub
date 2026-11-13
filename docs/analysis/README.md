@@ -13,7 +13,7 @@
 | `behavior-layer.md` | 行为层：端点回调的副作用（场景切换 / 窗口 / 服务调用 / 状态写入 / 键守卫）、端点调用图、启动链结论 |
 | `resource-layer.md` | 资源层：三个 host 的来源、资源 URL 与 MD5 规则、46 个前缀目录、表数据格式与 108 张表清单 |
 | `behavior_contract.tsv` | 402 个端点的行为契约，一端点一行；8 列，列定义见 `behavior-layer.md` |
-| `api_call_graph.tsv` | 416 条端点→端点调用边（from_endpoint / to_endpoint / via_method） |
+| `api_call_graph.tsv` | 388 条端点→端点调用边（from_endpoint / to_endpoint / via_method） |
 | `behavior_stats.txt` | 行为层计数、场景目标分布、出度榜 |
 | `behavior_chains.txt` | 启动链可达性、无入边端点、高扇出端点清单 |
 | `resource_contract.tsv` | 363 条资源名（146 字面量 / 217 运行时决定） |

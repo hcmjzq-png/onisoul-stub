@@ -74,7 +74,7 @@ PYTHONPATH=. python -m unittest discover -s tests
 ```
 
 `tests/test_contract_batches.py` 覆盖：402 个端点全部 200、未知路径 404、已声明类型的响应键
-存在且 Python 类型一致、416 条边两端都已登记、115 个批次成员全部已知。
+存在且 Python 类型一致、388 条边两端都已登记、108 个批次成员全部已知。
 
 ## 部署
 
