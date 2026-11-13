@@ -1,0 +1,17 @@
+endpoint	field	file	keys
+common/getRevisions	result	TableLoad.cs	root:int;server:int;table:int;unity:int
+common/getSelectCharacters	hashtable	Strategy.cs	id:string;strategy:Hashtable
+debug/debugDeleteAllCharacter	table	PoliticDebugMenu.cs	enable:bool
+deck/transferStoreCharacters	StorageInfoHash	DeckStorage.cs	lastOpenDate:double;now:double
+navigator/getUsableNavigators	hash	NavigatorChangeEnv.cs	type:int
+politic/mypage/getArtifactSeries	hashtable	mypageCollectionArtifact.cs	
+politic/mypage/getJewelSeries	hashtable	mypageCollectionJewel.cs	
+politic/mypage/takeLesson	res	LessonScriptCommand.cs	reward:Hashtable;toInbox:Hashtable
+politic/waterborneTrade/send	hash	PoliticWaterTradeWindow.cs	decrement:double;fleet:Hashtable;friends:Hashtable;gain:double;item11_0000101:double;sheet:string
+politic/waterborneTrade/sendWithFriends	hash	PoliticWaterTradePlayerWindow.cs	friends:Hashtable;goldSavingRate:double
+quest/checkCompleteQuestEx	res	QuestScriptCommand.cs	isSuccess:bool;open:bool;reward:Hashtable;toInbox:Hashtable;uses:Hashtable
+quest/getQuestBossPunish	punishTable	QuestScriptCommand.cs	script:string
+quest/getQuestEncount	encountWork	QuestScriptCommand.cs	entry:Hashtable
+quest/getQuestEncountWorks	encountWorks	QuestScriptCommand.cs	obstacle:Hashtable
+ranking/getTopRankersInTurfWar	hashtable	TurfWarBriefCache.cs	battlefields:Hashtable;endTime:long;rankers
+strategy/getStrategyStatus	result	Strategy.cs	battlefield:Hashtable;id:string;strategy:Hashtable
