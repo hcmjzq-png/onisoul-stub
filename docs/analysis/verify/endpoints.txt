@@ -1,0 +1,28 @@
+httpCall 调用点总数        : 433
+唯一端点字面量             : 402
+非字面量首参（需人工看）   : 1
+    WebApiClient.cs              Message.ToString())); 		} 		return result; 	}  	private void httpCall(string api, Hashtable parameter, Respond
+httpCall 出现在几个文件    : 1
+端点分布文件（前 8）       : WebApiClient.cs
+WebApiClient.cs 方法定义数  : 451
+可归属方法名的端点         : 402
+contract.tsv 端点数        : 402
+契约有但源码无字面量        : 0  []
+源码有但契约缺              : 0  []
+方法名与 source 归属不一致  : 10
+    battle/executeBattle               tsv=executeBattle                src=executeBattleOutBreak
+    battle/getVsBattleLogs             tsv=getVsBattleLogs              src=getStrategyBattleLogs
+    common/dedicate                    tsv=dedicateCharacter            src=dedicateGold
+    giganticRaidBoss/getGiganticRaidBossEventResult tsv=getGiganticRaidBossEventResult src=getGiganticRaidBossEventResultLog
+    politic/task/cancelTasks           tsv=cancelTask                   src=cancelTasks
+    politic/task/completeTasks         tsv=completeTask                 src=completeTasks
+    ranking/getRankersInNationalRanking tsv=getRankersInNationalRanking  src=getWeeklyRankersInNationalRanking
+    trophy/completeTrophy              tsv=completeTrophy               src=receiveTrophyGiganticRaidBoss
+    trophy/getTrophyProgress           tsv=getTrophyProgress            src=getTrophyGiganticRaidBoss
+    turfWar/receiveTurfWarReward       tsv=getTurfWarResult             src=getTurnfWarRceiveTurfWarReward
+同一端点被多处调用          : 15
+    debug/devLogin                     x2
+    common/dedicate                    x5
+    politic/task/completeTasks         x2
+    politic/task/cancelTasks           x2
+    battle/executeBattle               x10

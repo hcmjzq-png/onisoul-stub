@@ -1,0 +1,9 @@
+new WWW(       8 文件, 共 13 处: SoundPlayer.cs(4), WebApiClient.cs(2), StanderdLibrary.cs(2), Loader.cs(1), MoviePlayer.cs(1), SimpleLoader.cs(1)
+WWWForm        2 文件, 共 8 处: SnapshotUploader.cs(5), WebApiClient.cs(3)
+TcpClient      2 文件, 共 3 处: Proxy.cs(2), Irc.cs(1)
+PlayMaker WWW  1 文件, 共 1 处: WWWObject.cs(1)
+
+--- 含 "http://" 字面量或 base_ 拼接的文件
+Configs.cs                               50 处
+Loader.cs                                2 处
+WebApiClient.cs                          3 处
