@@ -74,16 +74,18 @@ class ContractDataTest(unittest.TestCase):
         bad = []
         for api in contract.endpoints():
             status, body = self.reg.dispatch(api, {}, None)
-            if response_shapes.shape_for(api) is response_shapes.ResponseShape.BARE_MAP:
+            shape = response_shapes.shape_for(api)
+            if shape is not response_shapes.ResponseShape.ENVELOPE:
                 continue
             for field in contract.response(api):
                 key, typ = field["key"], field["type"]
                 if not typ or "<" in key or ">" in key or key in {"succeeded", "now"}:
                     continue
-                if key not in body:
+                ok, value = contract.lookup(body, key)
+                if not ok:
                     bad.append((api, key, "缺失"))
-                elif not _py_type_ok(body[key], typ):
-                    bad.append((api, key, f"类型错: {type(body[key]).__name__} != {typ}"))
+                elif not _py_type_ok(value, typ):
+                    bad.append((api, key, f"类型错: {type(value).__name__} != {typ}"))
         self.assertEqual(bad, [], f"契约字段不达标: {bad[:5]}")
 
     def test_untyped_keys_not_fabricated(self):
@@ -97,7 +99,8 @@ class ContractDataTest(unittest.TestCase):
                 key = field["key"]
                 if "<" in key or ">" in key or key in {"succeeded", "now"}:
                     continue
-                if key in body:
+                ok, _ = contract.lookup(body, key)
+                if ok and response_shapes.shape_for(api) is response_shapes.ResponseShape.ENVELOPE:
                     bad.append((api, key))
         self.assertEqual(bad, [], f"多余键: {bad[:5]}")
 

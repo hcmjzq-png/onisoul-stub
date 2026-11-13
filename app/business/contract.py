@@ -108,6 +108,16 @@ def has(api: str) -> bool:
     return api in data()["endpoints"]
 
 
+def lookup(body: Any, key: str) -> tuple[bool, Any]:
+    """按契约里的键取响应值，点号表示嵌套层级（`schedule.open`）。"""
+    box = body
+    for part in key.split("."):
+        if not isinstance(box, dict) or part not in box:
+            return False, None
+        box = box[part]
+    return True, box
+
+
 def response(api: str) -> list[dict[str, Any]]:
     item = data()["endpoints"].get(api)
     return item["response"] if item else []
