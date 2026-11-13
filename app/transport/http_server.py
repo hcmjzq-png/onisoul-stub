@@ -54,7 +54,12 @@ def make_handler(registry: Registry) -> type[BaseHTTPRequestHandler]:
             params = envelope.parse_params(raw, ctype)
 
             token = str(params.get("token") or "").strip()
-            session = sessions.resolve(token) if token else None
+            try:
+                session = sessions.resolve(token) if token else None
+            except Exception:
+                # 会话库不可用时按匿名继续：占位阶段响应不依赖会话，
+                # 至少保证「不因 DB 掉了就没响应」，否则客户端只能看到连接被掐断。
+                session = None
 
             status, body = registry.dispatch(api, params, session)
             _json_response(self, status, body)
