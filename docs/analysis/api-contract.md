@@ -66,7 +66,7 @@
 | 端点完整性 | 契约↔源码字面量双向对账 | 402↔402，0 差；唯一非字面量命中是 `private void httpCall(string api,...)` 方法定义本身 |
 | 方法归属 | 花括号配对定位方法体 | 445/445 个真实方法全部定位（另 6 个 `public delegate` 声明非方法） |
 | 参数正确性 | 用方法体重算参数并集，与表对比 | 差异 6 项，已全部修正（见下） |
-| 字段真实性 | 1056 个键逐个回查源码字面量 | 0 个找不到（见 `verify/final_check.txt`） |
+| 字段真实性 | 1056 个键逐个回查源码字面量 | 0 个找不到；`verify/final_check.txt` 是 990 键时期的快照，当前键数/类型数/结构类问题以 `python3 tools/contract_check.py` 输出为准（1056 键 / 570 带类型 / 0 问题） |
 | 类型自洽性 | 同一端点内的声明类型 vs 实测 cast | 570 处带类型读取，0 冲突 |
 | 表结构与编码 | 9 列齐整 / UTF-8 无 BOM / 仅 LF / 无重复端点 / `key_count` 与条目数一致 | 全部通过 |
 | 键名一致性 | 回包键不得与同端点请求参数同名 | 5 例经核对为**回显读取**（客户端读回自己发过的值），非错误 |
@@ -261,7 +261,8 @@ python a_responder_var.py      # responder 局部变量
 python a_responder_flow.py     # responder 跨帧回溯
 python a_inner_keys.py         # 外层动态 id + 内层字段
 python a_final_disp.py         # 零字段端点处置表
-python a_final_check.py        # 推送前完整性检查
+python a_final_check.py        # 推送前完整性检查（一次性脚本，未入仓；结构类检查已由
+                               # tools/contract_check.py 承接，见「校验」表）
 ```
 
 反编译：`dotnet tools_ilspy\cmd\tools\net8.0\any\ilspycmd.dll -p -o <outdir> container_dump\Assembly-CSharp.dll`
