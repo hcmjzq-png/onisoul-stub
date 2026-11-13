@@ -5,7 +5,7 @@
 ```
 客户端 ──HTTP:80──▶ tools/proxy80.py ──▶ app.main (stub) :18080 ──▶ MySQL game_db
                           │                        │
-                          └─ 抓包日志 logs/         └─ 静态资源 assets/（映射待接入）
+                          └─ 代理调试日志 logs/      └─ 静态资源 assets/（映射待接入）
 ```
 
 - stub 只监听 `127.0.0.1:18080`，不直接公网可达；对外仅 80 端口代理。
@@ -42,5 +42,5 @@
 
 - 响应二进制编码（msgpack / igbinary）尚未实现，当前仅 JSON。
 - 静态资源（assets/web、bundles、cache）目录映射未接入。
-- 业务接口字段需对照抓包日志与反汇编补齐；见任务 #7。
+- 业务接口字段需对照客户端 bundle 实测补齐；见任务 #7。
 - 已装 Redis 但 Stub 未使用；是否引入缓存会话/快照暂未决定。

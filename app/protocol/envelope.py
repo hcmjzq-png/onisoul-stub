@@ -1,8 +1,8 @@
 """请求信封与统一响应。
 
-协议线索（来自早期客户端 Assembly-CSharp 反汇编与抓包，字段形状待后续 dump 复核）：
+骨架占位：请求 / 响应字段形状待从客户端 bundle 核对，未核对前一律视为待验证线索：
     - 请求：POST /api/<api>，表单字段 `params` 为 JSON 字符串；部分请求直接是 JSON body。
-    - 响应：JSON 对象，常见顶层键 `succeeded`、`now`（epoch 秒）、`token`、`playerId`。
+    - 响应：JSON 对象，顶层键线索 `succeeded`、`now`（epoch 秒）、`token`、`playerId`。
     - 响应编码可能为 JSON 或 msgpack/igbinary；本骨架先只实现 JSON，二进制编码留 TODO。
 """
 from __future__ import annotations
