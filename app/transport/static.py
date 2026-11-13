@@ -28,14 +28,14 @@ class StaticPathError(ValueError):
 class StaticResource:
     content_type: str
     cache_control: str
+    length: int
+    last_modified: float | None = None
     path: Path | None = None
     body: bytes | None = None
 
     @property
     def size(self) -> int:
-        if self.path is not None:
-            return self.path.stat().st_size
-        return len(self.body or b"")
+        return self.length
 
 
 def _content_type(path: Path) -> str:
@@ -95,25 +95,39 @@ class StaticFiles:
         path = self._under(root, relative)
         if path is None:
             return None
+        try:
+            stat = path.stat()
+        except OSError:
+            return None
         return StaticResource(
             content_type=_content_type(path),
             cache_control=cache_control or _cache_control(path),
+            length=stat.st_size,
+            last_modified=stat.st_mtime,
             path=path,
         )
 
     def _bundle(self, parts: list[str]) -> StaticResource | None:
-        # /client/pc/jp/assets/<category>/<name>
-        if len(parts) != 6 or parts[:4] != ["client", "pc", "jp", "assets"]:
+        if len(parts) < 5 or parts[:3] != ["client", "pc", "jp"]:
             return None
-        category, name = parts[4], parts[5]
-        candidates = (
-            (self.bundle_dir, Path(category) / name),
-            (self.bundle_dir, Path(category) / f"{category}__{name}"),
-            (self.cache_dir, Path(category) / name),
-            (self.cache_dir, Path(category) / f"{category}__{name}"),
-            (self.cache_dir, Path(f"{category}__{name}")),
+        if parts[3] not in {"assets", "assets2"}:
+            return None
+        tail = Path(*parts[4:])
+        category = tail.parts[0] if len(tail.parts) > 2 else tail.parent.name
+        name = tail.name
+        candidates = [
+            (self.bundle_dir, tail),
+            (self.cache_dir, tail),
             (self.cache_dir, Path(name)),
-        )
+        ]
+        if category and category != ".":
+            candidates.extend(
+                [
+                    (self.bundle_dir, tail.parent / f"{category}__{name}"),
+                    (self.cache_dir, tail.parent / f"{category}__{name}"),
+                    (self.cache_dir, Path(f"{category}__{name}")),
+                ]
+            )
         for root, relative in candidates:
             resource = self._file(root, relative, cache_control=ASSET_CACHE)
             if resource is not None:
@@ -130,7 +144,7 @@ class StaticFiles:
         path = urlsplit(target).path
         parts = _safe_parts(path)
         if not parts:
-            return None
+            return self._file(self.web_dir, Path("client") / "app.html", cache_control=NO_STORE)
 
         if parts == ["crossdomain.xml"]:
             override = self._file(
@@ -141,12 +155,31 @@ class StaticFiles:
             return StaticResource(
                 content_type="application/xml; charset=utf-8",
                 cache_control=NO_STORE,
+                length=len(CROSSDOMAIN_XML),
                 body=CROSSDOMAIN_XML,
             )
 
-        if parts[:4] == ["client", "pc", "jp", "assets"]:
-            return self._bundle(parts)
+        if parts == ["app.html"]:
+            return self._file(
+                self.web_dir,
+                Path("client") / "app.html",
+                cache_control=NO_STORE,
+            )
 
-        if parts[0] != "client":
-            return None
-        return self._file(self.web_dir, Path(*parts))
+        if parts[:3] == ["client", "pc", "jp"]:
+            resource = self._bundle(parts)
+            if resource is not None or (len(parts) > 3 and parts[3] in {"assets", "assets2"}):
+                return resource
+
+        if parts[0] == "client":
+            resource = self._file(self.web_dir, Path(*parts))
+            if resource is not None or not parts[-1].lower().endswith((".unity3d", ".unity")):
+                return resource
+
+        if parts[-1].lower().endswith((".unity3d", ".unity")):
+            name = Path(parts[-1])
+            for root in (self.bundle_dir, self.cache_dir, self.web_dir / "client"):
+                resource = self._file(root, name, cache_control=ASSET_CACHE)
+                if resource is not None:
+                    return resource
+        return None

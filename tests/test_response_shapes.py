@@ -21,6 +21,23 @@ class ResponseShapeTest(unittest.TestCase):
                 self.assertEqual(status, 200)
                 self.assertEqual(body, {})
 
+    def test_scalar_root_endpoints_keep_typed_contract_keys(self):
+        registry = build_registry()
+        for api in ("siege/getBrief", "trophy/getTrophyProgress"):
+            with self.subTest(api=api):
+                status, body = registry.dispatch(api, {}, None)
+                self.assertEqual(status, 200)
+                self.assertIs(body["succeeded"], True)
+                self.assertIsInstance(body["now"], float)
+                fields = {
+                    field["key"]: field["type"]
+                    for field in contract.response(api)
+                    if field["type"] and field["key"] not in {"succeeded", "now"}
+                }
+                self.assertTrue(fields)
+                for key in fields:
+                    self.assertIn(key, body)
+
     def test_envelope_placeholder_keeps_timestamp_and_success(self):
         status, body = build_registry().dispatch("common/getServerTime", {}, None)
         self.assertEqual(status, 200)

@@ -43,9 +43,7 @@ BARE_MAP_EVIDENCE: dict[str, str] = {
     "quest/getChapterData": "PluginQuestDataManager.onGetStoryProgress",
     "quest/getQuestCompleteFlags": "PluginQuestDataManager.onGetStoryProgress",
     "quest/getQuestProgress": "QuestDataCache.setQuestParameter",
-    "siege/getBrief": "客户端枚举响应根表",
     "siege/getSiegeStatus": "客户端枚举响应根表",
-    "trophy/getTrophyProgress": "TrophyWindow.init",
 }
 
 BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)

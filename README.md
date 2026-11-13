@@ -92,7 +92,7 @@ python tools/import_tables.py --source /path/to/extracted/tables
 
 资源目录通过 `ONI_PC_WEB_DIR`、`ONI_PC_BUNDLE_DIR`、`ONI_PC_CACHE_DIR`、
 `ONI_TABLE_DIR` 配置，目录内容不入库。当前清单 108 张表中客户端包内实测
-只有 105 张，缺 `assetbundle.json`、`combo.json`、`strategy_battlefield.json`；
+可取得 106 张，仅缺 `combo.json`、`strategy_battlefield.json`；
 见 `docs/tables.md`。
 
 ## 部署

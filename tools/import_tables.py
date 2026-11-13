@@ -18,6 +18,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app import paths  # noqa: E402
+from app.minijson import MiniJsonError, parse_json_document  # noqa: E402
 from app.tables import MANIFEST_PATH  # noqa: E402
 
 
@@ -31,9 +32,8 @@ def sha256(path: Path) -> str:
 
 def validate(path: Path, root_key: str) -> str | None:
     try:
-        with io.open(path, encoding="utf-8-sig") as handle:
-            document = json.load(handle)
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        document = parse_json_document(path.read_bytes())
+    except (OSError, MiniJsonError) as exc:
         return f"invalid JSON: {exc}"
     if not isinstance(document, dict) or root_key not in document:
         return f"missing root key: {root_key}"
@@ -44,11 +44,55 @@ def validate(path: Path, root_key: str) -> str | None:
 
 def read_manifest(path: Path) -> list[dict[str, str]]:
     with io.open(path, encoding="utf-8", newline="") as handle:
-        return [
-            row
-            for row in csv.DictReader(handle, delimiter="\t")
-            if (row.get("table_file") or "").strip()
+        rows = [
+            row for row in csv.DictReader(handle, delimiter="\t") if (row.get("table_file") or "").strip()
         ]
+    for row in rows:
+        name = row["table_file"].strip()
+        if Path(name).name != name:
+            raise ValueError(f"unsafe table filename in manifest: {name!r}")
+        if not (row.get("root_key") or "").strip():
+            raise ValueError(f"missing root key for table: {name}")
+    return rows
+
+
+def source_files(source: Path, declared: set[str]) -> tuple[dict[str, list[Path]], dict[str, list[Path]]]:
+    """Index exact filenames and ``<prefix>__<table_file>`` extraction names."""
+    exact: dict[str, list[Path]] = {}
+    suffixed: dict[str, list[Path]] = {}
+    for path in sorted(source.rglob("*.json")):
+        if not path.is_file():
+            continue
+        name = path.name
+        if name in declared:
+            exact.setdefault(name, []).append(path)
+        suffix = name.rsplit("__", 1)[-1]
+        if suffix in declared:
+            suffixed.setdefault(suffix, []).append(path)
+    return exact, suffixed
+
+
+def find_source_file(
+    source: Path,
+    name: str,
+    exact: dict[str, list[Path]],
+    suffixed: dict[str, list[Path]],
+) -> Path | None:
+    direct = source / name
+    if direct.is_file():
+        return direct
+    candidates = sorted(set(suffixed.get(name, ())) | set(exact.get(name, ())))
+    if not candidates:
+        return None
+    if len(candidates) == 1:
+        return candidates[0]
+    first_digest = sha256(candidates[0])
+    if all(sha256(candidate) == first_digest for candidate in candidates[1:]):
+        return candidates[0]
+    raise ValueError(
+        f"ambiguous table source for {name}: "
+        + ", ".join(str(candidate.relative_to(source)) for candidate in candidates)
+    )
 
 
 def atomic_manifest(path: Path, records: list[dict[str, Any]]) -> None:
@@ -85,14 +129,32 @@ def main(argv: list[str] | None = None) -> int:
     if not args.check_only:
         dest.mkdir(parents=True, exist_ok=True)
 
+    try:
+        rows = read_manifest(manifest)
+    except ValueError as exc:
+        parser.error(str(exc))
+    declared = {row["table_file"].strip() for row in rows}
+    exact, suffixed = source_files(source, declared)
+
     records: list[dict[str, Any]] = []
-    for row in read_manifest(manifest):
+    for row in rows:
         name = row["table_file"].strip()
         root_key = (row.get("root_key") or "").strip()
-        source_file = source / name
         target_file = dest / name
+        try:
+            source_file = find_source_file(source, name, exact, suffixed)
+        except ValueError as exc:
+            records.append(
+                {
+                    "file": name,
+                    "root_key": root_key,
+                    "status": "invalid",
+                    "error": str(exc),
+                }
+            )
+            continue
 
-        if not source_file.is_file():
+        if source_file is None:
             records.append(
                 {
                     "file": name,
@@ -109,6 +171,7 @@ def main(argv: list[str] | None = None) -> int:
             "root_key": root_key,
             "bytes": source_file.stat().st_size,
             "sha256": digest,
+            "source": str(source_file.relative_to(source)),
             "status": "invalid" if problem else ("checked" if args.check_only else "copied"),
         }
         if problem:

@@ -36,9 +36,11 @@
 ## 静态请求
 
 - `/client/app.html`、`/client/UnityObject.js` 等映射到 `ONI_PC_WEB_DIR`。
-- `/client/pc/jp/assets/<category>/<name>` 优先查 `ONI_PC_BUNDLE_DIR`，再查
-  `ONI_PC_CACHE_DIR`；支持 `<category>__<name>` 缓存命名。
+- `/client/pc/jp/assets|assets2/...` 优先查 `ONI_PC_BUNDLE_DIR`，再查
+  `ONI_PC_CACHE_DIR`；支持多级路径、根级 bundle 与 `<category>__<name>` 缓存命名。
 - `/crossdomain.xml` 没有本地覆盖文件时返回内建 Unity Web Player 策略。
+- `/`、`/app.html` 映射到 PC Web 的 `client/app.html`；GET/HEAD 均支持
+  `Last-Modified`、`If-Modified-Since` 与单段 `Range`。
 - 所有路径都解析后校验仍在配置根目录内，目录穿越返回 400。
 
 ## 持久层模型
@@ -53,7 +55,7 @@
 ## 未决 / TODO
 
 - 响应二进制编码（msgpack / igbinary）尚未实现，当前仅 JSON。
-- 三张客户端未随附的配置表仍需外部证据：`assetbundle.json`、`combo.json`、
+- 客户端包内无法取得的配置表仍需外部证据：`combo.json`、
   `strategy_battlefield.json`。
 - 业务接口字段需对照客户端 bundle 实测补齐；见任务 #7。
 - 已装 Redis 但 Stub 未使用；是否引入缓存会话/快照暂未决定。

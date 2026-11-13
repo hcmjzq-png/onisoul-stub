@@ -26,9 +26,18 @@
 | `deck/getProtectedCharacterIds` / `deck/getProtectedEquipIds` | 客户端逐项枚举根表 |
 | `deck/setCharacterProtect` / `deck/setEquipProtect` | 客户端逐项枚举根表 |
 | `friend/findFriends` / `friend/getFriends` | 客户端逐项枚举根表 |
-| `siege/getBrief` / `siege/getSiegeStatus` | 客户端逐项枚举根表 |
+| `siege/getSiegeStatus` | 客户端逐项枚举根表 |
 | `auction/auctionCardSale` / `auction/auctionResourceSale` | 客户端逐项枚举根表 |
 | `politic/support_item/usePotions` | 客户端逐项枚举根表 |
 
 依据来自客户端反编译回调的方法体，不在本 PR 中扩展未经证实的接口。新增裸映射
 接口时必须先补客户端读取点，再加入 `BARE_MAP_EVIDENCE`。
+
+## 不是裸映射
+
+`siege/getBrief` 与 `trophy/getTrophyProgress` 的契约键位于根级，回调按 key
+读取并拆箱，而不是遍历根表。它们继续使用 envelope 和类型化占位字段：
+
+- `siege/getBrief`：`siegeBriefMenuDesc.setup` 读取 `day`、`stage`、`isEntry`、
+  `winner` 等键。
+- `trophy/getTrophyProgress`：`TrophyWindow.load` 读取根级 `level`、`status` 等键。

@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import io
 import json
 import os
@@ -16,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from app import paths
+from app.minijson import MiniJsonError, parse_json_document
 
 MANIFEST_PATH = Path(__file__).resolve().parents[1] / "docs" / "analysis" / "table_list.tsv"
 
@@ -116,9 +118,11 @@ class TableCatalog:
                 return cached[1]
 
         try:
-            with io.open(path, encoding="utf-8-sig") as handle:
-                document = json.load(handle)
-        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            raw = path.read_bytes()
+            document = parse_json_document(raw)
+        except FileNotFoundError as exc:
+            raise MissingTableError(f"missing table: {entry.file}") from exc
+        except (OSError, MiniJsonError) as exc:
             raise InvalidTableError(f"invalid table {entry.file}: {exc}") from exc
 
         if not isinstance(document, dict) or entry.root_key not in document:
@@ -145,12 +149,49 @@ class TableCatalog:
     def check(self) -> list[str]:
         """Return human-readable diagnostics without raising on individual tables."""
         issues: list[str] = []
+        expected = self._imported_hashes()
         for entry in self._entries.values():
             try:
                 self.load(entry.file)
             except TableError as exc:
                 issues.append(str(exc))
+                continue
+            digest = expected.get(entry.file)
+            if digest:
+                try:
+                    actual = hashlib.sha256(
+                        (self.table_dir / entry.file).read_bytes()
+                    ).hexdigest()
+                except OSError as exc:
+                    issues.append(f"cannot read table {entry.file}: {exc}")
+                    continue
+                if actual != digest:
+                    issues.append(
+                        f"checksum drift: {entry.file} "
+                        f"(expected {digest[:12]}, got {actual[:12]})"
+                    )
         return issues
+
+    def _imported_hashes(self) -> dict[str, str]:
+        manifest = self.table_dir / "import-manifest.json"
+        if not manifest.is_file():
+            return {}
+        try:
+            with io.open(manifest, encoding="utf-8") as handle:
+                document = json.load(handle)
+        except (OSError, UnicodeError, json.JSONDecodeError):
+            return {}
+        records = document.get("tables") if isinstance(document, dict) else None
+        if not isinstance(records, list):
+            return {}
+        return {
+            str(record["file"]): str(record["sha256"])
+            for record in records
+            if isinstance(record, dict)
+            and record.get("file")
+            and record.get("sha256")
+            and record.get("status") in {"copied", "checked"}
+        }
 
 
 _DEFAULT_CATALOG: TableCatalog | None = None
@@ -163,6 +204,13 @@ def default_catalog() -> TableCatalog:
         if _DEFAULT_CATALOG is None:
             _DEFAULT_CATALOG = TableCatalog()
         return _DEFAULT_CATALOG
+
+
+def reset_default_catalog() -> None:
+    """Drop the process-wide catalog, mainly for tests and configuration reloads."""
+    global _DEFAULT_CATALOG
+    with _DEFAULT_LOCK:
+        _DEFAULT_CATALOG = None
 
 
 def load(name: str) -> dict[str, Any]:
