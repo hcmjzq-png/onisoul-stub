@@ -311,4 +311,14 @@ python a_final_check.py        # 推送前完整性检查（一次性脚本，�
                                # tools/contract_check.py 承接，见「校验」表）
 ```
 
-反编译：`dotnet tools_ilspy\cmd\tools\net8.0\any\ilspycmd.dll -p -o <outdir> container_dump\Assembly-CSharp.dll`
+反编译（会先校验 PE/CLI 结构，并拒绝写入仓库）：
+
+```bash
+python tools/decompile_pc_assembly.py \
+  --ilspycmd /path/to/ilspycmd \
+  --project \
+  --out /tmp/onisoul-decompile \
+  /path/to/Assembly-CSharp.dll
+```
+
+结构与样本指纹见 [`pc-assembly.md`](pc-assembly.md)。

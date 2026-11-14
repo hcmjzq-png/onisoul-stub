@@ -12,7 +12,12 @@
 
 - 文件：`OniSoul_Setup_20140712.exe`，653,677,906 字节，MD5 `EB3FAE6F7C785736C0211278FCC8DA29`。
 - 安装器：Inno Setup 5.2.0。解包后判定为 **Unity WebPlayer 网页端封装壳**：Qt4（QtCore4 / QtGui4 / QtNetwork4 / QtWebKit4）+ WebKitBrowser + UnityWebPlayer + Mono 运行时（Alpha3.x.x / Stable3.x.x 双版本）。
-- 包内**无独立业务 PE 程序集**；本地 dll 全为框架 / 运行时（Qt、WebKit、ICU、Mono mscorlib/System、UnityEngine、CrossDomainPolicyParser）。业务 C# 元数据以 MonoScript 形式存在于主 bundle `app.unity3d`，IL 不随安装包以独立 PE 分发。
+- 安装包根目录**没有独立业务 PE 文件**；但主 bundle 对应的程序集载荷可提取出 12 个完整 PE/CLI DLL。当前
+  `Assembly-CSharp.dll` 为 4,584,448 字节、SHA-256
+  `b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e`，PE 节区、
+  CLI Header 与 `BSJB` 元数据均可解析。旧记录“PE 头被裁、Section Table 不可用”
+  已被复核推翻，证据与复现命令见
+  [`analysis/pc-assembly.md`](analysis/pc-assembly.md)。
 - `app\data.bin`：2026-11-14 补充验证，528,374,000 字节全部与
   `System.Random(19142570).Next(0, 254)` 的输出一致，不是待解密的资源容器。
   样本指纹、完整比对结果及只读复核脚本见

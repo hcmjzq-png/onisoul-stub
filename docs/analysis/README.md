@@ -39,6 +39,8 @@
 | `verify/gap_origins.tsv` | 非回包来源表：`callsite / receiver / origin / evidence`，`gap --filter origin` 的 denylist |
 | `verify/zero_field_triage.tsv` | 122 个零字段端点的分诊：`no_call_site` 53 / `no_literal_read` 61 / `reads_present` 8（8 个已逐个核实并改判，均不需补键） |
 | `verify/untyped_backlog.tsv` | 481 个无类型键的 backlog：可唯一定型 31 / 无 cast 证据 450 |
+| `assembly_manifest.json` | 12 个 PC 程序集的文件名、长度与 SHA-256；二进制不入仓 |
+| `pc-assembly.md` | PE/CLI 结构校验、旧结论更正、可复现反编译命令 |
 
 ## 当前覆盖
 
