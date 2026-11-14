@@ -108,11 +108,13 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
   与 104 条判读里的误报同源——**真正需要补键的接近 0**。
 * **已声明但无类型的键 481**（`verify/untyped_backlog.tsv`）：能靠 `dump` 的 `cast` 列
   唯一定型的 **31** 个**已补类型**（25 `Hashtable` / 4 `string` / 2 `double`，带类型键
-  627→658），**450 个没有 cast 证据**（客户端读键后没做强转，或类型在 `HashAccessor.getInt/getString`
-  这类访问器里）。这 450 个不能只靠仓里的 dump：客户端一次性抽出了
-  `read_context.tsv` / `key_type_profile.tsv` / `type_evidence.tsv`（本机
-  `C:\Users\74378\gap_scan_round2\`，不入仓），按键聚合后 **716/867 个键有单一定型证据**，
-  合并后即可把这批补齐；合并口径按键名对齐。
+  627→658）；剩下 450 个在 dump 里没有 cast 证据（客户端读键后没做强转，或类型藏在
+  `HashAccessor.getInt/getString` 这类访问器里）。客户端全树抽取后按键聚合出
+  **716/867 个键有单一定型证据**（`type_evidence.tsv`，含 file:line 出处，不入仓），
+  按**键名**对齐回补：**42 个键 / 101 处**补上类型（`double` 43 / `string` 33 / `Hashtable` 13 /
+  `bool` 10 / `float` 2），带类型键 **658→757**，来源逐条记在
+  `verify/untyped_type_hints.tsv`。仍无定论 **351** 个（同名键在不同端点语义冲突、
+  或客户端根本没读过该键）——这批只能等有真实回包样本或用例再说，不再无证据硬猜。
 
 ## 四类已在代码里确认的误报
 
