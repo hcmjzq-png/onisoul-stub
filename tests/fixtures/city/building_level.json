@@ -1,0 +1,84 @@
+{
+  "building_level": {
+    "product_early1001": {
+      "id": "product_early1001",
+      "needExp": 20,
+      "needCostRatio": 0.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1002": {
+      "id": "product_early1002",
+      "needExp": 100,
+      "needCostRatio": 0.7,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1003": {
+      "id": "product_early1003",
+      "needExp": 200,
+      "needCostRatio": 0.9,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1004": {
+      "id": "product_early1004",
+      "needExp": 366,
+      "needCostRatio": 1.2,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1005": {
+      "id": "product_early1005",
+      "needExp": 480,
+      "needCostRatio": 1.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1006": {
+      "id": "product_early1006",
+      "needExp": 606,
+      "needCostRatio": 1.8,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1007": {
+      "id": "product_early1007",
+      "needExp": 750,
+      "needCostRatio": 2.1,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1008": {
+      "id": "product_early1008",
+      "needExp": 825,
+      "needCostRatio": 2.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1009": {
+      "id": "product_early1009",
+      "needExp": 900,
+      "needCostRatio": 4.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1010": {
+      "id": "product_early1010",
+      "needExp": 0,
+      "needCostRatio": 9.7,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    }
+  }
+}

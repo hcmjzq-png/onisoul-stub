@@ -1,0 +1,5 @@
+table_file	root_key	accessor_classes
+building.json	building	
+draft.json	draft	
+building_level.json	building_level	
+defines.json	defines	

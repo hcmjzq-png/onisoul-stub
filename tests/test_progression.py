@@ -56,7 +56,7 @@ class ProgressionTest(unittest.TestCase):
         result = self.call("politic/mypage/takeLesson", lessonId="lesson_00001")
         self.assertEqual(result["reward"], {"item11_0000101": 5000.0})
         self.assertEqual(result["toInbox"], {})
-        self.assertEqual(self.saved()["resources"]["gold"]["amount"], 5000)
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], 10000)
         self.reload()
         self.assertEqual(self.call("politic/mypage/getLessonStates")["states"]["1"], "C")
         before = self.saved()
@@ -106,7 +106,7 @@ class ProgressionTest(unittest.TestCase):
         with ThreadPoolExecutor(max_workers=2) as pool:
             results = list(pool.map(lambda _: self.call("politic/mypage/takeLesson", lessonId="lesson_00001"), range(2)))
         self.assertEqual(sum(r["reward"].get("item11_0000101", 0) for r in results), 5000)
-        self.assertEqual(self.saved()["resources"]["gold"]["amount"], 5000)
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], 10000)
 
     def test_original_initial_level_cap_is_five_and_gate_needs_closed_mission(self):
         self.assertEqual(self.saved()["entity"]["cap"], 5)

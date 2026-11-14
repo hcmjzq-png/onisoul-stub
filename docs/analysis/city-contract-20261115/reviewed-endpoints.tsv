@@ -1,0 +1,29 @@
+endpoint	status	source	scope_or_blocker
+politic/building/conflateBuilding	dependency_blocked	remaining-services-20261115/all-357-evidence.tsv	event/battle or fusion materials/probability/state not verified; no derived success or reward
+politic/building/deployBuilding	scoped_handler	PoliticBuilding.cs:842-895;WebApiClient.cs:757-768	owned idle stored instance; numeric buildingId, building, autoProducings; no new copy or draft expense
+politic/building/getBuildingFabrics	wrapper_only	remaining-services-20261115/all-357-evidence.tsv	zero direct IL references in baseline; no fabricated list or record keys
+politic/building/getBuildingLevels	wrapper_only	remaining-services-20261115/all-357-evidence.tsv	zero direct IL references in baseline; no fabricated list or record keys
+politic/building/getBuildings	wrapper_only	remaining-services-20261115/all-357-evidence.tsv	zero direct IL references in baseline; no fabricated list or record keys
+politic/building/getHarvestCounts	wrapper_only	remaining-services-20261115/all-357-evidence.tsv	zero direct IL references in baseline; no fabricated list or record keys
+politic/building/getProductsByBuilding	protocol_reviewed_rules_pending	StateManualProduce.cs:51-66;PoliticBuildingParameter.cs:172-199;PoliticBuilding.cs:1083-1134,1872-1919;ProductUpdate.cs:121-144	root dueTime vs producings map and product membership verified; openLevel dimension, road bonus, yield ranges, timing and settlement not fully proven
+politic/building/levelUpBuilding	scoped_handler	PoliticBuilding.cs:271-285,898-960,1925-1948	building response; per-level exp consumption, original cost quantization, 1 PP; idle only
+politic/building/levelUpBuildingCollectively	scoped_handler	PoliticFSMProduct.cs:1086-1124;PoliticBuilding.cs:2258-2332	resultBuildings/totalUsedPoint/restResources; levelUpTimes is count, not target level
+politic/building/levelUpBuildings	scoped_handler	PoliticFSMBatchUpgrade.cs:77-111;PluginRunner_LevelUp.cs:46-69	output_buildings; one level per unique owned id; all-or-nothing compatibility policy
+politic/building/putInBuildings	scoped_handler	PoliticBuilding.cs:807-839;PoliticBuildingParameter.cs:284-291;PoliticMap.cs:278-287	idle none/manual/single only; retain owned record with deployedMapKey=none; reject connected decorations/auto
+politic/building/raiseBuildingEventOfBattle	dependency_blocked	remaining-services-20261115/all-357-evidence.tsv	event/battle or fusion materials/probability/state not verified; no derived success or reward
+politic/building/resolveBuildingEvent	dependency_blocked	remaining-services-20261115/all-357-evidence.tsv	event/battle or fusion materials/probability/state not verified; no derived success or reward
+politic/map/cleanup	indexed_only	remaining-services-20261115/all-357-evidence.tsv	not deeply reviewed in this batch; remains placeholder
+politic/map/getBackgrounds	indexed_only	remaining-services-20261115/all-357-evidence.tsv	not deeply reviewed in this batch; remains placeholder
+politic/map/getMap	indexed_only	remaining-services-20261115/all-357-evidence.tsv	not deeply reviewed in this batch; remains placeholder
+politic/map/relocateEnded	scoped_handler	PoliticBuilding.cs:1750-1758;PoliticBuildingList.cs:268-274;PoliticFSMRelocate.cs:170-188	full xNyN -> buildingId layout; idle main-map footprints; atomically validate; no road payout formula
+politic/map/setBackground	indexed_only	remaining-services-20261115/all-357-evidence.tsv	not deeply reviewed in this batch; remains placeholder
+politic/map/setMapName	indexed_only	remaining-services-20261115/all-357-evidence.tsv	not deeply reviewed in this batch; remains placeholder
+politic/map/switchMap	excluded_disputed_feature	WebApiClient.cs:714-721	main-map only remains current scope; user flagged old branch-city implementation as untrusted
+politic/task/accelerateProduceTask	dependency_blocked	PoliticBuilding.cs:1137-1152;WebApiClient.cs:816-834,926-936	production cancellation/refunds/acceleration inventory and timing need shared production settlement rules
+politic/task/cancelTasks	dependency_blocked	PoliticBuilding.cs:1137-1152;WebApiClient.cs:816-834,926-936	production cancellation/refunds/acceleration inventory and timing need shared production settlement rules
+politic/task/getTasksInCurrentMap	indexed_only	remaining-services-20261115/all-357-evidence.tsv	not deeply reviewed in this batch; remains placeholder
+politic/task/submitBulkBuildAndComplete	scoped_handler	PoliticFSMConstruction.cs:472-532	only 3 original free road types; buildings/originCoords.<id>.0/1/autoProducings
+politic/task/submitBulkProduceTasks	protocol_reviewed_rules_pending	StateManualProduce.cs:51-66;PoliticBuildingParameter.cs:172-199;PoliticBuilding.cs:1083-1134,1872-1919;ProductUpdate.cs:121-144	root dueTime vs producings map and product membership verified; openLevel dimension, road bonus, yield ranges, timing and settlement not fully proven
+politic/task/submitProduceTask	protocol_reviewed_rules_pending	StateManualProduce.cs:51-66;PoliticBuildingParameter.cs:172-199;PoliticBuilding.cs:1083-1134,1872-1919;ProductUpdate.cs:121-144	root dueTime vs producings map and product membership verified; openLevel dimension, road bonus, yield ranges, timing and settlement not fully proven
+politic/task/submitSerialBuildAndComplete	scoped_handler	PoliticBuilding.cs:2350-2478	same road scope; numeric rows plus exactly two metadata keys; now chosen from existing envelope; original metadata identity unverified
+politic/task/submitSerialBuildTask	wrapper_only	WebApiClient.cs:864-873	no direct IL caller; unfinished serial-build response unproven

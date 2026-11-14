@@ -1,0 +1,12 @@
+{
+  "defines": {
+    "politic_expend_point": {
+      "id": "politic_expend_point",
+      "value": 1
+    },
+    "level_limit": {
+      "id": "level_limit",
+      "value": 15
+    }
+  }
+}

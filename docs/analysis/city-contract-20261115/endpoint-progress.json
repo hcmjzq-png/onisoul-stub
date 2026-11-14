@@ -1,0 +1,32 @@
+{
+  "registered": 402,
+  "dedicated_handlers": 59,
+  "remaining_placeholders": 343,
+  "remaining_by_module": {
+    "admin": 1,
+    "auction": 18,
+    "battle": 14,
+    "common": 11,
+    "community": 17,
+    "dailymission": 4,
+    "debug": 31,
+    "deck": 16,
+    "depletionmission": 3,
+    "friend": 18,
+    "giganticRaidBoss": 4,
+    "inbox": 2,
+    "invitation": 2,
+    "mailbox": 4,
+    "navigator": 5,
+    "netCafe": 1,
+    "plugin": 5,
+    "politic": 71,
+    "quest": 17,
+    "ranking": 49,
+    "siege": 8,
+    "strategy": 32,
+    "trophy": 3,
+    "turfWar": 7
+  },
+  "scope": "dispatch coverage only; not all dedicated handlers are complete gameplay; zero IL refs do not prove unused; next_work is a work queue, not proof that required evidence is absent"
+}

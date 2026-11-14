@@ -399,7 +399,7 @@ _create_player()     characters = 7 个，counters.characterCount = 7
   1 -> chara1_01012_01  atk 1250 def 1250 int 1250
   2 -> chara1_09361_01  atk  600 def  350 int  300
   3 -> chara1_09362_01  atk  325 def  325 int  600
-resources            gold/wood/food/iron 仍为 0（beginning_equipment 的 gold 字段未参与建号，见 gameplay.py 注释）
+resources            历史观测为全 0；2026-11-15 已按原表及用户首登截图修正新角色 gold=5000（不改旧存档）
 buildings 0 个，missions 1 条
 ```
 

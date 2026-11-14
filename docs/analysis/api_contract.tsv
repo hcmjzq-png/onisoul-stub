@@ -198,9 +198,9 @@ politic/building/getBuildings	getMapBuildings	token				0		0
 politic/building/getDrafts	getMapDrafts	token				0	PoliticDebugConstructionMenu.setup|PoliticFSMConstructionMenu.menuWait|PoliticFSMShop.menuWait|Shop.OnShopButtonClicked	4
 politic/building/getHarvestCounts	getHarvestCounts	token				0		0
 politic/building/getProductsByBuilding	getProductsByBuilding	buildingId,token			products:Hashtable	1	PoliticFSMProduct.menuFarm|PoliticFSMProduct.startSingleCrop	2
-politic/building/levelUpBuilding	levelUpBuilding	buildingId,token			building:Hashtable*;errorReason:string;kokudaka:double*	3	PoliticBuilding.levelUp	1
-politic/building/levelUpBuildingCollectively	levelUpBuildingCollectively	buildingIds,levelUpTimes,token			amount:double*;kokudaka:double*;restResources:Hashtable;resultBuildings:Hashtable;totalUsedPoint:double	5	PoliticFSMProduct.phaseCollectivelyLevelUp	1
-politic/building/levelUpBuildings	levelUpBuildings	buildingIds,token			errorReason:string;kokudaka:double*;output_buildings*	3	PluginRunner_LevelUp.RequestLevelup|PoliticFSMBatchUpgrade.DoBatchUpgrade	2
+politic/building/levelUpBuilding	levelUpBuilding	buildingId,token			building:Hashtable*;errorReason:string*;kokudaka:double*	3	PoliticBuilding.levelUp	1
+politic/building/levelUpBuildingCollectively	levelUpBuildingCollectively	buildingIds,levelUpTimes,token			resultBuildings:Hashtable;totalUsedPoint:double;restResources:Hashtable;restResources.<resource>.amount:double;kokudaka:double*	5	PoliticFSMProduct.phaseCollectivelyLevelUp	1
+politic/building/levelUpBuildings	levelUpBuildings	buildingIds,token			output_buildings:Hashtable*;kokudaka:double*;errorReason:string*	3	PluginRunner_LevelUp.RequestLevelup|PoliticFSMBatchUpgrade.DoBatchUpgrade	2
 politic/building/putInBuildings	putMapBuildings	buildingIds,token			kokudaka:double*	1	PoliticBuilding.SerialPutInInventory|PoliticBuilding.putInInventory	2
 politic/building/raiseBuildingEventOfBattle	raiseBuildingEventOfBattle	token			buildingEvents:Hashtable*;buildings:Hashtable;deployedMapKey:string;height:double;map:Hashtable;missionPoint:double*;nextTriggerMissionPoint:double*;occupiedGrids:Hashtable;producings:Hashtable;size:Hashtable*;tasks:Hashtable;width:double	12	Politic.resetMap	1
 politic/building/resolveBuildingEvent	resolveBuilding	buildingId,token			demolished:bool*	1	PluginRunner_DoPoliticBattle.ProcessBattleEnd|PoliticScriptCommand.executeResolveBuilding	2
@@ -272,10 +272,10 @@ politic/task/getTasksInCurrentMap	getMapTasks	token				0		0
 politic/task/progressBuildTask	progressBuildTask	buildingId,token				0	StateBuilding.waitBuildingCheck	1
 politic/task/submitBuildAndComplete	submitBuildAndComplete	draftId,originCoord,token			autoProducings:Hashtable;building:Hashtable;buildingId*;errorReason:string;kokudaka:double*	5	PoliticBuilding.buildAndComplete	1
 politic/task/submitBuildTask	sumbitBuildTask	draftId,originCoord,token			building:Hashtable;buildingId*;errorReason:string;now:double	4	PoliticBuilding.buildOnField	1
-politic/task/submitBulkBuildAndComplete	submitBulkBuildAndComplete	draftId,originCoords,token			0:double;1:double;autoProducings:Hashtable;buildings:Hashtable;kokudaka:double*;originCoords:Hashtable	6	PoliticFSMConstruction.setSerialSelectBuilding	1
-politic/task/submitBulkProduceTasks	submitBulkProduceTasks	buildingIds,productIds,token			producings:Hashtable	1	PluginRunner_DoManual.Run|PoliticFSMCollectiveProduce.selectProduceAll|PoliticFSMProduct.phaseSelectProduceAll	3
-politic/task/submitProduceTask	sumbitProduceTask	buildingId,productId,token				0	StateManualProduce.waitProduce	1
-politic/task/submitSerialBuildAndComplete	submitSerialBuildAndComplete	draftId,originCoords,token			autoProducings:Hashtable;building:Hashtable;buildingId*;errorReason:string;kokudaka:double*;x:float;y:float	7	PoliticBuilding.SerialBuildAndComplete	1
+politic/task/submitBulkBuildAndComplete	submitBulkBuildAndComplete	draftId,originCoords,token			buildings:Hashtable;autoProducings:Hashtable;originCoords:Hashtable;originCoords.<id>.0:double;originCoords.<id>.1:double;kokudaka:double*	6	PoliticFSMConstruction.setSerialSelectBuilding	1
+politic/task/submitBulkProduceTasks	submitBulkProduceTasks	buildingIds,productIds,token			producings:Hashtable;producings.<id>.productId:string;producings.<id>.createdTime:double;producings.<id>.dueTime:double	4	PluginRunner_DoManual.Run|PoliticFSMCollectiveProduce.selectProduceAll|PoliticFSMProduct.phaseSelectProduceAll	3
+politic/task/submitProduceTask	sumbitProduceTask	buildingId,productId,token			dueTime:double;now:double	2	StateManualProduce.waitProduce	1
+politic/task/submitSerialBuildAndComplete	submitSerialBuildAndComplete	draftId,originCoords,token			autoProducings:Hashtable;<index>.building:Hashtable;<index>.buildingId:double;<index>.x:double;<index>.y:double;<index>.kokudaka:double*	6	PoliticBuilding.SerialBuildAndComplete	1
 politic/task/submitSerialBuildTask	sumbitSerialBuildTask	draftId,originCoords,token				0		0
 politic/waterborneTrade/call	callWaterTrade	buildingId,mapId,token				0	PoliticWaterTradeWindow.callWaterTrade	1
 politic/waterborneTrade/getFleet	getFleetWaterTrade	buildingId,mapId,token				0	PoliticFSMWaterTradeEntry.getFleetInfo	1

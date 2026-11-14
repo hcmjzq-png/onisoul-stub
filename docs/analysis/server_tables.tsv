@@ -3,4 +3,4 @@ item01.json	item01	ItemsTableAccessor	beginning_equipment character item ids to 
 item04.json	item04	ItemsTableAccessor	draft reward items to draft ids
 reward01_politic.json	reward01_politic	RewardTableAccessor	politic mission clear rewards
 reward99_country.json	reward99_country	RewardTableAccessor	country_*_self reward resolution
-reward14_lesson.json	reward14_lesson	RewardTableAccessor	lesson rewards; installer TextAsset verified 2026-11-15; takeLesson remains unimplemented
+reward14_lesson.json	reward14_lesson	RewardTableAccessor	lesson rewards; installer TextAsset verified 2026-11-15; takeLesson partially implemented; see remaining-services-20261115

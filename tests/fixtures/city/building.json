@@ -1,0 +1,261 @@
+{
+  "building": {
+    "building200_041_01_01_1_1": {
+      "id": "building200_041_01_01_1_1",
+      "name": "田地",
+      "desc": "粮食生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_023_01_01_1_1",
+        "product060_001_01_01_1_1",
+        "product060_018_01_01_1_1",
+        "product060_007_01_01_1_1",
+        "product060_019_01_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200041",
+      "waitImages": [
+        "building200_041_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_013",
+      "sortno": 400,
+      "openShopItemId1": [
+        "shop0000039"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": [
+        "shop0000032"
+      ],
+      "openLevel2": 7,
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_002_01_01_1_1": {
+      "id": "building200_002_01_01_1_1",
+      "name": "城",
+      "desc": "城下町中心建筑物",
+      "category": "castle",
+      "size": [
+        8,
+        8
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        1000
+      ],
+      "products": [
+        "building200_002_01_01_1_1"
+      ],
+      "produceType": "auto",
+      "durability": 10001,
+      "levelUpTypeId": "testearly",
+      "connectChipType": "none",
+      "itemId": "item05_0200002",
+      "waitImages": [
+        "building200_002_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_036",
+      "sortno": 1,
+      "openShopItemId1": [
+        "shop0000004"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 1280,
+      "kokudakaMax": 2880,
+      "regularSoldier": 50,
+      "dedication": 50,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_051_01_01_1_1": {
+      "id": "building200_051_01_01_1_1",
+      "name": "道路",
+      "desc": "影响周围",
+      "category": "road",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [],
+      "costAmounts": [],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "road",
+      "itemId": "item05_0200051",
+      "waitImages": [
+        "building200_051_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 600,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 0,
+      "kokudakaMax": 0,
+      "regularSoldier": 0,
+      "dedication": 0,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_052_01_01_1_1": {
+      "id": "building200_052_01_01_1_1",
+      "name": "道路",
+      "desc": "影响周围",
+      "category": "road",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [],
+      "costAmounts": [],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "road",
+      "itemId": "item05_0200052",
+      "waitImages": [
+        "building200_052_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 601,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 0,
+      "kokudakaMax": 0,
+      "regularSoldier": 0,
+      "dedication": 0,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_053_01_01_1_1": {
+      "id": "building200_053_01_01_1_1",
+      "name": "道路",
+      "desc": "影响周围",
+      "category": "road",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [],
+      "costAmounts": [],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "road",
+      "itemId": "item05_0200053",
+      "waitImages": [
+        "building200_053_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 602,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 0,
+      "kokudakaMax": 0,
+      "regularSoldier": 0,
+      "dedication": 0,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    }
+  }
+}
