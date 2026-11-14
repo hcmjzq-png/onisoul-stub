@@ -93,8 +93,7 @@ def save(state: dict[str, Any], player_id: str = DEFAULT_PLAYER_ID) -> None:
                 )
 
             next_revision = expected_revision + 1
-            state["_revision"] = next_revision
-            payload = json.dumps(state, ensure_ascii=False)
+            payload = json.dumps({**state, "_revision": next_revision}, ensure_ascii=False)
             if row:
                 cur.execute(
                     "UPDATE players SET state_json = %s, updated_at = %s "
@@ -107,3 +106,5 @@ def save(state: dict[str, Any], player_id: str = DEFAULT_PLAYER_ID) -> None:
                     "VALUES (%s, %s, %s)",
                     (pid, payload, now),
                 )
+    # connection() 正常退出后事务才已提交；任何失败都保留调用方的旧版本号。
+    state["_revision"] = next_revision
