@@ -1,0 +1,8 @@
+endpoint	area	observed_contract	evidence	status
+deck/getDecks	response	attack.0.ids/defense.0.ids/politic.0.ids 均为 Hashtable	PlayerDeckCache.cs:140	安装包源码证明当前客户端读取；未写入运行时默认响应
+common/getSelectCharacters	response	根表为实例ID映射；每条 baseId 为 string，grade 读取为 double	PlayerDeckCache.cs:111;PlayerDeckCache.cs:167	结合缓存赋值到资产名计算的路径；其他消费者所需字段仍须合并
+common/getCharacters	response	根表为实例ID映射；每条 baseId 为 string，grade 读取为 double	PlayerDeckCache.cs:123;PlayerDeckCache.cs:167	结合缓存赋值到资产名计算的路径；其他消费者所需字段仍须合并
+common/getEventStatuses	response_presence	没有活动时不应生成该活动键；客户端用 ContainsKey 判断活动存在	StatusView.cs:480;StatusView.cs:555	活动服务端规则未知；键存在语义已确定
+debug/debugCreateQuestEncount	request	info/playerId/questType/token；questType 固定 story	WebApiClient.cs:1562;direct-callers.tsv	旧 request_params 为空，已确认漏抽；调试路径后置
+debug/debugCreateQuestEncount	response	encountId 由 HashAccessFuncs.getInt 读取；旧字段串 + name + 不能作为真实字段	BattleLogManager.cs:5223	证明消费者需要数值ID，未推断原服务端分配规则
+common/getPlayerEntity	response	playerId 必须可调用 ToString；具体原始值类型未由该处确定	WebApiClient.cs:1562	存在 WebApiClient 内部调用，旧“无调用点”结论需修正

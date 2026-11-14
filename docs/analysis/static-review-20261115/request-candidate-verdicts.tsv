@@ -1,0 +1,9 @@
+endpoint	verdict	evidence	note
+common/dedicate	nested_key_not_top_level	WebApiClient.cs:636 dedicateGold	item11_0000101 是 article 内的资源键，不能平铺为请求顶层参数
+community/bbs/infoThread	linear_simulation_false_positive	WebApiClient.cs:2480	num_of_comment_type 确实写入；valid 是条件分支的字符串值
+community/bbs/listComment	linear_simulation_false_positive	WebApiClient.cs:2527	select_target 确实写入；valid 是条件分支的字符串值
+community/bbs/listThread	linear_simulation_false_positive	WebApiClient.cs:2474	num_of_comment_type 确实写入；valid 是条件分支的字符串值
+debug/debugCreateQuestEncount	confirmed_prior_request_gap	WebApiClient.cs:1562	嵌套回调内发送 info/playerId/questType/token；questType 固定 story；旧契约未抽出这些参数
+debug/debugCreateRaidBossWork	nested_key_not_top_level	WebApiClient.cs:3648	rescue 位于 options 内，不能平铺为顶层参数
+deck/setDecks	nested_key_not_top_level	WebApiClient.cs:1131	id/grade 位于 decks 的 avatar 子表；存在跨类静态键，不能平铺顶层
+deck/transferStoreCharacters	linear_simulation_false_negative	WebApiClient.cs:1358	toStoreIds/toCharacterIds 都存在，值来自 new ArrayList(List<string>)，简化栈模拟丢失构造器上下文

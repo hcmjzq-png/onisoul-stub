@@ -1,0 +1,74 @@
+{
+  "installer_sha256": "ad34a14e3dd67b30c59d5abd9ed2a82b2ab53161e24f3be654a63175e6d890ad",
+  "cache_record": "app/cache/data7/d/kbeizo6m.d",
+  "cached_url": "http://game-onisoul.86joy.com/client/app.unity3d?revision=30662007",
+  "record_sha256": "2289efef2c60763139468112f9ab4ff3c80635ed28fb29a37f188d6401fba5f3",
+  "bundle_sha256": "a374083f4662a5e3d2480058cbd2712d43c29035699b8d453dd749d19a45e9ce",
+  "container_sha256": "832e83844baae783748f24eb7e1b93374c684073a9d5e93a4bb04a7da21a1186",
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "entry": {
+    "entry": "Assembly-CSharp.dll",
+    "offset": 1474648,
+    "size": 4584448
+  },
+  "decompiler": "ilspycmd 8.2.0.7535",
+  "decompiled_cs_files": 2034,
+  "source_artifacts": {
+    "WebApiClient.cs": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+    "StatusView.cs": "d9ad258353c61c09fb044c54355270e023114687afdc4d64aae538463eb6b3a3",
+    "PlayerDeckCache.cs": "eb2b7ac2bf3cfbaca355d58ba5076a224f43c18c4f6e0a46d369a57931a6b984",
+    "PoliticMissionProgressList.cs": "38b74b7269dc0398e746c16e291b3ec715977c5e2096ca6edde86fa506c66e4c",
+    "PoliticMissionProgressStatus.cs": "ed177ec0a78b70a9eef9beba893b9feb44f49513ea3897089065331606d8a96c",
+    "PluginRunner_DoEvent.cs": "42f0a3a08c5e384246053160e6fa04cca7c2d49aee225a2be918adac29de70fc",
+    "ComboTableAccessor.cs": "8fa5d3b9a590a7c9878213f3948247e09af16fda4c6716e4245cd1de8e0dd95e",
+    "StrategyBattleFieldTableAccessor.cs": "45b7b648c4346af19337cf9c2104b9b9d7ca7ffb0c6b9ce3cc3869eb0baf0002",
+    "StrategyLogManager.cs": "83d85a27f931292011f41f41fa547b885d523af6e1d9280dae405ff92fa24278",
+    "StrategyResultWindow.cs": "c460c5638f82d8375319f4231191f05fa3db48597af5015c9652e7e3e0fa1a25",
+    "HTMLMailBoxMediator.cs": "e09cd13da27b0b27e923eb919b1a1d14fc6ebb89f11d1ca8f2aafb61930354c0",
+    "HTMLMailCore.cs": "67985a7192bd5a89739fd119e2351d20bdaa00fcb478bb4bf71d96f2821f666e",
+    "PoliticShopSaleManager.cs": "4164483cb2561c089221dc1c9d9dea7b30705dd918434e3364a7078239bb77a8",
+    "BattleLogManager.cs": "bf3ada868c109d0d2cc74fa46e9a626ceb9b2e1b619f8b10782fbfcfacf20d89"
+  },
+  "il_verification": {
+    "methoddef_total": 26688,
+    "with_body": 25174,
+    "decoded": 25174,
+    "instruction_count": 677346,
+    "non_returning_br": 3,
+    "failure_count": 0,
+    "valid": true
+  },
+  "prior_outputs_reproduced": [
+    {
+      "file": "http_method.tsv",
+      "rows": 433,
+      "same_rows": true
+    },
+    {
+      "file": "api_callback_fanout.tsv",
+      "rows": 507,
+      "same_rows": true
+    },
+    {
+      "file": "callback_subscribers.tsv",
+      "rows": 4,
+      "same_rows": true
+    },
+    {
+      "file": "key_types.tsv",
+      "rows": 1076,
+      "same_rows": true
+    },
+    {
+      "file": "response_shapes.tsv",
+      "rows": 402,
+      "same_rows": true
+    },
+    {
+      "file": "il_unguarded_reads.tsv",
+      "rows": 2595,
+      "same_rows": true
+    }
+  ],
+  "decompiled_tree_sha256": "2136701fea60a3551baa28f897479f86ae0ad9cba99ff266b60fba96dfffeb4e"
+}
