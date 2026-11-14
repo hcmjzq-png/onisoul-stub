@@ -345,3 +345,73 @@ curl -s -o /dev/null -w "%{http_code} %{size_download}\n" \
 缓存里现有的 15 个 chara 包与这 6 个哈希**互不相同**（`c42732b9…`、`c07e9888…`、`84fa3ca2…`、`f1fc3313…`、`441147d9…`、`8b3d6b8a…`、`e2fba99c…`、`5fd8a8e6…`、`8151e5be…`、`616bf995…`、`497199bd…`、`1b3772fd…`、`58479003…`、`3e87841f…`、`5a10edfd…`），替补不了——这 6 个一直 404，失败响应不会进缓存。
 
 要补齐只能从另一台跑过原服、缓存里有这些哈希的机器上取，再走同一套脚本。
+
+## 十一、服务端的表从客户端包里抽（同源同版本）
+
+服务端要自己有一套表：客户端表只服务表现层（它自己读，实测 1185 条请求里没有一条是取表的），服务端要用同一批数据做判定与发放。所以两套表必须是**同一份 JSON、同一 root_key、同一客户端版本**，不能各写一份。
+
+抽取方法固化在 `tools/extract_tables_from_bundle.py`，表文件本身不进 git。
+
+### 11.1 表在哪
+
+PC 客户端的 108 张表不是独立文件，而是作为 JSON 文本内嵌在场景包里：`scene/1243ea6aa6…`（缓存记录 `1243ea6aa6…kbeizo6m` 无关，实际是 `data7` 里那一个），解压后 **100,194,188 B**，格式是
+
+```
+{"<root_key>": {"<行id>": {...}, ...}, "<另一个表>": {...}, ...}
+```
+
+`app.unity3d`（解压 19,463,656 B）里只有 `assetbundle` 这一张表（63 条，全是 `assets/scene/*.unity3d` 场景包清单），其余表都在场景包里。
+
+### 11.2 本轮实测
+
+```
+清单条目            112（docs/analysis/table_list.tsv 108 + server_tables.tsv 4）
+抽出成功            109 张（18,076,191 B）
+另从 app.unity3d   assetbundle.json（63 条，11,506 B）
+最终落盘            110 张，18 MB
+TableCatalog 校验   110/112 通过，合计 40,160 行
+```
+
+按 `app/tables.py` 的强校验逐张加载，失败仅 2 张：
+
+```
+combo.json                MissingTableError
+strategy_battlefield.json MissingTableError
+```
+
+这两张的缺失是**客户端本身没有随包**，不是抽取失败：
+
+- 在 124 个已还原包 + `app.unity3d` 解压体里，`"combo"` 作为表名 0 命中；`app.unity3d` 里只有 `ComboTableAccessor` 类名与字段名 `comboCount`；
+- `strategyBattlefield` / `strategy_battlefield` 在 `app.unity3d` 里 0 命中，任何包内也 0 命中。
+
+### 11.3 建号回归（真表）
+
+```
+beginning_equipment  48 行，含 country37
+country37            questCharacters [item01_0101201]
+                     attackCharacters [item01_0936101]
+                     defenseCharacters [item01_0936201 0936401 0936601 0936801 0936901]
+_create_player()     characters = 7 个，counters.characterCount = 7
+  1 -> chara1_01012_01  atk 1250 def 1250 int 1250
+  2 -> chara1_09361_01  atk  600 def  350 int  300
+  3 -> chara1_09362_01  atk  325 def  325 int  600
+resources            gold/wood/food/iron 仍为 0（beginning_equipment 的 gold 字段未参与建号，见 gameplay.py 注释）
+buildings 0 个，missions 1 条
+```
+
+也就是说：表到位后初始武将不再是空表结果，而是 7 个真角色；资源与建筑仍是各自逻辑的现状，不在本次改动范围。
+
+### 11.4 复现
+
+```bash
+# 1) 解包场景包（从缓存记录里取，或直接用已还原的 scene/*.unity3d）
+python3 tools/extract_tables_from_bundle.py --bundle ./scene/1243ea6aa6.unity3d \
+    --out /opt/onisoul/assets/pc/tables
+
+# 2) 校验（需要生产 env，否则连库会 1045）
+sudo bash -c 'set -a; . /etc/onisoul/stub.env; set +a;
+  export ONI_ROOT=/opt/onisoul ONI_TABLE_DIR=/opt/onisoul/assets/pc/tables;
+  cd /opt/onisoul && python3 /tmp/verify_tables.py'
+
+# 3) 只补缺失的表时加 --only-missing，不会覆盖已有文件
+```
