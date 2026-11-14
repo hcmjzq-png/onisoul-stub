@@ -513,3 +513,75 @@ curl -s -X POST http://127.0.0.1:18080/api/common/periodicInquiry \
 
 客户端侧待确认：条目被接受后是否还要求额外字段（例如时间戳）；本报文写入时尚未取得
 「非空数组的一次完整主城运行」日志。
+
+### 12.6 修正（同日）：show_off 是 map、键是 snake_case —— 由客户端 IL 反汇编确定
+
+12.3/12.4 里「字段非空就行」和「camel/Pascal 双拼」两条都被实测推翻：回包给了非空数组，
+客户端仍报 `There's no data in "show_off" field`。原因是数组和对象不通用，键名也不是驼峰。
+
+取证方法（可复现）：`app.unity3d` 里内嵌了 12 个 .NET 程序集，但 PE 头被裁；不依赖 PE，
+直接用元数据根 `BSJB`（偏移 3,778,036 处是 Assembly-CSharp）解析 `#~ / #Strings / #US` 表，
+再用 `ldstr` 的 user-string token 反查字符串引用位置，得到：
+
+```
+类型 1520 ShowOffDataParser  字段 <>f__switch$map39  方法 .ctor / ParseSingleData
+类型 1521 ShowOffData        字段 UserName / CharacterId / SkillId
+类型 1522 ShowOffManager     方法 createTestData / ShowOffDataHandler / AddToQueue /
+                                   ShowLuckyUser / PeriodicChecking / CreateMsg ...
+```
+
+`ParseSingleData` 的 IL（0x00F8C30 起，文件偏移 2,486,xxx）：
+
+```
+2485908  newobj   Hashtable::.ctor
+2485915  callvirt Hashtable::GetEnumerator
+2485940  call     DictionaryEntry::get_Key
+2485945  callvirt Object::ToString
+2485961  ldsfld   <>f__switch$map39
+2485972-2486013  newobj / Add 三次
+2485981  ldstr    "username"
+2485994  ldstr    "character_id"
+2486007  ldstr    "skill_id"
+2486081  stfld    field:UserName
+2486104  stfld    field:CharacterId
+2486127  stfld    field:SkillId
+```
+
+`PeriodicChecking` 的 IL（文件偏移 2,486,617 起）：
+
+```
+2486617  ldstr    "show_off"
+2486622  callvirt Hashtable::ContainsKey      → 假 → LogWarning "There's no "show_off" field in return payload"
+2486633  ldstr    "show_off"
+2486638  callvirt Hashtable::get_Item
+2486643  isinst   Hashtable                   ← 数组在这里得到 null
+2486662  callvirt Hashtable::GetEnumerator
+2486688  call     DictionaryEntry::get_Value
+2486693  isinst   Hashtable                   ← 条目必须是对象
+2486698  callvirt ShowOffDataParser::ParseSingleData
+2486708  call     ShowOffManager::AddToQueue
+```
+
+`ShowOffManager.createTestData` 给出客户端自己的样例，形状与上面完全一致：
+
+```
+show_off = new Hashtable();
+show_off["0"] = { "username": "test",  "character_id": "chara1_02065_01", "skill_id": "skill1_01002_01" };
+show_off["1"] = { "username": "test2", "character_id": "chara1_02065_01", "skill_id": "skill1_01002_01" };
+```
+
+结论（照此实现，服务端回包）：
+
+```json
+{"succeeded": true, "now": 1794668074.0,
+ "show_off": {"0": {"username": "onn", "character_id": "chara1_00726_01", "skill_id": "skill1_01002_01"}}}
+```
+
+三种错误形状与客户端反应一一对应：
+
+| 回包 | 客户端 |
+|---|---|
+| 无 `show_off` 键 | `There's no "show_off" field in return payload` |
+| `show_off: []` / `[{...}]`（数组） | `There's no data in "show_off" field`（isinst Hashtable → null） |
+| `show_off: {}`（空 map） | 同上，队列空 |
+| 条目键 `UserName`/`characterId` | 条目解析后三个字段全空字符串（switch 默认分支跳过） |
