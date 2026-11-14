@@ -82,6 +82,8 @@ class ContractDataTest(unittest.TestCase):
                 if not typ or "<" in key or ">" in key or key in {"succeeded", "now"}:
                     continue
                 ok, value = contract.lookup(body, key)
+                if not ok and field["optional"]:
+                    continue
                 if not ok:
                     bad.append((api, key, "缺失"))
                 elif not _py_type_ok(value, typ):

@@ -1,1 +1,248 @@
-{"politicMission":{"po_mission_00000":{"id":"po_mission_00000","index":0,"isAutoStart":"FALSE","needClearCount":1,"clearReward":"none","acceptUnlocks":[],"clearUnlocks":["unlockMessageBoard"]},"po_mission_00001":{"id":"po_mission_00001","index":1,"isAutoStart":"TRUE","needClearCount":1,"clearReward":"reward01_04_00001_01","acceptUnlocks":[],"clearUnlocks":[]},"po_mission_00002":{"id":"po_mission_00002","index":2,"isAutoStart":"FALSE","needClearCount":1,"clearReward":"reward01_04_00002_01","acceptUnlocks":["unlockConstruction"],"clearUnlocks":["unlockRemove"]},"po_mission_00003":{"id":"po_mission_00003","index":3,"isAutoStart":"FALSE","needClearCount":1,"clearReward":"reward01_04_00003_01","acceptUnlocks":[],"clearUnlocks":[]},"po_mission_00004":{"id":"po_mission_00004","index":4,"isAutoStart":"FALSE","needClearCount":1,"clearReward":"reward01_04_00004_01","acceptUnlocks":[],"clearUnlocks":[]}}}
+{
+  "politicMission": {
+    "po_mission_00000": {
+      "id": "po_mission_00000",
+      "index": 0,
+      "isAutoStart": "FALSE",
+      "needClearCount": 1,
+      "clearReward": "none",
+      "acceptUnlocks": [],
+      "clearUnlocks": [
+        "unlockMessageBoard"
+      ],
+      "bootCheckFunc": "none",
+      "bootCheckData": [],
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "none"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "none"
+      ],
+      "conditionTargets1": [
+        "none"
+      ],
+      "conditionCheckers1": [
+        "system"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": []
+    },
+    "po_mission_00001": {
+      "id": "po_mission_00001",
+      "index": 1,
+      "isAutoStart": "TRUE",
+      "needClearCount": 1,
+      "clearReward": "reward01_04_00001_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "bootCheckFunc": "none",
+      "bootCheckData": [],
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "missionStatus"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "accepted"
+      ],
+      "conditionTargets1": [
+        "po_mission_00001"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": []
+    },
+    "po_mission_00002": {
+      "id": "po_mission_00002",
+      "index": 2,
+      "isAutoStart": "FALSE",
+      "needClearCount": 1,
+      "clearReward": "reward01_04_00002_01",
+      "acceptUnlocks": [
+        "unlockConstruction"
+      ],
+      "clearUnlocks": [
+        "unlockRemove"
+      ],
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00001"
+      ],
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "categoryGradeCount"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "any"
+      ],
+      "conditionTargets1": [
+        "castle"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": []
+    },
+    "po_mission_00003": {
+      "id": "po_mission_00003",
+      "index": 3,
+      "isAutoStart": "FALSE",
+      "needClearCount": 1,
+      "clearReward": "reward01_04_00003_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00002"
+      ],
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "missionStatus"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "accepted"
+      ],
+      "conditionTargets1": [
+        "po_mission_00003"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": []
+    },
+    "po_mission_00004": {
+      "id": "po_mission_00004",
+      "index": 4,
+      "isAutoStart": "FALSE",
+      "needClearCount": 1,
+      "clearReward": "reward01_04_00004_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00003"
+      ],
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "totalBuildingCount",
+        "totalBuildingCount",
+        "totalBuildingCount"
+      ],
+      "conditionGrades1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionLevels1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionTargets1": [
+        "building200_041_01_01_1_1",
+        "building200_041_02_01_1_1",
+        "building200_041_03_01_1_1"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than",
+        "eq_greater_than",
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1,
+        1,
+        1
+      ],
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": []
+    }
+  }
+}
