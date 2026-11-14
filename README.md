@@ -25,7 +25,7 @@ onisoul-stub/
 │       ├── contract.py      # 直接读 docs/analysis 的 tsv（唯一事实来源）
 │       ├── response_shapes.py # 普通 envelope / 裸映射
 │       └── placeholders.py  # 按契约类型生成「形状合法、语义为空」的响应
-├── db/schema.sql            # MySQL 建库建表
+├── db/schema.sql            # MySQL 表定义（目标库由 ONI_DB_NAME 决定）
 ├── config/                  # 响应模板（示例）
 ├── tools/proxy80.py         # 80 → 18080 转发代理
 ├── tools/contract_check.py  # 契约一致性检查（端点 / 边 / 批次 / 类型覆盖）
@@ -41,8 +41,9 @@ onisoul-stub/
 python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
 
-# MySQL 就绪后初始化表（也可手动导入 db/schema.sql）
+# MySQL 就绪后按 ONI_DB_NAME 建库建表并启动（初始化账号需要建库/建表权限）
 export ONI_DB_PASSWORD=你的密码
+export ONI_DB_NAME=game_db
 python -m app.main --init-schema
 
 # 启动
@@ -52,6 +53,11 @@ python -m app.main
 # 排查「客户端哪些接口在没登录时会打」时用 observe，只计数不拦截
 export AUTH_MODE=observe
 ```
+
+`--init-schema` 会先创建所配置的数据库，再导入表定义；不会固定切换到 `game_db`。
+已有数据库也可用 `mysql --database=你的库名 < db/schema.sql` 手动导入，之后正常
+启动无需建库权限。MySQL DDL 不保证事务回滚；初始化中断后可重跑，表使用
+`CREATE TABLE IF NOT EXISTS`，不会清空已有存档。
 
 ## 契约层
 
@@ -103,6 +109,10 @@ python tools/import_tables.py --source /path/to/extracted/tables
 可取得 106 张，仅缺 `combo.json`、`strategy_battlefield.json`；
 另有 4 张服务端运行时表由 `docs/analysis/server_tables.tsv` 管理。见
 `docs/tables.md` 和 `docs/gameplay-onboarding.md`。
+
+安装包中的 `data.bin` 已完成全文件验证，属于可由固定种子完整重建的随机填充，
+并非待解密的游戏资源包。证据与只读复核方法见
+[`docs/analysis/data-bin-verification.md`](docs/analysis/data-bin-verification.md)。
 
 ## 部署
 

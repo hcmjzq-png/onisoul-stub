@@ -13,7 +13,10 @@
 - 文件：`OniSoul_Setup_20140712.exe`，653,677,906 字节，MD5 `EB3FAE6F7C785736C0211278FCC8DA29`。
 - 安装器：Inno Setup 5.2.0。解包后判定为 **Unity WebPlayer 网页端封装壳**：Qt4（QtCore4 / QtGui4 / QtNetwork4 / QtWebKit4）+ WebKitBrowser + UnityWebPlayer + Mono 运行时（Alpha3.x.x / Stable3.x.x 双版本）。
 - 包内**无独立业务 PE 程序集**；本地 dll 全为框架 / 运行时（Qt、WebKit、ICU、Mono mscorlib/System、UnityEngine、CrossDomainPolicyParser）。业务 C# 元数据以 MonoScript 形式存在于主 bundle `app.unity3d`，IL 不随安装包以独立 PE 分发。
-- `app\data.bin`（503 MiB）：本轮未纳入。
+- `app\data.bin`：2026-11-14 补充验证，528,374,000 字节全部与
+  `System.Random(19142570).Next(0, 254)` 的输出一致，不是待解密的资源容器。
+  样本指纹、完整比对结果及只读复核脚本见
+  [`analysis/data-bin-verification.md`](analysis/data-bin-verification.md)。
 
 ### 1.2 渠道与入口配置（包内原始文件）
 
