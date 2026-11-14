@@ -24,31 +24,31 @@ class ResponseShape(str, Enum):
 # helper: `DeckConflateCards.createStatus` is used by common/getCharacters,
 # common/getEquips and common/getTactics.
 BARE_MAP_EVIDENCE: dict[str, str] = {
-    "auction/auctionCardSale": "AuctionDataManager.cs:OnGetMySellingCards",
-    "auction/auctionResourceSale": "AuctionDataManager.cs:OnGetMySellingResources",
-    "common/getCharacters": "DeckConflateCards.cs:createStatus",
-    "common/getEquips": "DeckConflateCards.cs:createStatus",
-    "common/getSelectCharacters": "QuestDataCache.cs:calcDeckParameter",
-    "common/getTactics": "DeckConflateCards.cs:createStatus",
-    "dailymission/getDailyMission": "DailyMissionScene.cs:Start",
-    "deck/getAvatarCharacters": "Politic.cs:resetMap",
-    "deck/getProtectedCharacterIds": "DeckScene.cs:OnEnable",
-    "deck/getProtectedEquipIds": "DeckScene.cs:OnEnable",
-    "deck/setCharacterProtect": "CharacterConflatePreview_Character.cs:protectOrRelease",
-    "deck/setDecks": "DeckMake.cs:deckSave",
-    "deck/setEquipProtect": "CharacterConflatePreview_Equip.cs:protectOrRelease",
-    "friend/findFriends": "FriendListWindow.cs:getFindData",
-    "friend/getFriends": "FriendListWindow.cs:getFriendData",
-    "politic/building/getDrafts": "UserStatus.cs:setDraftInfo",
+    "auction/auctionCardSale": "AuctionDataManager.cs:OnGetMySellingCards@0x294278",
+    "auction/auctionResourceSale": "AuctionDataManager.cs:OnGetMySellingResources@0x2951B8",
+    "common/getCharacters": "DeckConflateCards.cs:createStatus@0x2F04E8",
+    "common/getEquips": "DeckConflateCards.cs:createStatus@0x2F04E8",
+    "common/getSelectCharacters": "QuestDataCache.cs:calcDeckParameter@0x242F4C",
+    "common/getTactics": "DeckConflateCards.cs:createStatus@0x2F04E8",
+    "dailymission/getDailyMission": "DailyMissionScene.cs:Start@0x2DD6DC",
+    "deck/getAvatarCharacters": "Politic.cs:resetMap@0x205930",
+    "deck/getProtectedCharacterIds": "DeckScene.cs:OnEnable@0x300FE0",
+    "deck/getProtectedEquipIds": "DeckScene.cs:OnEnable@0x300FE0",
+    "deck/setCharacterProtect": "CharacterConflatePreview_Character.cs:protectOrRelease@0x2EA4F4",
+    "deck/setDecks": "DeckMake.cs:deckSave@0x2F8508",
+    "deck/setEquipProtect": "CharacterConflatePreview_Equip.cs:protectOrRelease@0x2EAA64",
+    "friend/findFriends": "FriendListWindow.cs:getFindData@0x30D6E8",
+    "friend/getFriends": "FriendListWindow.cs:getFriendData@0x30D6A8",
+    "politic/building/getDrafts": "UserStatus.cs:setDraftInfo@0x28FE58",
     # UserStatus.cs:1393 的 ymbga 分支要求 Keys.Count == 1 且读 succeeded，
     # :1401 的非 ymbga 分支要求 Keys.Count == 0。运行时容器由 gameLogin 响应的
     # `container` 决定（SessionKeeper.cs:138-141 -> Configs.cs:1317，未知值回落 none），
     # 本 Stub 固定回 "container": "none"，所以生效的是非 ymbga 分支：回 `{}` 判成功。
-    "politic/map/setMapName2": "UserStatus.cs:1396-1402（Keys.Count == 0）",
-    "politic/waterborneTrade/getStatus": "PoliticMissionProgressList.cs:updateWaterTradeList",
-    "quest/checkEmergencyQuest": "EmergencyQuestChecker.cs:sendRequest",
-    "quest/getQuestCompleteFlags": "PluginQuestDataManager.cs:onGetStoryProgress",
-    "quest/getQuestProgress": "QuestDataCache.cs:setQuestParameter",
+    "politic/map/setMapName2": "UserStatus.cs:setMapName@0x28F970",
+    "politic/waterborneTrade/getStatus": "PoliticMissionProgressList.cs:updateWaterTradeList@0x2302C0",
+    "quest/checkEmergencyQuest": "EmergencyQuestChecker.cs:sendRequest@0x2413CC",
+    "quest/getQuestCompleteFlags": "PluginQuestDataManager.cs:onGetStoryProgress@0x1FA5BC",
+    "quest/getQuestProgress": "QuestDataCache.cs:setQuestParameter@0x243180",
 }
 
 BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)
@@ -58,11 +58,11 @@ BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)
 # This mapping is evidence bookkeeping only: `shape_for()` decides by
 # `BARE_MAP_ENDPOINTS`, and everything outside it already defaults to envelope.
 SCALAR_ROOT_EVIDENCE: dict[str, str] = {
-    "politic/support_item/usePotions": "DailyMissionScene.cs:convertRewardByUsePotionsAPIResult",
-    "quest/getChapterData": "PluginRunner_DoEvent.cs:onQuestChapterData",
-    "siege/getBrief": "siegeBriefMenuDesc.cs:setup",
-    "siege/getSiegeStatus": "vsSetting_Siege.cs:getSiegeSituation",
-    "trophy/getTrophyProgress": "TrophyWindow.cs:load",
+    "politic/support_item/usePotions": "DailyMissionScene.cs:convertRewardByUsePotionsAPIResult@0x2DE10C",
+    "quest/getChapterData": "PluginRunner_DoEvent.cs:onQuestChapterData@0x1FD48C",
+    "siege/getBrief": "siegeBriefMenuDesc.cs:setup@0x347618",
+    "siege/getSiegeStatus": "vsSetting_Siege.cs:getSiegeSituation@0x34FB10",
+    "trophy/getTrophyProgress": "TrophyWindow.cs:load@0x28A5F0",
 }
 
 

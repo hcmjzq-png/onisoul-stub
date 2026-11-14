@@ -25,13 +25,14 @@ class EvidenceVerificationTest(unittest.TestCase):
 
             valid = validate_evidence(
                 {
-                    "test/chapter": "Sample.cs:onQuestChapterData",
-                    "test/potion": "Sample.cs:convertRewardByUsePotionsAPIResult",
+                    "test/chapter": "Sample.cs:onQuestChapterData@0x1234",
+                    "test/potion": "Sample.cs:convertRewardByUsePotionsAPIResult@0x5678",
                 },
                 "scalar_root",
                 index,
             )
             self.assertTrue(all(result.ok for result in valid))
+            self.assertEqual(valid[0].offset, "1234")
 
             invalid = validate_evidence(
                 {"test/call-only": "Sample.cs:helper"}, "scalar_root", index

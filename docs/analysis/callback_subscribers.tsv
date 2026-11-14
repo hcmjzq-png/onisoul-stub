@@ -1,0 +1,5 @@
+hub	subscriber	subscriber_evidence	keys_checked	keys_read	unguarded_reads	key_types	read_evidence
+PeriodicRounder	ChatInfo::setOperationMessage	ChatInfo::setOperationMessage@0x1D3C20		gmMessage	gmMessage	gmMessage:string	ChatInfo::setOperationMessage@0x1D3C34
+PeriodicRounder	SessionKeeper::updatePeriodic	SessionKeeper::updatePeriodic@0x1BD7C4	now,token	now,token		now:double,token:string	SessionKeeper::updatePeriodic@0x1BD806;SessionKeeper::updatePeriodic@0x1BD7F6
+PeriodicRounder	ShowOffManager::ShowOffDataHandler	ShowOffManager::ShowOffDataHandler@0x25F14C	show_off	show_off		show_off:Hashtable	ShowOffManager::ShowOffDataHandler@0x25F169
+PeriodicRounder	UserStatus/SocialInformation::update	UserStatus/SocialInformation::update@0x290724	friendOffer,inboxParcel,unreadMail	friendOffer,inboxParcel,unreadMail		friendOffer:double,inboxParcel:double,unreadMail:double	UserStatus/SocialInformation::update@0x290770;UserStatus/SocialInformation::update@0x290749;UserStatus/SocialInformation::update@0x290797
