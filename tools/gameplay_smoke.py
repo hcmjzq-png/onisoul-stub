@@ -58,8 +58,9 @@ def main(argv: list[str] | None = None) -> int:
         save_state=states.save,
         session_store=sessions,
     )
-    login = service.dev_login({"username": "smoke-new-player"}, None)
-    if login["succeeded"]:
+    # This tool uses only memory stores; it does not enable public debug login.
+    login, existing = service._issue_login("smoke-new-player")
+    if existing:
         raise RuntimeError("fresh account was reported as an existing player")
     session = {"token": login["token"], "playerId": login["playerId"]}
     if not service.create_player(

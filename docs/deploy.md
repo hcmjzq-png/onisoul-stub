@@ -9,10 +9,10 @@
 /opt/onisoul/            # 代码（app/ db/ tools/ deploy/ docs/ config/ tests/）
 /opt/onisoul/data/       # 运行数据（不入库）
 /opt/onisoul/logs/       # stub-systemd.log + capture-YYYYMMDD.jsonl
-/etc/onisoul/stub.env    # 环境变量（含 DB 密码），属 root:ubuntu，权限 640
+/etc/onisoul/stub.env    # 环境变量（含 DB 密码），属 root:root，权限 600
 ```
 
-- stub 服务以 `User=ubuntu` 运行，因此 `stub.env` 需 ubuntu 可读（`root:ubuntu 640`）。
+- systemd 的系统管理器读取 EnvironmentFile，再以 `ubuntu` 启动进程；环境文件无需开放给 ubuntu。
 - 数据库密码只写 `stub.env`，不进代码仓库；`.env`、`*.env` 已在 `.gitignore`。
 
 ## 首次部署
@@ -52,7 +52,7 @@ sudo mysql --database=game_db < db/schema.sql
 ### 4. 环境变量
 
 ```bash
-sudo install -o root -g ubuntu -m 640 -d /etc/onisoul
+sudo install -o root -g root -m 750 -d /etc/onisoul
 sudo tee /etc/onisoul/stub.env >/dev/null <<ENV
 ONI_DB_HOST=127.0.0.1
 ONI_DB_PORT=3306
@@ -61,7 +61,10 @@ ONI_DB_USER=game_app
 ONI_DB_PASSWORD=${PW}
 STUB_HOST=127.0.0.1
 STUB_PORT=18080
+AUTH_MODE=strict
+STUB_DEBUG_LOGIN_KEY=
 ENV
+sudo chmod 600 /etc/onisoul/stub.env
 ```
 
 ### 5. systemd 单元
@@ -90,7 +93,7 @@ curl -s http://<服务器公网IP>/client/status
 
 ```bash
 curl -s -X POST http://127.0.0.1/api/nonexistent -d 'params=%7B%7D'
-# {"succeeded": false, "error": "NOT_FOUND", "message": "未知接口: nonexistent", ...}
+# {"succeeded": false, "error": "NOT_FOUND", "message": "no stub response: nonexistent", ...}
 ```
 
 ## 运维

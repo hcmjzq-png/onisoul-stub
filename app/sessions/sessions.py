@@ -24,8 +24,8 @@ def _account_key(value: str) -> str:
 
 
 def _player_id(account_key: str) -> str:
-    if account_key.casefold() in {DEFAULT_ACCOUNT_KEY, "player1", "pyddev1"}:
-        return DEFAULT_PLAYER_ID
+    # New accounts never share the old development player "1". Existing IDs
+    # are retained by _ensure_account's persisted lookup below.
     digest = hashlib.sha1(account_key.casefold().encode("utf-8")).hexdigest()[:16]
     return f"p_{digest}"
 
@@ -41,7 +41,13 @@ def _ensure_account(con, account_key: str) -> str:
         """,
         (account_key, player_id, now, now),
     )
-    return player_id
+    # MySQL account collation may match a differently-cased/accented spelling.
+    # Always use the persisted mapping rather than a newly computed hash.
+    con.execute("SELECT player_id FROM accounts WHERE account_key = %s", (account_key,))
+    row = con.fetchone()
+    if row is None:
+        raise RuntimeError("account mapping was not persisted")
+    return row["player_id"]
 
 
 def issue(account_key: str, token: str | None = None) -> dict[str, Any]:
@@ -107,8 +113,8 @@ def resolve(token: str | None, *, touch: bool = True) -> dict[str, Any] | None:
         "accountKey": row["account_key"],
         "playerId": row["player_id"],
         "createdAt": row["created_at"],
-        "lastSeen": row["last_seen"],
-        "expiresAt": row["expires_at"],
+        "lastSeen": now if touch else row["last_seen"],
+        "expiresAt": now + SESSION_TTL if touch else row["expires_at"],
     }
 
 

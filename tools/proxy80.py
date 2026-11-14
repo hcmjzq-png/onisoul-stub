@@ -1,30 +1,32 @@
 #!/usr/bin/env python3
-"""80 端口转发代理：客户端 ──▶ 本代理 ──▶ stub(127.0.0.1:18080)。
-
-作用：
-  - 对外只暴露 80；stub 绑定回环，不直接公网可达。
-  - 原样转发请求/响应，并把报文记录到 logs/capture-YYYYMMDD.jsonl，供协议核对。
-  - 二进制资源（.unity3d/.png/mp3 等）只记大小，不记内容。
-
-用法：
-    python3 tools/proxy80.py --listen 80 --upstream 18080
-"""
+"""Bounded HTTP gateway and credential-redacted capture for the PC client."""
 from __future__ import annotations
 
 import argparse
 import http.client
 import json
 import os
-import socketserver
+import threading
 import time
 from datetime import datetime
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import urlsplit
+from pathlib import Path
+import sys
 
-ROOT = os.environ.get("ONI_ROOT") or os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__))
-)
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from app.protocol import envelope
+
+ROOT = os.environ.get("ONI_ROOT") or str(Path(__file__).resolve().parents[1])
 LOG_DIR = os.environ.get("ONI_LOG_DIR") or os.path.join(ROOT, "logs")
 BINARY_EXT = (".unity3d", ".png", ".jpg", ".mp3", ".d", ".bin", ".ico", ".gif")
 MAX_BODY_LOG = 64 * 1024
+MAX_REQUEST_BODY = 2 * 1024 * 1024
+HOP_HEADERS = {"connection", "proxy-connection", "keep-alive", "te", "trailer",
+               "transfer-encoding", "upgrade", "proxy-authorization", "proxy-authenticate"}
+SECRET_FIELDS = {"password", "passwd", "token", "sessionkey", "loginhash", "key",
+                 "authorization", "cookie", "salt", "password_hash"}
+_log_lock = threading.Lock()
 
 
 def log_path() -> str:
@@ -32,114 +34,149 @@ def log_path() -> str:
 
 
 def write_rec(rec: dict) -> None:
-    os.makedirs(LOG_DIR, exist_ok=True)
-    with open(log_path(), "a", encoding="utf-8") as fh:
-        fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    try:
+        with _log_lock:
+            os.makedirs(LOG_DIR, exist_ok=True)
+            with open(log_path(), "a", encoding="utf-8") as fh:
+                fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    except OSError as exc:
+        print(f"[proxy80] capture write failed: {type(exc).__name__}", file=sys.stderr)
 
 
-class Handler(socketserver.BaseRequestHandler):
+def redact(value):
+    if isinstance(value, dict):
+        return {k: "<redacted>" if k.lower() in SECRET_FIELDS else redact(v)
+                for k, v in value.items()}
+    if isinstance(value, list):
+        return [redact(v) for v in value]
+    return value
+
+
+def capture_body(body: bytes, ctype: str, *, request: bool = False) -> str:
+    # Parse before truncating: truncated JSON must never fall back to raw secrets.
+    if request:
+        value = envelope.parse_params(body, ctype)
+    elif "json" in ctype.lower():
+        try:
+            value = json.loads(body)
+        except (ValueError, UnicodeError):
+            return "<unparsed response>"
+    else:
+        return f"<body {len(body)}B>"
+    return json.dumps(redact(value), ensure_ascii=False)[:MAX_BODY_LOG]
+
+
+class Handler(BaseHTTPRequestHandler):
     upstream_host = "127.0.0.1"
     upstream_port = 18080
+    protocol_version = "HTTP/1.1"
+    timeout = 15
 
-    def _read_request(self) -> tuple[str, str, dict[str, str], bytes] | None:
-        # 只创建一次读取流：socket 的 makefile 各对象独立缓冲，反复新建会丢失已预读的数据。
-        rfile = self.request.makefile("rb")
-        line = rfile.readline()
-        if not line:
-            return None
-        method, path, _ver = line.decode("latin1").split(" ", 2)
-        headers: dict[str, str] = {}
-        while True:
-            h = rfile.readline()
-            if not h or h in (b"\r\n", b"\n"):
-                break
-            k, _, v = h.partition(b":")
-            headers[k.decode("latin1").strip().lower()] = v.decode("latin1").strip()
-        length = int(headers.get("content-length") or 0)
-        body = rfile.read(length) if length > 0 else b""
-        return method, path, headers, body
+    def log_message(self, fmt, *args):
+        return
 
-    def handle(self) -> None:
-        parsed = self._read_request()
-        if parsed is None:
+    def _forward(self) -> None:
+        self.close_connection = True
+        if self.headers.get("Transfer-Encoding"):
+            self.send_error(501, "Transfer-Encoding is unsupported")
             return
-        method, path, headers, body = parsed
-        t0 = time.time()
+        lengths = self.headers.get_all("Content-Length", [])
         try:
-            conn = http.client.HTTPConnection(
-                self.upstream_host, self.upstream_port, timeout=10
-            )
-            forward_headers = {
-                k: v for k, v in headers.items()
-                if k not in ("connection", "proxy-connection", "host")
-            }
-            conn.request(method, path, body=body, headers=forward_headers)
+            raw_length = lengths[0] if lengths else "0"
+            if len(lengths) > 1 or not raw_length.isascii() or not raw_length.isdecimal():
+                raise ValueError
+            length = int(raw_length)
+        except ValueError:
+            self.send_error(400, "Invalid Content-Length")
+            return
+        if length > MAX_REQUEST_BODY:
+            self.send_error(413, "Request body too large")
+            return
+        try:
+            body = self.rfile.read(length) if length else b""
+        except TimeoutError:
+            self.send_error(408)
+            return
+        if len(body) != length:
+            self.send_error(400, "Incomplete request body")
+            return
+        try:
+            target = urlsplit(self.path)
+        except ValueError:
+            self.send_error(400, "Invalid request target")
+            return
+        path = target.path or "/"
+        upstream_path = path + ("?" + target.query if target.query else "")
+        blocked = HOP_HEADERS | {v.strip().lower() for v in self.headers.get("Connection", "").split(",")}
+        headers = {k: v for k, v in self.headers.items() if k.lower() not in blocked | {"content-length"}}
+        headers["Connection"] = "close"
+        headers["Content-Length"] = str(length)
+        started = time.monotonic()
+        conn = http.client.HTTPConnection(self.upstream_host, self.upstream_port, timeout=15)
+        status, size, captured, ctype = 502, 0, bytearray(), ""
+        sent_headers = False
+        binary = path.lower().endswith(BINARY_EXT)
+        try:
+            conn.request(self.command, upstream_path, body=body, headers=headers)
             resp = conn.getresponse()
-            resp_body = resp.read()
-            resp_headers = {k: v for k, v in resp.getheaders()}
             status = resp.status
+            ctype = resp.getheader("Content-Type", "")
+            self.send_response_only(status, resp.reason)
+            response_blocked = HOP_HEADERS | {v.strip().lower() for v in resp.getheader("Connection", "").split(",")}
+            for k, v in resp.getheaders():
+                if k.lower() not in response_blocked:
+                    self.send_header(k, v)
+            self.send_header("Connection", "close")
+            self.end_headers()
+            sent_headers = True
+            if self.command != "HEAD" and status not in (204, 304):
+                while chunk := resp.read(64 * 1024):
+                    size += len(chunk)
+                    if not binary and len(captured) <= MAX_BODY_LOG:
+                        captured.extend(chunk)
+                    self.wfile.write(chunk)
+        except (OSError, http.client.HTTPException):
+            if not sent_headers:
+                self.send_error(502, "Upstream unavailable")
+        finally:
             conn.close()
-        except OSError as exc:
-            self._send(502, b'{"succeeded":false,"error":"UPSTREAM"}',
-                       {"Content-Type": "application/json; charset=utf-8"})
-            write_rec({"ts": datetime.now().isoformat(timespec="seconds"),
-                       "method": method, "path": path, "status": 502,
-                       "error": str(exc)})
-            return
+            login = path.startswith("/index.php/gwz/client/login")
+            write_rec({
+                "ts": datetime.now().isoformat(timespec="seconds"),
+                "method": self.command, "path": path,
+                "api": path[5:].strip("/") if path.startswith("/api/") else "",
+                "status": status, "ms": round((time.monotonic() - started) * 1000),
+                "req_query": "<redacted login>" if login or path == "/client/app.html" else capture_body(target.query.encode(), "application/x-www-form-urlencoded", request=True),
+                "req_body": "<redacted login>" if login else capture_body(body, self.headers.get("Content-Type", ""), request=True),
+                "resp_body": f"<binary {size}B>" if binary else "<omitted response>" if login or len(captured) > MAX_BODY_LOG else capture_body(bytes(captured), ctype),
+                "resp_size": size,
+            })
 
-        self._send(status, resp_body, resp_headers)
-
-        low = path.split("?")[0].lower()
-        is_bin = low.endswith(BINARY_EXT)
-        write_rec({
-            "ts": datetime.now().isoformat(timespec="seconds"),
-            "method": method,
-            "path": path.split("?")[0],
-            "api": path.split("/api/", 1)[-1].strip("/") if "/api/" in path else "",
-            "status": status,
-            "ms": round((time.time() - t0) * 1000),
-            "req_body": ("<binary %dB>" % len(body)) if is_bin
-                        else body[:MAX_BODY_LOG].decode("utf-8", "replace"),
-            "resp_body": ("<binary %dB>" % len(resp_body)) if is_bin
-                         else resp_body[:MAX_BODY_LOG].decode("utf-8", "replace"),
-            "resp_size": len(resp_body),
-        })
-
-    def _send(self, status: int, body: bytes, headers: dict[str, str]) -> None:
-        # 客户端主动断开（BrokenPipe/reset）属正常，静默处理，不刷异常堆栈。
-        try:
-            self.request.sendall(f"HTTP/1.1 {status} OK\r\n".encode("latin1"))
-            for k, v in headers.items():
-                if k.lower() in ("connection", "transfer-encoding", "content-length"):
-                    continue
-                self.request.sendall(f"{k}: {v}\r\n".encode("latin1"))
-            self.request.sendall(f"Content-Length: {len(body)}\r\n".encode())
-            self.request.sendall(b"Connection: close\r\n\r\n")
-            self.request.sendall(body)
-        except OSError:
-            pass
+    do_GET = _forward
+    do_POST = _forward
+    do_HEAD = _forward
 
 
-class Server(socketserver.ThreadingTCPServer):
+class Server(ThreadingHTTPServer):
     daemon_threads = True
     allow_reuse_address = True
+    request_queue_size = 128
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--listen", type=int, default=80)
     ap.add_argument("--upstream", type=int, default=18080)
+    ap.add_argument("--upstream-host", default="127.0.0.1")
     ap.add_argument("--host", default="0.0.0.0")
     args = ap.parse_args()
-
-    Handler.upstream_port = args.upstream
-    srv = Server((args.host, args.listen), Handler)
-    print(f"[proxy80] {args.host}:{args.listen} → 127.0.0.1:{args.upstream}")
-    print(f"[proxy80] 记录 → {log_path()}")
-    try:
-        srv.serve_forever()
-    except KeyboardInterrupt:
-        print("\n[proxy80] 退出")
+    Handler.upstream_host, Handler.upstream_port = args.upstream_host, args.upstream
+    with Server((args.host, args.listen), Handler) as srv:
+        print(f"[proxy80] {args.host}:{args.listen} -> {args.upstream_host}:{args.upstream}")
+        try:
+            srv.serve_forever()
+        except KeyboardInterrupt:
+            pass
     return 0
 
 

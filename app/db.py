@@ -30,6 +30,8 @@ def _connect(*, select_database: bool = True):
         cursorclass=DictCursor,
         autocommit=False,
         connect_timeout=8,
+        read_timeout=10,
+        write_timeout=10,
     )
 
 

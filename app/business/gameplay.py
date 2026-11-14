@@ -6,6 +6,7 @@ import os
 import datetime as dt
 import json
 import re
+import secrets
 import threading
 import time
 from collections.abc import Callable
@@ -407,7 +408,7 @@ class GameplayService:
 
     @staticmethod
     def _debug_login_key() -> str:
-        """调试登录口令；为空表示不校验（仅限本机 stub 使用）。"""
+        """调试登录口令；为空则禁用，避免绕过网页账号密码。"""
         return str(os.environ.get("STUB_DEBUG_LOGIN_KEY") or "")
 
     def _debug_login_denied(
@@ -415,8 +416,8 @@ class GameplayService:
     ) -> dict[str, Any] | None:
         expected = self._debug_login_key()
         if not expected:
-            return None
-        if str(params.get("key") or "") == expected:
+            return self._failure(api, "debug login disabled")
+        if secrets.compare_digest(str(params.get("key") or "").encode(), expected.encode()):
             return None
         return self._failure(api, "debug login key mismatch")
 
@@ -1137,6 +1138,8 @@ class GameplayService:
         for value in _parse_ids(params.get("buildingIds")):
             key, record = self._find_building(player, value)
             if record is None or str(record.get("status") or "") != "building":
+                continue
+            if int(record.get("remainedClickCount") or 0) > 0:
                 continue
             record["status"] = "none"
             record["remainedClickCount"] = 0

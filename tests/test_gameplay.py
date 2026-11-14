@@ -7,6 +7,7 @@ import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
+from unittest.mock import patch
 
 from app.business.gameplay import GameplayService
 from app.business.registry import Registry
@@ -54,6 +55,9 @@ class MemorySessions:
 
 class GameplayFlowTest(unittest.TestCase):
     def setUp(self):
+        self.key_patch = patch.dict("os.environ", {"STUB_DEBUG_LOGIN_KEY": "audit-test"})
+        self.key_patch.start()
+        self.addCleanup(self.key_patch.stop)
         self.states = MemoryStateStore()
         self.sessions = MemorySessions()
         self.service = GameplayService(
@@ -64,7 +68,7 @@ class GameplayFlowTest(unittest.TestCase):
         )
 
     def _login_and_create(self):
-        login = self.service.dev_login({"username": "new-player"}, None)
+        login = self.service.dev_login({"username": "new-player", "key": "audit-test"}, None)
         self.assertFalse(login["succeeded"])
         session = {"playerId": login["playerId"], "token": login["token"]}
         created = self.service.create_player(
@@ -96,7 +100,7 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertEqual(params["characterCount"], 4.0)
         self.assertEqual(params["possessionLimits"]["character"]["result"], 400.0)
 
-        login_again = self.service.dev_login({"username": "new-player"}, None)
+        login_again = self.service.dev_login({"username": "new-player", "key": "audit-test"}, None)
         self.assertTrue(login_again["succeeded"])
         self.assertEqual(login_again["playerId"], session["playerId"])
         game_login = self.service.game_login({"token": session["token"]}, session)
@@ -203,15 +207,15 @@ class GameplayFlowTest(unittest.TestCase):
 
     def test_new_player_detection_is_account_specific(self):
         first = self._login_and_create()
-        second_login = self.service.dev_login({"username": "second-player"}, None)
+        second_login = self.service.dev_login({"username": "second-player", "key": "audit-test"}, None)
         self.assertFalse(second_login["succeeded"])
         self.assertNotEqual(first["playerId"], second_login["playerId"])
-        first_login_again = self.service.dev_login({"username": "new-player"}, None)
+        first_login_again = self.service.dev_login({"username": "new-player", "key": "audit-test"}, None)
         self.assertTrue(first_login_again["succeeded"])
         self.assertEqual(first_login_again["playerId"], first["playerId"])
 
     def test_create_player_validates_country_navigator_and_name(self):
-        login = self.service.dev_login({"username": "validation-player"}, None)
+        login = self.service.dev_login({"username": "validation-player", "key": "audit-test"}, None)
         session = {"playerId": login["playerId"], "token": login["token"]}
         base = {
             "username": "validation-player",
@@ -244,6 +248,9 @@ class GameplayFlowTest(unittest.TestCase):
         )
         self.assertEqual(result["building"]["status"], "building")
         self.assertEqual(result["building"]["remainedClickCount"], 2)
+        early = self.service.complete_tasks({"buildingIds": [result["buildingId"]]}, session)
+        self.assertEqual(early["completeCount"], 0)
+        self.assertEqual(self.states.load(session["playerId"])["buildings"][result["buildingId"]]["remainedClickCount"], 2)
 
         first = self.service.progress_build_task(
             {"buildingId": result["buildingId"]}, session

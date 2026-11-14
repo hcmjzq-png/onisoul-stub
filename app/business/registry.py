@@ -43,7 +43,7 @@ class Registry:
     ) -> tuple[int, dict[str, Any]]:
         handler = self._handlers.get(api)
         if handler is None:
-            return 404, envelope.error(envelope.ERR_NOT_FOUND, f"未知接口: {api}")
+            return 404, envelope.error(envelope.ERR_NOT_FOUND, f"no stub response: {api}")
         try:
             body = handler(params, session)
             return 200, body
