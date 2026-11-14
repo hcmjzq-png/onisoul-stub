@@ -1,0 +1,176 @@
+{
+  "defines": {
+    "scale_kokudaka_for_dedication": {
+      "id": "scale_kokudaka_for_dedication",
+      "value": 10
+    }
+  },
+  "ranking": {
+    "RANKING_000001": {
+      "id": "RANKING_000001",
+      "title": "RANKING_MSG_BUTTON_NAME_01",
+      "type": "RANKING_MSG_BUTTON_NAME_01",
+      "desc": "RANKING_MSG_BUTTON_DESC_01",
+      "status": true,
+      "battlefield": "none",
+      "rewardCheck": true,
+      "rankingGroup": "none"
+    }
+  },
+  "national_power_goal": {
+    "1": {
+      "id": 1,
+      "name": "NATIONAL_POWER_GOAL_MSG_1_NAME",
+      "desc": "NATIONAL_POWER_GOAL_MSG_1_DESC",
+      "nationalPower": 5000,
+      "incentives": [
+        "errantry_00001"
+      ]
+    }
+  },
+  "character": {
+    "chara1_00001_01": {
+      "id": "chara1_00001_01",
+      "characterCode": 401,
+      "sortNo": 6,
+      "yomiSortNo": 660,
+      "characterNum": 1,
+      "rarity": "S",
+      "troopClass": "blade",
+      "attribute": "oni",
+      "sex": "male",
+      "dominusId": 3,
+      "mood": 1,
+      "atk": 1250,
+      "def": 1250,
+      "int": 1250,
+      "materialPoint": 500,
+      "sellPrice": 300,
+      "dedication": 15,
+      "images": "chara1_00001",
+      "artists": "タケダサナ",
+      "voice": "vse013_1_010101",
+      "voiceCategory": 1,
+      "expansion": "EXPANSION_MSG_102_NAME",
+      "bornCountry": "SHORTCOUNTRY_MSG_01_NAME",
+      "dominusName": "DOMINUS_MSG_003_NAME"
+    }
+  },
+  "building": {
+    "building200_000_01_01_1_1": {
+      "id": "building200_000_01_01_1_1",
+      "name": "城【幻魔阵营】",
+      "desc": "城下町中心建筑物",
+      "category": "castle",
+      "size": [
+        8,
+        8
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        1000
+      ],
+      "products": [
+        "building200_000_01_01_1_1"
+      ],
+      "produceType": "auto",
+      "durability": 10001,
+      "levelUpTypeId": "testearly",
+      "connectChipType": "none",
+      "itemId": "item05_0200000",
+      "waitImages": [
+        "building200_000_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_036",
+      "sortno": 11,
+      "openShopItemId1": [
+        "shop0000006"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 1280,
+      "kokudakaMax": 2880,
+      "regularSoldier": 50,
+      "dedication": 50,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    }
+  },
+  "equip": {
+    "equip_00000_01": {
+      "id": "equip_00000_01",
+      "equipCode": 400,
+      "sortNo": 4,
+      "yomiSortNo": 60,
+      "equipNum": 1,
+      "rarity": 1,
+      "growRate": 2,
+      "equipGrade": 1,
+      "mood": 1,
+      "atkMin": 500,
+      "atkMax": 1000,
+      "defMin": 0,
+      "defMax": 0,
+      "intMin": 0,
+      "intMax": 0,
+      "materialPoint": 240,
+      "sellPrice": 150,
+      "dedication": 3,
+      "images": "equip_00000"
+    }
+  },
+  "tactics": {
+    "card1_00001_01": {
+      "id": "card1_00001_01",
+      "name": "ITEM_MSG_03_0000101_NAME",
+      "desc": "ITEM_MSG_03_0000101_DESC",
+      "yomiSortNo": 26,
+      "category": "attack",
+      "type": "none",
+      "battleType": [
+        0
+      ],
+      "rarity": "C",
+      "activateRatio": 90,
+      "timing": "round",
+      "multiple": true,
+      "group": 0,
+      "conditionType": "normal",
+      "condition1A": "none",
+      "condition1B": "none",
+      "condition2A": "none",
+      "condition2B": "none",
+      "sign": "none",
+      "effect1Target": "self",
+      "effect1Action": "paramUpRatio",
+      "effect1ValueA": "attack",
+      "effect1ValueB": 25,
+      "effect2Target": "none",
+      "effect2Action": "none",
+      "effect2ValueA": "none",
+      "effect2ValueB": "none",
+      "images": "card1_00001",
+      "cbtimages": "btl_eff_Tactic_Name_0001",
+      "effectCategory": 1,
+      "sellPrice": 10,
+      "dedication": 0.1
+    }
+  }
+}
