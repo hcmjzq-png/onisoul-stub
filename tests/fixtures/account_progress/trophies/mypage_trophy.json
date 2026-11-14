@@ -1,0 +1,157 @@
+{
+  "mypage_trophy": {
+    "playerLevel_001": {
+      "id": "playerLevel_001",
+      "name": "PLAYRECORD_MSG_00401_NAME",
+      "desc": "PLAYRECORD_MSG_00401_DESC",
+      "category": "playerLevel",
+      "clearAmount": 4,
+      "clearReward": "reward06_playerLevel_001",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_002": {
+      "id": "playerLevel_002",
+      "name": "PLAYRECORD_MSG_00402_NAME",
+      "desc": "PLAYRECORD_MSG_00402_DESC",
+      "category": "playerLevel",
+      "clearAmount": 5,
+      "clearReward": "reward06_playerLevel_002",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_003": {
+      "id": "playerLevel_003",
+      "name": "PLAYRECORD_MSG_00403_NAME",
+      "desc": "PLAYRECORD_MSG_00403_DESC",
+      "category": "playerLevel",
+      "clearAmount": 6,
+      "clearReward": "reward06_playerLevel_003",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_004": {
+      "id": "playerLevel_004",
+      "name": "PLAYRECORD_MSG_00404_NAME",
+      "desc": "PLAYRECORD_MSG_00404_DESC",
+      "category": "playerLevel",
+      "clearAmount": 7,
+      "clearReward": "reward06_playerLevel_004",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_005": {
+      "id": "playerLevel_005",
+      "name": "PLAYRECORD_MSG_00405_NAME",
+      "desc": "PLAYRECORD_MSG_00405_DESC",
+      "category": "playerLevel",
+      "clearAmount": 8,
+      "clearReward": "reward06_playerLevel_005",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_006": {
+      "id": "playerLevel_006",
+      "name": "PLAYRECORD_MSG_00406_NAME",
+      "desc": "PLAYRECORD_MSG_00406_DESC",
+      "category": "playerLevel",
+      "clearAmount": 9,
+      "clearReward": "reward06_playerLevel_006",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_007": {
+      "id": "playerLevel_007",
+      "name": "PLAYRECORD_MSG_00407_NAME",
+      "desc": "PLAYRECORD_MSG_00407_DESC",
+      "category": "playerLevel",
+      "clearAmount": 10,
+      "clearReward": "reward06_playerLevel_007",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_008": {
+      "id": "playerLevel_008",
+      "name": "PLAYRECORD_MSG_00408_NAME",
+      "desc": "PLAYRECORD_MSG_00408_DESC",
+      "category": "playerLevel",
+      "clearAmount": 11,
+      "clearReward": "reward06_playerLevel_008",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_009": {
+      "id": "playerLevel_009",
+      "name": "PLAYRECORD_MSG_00409_NAME",
+      "desc": "PLAYRECORD_MSG_00409_DESC",
+      "category": "playerLevel",
+      "clearAmount": 12,
+      "clearReward": "reward06_playerLevel_009",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_010": {
+      "id": "playerLevel_010",
+      "name": "PLAYRECORD_MSG_00410_NAME",
+      "desc": "PLAYRECORD_MSG_00410_DESC",
+      "category": "playerLevel",
+      "clearAmount": 13,
+      "clearReward": "reward06_playerLevel_010",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_011": {
+      "id": "playerLevel_011",
+      "name": "PLAYRECORD_MSG_00411_NAME",
+      "desc": "PLAYRECORD_MSG_00411_DESC",
+      "category": "playerLevel",
+      "clearAmount": 14,
+      "clearReward": "reward06_playerLevel_011",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_012": {
+      "id": "playerLevel_012",
+      "name": "PLAYRECORD_MSG_00412_NAME",
+      "desc": "PLAYRECORD_MSG_00412_DESC",
+      "category": "playerLevel",
+      "clearAmount": 15,
+      "clearReward": "reward06_playerLevel_012",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_013": {
+      "id": "playerLevel_013",
+      "name": "PLAYRECORD_MSG_00413_NAME",
+      "desc": "PLAYRECORD_MSG_00413_DESC",
+      "category": "playerLevel",
+      "clearAmount": 16,
+      "clearReward": "reward06_playerLevel_013",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_014": {
+      "id": "playerLevel_014",
+      "name": "PLAYRECORD_MSG_00414_NAME",
+      "desc": "PLAYRECORD_MSG_00414_DESC",
+      "category": "playerLevel",
+      "clearAmount": 17,
+      "clearReward": "reward06_playerLevel_014",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_015": {
+      "id": "playerLevel_015",
+      "name": "PLAYRECORD_MSG_00415_NAME",
+      "desc": "PLAYRECORD_MSG_00415_DESC",
+      "category": "playerLevel",
+      "clearAmount": 18,
+      "clearReward": "reward06_playerLevel_015",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_016": {
+      "id": "playerLevel_016",
+      "name": "PLAYRECORD_MSG_00416_NAME",
+      "desc": "PLAYRECORD_MSG_00416_DESC",
+      "category": "playerLevel",
+      "clearAmount": 19,
+      "clearReward": "reward06_playerLevel_016",
+      "iconImage": "trop1_000004"
+    },
+    "playerLevel_017": {
+      "id": "playerLevel_017",
+      "name": "PLAYRECORD_MSG_00417_NAME",
+      "desc": "PLAYRECORD_MSG_00417_DESC",
+      "category": "playerLevel",
+      "clearAmount": 20,
+      "clearReward": "reward06_playerLevel_017",
+      "iconImage": "trop1_000004"
+    }
+  }
+}

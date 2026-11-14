@@ -44,6 +44,23 @@ add('politic/mypage/migrate','回调不读负载，转场重载','MigrateComfirm
 add('trophy/getTrophyProgress','mypage: 裸根 <category>.level/status/window；其他 access 另审','TrophyWindow.cs:init;mypageTrophyUpdate.cs:init;WebApiClient.cs:getTrophyProgress','trophy_setting,mypage_trophy','原 wrapper 还含其他 access，不能统一塞信封；完成条件/计数来源未恢复',next='总集成纠正 shape 错误；按 access 分支审阅')
 add('trophy/completeTrophy','mypage: root.progress/rewards/characters/equips/toInBox','mypageTrophyReward.cs:回调','trophy_setting,mypage_trophy','access/category；toInBox 大小写不同于收藏；客户端进度不可信',next='逐类别条件+领奖账本+C 奖励事务；其余 access 不猜')
 add('trophy/messageWindowTrophy','回调未读取负载','WebApiClient.cs:message_window_trophy;TrophyWindow.cs:init','trophy_setting','access/category；通知确认与领取分离，window 如何前进未证',next='同类别多等级提示/重登对照，禁止标记为领奖')
+# Phase 2 supersedes the initial wrapper-only trophy assessment.
+for row in rows:
+ if row['endpoint'].startswith('trophy/'):
+  row['status']='已实现 mypage/playerLevel 首档限定范围，未挂载'
+  row['tables']='trophy_setting,mypage_trophy,reward06_trophy,item08,playerLevel；后两奖励依赖由原容器验证提取'
+  row['persistence']='accountProgress.trophyClaims/levelTrophyNoticeSeen（内部）；资产与领取账本单次 save/CAS'
+  row['rules']='只支持 mypage；level取服务端；领奖仅 playerLevel_001；再次请求明确失败不推进第二档；超容量原子拒绝'
+  row['next']='剩余类别/档位、溢出入箱、原客户端动态验证；见 deep-review.json'
+  if row['endpoint']=='trophy/getTrophyProgress':
+   row['response']='裸根 playerLevel.{level,status,window}；领取后如实显示第二档资格；仅首档支持领奖'
+  if row['endpoint']=='trophy/messageWindowTrophy':
+   row['rules']='仅确认已展示资格的首档通知；不发奖；重复确认幂等；window=0 的通知策略为本服兼容决策'
+  row['callback']+=';mypageTrophyItem.cs:update;RewardTableAccessor.cs:getReward;mypageTrophyItemDetail.cs:update'
+ if row['endpoint'] in ('common/getLoginStampSheet','common/stampLoginSheet'):
+  row['next']='原容器无 loginSheet/stampCount/nextStampDate 字节命中；需排期/日界线/断签/重试回包，不能编造，详见 deep-review.json'
+ if row['endpoint'].startswith('dailymission/'):
+  row['next']='原表85行仅 id/missionName，完整容器复查未找到对应奖励目录；需服务端目录、重置规则、计数事件来源'
 assert len(rows)==37
 web=(SRC/'WebApiClient.cs').read_text(encoding='utf-8-sig')
 methods=list(re.finditer(r'\tpublic void (\w+)\([^\n]*\)',web))
@@ -68,6 +85,7 @@ for name in ['daily_mission','artifactSeries','jewelSeries','trophy_setting','my
  key=next(iter(data)); sample={name:{key:data[key]}}
  dest=FIX/(name+'-sample.json');dest.write_text(json.dumps(sample,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  evidence['tables'][name]={'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rows':len(data),'sample_key':key,'sample_sha256':hashlib.sha256(dest.read_bytes()).hexdigest()}
+evidence['phase2']={'report':'deep-review.json','source':'fingerprinted original tableAssets.bin','scope':'mypage/playerLevel first tier only; three additional limited handlers, not mounted'}
 evidence['setting_fixture']={'path':'tests/fixtures/account_progress/plugin-setting.json','sha256':hashlib.sha256((FIX/'plugin-setting.json').read_bytes()).hexdigest(),'source':'PluginTaskManager.cs:CreateSampleTask:81-92','purpose':'storage round-trip only; not default configuration'}
 (OUT/'evidence.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 with (OUT/'reviewed-endpoints.tsv').open('w',encoding='utf-8',newline='') as f:

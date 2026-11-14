@@ -1,0 +1,9 @@
+{
+  "trophy_setting": {
+    "playerLevel": {
+      "id": "playerLevel",
+      "maxLevel": 17,
+      "access": "mypage"
+    }
+  }
+}

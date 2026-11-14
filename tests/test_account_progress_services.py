@@ -160,5 +160,220 @@ class AccountProgressTest(unittest.TestCase):
                             "app.business.account_progress_services")
 
 
+
+class AccountProgressTrophyTest(unittest.TestCase):
+    setUp = AccountProgressTest.setUp
+    call = AccountProgressTest.call
+    saved = AccountProgressTest.saved
+
+    def reload(self):
+        AccountProgressTest.reload(self)
+        original_load = self.service.catalog.load
+        tables = FIXTURES / 'account_progress' / 'trophies'
+        h_catalog = TableCatalog(tables, tables / 'table_list.tsv')
+        self.trophy_tables = {entry.root_key: h_catalog.load(entry.root_key) for entry in h_catalog.entries}
+        self.service.catalog.load = lambda name: self.trophy_tables[name] if name in self.trophy_tables else original_load(name)
+
+    def level(self, level=4):
+        player = self.saved()
+        player['entity']['level'] = level
+        self.service._apply_limits(player)
+        self.states.save(player, self.session['playerId'])
+
+    def claim(self, **extra):
+        return self.call('trophy/completeTrophy', **{'access':'mypage','category':'playerLevel', **extra})
+
+    def progress(self, **extra):
+        return self.call('trophy/getTrophyProgress', **{'access':'mypage', **extra})
+
+    def test_progress_uses_server_level_and_bare_root(self):
+        before = self.saved()
+        self.assertEqual(self.progress(level=99, point=999), {'playerLevel':{'level':1.0,'status':'accept','window':0.0}})
+        self.assertEqual(self.saved(), before)
+        self.level()
+        self.assertEqual(self.progress()['playerLevel'], {'level':1.0,'status':'complete','window':1.0})
+
+    def test_exact_original_reward_and_claim_ledger_persist_after_login(self):
+        self.level()
+        before = self.saved()
+        result = self.claim(playerId='other', level=99, reward=99999)
+        self.assertTrue(result['succeeded'])
+        self.assertEqual(result['rewards'], {'item11_0000101':100000.0,'item08_0102701':6.0})
+        self.assertEqual(set(result) - {'succeeded','now'}, {'rewards','characters','equips','progress','toInBox'})
+        self.assertEqual(result['toInBox'], {})
+        self.assertEqual(result['progress']['playerLevel'], {'level':2.0,'status':'accept','window':0.0})
+        self.reload()
+        self.session, _ = self.service._issue_login('H-account')
+        player = self.saved()
+        self.assertEqual(player['resources']['gold']['amount'], before['resources']['gold']['amount']+100000)
+        self.assertEqual(player['items']['item08_0102701'], 6)
+        self.assertEqual(player['actionPoints'], before['actionPoints'])
+        self.assertIn('playerLevel_001', player['accountProgress']['trophyClaims'])
+        self.assertIn('errorReason', self.claim())
+        self.assertEqual(self.saved(), player)
+
+    def test_ineligible_cannot_claim_with_client_supplied_status(self):
+        before = self.saved()
+        self.assertIn('errorReason', self.claim(status='complete', level=99))
+        self.assertEqual(self.saved(), before)
+
+    def test_retries_never_advance_to_next_tier_even_after_query_or_level_up(self):
+        self.level(5)
+        self.assertTrue(self.claim()['succeeded'])
+        self.assertEqual(self.progress()['playerLevel']['status'], 'complete')
+        before = self.saved()
+        for _ in range(3):
+            self.assertIn('errorReason', self.claim())
+            self.progress()
+        self.assertEqual(self.saved(), before)
+        self.level(6)
+        before = self.saved()
+        self.assertIn('errorReason', self.claim())
+        self.assertEqual(self.saved(), before)
+
+    def test_concurrent_first_claim_has_one_winner(self):
+        self.level()
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(lambda _: self.claim(), range(24)))
+        self.assertEqual(sum('errorReason' not in row for row in results), 1)
+        self.assertEqual(self.saved()['items']['item08_0102701'], 6)
+        self.assertEqual(len(self.saved()['accountProgress']['trophyClaims']), 1)
+
+    def test_resource_overflow_rejects_whole_reward_then_allows_retry(self):
+        self.level()
+        player = self.saved()
+        player['resources']['gold']['amount'] = 350001
+        self.states.save(player,self.session['playerId'])
+        before = self.saved()
+        self.assertIn('overflow', self.claim()['errorReason'])
+        self.assertEqual(self.saved(),before)
+        player['resources']['gold']['amount'] = 300000
+        self.states.save(player,self.session['playerId'])
+        self.assertTrue(self.claim()['succeeded'])
+        self.assertEqual(self.saved()['resources']['gold']['amount'],400000)
+
+    def test_invalid_jewel_balance_does_not_partially_credit_gold(self):
+        self.level()
+        player = self.saved()
+        player['items']['item08_0102701'] = 2147483647
+        self.states.save(player,self.session['playerId'])
+        before=self.saved()
+        self.assertIn('errorReason',self.claim())
+        self.assertEqual(self.saved(),before)
+
+    def test_save_conflict_rolls_back_assets_and_claim_then_retry(self):
+        self.level()
+        before=self.saved()
+        with patch.object(self.service,'_save',side_effect=state.StateConflictError('collision')):
+            self.assertIn('errorReason',self.claim())
+        self.assertEqual(self.saved(),before)
+        self.assertTrue(self.claim()['succeeded'])
+
+    def test_notification_ack_is_not_reward_and_is_retry_safe(self):
+        api='trophy/messageWindowTrophy'
+        self.assertIn('errorReason', self.call(api,access='mypage',category='playerLevel'))
+        self.level()
+        before=self.saved()
+        for _ in range(2):
+            self.assertTrue(self.call(api,access='mypage',category='playerLevel')['succeeded'])
+        after=self.saved()
+        self.assertEqual(after['resources'],before['resources'])
+        self.assertEqual(after['items'],before['items'])
+        self.assertNotIn('trophyClaims',after['accountProgress'])
+        self.reload()
+        self.assertEqual(self.progress()['playerLevel']['window'],0)
+        self.assertTrue(self.claim()['succeeded'])
+
+    def test_access_category_authentication_and_account_isolation(self):
+        self.level()
+        before=self.saved()
+        for api in ('trophy/getTrophyProgress','trophy/completeTrophy','trophy/messageWindowTrophy'):
+            for access in (None,'raidBoss','giganticRaidBoss','unknown'):
+                self.assertIn('errorReason',self.call(api,access=access,category='playerLevel'))
+            self.assertIn('errorReason',self.registry.dispatch(api,{'access':'mypage','category':'playerLevel'},None)[1])
+        for category in ('totalWin','playerLevel_001',None,1):
+            self.assertIn('errorReason',self.claim(category=category))
+        self.assertEqual(self.saved(),before)
+        other, _ = self.service._issue_login('H-trophy-other')
+        self.service.create_player({'username':'other','countryId':'country01','navigatorId':'navi8000101','colorIndex':'color1'},other)
+        result=self.registry.dispatch('trophy/completeTrophy',{'access':'mypage','category':'playerLevel','playerId':self.session['playerId']},other)[1]
+        self.assertIn('errorReason',result)
+        self.assertEqual(self.saved(),before)
+
+    def test_missing_asset_is_distinct_from_broken_table_reference(self):
+        from app.tables import MissingTableError
+        self.level()
+        before=self.saved()
+        load=self.service.catalog.load
+        def missing(name):
+            if name=='reward06_trophy': raise MissingTableError('not installed')
+            return load(name)
+        with patch.object(self.service.catalog,'load',side_effect=missing):
+            self.assertIn('stub has no assets',self.claim()['errorReason'])
+        self.trophy_tables['reward06_trophy'].pop('reward06_playerLevel_001')
+        self.assertIn('no stub response',self.claim()['errorReason'])
+        self.assertEqual(self.saved(),before)
+
+    def test_reward_selection_or_item_mutations_fail_atomically(self):
+        import copy
+        self.level()
+        before=self.saved()
+        original=copy.deepcopy(self.trophy_tables['reward06_trophy']['reward06_playerLevel_001'])
+        for change in ({'ratio1min':50},{'count2max':7},{'group2':'A'},
+                       {'itemId2':'item01_unknown'},{'count2min':-1,'count2max':-1},
+                       {'itemId2':'none'}):
+            self.trophy_tables['reward06_trophy']['reward06_playerLevel_001']={**original,**change}
+            self.assertIn('errorReason',self.claim())
+            self.assertEqual(self.saved(),before)
+
+    def test_second_stage_eligibility_does_not_fabricate_received_status(self):
+        self.level(5)
+        self.claim()
+        self.assertEqual(self.progress(),{'playerLevel':{'level':2.0,'status':'complete','window':0.0}})
+        self.assertIn('errorReason',self.claim())
+        self.assertEqual(self.progress()['playerLevel']['level'],2.0)
+
+    def test_two_service_instances_use_storage_cas_for_exactly_one_claim(self):
+        import copy
+        import threading
+        self.level()
+        rows = {self.session['playerId']: self.saved()}
+        rows[self.session['playerId']]['_revision'] = 0
+        lock, gate = threading.Lock(), threading.Barrier(2)
+        def load(player_id):
+            with lock:
+                result = copy.deepcopy(rows[player_id])
+            gate.wait(timeout=5)
+            return result
+        def save(player, player_id):
+            with lock:
+                if player.get('_revision', 0) != rows[player_id].get('_revision', 0):
+                    raise state.StateConflictError('CAS conflict')
+                result = copy.deepcopy(player)
+                result['_revision'] = result.get('_revision', 0) + 1
+                rows[player_id] = result
+        services = [GameplayService(catalog=self.service.catalog,load_state=load,save_state=save,session_store=self.sessions) for _ in range(2)]
+        registries = [Registry(), Registry()]
+        for service, registry in zip(services,registries):
+            AccountProgressServices(service).register(registry)
+        def claim(registry):
+            return registry.dispatch('trophy/completeTrophy',{'access':'mypage','category':'playerLevel'},self.session)[1]
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(claim,registries))
+        self.assertEqual(sum('errorReason' not in result for result in results),1)
+        saved = rows[self.session['playerId']]
+        self.assertEqual(saved['_revision'],1)
+        self.assertEqual(saved['resources']['gold']['amount'],105000)
+        self.assertEqual(saved['items']['item08_0102701'],6)
+        self.assertEqual(len(saved['accountProgress']['trophyClaims']),1)
+
+    def test_original_sample_structure_is_not_a_synthetic_reward(self):
+        row=self.trophy_tables['reward06_trophy']['reward06_playerLevel_001']
+        self.assertEqual((row['group1'],row['group2']),('A','B'))
+        self.assertEqual((row['count1min'],row['count2min']),(100000,6))
+        self.assertEqual(self.trophy_tables['mypage_trophy']['playerLevel_001']['clearAmount'],4)
+        self.assertEqual(self.trophy_tables['trophy_setting']['playerLevel']['maxLevel'],17)
+
+
 if __name__ == "__main__":
     unittest.main()

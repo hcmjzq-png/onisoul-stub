@@ -27,6 +27,9 @@ class AccountProgressServices(PlayerServices):
         self.clock = clock
 
     def register(self, registry: Any) -> None:
+        from app.business.account_progress_trophies import AccountProgressTrophies
+
+        AccountProgressTrophies(self.service).register(registry)
         registry.register("common/getRevisions", self.get_revisions)
         registry.register("common/getPlayerCogid", self.service._guard(
             "common/getPlayerCogid", self.get_cogid))
