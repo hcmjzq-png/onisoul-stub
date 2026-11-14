@@ -84,6 +84,9 @@ class AccountProgressServices(PlayerServices):
         self.clock = clock
 
     def register(self, registry: Any, *, apis: frozenset[str] | None = None) -> None:
+        from app.business.account_progress_trophies import AccountProgressTrophies
+
+        AccountProgressTrophies(self.service).register(registry, apis=apis)
         if apis is None or "common/getRevisions" in apis:
             registry.register("common/getRevisions", self.get_revisions)
         if apis is None or "common/getPlayerCogid" in apis:

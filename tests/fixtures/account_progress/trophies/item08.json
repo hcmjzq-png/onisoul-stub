@@ -1,0 +1,18 @@
+{
+  "item08": {
+    "item08_0102701": {
+      "id": "item08_0102701",
+      "enable": true,
+      "value": "none",
+      "category": "jewel",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_08_0102701_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_08_0102701_DESC",
+      "iconName": "item08_0102701",
+      "parameterId": "none"
+    }
+  }
+}

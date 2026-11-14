@@ -1,0 +1,297 @@
+{
+  "container": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\tableAssets.bin",
+    "sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7"
+  },
+  "tables": {
+    "reward04_mypage": {
+      "file": "reward04_mypage.json",
+      "root_key": "reward04_mypage",
+      "container_name_offset": 8614548,
+      "script_offset": 8614572,
+      "script_length": 1723627,
+      "sha256": "e160220a2fe4b1ed81aa83c3a5424cea493e6acf83e2455a73f92e88288582cd",
+      "rows": 1462
+    },
+    "item11": {
+      "file": "item11.json",
+      "root_key": "item11",
+      "container_name_offset": 24932460,
+      "script_offset": 24932476,
+      "script_length": 10772,
+      "sha256": "a09e50e911f785ee03a68c8a7224421ea8cacd2ab3e1c1801a7f40ed5abb6523",
+      "rows": 35
+    },
+    "reward06_trophy": {
+      "file": "reward06_trophy.json",
+      "root_key": "reward06_trophy",
+      "container_name_offset": 47256388,
+      "script_offset": 47256412,
+      "script_length": 209813,
+      "sha256": "68cf7b61a39ee535d3eea0d72962f6e9d310ce22d4987e409e751839276a1def",
+      "rows": 168
+    },
+    "daily_mission": {
+      "file": "daily_mission.json",
+      "root_key": "daily_mission",
+      "container_name_offset": 65993948,
+      "script_offset": 65993972,
+      "script_length": 8645,
+      "sha256": "16bac33bc794bbffd8e7e84601ffb565ba4732cd4e99ae6ba2e2e939b4b0c86a",
+      "rows": 85
+    },
+    "item08": {
+      "file": "item08.json",
+      "root_key": "item08",
+      "container_name_offset": 79226556,
+      "script_offset": 79226572,
+      "script_length": 345706,
+      "sha256": "7946ce46ad7d811d10fe50f26d6cb1b34f5a3f3b30c64922ca6014169048c017",
+      "rows": 1035
+    },
+    "mypage_trophy": {
+      "file": "mypage_trophy.json",
+      "root_key": "mypage_trophy",
+      "container_name_offset": 80254988,
+      "script_offset": 80255012,
+      "script_length": 17503,
+      "sha256": "1c5fc611a4a90509d4887463f9dfee789175a66c1067afce6e210072273aa89f",
+      "rows": 65
+    },
+    "trophy_setting": {
+      "file": "trophy_setting.json",
+      "root_key": "trophy_setting",
+      "container_name_offset": 88620804,
+      "script_offset": 88620828,
+      "script_length": 1488,
+      "sha256": "fb1abc96bb59a902484e8de08a8122026e6276ac96149ab6e7528301870dfa72",
+      "rows": 15
+    },
+    "playerLevel": {
+      "file": "playerLevel.json",
+      "root_key": "playerLevel",
+      "container_name_offset": 90537804,
+      "script_offset": 90537824,
+      "script_length": 41512,
+      "sha256": "a04583b4e84018c501265e4ad1048e7f38fd5ae120861f1f9e8a1189369d3531",
+      "rows": 100
+    },
+    "reward05_etc": {
+      "file": "reward05_etc.json",
+      "root_key": "reward05_etc",
+      "container_name_offset": 99908612,
+      "script_offset": 99908636,
+      "script_length": 2562,
+      "sha256": "72f9b4ac899dee771dd4e963820739642e7383171b1df2fbeb3f0d072620bdef",
+      "rows": 2
+    }
+  },
+  "source_files": {
+    "RewardTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardTableAccessor.cs",
+      "sha256": "bc04bca53baf665e9618c82f31da8c0dffeff429cee1cd18c49e2660149f6111"
+    },
+    "RewardProcessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardProcessor.cs",
+      "sha256": "00a403c195aa271fd36691b605034890c2a2f8b53aa1d58cdf8654d368eb9bb4"
+    },
+    "mypageTrophyItem.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyItem.cs",
+      "sha256": "baf2915ace91422c1f6c10e1cfe82dcbf45008caecafc78593e6404549fa1191"
+    },
+    "mypageTrophyItemDetail.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyItemDetail.cs",
+      "sha256": "fe36ab3bc7294328f168671cd66dd7cedd95238b609688a7fdc9fbed84939c79"
+    },
+    "mypageTrophyReward.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyReward.cs",
+      "sha256": "ca646d8e4b049e63e44d790d6afc2458959e6f9c3894378311b1267d021a3ae3"
+    },
+    "mypageTrophyUpdate.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyUpdate.cs",
+      "sha256": "9194d403626f3d313e879b25c34735bc37512a9008cc8d2f8944ae6a6bb10b61"
+    },
+    "TrophyWindow.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TrophyWindow.cs",
+      "sha256": "968db0c18a7db01c412586db83af5fd9ef5e28798ff4d8ffd35d22ff1ea6abbc"
+    },
+    "TrophyTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TrophyTableAccessor.cs",
+      "sha256": "82413830e859443d75604883733e6ac17303ba424d078edaaa41db1f5d71b4fc"
+    },
+    "TrophySettingTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TrophySettingTableAccessor.cs",
+      "sha256": "919d9751810bf25211424d735d90291145ca55487394f8760ab69faf4128041e"
+    },
+    "LoginBounusMenu.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\LoginBounusMenu.cs",
+      "sha256": "43a8f9c6d0ffb457fa641abc743f8aa3fc102c61bfc1e3868d78d59928c54e47"
+    },
+    "PoliticScriptCommand.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticScriptCommand.cs",
+      "sha256": "1e7810767f3f06d2d5166e24301ef3539901e9aaabb3fec0115f155e543241a3"
+    },
+    "PoliticFSMLogin.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMLogin.cs",
+      "sha256": "28b74f8c1868368eb5ce978435f9017dfea2b2f4638243fa1ed624197007c2b9"
+    },
+    "DailyMissionScene.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionScene.cs",
+      "sha256": "ade4b5a99ee026617af780168c79d71759d0b7d0514166e026bd7546e0a78bc1"
+    },
+    "DailyMissionTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionTableAccessor.cs",
+      "sha256": "de31787416e375d13de315fb0e6e39eecfb97da9d12e58afe32932f7ea4eaac1"
+    },
+    "UserStatus.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac"
+    },
+    "WebApiClient.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    "HTMLTreasureMediator.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLTreasureMediator.cs",
+      "sha256": "f8144ea149f54a2ea93c4131ad15ccf51cb931df78d89330e3103e67cfb6ab90"
+    }
+  },
+  "fixtures": {
+    "playerLevel": {
+      "keys": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "sha256": "456eae1838b27b07769e6f16462fd518d27880a7e913c90103b7ef5f430e5c4d"
+    },
+    "mypage_trophy": {
+      "keys": [
+        "playerLevel_001",
+        "playerLevel_002",
+        "playerLevel_003",
+        "playerLevel_004",
+        "playerLevel_005",
+        "playerLevel_006",
+        "playerLevel_007",
+        "playerLevel_008",
+        "playerLevel_009",
+        "playerLevel_010",
+        "playerLevel_011",
+        "playerLevel_012",
+        "playerLevel_013",
+        "playerLevel_014",
+        "playerLevel_015",
+        "playerLevel_016",
+        "playerLevel_017"
+      ],
+      "sha256": "2e2d19b5ab3bb2f7e9b3bfebfbc44d9580381c08c5edcd3207683a3312f6cd18"
+    },
+    "trophy_setting": {
+      "keys": [
+        "playerLevel"
+      ],
+      "sha256": "8a08298088160c7d5eac2cda5cf6a1ece78da38607294426f16b5cee1661929e"
+    },
+    "reward06_trophy": {
+      "keys": [
+        "reward06_playerLevel_001",
+        "reward06_playerLevel_002"
+      ],
+      "sha256": "67a8d3b1939a9ce06b569244f8a205cf8a19a55b0ad0b79e94be70721b109e4e"
+    },
+    "item08": {
+      "keys": [
+        "item08_0102701"
+      ],
+      "sha256": "9dd03b858b4272864d5363eb32b0d167e71bb21afb44e966f0320bd3dbc94b2f"
+    }
+  },
+  "original_evidence": [
+    {
+      "source": "RewardTableAccessor.cs:111-123",
+      "fact": "reward06_ maps to reward06_trophy; display reads 10 slots via getReward"
+    },
+    {
+      "source": "mypageTrophyItemDetail.cs:71-101",
+      "fact": "detail resolves clearReward through RewardTableAccessor, displays every non-none slot; countMin is displayed"
+    },
+    {
+      "source": "mypageTrophyReward.cs:42-60,65-104",
+      "fact": "completeTrophy sends category, consumes progress/rewards/characters/equips/toInBox; rewards itemId -> amount; gold updates client resource"
+    },
+    {
+      "source": "WebApiClient.cs:2233-2240",
+      "fact": "completeTrophy has token/access/category only, no tier/nonce"
+    },
+    {
+      "source": "TrophyWindow.cs:82-100,136-148;mypageTrophyItem.cs:74-108",
+      "fact": "bare progress root, level/status/window; complete is claimable, accept hides claim button, lock means already received"
+    },
+    {
+      "source": "mypage_trophy.playerLevel_001 and reward06_trophy.reward06_playerLevel_001",
+      "fact": "threshold4; fixed gold100000+jewel item08_0102701 quantity6; singleton groups A/B each weight100, min=max"
+    },
+    {
+      "source": "item08.item08_0102701; playerLevel.4",
+      "fact": "enabled jewel item; maxGold400000"
+    },
+    {
+      "source": "LoginBounusMenu.cs:270-317;UserStatus.cs:1790-1818;PoliticFSMLogin.cs:119-129",
+      "fact": "dates are response-provided, stampCount selects dayN; replaying reward sheet can repeat client display addition"
+    },
+    {
+      "source": "DailyMissionScene.cs:104-192,331-403,560-574;daily_mission table",
+      "fact": "85 rows contain only id/missionName; runtime response supplies all counts/reward catalogues; Result shape differs by endpoint"
+    }
+  ],
+  "compatibility_decisions": [
+    "Only mypage/playerLevel first-tier claim; other categories/access rejected; query omits unsupported categories, not fake zeros",
+    "At second tier progress is real eligibility but further claims are not implemented; repeats always error rather than advancing category",
+    "Unique singleton weighted groups and fixed counts treated as deterministic; inference from original table and display consumers, not original server code",
+    "accountProgress.trophyClaims and levelTrophyNoticeSeen are internal; single save/CAS with resource and items mutation",
+    "Jewel placed in existing items inventory; C collection consumer must use the same ledger; no collection redemption added",
+    "Over-cap resource delivery fails atomically; no invented inbox/drop/clamp behavior",
+    "Notification window=1 for qualified unseen first tier, zero after acknowledgement/claim; local first-tier notification policy",
+    "No new stamp/daily success responses until schedules, reset rules and server reward catalogue are evidenced"
+  ],
+  "container_search": {
+    "json_name_candidates": 1246,
+    "relevant_names": [
+      "daily_mission.json",
+      "loginMessage.json",
+      "loginNoticeMenuMessage.json",
+      "login_colormap.json",
+      "login_country.json",
+      "login_notice_menu.json",
+      "loginmessage.json",
+      "loginnoticemenumessage.json"
+    ],
+    "exact_byte_hits": {
+      "loginSheet": 0,
+      "stampCount": 0,
+      "nextStampDate": 0
+    },
+    "daily_fields": [
+      "id",
+      "missionName"
+    ]
+  },
+  "level_message": {
+    "offset": 79189373,
+    "snippet": "PLAYRECORD_MSG_00401_DESC\":   {   \"id\": \"PLAYRECORD_MSG_00401_DESC\",   \"tw\": \"玩家等级提升至4，取得相应报酬。\"  }"
+  },
+  "reward_audit": {
+    "rows": 168,
+    "player_level_rows": 17,
+    "first_reward": {
+      "gold": 100000,
+      "jewel": 6
+    },
+    "fixed_first_tier": true,
+    "runtime_tables_not_installed": true
+  }
+}
