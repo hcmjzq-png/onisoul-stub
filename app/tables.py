@@ -1,7 +1,7 @@
 """PC 客户端配置表加载器。
 
 表文件不进入 Git。运行时接受 ``docs/analysis/table_list.tsv`` 的 108 张客户端表，
-并合并 ``server_tables.tsv`` 中的服务端玩法依赖表；按文件 mtime 热加载。
+并合并 ``quest_tables.tsv`` 动态关卡表和 ``server_tables.tsv`` 玩法依赖表；按文件 mtime 热加载。
 每个 JSON 文件都必须以清单声明的 root key 包住表记录，例如
 ``{"building": {...}}``。
 """
@@ -24,6 +24,7 @@ MANIFEST_PATH = Path(__file__).resolve().parents[1] / "docs" / "analysis" / "tab
 SERVER_MANIFEST_PATH = (
     Path(__file__).resolve().parents[1] / "docs" / "analysis" / "server_tables.tsv"
 )
+QUEST_MANIFEST_PATH = MANIFEST_PATH.with_name("quest_tables.tsv")
 
 
 class TableError(RuntimeError):
@@ -62,7 +63,7 @@ class TableCatalog:
         self.manifest_path = Path(manifest_path or MANIFEST_PATH).resolve()
         if extra_manifest_paths is None:
             extra_manifest_paths = (
-                (SERVER_MANIFEST_PATH,) if manifest_path is None else ()
+                (SERVER_MANIFEST_PATH, QUEST_MANIFEST_PATH) if manifest_path is None else ()
             )
         self.extra_manifest_paths = tuple(
             Path(path).resolve() for path in extra_manifest_paths

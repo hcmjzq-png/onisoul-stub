@@ -1,0 +1,14 @@
+{
+  "quest_tables": 552,
+  "quest_rows": 53438,
+  "tables_by_kind": {
+    "area": 273,
+    "reward": 273,
+    "index": 6
+  },
+  "reward_references_checked": 257567,
+  "unresolved_unique_reward_ids": 23,
+  "event_ratio_values_over_100": 31402,
+  "tutorial_reward_references_unresolved": 0,
+  "limits": "Reference inventory only. Disabled rows are included; missing references do not prove an active client failure. No event probability, battle outcome or reward is generated."
+}

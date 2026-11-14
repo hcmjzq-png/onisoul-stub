@@ -116,6 +116,17 @@ class TableCatalogTest(unittest.TestCase):
         catalog = TableCatalog(self.tables)
         self.assertEqual(catalog.resolve("item04").file, "item04.json")
 
+    def test_default_catalog_loads_verified_dynamic_tables_without_guessing_ids(self):
+        catalog = TableCatalog(self.tables)
+        for name in ("quest_1_index", "quest_1_0000", "quest_1_0000_reward", "reward14_lesson"):
+            self.assertEqual(catalog.resolve(name).file, name + ".json")
+            with self.assertRaises(MissingTableError):
+                catalog.load(name)
+        with self.assertRaises(UnknownTableError):
+            catalog.load("quest_1_9999")
+        with self.assertRaises(UnknownTableError):
+            catalog.load("../quest_1_0000")
+
 
 if __name__ == "__main__":
     unittest.main()

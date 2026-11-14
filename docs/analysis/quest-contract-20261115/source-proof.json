@@ -1,0 +1,23 @@
+{
+  "url": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/1243ea6aa67634ac98d68538c84a3a84.unity3d?r=306620",
+  "record_sha256": "2afee860bbe0a18e8ff33a1123c628c1c3668d43da5aacc5dc863b472a0decc8",
+  "bundle_sha256": "0d9b8aa529e81c157eab58d87abe6bc5c26c90476da1ba597d4ccc7a1b088511",
+  "container_sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7",
+  "size": 100194188,
+  "installer_sha256": "ad34a14e3dd67b30c59d5abd9ed2a82b2ab53161e24f3be654a63175e6d890ad",
+  "cache_record": "app/cache/data7/e/389htzvn.d",
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "source_artifacts": {
+    "QuestIndexTableAccessor.cs": "e44629b08fe132a611ab2b24ce8f186fa24eab1629abd6998e339de3abfb53e0",
+    "QuestAreaTableAccessor.cs": "2cc0bae23604905b438fd1d7deedd41675c0521b4de75dabeaf5eac035548788",
+    "QuestRewardTableAccessor.cs": "edaee27c2e97e955057500007a69f4bb68a10f552ab63224f5b5c626631d542b",
+    "QuestDataCache.cs": "95fc0a1e0573ffb57264f52a80302295456d312e4209defe8df7d84bb65c3b6b",
+    "QuestScriptCommand.cs": "39c8a0a662ad34428c23d1dbb9544817836292154af28ab66adda5c91eb11466",
+    "PluginQuestStepHelper.cs": "834eea53e709fbce558112adc0f00ec2d2a076efbbd8cb848a0fc66a061dacc1",
+    "PluginRunner_DoOniQuest.cs": "eb5a2e84325f3cef51843ce6efcae9521e65534854e0ddb41a5774a9232cf3a1",
+    "QuestStorySelector.cs": "c7987db67c373dcaeb03ac4e6e55ccf6fcace1df9257a4ed9148ef567808126f",
+    "QuestStoryAreaSelector.cs": "b2b18b0a40176218f74a791863c126dd3e9e6bdb017c79b27b63eae1a667ae4d",
+    "WebApiClient.cs": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+    "BattleLogManager.cs": "bf3ada868c109d0d2cc74fa46e9a626ceb9b2e1b619f8b10782fbfcfacf20d89"
+  }
+}

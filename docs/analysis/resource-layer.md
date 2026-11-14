@@ -141,12 +141,15 @@ building.json                  building
 - 缺 2 张：`combo.json`（包内无任何 combo 命名的 JSON 资产）、`strategy_battlefield.json`（包里只有 `strategy_battlefield_catalogue.json`，是另一张表，不是同一个根键）。
 - 解析要点：表 JSON 由 MiniJSON 写出，**含尾逗号**（`,}` / `,]`），标准 `json.loads` 会报 `Illegal trailing comma`，需先 `re.sub(r',\s*([}\]])', r'\1', raw)`；另有极少数文件是多段 JSON 拼接，需 `raw_decode` 取首段。
 
-**对 Stub 的意义**：`tableAssets.unity3d` 不再需要手编占位数据，可直接用这 106 张真实表打包（TextAsset 名逐字 `xxx.json`、内容顶层键即 `json_root`）；`db/schema.sql` 的字段也可从 `table_schema.tsv` 的 `fields` 列派生。剩下 966 个未引用 JSON 属于服务端/未启用功能的数据，客户端不读，可以忽略。
+**2026-11-15 复核更正**：上述 106/108 只是固定表名扫描结果，不能证明其余 966 张不被客户端读取。
+原客户端动态拼接关卡索引、区域和奖励表名，已从原安装包核实并登记 552 张关卡相关表。
+必须保留原 bundle；仅用固定 106 张表重打包会丢失动态资源。来源、偏移、校验值及服务器
+UTF-8 提取修复见 [关卡表复核](quest-contract-20261115/README.md)。
 
 ## Stub 侧最小实现
 
 1. 静态文件服务挂在 `http://{assetHost}/client/pc/jp/`，按目录前缀匹配，忽略文件名与 `?r=`。
-2. 提供 `globalAssets.unity3d`、`assets/scene/tableAssets.unity3d`（108 张 JSON 打成 TextAsset，名字逐字 `xxx.json`；其中 106 张可直接取自 `table_schema.tsv` 对应的真实数据）。
+2. 提供原始 `globalAssets.unity3d`、`assets/scene/tableAssets.unity3d`；不可仅凭固定表清单缩减或重新合成表包。
 3. 画质档 1/2 的 9 个前缀目录（`assets2/`）也要能命中，或直接把配置的 Performance 固定为 0。
 4. `common/getRevisions` 回 `{root, unity, server, table}` 四个整数，客户端拿它们做缓存版本号；任一变化都会触发重新下载。
 

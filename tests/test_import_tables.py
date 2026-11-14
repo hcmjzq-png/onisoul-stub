@@ -87,6 +87,13 @@ class ImportTablesTest(unittest.TestCase):
             (source / "hash.unity3d__item04.json").write_text(
                 json.dumps({"item04": {}}), encoding="utf-8"
             )
+            quest_manifest = root / "quest_tables.tsv"
+            quest_manifest.write_text(
+                "table_file\troot_key\taccessor_classes\n"
+                "quest_1_0000.json\tquest_1_0000\tQuestAreaTableAccessor\n", encoding="utf-8"
+            )
+            raw_quest = b'{"quest_1_0000":{},}'
+            (source / "quest_1_0000.json").write_bytes(raw_quest)
             with redirect_stdout(StringIO()):
                 code = import_tables.main(
                     [
@@ -98,11 +105,14 @@ class ImportTablesTest(unittest.TestCase):
                         str(client_manifest),
                         "--server-manifest",
                         str(server_manifest),
+                        "--quest-manifest",
+                        str(quest_manifest),
                     ]
                 )
             self.assertEqual(code, 0)
             self.assertTrue((dest / "building.json").is_file())
             self.assertTrue((dest / "item04.json").is_file())
+            self.assertEqual((dest / "quest_1_0000.json").read_bytes(), raw_quest)
 
 
 if __name__ == "__main__":

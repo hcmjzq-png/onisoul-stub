@@ -72,7 +72,7 @@ categoryGradeCount（建筑 grade/level=any）、eq_greater_than 条件。
 | `politic/mypage/getPlayerProfile` | bundle | `mypageProfileUpdate.cs:239-299`：username/level/country、三种 Point、characterCount/buildingCount/tacticCount/friendCount/raidBossPoint/rank、souls 七色、selfIntroduction.message/三项 habits。纠正旧契约把嵌套的 message、habits、颜色错误平铺到根。取玩家存档，无记录的统计为 0；无排行不伪造 rank。eachKokudaka 仅当前主城。 |
 | `politic/mypage/setSelfIntroduction` | bundle | `mypageSelfIntroduction.confirmCallback` 传 message 与 habits.0/1/2；长度按 defines.self_introduction_message_min/max_length，偏好 ID 按 habit 表，保存后 profile 返回。 |
 | `politic/map/setMapName2`，`getMapData.map.name` | bundle | `WebApiClient.cs:704-711` 的 mapId/mapName；`UserStatus.cs:1301-1332,1371-1404` 从 map.name 读取，none 容器以空表判改名成功。只支持主城 mapId=0，长度按 defines；不将支城旧实现引入。 |
-| `politic/mypage/getLessonStates.states` | bundle | `LessonMissionSimpleStatusManager.cs:66-127`、`LessonMissionSimpleStatus.cs:20-33`，索引数字字符串对应 L/C。枚举 lesson 表，按 lessonsDone 返回；未读不标完成。takeLesson 需要 reward14 等原奖励数据，仍在待办，未用空奖励冒充完成。 |
+| `politic/mypage/getLessonStates.states` | bundle | `LessonMissionSimpleStatusManager.cs:66-127`、`LessonMissionSimpleStatus.cs:20-33`，索引数字字符串对应 L/C。枚举 lesson 表，按 lessonsDone 返回；未读不标完成。2026-11-15 从原表包找到 reward14_lesson（24 行）；takeLesson 的条件和领取事务仍在待办。 |
 | `politic/support_item/getPotions.potions.<id>.amount` | bundle | `PoliticItemInventory.setup/putInItemList`、`PotionTableAccessor.getItemId`，potion.itemID 映射已有 items；不把 initialAmount 字段当免费赠送。全自动用药条目明确回零余额，其余按实际库存返回。恢复公式尚未证实，usePotions 未纳入完成计数。 |
 | `politic/shop/getShopItems.shopItems/recommendedItems` | bundle / 待验证 | `ShopUpdate.cs:57-110,204-210` 要求两张表；条目读 state/isNewBuyable/discount。当前仅列出 isInitialSale=true、无折扣、有正价格且能发放的图纸/消耗品，其他商品不展示。isInitialSale 作为白名单是本模拟服保守策略，未声称复原原服上架/解锁规则。 |
 | `politic/shop/buyShopItem.resources/result` | bundle | `WebApiClient.cs:1036-1046` 请求 shopItemId/index/quantity/storetable；`ShopItemBuild/Support.saleWindowResult` 读取 resources，`DailyMissionScene.cs:440-450` 读取 result 中购买后物品余额。只接受普通 shop_item 表；整套/单件按 isSet/itemIds/quantities；countryshop 通过 shop_item_country 映射本国物品。 |
@@ -81,3 +81,11 @@ categoryGradeCount（建筑 grade/level=any）、eq_greater_than 条件。
 新逻辑对应 `app/business/player_services.py`。商店发放进入现有 items，图纸通过
 getDrafts 可见，消耗品通过 getPotions 可见；保护、介绍、改名跨重登保留。
 没有实现战斗、关卡随机事件、领奖概率、药品恢复、付费扩仓和九项争议玩法。
+
+## 2026-11-15 动态关卡表复核
+
+来源：bundle。关卡索引/区域/奖励动态表及响应层级的新增证据见
+[关卡与战斗分析](analysis/quest-contract-20261115/README.md)。
+本批仅修复服务端表加载与 UTF-8 数据，不新增接口处理器；旧 api_contract.tsv 中的
+quest 扁平字段并非完整协议，后续实现以该复核记录为依据。事件概率、初始进度、
+战斗运算及领取条件仍待验证，不使用占位值替代这些规则。
