@@ -1,0 +1,47 @@
+{
+  "potion": {
+    "potion0000102": {
+      "id": "potion0000102",
+      "name": "POTION_MSG_0000102_NAME",
+      "category": "potion",
+      "uses": [
+        "missionPoint"
+      ],
+      "effects": [
+        100
+      ],
+      "range": [],
+      "initialAmount": 50,
+      "itemID": "item07_0010002",
+      "sortno": 4
+    },
+    "potion0000106": {
+      "id": "potion0000106",
+      "name": "POTION_MSG_0000106_NAME",
+      "category": "potion",
+      "uses": [
+        "politicPoint"
+      ],
+      "effects": [
+        100
+      ],
+      "range": [],
+      "initialAmount": 50,
+      "itemID": "item07_0010006",
+      "sortno": 2
+    },
+    "potion0000801": {
+      "id": "potion0000801",
+      "name": "POTION_MSG_0000801_NAME",
+      "category": "key",
+      "uses": [
+        "key"
+      ],
+      "effects": [],
+      "range": [],
+      "initialAmount": 0,
+      "itemID": "item07_0080001",
+      "sortno": 0
+    }
+  }
+}

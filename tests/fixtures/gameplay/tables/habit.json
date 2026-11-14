@@ -1,0 +1,19 @@
+{
+  "habit": {
+    "habit0000101": {
+      "id": "habit0000101",
+      "category": "none",
+      "name": "MYPAGE_MSG_TENDENCY_KEY00"
+    },
+    "habit0100101": {
+      "id": "habit0100101",
+      "category": "place",
+      "name": "MYPAGE_MSG_TENDENCY_0101"
+    },
+    "habit0100201": {
+      "id": "habit0100201",
+      "category": "place",
+      "name": "MYPAGE_MSG_TENDENCY_0102"
+    }
+  }
+}

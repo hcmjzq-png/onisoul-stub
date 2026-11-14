@@ -10,3 +10,9 @@ reward01_politic.json	reward01_politic	RewardTableAccessor
 reward99_country.json	reward99_country	RewardTableAccessor
 item04.json	item04	ItemsTableAccessor
 navigator.json	navigator	NavigatorTableAccessor
+defines.json	defines	fixture
+habit.json	habit	fixture
+lesson.json	lesson	fixture
+potion.json	potion	fixture
+shop_item.json	shop_item	fixture
+shop_item_country.json	shop_item_country	fixture

@@ -1,0 +1,12 @@
+{
+  "shop_item_country": {
+    "countryshop_00001": {
+      "id": "countryshop_00001",
+      "country01": "item04_0200001"
+    },
+    "countryshop_00002": {
+      "id": "countryshop_00002",
+      "country01": "item04_0200002"
+    }
+  }
+}
