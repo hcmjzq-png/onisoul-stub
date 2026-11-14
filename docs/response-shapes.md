@@ -26,6 +26,7 @@
 | `friend/findFriends` | `FriendListWindow.cs:getFindData` |
 | `friend/getFriends` | `FriendListWindow.cs:getFriendData` |
 | `politic/building/getDrafts` | `UserStatus.cs:setDraftInfo` |
+| `politic/map/setMapName2` | `UserStatus.cs:setMapName`（none 容器分支） |
 | `politic/waterborneTrade/getStatus` | `PoliticMissionProgressList.cs:updateWaterTradeList` |
 | `quest/checkEmergencyQuest` | `EmergencyQuestChecker.cs:sendRequest` |
 | `quest/getQuestCompleteFlags` | `PluginQuestDataManager.cs:onGetStoryProgress` |
@@ -40,23 +41,28 @@
 回调 `PlayerDeck.cs:getCharacters` 只把结果存进 `PlayerDeckCache.Characters`，
 真正的枚举发生在 `QuestDataCache.cs:calcDeckParameter`，因此证据指向后者。
 
-证据变更必须同步重跑校验，这是合并前的强制工序（仓库内没有 CI，客户端源码也
-不入仓，工具无法自动执行）：
+证据格式为 `<文件名>.cs:<方法名>@0x<容器绝对偏移>`。证据变更必须同步重跑
+校验；仓库内没有 CI，客户端源码也不入仓：
 
 ```bash
-python tools/verify_response_shape_evidence.py --source <反编译源码根目录>
-# 期望输出：[shape-evidence] checked=25 failed=0
+python tools/verify_response_shape_evidence.py \
+  --assembly app_unity3d.bin
+# 期望输出：[shape-evidence] checked=26 failed=0
 ```
 
 改一条证据就必须附上这次命令的输出，否则视为未验证。
 
-证据格式固定为 `<文件名>.cs:<方法名>`。可用以下命令对完整反编译源码逐条
-检查文件存在且方法有真实声明，拒绝仅“方法名在文件中出现”的调用点证据：
+如果同时有 PC 反编译源码，可再检查文件与真实方法声明：
 
 ```bash
 python tools/verify_response_shape_evidence.py \
-  --source /path/to/analysis_full/il_csharp/app
+  --source /path/to/analysis_full/il_csharp/app \
+  --assembly app_unity3d.bin
 ```
+
+逐端点判决和证据偏移见 `docs/analysis/response_shapes.tsv`：402 个端点中
+21 个是 bare-map 覆盖端点，381 个走 envelope；另有 5 个 `SCALAR_ROOT_EVIDENCE`
+端点明确保留 envelope 根级标量键。
 
 ## 不是裸映射
 

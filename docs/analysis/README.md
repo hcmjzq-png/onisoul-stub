@@ -41,6 +41,14 @@
 | `verify/untyped_backlog.tsv` | 481 个无类型键的 backlog：可唯一定型 31 / 无 cast 证据 450 |
 | `assembly_manifest.json` | 12 个 PC 程序集的文件名、长度与 SHA-256；二进制不入仓 |
 | `pc-assembly.md` | PE/CLI 结构校验、旧结论更正、可复现反编译命令 |
+| [`il-static-analysis.md`](il-static-analysis.md) | PC IL 静态分析链、偏移口径与重跑命令 |
+| [`il-body-verification.md`](il-body-verification.md) | 25,174 个 method body 的全量严格解码结果 |
+| `key_types.tsv` | IL `unbox.any/castclass` 的键类型表（含 token） |
+| `http_method.tsv` | 402 个端点的 GET/POST 静态归类 |
+| `api_callback_fanout.tsv` | API → responder → `callCallbacks` → 订阅者扇出 |
+| `callback_subscribers.tsv` | `regist` 订阅者、读取键、守卫与类型 |
+| `il_unguarded_reads.tsv` | IL 级无守卫读取全量数据 |
+| `response_shapes.tsv` | 402 个端点的成功响应根形态与证据偏移 |
 
 ## 当前覆盖
 

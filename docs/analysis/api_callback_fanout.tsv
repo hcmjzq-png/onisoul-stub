@@ -1,0 +1,508 @@
+endpoint	webapi_method	responder_source	responder_method	responder_evidence	callback_hub	callback_path	callback_path_evidence	subscriber_count
+admin/inbox/present	forcePresents	method-argument						0
+auction/auctionCardBrowse	getAuctionCards	method-argument						0
+auction/auctionCardBuy	buyAuctionCard	method-argument						0
+auction/auctionCardOffShelf	removeAuctionCard	method-argument						0
+auction/auctionCardOnShelf	postAuctionCard	method-argument						0
+auction/auctionCardSale	getMySellingCards	method-argument	AuctionDataManager::OnGetMySellingCards	AuctionDataManager::OnGetMySellingCards@0x294278				0
+auction/auctionCardSearchArmy	searchAuctionCardByTroop	method-argument						0
+auction/auctionCardSearchFaction	searchAuctionCardByAttribute	method-argument						0
+auction/auctionCardSearchGender	searchAuctionCardBySex	method-argument						0
+auction/auctionCardSearchGrade	searchAuctionCardByGrade	method-argument						0
+auction/auctionCardSearchName	searchAuctionCardByName	method-argument						0
+auction/auctionCardSearchSkill	searchAuctionCardBySkillName	method-argument						0
+auction/auctionResourceBrowse	searchAllResourceFromAuction	method-argument						0
+auction/auctionResourceBuy	buyResourceFromAuction	method-argument						0
+auction/auctionResourceOffShelf	removeAuctionResource	method-argument						0
+auction/auctionResourceOnShelf	postAuctionResource	method-argument						0
+auction/auctionResourceSale	getMySellingResource	method-argument	AuctionDataManager::OnGetMySellingResources	AuctionDataManager::OnGetMySellingResources@0x2951B8				0
+auction/auctionResourceSearch	searchResourceFromAuction	method-argument						0
+auction/auctionStatus	auctionStatus	method-argument	AuctionDataManager::OnAuctionStatus	AuctionDataManager::OnAuctionStatus@0x293E40				0
+auth/createPlayer	createPlayer	method-argument						0
+auth/gameLogin	gameLogin	inline-delegate	WebApiClient/<gameLogin>c__AnonStorey190::<>m__5D	WebApiClient/<gameLogin>c__AnonStorey190::<>m__5D@0x37CE3C				0
+auth/guestLogin	guestLogin	inline-delegate	WebApiClient/<guestLogin>c__AnonStorey193::<>m__60	WebApiClient/<guestLogin>c__AnonStorey193::<>m__60@0x37D018				0
+auth/keepAliveContainer	refreshKeepAliveContainer	method-argument	SessionKeeper/<refreshKeepAliveContainer>c__AnonStorey18A::<>m__4F	SessionKeeper/<refreshKeepAliveContainer>c__AnonStorey18A::<>m__4F@0x37CC54				0
+auth/login	pubLogin	inline-delegate	WebApiClient/<pubLogin>c__AnonStorey18F::<>m__5C	WebApiClient/<pubLogin>c__AnonStorey18F::<>m__5C@0x37CDAC				0
+auth/refreshToken	refreshToken	inline-delegate	BoosterPackScene::<buyCredit>m__5D1	BoosterPackScene::<buyCredit>m__5D1@0x2DB474				0
+auth/refreshToken	refreshToken	inline-delegate	WebApiClient/<refreshToken>c__AnonStorey18E::<>m__5B	WebApiClient/<refreshToken>c__AnonStorey18E::<>m__5B@0x37CD2C				0
+auth/registerName	registerName	method-argument						0
+battle/captchaVsBattle	captchaVsBattle	method-argument						0
+battle/executeBattle	executeBattle	method-argument						0
+battle/executeBattle	executeBattleGiganticRaidBoss	method-argument						0
+battle/executeBattle	executeBattleMonster	method-argument						0
+battle/executeBattle	executeBattleNPC	method-argument						0
+battle/executeBattle	executeBattleOutBreak	method-argument						0
+battle/executeBattle	executeBattlePlayer	method-argument						0
+battle/executeBattle	executeBattleQuest	method-argument						0
+battle/executeBattle	executeBattleRaidBoss	method-argument						0
+battle/executeBattle	executeBattleSiege	method-argument						0
+battle/executeBattle	executeBattleStrategy	method-argument						0
+battle/getRaidBossDetail	getRaidBossDetail	method-argument						0
+battle/getRaidBossEntries	getRaidBossEntries	method-argument	PluginRaidbossDataManager::onGetRaidBossEntries	PluginRaidbossDataManager::onGetRaidBossEntries@0x1FB8DC				0
+battle/getRaidBossEntries	getRaidBossEntries	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FB	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FB@0x3854A0				0
+battle/getRaidBossEntries	getRaidBossEntries	method-argument	QuestHUDController::<setup>m__35C	QuestHUDController::<setup>m__35C@0x2467A8				0
+battle/getRaidBossEntries	getRaidBossEntries	method-argument	RaidBossScene::<createList>m__3C5	RaidBossScene::<createList>m__3C5@0x251A7C				0
+battle/getRaidBossLogs	getRaidBossLogs	method-argument	mypageRasetsu::<init>m__92C	mypageRasetsu::<init>m__92C@0x339DBC				0
+battle/getRivals2	getRivals	method-argument						0
+battle/getSelfRecord	getSelfRecord	method-argument						0
+battle/getTurfWarReplayData	getTurfWarReplayData	method-argument						0
+battle/getVcode	getVcode	method-argument	vsSettingVcodeImage/<loadVcodeImage>c__AnonStorey42C::<>m__9DF	vsSettingVcodeImage/<loadVcodeImage>c__AnonStorey42C::<>m__9DF@0x39A118				0
+battle/getVsBattleLogs	getStrategyBattleLogs	method-argument						0
+battle/getVsBattleLogs	getTurfWarLogs	method-argument						0
+battle/getVsBattleLogs	getVsBattleLogs	method-argument						0
+battle/getVsCountryRecords	getVsCountryRecords	method-argument						0
+battle/getVsReplayData	getVsReplayData	method-argument						0
+battle/removeRaidBossWork	removeRaidBossWork	method-argument						0
+battle/sendRescueRequest	sendRescueRequest	method-argument	RaidBossScene::<helpAppeal>m__3C7	RaidBossScene::<helpAppeal>m__3C7@0x251B8C				0
+common/dedicate	dedicateBuilding	method-argument						0
+common/dedicate	dedicateCharacter	method-argument						0
+common/dedicate	dedicateEquip	method-argument						0
+common/dedicate	dedicateGold	method-argument						0
+common/dedicate	dedicateTactics	method-argument						0
+common/getActionPoints	getActionPoints	method-argument						0
+common/getAnnouncement	getAnnouncement	method-argument						0
+common/getBriefOfNationalPower	getBriefOfNationalPowerSetting	method-argument	DeckSale::<startCall>m__6C9	DeckSale::<startCall>m__6C9@0x2FE3F8				0
+common/getBriefOfNationalPower	getBriefOfNationalPowerSetting	method-argument	MightOfNation::<Start>m__808	MightOfNation::<Start>m__808@0x31C9F4				0
+common/getCharacters	getCharacters	method-argument	DeckConflateCards_Character::<sendRequestGetCharacters>m__638	DeckConflateCards_Character::<sendRequestGetCharacters>m__638@0x2F1A7C				0
+common/getCharacters	getCharacters	method-argument	PlayerDeckCache/<process>c__Iterator7E::<>m__19A	PlayerDeckCache/<process>c__Iterator7E::<>m__19A@0x35F5F4				0
+common/getEquips	getEquips	method-argument	DeckConflateCards_Equip/<setup>c__AnonStorey383::<>m__63C	DeckConflateCards_Equip/<setup>c__AnonStorey383::<>m__63C@0x39000C				0
+common/getEquips	getEquips	method-argument	PlayerDeck::<getEquips>m__9B2	PlayerDeck::<getEquips>m__9B2@0x34CB04				0
+common/getEquips	getEquips	method-argument	vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D::<>m__9EF	vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D::<>m__9EF@0x39A2C4				0
+common/getEventStatuses	getEventStatuses	method-argument	PluginRunner_DoBattleSiege::onGetEventStatuses	PluginRunner_DoBattleSiege::onGetEventStatuses@0x1FC810				0
+common/getEventStatuses	getEventStatuses	method-argument	StatusView/<setupEventInformation>c__AnonStorey2C7::<>m__421	StatusView/<setupEventInformation>c__AnonStorey2C7::<>m__421@0x3878C4				0
+common/getEventStatuses	getEventStatuses	method-argument	Strategy/<onSetup>c__IteratorE1::<>m__445	Strategy/<onSetup>c__IteratorE1::<>m__445@0x36A060				0
+common/getEventStatuses	getEventStatuses	method-argument	StrategySelect::<Start>m__99B	StrategySelect::<Start>m__99B@0x349038				0
+common/getEventStatuses	getEventStatuses	method-argument	giganticRaidBossScene/<Start>c__Iterator12F::<>m__7B9	giganticRaidBossScene/<Start>c__Iterator12F::<>m__7B9@0x373828				0
+common/getLoginStampSheet	getLoginStampSheet	method-argument	mypageLoginStampDialog/<processMenu>c__Iterator147::<>m__858	mypageLoginStampDialog/<processMenu>c__Iterator147::<>m__858@0x3762E8				0
+common/getPlayerCogid	getPlayerCogid	method-argument	Configs/<GetUserInfo>c__AnonStorey168/<GetUserInfo>c__AnonStorey167::<>m__12	Configs/<GetUserInfo>c__AnonStorey168/<GetUserInfo>c__AnonStorey167::<>m__12@0x37BB9C				0
+common/getPlayerEntity	getPlayerEntry	method-argument						0
+common/getPlayerParams	getPlayerParams	method-argument	StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5::<>m__41F	StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5::<>m__41F@0x387A64				0
+common/getPlayerParams	getPlayerParams	method-argument	StatusView/<setupStatus>c__IteratorDF::<>m__41C	StatusView/<setupStatus>c__IteratorDF::<>m__41C@0x369BB0				0
+common/getResources	getResources	method-argument						0
+common/getRevisions	getRevisions	method-argument	TableLoad/<_setup>c__IteratorF0::<>m__4C3	TableLoad/<_setup>c__IteratorF0::<>m__4C3@0x36BCF8				0
+common/getSelectCharacters	getSelectCharacters	method-argument						0
+common/getServerTime	getServerTime	method-argument	Configs/<GetUserInfo>c__AnonStorey168/<GetUserInfo>c__AnonStorey167::<>m__13	Configs/<GetUserInfo>c__AnonStorey168/<GetUserInfo>c__AnonStorey167::<>m__13@0x37BBE8				0
+common/getServerTime	getServerTime	method-argument	SceneResources/<Awake>c__AnonStorey16A::<>m__21	SceneResources/<Awake>c__AnonStorey16A::<>m__21@0x37BE98				0
+common/getServerTime	getServerTime	method-argument	StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5/<resetStatus>c__AnonStorey2C6::<>m__420	StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5/<resetStatus>c__AnonStorey2C6::<>m__420@0x387B2C				0
+common/getShopcredit2	getShopCedit2	method-argument						0
+common/getShopsale	getShopSale	method-argument	PoliticShopSaleManager::onGetShopSaleData	PoliticShopSaleManager::onGetShopSaleData@0x23A094				0
+common/getTactics	getTactics	method-argument	DeckConflateCards_Tactics/<setup>c__AnonStorey386::<>m__642	DeckConflateCards_Tactics/<setup>c__AnonStorey386::<>m__642@0x390190				0
+common/getTactics	getTactics	method-argument	PlayerDeck::<getTactics>m__9B1	PlayerDeck::<getTactics>m__9B1@0x34CACC				0
+common/getTactics	getTactics	method-argument	vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D::<>m__9EE	vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D::<>m__9EE@0x39A1F4				0
+common/increasePlayerLevel	increasePlayerLevel	method-argument	StatusView::<sendlevelup>m__41A	StatusView::<sendlevelup>m__41A@0x2658B8				0
+common/periodicInquiry	periodicInquiry	inline-delegate	PeriodicRounder/<refresh>c__AnonStorey239::<>m__193	PeriodicRounder/<refresh>c__AnonStorey239::<>m__193@0x381E34	PeriodicRounder	PeriodicRounder/<refresh>c__AnonStorey239::<>m__193 -> PeriodicRounder::callCallbacks	PeriodicRounder/<refresh>c__AnonStorey239::<>m__193@0x381E34 -> PeriodicRounder::callCallbacks@0x1F7BB4	4
+common/periodicInquiry	periodicInquiry	inline-delegate	WebApiClient/<periodicInquiry>c__AnonStorey194::<>m__61	WebApiClient/<periodicInquiry>c__AnonStorey194::<>m__61@0x37D098				0
+common/recordChat	recordChat	method-argument						0
+common/solvePlayerLevelCap	solvePlayerLevelCap	method-argument	PoliticMissionManager/<solveLevelCap>c__AnonStorey286::<>m__2F2	PoliticMissionManager/<solveLevelCap>c__AnonStorey286::<>m__2F2@0x385370				0
+common/stampLoginSheet	stampLoginSheet	method-argument	PoliticFSMLogin::<login>m__2AF	PoliticFSMLogin::<login>m__2AF@0x21FEAC				0
+community/bbs/closeBbs	closeBBS	method-argument						0
+community/bbs/closeThread	closeBBSThread	method-argument						0
+community/bbs/createBbs	createBBS	method-argument						0
+community/bbs/createThread	createBBSThread	method-argument						0
+community/bbs/deleteBbs	deleteBBS	method-argument						0
+community/bbs/deleteComment	deleteBBSThreadComment	method-argument						0
+community/bbs/deleteThread	deleteBBSThread	method-argument						0
+community/bbs/getBbsId	getBBSId	method-argument						0
+community/bbs/getBbsList	getBBSList	method-argument	HTMLBbsMediator/<getBbsList>c__AnonStorey1AC::<>m__B1	HTMLBbsMediator/<getBbsList>c__AnonStorey1AC::<>m__B1@0x37E2D0				0
+community/bbs/infoComment	getBBSInfoThreadComment	method-argument						0
+community/bbs/infoThread	getBBSInfoThread	method-argument						0
+community/bbs/listComment	getBBSThreadCommentList	method-argument						0
+community/bbs/listThread	getBBSThreadList	method-argument						0
+community/bbs/openBbs	openBBS	method-argument						0
+community/bbs/openThread	openBBSThread	method-argument						0
+community/bbs/postComment	postBBSThreadComment	method-argument						0
+community/libs/bbsSession	getBBSSession	method-argument	BoardBody/<reqWebBbsSession>c__AnonStorey34D::<>m__599	BoardBody/<reqWebBbsSession>c__AnonStorey34D::<>m__599@0x38D034				0
+community/libs/bbsSession	getBBSSession	method-argument	HTMLBbsMediator/<callBbsAPI>c__AnonStorey19B/<callBbsAPI>c__AnonStorey19C::<>m__A1	HTMLBbsMediator/<callBbsAPI>c__AnonStorey19B/<callBbsAPI>c__AnonStorey19C::<>m__A1@0x37E740				0
+dailymission/exchangeDailyMissionItem	exchangeDailyMissionItem	method-argument						0
+dailymission/getDailyMission	getDailyMission	method-argument	DailyMissionScene/<Start>c__AnonStorey36F::<>m__5E9	DailyMissionScene/<Start>c__AnonStorey36F::<>m__5E9@0x38EB2C				0
+dailymission/getDailyMissionReward	getDailyMissionReward	method-argument						0
+dailymission/getPoint	getActivePt	method-argument	DailyMissionScene::<refreshActivePt>m__5E8	DailyMissionScene::<refreshActivePt>m__5E8@0x2DEB48				0
+debug/addCollections	addCollections	method-argument						0
+debug/addItems	debug_addItems	method-argument						0
+debug/clearBuildings	debug_clearBuildings	method-argument	PoliticDebugMenu::<requestClearBuilding>m__267	PoliticDebugMenu::<requestClearBuilding>m__267@0x2158F8				0
+debug/clearLastMigrateTime	devClearMigrateTime	method-argument						0
+debug/debugAccelerateProduceTask	debug_AccelerateProduceTask	method-argument	PoliticDebugMenu::<OnGUI>m__25F	PoliticDebugMenu::<OnGUI>m__25F@0x2157A8				0
+debug/debugAddBuildingExp	debug_AddBuildingExp	method-argument	PoliticDebugMenu::<OnGUI>m__25E	PoliticDebugMenu::<OnGUI>m__25E@0x2157A4				0
+debug/debugCreateCharacter	debugCreateCharacter	method-argument						0
+debug/debugCreateEquip	debugCreateEquip	method-argument						0
+debug/debugCreateQuestEncount	<>m__62	field						0
+debug/debugCreateRaidBossWork	debugCreateRaidBoss	method-argument						0
+debug/debugDeleteAllCharacter	debug_DelteAllCharacter	method-argument	PoliticDebugMenu::<OnGUI>m__262	PoliticDebugMenu::<OnGUI>m__262@0x2157D8				0
+debug/debugDeleteAllEquip	debug_DelteAllEquip	method-argument						0
+debug/debugGetQuestCompleteFlags	debug_getQuestCompleteFlags	method-argument						0
+debug/debugGradeUpBuildings	debug_GradeUpBuildings	method-argument	PoliticDebugMenu::<OnGUI>m__260	PoliticDebugMenu::<OnGUI>m__260@0x2157AC				0
+debug/debugIncreasePlayerLevel	debug_increasePlayerLevel	method-argument	PoliticDebugMenu::<OnGUI>m__266	PoliticDebugMenu::<OnGUI>m__266@0x2158A8				0
+debug/debugLogin	debugLogin	inline-delegate	SessionKeeper/<debugLogin>c__AnonStorey185::<>m__45	SessionKeeper/<debugLogin>c__AnonStorey185::<>m__45@0x37C8A4				0
+debug/debugLogin	debugLogin	inline-delegate	WebApiClient/<debugLogin>c__AnonStorey191::<>m__5E	WebApiClient/<debugLogin>c__AnonStorey191::<>m__5E@0x37CF08				0
+debug/debugLoginCog	debugLoginCog	inline-delegate	WebApiClient/<debugLoginCog>c__AnonStorey192::<>m__5F	WebApiClient/<debugLoginCog>c__AnonStorey192::<>m__5F@0x37CF98				0
+debug/debugOpenQuest	debug_openQuest	method-argument						0
+debug/debugRankingNationalPowerAddScoreWithSwitch	devRankingScoreSwitch	method-argument						0
+debug/debugRentalNavigatorBarelyExpiration	debug_setRentalNavigatorBarelyExpiration	method-argument						0
+debug/debugResetCreditStepCount	debugResetBpStepCount	method-argument						0
+debug/dedicate	debug_addDedicateScore	method-argument						0
+debug/devLogin	devLogin	inline-delegate,method-argument	SessionKeeper/<devLogin>c__AnonStorey184::<>m__43	SessionKeeper/<devLogin>c__AnonStorey184::<>m__43@0x37C7B8				0
+debug/devLogin	devLogin	inline-delegate,method-argument	WebApiClient/<devLogin>c__AnonStorey18D::<>m__5A	WebApiClient/<devLogin>c__AnonStorey18D::<>m__5A@0x37CCC8				0
+debug/forceCompleteQuest	forceCompleteQuest	method-argument						0
+debug/forceFeedbackFriendOffer	debug_forceFeedbackFriendOffer	method-argument						0
+debug/forceProgressGiganticChain	debug_ForceProgressGiganticChain	method-argument						0
+debug/forceProgressGiganticPhase	debug_ForceProgressGiganticPhase	method-argument						0
+debug/forceProgressQuest	forceProgressQuest	method-argument						0
+debug/resetDedication	debug_resetDedicateScore	method-argument	MightOfNationDialog/<OnGUI>c__AnonStorey3E3::<>m__811	MightOfNationDialog/<OnGUI>c__AnonStorey3E3::<>m__811@0x3967A0				0
+debug/resetPlayer	resetPlayer	method-argument	PoliticDebugMenu::<debugResetPlayer>m__268	PoliticDebugMenu::<debugResetPlayer>m__268@0x21590C				0
+debug/resetQuest	resetQuest	method-argument	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__39E	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__39E@0x3867D0				0
+debug/setQuestStep	setQuestStep	method-argument						0
+debug/withdrawTurfWar	debug_withdrawTurfWar	method-argument						0
+deck/enlargeCharacterLimit	enlargeCharacterLimit	method-argument						0
+deck/extendCharacterStore	enlargeStorageLimit	method-argument						0
+deck/getAvatarCharacters	getAvatarCharacters	method-argument						0
+deck/getCharacterStoreInfo	getCharacterStorageInfo	method-argument	DeckScene/<getStorageInfo>c__AnonStorey3B5::<>m__6F7	DeckScene/<getStorageInfo>c__AnonStorey3B5::<>m__6F7@0x39519C				0
+deck/getCharactersInStore	getStorageCharacters	method-argument	DeckConflateCards_StrageCharacter/<setup>c__AnonStorey385::<>m__640	DeckConflateCards_StrageCharacter/<setup>c__AnonStorey385::<>m__640@0x3900E8				0
+deck/getDeckBonus	getDeckBonus	method-argument	BattleEventList_Intro/BonusIcon/<innerExecute>c__AnonStorey33F::<>m__579	BattleEventList_Intro/BonusIcon/<innerExecute>c__AnonStorey33F::<>m__579@0x38C670				0
+deck/getDeckBonus	getDeckBonus	method-argument	DeckScene::<OnEnable>m__6F5	DeckScene::<OnEnable>m__6F5@0x301D98				0
+deck/getDeckBonus	getDeckBonus	method-argument	vsSetting/<executeSkipBattle>c__Iterator158::<>m__9D4	vsSetting/<executeSkipBattle>c__Iterator158::<>m__9D4@0x378D18				0
+deck/getDeckBonus	getDeckBonus	method-argument	vsSetting::<Start>m__9CD	vsSetting::<Start>m__9CD@0x34EDA8				0
+deck/getDecks	getDecks	method-argument	DeckScene::<OnEnable>m__6F6	DeckScene::<OnEnable>m__6F6@0x301F44				0
+deck/getDecks	getDecks	method-argument	PlayerDeck::<getPlayerDeck>m__9B3	PlayerDeck::<getPlayerDeck>m__9B3@0x34CB34				0
+deck/getDecks	getDecks	method-argument	PlayerDeckCache/<process>c__Iterator7E::<>m__198	PlayerDeckCache/<process>c__Iterator7E::<>m__198@0x35F5CC				0
+deck/getDecks	getDecks	method-argument	PluginRunner_DoBattleSiege::onGetDecks	PluginRunner_DoBattleSiege::onGetDecks@0x1FC2C4				0
+deck/getDecks	getDecks	method-argument	QuestDataCache/<process>c__IteratorB5::<>m__348	QuestDataCache/<process>c__IteratorB5::<>m__348@0x364628				0
+deck/getDecks	getDecks	method-argument	Strategy/<setupDeck>c__AnonStorey2CF::<>m__44C	Strategy/<setupDeck>c__AnonStorey2CF::<>m__44C@0x387F44				0
+deck/getDecks	getDecks	method-argument	StrategySelect::<setup>m__99C	StrategySelect::<setup>m__99C@0x349074				0
+deck/getDecks	getDecks	method-argument	siegeBriefMenu::<siegeDeck>m__993	siegeBriefMenu::<siegeDeck>m__993@0x34871C				0
+deck/getFormation	getFormation	method-argument						0
+deck/getProtectedCharacterIds	getProtectCharacters	method-argument	DeckScene::<OnEnable>m__6F3	DeckScene::<OnEnable>m__6F3@0x301C80				0
+deck/getProtectedEquipIds	getProtectEquips	method-argument	DeckScene::<OnEnable>m__6F4	DeckScene::<OnEnable>m__6F4@0x301D0C				0
+deck/gradeUpCharacter	characterGradeUp	method-argument						0
+deck/gradeUpEquip	equipGradeUp	method-argument						0
+deck/inheritCharacterSkill	skillAccessionCharacters	method-argument						0
+deck/powerUpCharacter	characterPowerUp	method-argument						0
+deck/powerUpEquip	equipPowerUp	method-argument						0
+deck/sellCharacters	sellCharacters	method-argument						0
+deck/sellEquips	sellEquips	method-argument						0
+deck/sellTactics	sellTactics	method-argument						0
+deck/setCharacterProtect	setProtectCharacters	method-argument						0
+deck/setCharacterVoice	setCharacterVoice	method-argument						0
+deck/setDecks	setDecks	method-argument						0
+deck/setEquipProtect	setProtectEquips	method-argument						0
+deck/setFormation	setFormation	method-argument						0
+deck/setSkillSlot	setSkillSlot	method-argument						0
+deck/setSkillcoins	setSkillcoins	method-argument						0
+deck/transferStoreCharacters	moveStorageCharacter	method-argument						0
+depletionmission/drawDepletionItem	DrawDepletionMission	method-argument	DrawLotter::OnDrawCallback	DrawLotter::OnDrawCallback@0x2DF2E8				0
+depletionmission/exchangeDepletionPoint	ExchangeDepletionPoint	method-argument						0
+depletionmission/getDepletionMission	getDepletionMission	method-argument	DailyMissionTab::OnDrawSystemCallBack	DailyMissionTab::OnDrawSystemCallBack@0x2DEC9C				0
+friend/building/getFriendProductsByBuilding	getFriendProductsByBuilding	method-argument						0
+friend/cancelFriendOffer	cancelFriendOffer	method-argument						0
+friend/dissolutionFriend	dissolutionFriend	method-argument						0
+friend/feedbackFriendOffer	feedbackFriendOffer	method-argument						0
+friend/findFriends	findFriends	method-argument						0
+friend/findFriendsAndSend	getFindFriendsAndSend	method-argument						0
+friend/getFriendMap	getFriendMap	method-argument						0
+friend/getFriendMapData	getFriendMapData	method-argument						0
+friend/getFriendMapData2	getFriendMapData	method-argument						0
+friend/getFriendProfile	getFriendProfile	method-argument						0
+friend/getFriends	getFriends	method-argument						0
+friend/getVisitFriendLogs	getVisitFriendLogs	method-argument	mypageRecord::<getHelpLogs>m__934	mypageRecord::<getHelpLogs>m__934@0x33B5FC				0
+friend/getVisitFriendLogs	getVisitFriendLogs	method-argument	mypageRecord::<getVisitFriendLogs>m__932	mypageRecord::<getVisitFriendLogs>m__932@0x33B58C				0
+friend/sendFriendOffer	sendFriendOffer	method-argument						0
+friend/setGuestMap	setGuestMap	method-argument						0
+friend/task/accelerateFriendProduceTask	accelerateFriendProduceTask	method-argument						0
+friend/task/completeFriendTasks	completeFriendTask	method-argument						0
+friend/updateFriendData	updateFriendData	method-argument	FriendConfirmationWindow::<doInvoke>m__765	FriendConfirmationWindow::<doInvoke>m__765@0x309BAC				0
+friend/updateFriendData	updateFriendData	method-argument	FriendWindowControll/<startFriendWindow>c__AnonStorey3C9::<>m__79F	FriendWindowControll/<startFriendWindow>c__AnonStorey3C9::<>m__79F@0x395C90				0
+friend/updateFriendData	updateFriendData	method-argument	HTMLBbsMediator/<updateFriendData>c__AnonStorey1B1::<>m__B5	HTMLBbsMediator/<updateFriendData>c__AnonStorey1B1::<>m__B5@0x37E5C4				0
+friend/visitFriendMap	visitFriendMap	method-argument						0
+giganticRaidBoss/entryGiganticRaidBoss	entryGiganticRaidBoss	method-argument	giganticRaidBossScene/<Start>c__Iterator12F::<>m__7BA	giganticRaidBossScene/<Start>c__Iterator12F::<>m__7BA@0x373874				0
+giganticRaidBoss/getGiganticRaidBossBattleResult	getGiganticRaidBossBattleResult	method-argument						0
+giganticRaidBoss/getGiganticRaidBossEventResult	getGiganticRaidBossEventResult	method-argument	GiganticRaidBossResultRenderer/<load>c__AnonStorey19A::<>m__88	GiganticRaidBossResultRenderer/<load>c__AnonStorey19A::<>m__88@0x37D384				0
+giganticRaidBoss/getGiganticRaidBossEventResult	getGiganticRaidBossEventResultLog	method-argument	GiganticRaidBossResultRenderer/<load>c__AnonStorey19A::<>m__87	GiganticRaidBossResultRenderer/<load>c__AnonStorey19A::<>m__87@0x37D35C				0
+giganticRaidBoss/getGiganticRaidBossInformation	getGiganticRaidBossInfo	method-argument	giganticRaidBossScene/<gotoBattle>c__AnonStorey3CD::<>m__7BC	giganticRaidBossScene/<gotoBattle>c__AnonStorey3CD::<>m__7BC@0x395FDC				0
+giganticRaidBoss/getGiganticRaidBossInformation	getGiganticRaidBossInfo	method-argument	giganticRaidBossScene::<requestInformationAPI>m__7B6	giganticRaidBossScene::<requestInformationAPI>m__7B6@0x30F920				0
+giganticRaidBoss/getGiganticRaidBossInformation	getGiganticRaidBossInfo	method-argument	giganticRaidBossScene::<setup>m__7B4	giganticRaidBossScene::<setup>m__7B4@0x30F7C8				0
+inbox/getParcels	getParcels	method-argument						0
+inbox/resolveParcels	resolveParcels	method-argument						0
+invitation/getMyCode	getMyInvitationCode	method-argument	mypageInvitation::<getInvitationCode>m__84C	mypageInvitation::<getInvitationCode>m__84C@0x32EA8C				0
+invitation/getPlayer	registerInvitationCode	method-argument						0
+mailbox/deleteMails	deleteMails	method-argument						0
+mailbox/getMailBody	getMailBody	method-argument						0
+mailbox/getMailHeaders	getMailHeaders	method-argument						0
+mailbox/sendMails	sendMails	method-argument						0
+navigator/activateNavigator	activateNavigator	method-argument						0
+navigator/getNavigatorDetails	getNavigatorDetails	method-argument						0
+navigator/getNavigators	getNavigators	method-argument						0
+navigator/getUsableNavigators	getUsableNavigators	method-argument	NavigatorChangeEnv/<getUsableNavigator>c__AnonStorey413::<>m__957	NavigatorChangeEnv/<getUsableNavigator>c__AnonStorey413::<>m__957@0x3991C8				0
+navigator/hireNavigator	hireNavigator	method-argument						0
+netCafe/exchangeNpoint	exchangeNetCafeNpoint	method-argument	onikujiNetCafeExchangeDialog::<exchangeNPoint>m__97D	onikujiNetCafeExchangeDialog::<exchangeNPoint>m__97D@0x345C7C				0
+plugin/addPluginLog	addPluginLog	method-argument						0
+plugin/buyPluginTime	buyPluginTime	method-argument						0
+plugin/getPluginData	getPluginData	method-argument	PluginTaskManager::OnGetServerData	PluginTaskManager::OnGetServerData@0x20184C				0
+plugin/getPluginData	getPluginData	method-argument	PoliticButton/<attachPluginIcon>c__Iterator8B::<>m__255	PoliticButton/<attachPluginIcon>c__Iterator8B::<>m__255@0x360EB0				0
+plugin/getPluginData	getPluginData	method-argument	PoliticSFButtons/<attachPluginIcon>c__Iterator9D::<>m__30D	PoliticSFButtons/<attachPluginIcon>c__Iterator9D::<>m__30D@0x3620D8				0
+plugin/getPluginLog	getPluginLog	method-argument	PluginLogManager::<requestLogData>m__19D	PluginLogManager::<requestLogData>m__19D@0x1F8944				0
+plugin/setPluginData	setPluginData	method-argument						0
+politic/boosterPack/buy	buy	method-argument						0
+politic/boosterPack/buyWithItem	buyWithItem	method-argument						0
+politic/boosterPack/getRemains	getRemains	method-argument	BoosterPackScene::<Start>m__5D0	BoosterPackScene::<Start>m__5D0@0x2DB310				0
+politic/building/conflateBuilding	conflateBuilding	method-argument						0
+politic/building/deployBuilding	deployMapBuilding	method-argument						0
+politic/building/getBuildCounts	getBuildCounts	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FA	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FA@0x3853D0				0
+politic/building/getBuildingFabrics	getBuildingFabrics	method-argument						0
+politic/building/getBuildingLevels	getBuildingLevels	method-argument						0
+politic/building/getBuildings	getMapBuildings	method-argument						0
+politic/building/getDrafts	getMapDrafts	method-argument	PoliticDebugConstructionMenu::<setup>m__25A	PoliticDebugConstructionMenu::<setup>m__25A@0x2144AC				0
+politic/building/getDrafts	getMapDrafts	method-argument	PoliticFSMConstructionMenu::<menuWait>m__294	PoliticFSMConstructionMenu::<menuWait>m__294@0x21D4B8				0
+politic/building/getDrafts	getMapDrafts	method-argument	PoliticFSMShop/<menuWait>c__AnonStorey280::<>m__2CC	PoliticFSMShop/<menuWait>c__AnonStorey280::<>m__2CC@0x385058				0
+politic/building/getDrafts	getMapDrafts	method-argument	Shop::<OnShopButtonClicked>m__3D5	Shop::<OnShopButtonClicked>m__3D5@0x255BDC				0
+politic/building/getHarvestCounts	getHarvestCounts	method-argument						0
+politic/building/getProductsByBuilding	getProductsByBuilding	method-argument						0
+politic/building/levelUpBuilding	levelUpBuilding	method-argument						0
+politic/building/levelUpBuildingCollectively	levelUpBuildingCollectively	method-argument						0
+politic/building/levelUpBuildings	levelUpBuildings	method-argument						0
+politic/building/putInBuildings	putMapBuildings	method-argument						0
+politic/building/raiseBuildingEventOfBattle	raiseBuildingEventOfBattle	method-argument	Politic/<resetMap>c__AnonStorey24E::<>m__200	Politic/<resetMap>c__AnonStorey24E::<>m__200@0x38288C				0
+politic/building/resolveBuildingEvent	resolveBuilding	method-argument						0
+politic/edict/changeState	changeEdictMissionState	method-argument						0
+politic/edict/getMissionsInProgress	getEdictMissionsInProgress	method-argument	PluginPoliticDataManager::<getPoliticMissionInfo>m__1A4	PluginPoliticDataManager::<getPoliticMissionInfo>m__1A4@0x1F938C				0
+politic/edict/getMissionsInProgress	getEdictMissionsInProgress	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287/<phaseInit>c__AnonStorey288::<>m__302	PoliticMissionProgressList/<phaseInit>c__AnonStorey287/<phaseInit>c__AnonStorey288::<>m__302@0x3855B8				0
+politic/edict/raiseMission	raiseEdictMission	method-argument	PluginPoliticDataManager/<checkRaiseEdictMission>c__AnonStorey23C::<>m__1A6	PluginPoliticDataManager/<checkRaiseEdictMission>c__AnonStorey23C::<>m__1A6@0x381F4C				0
+politic/edict/raiseMission	raiseEdictMission	method-argument	PoliticMissionManager/<checkRaiseEdictMission>c__AnonStorey285::<>m__2F1	PoliticMissionManager/<checkRaiseEdictMission>c__AnonStorey285::<>m__2F1@0x3852D4				0
+politic/edict/setWorkingValue	setEdictMissionWorkingValue	method-argument						0
+politic/errantry/call3	callErrantry	method-argument						0
+politic/errantry/getStatus3	getStatusAllErrantry	method-argument	PluginPoliticDataManager::<getTradeInfoAll>m__1A3	PluginPoliticDataManager::<getTradeInfoAll>m__1A3@0x1F9360				0
+politic/errantry/getStatus3	getStatusAllErrantry	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FC	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FC@0x3854B8				0
+politic/errantry/receive3	recieveErrantry	method-argument						0
+politic/errantry/send3	sendErrantry	method-argument						0
+politic/fixMapProduct	fixMapProduct	method-argument	PoliticDebugMenu::<debug_fixmap>m__269	PoliticDebugMenu::<debug_fixmap>m__269@0x215914				0
+politic/kokugi/addPoint	addKokugiPoint	method-argument						0
+politic/kokugi/develop	develop	method-argument						0
+politic/kokugi/getStatus	getStatus	method-argument	KokugiScene/<listupInvokedIds>c__Iterator134::<>m__7CF	KokugiScene/<listupInvokedIds>c__Iterator134::<>m__7CF@0x374284				0
+politic/kokugi/getStatus	getStatus	method-argument	KokugiScene/<updatePageItems>c__Iterator135::<>m__7D1	KokugiScene/<updatePageItems>c__Iterator135::<>m__7D1@0x374548				0
+politic/lottery/getSouls	getSouls	method-argument	onikujiWork/<loadSoul>c__AnonStorey420::<>m__985	onikujiWork/<loadSoul>c__AnonStorey420::<>m__985@0x399688				0
+politic/lottery/lot	lot	method-argument						0
+politic/map/cleanup	cleanupUserData	method-argument	TitleRestoreUserData::<setup>m__4C5	TitleRestoreUserData::<setup>m__4C5@0x289AD8				0
+politic/map/getBackgrounds	getBackgrounds	method-argument	mypageBgSelectWindow::<makeBgList>m__835	mypageBgSelectWindow::<makeBgList>m__835@0x3281A4				0
+politic/map/getMap	getMap	method-argument						0
+politic/map/getMapData	getMapData	method-argument	PluginPoliticDataManager/<getMapData>c__AnonStorey23B::<>m__1A5	PluginPoliticDataManager/<getMapData>c__AnonStorey23B::<>m__1A5@0x381F08				0
+politic/map/getMapData	getMapData	method-argument	Politic/<resetMap>c__AnonStorey250::<>m__202	Politic/<resetMap>c__AnonStorey250::<>m__202@0x38293C				0
+politic/map/getMapData	getMapData	method-argument	Politic::<sendRequestGetMapData>m__1FE	Politic::<sendRequestGetMapData>m__1FE@0x205FD4				0
+politic/map/relocateEnded	relocateBuildings	method-argument						0
+politic/map/setBackground	setBackground	method-argument						0
+politic/map/setMapName	setMapName	method-argument						0
+politic/map/setMapName2	setMapName	method-argument						0
+politic/map/switchMap	switchMap	method-argument						0
+politic/mission/changeState	changePoliticMissionState	method-argument						0
+politic/mission/getMissionsInProgress	getPoliticMissionsInProgress	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__301	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__301@0x38553C				0
+politic/mission/getStatesFromAllMissions	getStatesFromAllPoliticMissions	method-argument	LessonMissionSimpleStatusManager/<setup>c__Iterator137::<>m__7D8	LessonMissionSimpleStatusManager/<setup>c__Iterator137::<>m__7D8@0x37488C				0
+politic/mission/getStatesFromAllMissions	getStatesFromAllPoliticMissions	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FE	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FE@0x385504				0
+politic/mission/setWorkingValue	setPoliticMissionWorkingValue	method-argument						0
+politic/mypage/claimReward	claimReward	method-argument						0
+politic/mypage/getArtifactSeries	getArtifactSeries	method-argument						0
+politic/mypage/getArtifactSeriesReward	getArtifactSeriesReward	method-argument						0
+politic/mypage/getCharacterCollection	getCharacterCollection	method-argument	mypageLibrary::<init>m__855	mypageLibrary::<init>m__855@0x331D14				0
+politic/mypage/getCredit2Logs	getCredit2Logs	method-argument						0
+politic/mypage/getCreditLogs	getCreditLogs	method-argument						0
+politic/mypage/getEventcodeLogs	getEventcodeLogs	method-argument						0
+politic/mypage/getJewelSeries	getJewelSeries	method-argument						0
+politic/mypage/getJewelSeriesReward	getJewelSeriesReward	method-argument						0
+politic/mypage/getLessonStates	getLessonStates	method-argument	LessonMissionSimpleStatusManager/<setup>c__Iterator137::<>m__7D7	LessonMissionSimpleStatusManager/<setup>c__Iterator137::<>m__7D7@0x374860				0
+politic/mypage/getMigratePlanCountryStatus	getMigratePlanCountryStatus	method-argument						0
+politic/mypage/getMigratePlansStatus	getMigratePlanStatus	method-argument	mypageEmigrateUpdate::<setEmigrate>m__848	mypageEmigrateUpdate::<setEmigrate>m__848@0x32E5C0				0
+politic/mypage/getNineGridInfo	getNineGridInfo	method-argument	NineGridDataManager::OnGetNineGridInfo	NineGridDataManager::OnGetNineGridInfo@0x321E8C				0
+politic/mypage/getPlayerProfile	getPlayerProfile	method-argument	mypageCastleTownUpdate::<load>m__83A	mypageCastleTownUpdate::<load>m__83A@0x3291D4				0
+politic/mypage/getPlayerProfile	getPlayerProfile	method-argument	mypageProfileUpdate::<load>m__85C	mypageProfileUpdate::<load>m__85C@0x333BFC				0
+politic/mypage/getPlayerRecords	getPlayerRecords	method-argument	mypageRecordUpdate::<load>m__936	mypageRecordUpdate::<load>m__936@0x33BECC				0
+politic/mypage/migrate	migrate	method-argument						0
+politic/mypage/playNineGridGacha	playGacha	method-argument	NineGridDataManager::OnPlayGacha	NineGridDataManager::OnPlayGacha@0x321EE0				0
+politic/mypage/setSelfIntroduction	setSelfIntroduction	method-argument						0
+politic/mypage/takeLesson	takeLesson	method-argument						0
+politic/mypage/useEventcode	useEventcode	method-argument						0
+politic/shop/buyBackgroundItem	buyBackgroundItem	method-argument						0
+politic/shop/buyShopItem	buyShopItem	method-argument						0
+politic/shop/buyShopItemCredit	buyShopItemCredit	method-argument						0
+politic/shop/buyShopItemFromNationalPower	buyShopItemFromNationalPower	method-argument						0
+politic/shop/getBackgroundItems	getBackgroundItems	method-argument						0
+politic/shop/getShopItems	getShopItems	method-argument						0
+politic/shop/getShopItemsCredit	getShopItemsCredit	method-argument						0
+politic/shop/getShopItemsFromNationalPower	getShopItemsFromNationalPower	method-argument	ShopUpdateNationalPower/<load>c__AnonStorey2B0::<>m__3DE	ShopUpdateNationalPower/<load>c__AnonStorey2B0::<>m__3DE@0x386ECC				0
+politic/shop/sellBuildings	sellBuildings	method-argument						0
+politic/support_item/getPotions	getPotions	method-argument	BoosterPack_Work::<Start>m__5DA	BoosterPack_Work::<Start>m__5DA@0x2DCB80				0
+politic/support_item/getPotions	getPotions	method-argument	DailyMissionScene::<processPotions>m__5E7	DailyMissionScene::<processPotions>m__5E7@0x2DE9F8				0
+politic/support_item/getPotions	getPotions	method-argument	DeckUseItem::<startCall>m__74C	DeckUseItem::<startCall>m__74C@0x305F4C				0
+politic/support_item/getPotions	getPotions	method-argument	PoliticItemInventory::<setup>m__2E1	PoliticItemInventory::<setup>m__2E1@0x229EA8				0
+politic/support_item/getPotions	getPotions	method-argument	QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B::<>m__357	QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B::<>m__357@0x386138				0
+politic/support_item/getPotions	getPotions	method-argument	QuestScriptCommand/<checkQuestActionPoint>c__IteratorCC::<>m__378	QuestScriptCommand/<checkQuestActionPoint>c__IteratorCC::<>m__378@0x367B30				0
+politic/support_item/getPotions	getPotions	method-argument	SimpleInventoryDialog/<processPotions>c__AnonStorey2B6::<>m__3F6	SimpleInventoryDialog/<processPotions>c__AnonStorey2B6::<>m__3F6@0x387320				0
+politic/support_item/useDopingItem	useDopingItemForCharacter	method-argument						0
+politic/support_item/useDopingRemoveItem	useDopingRemoveItemForCharacter	method-argument						0
+politic/support_item/usePotions	usePotion	method-argument						0
+politic/support_item/useSkillPotion	useDopingSkillItemForCharacter	method-argument						0
+politic/task/accelerateProduceTask	accelerateProduceTask	method-argument						0
+politic/task/cancelTasks	cancelTask	method-argument						0
+politic/task/cancelTasks	cancelTasks	method-argument						0
+politic/task/completeTasks	completeTask	method-argument						0
+politic/task/completeTasks	completeTasks	method-argument						0
+politic/task/getTasksInCurrentMap	getMapTasks	method-argument						0
+politic/task/progressBuildTask	progressBuildTask	method-argument						0
+politic/task/submitBuildAndComplete	submitBuildAndComplete	method-argument						0
+politic/task/submitBuildTask	sumbitBuildTask	method-argument						0
+politic/task/submitBulkBuildAndComplete	submitBulkBuildAndComplete	method-argument						0
+politic/task/submitBulkProduceTasks	submitBulkProduceTasks	method-argument						0
+politic/task/submitProduceTask	sumbitProduceTask	method-argument						0
+politic/task/submitSerialBuildAndComplete	submitSerialBuildAndComplete	method-argument						0
+politic/task/submitSerialBuildTask	sumbitSerialBuildTask	method-argument						0
+politic/waterborneTrade/call	callWaterTrade	method-argument						0
+politic/waterborneTrade/getFleet	getFleetWaterTrade	method-argument						0
+politic/waterborneTrade/getFriendTraders	getFriendsWaterTrade	method-argument	PoliticFSMWaterTradeEntry::<getFriendInfo>m__2D5	PoliticFSMWaterTradeEntry::<getFriendInfo>m__2D5@0x226238				0
+politic/waterborneTrade/getStatus	getStatusAllWaterTrade	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FD	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FD@0x3854F0				0
+politic/waterborneTrade/receive	recieveWaterTrade	method-argument						0
+politic/waterborneTrade/send	sendWaterTrade	method-argument						0
+politic/waterborneTrade/sendWithFriends	sendWaterTradeWithFriends	method-argument						0
+quest/checkCompleteQuestEx	checkCompleteQuest	method-argument						0
+quest/checkEmergencyQuest	getEmergencyQuestTimes	method-argument	EmergencyQuestChecker::<sendRequest>m__332	EmergencyQuestChecker::<sendRequest>m__332@0x241430				0
+quest/clearObstacle	clearObstacle	method-argument						0
+quest/executeQuestEx	executeQuest	method-argument						0
+quest/executeQuestEx2	executeQuestEx2	method-argument						0
+quest/getAutoStep	getAutoStep	method-argument						0
+quest/getChapterData	getQuestChapterData	method-argument						0
+quest/getQuestBossPunish	getQuestBossPunish	method-argument						0
+quest/getQuestCompleteFlags	getQuestCompleteFlags	method-argument						0
+quest/getQuestEncount	getQuestEncount	method-argument	QuestScriptCommand/<startQuest>c__IteratorBD::<>m__36A	QuestScriptCommand/<startQuest>c__IteratorBD::<>m__36A@0x365B7C				0
+quest/getQuestEncountWorks	getQuestEncountWorks	method-argument						0
+quest/getQuestProgress	getQuestProgress	method-argument	PluginRunner_DoDreamSpace::onQuestProgress	PluginRunner_DoDreamSpace::onQuestProgress@0x1FCD30				0
+quest/getQuestProgress	getQuestProgress	method-argument	PoliticMissionProgressList/<phaseInit>c__AnonStorey287/<phaseInit>c__AnonStorey288::<>m__303	PoliticMissionProgressList/<phaseInit>c__AnonStorey287/<phaseInit>c__AnonStorey288::<>m__303@0x385620				0
+quest/getQuestProgress	getQuestProgress	method-argument	QuestDataCache/<process>c__IteratorB5::<>m__34B	QuestDataCache/<process>c__IteratorB5::<>m__34B@0x364738				0
+quest/getQuestProgress	getQuestProgress	method-argument	QuestTypeSelector/<OnGUI>c__AnonStorey2A4/<OnGUI>c__AnonStorey2A5::<>m__3A3	QuestTypeSelector/<OnGUI>c__AnonStorey2A4/<OnGUI>c__AnonStorey2A5::<>m__3A3@0x386920				0
+quest/getQuestProgress	getQuestProgress	method-argument	QuestTypeSelector/<OnGUI>c__AnonStorey2A4/<OnGUI>c__AnonStorey2A6::<>m__3A8	QuestTypeSelector/<OnGUI>c__AnonStorey2A4/<OnGUI>c__AnonStorey2A6::<>m__3A8@0x386968				0
+quest/getQuestProgress	getQuestProgress	method-argument	QuestTypeSelector/<OnGUI>c__AnonStorey2A4/<OnGUI>c__AnonStorey2A7::<>m__3AA	QuestTypeSelector/<OnGUI>c__AnonStorey2A4/<OnGUI>c__AnonStorey2A7::<>m__3AA@0x3869B0				0
+quest/getQuestProgress	getQuestProgress	method-argument	QuestTypeSelector/<waitIsValidButton>c__IteratorD9::<>m__3A2	QuestTypeSelector/<waitIsValidButton>c__IteratorD9::<>m__3A2@0x3692A4				0
+quest/getQuestRewardOpenFlags	getQuestRewardOpenFlags	method-argument						0
+quest/getRandomQuestRanking	getRandomQuestRanking	method-argument	QuestDataCache/<cacheRandomQuestInfo>c__AnonStorey296::<>m__34C	QuestDataCache/<cacheRandomQuestInfo>c__AnonStorey296::<>m__34C@0x385D88				0
+quest/openQuest	openQuest	method-argument						0
+quest/openTreasureBox	openTreasureBox	method-argument						0
+quest/useSoulToStep	getOnikujiGoStep	method-argument						0
+ranking/getBriefOfBattle	getBriefOfBattle	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13B	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13B@0x380C70				0
+ranking/getBriefOfBattle	getBriefOfBattle	method-argument	mypageRankingWindow/<setupVsWeekly>c__AnonStorey3F8::<>m__910	mypageRankingWindow/<setupVsWeekly>c__AnonStorey3F8::<>m__910@0x3976C0				0
+ranking/getBriefOfBattleDaily	getBriefOfBattleDaily	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__138	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__138@0x380BC8				0
+ranking/getBriefOfBattleDaily	getBriefOfBattleDaily	method-argument	mypageRankingWindow/<setupVsDaily>c__AnonStorey3F9::<>m__911	mypageRankingWindow/<setupVsDaily>c__AnonStorey3F9::<>m__911@0x3977C4				0
+ranking/getBriefOfBrawn	getBriefOfBrawn	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__139	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__139@0x380C00				0
+ranking/getBriefOfBrawn	getBriefOfBrawn	method-argument	mypageRankingWindow/<setupBrawn>c__AnonStorey400::<>m__918	mypageRankingWindow/<setupBrawn>c__AnonStorey400::<>m__918@0x397E68				0
+ranking/getBriefOfCountriesInGiganticRaidBoss	getBriefOfCountriesInGiganticRaidBoss	method-argument	mypageRankingWindow/<setupGiganticRaidBossPunishPoint>c__AnonStorey406::<>m__924	mypageRankingWindow/<setupGiganticRaidBossPunishPoint>c__AnonStorey406::<>m__924@0x3982D8				0
+ranking/getBriefOfCountryBattle	getBriefOfCountryBattle	method-argument	mypageRankingWindow/<setupVsAll>c__AnonStorey3F7::<>m__90F	mypageRankingWindow/<setupVsAll>c__AnonStorey3F7::<>m__90F@0x3975A8				0
+ranking/getBriefOfDedication	getBriefOfDedication	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13D	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13D@0x380CE0				0
+ranking/getBriefOfDedication	getBriefOfDedication	method-argument	mypageRankingWindow/<setupDelivery>c__AnonStorey3FE::<>m__916	mypageRankingWindow/<setupDelivery>c__AnonStorey3FE::<>m__916@0x397C88				0
+ranking/getBriefOfDedicationMonthly	getBriefOfDedicationMonthly	method-argument	HTMLRankingMediator_Delivery/<getRankersAroundMeInDeliveryMonthly>c__AnonStorey1CC::<>m__DD	HTMLRankingMediator_Delivery/<getRankersAroundMeInDeliveryMonthly>c__AnonStorey1CC::<>m__DD@0x37F328				0
+ranking/getBriefOfDedicationMonthly	getBriefOfDedicationMonthly	method-argument	mypageRankingWindow/<setupDeliveryMonthly>c__AnonStorey3FF::<>m__917	mypageRankingWindow/<setupDeliveryMonthly>c__AnonStorey3FF::<>m__917@0x397D70				0
+ranking/getBriefOfGiganticRaidBoss	getBriefOfGiganticRaidBoss	method-argument	mypageRankingWindow/<setupGiganticRaidBossContribute>c__AnonStorey407::<>m__925	mypageRankingWindow/<setupGiganticRaidBossContribute>c__AnonStorey407::<>m__925@0x3983DC				0
+ranking/getBriefOfGiganticRaidBossDaily	getBriefOfGiganticRaidBossDaily	method-argument						0
+ranking/getBriefOfKokudaka	getBriefOfKokudaka	method-argument	HTMLRankingMediator_Kokudaka/<getAroundRankersInKokudaka>c__AnonStorey1C4::<>m__D3	HTMLRankingMediator_Kokudaka/<getAroundRankersInKokudaka>c__AnonStorey1C4::<>m__D3@0x37F05C				0
+ranking/getBriefOfKokudaka	getBriefOfKokudaka	method-argument	mypageRankingWindow/<setupKokudakaInternal>c__AnonStorey3FC::<>m__914	mypageRankingWindow/<setupKokudakaInternal>c__AnonStorey3FC::<>m__914@0x397AB4				0
+ranking/getBriefOfMaxDamageInGiganticRaidBoss	getBriefOfMaxDamageInGiganticRaidBoss	method-argument	mypageRankingWindow/<setupGiganticRaidBossMaxDamage>c__AnonStorey408::<>m__926	mypageRankingWindow/<setupGiganticRaidBossMaxDamage>c__AnonStorey408::<>m__926@0x3984E0				0
+ranking/getBriefOfNationalPower	getBriefOfNationalPower	method-argument	mypageRankingWindow/<setupNationalPower>c__AnonStorey3FD::<>m__915	mypageRankingWindow/<setupNationalPower>c__AnonStorey3FD::<>m__915@0x397B90				0
+ranking/getBriefOfNationalRanking	getBriefOfNationalRanking	method-argument						0
+ranking/getBriefOfRaidBoss	getBriefOfRaidBoss	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13C	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13C@0x380CA8				0
+ranking/getBriefOfRaidBoss	getBriefOfRaidBoss	method-argument	mypageRankingWindow/<setupRasetsu>c__AnonStorey3FA::<>m__912	mypageRankingWindow/<setupRasetsu>c__AnonStorey3FA::<>m__912@0x3978C8				0
+ranking/getBriefOfRaidBossDaily	getBriefOfRaidBossDaily	method-argument	HTMLRankingMediator_RaidBoss/<getDailyAroundRankersInRaidBoss>c__AnonStorey1DA::<>m__F3	HTMLRankingMediator_RaidBoss/<getDailyAroundRankersInRaidBoss>c__AnonStorey1DA::<>m__F3@0x37F8CC				0
+ranking/getBriefOfRaidBossDaily	getBriefOfRaidBossDaily	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__137	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__137@0x380B90				0
+ranking/getBriefOfRaidBossDaily	getBriefOfRaidBossDaily	method-argument	mypageRankingWindow/<setupRasetsuDaily>c__AnonStorey3FB::<>m__913	mypageRankingWindow/<setupRasetsuDaily>c__AnonStorey3FB::<>m__913@0x3979CC				0
+ranking/getBriefOfRaidBossNational	getBriefOfRaidBossNational	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__144	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__144@0x380E98				0
+ranking/getBriefOfRaidBossNational	getBriefOfRaidBossNational	method-argument	mypageRankingWindow/<setupRaidBossNational>c__AnonStorey409::<>m__927	mypageRankingWindow/<setupRaidBossNational>c__AnonStorey409::<>m__927@0x3985E4				0
+ranking/getBriefOfRandomQuest	getBriefOfRandomQuest	method-argument	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13A	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__13A@0x380C38				0
+ranking/getBriefOfRandomQuest	getBriefOfRandomQuest	method-argument	mypageRankingWindow/<setupGenmuStep>c__AnonStorey401::<>m__919	mypageRankingWindow/<setupGenmuStep>c__AnonStorey401::<>m__919@0x397F6C				0
+ranking/getBriefOfSiege	getBriefOfSiege	method-argument						0
+ranking/getBriefOfStrategy	getBriefOfStrategy	method-argument						0
+ranking/getBriefOfTurfWar	getBriefOfTurfWar	method-argument						0
+ranking/getBriefOfTurfWarDaily	getBriefOfTurfWarDaily	method-argument						0
+ranking/getDailyRankersAroundMeInTurfWar	getDailyRankersAroundMeInTurfWar	method-argument						0
+ranking/getDailyRankersInBattle	getDailyRankersInBattle	method-argument						0
+ranking/getDailyRankersInRaidBoss	getDailyRankersInRaidBoss	method-argument						0
+ranking/getDailyRankersInTurfWar	getDailyRankersInTurfWar	method-argument						0
+ranking/getDailyTopRankersInTurfWar	getDailyTopRankersInTurfWar	method-argument						0
+ranking/getMonthlyRankersInDedication	getMonthlyRankersInDedication	method-argument						0
+ranking/getMyRankInTurfWar	getMyRankInTurfWar	method-argument						0
+ranking/getRankersAroundMeInTurfWar	getRankersAroundMeInTurfWar	method-argument						0
+ranking/getRankersInBattle	getRankersInBattle	method-argument						0
+ranking/getRankersInBrawn	getRankersInBrawn	method-argument						0
+ranking/getRankersInDedication	getRankersInDedication	method-argument						0
+ranking/getRankersInGiganticRaidBoss	getRankersInGiganticRaidBoss	method-argument						0
+ranking/getRankersInKokudaka	getRankersInKokudaka	method-argument						0
+ranking/getRankersInNationalPower	getRankersInNationalPower	method-argument						0
+ranking/getRankersInNationalRanking	getRankersInNationalRanking	method-argument						0
+ranking/getRankersInNationalRanking	getWeeklyRankersInNationalRanking	method-argument						0
+ranking/getRankersInRaidBoss	getRankersInRaidBoss	method-argument						0
+ranking/getRankersInRaidBossNational	getRankersInRaidBossNational	method-argument						0
+ranking/getRankersInRandomQuest	getRankersInRandomQuest	method-argument						0
+ranking/getRankersInSiege	getRankersInSiege	method-argument						0
+ranking/getRankersInStrategy	getRankersInStrategy	method-argument						0
+ranking/getRankersInStrategyForMypage	getRankersInStrategyForMypage	method-argument						0
+ranking/getRankersInStrategyPie	getRankersInStrategyPie	method-argument						0
+ranking/getRankersInTurfWar	getRankersInTurfWar	method-argument						0
+ranking/getRankersOfCountriesInGiganticRaidBoss	getRankersOfCountriesInGiganticRaidBoss	method-argument						0
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	getRankersOfMaxDamageInGiganticRaidBoss	method-argument						0
+ranking/getRankingOfCountriesInBattle	getRankingOfCountriesInBattle	method-argument						0
+ranking/getRecordOfCountryInBattle	getRecordOfCountryInBattle	method-argument	CountryRanking/<setup>c__Iterator150::<>m__9A7	CountryRanking/<setup>c__Iterator150::<>m__9A7@0x376DD0				0
+ranking/getRecordOfCountryInBattle	getRecordOfCountryInBattle	method-argument	CountryRanking/<setupForSkipBattle>c__Iterator151::<>m__9AB	CountryRanking/<setupForSkipBattle>c__Iterator151::<>m__9AB@0x37736C				0
+ranking/getTopRankersInTurfWar	getTurfWarTopRankers	method-argument						0
+siege/discharge	siegeDischarge	method-argument	PluginRunner_DoBattleSiege::onSiegeDischarge	PluginRunner_DoBattleSiege::onSiegeDischarge@0x1FC608				0
+siege/discharge	siegeDischarge	method-argument	vsSetting_Siege::<attack>m__9EC	vsSetting_Siege::<attack>m__9EC@0x3512B0				0
+siege/enter	siegeEnter	method-argument	PluginRunner_DoBattleSiege::onEnterSiege	PluginRunner_DoBattleSiege::onEnterSiege@0x1FC458				0
+siege/enter	siegeEnter	method-argument	siegeBriefMenu::<siegeEnter>m__994	siegeBriefMenu::<siegeEnter>m__994@0x348810				0
+siege/getBrief	siegeBrief	method-argument	siegeBriefMenu::<init>m__992	siegeBriefMenu::<init>m__992@0x348700				0
+siege/getPairings	siegeGetPairings	method-argument	HTMLSiegeMediator/<request>c__AnonStorey21E::<>m__156	HTMLSiegeMediator/<request>c__AnonStorey21E::<>m__156@0x3812E8				0
+siege/getSiegeResultLog	getSiegeResultLog	method-argument	SiegeResultRenderer/<load>c__AnonStorey2B3::<>m__3EB	SiegeResultRenderer/<load>c__AnonStorey2B3::<>m__3EB@0x387270				0
+siege/getSiegeStatus	getSiegeStatus	method-argument	PluginRunner_DoBattleSiege::<ProcessEnterBattle>m__1BD	PluginRunner_DoBattleSiege::<ProcessEnterBattle>m__1BD@0x1FCB34				0
+siege/getSiegeStatus	getSiegeStatus	method-argument	vsSetting_Siege::<getSiegeSituation>m__9EB	vsSetting_Siege::<getSiegeSituation>m__9EB@0x351190				0
+siege/lookSiegeResult	lookSiegeResult	method-argument	SiegeResultRenderer/<load>c__AnonStorey2B3::<>m__3EC	SiegeResultRenderer/<load>c__AnonStorey2B3::<>m__3EC@0x387298				0
+siege/openingBet	siegeOpeningBet	method-argument						0
+strategy/command/attack	sendStrategyCommandIntercept	method-argument						0
+strategy/command/buildCastle	sendStrategyCommandBuildCastle	method-argument	StrategyCommandSelector/<building>c__AnonStorey2DB::<>m__47D	StrategyCommandSelector/<building>c__AnonStorey2DB::<>m__47D@0x388BE0				0
+strategy/command/cancelMarch	sendStrategyCommandCencelRouteMarch	method-argument	StrategyHUDController/<sendMarchCancel>c__AnonStorey2E0::<>m__4A2	StrategyHUDController/<sendMarchCancel>c__AnonStorey2E0::<>m__4A2@0x388CB0				0
+strategy/command/changeBase	sendStrategyCommandChangeBase	method-argument	StrategyCommandSelector/<changeBase>c__AnonStorey2DA::<>m__47C	StrategyCommandSelector/<changeBase>c__AnonStorey2DA::<>m__47C@0x388B98				0
+strategy/command/conscript	sendStrategyCommandConscript	method-argument	StrategyCommandSelector/<recruit>c__AnonStorey2D8::<>m__47A	StrategyCommandSelector/<recruit>c__AnonStorey2D8::<>m__47A@0x388B08				0
+strategy/command/march	sendStrategyCommandMarch	method-argument						0
+strategy/command/march2	sendStrategyCommandRouteMarch	method-argument						0
+strategy/command/returnBase	sendStrategyCommandReturnBase	method-argument	StrategyCommandSelector::<onDeadDialog>m__46F	StrategyCommandSelector::<onDeadDialog>m__46F@0x27B094				0
+strategy/command/revenge	sendStrategyCommandRevenge	method-argument						0
+strategy/command/strategize	sendStrategyCommandStrategize	method-argument						0
+strategy/command/supply	sendStrategyCommandSupply	method-argument	StrategyCommandSelector/<resupply>c__AnonStorey2D9::<>m__47B	StrategyCommandSelector/<resupply>c__AnonStorey2D9::<>m__47B@0x388B50				0
+strategy/command/traceroute	getStrategyCommandTraceRoute	method-argument						0
+strategy/command/training	sendStrategyCommandTraining	method-argument	StrategyCommandSelector/<training>c__AnonStorey2D7::<>m__479	StrategyCommandSelector/<training>c__AnonStorey2D7::<>m__479@0x388AC0				0
+strategy/entryStrategy	entryStrategy	method-argument						0
+strategy/getMercenaryEmployInfo	getMercenaryEmployInfo	method-argument	StrategySelect_army::<Start>m__9A2	StrategySelect_army::<Start>m__9A2@0x3496FC				0
+strategy/getStrategyActionLogs	getStrategyActionLogs	method-argument						0
+strategy/getStrategyActionLogs2	getStrategyActionLogs2	method-argument	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__432	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__432@0x387D48				0
+strategy/getStrategyBattleLogs	getStrategyBattleLogs	method-argument	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__433	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__433@0x387D80				0
+strategy/getStrategyBattleLogs	getStrategyBattleLogs	method-argument	mypageBattleLogUpdateStrategy/<load>c__AnonStorey3EC::<>m__82A	mypageBattleLogUpdateStrategy/<load>c__AnonStorey3EC::<>m__82A@0x396C00				0
+strategy/getStrategyBrief	getStrategyBrief	method-argument	StrategyHUDController::<Start>m__4A0	StrategyHUDController::<Start>m__4A0@0x27E900				0
+strategy/getStrategyBrief	getStrategyBrief	method-argument	StrategySelect::<setup>m__99D	StrategySelect::<setup>m__99D@0x3490A4				0
+strategy/getStrategyCellLogs	getStrategyCellLogs	method-argument						0
+strategy/getStrategyCommandInfo	getStrategyCommandInfo	method-argument						0
+strategy/getStrategyLogs	getStrategyLogs	method-argument						0
+strategy/getStrategyNormRewardInfo	getStrategyNormRewardInfo	method-argument	NormRewardScene::<setup>m__184	NormRewardScene::<setup>m__184@0x1F60B8				0
+strategy/getStrategyOverview	getStrategyOverview	method-argument						0
+strategy/getStrategyPairings	getStrategyPairings	method-argument	HTMLStrategyMatchMediator/<request>c__AnonStorey228::<>m__166	HTMLStrategyMatchMediator/<request>c__AnonStorey228::<>m__166@0x38170C				0
+strategy/getStrategyPairingsChat	getStrategyPairingsChat	method-argument						0
+strategy/getStrategyPersonalLogs	getStrategyPlayerLogs	method-argument						0
+strategy/getStrategyPromptReport	getStrategyPromptReport	method-argument						0
+strategy/getStrategyStatus	getStrategyStatus	method-argument	Strategy/<onPreSetup>c__IteratorE2::<>m__44B	Strategy/<onPreSetup>c__IteratorE2::<>m__44B@0x36A244				0
+strategy/getStrategyWinLossRecords	getStrategyWinLossRecords	method-argument	HTMLStrategyMatchMediator_History/<request>c__AnonStorey229::<>m__168	HTMLStrategyMatchMediator_History/<request>c__AnonStorey229::<>m__168@0x381750				0
+strategy/isAlive	getStrategyIsAlive	method-argument	StrategyHUDController/<transitionLogWindowUpdate>c__IteratorE7::<>m__4A4	StrategyHUDController/<transitionLogWindowUpdate>c__IteratorE7::<>m__4A4@0x36AD18				0
+strategy/lookStrategyResult	getStrategyReward	method-argument	PoliticButton::<goStrategySelect>m__252	PoliticButton::<goStrategySelect>m__252@0x211408				0
+trophy/completeTrophy	completeTrophy	method-argument						0
+trophy/completeTrophy	receiveEventsTrophy	method-argument						0
+trophy/completeTrophy	receiveTrophyGiganticRaidBoss	method-argument						0
+trophy/completeTrophy	receiveTrophyRaidBoss	method-argument						0
+trophy/getTrophyProgress	getEventsTrophyProgress	method-argument						0
+trophy/getTrophyProgress	getTrophyGiganticRaidBoss	method-argument						0
+trophy/getTrophyProgress	getTrophyProgress	method-argument	TrophyWindow/<load>c__AnonStorey2F3::<>m__4CA	TrophyWindow/<load>c__AnonStorey2F3::<>m__4CA@0x389744				0
+trophy/getTrophyProgress	getTrophyProgress	method-argument	mypageTrophyUpdate::<load>m__951	mypageTrophyUpdate::<load>m__951@0x3403D8				0
+trophy/getTrophyProgress	getTrophyRaidBoss	method-argument	RaidBossNorm::<setUp>m__3B7	RaidBossNorm::<setUp>m__3B7@0x250C84				0
+trophy/messageWindowTrophy	message_window_trophy	method-argument						0
+turfWar/entryBattlefield	entryTurfWarBattlefield	method-argument						0
+turfWar/entryWar	entryTurfWar	method-argument	TurfWarBriefCache/<entryWar>c__AnonStorey2F6::<>m__4D2	TurfWarBriefCache/<entryWar>c__AnonStorey2F6::<>m__4D2@0x389904				0
+turfWar/getSelfRecord	getTurnfWarSelfRecord	method-argument						0
+turfWar/getSelfSituation	getTurfWarSelfSituation	method-argument						0
+turfWar/getTurfWarResultLog	getTurfWarResultLog	method-argument	TurfWarResultRenderer/<load>c__AnonStorey2FD::<>m__4E4	TurfWarResultRenderer/<load>c__AnonStorey2FD::<>m__4E4@0x389C24				0
+turfWar/getWarSituation	getTurfWarSituation	method-argument	TurfWarBriefCache/<setup>c__AnonStorey2F5::<>m__4D1	TurfWarBriefCache/<setup>c__AnonStorey2F5::<>m__4D1@0x3897F4				0
+turfWar/moveBattlefield	moveTurfWarBattlefield	method-argument						0
+turfWar/receiveTurfWarReward	getTurfWarResult	method-argument						0
+turfWar/receiveTurfWarReward	getTurnfWarRceiveTurfWarReward	method-argument	TurfWarResultRenderer/<load>c__AnonStorey2FD::<>m__4E5	TurfWarResultRenderer/<load>c__AnonStorey2FD::<>m__4E5@0x389C4C				0

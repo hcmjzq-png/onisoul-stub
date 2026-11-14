@@ -1,0 +1,2596 @@
+owner	method	key	type	file_offset	body_offset
+iTween	ValueTo	from		0x16D135	0x16D0D0
+iTween	ValueTo	from		0x16D169	0x16D0D0
+iTween	ValueTo	from		0x16D19D	0x16D0D0
+iTween	ValueTo	from		0x16D1D1	0x16D0D0
+iTween	ValueTo	from		0x16D205	0x16D0D0
+iTween	ColorFrom	includechildren	bool	0x16D362	0x16D328
+iTween	ColorFrom	color	Color	0x16D4BC	0x16D328
+iTween	ColorFrom	r	float	0x16D4E4	0x16D328
+iTween	ColorFrom	g	float	0x16D50B	0x16D328
+iTween	ColorFrom	b	float	0x16D532	0x16D328
+iTween	ColorFrom	a	float	0x16D559	0x16D328
+iTween	ColorFrom	amount	float	0x16D580	0x16D328
+iTween	ColorFrom	alpha	float	0x16D5B7	0x16D328
+iTween	ColorTo	includechildren	bool	0x16D726	0x16D6FC
+iTween	AudioFrom	audiosource	AudioSource	0x16D882	0x16D858
+iTween	AudioFrom	volume	float	0x16D909	0x16D858
+iTween	AudioFrom	pitch	float	0x16D930	0x16D858
+iTween	LookFrom	looktarget		0x16DB46	0x16DB20
+iTween	LookFrom	looktarget	Transform	0x16DB6B	0x16DB20
+iTween	LookFrom	up	TypeSpec(0x1B000013)	0x16DB7B	0x16DB20
+iTween	LookFrom	looktarget		0x16DBB3	0x16DB20
+iTween	LookFrom	looktarget	Vector3	0x16DBD8	0x16DB20
+iTween	LookFrom	up	TypeSpec(0x1B000013)	0x16DBE8	0x16DB20
+iTween	LookFrom	axis	string	0x16DC37	0x16DB20
+iTween	LookTo	looktarget	Transform	0x16DDC2	0x16DD98
+iTween	LookTo	looktarget	Transform	0x16DDE1	0x16DD98
+iTween	MoveTo	position	Transform	0x16DEFA	0x16DED0
+iTween	MoveTo	position	Transform	0x16DF19	0x16DED0
+iTween	MoveFrom	islocal	bool	0x16E072	0x16E048
+iTween	MoveFrom	path	TypeSpec(0x1B000014)	0x16E09E	0x16E048
+iTween	MoveFrom	path	TypeSpec(0x1B000014)	0x16E0BD	0x16E048
+iTween	MoveFrom	path	TypeSpec(0x1B000015)	0x16E0E6	0x16E048
+iTween	MoveFrom	position	Transform	0x16E271	0x16E048
+iTween	MoveFrom	position	Transform	0x16E290	0x16E048
+iTween	MoveFrom	position	Vector3	0x16E2B0	0x16E048
+iTween	MoveFrom	position	Vector3	0x16E2CF	0x16E048
+iTween	MoveFrom	x	float	0x16E2F8	0x16E048
+iTween	MoveFrom	y	float	0x16E31F	0x16E048
+iTween	MoveFrom	z	float	0x16E346	0x16E048
+iTween	ScaleTo	scale	Transform	0x16E4EE	0x16E4C4
+iTween	ScaleTo	scale	Transform	0x16E50D	0x16E4C4
+iTween	ScaleFrom	scale	Transform	0x16E674	0x16E63C
+iTween	ScaleFrom	scale	Transform	0x16E693	0x16E63C
+iTween	ScaleFrom	scale	Vector3	0x16E6B0	0x16E63C
+iTween	ScaleFrom	scale	Vector3	0x16E6CF	0x16E63C
+iTween	ScaleFrom	x	float	0x16E6F7	0x16E63C
+iTween	ScaleFrom	y	float	0x16E71E	0x16E63C
+iTween	ScaleFrom	z	float	0x16E745	0x16E63C
+iTween	RotateTo	rotation	Transform	0x16E8D6	0x16E8AC
+iTween	RotateTo	rotation	Transform	0x16E8F5	0x16E8AC
+iTween	RotateFrom	islocal	bool	0x16EA4E	0x16EA24
+iTween	RotateFrom	rotation	Transform	0x16EAA1	0x16EA24
+iTween	RotateFrom	rotation	Transform	0x16EAC0	0x16EA24
+iTween	RotateFrom	rotation	Vector3	0x16EADD	0x16EA24
+iTween	RotateFrom	rotation	Vector3	0x16EAFC	0x16EA24
+iTween	RotateFrom	x	float	0x16EB24	0x16EA24
+iTween	RotateFrom	y	float	0x16EB4B	0x16EA24
+iTween	RotateFrom	z	float	0x16EB72	0x16EA24
+iTween	GenerateRectTargets	from	Rect	0x16F75F	0x16F730
+iTween	GenerateRectTargets	to	Rect	0x16F785	0x16F730
+iTween	GenerateColorTargets	from	Color	0x16F7C4	0x16F798
+iTween	GenerateColorTargets	to	Color	0x16F7E6	0x16F798
+iTween	GenerateVector3Targets	from	Vector3	0x16F827	0x16F7F8
+iTween	GenerateVector3Targets	to	Vector3	0x16F84D	0x16F7F8
+iTween	GenerateVector3Targets	speed	float	0x16F8AB	0x16F7F8
+iTween	GenerateVector2Targets	from	Vector2	0x16F8EB	0x16F8BC
+iTween	GenerateVector2Targets	to	Vector2	0x16F911	0x16F8BC
+iTween	GenerateVector2Targets	speed	float	0x16F9AB	0x16F8BC
+iTween	GenerateFloatTargets	from	float	0x16F9E6	0x16F9BC
+iTween	GenerateFloatTargets	to	float	0x16FA03	0x16F9BC
+iTween	GenerateFloatTargets	speed	float	0x16FA47	0x16F9BC
+iTween	GenerateColorToTargets	color	Color	0x16FC47	0x16FA58
+iTween	GenerateColorToTargets	r	float	0x16FCA5	0x16FA58
+iTween	GenerateColorToTargets	g	float	0x16FCFE	0x16FA58
+iTween	GenerateColorToTargets	b	float	0x16FD59	0x16FA58
+iTween	GenerateColorToTargets	a	float	0x16FDB7	0x16FA58
+iTween	GenerateColorToTargets	amount	float	0x16FE15	0x16FA58
+iTween	GenerateColorToTargets	alpha	float	0x16FE78	0x16FA58
+iTween	GenerateAudioToTargets	audiosource	AudioSource	0x16FEDD	0x16FEA4
+iTween	GenerateAudioToTargets	volume	float	0x16FF98	0x16FEA4
+iTween	GenerateAudioToTargets	pitch	float	0x16FFD3	0x16FEA4
+iTween	GenerateStabTargets	audiosource	AudioSource	0x170011	0x16FFE4
+iTween	GenerateStabTargets	audioclip	AudioClip	0x17008F	0x16FFE4
+iTween	GenerateStabTargets	pitch	float	0x1700C4	0x16FFE4
+iTween	GenerateStabTargets	volume	float	0x1700F9	0x16FFE4
+iTween	GenerateLookToTargets	looktarget		0x170180	0x17012C
+iTween	GenerateLookToTargets	looktarget	Transform	0x1701AA	0x17012C
+iTween	GenerateLookToTargets	up	TypeSpec(0x1B000013)	0x1701BF	0x17012C
+iTween	GenerateLookToTargets	looktarget		0x1701FC	0x17012C
+iTween	GenerateLookToTargets	looktarget	Vector3	0x170226	0x17012C
+iTween	GenerateLookToTargets	up	TypeSpec(0x1B000013)	0x17023B	0x17012C
+iTween	GenerateLookToTargets	axis	string	0x1702D5	0x17012C
+iTween	GenerateLookToTargets	speed	float	0x170517	0x17012C
+iTween	GenerateMoveToPathTargets	path		0x17053F	0x170528
+iTween	GenerateMoveToPathTargets	path	TypeSpec(0x1B000014)	0x170563	0x170528
+iTween	GenerateMoveToPathTargets	path	TypeSpec(0x1B000015)	0x1705AA	0x170528
+iTween	GenerateMoveToPathTargets	movetopath	bool	0x170640	0x170528
+iTween	GenerateMoveToPathTargets	speed	float	0x170874	0x170528
+iTween	GenerateMoveToTargets	position		0x170930	0x170888
+iTween	GenerateMoveToTargets	position	Transform	0x170954	0x170888
+iTween	GenerateMoveToTargets	position		0x170986	0x170888
+iTween	GenerateMoveToTargets	position	Vector3	0x1709B6	0x170888
+iTween	GenerateMoveToTargets	x	float	0x1709F6	0x170888
+iTween	GenerateMoveToTargets	y	float	0x170A31	0x170888
+iTween	GenerateMoveToTargets	z	float	0x170A6C	0x170888
+iTween	GenerateMoveToTargets	orienttopath	bool	0x170A9B	0x170888
+iTween	GenerateMoveToTargets	speed	float	0x170B1F	0x170888
+iTween	GenerateMoveByTargets	: 	IDisposable	0x170B66	0x170B30
+iTween	GenerateMoveByTargets	amount	Vector3	0x170C44	0x170B30
+iTween	GenerateMoveByTargets	x	float	0x170C9A	0x170B30
+iTween	GenerateMoveByTargets	y	float	0x170CE7	0x170B30
+iTween	GenerateMoveByTargets	z	float	0x170D34	0x170B30
+iTween	GenerateMoveByTargets	orienttopath	bool	0x170DBE	0x170B30
+iTween	GenerateMoveByTargets	speed	float	0x170E42	0x170B30
+iTween	GenerateScaleToTargets	scale		0x170ED8	0x170E70
+iTween	GenerateScaleToTargets	scale	Transform	0x170EFC	0x170E70
+iTween	GenerateScaleToTargets	scale		0x170F2E	0x170E70
+iTween	GenerateScaleToTargets	scale	Vector3	0x170F5E	0x170E70
+iTween	GenerateScaleToTargets	x	float	0x170F9E	0x170E70
+iTween	GenerateScaleToTargets	y	float	0x170FD9	0x170E70
+iTween	GenerateScaleToTargets	z	float	0x171014	0x170E70
+iTween	GenerateScaleToTargets	speed	float	0x171072	0x170E70
+iTween	GenerateScaleByTargets	amount	Vector3	0x171109	0x171084
+iTween	GenerateScaleByTargets	x	float	0x171154	0x171084
+iTween	GenerateScaleByTargets	y	float	0x171196	0x171084
+iTween	GenerateScaleByTargets	z	float	0x1711D8	0x171084
+iTween	GenerateScaleByTargets	speed	float	0x171237	0x171084
+iTween	GenerateScaleAddTargets	amount	Vector3	0x1712C2	0x171248
+iTween	GenerateScaleAddTargets	x	float	0x17130D	0x171248
+iTween	GenerateScaleAddTargets	y	float	0x17134F	0x171248
+iTween	GenerateScaleAddTargets	z	float	0x171391	0x171248
+iTween	GenerateScaleAddTargets	speed	float	0x1713F0	0x171248
+iTween	GenerateRotateToTargets	rotation		0x1714AC	0x171404
+iTween	GenerateRotateToTargets	rotation	Transform	0x1714D0	0x171404
+iTween	GenerateRotateToTargets	rotation		0x171502	0x171404
+iTween	GenerateRotateToTargets	rotation	Vector3	0x171532	0x171404
+iTween	GenerateRotateToTargets	x	float	0x171572	0x171404
+iTween	GenerateRotateToTargets	y	float	0x1715AD	0x171404
+iTween	GenerateRotateToTargets	z	float	0x1715E8	0x171404
+iTween	GenerateRotateToTargets	speed	float	0x1716E3	0x171404
+iTween	GenerateRotateAddTargets	amount	Vector3	0x171782	0x1716F4
+iTween	GenerateRotateAddTargets	x	float	0x1717CD	0x1716F4
+iTween	GenerateRotateAddTargets	y	float	0x17180F	0x1716F4
+iTween	GenerateRotateAddTargets	z	float	0x171851	0x1716F4
+iTween	GenerateRotateAddTargets	speed	float	0x1718B0	0x1716F4
+iTween	GenerateRotateByTargets	amount	Vector3	0x171952	0x1718C4
+iTween	GenerateRotateByTargets	x	float	0x1719BB	0x1718C4
+iTween	GenerateRotateByTargets	y	float	0x171A03	0x1718C4
+iTween	GenerateRotateByTargets	z	float	0x171A4B	0x1718C4
+iTween	GenerateRotateByTargets	speed	float	0x171AAB	0x1718C4
+iTween	GenerateShakePositionTargets	amount	Vector3	0x171B38	0x171ABC
+iTween	GenerateShakePositionTargets	x	float	0x171B78	0x171ABC
+iTween	GenerateShakePositionTargets	y	float	0x171BB3	0x171ABC
+iTween	GenerateShakePositionTargets	z	float	0x171BEE	0x171ABC
+iTween	GenerateShakeScaleTargets	amount	Vector3	0x171C60	0x171C00
+iTween	GenerateShakeScaleTargets	x	float	0x171CA0	0x171C00
+iTween	GenerateShakeScaleTargets	y	float	0x171CDB	0x171C00
+iTween	GenerateShakeScaleTargets	z	float	0x171D16	0x171C00
+iTween	GenerateShakeRotationTargets	amount	Vector3	0x171D88	0x171D28
+iTween	GenerateShakeRotationTargets	x	float	0x171DC8	0x171D28
+iTween	GenerateShakeRotationTargets	y	float	0x171E03	0x171D28
+iTween	GenerateShakeRotationTargets	z	float	0x171E3E	0x171D28
+iTween	GeneratePunchPositionTargets	amount	Vector3	0x171EF6	0x171E50
+iTween	GeneratePunchPositionTargets	x	float	0x171F36	0x171E50
+iTween	GeneratePunchPositionTargets	y	float	0x171F71	0x171E50
+iTween	GeneratePunchPositionTargets	z	float	0x171FAC	0x171E50
+iTween	GeneratePunchRotationTargets	amount	Vector3	0x172046	0x171FBC
+iTween	GeneratePunchRotationTargets	x	float	0x172086	0x171FBC
+iTween	GeneratePunchRotationTargets	y	float	0x1720C1	0x171FBC
+iTween	GeneratePunchRotationTargets	z	float	0x1720FC	0x171FBC
+iTween	GeneratePunchScaleTargets	amount	Vector3	0x172182	0x17210C
+iTween	GeneratePunchScaleTargets	x	float	0x1721C2	0x17210C
+iTween	GeneratePunchScaleTargets	y	float	0x1721FD	0x17210C
+iTween	GeneratePunchScaleTargets	z	float	0x172238	0x17210C
+iTween	ApplyMoveToPathTargets	orienttopath	bool	0x172D11	0x172C5C
+iTween	ApplyMoveToPathTargets	lookahead	float	0x172D40	0x172C5C
+iTween	FadeUpdate	alpha		0x174735	0x174728
+iTween	ColorUpdate	includechildren	bool	0x1747B0	0x174780
+iTween	ColorUpdate	time	float	0x174823	0x174780
+iTween	ColorUpdate	color	Color	0x17496B	0x174780
+iTween	ColorUpdate	r	float	0x17499C	0x174780
+iTween	ColorUpdate	g	float	0x1749C8	0x174780
+iTween	ColorUpdate	b	float	0x1749F4	0x174780
+iTween	ColorUpdate	a	float	0x174A20	0x174780
+iTween	AudioUpdate	time	float	0x174C58	0x174C28
+iTween	AudioUpdate	audiosource	AudioSource	0x174C8C	0x174C28
+iTween	AudioUpdate	volume	float	0x174D16	0x174C28
+iTween	AudioUpdate	pitch	float	0x174D42	0x174C28
+iTween	RotateUpdate	time	float	0x174E74	0x174E38
+iTween	RotateUpdate	islocal	bool	0x174EA8	0x174E38
+iTween	RotateUpdate	rotation	Transform	0x174F0D	0x174E38
+iTween	RotateUpdate	rotation	Transform	0x174F2C	0x174E38
+iTween	RotateUpdate	rotation		0x174F56	0x174E38
+iTween	RotateUpdate	rotation	Vector3	0x174F7C	0x174E38
+iTween	ScaleUpdate	time	float	0x17510C	0x1750DC
+iTween	ScaleUpdate	scale	Transform	0x175166	0x1750DC
+iTween	ScaleUpdate	scale	Transform	0x175185	0x1750DC
+iTween	ScaleUpdate	scale		0x1751AD	0x1750DC
+iTween	ScaleUpdate	scale	Vector3	0x1751D3	0x1750DC
+iTween	ScaleUpdate	x	float	0x175204	0x1750DC
+iTween	ScaleUpdate	y	float	0x175230	0x1750DC
+iTween	ScaleUpdate	z	float	0x17525C	0x1750DC
+iTween	MoveUpdate	time	float	0x17539C	0x175360
+iTween	MoveUpdate	islocal	bool	0x1753D0	0x175360
+iTween	MoveUpdate	position	Transform	0x175457	0x175360
+iTween	MoveUpdate	position	Transform	0x175476	0x175360
+iTween	MoveUpdate	position		0x1754A0	0x175360
+iTween	MoveUpdate	position	Vector3	0x1754C6	0x175360
+iTween	MoveUpdate	x	float	0x1754F7	0x175360
+iTween	MoveUpdate	y	float	0x175523	0x175360
+iTween	MoveUpdate	z	float	0x17554F	0x175360
+iTween	MoveUpdate	orienttopath	bool	0x175616	0x175360
+iTween	LookUpdate	looktime	float	0x175734	0x175704
+iTween	LookUpdate	time	float	0x175762	0x175704
+iTween	LookUpdate	looktarget		0x1757B3	0x175704
+iTween	LookUpdate	looktarget	Transform	0x1757D8	0x175704
+iTween	LookUpdate	up	TypeSpec(0x1B000013)	0x1757E8	0x175704
+iTween	LookUpdate	looktarget		0x175820	0x175704
+iTween	LookUpdate	looktarget	Vector3	0x175845	0x175704
+iTween	LookUpdate	up	TypeSpec(0x1B000013)	0x175855	0x175704
+iTween	LookUpdate	axis	string	0x1759A6	0x175704
+iTween	Resume	target	GameObject	0x1767D2	0x1767A8
+iTween	Resume	target	GameObject	0x176828	0x1767F8
+iTween	Pause	target	GameObject	0x176B9A	0x176B70
+iTween	Pause	target	GameObject	0x176BF0	0x176BC0
+iTween	Count	type	string	0x176C84	0x176C58
+iTween	Count	method	string	0x176C94	0x176C58
+iTween	Stop	target	GameObject	0x176DB6	0x176D8C
+iTween	Stop	target	GameObject	0x176E18	0x176DE8
+iTween	StopByName	target	GameObject	0x176EA4	0x176E74
+iTween	RetrieveArgs	target	GameObject	0x177AEA	0x177ABC
+iTween	RetrieveArgs	id	string	0x177B3E	0x177ABC
+iTween	RetrieveArgs	type	string	0x177B59	0x177ABC
+iTween	RetrieveArgs	name	string	0x177B74	0x177ABC
+iTween	RetrieveArgs	method	string	0x177B8F	0x177ABC
+iTween	RetrieveArgs	time	float	0x177BBF	0x177ABC
+iTween	RetrieveArgs	delay	float	0x177C17	0x177ABC
+iTween	RetrieveArgs	namedcolorvalue		0x177C56	0x177ABC
+iTween	RetrieveArgs	namedcolorvalue	int	0x177C7B	0x177ABC
+iTween	RetrieveArgs	namedcolorvalue	string	0x177CA5	0x177ABC
+iTween	RetrieveArgs	looptype		0x177D0B	0x177ABC
+iTween	RetrieveArgs	looptype	int	0x177D30	0x177ABC
+iTween	RetrieveArgs	looptype	string	0x177D5A	0x177ABC
+iTween	RetrieveArgs	easetype		0x177DBC	0x177ABC
+iTween	RetrieveArgs	easetype	int	0x177DE1	0x177ABC
+iTween	RetrieveArgs	easetype	string	0x177E0B	0x177ABC
+iTween	RetrieveArgs	space		0x177E75	0x177ABC
+iTween	RetrieveArgs	space	int	0x177E9A	0x177ABC
+iTween	RetrieveArgs	space	string	0x177EC4	0x177ABC
+iTween	RetrieveArgs	islocal	bool	0x177F2F	0x177ABC
+iTween	RetrieveArgs	ignoretimescale	bool	0x177F6F	0x177ABC
+iTween	Dispose	id	string	0x17852A	0x178500
+BrowserProxy	playSe	id	string	0x1A9A26	0x1A9A14
+FileDataBase	getName	name	string	0x1AC76E	0x1AC748
+HashAccessFuncs	getInt	: 		0x1ACDBB	0x1ACD00
+HashAccessFuncs	getLong	: 		0x1ACEF3	0x1ACE38
+HashAccessFuncs	getFloat	: 		0x1AD02F	0x1ACF70
+HashAccessFuncs	getDouble	: 		0x1AD16B	0x1AD0A8
+HashAccessFuncs	getBool	: 		0x1AD2A3	0x1AD1E8
+Script.Messages	get_Item	JP	string	0x1BA7C1	0x1BA788
+SnapshotUploader	getKey	{0}={1}	string	0x1BDCFA	0x1BDCC4
+WebApiClient	CheckExceedTimes	OnlineTime	double	0x1C08BF	0x1C086C
+WebApiClient	CheckExceedTimes	OfflineTime	double	0x1C08DA	0x1C086C
+WebApiClient	getBBSThreadList	num_of_comment_type		0x1C478B	0x1C46E8
+WebApiClient	removeRaidBossWork	owner	double	0x1C6DCB	0x1C6D9C
+WebApiClient	removeRaidBossWork	index	double	0x1C6DE6	0x1C6D9C
+ArtifactSeriesTableAccessor	getCategory	category	double	0x1C9C6E	0x1C9C4C
+ArtifactSeriesTableAccessor	getName	name	string	0x1C9C9E	0x1C9C7C
+ArtifactSeriesTableAccessor	getName	name	string	0x1C9CAF	0x1C9C7C
+ArtifactSeriesTableAccessor	getDesc	desc	string	0x1C9CDE	0x1C9CBC
+ArtifactSeriesTableAccessor	getValue	value	string	0x1C9D0E	0x1C9CEC
+ArtifactSeriesTableAccessor	getRewardFirst	rewardFirst	string	0x1C9D3E	0x1C9D1C
+ArtifactSeriesTableAccessor	getReward	reward	string	0x1C9D6E	0x1C9D4C
+ArtifactSeriesTableAccessor	getItems	items	ArrayList	0x1C9D9E	0x1C9D7C
+BattleCostTableAccessor	getCategory	category	double	0x1CBBE2	0x1CBBC0
+BattleCostTableAccessor	getIndex	index	double	0x1CBC12	0x1CBBF0
+BattleCostTableAccessor	getCost	gold	double	0x1CBC82	0x1CBC54
+BattleCostTableAccessor	getCost	food	double	0x1CBC9E	0x1CBC54
+BattleCostTableAccessor	getCost	wood	double	0x1CBCBA	0x1CBC54
+BattleCostTableAccessor	getCost	iron	double	0x1CBCD6	0x1CBC54
+BattleCostTableAccessor	maxLevel	range	ArrayList	0x1CBD0A	0x1CBCE8
+BattleCostTableAccessor	minLevel	range	ArrayList	0x1CBD46	0x1CBD24
+BeginningEquipmentAccessor	getGold	gold	int	0x1CBEB2	0x1CBE90
+BeginningEquipmentAccessor	getfood	food	int	0x1CBEE2	0x1CBEC0
+BeginningEquipmentAccessor	getWood	wood	int	0x1CBF12	0x1CBEF0
+BeginningEquipmentAccessor	getIron	iron	int	0x1CBF42	0x1CBF20
+BeginningEquipmentAccessor	getZeny	zeny	int	0x1CBF72	0x1CBF50
+BoosterPackSheetTable	setup	ratio		0x1CC20F	0x1CC1BC
+BoosterPackSheetTable	setup	group		0x1CC227	0x1CC1BC
+BoosterPackSheetTable	getItemId	itemId	string	0x1CC426	0x1CC400
+BoosterPackSheetTable	getGroup	group		0x1CC456	0x1CC434
+BoosterPackSheetTable	ratio	ratio		0x1CC4CA	0x1CC4A8
+BoosterPackSheetTable	getAmount	amount		0x1CC4FE	0x1CC4DC
+BoosterPackSheetTable	getProbability	ratio		0x1CC536	0x1CC510
+BoosterPackSheetTable	getRecordList	itemId	string	0x1CC675	0x1CC620
+BoosterPackSheetTable	getRecordList	group	double	0x1CC68D	0x1CC620
+BoosterPackSheetTable	getRecordList	ratio	double	0x1CC6A6	0x1CC620
+BoosterPackSheetTable	getRecordList	amount	double	0x1CC6BF	0x1CC620
+BoosterPackSheetTable	getEffectNumber	effect	double	0x1CC732	0x1CC710
+BuildingModelsTableAccessor	getFileGroup	fileGroup	string	0x1CDC72	0x1CDC4C
+BuildingsDetailWindow	setup	ItemObj	ShopItemObject	0x1CDD02	0x1CDCC0
+BuildingsDetailWindow	setup	Exec	bool	0x1CDD1D	0x1CDCC0
+BuildingsTableAccessor	getName	name	string	0x1D04D2	0x1D04AC
+BuildingsTableAccessor	getDesc	desc	string	0x1D0506	0x1D04E0
+BuildingsTableAccessor	getCategory	category	string	0x1D0536	0x1D0514
+BuildingsTableAccessor	getCategoryType	category		0x1D056B	0x1D0544
+BuildingsTableAccessor	getCategoryType	category		0x1D058A	0x1D0544
+BuildingsTableAccessor	getCategoryType	category		0x1D05AB	0x1D0544
+BuildingsTableAccessor	isEnableMenuCategory	category		0x1D05E3	0x1D05BC
+BuildingsTableAccessor	isEnableMenuCategory	category		0x1D0602	0x1D05BC
+BuildingsTableAccessor	isEnableMenuCategory	category		0x1D0623	0x1D05BC
+BuildingsTableAccessor	getFilterType	category		0x1D065B	0x1D0634
+BuildingsTableAccessor	getFilterType	category		0x1D067A	0x1D0634
+BuildingsTableAccessor	getFilterType	category		0x1D069B	0x1D0634
+BuildingsTableAccessor	isAutoHarvestCategory	category		0x1D06D3	0x1D06AC
+BuildingsTableAccessor	isAutoHarvestCategory	category		0x1D06F2	0x1D06AC
+BuildingsTableAccessor	isAutoHarvestCategory	category	bool	0x1D0713	0x1D06AC
+BuildingsTableAccessor	getSize	size	ArrayList	0x1D0782	0x1D075C
+BuildingsTableAccessor	getGrade	grade	double	0x1D07D2	0x1D07B0
+BuildingsTableAccessor	getCost	costTypes	ArrayList	0x1D0802	0x1D07E0
+BuildingsTableAccessor	getCost	costAmounts	ArrayList	0x1D0813	0x1D07E0
+BuildingsTableAccessor	getProducts	products	ArrayList	0x1D08A2	0x1D087C
+BuildingsTableAccessor	getProduceType	produceType	int	0x1D0930	0x1D08B0
+BuildingsTableAccessor	getLevelUpTypeId	levelUpTypeId	string	0x1D096E	0x1D0948
+BuildingsTableAccessor	getConnectChipType	connectChipType	int	0x1D09DA	0x1D097C
+BuildingsTableAccessor	getItemId	itemId	string	0x1D0A16	0x1D09F0
+BuildingsTableAccessor	getWaitingAssetName	waitImages	ArrayList	0x1D0A4A	0x1D0A24
+BuildingsTableAccessor	getStartProduceImageName	startProductImage	string	0x1D0A8A	0x1D0A64
+BuildingsTableAccessor	getProduceCost	costTypes	ArrayList	0x1D0ACC	0x1D0A98
+BuildingsTableAccessor	getProduceCost	costAmounts	ArrayList	0x1D0AE3	0x1D0A98
+BuildingsTableAccessor	getSortNo	sortno	double	0x1D0B2E	0x1D0B0C
+BuildingsTableAccessor	getKokudakaMin	kokudakaMin	double	0x1D0B5E	0x1D0B3C
+BuildingsTableAccessor	getKokudakaMax	kokudakaMax	double	0x1D0B8E	0x1D0B6C
+BuildingsTableAccessor	getDedication	dedication	double	0x1D0BEE	0x1D0BCC
+BuildingsUpdater	init	mapId	int	0x1D0CE3	0x1D0CD0
+BuildingsUpdater	init	buildItems	Hashtable	0x1D0CF8	0x1D0CD0
+BuildingsWindow	setup	mapId	int	0x1D15BF	0x1D1594
+BuildingsWindow	setup	buildItems	Hashtable	0x1D15DA	0x1D1594
+CharacterGradeTableAccessor	getGradeUpCost	cost	double	0x1D1B98	0x1D1B70
+CharacterGradeTableAccessor	getLevelCap	levelCap	double	0x1D1BCC	0x1D1BA4
+CharacterLavelTableAccessor	getNeedLevelUpExp	exp	double	0x1D1D41	0x1D1D18
+CharacterLavelTableAccessor	getMaterialPoint	materialPoint	double	0x1D1DE5	0x1D1DBC
+CharacterLavelTableAccessor	getCost	cost	double	0x1D1E1D	0x1D1DF4
+CharacterLavelTableAccessor	getAddCapStatus	cap	double	0x1D1E56	0x1D1E2C
+CharacterTableAccessor	getCharacterCode	characterCode	double	0x1D20E2	0x1D20C0
+CharacterTableAccessor	getRarity	rarity	string	0x1D2116	0x1D20F0
+CharacterTableAccessor	getAttributeString	attribute		0x1D2146	0x1D2124
+CharacterTableAccessor	getImageName	images		0x1D21DE	0x1D21B8
+CharacterTableAccessor	getImageName	images		0x1D2232	0x1D220C
+CharacterTableAccessor	getAssetName	images		0x1D22C6	0x1D22A0
+CharacterTableAccessor	getGender	sex	int	0x1D234E	0x1D22F0
+CharacterTableAccessor	getAttack	atk		0x1D238A	0x1D2364
+CharacterTableAccessor	getDefence	def		0x1D23BE	0x1D2398
+CharacterTableAccessor	getIntel	int		0x1D23F2	0x1D23CC
+CharacterTableAccessor	getDefaultVoice	voice		0x1D2426	0x1D2400
+CharacterTableAccessor	getArtistName	artists		0x1D245A	0x1D2434
+CharacterTableAccessor	getTroopClass	troopClass		0x1D248E	0x1D2468
+CharacterTableAccessor	getMaterialPoint	materialPoint	double	0x1D24BE	0x1D249C
+CharacterTableAccessor	getSortId	sortNo	double	0x1D24EE	0x1D24CC
+CharacterTableAccessor	getKanaSortId	yomiSortNo	double	0x1D251E	0x1D24FC
+CharacterTableAccessor	getExpansion	expansion		0x1D2552	0x1D252C
+CharacterTableAccessor	getCharacterNum	characterNum	double	0x1D2582	0x1D2560
+CharacterTableAccessor	getBornCountry	bornCountry		0x1D25B6	0x1D2590
+CharacterTableAccessor	getSalePrice	sellPrice	double	0x1D25E6	0x1D25C4
+CharacterTableAccessor	getDeliveryPrice	dedication	double	0x1D2616	0x1D25F4
+CharacterTableAccessor	getMastersFamilyMsgId	dominusName		0x1D264A	0x1D2624
+CharacterTableAccessor	getMastersFamilyId	dominusId	double	0x1D267A	0x1D2658
+ChatInfo	setOperationMessage	gmMessage	string	0x1D3C39	0x1D3C20
+CheckExceedTableAccessor	setup	type	string	0x1D3E65	0x1D3E24
+CheckExceedTableAccessor	setup	time	double	0x1D3E78	0x1D3E24
+ComboTableAccessor	getName	name		0x1D409E	0x1D4078
+ComboTableAccessor	getMainCharacterCode	mainCcharacterCode		0x1D40D2	0x1D40AC
+ComboTableAccessor	getSubCharacterCode	subCharacterCodes	ArrayList	0x1D4106	0x1D40E0
+ComboTableAccessor	getDesc	desc		0x1D413A	0x1D4114
+CountrySettingAccessor	getAttribute	attribute	string	0x1D44EA	0x1D44C4
+CountrySettingAccessor	getEthnicType	attribute	string	0x1D4520	0x1D44F8
+CountrySettingAccessor	getRegionId	region	string	0x1D455E	0x1D4538
+CountrySettingAccessor	getRegionName	regionName	string	0x1D4592	0x1D456C
+CountrySettingAccessor	getOldCountryName	oldCountryName	string	0x1D45E6	0x1D45C0
+CountrySettingAccessor	getNewCountryName	newCountryName	string	0x1D463A	0x1D4614
+CountrySettingAccessor	getDoubleCountryName	doubleCountryName	string	0x1D468E	0x1D4668
+CountrySettingAccessor	getShortCountryName	shortCountryName	string	0x1D46E2	0x1D46BC
+CountrySettingAccessor	getDefaultMapNameMessgae	defaultMapName	string	0x1D4736	0x1D4710
+CountrySettingAccessor	getNeighboringCountries	neighboringCountries	ArrayList	0x1D476A	0x1D4744
+CountrySettingAccessor	getNamePlate	countryPlate	string	0x1D479E	0x1D4778
+CountrySettingAccessor	getBackDrop	backdrop	string	0x1D47D2	0x1D47AC
+CountrySettingAccessor	getGround	ground	string	0x1D4806	0x1D47E0
+CountrySettingAccessor	getLoginCountryIconNum	loginCountryIconNum		0x1D4836	0x1D4814
+CountrySettingAccessor	getChatRoomName	chatRoomName	ArrayList	0x1D486A	0x1D4848
+DailyMissionTableAccessor	getMissionName	missionName	string	0x1D4BF2	0x1D4BCC
+DebugPlayerIdsTableAccessor	getId	value	string	0x1D4C46	0x1D4C20
+DefinesTableAccessor	getQuestRecoveryPoint	value	double	0x1D4C9E	0x1D4C78
+DefinesTableAccessor	getQuestExpendPoint	value	double	0x1D4CD2	0x1D4CAC
+DefinesTableAccessor	getBattleRecoveryPoint	value	double	0x1D4D06	0x1D4CE0
+DefinesTableAccessor	getBattleExpendPoint	value	double	0x1D4D3A	0x1D4D14
+DefinesTableAccessor	getPoliticRecoveryPoint	value	double	0x1D4D76	0x1D4D48
+DefinesTableAccessor	getPoliticExpendPoint	value	double	0x1D4DAA	0x1D4D84
+DefinesTableAccessor	getAutoHarvestPoint	value	double	0x1D4DDE	0x1D4DB8
+DefinesTableAccessor	getUserMinLength	value	double	0x1D4E12	0x1D4DEC
+DefinesTableAccessor	getUserMaxLength	value	double	0x1D4E62	0x1D4E20
+DefinesTableAccessor	getMapNameMinLength	value	double	0x1D4E96	0x1D4E70
+DefinesTableAccessor	getMapNameMaxLength	value	double	0x1D4EE6	0x1D4EA4
+DefinesTableAccessor	getMinMatchingUser	value	double	0x1D4F1A	0x1D4EF4
+DefinesTableAccessor	getInfiniteDurability	value	double	0x1D4F4E	0x1D4F28
+DefinesTableAccessor	getFriendLimitWarningCount	value	double	0x1D4F82	0x1D4F5C
+DefinesTableAccessor	getSoulLimit	value	double	0x1D4FB6	0x1D4F90
+DefinesTableAccessor	getFriendSendOrderMax	value	double	0x1D4FEA	0x1D4FC4
+DefinesTableAccessor	getFriendRecieveOrderMax	value	double	0x1D501E	0x1D4FF8
+DefinesTableAccessor	getRaidBossCostBP	value	double	0x1D5069	0x1D502C
+DefinesTableAccessor	getMercenaryPrice	value	double	0x1D509E	0x1D5078
+DefinesTableAccessor	getCharacterVoiceChangePrice	value	double	0x1D50D2	0x1D50AC
+DefinesTableAccessor	getScaleKokudakaForDedication	value	double	0x1D5106	0x1D50E0
+DefinesTableAccessor	getlevelLimit	value	double	0x1D513A	0x1D5114
+DefinesTableAccessor	getCharacterGradeLimit	value	double	0x1D516E	0x1D5148
+DefinesTableAccessor	getCharacterDuckGradeLimit	value	double	0x1D51A2	0x1D517C
+DefinesTableAccessor	getEquipGradeLimit	value	double	0x1D51D6	0x1D51B0
+DefinesTableAccessor	getTurfWarTotalRankingBonusLimit	value	double	0x1D520A	0x1D51E4
+DefinesTableAccessor	getSiegeTotalRankingBonusLimit	value	double	0x1D523E	0x1D5218
+DefinesTableAccessor	getTipsCount	value	double	0x1D5278	0x1D524C
+DefinesTableAccessor	getInboxLimit	value	double	0x1D52AA	0x1D5284
+DefinesTableAccessor	getVsMinoMaxRatio	value	double	0x1D52DE	0x1D52B8
+DefinesTableAccessor	getVsMinoMinRatio	value	double	0x1D5312	0x1D52EC
+DefinesTableAccessor	getVsMinoMinCount	value	double	0x1D5346	0x1D5320
+DefinesTableAccessor	getVsMinoMaxCount	value	double	0x1D537A	0x1D5354
+DefinesTableAccessor	getStorageInitCount	value	double	0x1D53AE	0x1D5388
+DefinesTableAccessor	getMissionOpenLimit	value	double	0x1D53E2	0x1D53BC
+DefinesTableAccessor	getBuildingGradeCap	value	double	0x1D5416	0x1D53F0
+DefinesTableAccessor	getLessonAppealLevel	value	double	0x1D544A	0x1D5424
+DefinesTableAccessor	getPluginAppealLevel	value	double	0x1D547E	0x1D5458
+DefinesTableAccessor	getFireCannonBattlePoint	value	double	0x1D54B2	0x1D548C
+DraftTableAccessor	getBuildType	buildType	string	0x1D55F6	0x1D55D4
+DraftTableAccessor	isConsume	isConsume	bool	0x1D5626	0x1D5604
+DraftTableAccessor	getProgressCount	progressCount	double	0x1D5656	0x1D5634
+DraftTableAccessor	isImmediateBuild	immediateBuild	bool	0x1D5686	0x1D5664
+DraftTableAccessor	isContinueBuild	continueBuild	bool	0x1D56B6	0x1D5694
+DraftTableAccessor	getName	name	string	0x1D5702	0x1D56C4
+DraftTableAccessor	getDesc	desc	string	0x1D5736	0x1D5714
+DraftTableAccessor	getFilterType	buildType	string	0x1D5782	0x1D5744
+DraftTableAccessor	CanBuild	buildType	string	0x1D57D2	0x1D5794
+EnlargeCharacterLimitTableAccessor	getName	enlarge_message		0x1D582E	0x1D5808
+EnlargeCharacterLimitTableAccessor	getEnlarge	enlarge	double	0x1D587E	0x1D585C
+EnlargeCharacterLimitTableAccessor	getExpiration	expiration	double	0x1D58AF	0x1D588C
+EnlargeCharacterLimitTableAccessor	getCredit	credit	double	0x1D58DE	0x1D58BC
+EnlargeCharacterLimitTableAccessor	isEnable	enable	bool	0x1D590E	0x1D58EC
+EnlargeCharacterLimitTableAccessor	getCategory	category		0x1D5942	0x1D591C
+EquipGradeTableAccessor	getLevelCap	levelCap	double	0x1D599C	0x1D5974
+EquipGradeTableAccessor	getGradeUpCost	cost	double	0x1D59D0	0x1D59A8
+EquipGradeTableAccessor	addParamRate	addParamRate	double	0x1D5A08	0x1D59DC
+EquipLevelTableAccessor	getNeedLevelUpExp	exp	double	0x1D5AB3	0x1D5A78
+EquipLevelTableAccessor	getMaterialPoint	materialPoint	double	0x1D5AFB	0x1D5AC0
+EquipLevelTableAccessor	getCost	cost	double	0x1D5B43	0x1D5B08
+EquipSkillTableAccessor	getName	name	string	0x1D5B9A	0x1D5B74
+EquipSkillTableAccessor	getDesc	desc	string	0x1D5BCE	0x1D5BA8
+EquipSkillTableAccessor	getCategory	category	int	0x1D5C6D	0x1D5BDC
+EquipSkillTableAccessor	getSkillType	type	int	0x1D5CD1	0x1D5C84
+EquipSkillTableAccessor	getLevelUpType	levelUpType	string	0x1D5D0E	0x1D5CE8
+EquipSkillTableAccessor	getImages	images	string	0x1D5D8A	0x1D5D64
+EquipSkillTableAccessor	getMinRatio	minActivateRatio	double	0x1D5DBA	0x1D5D98
+EquipSkillTableAccessor	getMaxRatio	maxActivateRatio	double	0x1D5DEA	0x1D5DC8
+EquipSkillTableAccessor	getActiveRatio	minActivateRatio	double	0x1D5E1E	0x1D5DF8
+EquipSkillTableAccessor	getActiveRatio	maxActivateRatio	double	0x1D5E30	0x1D5DF8
+EquipSkillTableAccessor	getChangeSkill	changeId	string	0x1D5E92	0x1D5E6C
+EquipSkillTableAccessor	getChangeSkillLevel	changeLevel	double	0x1D5EC2	0x1D5EA0
+EquipSkillTableAccessor	getEffectCategory	effectCategory		0x1D5F32	0x1D5F0C
+EquipSkillTableAccessor	getInheritCost	inheritCost	double	0x1D5F62	0x1D5F40
+EquipSkillTableAccessor	getInheritRatio	inheritRatio	double	0x1D5F92	0x1D5F70
+EquipSkillTableAccessor	getInheritFlag	inheritFlag	bool	0x1D5FC2	0x1D5FA0
+EquipSkillTableAccessor	getInheritCondition	inheritConditions	ArrayList	0x1D5FF2	0x1D5FD0
+EquipSkillTableAccessor	getInheritClass	inheritClass	ArrayList	0x1D6022	0x1D6000
+EquipSkillTableAccessor	getBattleType	battleType	ArrayList	0x1D6052	0x1D6030
+EquipSkillTableAccessor	getMultiple	multiple	bool	0x1D6082	0x1D6060
+EquipSkillTableAccessor	getMultipleGroup	group	double	0x1D60B2	0x1D6090
+EquipSkillTableAccessor	getMultiplePriority	priorityInGroup	double	0x1D60E2	0x1D60C0
+EquipSkillTableAccessor	getEffectTarget	effect1Target	string	0x1D6116	0x1D60F0
+EquipSkillTableAccessor	getTiming	timing	string	0x1D614A	0x1D6124
+EquipSkillTableAccessor	getRarity	rarity	double	0x1D617A	0x1D6158
+EquipSkillTableAccessor	getInheritGrade	inheritGrade	double	0x1D61AA	0x1D6188
+EquipTableAccessor	getImageName	images	string	0x1D6232	0x1D620C
+EquipTableAccessor	getYomiSortId	yomiSortNo	double	0x1D6276	0x1D6254
+EquipTableAccessor	getEquipCode	equipCode	double	0x1D62A6	0x1D6284
+EquipTableAccessor	getRarity	rarity	string	0x1D62DA	0x1D62B4
+EquipTableAccessor	getImageName	images		0x1D630E	0x1D62E8
+EquipTableAccessor	getImageName	images		0x1D635A	0x1D6334
+EquipTableAccessor	getAssetName	images		0x1D63EE	0x1D63C8
+EquipTableAccessor	getAttackMin	atkMin		0x1D643E	0x1D6418
+EquipTableAccessor	getAttackMax	atkMax		0x1D6472	0x1D644C
+EquipTableAccessor	getDefenceMin	defMin		0x1D64A6	0x1D6480
+EquipTableAccessor	getDefenceMax	defMax		0x1D64DA	0x1D64B4
+EquipTableAccessor	getIntelMin	intMin		0x1D650E	0x1D64E8
+EquipTableAccessor	getIntelMax	intMax		0x1D6542	0x1D651C
+EquipTableAccessor	getMaterialPoint	materialPoint	double	0x1D6572	0x1D6550
+EquipTableAccessor	getSortId	sortNo	double	0x1D65A2	0x1D6580
+EquipTableAccessor	getKanaSortId	yomiSortNo	double	0x1D65D2	0x1D65B0
+EquipTableAccessor	getCharacterNum	equipNum	double	0x1D6602	0x1D65E0
+EquipTableAccessor	getSalePrice	sellPrice	double	0x1D6632	0x1D6610
+EquipTableAccessor	getDeliveryPrice	dedication	double	0x1D6662	0x1D6640
+EquipTableAccessor	getEquipGrade	equipGrade	double	0x1D6692	0x1D6670
+EventCoefTableAccessor	getValue	value	double	0x1D69CA	0x1D69A4
+FriendCompleteLevelTableAccessor	setup	level	double	0x1D6CE1	0x1D6CA0
+FriendCompleteLevelTableAccessor	setup	count	double	0x1D6CF5	0x1D6CA0
+GiganticLuckyCountTableAccessor	getCount	count		0x1D7572	0x1D7550
+GiganticLuckyCountTableAccessor	getReward	reward		0x1D75AA	0x1D7584
+GiganticLuckyCountTableAccessor	getContributePoint	contributePoint		0x1D75DA	0x1D75B8
+GiganticParticipationRewardTableAccessor	getRange	range	ArrayList	0x1D7882	0x1D7860
+GiganticParticipationRewardTableAccessor	getReward	rewardId		0x1D78B6	0x1D7890
+GiganticRaidBossResultRenderer	convertHtmlParameter	schedule	Hashtable	0x1D7B4C	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	open	double	0x1D7B5F	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	end	double	0x1D7B79	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	country	string	0x1D7BD3	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	punishPoint	double	0x1D7C00	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	gainRatio	double	0x1D7C1B	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	countryRank	double	0x1D7C49	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	countryRank	double	0x1D7C88	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	damage	Hashtable	0x1D7CA9	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	top	Hashtable	0x1D7CBC	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	self	Hashtable	0x1D7CCF	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	contribute	Hashtable	0x1D7CE2	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	top	Hashtable	0x1D7CF5	0x1D7B10
+GiganticRaidBossResultRenderer	convertHtmlParameter	self	Hashtable	0x1D7D08	0x1D7B10
+GiganticRaidBossResultRenderer	appendAttackerRank	damage	Hashtable	0x1D7DE5	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	top	Hashtable	0x1D7DF6	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	self	Hashtable	0x1D7E07	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	name		0x1D7E1F	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	rank	double	0x1D7E4F	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	rank	double	0x1D7E83	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	value	double	0x1D7E9B	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	rank	double	0x1D7ECB	0x1D7DCC
+GiganticRaidBossResultRenderer	appendAttackerRank	value	double	0x1D7F13	0x1D7DCC
+GiganticRaidBossResultRenderer	appendContributeRank	contribute	Hashtable	0x1D7F59	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	top	Hashtable	0x1D7F6A	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	self	Hashtable	0x1D7F7B	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	name		0x1D7F93	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	rank	double	0x1D7FC3	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	rank	double	0x1D7FF7	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	value	double	0x1D800F	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	rank	double	0x1D803F	0x1D7F40
+GiganticRaidBossResultRenderer	appendContributeRank	value	double	0x1D8087	0x1D7F40
+GiganticRaidBossResultRenderer	appendChainRanker	luckyCountList	Hashtable	0x1D80C7	0x1D80B4
+HTMLBbsMediator	getIconURL	playerIds	ArrayList	0x1D9836	0x1D97FC
+HTMLBoosterMediator	addCardInfoHash	DeckAtk		0x1DA086	0x1D9D78
+HTMLBoosterMediator	addCardInfoHash	DeckDef		0x1DA094	0x1D9D78
+HTMLBoosterMediator	addCardInfoHash	DeckInt		0x1DA0A2	0x1D9D78
+HTMLBoosterMediator	createPackHash	yomi		0x1DA2F6	0x1DA19C
+HTMLBoosterMediator	<createPackHash>m__B9	yomi		0x1DA60F	0x1DA5AC
+HTMLBoosterMediator	<createPackHash>m__B9	yomi		0x1DA625	0x1DA5AC
+HTMLMailCore	sendMails	to	ArrayList	0x1DA957	0x1DA928
+HTMLMailCore	deleteMails	mailIds	ArrayList	0x1DAAF5	0x1DAAB0
+HTMLRankingMediator	debugShowRanking	_region		0x1DBB49	0x1DBB18
+HTMLRankingMediator	debugShowRanking	_order		0x1DBB5C	0x1DBB18
+HTMLRankingMediator	debugShowRanking	_span		0x1DBB6F	0x1DBB18
+HTMLRankingMediator	debugShowRanking	_turn		0x1DBB82	0x1DBB18
+HTMLRankingMediator	send	username	int	0x1DC302	0x1DC1E0
+HTMLRankingMediator	send	username	int	0x1DC342	0x1DC1E0
+HTMLRankingMediator	getMessageJson	msg		0x1DC9FC	0x1DC9D4
+HTMLRankingMediator_Debug	getRankersInDebug	score		0x1DCC7C	0x1DCB9C
+HTMLRankingMediator_Debug	getTopRankersInDebug	turn	int	0x1DCD2B	0x1DCCF4
+HTMLRankingMediator_Debug	getRankersAroundMeInDebug	turn	int	0x1DCD8F	0x1DCD68
+HTMLRankingMediator_Kokudaka	getTopRankersInKokudaka	turn	int	0x1DCF27	0x1DCEF0
+HTMLRankingMediator_Kokudaka	getAroundRankersInKokudaka	turn	int	0x1DCFA3	0x1DCF64
+HTMLRankingMediator_Saga	getTopRankersInSaga	turn	int	0x1DD16E	0x1DD148
+HTMLRankingMediator_Saga	getAroundRankersInSaga	turn	int	0x1DD1E3	0x1DD1A4
+HTMLRankingMediator_Delivery	getTopRankersInDelivery	turn	int	0x1DD433	0x1DD3FC
+HTMLRankingMediator_Delivery	getRankersAroundMeInDelivery	turn	int	0x1DD49E	0x1DD470
+HTMLRankingMediator_Delivery	getTopRankersInDeliveryMonthly	turn	int	0x1DD513	0x1DD4DC
+HTMLRankingMediator_Delivery	getRankersAroundMeInDeliveryMonthly	turn	int	0x1DD57E	0x1DD550
+HTMLRankingMediator_GenmuStep	getTopRankersInGenmuStep	turn	int	0x1DD7BF	0x1DD788
+HTMLRankingMediator_GenmuStep	getRankersAroundMeInGenmuStep	turn	int	0x1DD82A	0x1DD7FC
+HTMLRankingMediator_Siege	getTopRankersInSiege	turn	int	0x1DDAE6	0x1DDAC0
+HTMLRankingMediator_Siege	getAroundRankersInSiege	turn	int	0x1DDB67	0x1DDB28
+HTMLRankingMediator_Strategy	getTopRankersInStrategy	turn	int	0x1DDEB2	0x1DDE8C
+HTMLRankingMediator_Strategy	getAroundRankersInStrategy	turn	int	0x1DDF7F	0x1DDF40
+HTMLRankingMediator_RaidBoss	getTopRankersInRaidBoss	turn	int	0x1DE1CF	0x1DE198
+HTMLRankingMediator_RaidBoss	getDailyTopRankersInRaidBoss	turn	int	0x1DE243	0x1DE20C
+HTMLRankingMediator_RaidBoss	getAroundRankersInRaidBoss	turn	int	0x1DE2BF	0x1DE280
+HTMLRankingMediator_RaidBoss	getDailyAroundRankersInRaidBoss	turn	int	0x1DE33B	0x1DE2FC
+HTMLRankingMediator_GiganticRaidBoss	getTopRankersInGiganticRaidBoss	turn	int	0x1DE5BF	0x1DE588
+HTMLRankingMediator_GiganticRaidBoss	getAroundRankersInGiganticRaidBoss	turn	int	0x1DE63B	0x1DE5FC
+HTMLRankingMediator_GiganticMaxDamage	getTopRankersOfMaxDamageInGiganticRaidBoss	turn	int	0x1DE84B	0x1DE814
+HTMLRankingMediator_GiganticMaxDamage	getAroundRankersInMaxDamageGiganticRaidBoss	turn	int	0x1DE8C7	0x1DE888
+HTMLRankingMediator_Battle	getTopRankersInBattle	turn	int	0x1DEB06	0x1DEAE0
+HTMLRankingMediator_Battle	getDailyTopRankersInBattle	turn	int	0x1DEB62	0x1DEB3C
+HTMLRankingMediator_Battle	getRankersAroundMeInBattle	turn	int	0x1DEBC6	0x1DEB98
+HTMLRankingMediator_Battle	getRankersAroundMeInBattleDaily	turn	int	0x1DEC32	0x1DEC04
+HTMLRankingMediator_Country	getRankingOfCountriesInBattle	turn	int	0x1DEE82	0x1DEE50
+HTMLRankingMediator_NationalPower	debugShowRanking	_region		0x1DF1F1	0x1DF1C0
+HTMLRankingMediator_NationalPower	debugShowRanking	_order		0x1DF204	0x1DF1C0
+HTMLRankingMediator_NationalPower	debugShowRanking	_span		0x1DF217	0x1DF1C0
+HTMLRankingMediator_NationalPower	debugShowRanking	_turn		0x1DF22A	0x1DF1C0
+HTMLRankingMediator_NationalPower	getRankingOfCountriesInNationalPower	turn	int	0x1DF4AB	0x1DF474
+HTMLRankingMediator_NationalPower	getRankersAroundMeInNationalPower	turn	int	0x1DF516	0x1DF4E8
+HTMLRankingMediator_Tenka	getTopRankersInTenka	turn	int	0x1DFE0A	0x1DFDE4
+HTMLRankingMediator_Tenka	getDailyTopRankersInTenka	turn	int	0x1DFE7A	0x1DFE54
+HTMLRankingMediator_Tenka	getRankersAroundMeInTenka	turn	int	0x1DFEF2	0x1DFEC4
+HTMLRankingMediator_Tenka	getRankersAroundMeInTenkaDaily	turn	int	0x1DFF5E	0x1DFF30
+HTMLRankingMediator_StrategyRate	getRankingOfStrategyRateInBattle	turn	int	0x1E01B2	0x1E0180
+HTMLRankingMediator_GiganticPoint	getRankingOfGiganticPoint	turn	int	0x1E0572	0x1E0540
+HTMLRankingMediator_RaidBossNational	getTopRankersInRaidBoss	turn	int	0x1E0993	0x1E095C
+HTMLRankingMediator_RaidBossNational	getAroundRankersInRaidBoss	turn	int	0x1E0A0F	0x1E09D0
+HTMLRankingMediator_NationalRanking	getTopRankersInNationalRanking	turn	int	0x1E0C13	0x1E0BDC
+HTMLRankingMediator_NationalRanking	getAroundRankersInNationalRanking	turn	int	0x1E0C97	0x1E0C58
+HTMLRankingMediator_WeeklyNationalRanking	getTopRankersInNationalRanking	turn	int	0x1E0FFB	0x1E0FC4
+HTMLRankingMediator_WeeklyNationalRanking	getAroundRankersInNationalRanking	turn	int	0x1E107F	0x1E1040
+HTMLRewardMediator	requestFromRankingRewardTableByRankingId	id		0x1E22A0	0x1E2098
+HTMLRewardMediator	requestFromRankingRewardTable	id		0x1E2659	0x1E244C
+HTMLRewardMediator	debugShowRanking	low		0x1E28B0	0x1E27B4
+HTMLRewardMediator	debugShowRanking	high		0x1E28DC	0x1E27B4
+HTMLRewardMediator	debugShowRanking	id		0x1E2957	0x1E27B4
+HTMLRewardMediator	debugShowRanking	item		0x1E296A	0x1E27B4
+HTMLRewardMediator	debugShowRanking	name		0x1E298B	0x1E27B4
+HTMLRewardMediator	getMessageJson	msg		0x1E2ACC	0x1E2AA4
+HTMLRewardMediatorWeekly	requestFromRankingRewardTable	id		0x1E2D88	0x1E2B80
+HTMLRaidBossRewardMediator	requestCore	id		0x1E318C	0x1E2FD4
+HTMLGiganticRaidBoss_Kiriban_RewardMediator	requestCore	id		0x1E353D	0x1E3320
+HTMLGiganticRaidBoss_Participation_RewardMediator	requestCore	id		0x1E3910	0x1E3714
+HTMLGiganticRaidBoss_Participation_RewardMediator	requestCore	isLast	bool	0x1E39EA	0x1E3714
+HTMLGiganticRaidBoss_Point_RewardMediator	requestCore	id		0x1E3C6D	0x1E3AA4
+HTMLCommonRewardMediator	requestCore	captionFileName	RankingRewardTableAccessor/Category	0x1E4009	0x1E3F74
+HTMLCommonRewardMediator	requestCore	unit		0x1E404C	0x1E3F74
+HTMLCommonRewardMediator	requestCore	id		0x1E4155	0x1E3F74
+HTMLSiegeMediator	debugShowRanking	def0		0x1E48AC	0x1E4820
+HTMLSiegeMediator	debugShowRanking	atk0		0x1E48E3	0x1E4820
+HTMLSiegeMediator	debugShowRanking	atk1		0x1E4912	0x1E4820
+HTMLStrategyMatchMediator	analize	winReward		0x1E5C7D	0x1E59A0
+HTMLStrategyMatchMediator	analize	winRewardNum	int	0x1E5CA0	0x1E59A0
+HTMLStrategyMatchMediator	analize	loseReward		0x1E5D96	0x1E59A0
+HTMLStrategyMatchMediator	analize	loseRewardNum	int	0x1E5DB9	0x1E59A0
+HTMLStrategyMatchMediator	debugShowRanking	def0		0x1E5F54	0x1E5EB8
+HTMLStrategyMatchMediator	debugShowRanking	atk0		0x1E5F8B	0x1E5EB8
+HTMLStrategyMatchMediator	debugShowRanking	atk1		0x1E5FBA	0x1E5EB8
+HTMLStrategyMatchMediator	debugShowRanking	winReward		0x1E5FDB	0x1E5EB8
+HTMLStrategyMatchMediator	debugShowRanking	winRewardNum		0x1E6001	0x1E5EB8
+HTMLStrategyMatchMediator	debugShowRanking	loseReward		0x1E6027	0x1E5EB8
+HTMLStrategyMatchMediator	debugShowRanking	loseRewardNum		0x1E604D	0x1E5EB8
+HTMLStrategyMatchMediator_History	debugShowRanking	def0		0x1E6B45	0x1E6A80
+HTMLStrategyMatchMediator_History	debugShowRanking	atk0		0x1E6B7D	0x1E6A80
+HTMLStrategyMatchMediator_History	debugShowRanking	atk1		0x1E6BAD	0x1E6A80
+HTMLStrategyMatchMediator_History	debugShowRanking	winner		0x1E6BCF	0x1E6A80
+HabitTableAccessor	createCategoryList	category		0x1E791F	0x1E78E0
+HabitTableAccessor	createCategoryList	id		0x1E7940	0x1E78E0
+HabitTableAccessor	getName	name		0x1E798E	0x1E7968
+HabitTableAccessor	getCategory	category		0x1E79C4	0x1E799C
+InventoryBuildDetailWindow	setup	ItemObj	InventoryItemObject	0x1E7B4E	0x1E7B0C
+InventoryBuildDetailWindow	setup	Exec	bool	0x1E7B69	0x1E7B0C
+InventoryDeliverList	onDedicateRefresh	myRank	Hashtable	0x1EA482	0x1EA3BC
+InventoryDeliverList	onDedicateRefresh	rank	double	0x1EA495	0x1EA3BC
+InventoryDeliverList	soldBuildings	buildings	Hashtable	0x1EA612	0x1EA5F4
+InventoryDeliverList	soldBuildings	gainGold	double	0x1EA671	0x1EA5F4
+InventoryEvolutionList	gradeupBuilding	amount	double	0x1EB153	0x1EB07C
+InventoryEvolutionResult	setup	src	string	0x1EB3D6	0x1EB3A4
+InventoryEvolutionResult	setup	dst	string	0x1EB3F1	0x1EB3A4
+InventorySaleList	soldBuildings	buildings	Hashtable	0x1EE5B8	0x1EE588
+InventorySaleList	soldBuildings	gainGold	double	0x1EE622	0x1EE588
+InventoryWindow	setup	mapId	int	0x1F0BDA	0x1F0B88
+ItemDetailWindow	setup	ItemObj	InventoryItemObject	0x1F1C6A	0x1F1C28
+ItemDetailWindow	setup	category	string	0x1F1C85	0x1F1C28
+ItemDetailWindow	setup	Exec	bool	0x1F1CA0	0x1F1C28
+ItemIdToShopIdTableAccessor	getShopId	shopId	string	0x1F1E7A	0x1F1E54
+ItemIdToShopIdTableAccessor	getPrice	price	double	0x1F1EAA	0x1F1E88
+ItemsTableAccessor	makeLoopbackTable	category	string	0x1F2223	0x1F2150
+ItemsTableAccessor	makeLoopbackTable	parameterId	string	0x1F224B	0x1F2150
+ItemsTableAccessor/TableAccessor	getCategory	category	string	0x1F2446	0x1F2420
+ItemsTableAccessor/TableAccessor	isCirculate	isCirculate	bool	0x1F2476	0x1F2454
+ItemsTableAccessor/TableAccessor	isGift	isGift	bool	0x1F24A6	0x1F2484
+ItemsTableAccessor/TableAccessor	isAuction	isAuction	bool	0x1F24D6	0x1F24B4
+ItemsTableAccessor/TableAccessor	getMessage	value	string	0x1F2535	0x1F24E4
+ItemsTableAccessor/TableAccessor	getIconName	iconName	string	0x1F25BE	0x1F2598
+ItemsTableAccessor/TableAccessor	getParameterId	parameterId	string	0x1F25F2	0x1F25CC
+ItemsTableAccessor/TableAccessor	getValue	value	double	0x1F2622	0x1F2600
+ItemsTableAccessor/TableAccessor	getPrice	price	double	0x1F2652	0x1F2630
+ItemsTableAccessor/TableAccessor	getEnable	enable	bool	0x1F2682	0x1F2660
+ItemsTableAccessor/TableAccessor	getDamageValue	parameterId	string	0x1F27A0	0x1F276C
+JewelSeriesTableAccessor	getCategory	category	double	0x1F2B3E	0x1F2B1C
+JewelSeriesTableAccessor	getName	name	string	0x1F2B6E	0x1F2B4C
+JewelSeriesTableAccessor	getName	name	string	0x1F2B7F	0x1F2B4C
+JewelSeriesTableAccessor	getDesc	desc	string	0x1F2BAE	0x1F2B8C
+JewelSeriesTableAccessor	getRewardFirst	rewardFirst	string	0x1F2BDE	0x1F2BBC
+JewelSeriesTableAccessor	getReward	reward	string	0x1F2C0E	0x1F2BEC
+JewelSeriesTableAccessor	getItems	items	ArrayList	0x1F2C3E	0x1F2C1C
+JewelSeriesTableAccessor	getNeedAmount	needAmount	double	0x1F2C6E	0x1F2C4C
+LevelUpTableAccessor	getNeedExp	needExp	double	0x1F2CE6	0x1F2CC4
+LevelUpTableAccessor	getNeedCostRatio	needCostRatio	double	0x1F2D1A	0x1F2CF4
+LevelUpTableAccessor	getCostRatio	costRatio	double	0x1F2D4E	0x1F2D28
+LevelUpTableAccessor	getIntervalRatio	IntervalRatio	double	0x1F2D82	0x1F2D5C
+LevelUpTableAccessor	getGainRatio	gainRatio	double	0x1F2DB6	0x1F2D90
+LevelUpTableAccessor	getName	name	string	0x1F2DEA	0x1F2DC4
+LoginBounusMenu	setupItem	itemId	string	0x1F302E	0x1F3008
+LoginBounusMenu	setupItem	amount	double	0x1F303F	0x1F3008
+LoginBounusMenu	setupItem	anniversary	string	0x1F3051	0x1F3008
+LoginBounusMenu	setup	startDate	string	0x1F323E	0x1F31FC
+LoginBounusMenu	setup	endDate	string	0x1F3257	0x1F31FC
+LotteryTableAccessorCore	setup	weight		0x1F38C4	0x1F386C
+LotteryTableAccessorCore	setup	secondSort		0x1F38E1	0x1F386C
+LotteryTableAccessorCore	getAmount	amount		0x1F3976	0x1F3954
+LotteryTableAccessorCore	getProbability	weight		0x1F39AE	0x1F3988
+MessageWindow	setup	MessageWindowSize	int	0x1F43BB	0x1F4384
+MessageWindow	setup	MessageWindowType	int	0x1F43D1	0x1F4384
+MigrateCache	setUpMigrateData	country		0x1F4B10	0x1F4AC8
+MigrateCache	setUpMigrateData	rank	double	0x1F4B26	0x1F4AC8
+MonsterSkillTableAccessor	getImages	images	string	0x1F50DE	0x1F50B8
+MonsterSkillTableAccessor	getEffectCategory	effectCategory		0x1F514A	0x1F5124
+MonsterTableAccessor/TableAccessor	getName	name	string	0x1F556A	0x1F5544
+MonsterTableAccessor/TableAccessor	getImageName	images		0x1F55AA	0x1F5584
+MonsterTableAccessor/TableAccessor	getVoiceKey	voice	string	0x1F55FE	0x1F55D8
+MonsterTableAccessor/TableAccessor	getMaxHp	maxHp	double	0x1F562E	0x1F560C
+MusicTableAccessor	getFileName	fileName	string	0x1F56A2	0x1F567C
+MusicTableAccessor	getVolume	volume	double	0x1F56F6	0x1F56B0
+NavigatorTableAccessor	getName	name	string	0x1F5793	0x1F5768
+NavigatorTableAccessor	getFlavorText	flavorText	string	0x1F57CF	0x1F57A4
+NavigatorTableAccessor	getDesc	desc	string	0x1F580B	0x1F57E0
+NavigatorTableAccessor	getSexType	sex	string	0x1F5842	0x1F581C
+NavigatorTableAccessor	getVoiceId	voice	string	0x1F5876	0x1F5850
+NavigatorTableAccessor	getUsageType	usageType	string	0x1F58AA	0x1F5884
+NavigatorTableAccessor	getMessageFile	messageFile	string	0x1F5A22	0x1F5A00
+NavigatorTableAccessor	getCredit	credit		0x1F5A52	0x1F5A30
+NavigatorTestWindow	onDraw	fileName  : 		0x1F5CFE	0x1F5C2C
+NavigatorVoiceTableAccessor	getVoiceActorName	voiceActorName	string	0x1F5EB6	0x1F5E90
+NormRewardScene	<setup>m__184	strategyBattlePoint	Hashtable	0x1F60DE	0x1F60B8
+NormRewardScene	<setup>m__184	activityReward	double	0x1F60F6	0x1F60B8
+NormRewardButtons	<openNormRewardWindow>m__185	normStatus		0x1F6548	0x1F6530
+NormRewardWindow	setup	point	int	0x1F675C	0x1F6710
+NormRewardWindow	setup	type	string	0x1F677C	0x1F6710
+NormRewardWindow	setup	type	string	0x1F67A5	0x1F6710
+NormRewardWindow	<recieve>m__189	status		0x1F6E65	0x1F6DE8
+OnOffTableAccessor	setup	open	string	0x1F6FB8	0x1F6F88
+PlayerDeckCache	getDeckAllCharactorIds	attack	Hashtable	0x1F7E43	0x1F7E18
+PlayerDeckCache	getDeckAllCharactorIds	ids	Hashtable	0x1F7E63	0x1F7E18
+PlayerDeckCache	getDeckAllCharactorIds	defense	Hashtable	0x1F7E7B	0x1F7E18
+PlayerDeckCache	getDeckAllCharactorIds	ids	Hashtable	0x1F7E9B	0x1F7E18
+PlayerDeckCache	getDeckAllCharactorIds	politic	Hashtable	0x1F7EB3	0x1F7E18
+PlayerDeckCache	getDeckAllCharactorIds	ids	Hashtable	0x1F7ED3	0x1F7E18
+PlayerDeckCache	getAllAssetNames	baseId	string	0x1F8039	0x1F7FD0
+PlayerDeckCache	getAllAssetNames	grade	double	0x1F804C	0x1F7FD0
+PlayerLevelTableAccessor	getNeedLevelUpExp	exp	double	0x1F823C	0x1F8214
+PlayerLevelTableAccessor	getMaxFriend	friend	double	0x1F8270	0x1F8248
+PlayerLevelTableAccessor	requirementForNext	requirementForNext	string	0x1F83D0	0x1F83A8
+PlayerLevelTableAccessor	getAttackDeckCount	attackDeckCount	double	0x1F8404	0x1F83DC
+PlayerLevelTableAccessor	getNaviMessage	dispMessage	string	0x1F843C	0x1F8410
+PluginLogManager	ParseLogData	action	string	0x1F87C9	0x1F8764
+PluginLogManager	ParseLogData	time	double	0x1F87E0	0x1F8764
+PluginLogManager	ParseLogData	reward	Hashtable	0x1F882D	0x1F8764
+PluginLogManager	<requestLogData>m__19D	logdatas	Hashtable	0x1F895E	0x1F8944
+PluginPoliticDataManager	onGetServerMapData	tasks	Hashtable	0x1F8B41	0x1F8B08
+PluginPoliticDataManager	onGetServerMapData	buildings	Hashtable	0x1F8B52	0x1F8B08
+PluginPoliticDataManager	onGetServerMapData	buildings	Hashtable	0x1F8B63	0x1F8B08
+PluginPoliticDataManager	onGetServerMapData	producings	Hashtable	0x1F8B74	0x1F8B08
+PluginPoliticDataManager	onGetServerMapData	buildingEvents	Hashtable	0x1F8B86	0x1F8B08
+PluginPoliticDataManager	setBuildingsData	deployedMapKey	string	0x1F8C23	0x1F8BA0
+PluginPoliticDataManager	wakeupEdictMissions	missions	Hashtable	0x1F91CA	0x1F91B8
+PluginPoliticDataWriter	OnGetProductings	building	Hashtable	0x1F9EE7	0x1F9E94
+PluginPoliticDataWriter	OnGetProductings	collaborator	Hashtable	0x1F9EFA	0x1F9E94
+PluginPoliticDataWriter	OnGetProductings	reward	Hashtable	0x1F9F0D	0x1F9E94
+PluginQuestDataManager	onGetEventData	questType	string	0x1FA43D	0x1FA424
+PluginQuestDataManager	onGetEventData	questIds	Hashtable	0x1FA4CF	0x1FA424
+PluginQuestDataManager	onGetStoryProgress	chapter1	double	0x1FA651	0x1FA5BC
+PluginQuestDataManager	onGetStoryProgress	chapter2	double	0x1FA66C	0x1FA5BC
+PluginQuestDataManager	onGetStoryProgress	chapter3	double	0x1FA687	0x1FA5BC
+PluginQuestDataManager	onGetStoryProgress	chapter4	double	0x1FA6A2	0x1FA5BC
+PluginQuestDataManager	onGetStoryProgress	chapter5	double	0x1FA6BD	0x1FA5BC
+PluginQuestStepHelper	ProcessQuestStep	executeInfo	Hashtable	0x1FAC12	0x1FABD4
+PluginQuestStepHelper	ProcessQuestStep	eventInfo	Hashtable	0x1FAC24	0x1FABD4
+PluginQuestStepHelper	ProcessQuestStep	rewardInfo	Hashtable	0x1FAC36	0x1FABD4
+PluginQuestStepHelper	ProcessQuestStep	bonusInfo	Hashtable	0x1FAC48	0x1FABD4
+PluginQuestStepHelper	ProcessQuestStep	missionPoint	double	0x1FAC59	0x1FABD4
+PluginQuestStepHelper	CheckEvent	eventType	double	0x1FADB6	0x1FADA4
+PluginQuestStepHelper	OnObstacle	obstacleInfo	Hashtable	0x1FB00A	0x1FAFF8
+PluginQuestStepHelper	OnObstacle	amount	double	0x1FB01B	0x1FAFF8
+PluginQuestStepHelper	OnObstacle	needAmount	double	0x1FB02D	0x1FAFF8
+PluginQuestStepHelper	OnObstacle	type	string	0x1FB03F	0x1FAFF8
+PluginQuestStepHelper	OnObstacle	category	string	0x1FB050	0x1FAFF8
+PluginQuestStepHelper	onClearObstacleResult	isSuccess	bool	0x1FB1D5	0x1FB1BC
+PluginQuestStepHelper	OnEnountRaidboss	encountInfo	Hashtable	0x1FB262	0x1FB250
+PluginQuestStepHelper	OnEnountRaidboss	monsterId	string	0x1FB273	0x1FB250
+PluginQuestStepHelper	OnEnountPlayer	encountInfo	Hashtable	0x1FB2D6	0x1FB2C4
+PluginQuestStepHelper	OnEnountPlayer	name	string	0x1FB2E7	0x1FB2C4
+PluginQuestStepHelper	CallAtkEnemy	encountInfo	Hashtable	0x1FB342	0x1FB31C
+PluginQuestStepHelper	CallAtkEnemy	encountId	double	0x1FB354	0x1FB31C
+PluginQuestStepHelper	onBattleExecute	log	Hashtable	0x1FB3C5	0x1FB3AC
+PluginQuestStepHelper	onBattleExecute	winner	string	0x1FB3D6	0x1FB3AC
+PluginQuestStepHelper	onBattleExecute	result	Hashtable	0x1FB3F1	0x1FB3AC
+PluginQuestStepHelper	onBattleExecute	bonus	Hashtable	0x1FB402	0x1FB3AC
+PluginQuestStepHelper	onBattleExecute	payment	Hashtable	0x1FB41C	0x1FB3AC
+PluginQuestStepHelper	CallOpenTreasure	treasureInfo	Hashtable	0x1FB495	0x1FB474
+PluginQuestStepHelper	CallOpenTreasure	keyItemId	string	0x1FB4A8	0x1FB474
+PluginQuestStepHelper	CallOpenTreasure	keyItemCount	double	0x1FB4BF	0x1FB474
+PluginQuestStepHelper	CallOpenTreasure	haveCount	double	0x1FB4D5	0x1FB474
+PluginQuestStepHelper	CallOpenTreasure	treasureId	double	0x1FB4E9	0x1FB474
+PluginQuestStepHelper	onOpenTreasure	open	bool	0x1FB561	0x1FB548
+PluginQuestStepHelper	onOpenTreasure	item	Hashtable	0x1FB572	0x1FB548
+PluginQuestStepHelper	onOpenTreasure	reward	Hashtable	0x1FB583	0x1FB548
+PluginRaidbossDataManager	getLastRaidId	id	string	0x1FB846	0x1FB824
+PluginRaidbossDataManager	getRaidbossStatus	status	string	0x1FB87A	0x1FB858
+PluginRaidbossDataManager	onGetRaidBossEntries	player	Hashtable	0x1FB8F5	0x1FB8DC
+PluginRaidbossDataManager	onGetRaidBossEntries	raidBossInfo	Hashtable	0x1FB92D	0x1FB8DC
+PluginRaidbossDataManager	onGetRaidBossEntries	limit	double	0x1FB94B	0x1FB8DC
+PluginRunner_DoBattleNormal	Init	BattleMoney	int	0x1FBBC7	0x1FBBA4
+PluginRunner_DoBattleNormal	Init	BattleSiege	bool	0x1FBBE2	0x1FBBA4
+PluginRunner_DoBattleNormal	Init	BattleTenka	bool	0x1FBBFD	0x1FBBA4
+PluginRunner_DoBattleNormal	onSelfRecoed	costs	Hashtable	0x1FBC41	0x1FBC28
+PluginRunner_DoBattleNormal	onSelfRecoed	0	Hashtable	0x1FBC52	0x1FBC28
+PluginRunner_DoBattleNormal	onSelfRecoed	gold	double	0x1FBC64	0x1FBC28
+PluginRunner_DoBattleNormal	onGetRivals	rivals	Hashtable	0x1FBDE4	0x1FBDBC
+PluginRunner_DoBattleNormal	onBattleResult	log	Hashtable	0x1FBED4	0x1FBEA4
+PluginRunner_DoBattleNormal	onBattleResult	winner	string	0x1FBEE5	0x1FBEA4
+PluginRunner_DoBattleNormal	onBattleResult	defenderName	string	0x1FBF00	0x1FBEA4
+PluginRunner_DoBattleNormal	onBattleResult	result	Hashtable	0x1FBF11	0x1FBEA4
+PluginRunner_DoBattleNormal	onBattleResult	bonus	Hashtable	0x1FBF2F	0x1FBEA4
+PluginRunner_DoBattleNormal	onBattleResult	payment	Hashtable	0x1FBF4A	0x1FBEA4
+PluginRunner_DoBattleSiege	Init	BattleMoney	int	0x1FC29C	0x1FC284
+PluginRunner_DoBattleSiege	onGetDecks	siege	Hashtable	0x1FC2DD	0x1FC2C4
+PluginRunner_DoBattleSiege	onGetDecks	0	Hashtable	0x1FC2EE	0x1FC2C4
+PluginRunner_DoBattleSiege	onGetDecks	1	Hashtable	0x1FC2FF	0x1FC2C4
+PluginRunner_DoBattleSiege	onGetDecks	ids	Hashtable	0x1FC310	0x1FC2C4
+PluginRunner_DoBattleSiege	onGetDecks	ids	Hashtable	0x1FC322	0x1FC2C4
+PluginRunner_DoBattleSiege	onGetDecks	0		0x1FC335	0x1FC2C4
+PluginRunner_DoBattleSiege	onGetDecks	0		0x1FC343	0x1FC2C4
+PluginRunner_DoBattleSiege	onSiegeDischarge	gainBlackSoul	double	0x1FC627	0x1FC608
+PluginRunner_DoBattleSiege	onBattleResult	log	Hashtable	0x1FC6BC	0x1FC68C
+PluginRunner_DoBattleSiege	onBattleResult	winner	string	0x1FC6CD	0x1FC68C
+PluginRunner_DoBattleSiege	onBattleResult	defenderName	string	0x1FC6E8	0x1FC68C
+PluginRunner_DoBattleSiege	onBattleResult	result	Hashtable	0x1FC6F9	0x1FC68C
+PluginRunner_DoBattleSiege	onBattleResult	bonus	Hashtable	0x1FC717	0x1FC68C
+PluginRunner_DoBattleSiege	onBattleResult	payment	Hashtable	0x1FC732	0x1FC68C
+PluginRunner_DoBattleSiege	onGetEventStatuses	status	string	0x1FC851	0x1FC810
+PluginRunner_DoBattleSiege	onGetEventStatuses	endTime	double	0x1FC871	0x1FC810
+PluginRunner_DoBattleSiege	onGetEventStatuses	isEntry	bool	0x1FC888	0x1FC810
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	charge	Hashtable	0x1FCB4D	0x1FCB34
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	spot	double	0x1FCB5E	0x1FCB34
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	consecutiveWinCount	double	0x1FCB71	0x1FCB34
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	costs	Hashtable	0x1FCB87	0x1FCB34
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	0	Hashtable	0x1FCB98	0x1FCB34
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	gold	double	0x1FCBAC	0x1FCB34
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	rival	Hashtable	0x1FCBC2	0x1FCB34
+PluginRunner_DoBattleSiege	<ProcessEnterBattle>m__1BD	playerId	string	0x1FCBD5	0x1FCB34
+PluginRunner_DoBattleTenka	Init	BattleMoney	int	0x1FCC38	0x1FCC20
+PluginRunner_DoBattleTenka	Init	BattleSiege	bool	0x1FCC53	0x1FCC20
+PluginRunner_DoDreamSpace	Init	DreamSpaceType	string	0x1FCCB6	0x1FCC94
+PluginRunner_DoDreamSpace	onQuestProgress	last	Hashtable	0x1FCD5D	0x1FCD30
+PluginRunner_DoDreamSpace	onQuestProgress	quest	double	0x1FCD6F	0x1FCD30
+PluginRunner_DoDreamSpace	onQuestProgress	chapter	double	0x1FCD86	0x1FCD30
+PluginRunner_DoDreamSpace	onQuestProgress	area	double	0x1FCD9D	0x1FCD30
+PluginRunner_DoDreamSpace	onQuestProgress	step	double	0x1FCDB4	0x1FCD30
+PluginRunner_DoDreamSpace	onQuestExecute	executeInfo	Hashtable	0x1FCEA9	0x1FCE90
+PluginRunner_DoDreamSpace	onQuestExecute	step	double	0x1FCEBB	0x1FCE90
+PluginRunner_DoEvent	Init	EventType	string	0x1FD2EE	0x1FD2CC
+PluginRunner_DoEvent	onQuestChapterData	clearCount	double	0x1FD4A5	0x1FD48C
+PluginRunner_DoEvent	onGetEventData	questIds	Hashtable	0x1FD53D	0x1FD524
+PluginRunner_DoEvent	onQuestExecute	executeInfo	Hashtable	0x1FD64D	0x1FD634
+PluginRunner_DoEvent	onQuestExecute	step	double	0x1FD65F	0x1FD634
+PluginRunner_DoHarvest	Init	count	int	0x1FD9FB	0x1FD9D8
+PluginRunner_DoHarvest	Init	mapid	int	0x1FDA16	0x1FD9D8
+PluginRunner_DoHarvest	Init	PoliticPointKeep	int	0x1FDA31	0x1FD9D8
+PluginRunner_DoHarvest	HarvestResult	errorReason	string	0x1FDB21	0x1FDB08
+PluginRunner_DoHarvest	HarvestResult	autoProducings	Hashtable	0x1FDB64	0x1FDB08
+PluginRunner_DoHarvest	HarvestResult	producings	Hashtable	0x1FDB84	0x1FDB08
+PluginRunner_DoManual	Init	mapid	int	0x1FDCCF	0x1FDCAC
+PluginRunner_DoManual	Init	PoliticPointKeep	int	0x1FDCEA	0x1FDCAC
+PluginRunner_DoManual	Init	buildingkey	string	0x1FDD05	0x1FDCAC
+PluginRunner_DoManual	Init	productkey	string	0x1FDD36	0x1FDCAC
+PluginRunner_DoManual	Init	count	int	0x1FDD67	0x1FDCAC
+PluginRunner_DoManual	OnSubmitBulkProduceTasksResult	producings	Hashtable	0x1FDF15	0x1FDEFC
+PluginRunner_DoOniQuest	Init	OniQuestHigh	bool	0x1FE2FB	0x1FE2D8
+PluginRunner_DoOniQuest	Init	OniQuestStory	int	0x1FE316	0x1FE2D8
+PluginRunner_DoOniQuest	Init	OniQuestChapter	int	0x1FE354	0x1FE2D8
+PluginRunner_DoOniQuest	Init	OniQuestEpisode	int	0x1FE36F	0x1FE2D8
+PluginRunner_DoOniQuest	onGetStoryProgress	complete	double	0x1FE512	0x1FE49C
+PluginRunner_DoOniQuest	onGetStoryProgress	maxStep	double	0x1FE589	0x1FE49C
+PluginRunner_DoOniQuest	onGetStoryProgress	step	double	0x1FE5A1	0x1FE49C
+PluginRunner_DoOniQuest	onQuestExecute	executeInfo	Hashtable	0x1FE67D	0x1FE664
+PluginRunner_DoOniQuest	onQuestExecute	step	double	0x1FE68F	0x1FE664
+PluginRunner_DoPoliticBattle	Init	mapid	int	0x1FEA63	0x1FEA40
+PluginRunner_DoPoliticBattle	onBattleExecute	log	Hashtable	0x1FEC61	0x1FEC48
+PluginRunner_DoPoliticBattle	onBattleExecute	winner	string	0x1FEC72	0x1FEC48
+PluginRunner_DoPoliticBattle	onBattleExecute	result	Hashtable	0x1FEC8D	0x1FEC48
+PluginRunner_DoPoliticBattle	onBattleExecute	bonus	Hashtable	0x1FECA9	0x1FEC48
+PluginRunner_DoPoliticBattle	onBattleExecute	payment	Hashtable	0x1FECC3	0x1FEC48
+PluginRunner_DoPotionAll	Init	AllPotionPoint	int	0x1FEE8F	0x1FEE6C
+PluginRunner_DoPotionAll	Init	AllPotionID	string	0x1FEEAA	0x1FEE6C
+PluginRunner_DoPotionPolitic	Init	PoliticPoint	int	0x1FF01F	0x1FEFFC
+PluginRunner_DoPotionPolitic	Init	PoliticPotionID	string	0x1FF03A	0x1FEFFC
+PluginRunner_DoPotionQuest	Init	QuestPoint	int	0x1FF173	0x1FF150
+PluginRunner_DoPotionQuest	Init	QuestPotionID	string	0x1FF18E	0x1FF150
+PluginRunner_DoPotionRaidboss	Init	RaidbossPoint	int	0x1FF2C7	0x1FF2A4
+PluginRunner_DoPotionRaidboss	Init	RaidBossPotionID	string	0x1FF2E2	0x1FF2A4
+PluginRunner_DoRaidBoss	onExecuteBattleRaidBoss	log	Hashtable	0x1FF594	0x1FF570
+PluginRunner_DoRaidBoss	onExecuteBattleRaidBoss	winner	string	0x1FF5A5	0x1FF570
+PluginRunner_DoRaidBoss	onExecuteBattleRaidBoss	result	Hashtable	0x1FF5C0	0x1FF570
+PluginRunner_DoRaidBoss	onExecuteBattleRaidBoss	bonus	Hashtable	0x1FF5D1	0x1FF570
+PluginRunner_DoRaidBoss	onExecuteBattleRaidBoss	payment	Hashtable	0x1FF5EB	0x1FF570
+PluginRunner_DoRaidBoss	onExecuteBattleRaidBoss	defenderId	string	0x1FF63B	0x1FF570
+PluginRunner_DoReceiveMail	onGetParcels	totalCount	double	0x1FF8A8	0x1FF880
+PluginRunner_DoReceiveMail	onGetParcels	parcels	Hashtable	0x1FF8C9	0x1FF880
+PluginRunner_DoReceiveMail	onResolveParcels	rewards	Hashtable	0x1FF9DA	0x1FF970
+PluginRunner_DoTrade	Init	mapid	int	0x1FFBB3	0x1FFB90
+PluginRunner_DoTrade	Init	TradeType	string	0x1FFBCE	0x1FFB90
+PluginRunner_DoTrade	onRecieveErrantry	results	Hashtable	0x200049	0x200030
+PluginRunner_LevelUp	Init	mapid	int	0x2002EB	0x2002C8
+PluginRunner_LevelUp	Init	PoliticPointKeep	int	0x200306	0x2002C8
+PluginTaskDataConverter	CheckPoliticTask	Mail	bool	0x200C96	0x200C14
+PluginTaskManager	OnGetServerData	pluginData	Hashtable	0x201874	0x20184C
+PluginTaskManager	OnGetServerData	pluginTime	Hashtable	0x201889	0x20184C
+PlugintimeTableAccessor	getCredit	credit	double	0x201B8A	0x201B68
+PluginBattleSetting	SyncTaskDataToUI_Battle	DreamSpaceType		0x20207C	0x201F64
+PluginBattleSetting	SyncTaskDataToUI_Battle	DreamSpaceType		0x2020A1	0x201F64
+PluginManualProduce	UpdateProduce	openLevel	double	0x20315D	0x203078
+Politic	createMap	map	Hashtable	0x2058B5	0x205894
+Politic	createMap	buildings	Hashtable	0x2058C6	0x205894
+Politic	createMap	tasks	Hashtable	0x2058D7	0x205894
+Politic	createMap	buildingEvents	Hashtable	0x2058E8	0x205894
+Politic	updatePoliticBuildingEvents	buildingEvents	Hashtable	0x205DF6	0x205DE4
+PoliticAvatorCache	setup	baseId	string	0x2061BB	0x2061A8
+PoliticAvatorCache	setup	grade	double	0x2061D1	0x2061A8
+PoliticAvatorCache	setup	voice	string	0x2061E8	0x2061A8
+PoliticBuilding	<levelUp>m__218	errorReason	string	0x20A73E	0x20A6F4
+PoliticBuildingList	makeCollectivelyLevelupList	levelUpTimes		0x20C0CA	0x20C050
+PoliticBuildingList	makeCollectivelyLevelupList	stopReason		0x20C1A9	0x20C050
+PoliticBuildingState.StateBuilding	startBuilding	buildings	Hashtable	0x20D806	0x20D7F4
+PoliticBuildingState.StateBuilding	startBuilding	autoProducings	Hashtable	0x20D849	0x20D7F4
+PoliticBuildingState.StateAutoProduce	onCompliteProducings	reward	Hashtable	0x20E1F1	0x20E188
+PoliticBuildingState.StateAutoProduce	onCompliteProducings	building	Hashtable	0x20E216	0x20E188
+PoliticBuildingState.StateAutoProduce	onCompliteProducings	collaborator	Hashtable	0x20E246	0x20E188
+PoliticBuildingState.StateAutoProduce	onCompliteProducings	exp	double	0x20E28D	0x20E188
+PoliticBuildingState.StateAutoProduce	OnFBComplite	completecount	double	0x20E457	0x20E31C
+PoliticBuildingState.StateAutoProduce	onComplite	autoProducings	Hashtable	0x20E49A	0x20E470
+PoliticBuildingState.StateAutoProduce	onComplite	producings	Hashtable	0x20E52B	0x20E470
+PoliticBuildingState.StateManualProduce	onComplite	producings	Hashtable	0x20E896	0x20E87C
+PoliticChangeMapWindow	setup	mapId	int	0x2124D5	0x212484
+PoliticChangeMapWindow2	setup	mapId	int	0x2127C2	0x21278C
+PoliticDebugMenu	debug_ItemCategoryAdd	enable	bool	0x214B39	0x214AE8
+PoliticDeckTableAccessor	update	politicDeck	Hashtable	0x215AF6	0x215AB8
+PoliticDeckTableAccessor	update	totalIntelligence	double	0x215B0E	0x215AB8
+PoliticDeckTableAccessor	updateWaterBorneTrade	deck	Hashtable	0x215C22	0x215C0C
+PoliticEdictIcon	getEdictResourceMessage	 	double	0x216EDA	0x216E74
+PoliticFSMAutoHarvest	noticeResult	errorReason	string	0x21A121	0x21A108
+PoliticFSMCollectiveProduce	<selectProduceAll>m__289	producings	Hashtable	0x21C0D9	0x21C0B4
+PoliticFSMProduct	<startSingleCrop>m__2C0	products	Hashtable	0x223079	0x223060
+PoliticFriendMapRewardMenu	calcReward	isFirst	bool	0x2286AB	0x228688
+PoliticFriendMapRewardMenu	calcReward	reward	Hashtable	0x2286C5	0x228688
+PoliticItemInventory	putInItemList	amount	double	0x229DA0	0x229D64
+PoliticMap	reset	width	double	0x22A488	0x22A42C
+PoliticMap	reset	height	double	0x22A499	0x22A42C
+PoliticMap	reset	occupiedGrids	Hashtable	0x22A4FE	0x22A42C
+PoliticMap	reset	producings	Hashtable	0x22A51B	0x22A42C
+PoliticMap	reset	buildings	Hashtable	0x22A52D	0x22A42C
+PoliticMap	reset	deployedMapKey	string	0x22A6E8	0x22A42C
+PoliticMissionProgressList	resetList	states	Hashtable	0x230AD2	0x230AC0
+PoliticMissionProgressList	wakeupEdictMissions	missions	Hashtable	0x23111E	0x2310F4
+PoliticMissionProgressList	restoreStoryQuestInfo	quest	double	0x231AA6	0x231A50
+PoliticMissionProgressList	restoreStoryQuestInfo	chapter	double	0x231ABD	0x231A50
+PoliticMissionProgressList	restoreStoryQuestInfo	area	double	0x231AD4	0x231A50
+PoliticMissionProgressList	<makeUpdateStatusList>m__2FF	mission	Hashtable	0x2322D5	0x2322BC
+PoliticMissionProgressList	<makeUpdateStatusList>m__2FF	reward	Hashtable	0x23233B	0x2322BC
+PoliticMissionProgressList	<makeUpdateEdictStatusList>m__300	mission	Hashtable	0x2323C1	0x2323A8
+PoliticMissionProgressList	<makeUpdateEdictStatusList>m__300	reward	Hashtable	0x232427	0x2323A8
+PoliticMissionTableOne	get_Id	id	string	0x23392C	0x233920
+PoliticMissionTableOne	get_Index	index	double	0x233944	0x233938
+PoliticMissionTableOne	get_IconFileName	iconFileName	string	0x23395C	0x233950
+PoliticMissionTableOne	get_IconIndex	iconIndex	double	0x233988	0x23397C
+PoliticMissionTableOne	get_BootCheckFunc	bootCheckFunc	string	0x2339A0	0x233994
+PoliticMissionTableOne	get_BootCheckData	bootCheckData	ArrayList	0x2339B8	0x2339AC
+PoliticMissionTableOne	get_IsAutoStart	isAutoStart	string	0x2339DD	0x2339C4
+PoliticMissionTableOne	get_MissionType	missionType	string	0x233A14	0x233A08
+PoliticMissionTableOne	get_Target	target	string	0x233A2C	0x233A20
+PoliticMissionTableOne	get_NeedClearCount	needClearCount	double	0x233A44	0x233A38
+PoliticMissionTableOne	get_AcceptUnlocks	acceptUnlocks	ArrayList	0x233B88	0x233B7C
+PoliticMissionTableOne	get_ClearUnlocks	clearUnlocks	ArrayList	0x233BA0	0x233B94
+PoliticMissionTableOne	get_AcceptUnlocksFlag	acceptUnlocks	ArrayList	0x233BC3	0x233BAC
+PoliticMissionTableOne	get_ClearUnlocksFlag	clearUnlocks	ArrayList	0x233C63	0x233C4C
+PoliticMissionTableOne	get_EnterScriptTypeId	enterScript	string	0x233CF8	0x233CEC
+PoliticMissionTableOne	get_ExitScriptTypeId	exitScript	string	0x233D10	0x233D04
+PoliticMissionTableAccessor	makeIndexList	index	double	0x233E4D	0x233E04
+PoliticMissionTableAccessor	makeIndexList	id	string	0x233E5E	0x233E04
+PoliticMissionTableAccessor	makeIndexList	index	double	0x233EC1	0x233E04
+PoliticMissionTableAccessor	makeIndexList	id	string	0x233ED3	0x233E04
+PoliticScriptCommand	createMenu	type	int	0x238E46	0x238DD4
+PoliticScriptCommand	createMenu	prefab	GameObject	0x238E85	0x238DD4
+PoliticScriptCommand	getResultDeckCharacter	results	Hashtable	0x239342	0x239304
+PoliticScriptCommand	getResultDeckCharacter	resultId	string	0x239366	0x239304
+PoliticScriptCommand	getResultDeckCharacterVoice	results	Hashtable	0x239486	0x23944C
+PoliticScriptCommand	getResultDeckCharacterVoice	resultId	string	0x2394AA	0x23944C
+PoliticShopSaleManager	onGetShopSaleData	endTime	double	0x23A0F3	0x23A094
+PoliticWaterTradePlayerInfo	startup	username	string	0x23C765	0x23C734
+PoliticWaterTradePlayerInfo	startup	character	Hashtable	0x23C77A	0x23C734
+PoliticWaterTradePlayerInfo	startup	baseId	string	0x23C78C	0x23C734
+PoliticWaterTradePlayerInfo	startup	grade	double	0x23C7A2	0x23C734
+PoliticWaterTradePlayerInfo	startup	int	double	0x23C7B9	0x23C734
+PoliticWaterTradePlayerInfo	startup	intAdd	double	0x23C7CA	0x23C734
+PoliticWaterTradeProgressStatus	setup	buildingId	string	0x23D1B7	0x23D1A4
+PoliticWaterTradeProgressStatus	setup	param	Hashtable	0x23D1CC	0x23D1A4
+PoliticWaterTradeProgressStatus	setup	catalog	string	0x23D1DE	0x23D1A4
+PoliticWaterTradeProgressStatus	setup	tradeId	string	0x23D1F4	0x23D1A4
+PoliticWaterTradeProgressStatus	setup	createdTime	double	0x23D20A	0x23D1A4
+PoliticWaterTradeProgressStatus	setup	dueTime	double	0x23D221	0x23D1A4
+PoliticWaterTradeProgressStatus	setup	deck	Hashtable	0x23D238	0x23D1A4
+PoliticWaterTradeProgressStatus	setup	totalInteligence	int	0x23D24E	0x23D1A4
+PoliticWaterTradeWindow	setup	fleetEffects	Hashtable	0x23D587	0x23D3AC
+PotionTableAccessor	getName	name	string	0x23FD3E	0x23FD18
+PotionTableAccessor	getCategory	category		0x23FE1D	0x23FD58
+PotionTableAccessor	getCategory	category	int	0x23FE3A	0x23FD58
+PotionTableAccessor	getUses	uses	ArrayList	0x23FE72	0x23FE50
+PotionTableAccessor	getEffects	effects	ArrayList	0x23FEA2	0x23FE80
+PotionTableAccessor	getInitialAmount	initialAmount	double	0x23FED2	0x23FEB0
+PotionTableAccessor	getItemId	itemID	string	0x23FF06	0x23FEE0
+PotionTableAccessor	getSortNo	sortno	double	0x23FFAE	0x23FF8C
+PotionTableAccessor	getRange	range	ArrayList	0x23FFDE	0x23FFBC
+ProductUpdate	init	products	Hashtable	0x2406AE	0x24069C
+ProductsTableAccessor	getName	name	string	0x240F6E	0x240F48
+ProductsTableAccessor	getDesc	desc	string	0x240FA2	0x240F7C
+ProductsTableAccessor	getCost	costTypes	ArrayList	0x240FD2	0x240FB0
+ProductsTableAccessor	getCost	costAmounts	ArrayList	0x240FE3	0x240FB0
+ProductsTableAccessor	getDueInterval	dueInterval	double	0x241072	0x241050
+ProductsTableAccessor	getGain	gainTypes	ArrayList	0x2410A2	0x241080
+ProductsTableAccessor	getGain	gainAmounts	ArrayList	0x2410B3	0x241080
+ProductsTableAccessor	getRewardId	rewardId	string	0x241142	0x24111C
+ProductsTableAccessor	getItemId	itemId	string	0x241176	0x241150
+ProductsTableAccessor	getAssetNames	assetNames	ArrayList	0x2411A6	0x241184
+ProductsTableAccessor	getCompleteUIName	completeUIName	string	0x2411DA	0x2411B4
+ProductsTableAccessor	getResourceIconName	resourceIconName	ArrayList	0x24120A	0x2411E8
+ProductsTableAccessor	getSortNo	sortno	double	0x24123A	0x241218
+ProductsTableAccessor	getProduceCost	costTypes	ArrayList	0x24127C	0x241248
+ProductsTableAccessor	getProduceCost	costAmounts	ArrayList	0x241293	0x241248
+CommonEffectTableAccessor	getName	name	string	0x241313	0x2412E0
+CommonEffectTableAccessor	getDesc	desc	string	0x241357	0x241324
+CommonEffectTableAccessor	getCondition1B	condition1B	string	0x24138E	0x241368
+QuestAreaTableAccessor/Table	getStartScript	startScriptId	string	0x24217E	0x242158
+QuestAreaTableAccessor/Table	getEndScript	endScriptId	string	0x2421B2	0x24218C
+QuestAreaTableAccessor/Table	getCost	cost		0x2421E2	0x2421C0
+QuestAreaTableAccessor/Table	getStepCount	stepCount	double	0x2422B2	0x242290
+QuestAreaTableAccessor/Table	getBgImage	bgImage	string	0x2422E6	0x2422C0
+QuestAreaTableAccessor/Table	getInBgm	inBGM	string	0x24231A	0x2422F4
+QuestAreaTableAccessor/Table	getBgm	bgm	string	0x24234E	0x242328
+QuestAreaTableAccessor/Table	getGroundMaterial	groundMaterial		0x24237E	0x24235C
+QuestAreaTableAccessor/Table	getGroundMaterial	groundMaterial		0x242393	0x24235C
+QuestAreaTableAccessor/Table	getGroundMaterial	groundMaterial	double	0x2423AF	0x24235C
+QuestAreaTableAccessor/Table	getTransitionType	transitionType	string	0x2423E2	0x2423BC
+QuestAreaTableAccessor/Table	getBattleRule	battleRule	string	0x24247E	0x242458
+QuestBannerTableAccessor	getBanner	banner	string	0x2424EE	0x2424C8
+QuestBannerTableAccessor	getDesc	desc	string	0x242522	0x2424FC
+QuestBannerTableAccessor	getDesc2	desc2	string	0x242556	0x242530
+QuestCharacterTableAccessor	getVoiceFileName	voiceId		0x242606	0x2425DC
+QuestCharacterTableAccessor	getVoiceFileName	voiceId		0x242660	0x242620
+QuestDataCache	getCharacterName	baseId	string	0x242DBA	0x242DA8
+QuestDataCache	getCharacterName	grade	double	0x242DCB	0x242DA8
+QuestDataCache	getAttackCharactorIds	ids	Hashtable	0x242E9B	0x242E60
+QuestDataCache	calcDeckParameter	def	double	0x242FC1	0x242F4C
+QuestDataCache	calcDeckParameter	int	double	0x242FD6	0x242F4C
+QuestDataCache	getPartyCharactor	ids	Hashtable	0x243098	0x243050
+QuestDataCache	getAreaItemOpenFlag	open	double	0x243805	0x243768
+QuestDataCache	getAreaStep	step	double	0x243882	0x243834
+QuestDeckConstructor	setup	ids	Hashtable	0x243EED	0x243E80
+QuestDeckConstructor	add	baseId	string	0x244056	0x244010
+QuestDeckConstructor	add	grade	double	0x244067	0x244010
+QuestEmergencyNoticeChecker	collectRanges	start	double	0x2442A6	0x244230
+QuestEmergencyNoticeChecker	collectRanges	end	double	0x2442C9	0x244230
+QuestIndexTableAccessor/Table	getQuestTitle	questTitle	string	0x246F33	0x246F08
+QuestIndexTableAccessor/Table	getQuestDetail	questDetail	string	0x246F6F	0x246F44
+QuestIndexTableAccessor/Table	getChapterTitle	chapterTitle	string	0x246FAB	0x246F80
+QuestIndexTableAccessor/Table	getChapterDetail	chapterDetail	string	0x246FE7	0x246FBC
+QuestIndexTableAccessor/Table	getNextChapter	nextId	string	0x24701E	0x246FF8
+QuestIndexTableAccessor/Table	isEnable	enable	bool	0x2470DA	0x2470B8
+QuestIndexTableAccessor/Table	isClientEnable	clientEnable	bool	0x24711D	0x2470E8
+QuestIndexTableAccessor/Table	getPeriods	periods	ArrayList	0x24716A	0x247128
+QuestIndexTableAccessor/Table	getStartPeriod	startPeriod	string	0x2471C9	0x24718C
+QuestIndexTableAccessor/Table	getEndPeriod	endPeriod	string	0x247211	0x2471D4
+QuestIndexTableAccessor/Table	getQuestRank	questRank	double	0x24723E	0x24721C
+QuestIndexTableAccessor/Table	getSortNo	sortNo	double	0x24726E	0x24724C
+QuestIndexTableAccessor/Table	getBanner	banner	string	0x2472A2	0x24727C
+QuestIndexTableAccessor/Table	getRoundLimit	roundLimit	double	0x2472D2	0x2472B0
+QuestIndexTableAccessor/Table	debug_isEnable	enable	bool	0x247302	0x2472E0
+QuestIndexTableAccessor/Table	debug_getPeriods	periods	ArrayList	0x247332	0x247310
+QuestIndexTableAccessor/Table	debug_getStartPeriod	startPeriod	string	0x24737A	0x247354
+QuestIndexTableAccessor/Table	debug_getEndPeriod	endPeriod	string	0x2473AE	0x247388
+QuestIndexTableAccessor/Table	debug_getSortNo	sortNo	double	0x2473DE	0x2473BC
+QuestIndexTableAccessor/Table	debug_raidBossEncountId	raidBossEncountId	string	0x247412	0x2473EC
+QuestScriptCommand	isBossRecover	questId	string	0x2488B7	0x24882C
+QuestScriptCommand	isBossRecover	chapter	double	0x2488D6	0x24882C
+QuestScriptCommand	isBossRecover	area	double	0x2488E9	0x24882C
+QuestScriptCommand	isBossRecover	step	double	0x2488FC	0x24882C
+QuestScriptCommand	isObstacleRecover	questId	string	0x2489D2	0x248944
+QuestScriptCommand	isObstacleRecover	chapter	double	0x2489F3	0x248944
+QuestScriptCommand	isObstacleRecover	area	double	0x248A06	0x248944
+QuestScriptCommand	isObstacleRecover	step	double	0x248A19	0x248944
+QuestScriptCommand	processStepEvent	rewardInfo	Hashtable	0x248AD8	0x248A7C
+QuestScriptCommand	processStepEvent	executeInfo	Hashtable	0x248BB9	0x248A7C
+QuestScriptCommand	processStepEvent	eventInfo	Hashtable	0x248BD6	0x248A7C
+QuestScriptCommand	onEventFriend	friendInfo	Hashtable	0x248E36	0x248E24
+QuestScriptCommand	onEventFriend	name	string	0x248E6F	0x248E24
+QuestScriptCommand	onEventFriend	playerId	string	0x248E85	0x248E24
+QuestScriptCommand	onEventFriend	message	string	0x248E9B	0x248E24
+QuestScriptCommand	onEventPlayerBattle	encountInfo	Hashtable	0x248EBE	0x248EAC
+QuestScriptCommand	onEventPlayerBattle	playerId	string	0x248EFD	0x248EAC
+QuestScriptCommand	onEventPlayerBattle	name	string	0x248F13	0x248EAC
+QuestScriptCommand	onEventPlayerBattle	message	string	0x248F29	0x248EAC
+QuestScriptCommand	onEventEnemy	encountInfo	Hashtable	0x248F4E	0x248F3C
+QuestScriptCommand	onEventEnemy	monsterId	string	0x248F5F	0x248F3C
+QuestScriptCommand	onEventEnemy	encountId	double	0x248FA6	0x248F3C
+QuestScriptCommand	onEventRaidBoss	encountInfo	Hashtable	0x248FD6	0x248FC4
+QuestScriptCommand	onEventRaidBoss	monsterId	string	0x248FE7	0x248FC4
+QuestScriptCommand	onEventRaidBoss	entry	Hashtable	0x249037	0x248FC4
+QuestScriptCommand	onEventRaidBoss	monsterLevel	double	0x249061	0x248FC4
+QuestScriptCommand	onEventTreasureBox	treasureInfo	Hashtable	0x249102	0x2490F0
+QuestScriptCommand	onEventTreasureBox	keyItemId	string	0x249114	0x2490F0
+QuestScriptCommand	onEventTreasureBox	haveCount	double	0x24912A	0x2490F0
+QuestScriptCommand	onEventTreasureBox	keyItemCount	double	0x249141	0x2490F0
+QuestScriptCommand	onEventTreasureBox	treasureId	double	0x249158	0x2490F0
+QuestScriptCommand	onEventTreasureBox	rewardId	string	0x24916F	0x2490F0
+QuestScriptCommand	setEventObstacleData	amount	double	0x249447	0x249434
+QuestScriptCommand	setEventObstacleData	needAmount	double	0x24945E	0x249434
+QuestScriptCommand	setEventObstacleData	category	string	0x249474	0x249434
+QuestScriptCommand	setEventObstacleData	type	string	0x249485	0x249434
+QuestScriptCommand	onEventObstacle	obstacleInfo	Hashtable	0x2494DE	0x2494CC
+QuestScriptCommand	isCompletedChapter	complete	double	0x24A128	0x24A100
+QuestStoryAreaConfirm	setup	area1	Hashtable	0x24CAED	0x24C374
+QuestStoryAreaConfirm	setup	step	double	0x24CB00	0x24C374
+QuestStoryAreaConfirm	setup	maxStep	double	0x24CB14	0x24C374
+QuestStoryAreaConfirm	setup	clearCount	double	0x24CBA3	0x24C374
+QuestStoryAreaSelector	setup	complete	double	0x24D644	0x24D54C
+QuestStoryAreaSelector	setup	step	double	0x24D67E	0x24D54C
+QuestStoryAreaSelector	setup	maxStep	double	0x24D692	0x24D54C
+QuestStoryAreaSelector	setup	open	double	0x24D71C	0x24D54C
+QuestStoryAreaSelector	setup	complete	double	0x24D78B	0x24D54C
+RaidBossList	createBossList	entry	Hashtable	0x250066	0x24FE8C
+RaidBossList	createBossList	raidBossInfo	Hashtable	0x2500B0	0x24FE8C
+RaidBossList	isRaidBossEqual	index	double	0x250246	0x250234
+RaidBossList	isRaidBossEqual	index	double	0x250258	0x250234
+RaidBossList	isRaidBossEqual	owner		0x25026A	0x250234
+RaidBossList	isRaidBossEqual	owner		0x25027B	0x250234
+RaidBossList	<createBossList>m__3B1	raidBossInfo	Hashtable	0x250476	0x250464
+RaidBossList	<createBossList>m__3B1	raidBossInfo	Hashtable	0x250487	0x250464
+RaidBossScene	<createList>m__3C5	score	double	0x251AC4	0x251A7C
+RaidBossScene	<createList>m__3C5	rank	double	0x251AD6	0x251A7C
+RaidBossScene	<createList>m__3C5	normScore	double	0x251AE8	0x251A7C
+RaidBossTrophyTableAccessor	getName	name	string	0x251C6B	0x251C40
+RaidBossTrophyTableAccessor	getDesc	desc	string	0x251CA7	0x251C7C
+RaidBossTrophyTableAccessor	getCategory	category	string	0x251CDE	0x251CB8
+RaidBossTrophyTableAccessor	getClearAmount	clearAmount	double	0x251D0E	0x251CEC
+RaidBossTrophyTableAccessor	getReward	clearReward	string	0x251D42	0x251D1C
+RaidBossBattleTableAccessor	getSuffix	suffix		0x251DB2	0x251D8C
+RaidBossTableAccessor	getName	name	string	0x251E0A	0x251DE4
+RaidBossTableAccessor	getImageName	images		0x251E4A	0x251E24
+RaidBossTableAccessor	getIcomImageName	iconImages		0x251EC2	0x251E9C
+RaidBossTableAccessor	getMaxHp	maxHp	double	0x251EF2	0x251ED0
+RaidBossTableAccessor	getVoiceName	voice		0x251F26	0x251F00
+RaidBossTableAccessor	getPlayerPointCost	costBp	double	0x251F56	0x251F34
+RaidBossTableAccessor	getFriendPointCost	costBpFriend	double	0x251F86	0x251F64
+RankingHTMLTableAccessor	getMessage	desc_ranking	string	0x252136	0x252110
+RankingHTMLTableAccessor	getRewardMessage	desc_reward	string	0x252176	0x252150
+RankingItemSelectionTableAccessor	getRankingId	rankingId		0x2521EC	0x2521B4
+RankingItemSelectionTableAccessor	getState	status		0x25221E	0x2521FC
+RankingItemSelectionTableAccessor	getState	status		0x25222F	0x2521FC
+RankingPicker	toUI	rank	double	0x2526C7	0x25263C
+RankingPicker	toUI	username	string	0x252723	0x25263C
+RankingPicker	toUI	score	double	0x25279A	0x25263C
+RankingPicker	onReceive	myRecord	Hashtable	0x25281B	0x2527FC
+RankingPicker	onReceive	rank	double	0x252833	0x2527FC
+RankingPicker	onReceive	rankers	Hashtable	0x25284A	0x2527FC
+RankingPicker	onReceiveToCache	myRecord	Hashtable	0x25288B	0x25286C
+RankingPicker	onReceiveToCache	rank	double	0x2528A3	0x25286C
+RankingPicker	onReceiveToCache	rankers	Hashtable	0x2528C5	0x25286C
+RankingRewardTableAccessor	getIdsByRankingId	rankingId		0x252CE8	0x252CB4
+RankingRewardTableAccessor	getCategory	category		0x252DAA	0x252D84
+RankingRewardTableAccessor	getLow	low		0x252DDA	0x252DB8
+RankingRewardTableAccessor	getHigh	high		0x252E0E	0x252DEC
+RankingRewardTableAccessor	getReward	reward		0x252E46	0x252E20
+RankingRewardWeeklyTableAccessor	getIdsByRankingId	rankingId		0x252EAC	0x252E78
+RankingRewardWeeklyTableAccessor	getCategory	category		0x252EFE	0x252ED8
+RankingRewardWeeklyTableAccessor	getLow	low		0x252F2E	0x252F0C
+RankingRewardWeeklyTableAccessor	getHigh	high		0x252F62	0x252F40
+RankingRewardWeeklyTableAccessor	getReward	reward		0x252F9A	0x252F74
+RankingTableAccessor	getTitle	title	string	0x252FF2	0x252FCC
+RankingTableAccessor	getType	type	string	0x253026	0x253000
+RankingTableAccessor	getDesc	desc	string	0x25305A	0x253034
+RankingTableAccessor	getStatus	status	bool	0x25308A	0x253068
+RankingTableAccessor	getBattlefield	battlefield	string	0x2530BE	0x253098
+RankingTableAccessor	getRewardCheck	rewardCheck	bool	0x2530EE	0x2530CC
+RegionTableAccessor	getName	name	string	0x2531C2	0x25319C
+RegionTableAccessor	getCountryIds	countrys	ArrayList	0x2531F2	0x2531D0
+RewardMenu	IsLevelUp	prebLevel	double	0x253B1D	0x253AD8
+RewardMenu	makeFriendMapReward	Unable to parse string : 		0x254015	0x253FBC
+RewardTableAccessor/RewardTable	getComment	comment	string	0x254B96	0x254B74
+ShopUpdateNationalPower	setShopList	shopItems	Hashtable	0x256A8E	0x256A7C
+ShopUpdateNationalPower	setShopList	recommendedItems	Hashtable	0x256A9F	0x256A7C
+ShopItemSupportDetailWindow	setup	ItemObj	ShopItemObject	0x25AA8D	0x25AA58
+ShopItemSupportDetailWindow	setup	Exec	bool	0x25AAA8	0x25AA58
+ShopItemTableAccessor	getName	name	string	0x25ACAF	0x25AC88
+ShopItemTableAccessor	getBrief	brief	string	0x25ACE7	0x25ACC0
+ShopItemTableAccessor	getOpenedDesc	openDesc	string	0x25AD1E	0x25ACF8
+ShopItemTableAccessor	getDiscount	discount	bool	0x25AD4E	0x25AD2C
+ShopItemTableAccessor	getLockedDesc	lockDesc	string	0x25AD82	0x25AD5C
+ShopItemTableAccessor	getCategoryType	category	int	0x25ADEE	0x25AD90
+ShopItemTableAccessor	getClassBuildingType	class		0x25B00D	0x25AE04
+ShopItemTableAccessor	getClassBuildingType	class		0x25B02C	0x25AE04
+ShopItemTableAccessor	getClassBuildingType	class	int	0x25B049	0x25AE04
+ShopItemTableAccessor	getClassItemType	class		0x25B114	0x25B060
+ShopItemTableAccessor	getClassItemType	class		0x25B133	0x25B060
+ShopItemTableAccessor	getClassItemType	class	int	0x25B150	0x25B060
+ShopItemTableAccessor	isSet	isSet	bool	0x25B18A	0x25B168
+ShopItemTableAccessor	getItemIds	itemIds	ArrayList	0x25B1BA	0x25B198
+ShopItemTableAccessor	getItemIds	quantities	ArrayList	0x25B1CB	0x25B198
+ShopItemTableAccessor	getItemIdsArray	itemIds	ArrayList	0x25B256	0x25B234
+ShopItemTableAccessor	getIconName	iconName	string	0x25B286	0x25B264
+ShopItemTableAccessor	getCosts	costTypes	ArrayList	0x25B2B6	0x25B294
+ShopItemTableAccessor	getCosts	costAmounts	ArrayList	0x25B2C7	0x25B294
+ShopItemTableAccessor	isOpenCondition	openCondition	bool	0x25B352	0x25B330
+ShopItemTableAccessor	isListingCondition	listingCondition	bool	0x25B382	0x25B360
+ShopItemTableAccessor	isNew	isNew	bool	0x25B3B2	0x25B390
+ShopItemTableAccessor	getDiscountRate	discount	double	0x25B3E2	0x25B3C0
+ShopItemTableAccessor	getSortNo	sortno	double	0x25B412	0x25B3F0
+ShopItemTableAccessor	getCredit	credit	double	0x25B442	0x25B420
+ShopItemTableAccessor	getQuantities	quantities	ArrayList	0x25B472	0x25B450
+ShopSaleSupportWindow	setup	ShopItemObject	ShopItemObject	0x25B827	0x25B7FC
+ShopSaleWindow	setup	ShopItemObject	ShopItemObject	0x25C06B	0x25C050
+ShopSaleWindow	setup	buyType	string	0x25C081	0x25C050
+ShopToCastleAccessor	getItemId	itemId	string	0x25CA32	0x25CA0C
+ShopUpdateBuild	setShopList	mapId	int	0x25D9D3	0x25D9C0
+ShopUpdateBuild	setShopList	shopItems	Hashtable	0x25D9E8	0x25D9C0
+ShopUpdateBuild	setShopList	recommendedItems	Hashtable	0x25D9F9	0x25D9C0
+ShopUpdateSupport	setShopList	shopItems	Hashtable	0x25E3FE	0x25E3EC
+ShopUpdateSupport	setShopList	recommendedItems	Hashtable	0x25E40F	0x25E3EC
+ShopWindow	setup	DraftList	Hashtable	0x25E666	0x25E63C
+SiegeBetRateTableAccessor	getRate	rate	double	0x25F656	0x25F634
+SiegeBetRateTableAccessor	getLimit	limit	double	0x25F686	0x25F664
+SiegeResultRenderer	convertHtmlParameter	schedule	Hashtable	0x25F764	0x25F728
+SiegeResultRenderer	convertHtmlParameter	open	double	0x25F777	0x25F728
+SiegeResultRenderer	convertHtmlParameter	close	double	0x25F791	0x25F728
+SiegeResultRenderer	convertHtmlParameter	record	Hashtable	0x25F7DF	0x25F728
+SiegeResultRenderer	convertHtmlParameter	rank	double	0x25F7F2	0x25F728
+SiegeResultRenderer	convertHtmlParameter	globalTotalScore		0x25F80D	0x25F728
+SiegeResultRenderer	convertHtmlParameter	defender	Hashtable	0x25F851	0x25F728
+SiegeResultRenderer	convertHtmlParameter	attacker	Hashtable	0x25F873	0x25F728
+SiegeResultRenderer	convertHtmlParameter	role	string	0x25F88E	0x25F728
+SiegeResultRenderer	convertHtmlParameter	defender	string	0x25F8B2	0x25F728
+SiegeResultRenderer	convertHtmlParameter	attacker	string	0x25F8C3	0x25F728
+SiegeResultRenderer	convertVictoryPoint	role	string	0x25F90F	0x25F8FC
+SiegeResultRenderer	convertVictoryPoint	winner	Hashtable	0x25F929	0x25F8FC
+SimpleInventoryDialog	setup	title	string	0x25FDA6	0x25FD8C
+SimpleInventoryDialog	setup	itemIds	TypeSpec(0x1B00001A)	0x25FDF7	0x25FD8C
+SimpleInventoryDialog	setup	canUse	bool	0x25FE08	0x25FD8C
+SimpleInventoryDialog	potionsFiltering	potions	Hashtable	0x25FFCA	0x25FFB8
+SimpleInventoryDialog	potionsFiltering	amount	double	0x260042	0x25FFB8
+SimpleInventoryDialog	shopItemFiltering	shopItems	Hashtable	0x260256	0x260244
+SimpleInventoryDialog	convertRewardByUsePotionsAPIResult	result	Hashtable	0x260654	0x26063C
+SimpleInventoryDialog	convertRewardByUsePotionsAPIResult	point	double	0x2606E2	0x26063C
+SimpleInventoryItem	getBuyCount	result	Hashtable	0x261088	0x261074
+SimpleInventorySale	setup	module	SimpleInventoryItem	0x261333	0x261318
+SkillRefreshPaymentTableAccessor	getCategory	category	string	0x261A0A	0x2619E4
+SkillRefreshPaymentTableAccessor	getAmount	amount		0x261A3A	0x261A18
+SkillTableAccessor	getName	name	string	0x261C5E	0x261C38
+SkillTableAccessor	getDesc	desc	string	0x261C92	0x261C6C
+SkillTableAccessor	getCategory	category	int	0x261D31	0x261CA0
+SkillTableAccessor	getSkillType	type	int	0x261D95	0x261D48
+SkillTableAccessor	getLevelUpType	levelUpType	string	0x261DD2	0x261DAC
+SkillTableAccessor	getImages	images	string	0x261E4E	0x261E28
+SkillTableAccessor	getMinRatio	minActivateRatio	double	0x261E7E	0x261E5C
+SkillTableAccessor	getMaxRatio	maxActivateRatio	double	0x261EAE	0x261E8C
+SkillTableAccessor	getActiveRatio	minActivateRatio	double	0x261EE2	0x261EBC
+SkillTableAccessor	getActiveRatio	maxActivateRatio	double	0x261EF4	0x261EBC
+SkillTableAccessor	getChangeSkill	changeId	string	0x261F56	0x261F30
+SkillTableAccessor	getChangeSkillLevel	changeLevel	double	0x261F86	0x261F64
+SkillTableAccessor	getEffectCategory	effectCategory		0x261FF2	0x261FCC
+SkillTableAccessor	getInheritCost	inheritCost	double	0x262022	0x262000
+SkillTableAccessor	getInheritRatio	inheritRatio	double	0x262052	0x262030
+SkillTableAccessor	getInheritFlag	inheritFlag	bool	0x262082	0x262060
+SkillTableAccessor	getInheritCondition	inheritConditions	ArrayList	0x2620B2	0x262090
+SkillTableAccessor	getInheritClass	inheritClass	ArrayList	0x2620E2	0x2620C0
+SkillTableAccessor	getBattleType	battleType	ArrayList	0x262112	0x2620F0
+SkillTableAccessor	getMultiple	multiple	bool	0x262142	0x262120
+SkillTableAccessor	getMultipleGroup	group	double	0x262172	0x262150
+SkillTableAccessor	getMultiplePriority	priorityInGroup	double	0x2621A2	0x262180
+SkillTableAccessor	getEffectTarget	effect1Target	string	0x2621D6	0x2621B0
+SkillTableAccessor	getTiming	timing	string	0x26220A	0x2621E4
+SkillTableAccessor	getRarity	rarity	double	0x26223A	0x262218
+SkillTableAccessor	getInheritGrade	inheritGrade	double	0x26226A	0x262248
+SkillTableAccessor	getConditon2B	condition2B	string	0x26229E	0x262278
+SnapshotUploadDialog	setup	texture	Texture2D	0x2634BC	0x2632D4
+SoundEffectTableAccessor	getFileName	fileName	string	0x263CFA	0x263CD4
+SoundEffectTableAccessor	getVolume	volume	double	0x263D4E	0x263D08
+SoundEffectTableAccessor	isLoop	loop	bool	0x263DBE	0x263D9C
+StrategyBuildingIcon	setWaitingModel	buildingId	string	0x265DB7	0x265D94
+StrategyBuildingIcon	setWaitingModel	terrainId	string	0x265DE2	0x265D94
+StrategyBuildingIcon	setWaitingModel	buildCastlePoint	double	0x265E3E	0x265D94
+StrategyBuildingIcon	setWaitingModel	troop1		0x265EDB	0x265D94
+StrategyBuildingIcon	setWaitingModel	troop2		0x265EF5	0x265D94
+StrategyBuildingIcon	isPlayerIcon	buildingId	string	0x265FA3	0x265F8C
+StrategyBuildingIcon	createBattleEffect	forceSizes	Hashtable	0x2660DB	0x2660B8
+StrategyBuildingIcon	setModelColor	occupied	string	0x2662F4	0x266274
+StrategyBuildingIconList	createBuilding	buildingIds	string	0x266A74	0x266A34
+StrategyBuildingIconList	createTroop	buildingIds	string	0x266B6E	0x266ADC
+StrategyBuildingIconSquadBar	update	forceSizes	Hashtable	0x267666	0x267654
+StrategyCellComplexionIcon	setup	forceSizes	Hashtable	0x2678F5	0x2678DC
+StrategyCellComplexionIcon	setup	contributions	Hashtable	0x267970	0x2678DC
+StrategyCellComplexionIcon	setRanker	avatar	Hashtable	0x267D4C	0x267CC8
+StrategyCellComplexionIcon	setRanker	name	string	0x267D64	0x267CC8
+StrategyCellComplexionIcon	setRanker	baseId	string	0x267D83	0x267CC8
+StrategyCellComplexionIcon	setRanker	grade	double	0x267D95	0x267CC8
+StrategyIconField	isMoveable	occupied	string	0x26873B	0x268718
+StrategyIconField	isMoveable	buildingId	string	0x26876A	0x268718
+StrategyIconField	isBuilding	buildingId	string	0x268BD2	0x268BC0
+StrategyIconField	isBuilding	terrainId	string	0x268BF5	0x268BC0
+StrategyIconField	setChip	terrainId	string	0x268C26	0x268C14
+StrategyIconJoint	updateOccupied	occupied	string	0x268F6A	0x268F4C
+StrategyIconJoint	updateOccupied	occupied	string	0x268F87	0x268F4C
+StrategyIconJoint	updateOccupied	none		0x268FB9	0x268F4C
+StrategyIconJoint	updateOccupied	none		0x26901F	0x268F4C
+StrategyLogManager	Start	team		0x2700A8	0x270038
+StrategyResultTeamInfo	setResultState	ui8_040_		0x274CA9	0x274BC4
+StrategyResultTeamInfo	setResultState	ui8_040_		0x274D7A	0x274BC4
+Strategy	loadBackGraundModel	battlefield	Hashtable	0x275DEF	0x275DD0
+Strategy	loadBackGraundModel	id	string	0x275E12	0x275DD0
+Strategy	getDeckToCharaLottery	0	Hashtable	0x275F01	0x275EC0
+Strategy	getDeckToCharaLottery	ids	Hashtable	0x275F10	0x275EC0
+Strategy	getDeckToCharaLottery	1	Hashtable	0x275F32	0x275EC0
+Strategy	getDeckToCharaLottery	ids	Hashtable	0x275F41	0x275EC0
+Strategy	resetAllData	battlefield	Hashtable	0x276051	0x276024
+Strategy	resetAllData	id	string	0x276086	0x276024
+Strategy	resetAllData	team	string	0x2760AC	0x276024
+StrategyBattleFieldTableAccessor	getCatalogId	catalogId	string	0x27630E	0x2762E8
+StrategyBuilding	setModelCoordinate	occupied	string	0x2765DF	0x2764F0
+StrategyBuilding	setup	occupied	string	0x276695	0x276640
+StrategyBuilding	setWaitingModel	buildingId	string	0x27673C	0x276718
+StrategyBuilding	setWaitingModel	terrainId	string	0x276768	0x276718
+StrategyBuildingList	createBuilding	buildingIds	string	0x276B60	0x276B20
+StrategyBuildingList	createTroop	buildingIds	string	0x276C3C	0x276BC4
+StrategyCellInformationUpdater	setDescription1	STRATEGY_MSG_CELL_POINT	int	0x2776DE	0x27767C
+StrategyCellInformationUpdater	update	terrainId	string	0x277944	0x2778FC
+StrategyCellInformationUpdater	update	buildingId	string	0x277955	0x2778FC
+StrategyCellInformationUpdater	update	occupied	string	0x27797F	0x2778FC
+StrategyCellInformationUpdater	update	forceSizes	Hashtable	0x2779D9	0x2778FC
+StrategyCellInformationUpdater	update	playerCounts	Hashtable	0x2779EB	0x2778FC
+StrategyCellInformationUpdater	update	a	double	0x2779FE	0x2778FC
+StrategyCellInformationUpdater	update	b	double	0x277A12	0x2778FC
+StrategyCellInformationUpdater	update	a	double	0x277A26	0x2778FC
+StrategyCellInformationUpdater	update	b	double	0x277A3A	0x2778FC
+StrategyCellInformationUpdater	update	contributions	Hashtable	0x277A5B	0x2778FC
+StrategyCellInformationUpdater	displayMoveable	position	string	0x277C08	0x277BD8
+StrategyCellLog	addLog	logType	string	0x27800A	0x277FF8
+StrategyCellLog	addAttackLog	name	string	0x27809E	0x27808C
+StrategyCellLog	addAttackLog	team	string	0x2780AF	0x27808C
+StrategyCellLog	addAttackLog	score	double	0x2780C0	0x27808C
+StrategyCellLog	addRankingLog	ranker	Hashtable	0x27812E	0x27811C
+StrategyCellLog	addRankingLog	team	string	0x27813F	0x27811C
+StrategyCellLog	addRankingLog	turn	double	0x278150	0x27811C
+StrategyCellLog	addRankingLog	name	string	0x278200	0x27811C
+StrategyCellLog	addRankingLog	score	double	0x278213	0x27811C
+StrategyCellLog	getLog	attackLogs	Hashtable	0x2782F5	0x2782D8
+StrategyCommandBuildCastleStepTableAccessor	getBuildCastleGrowthPoint	point	double	0x2783DE	0x2783B8
+StrategyCommandBuildCastleStepTableAccessor	getBuildCastleGrowthStep	step	double	0x278412	0x2783EC
+StrategyCommandButtonAttack	updateState	team	string	0x2785C7	0x2785A8
+StrategyCommandButtonAttack	updateState	position	string	0x2785D8	0x2785A8
+StrategyCommandButtonAttack	updateState	playerCounts	Hashtable	0x278659	0x2785A8
+StrategyCommandButtonAttack	updateState	occupied	string	0x2786B7	0x2785A8
+StrategyCommandButtonReceiver	setButtonLock	executableCommands	Hashtable	0x278C49	0x278C24
+StrategyCommandButtonReceiver	refreshActiveCastleButton	buildingId	string	0x278FCB	0x278F5C
+StrategyCommandButtonReceiver	refreshActiveCastleButton	occupied	string	0x278FDE	0x278F5C
+StrategyCommandDialog	Start	STRATEGY_MSG_NAVI_MSG		0x27935A	0x27933C
+StrategyCommandResultProcessor	setExecuted	isAlive		0x2795A2	0x2794EC
+StrategyCommandResultProcessor	isDead	isAlive	bool	0x279645	0x27962C
+StrategyCommandResultProcessor	isCommandFailed	isExecuted	bool	0x279671	0x279658
+StrategyCommandResultProcessor	useResource	resources	Hashtable	0x2796AD	0x279694
+StrategyCommandResultProcessor	useResource	amount	double	0x279702	0x279694
+StrategyCommandResultProcessor	processCommonUpdate	isAlive		0x279791	0x279760
+StrategyCommandResultProcessor	processCommonUpdate	isExecuted		0x2797A7	0x279760
+StrategyCommandResultProcessor	processCommonUpdate	nextOperableTime		0x2797BD	0x279760
+StrategyCommandResultProcessor	processCommonUpdate	operatedTime		0x2797D3	0x279760
+StrategyCommandResultProcessor	processCommonUpdate	proficiency		0x2797E9	0x279760
+StrategyCommandResultProcessor	processCommonUpdate	currentForceSize		0x2797FF	0x279760
+StrategyCommandResultProcessor	processCommonUpdate	aroundEffect		0x27982C	0x279760
+StrategyCommandResultProcessor	processMarch	position		0x2798B6	0x27987C
+StrategyCommandResultProcessor	processMarch	base		0x2798CC	0x27987C
+StrategyCommandResultProcessor	processMarch	position	string	0x279902	0x27987C
+StrategyCommandSelector	onCloseLogDialog	team	string	0x279E83	0x279E1C
+StrategyCommandSelector	commandWait	isAlive	bool	0x27A05C	0x279FB4
+StrategyCommandSelector	processDirectActionLogView	playerCounts	Hashtable	0x27A485	0x27A468
+StrategyCommandSelector	processDirectActionLogView	command	string	0x27A530	0x27A468
+StrategyCommandTableAccessor	getEffect	effect	ArrayList	0x27B0FE	0x27B0DC
+StrategyCommandTableAccessor	getName	name	string	0x27B139	0x27B10C
+StrategyCommandTableAccessor	getDesc	desc	string	0x27B179	0x27B14C
+StrategyCommandTableAccessor	getProficiency	proficiency	double	0x27B1B4	0x27B18C
+StrategyDataCache	get_MapData	map	Hashtable	0x27B47C	0x27B458
+StrategyDataCache	get_BattlefieldData	battlefield	Hashtable	0x27B4CC	0x27B4A8
+StrategyDataCache	get_CellData	cell	Hashtable	0x27B4FC	0x27B4D8
+StrategyDataCache	get_SelfData	self	Hashtable	0x27B52C	0x27B508
+StrategyDataCache	setup	isEntry	bool	0x27B6C6	0x27B6A4
+StrategyDataCache	setup	status	string	0x27B6DE	0x27B6A4
+StrategyDataCache	setup	closeTime	double	0x27B6F4	0x27B6A4
+StrategyDiffEffectController	play	terrainId		0x27B897	0x27B884
+StrategyDiffEffectController	play	occupationEvent		0x27B8C3	0x27B884
+StrategyDiffEffectController	play	occupationEvent		0x27B8FF	0x27B884
+StrategyDiffEffectController	play	occupied		0x27B916	0x27B884
+StrategyDiffEffectController	play	buildingId		0x27B92D	0x27B884
+StrategyDiffEffectController	play	occupationEvent		0x27B94A	0x27B884
+StrategyDiffEffectController	play	occupationEvent		0x27B970	0x27B884
+StrategyDiffEffectController	play	buildingId		0x27B990	0x27B884
+StrategyDiffEffectController	play	terrainId		0x27B9B2	0x27B884
+StrategyDiffEffectController	play	occupationEvent		0x27BA00	0x27B884
+StrategyDiffEffectController	play	occupied		0x27BA72	0x27B884
+StrategyDiffEffectController	play	buildingId		0x27BA85	0x27B884
+StrategyDiffEffectController	play	terrainId		0x27BAA9	0x27B884
+StrategyDiffEffectController	play	effect:		0x27BAE4	0x27B884
+StrategyDiffEffectController	playStrategizeEffect	team		0x27BC06	0x27BB74
+StrategyDiffEffectController	playStrategizeEffect	team		0x27BC38	0x27BB74
+StrategyDiffEffectController	playStrategizeEffect	effect:		0x27BCA5	0x27BB74
+StrategyEffectController	play	occupied		0x27C443	0x27C368
+StrategyEffectController	play	playerCounts	Hashtable	0x27C456	0x27C368
+StrategyEffectController	play	b	double	0x27C47C	0x27C368
+StrategyEffectController	play	a	double	0x27C495	0x27C368
+StrategyEffectController	play	terrainId		0x27C83C	0x27C368
+StrategyEffectController	play	buildingId		0x27C858	0x27C368
+StrategyEffectController	play	buildingId		0x27C874	0x27C368
+StrategyEffectController	play	terrainId		0x27C898	0x27C368
+StrategyEffectController	play	team	string	0x27C8DD	0x27C368
+StrategyEffectController	play	effect:		0x27C8F5	0x27C368
+StrategyHUDController	onPushStrategizeConditionButton	id	string	0x27D35D	0x27D32C
+StrategyHUDController	onPushStrategizeConditionButton	STRATEGY_MSG_CHECK_STRATEGIZE_CONDITION	int	0x27D38F	0x27D32C
+StrategyHUDController	processLogWindow	command	string	0x27D503	0x27D4D8
+StrategyHUDController	processLogWindow	turn	Hashtable	0x27D55B	0x27D4D8
+StrategyHUDController	processLogWindow	current	double	0x27D56E	0x27D4D8
+StrategyHUDController	processLogWindow	max	double	0x27D582	0x27D4D8
+StrategyHUDController	processLogWindow	id	string	0x27D595	0x27D4D8
+StrategyHUDController	processLogWindow	terrainId	string	0x27D681	0x27D4D8
+StrategyHUDController	processLogWindow	buildingId	string	0x27D694	0x27D4D8
+StrategyHUDController	processLogWindow	team		0x27D751	0x27D4D8
+StrategyHUDController	processLogWindow	occupied		0x27D7FE	0x27D4D8
+StrategyHUDController	sendMarchCancel	nextOperableTime	double	0x27DA56	0x27DA20
+StrategyHUDController	setup	command	string	0x27DDE7	0x27DDBC
+StrategyHUDController	setup	id	string	0x27DE15	0x27DDBC
+StrategyHUDController	setup	baseId	string	0x27DEDD	0x27DDBC
+StrategyHUDController	setup	grade	double	0x27DEF4	0x27DDBC
+StrategyHUDController	loadNaviVoice	voice	string	0x27E015	0x27DFF8
+StrategyHUDController	setRecoverInputMode	nextOperableTime	double	0x27E36C	0x27E338
+StrategyHUDController	checkStrategizeNewOpen	executableCommands	Hashtable	0x27E516	0x27E4D8
+StrategyHUDController	updateBasePoint	base	string	0x27E666	0x27E630
+StrategyIconSelector	isMarchSelectableIconTeamGeneral	occupied	string	0x27EC62	0x27EBB8
+StrategyIconSelector	isMarchSelectableIconTeamAccurate	team	string	0x27ECAB	0x27EC8C
+StrategyIconSelector	isStrategizeSelectableIcon	strategizePositions	Hashtable	0x27ECDF	0x27ECC0
+StrategyIconSelector	isCanOccupy	occupied	string	0x27EDB4	0x27ED54
+StrategyLayoutTableAccessor	getPosition	value	ArrayList	0x27F349	0x27F31C
+StrategyMap	setup	position	string	0x27F575	0x27F418
+StrategyMap	setup	base	string	0x27F5C3	0x27F418
+StrategyMap	setup	team	string	0x27F612	0x27F418
+StrategyMap	setup	route	Hashtable	0x27F69C	0x27F418
+StrategyMap	playBGM	position	string	0x27F756	0x27F730
+StrategyMap	playBGM	team	string	0x27F767	0x27F730
+StrategyMap	playBGM	forceSizes	Hashtable	0x27F7A6	0x27F730
+StrategyMap	setRankers	topRankers	Hashtable	0x27F8CA	0x27F8A4
+StrategyMap	setRankers	position	string	0x27F94D	0x27F8A4
+StrategyMap	setStrategizeSelf	strategize	Hashtable	0x27FA17	0x27F9F8
+StrategyMap	setStrategizeSelf	team	string	0x27FA7D	0x27F9F8
+StrategyMap	setStrategizeSelf	revengeEffectTeam	string	0x27FA9B	0x27F9F8
+StrategyMap	setStrategizeTeam	strategize	Hashtable	0x27FADF	0x27FAC0
+StrategyMap	setStrategizeTeam	team	string	0x27FAF0	0x27FAC0
+StrategyMap	setStrategizeTeam	revengeEffectTeam	string	0x27FB0D	0x27FAC0
+StrategyMessageWindow	setup	STRATEGY_MSG_COMMAND_MARCH_NO_RESOURCES		0x280606	0x27FFDC
+StrategyMoveableRegionSelector	idle	team	string	0x281209	0x2811A8
+StrategyMoveableRegionSelector	createConfirmDialog	STRATEGY_MSG_CONFIRM_COMMAND1_HOUR_MINUTES	int	0x281449	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	STRATEGY_MSG_CONFIRM_COMMAND1_MINUTES	int	0x28146A	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	buildingId	string	0x28149D	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	terrainId	string	0x2814B9	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	forceSizes	Hashtable	0x2814EE	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	STRATEGY_MSG_COMMAND_MARCH_UNREACHABLE		0x281577	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	a		0x2815CE	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	b		0x2815E6	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	gold		0x2815FD	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	food		0x281614	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	wood		0x28162B	0x2813E0
+StrategyMoveableRegionSelector	createConfirmDialog	iron	bool	0x281642	0x2813E0
+StrategyNormViewDialog	update	activityReward	double	0x281820	0x281800
+StrategyNormViewDialog	setCompleteIcon	trophyProgress	Hashtable	0x281873	0x281854
+StrategyNormViewDialog	setCompleteIcon	status	string	0x281884	0x281854
+StrategyNormViewDialog	updateTrophyProgressStatus	trophyProgress	Hashtable	0x2819D2	0x2819AC
+StrategyNormViewDialog	updateTrophyProgressStatus	normStatus		0x2819E9	0x2819AC
+StrategyPeopleManager	checkLinkParam	occupied		0x28266D	0x28260C
+StrategyPeopleManager	checkLinkParam	diffForceSizes	Hashtable	0x282680	0x28260C
+StrategyPeopleManager	checkLinkParam	a		0x282694	0x28260C
+StrategyPeopleManager	checkLinkParam	b		0x2826AC	0x28260C
+StrategyPeopleManager	setup	maxForceSizes	Hashtable	0x2828E0	0x282884
+StrategyPeopleManager	setup	a	double	0x2828F8	0x282884
+StrategyPeopleManager	setup	b	double	0x282911	0x282884
+StrategyPlayerInformationUpdater	update	contributions	Hashtable	0x282FF5	0x282FA4
+StrategyStrategizeRegionSelector	idle	team	string	0x28330A	0x283254
+StrategyStrategizeRegionSelector	onPickupIcon	team	string	0x28342A	0x283404
+StrategyStrategizeRegionSelector	onPickupIcon	strategizePositions	Hashtable	0x28343B	0x283404
+StrategyStrategizeRegionSelector	createConfirmDialog	buildingId	string	0x283574	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	terrainId	string	0x28358F	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	forceSizes	Hashtable	0x2835BE	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	STRATEGY_MSG_COMMAND_STRATEGIZE_INFO1	int	0x283646	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	STRATEGY_MSG_COMMAND_REVENGE_INFO1	int	0x283671	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	a		0x2836CD	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	b		0x2836E4	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	gold		0x2836FB	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	food		0x283712	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	wood		0x283729	0x283518
+StrategyStrategizeRegionSelector	createConfirmDialog	iron		0x283740	0x283518
+StrategyTerrainTableAccessor	getEffect	effect	ArrayList	0x28394A	0x283928
+StrategyTerrainTableAccessor	getAroundEffect	aroundEffect	double	0x28397A	0x283958
+StrategyTerrainTableAccessor	getName	name	string	0x2839B5	0x283988
+StrategyTerrainTableAccessor	getBattleRule	battleRule	string	0x2839EE	0x2839C8
+StrategyTerrainTableAccessor	getPoint	point	double	0x283A1E	0x2839FC
+StrategyWorldInformationUpdater	Start	STRATEGY_MSG_TURN_END_TIME		0x283BB4	0x283B78
+StrategyWorldInformationUpdater	setCountryText	team	string	0x283DBD	0x283D84
+StrategyWorldInformationUpdater	setCountryText	countryPairings	Hashtable	0x283DDF	0x283D84
+StrategyWorldInformationUpdater	setCountryText	0	Hashtable	0x283E20	0x283D84
+StrategyWorldInformationUpdater	setCountryText	1	Hashtable	0x283E33	0x283D84
+StrategyWorldInformationUpdater	setCountryText	countryId	string	0x283E57	0x283D84
+StrategyWorldInformationUpdater	setCountryText	rank	double	0x283E82	0x283D84
+StrategyWorldInformationUpdater	setCountryText	STRATEGY_MSG_UI_COUNTRY_RANKING	int	0x283E9F	0x283D84
+StrategyWorldInformationUpdater	setCountryText	countryId	string	0x283F89	0x283D84
+StrategyWorldInformationUpdater	setCountryText	countryId	string	0x283FA4	0x283D84
+StrategyWorldInformationUpdater	setCountryText	countryId	string	0x283FBE	0x283D84
+StrategyWorldInformationUpdater	setCountryText	rank	double	0x283FE2	0x283D84
+StrategyWorldInformationUpdater	setCountryText	rank	double	0x283FFD	0x283D84
+StrategyWorldInformationUpdater	setCountryText	countryId	string	0x28402C	0x283D84
+StrategyWorldInformationUpdater	setCountryText	countryId	string	0x284057	0x283D84
+StrategyWorldInformationUpdater	setCountryText	rank	double	0x284082	0x283D84
+StrategyWorldInformationUpdater	setCountryText	STRATEGY_MSG_UI_COUNTRY_RANKING	int	0x28409F	0x283D84
+StrategyWorldInformationUpdater	setCountryText	rank	double	0x2840BC	0x283D84
+StrategyWorldInformationUpdater	setCountryText	STRATEGY_MSG_UI_COUNTRY_RANKING	int	0x2840D9	0x283D84
+StrategyWorldInformationUpdater	update	turn	Hashtable	0x284217	0x2841AC
+StrategyWorldInformationUpdater	update	current	double	0x28422B	0x2841AC
+StrategyWorldInformationUpdater	update	max	double	0x28423D	0x2841AC
+StrategyWorldInformationUpdater	update	points	Hashtable	0x284253	0x2841AC
+StrategyWorldInformationUpdater	update	a	double	0x284267	0x2841AC
+StrategyWorldInformationUpdater	update	b	double	0x284279	0x2841AC
+StrategyWorldInformationUpdater	update	supply	double	0x28428F	0x2841AC
+StrategyWorldInformationUpdater	update	activityReward	double	0x2842CB	0x2841AC
+StrategyWorldInformationUpdater	update	maxForceSizes	Hashtable	0x2842E6	0x2841AC
+StrategyWorldInformationUpdater	update	playerCounts	Hashtable	0x2842F8	0x2841AC
+StrategyWorldInformationUpdater	update	a	double	0x28430B	0x2841AC
+StrategyWorldInformationUpdater	update	b	double	0x28431F	0x2841AC
+StrategyWorldInformationUpdater	update	a	double	0x284333	0x2841AC
+StrategyWorldInformationUpdater	update	b	double	0x284347	0x2841AC
+StrategyBattleFieldCatalogueTableAccessor	getName	name	string	0x284466	0x284440
+StrategyBattleFieldCatalogueTableAccessor	getAge	age	string	0x2844A6	0x284480
+StrategyBattleFieldCatalogueTableAccessor	getDesc	desc	string	0x2844E6	0x2844C0
+StrategyBattleFieldCatalogueTableAccessor	getAssetName	assetName	string	0x284526	0x284500
+StrategyBattleFieldCatalogueTableAccessor	getLayoutName	layout	string	0x28455A	0x284534
+StrategyBattleFieldCatalogueTableAccessor	getLayoutMessageName	layoutMsg	string	0x28458E	0x284568
+StrategyBattleFieldCatalogueTableAccessor	getStrategizeCastleOccupationCount	strategizeCastleOccupationCount	double	0x2845BE	0x28459C
+StrategyBattleFieldCatalogueTableAccessor	getStrategizeOccupationPoint	strategizeOccupationPoint	double	0x2845EE	0x2845CC
+StrategyResultPoliticWindow	setup	a	Hashtable	0x284686	0x284604
+StrategyResultPoliticWindow	setup	a	Hashtable	0x284697	0x284604
+StrategyResultPoliticWindow	setup	a	double	0x2846A7	0x284604
+StrategyResultPoliticWindow	setup	a	double	0x2846B8	0x284604
+StrategyResultPoliticWindow	setup	a	double	0x2846C9	0x284604
+StrategyResultPoliticWindow	setup	b	Hashtable	0x2846E7	0x284604
+StrategyResultPoliticWindow	setup	b	Hashtable	0x2846F8	0x284604
+StrategyResultPoliticWindow	setup	b	double	0x284708	0x284604
+StrategyResultPoliticWindow	setup	b	double	0x284719	0x284604
+StrategyResultPoliticWindow	setup	b	double	0x28472A	0x284604
+StrategyResultPoliticWindow	setTeamPointText	0	Hashtable	0x284804	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	countryId		0x284815	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	1	Hashtable	0x284842	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	countryId		0x284855	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	rank		0x284893	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	rank		0x2848C5	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	rank		0x2848FF	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	rank		0x284933	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	rank		0x28496A	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	pre		0x2849D8	0x2847EC
+StrategyResultPoliticWindow	setTeamPointText	post		0x2849E3	0x2847EC
+StrategyResultPoliticWindow	setContributionText	battle	Hashtable	0x284A3A	0x284A28
+StrategyResultPoliticWindow	setContributionText	supply	Hashtable	0x284A4B	0x284A28
+StrategyResultPoliticWindow	setContributionText	rank	double	0x284A5C	0x284A28
+StrategyResultPoliticWindow	setContributionText	rank	double	0x284A6E	0x284A28
+StrategyResultPoliticWindow	setContributionText	score		0x284B10	0x284A28
+StrategyResultPoliticWindow	setContributionText	score		0x284B23	0x284A28
+StrategyResultPoliticWindow	setWinReward	winLoss		0x284B4E	0x284B3C
+AccelerateProduceTableAccessor	getTime	time	double	0x284C86	0x284C64
+AccelerateProduceTableAccessor	getCredit	credit	double	0x284CB6	0x284C94
+AccelerateProduceTableAccessor	getDisplayStartTime	displayStart	double	0x284CE6	0x284CC4
+BoosterPackTableAccessor	getPackSheet	packSheet	string	0x284DDA	0x284DB4
+BoosterPackTableAccessor	getCategory	category	string	0x284E0E	0x284DE8
+BoosterPackTableAccessor	getStartPeriod	startPeriod	string	0x284E42	0x284E1C
+BoosterPackTableAccessor	getEndPeriod	endPeriod	string	0x284E72	0x284E50
+BoosterPackTableAccessor	getCredit	credit	double	0x284EA2	0x284E80
+BoosterPackTableAccessor	getContentTypes	contentTypes	ArrayList	0x284F06	0x284EE4
+BoosterPackTableAccessor	getContentAmount	contentAmount	ArrayList	0x284F36	0x284F14
+BoosterPackTableAccessor	getGiftContentAmount	giftContentAmount	ArrayList	0x284F66	0x284F44
+BoosterPackTableAccessor	getGiftQuantity	giftQuantity	double	0x284F96	0x284F74
+BoosterPackTableAccessor	getGiftExtraPack	giftExtraPack	string	0x284FCA	0x284FA4
+BoosterPackTableAccessor	getGiftCredit	giftCredit	double	0x284FFA	0x284FD8
+BoosterPackTableAccessor	isDisCount	isDiscount	bool	0x28505E	0x28503C
+BoosterPackTableAccessor	isNew	isNew	bool	0x28508E	0x28506C
+BoosterPackTableAccessor	isRenewal	isRenewal	bool	0x2850BE	0x28509C
+BoosterPackTableAccessor	getPackName	packName	string	0x2850F7	0x2850CC
+BoosterPackTableAccessor	getPackDesc	packDesc	string	0x285133	0x285108
+BoosterPackTableAccessor	getAssetName	assetName	string	0x28516A	0x285144
+BoosterPackTableAccessor	getFileName	fileName	string	0x28519E	0x285178
+BoosterPackTableAccessor	getSortNo	sortNo	double	0x2851EE	0x2851CC
+BoosterPackTableAccessor	getGiftCountLimit	giftExtraCountLimit	double	0x28521E	0x2851FC
+BoosterPackTableAccessor	getURL	url	string	0x285252	0x28522C
+BuildingEventRaiseRateOfBattle	getRaiseRate	raiseRate	double	0x285328	0x285300
+BuildingEventTableAccessor	getCategoryType	categoryType	string	0x2853B2	0x28538C
+BuildingEventTableAccessor	getEventType	type	string	0x2853E6	0x2853C0
+BuildingEventTableAccessor	getPoliticBuildingEventType	type	string	0x285416	0x2853F4
+BuildingEventTableAccessor	getCost	costTypes	ArrayList	0x285468	0x285440
+BuildingEventTableAccessor	getCost	costAmount	ArrayList	0x285479	0x285440
+BuildingEventTableAccessor	getCostTypes	costTypes	ArrayList	0x285502	0x2854DC
+BuildingEventTableAccessor	getCostAmounts	costAmount	ArrayList	0x285536	0x285510
+BuildingEventTableAccessor	getRemainCount	type	string	0x285566	0x285544
+BuildingEventTableAccessor	getRemainCount	costAmount	ArrayList	0x28558B	0x285544
+BuildingEventTableAccessor	getClearRewards	clearRewards	ArrayList	0x2855EA	0x2855C4
+BuildingEventTableAccessor	getEnterScript	enterScript	string	0x28561E	0x2855F8
+BuildingEvolutionTableAccessor	getEvolutionFablics	fabrics	ArrayList	0x285678	0x285650
+BuildingEvolutionTableAccessor	getEvolutionFablics	amount	ArrayList	0x285689	0x285650
+CannonShotTableAccessor	getDamageValue	value	double	0x285796	0x285774
+CountryRankTableAccessor	getName	name	string	0x28580B	0x2857E4
+CountryRankTableAccessor	getDesc	desc	string	0x285843	0x28581C
+CountryRankTableAccessor	getSiegeScale	siegeScale	double	0x28587A	0x285854
+CountryRankTableAccessor	getRankBg	plate_l		0x2858B0	0x285888
+CountryRankTableAccessor	getRankBg	plate_s		0x2858C1	0x285888
+CountryRankTableAccessor	getRankColor	plate_fontColor		0x2858EE	0x2858CC
+EdictMissionTableOne	get_Index	index	double	0x285918	0x28590C
+EdictMissionTableOne	get_CostTypes	costTypes	ArrayList	0x285940	0x285934
+EdictMissionTableOne	get_CostAmounts	costAmount	ArrayList	0x285958	0x28594C
+EdictMissionTableOne	get_CostIcons	costIcon	ArrayList	0x285970	0x285964
+EdictMissionTableOne	get_ClearReward	clearReward	string	0x2859E0	0x2859D4
+EdictMissionTableOne	get_getPeriodType	periodType	string	0x2859F8	0x2859EC
+EdictMissionTableOne	get_getStartPeriod	startPeriod	string	0x285A10	0x285A04
+EdictMissionTableOne	get_getEndPeriod	endPeriod	string	0x285A28	0x285A1C
+EdictMissionTableOne	get_getIconFileName	iconFileName	string	0x285A40	0x285A34
+EdictMissionTableOne	get_getIconIndex	iconIndex	string	0x285A58	0x285A4C
+EdictMissionTableOne	get_getEnterScript	enterScript	string	0x285A70	0x285A64
+EdictMissionTableOne	get_getEndScript	endScript	string	0x285A88	0x285A7C
+EdictMissionTableOne	get_IconFileName	iconFileName	string	0x285AA0	0x285A94
+EdictMissionTableOne	get_EnterScriptTypeId	enterScript	string	0x285AB8	0x285AAC
+EdictMissionTableOne	get_ExitScriptTypeId	exitScript	string	0x285AD0	0x285AC4
+EdictRaiseRateTableAccessor	getRaiseRate	raiseRate	double	0x285BB6	0x285B94
+ErrantryResultTableAccessor	getMessageId	message	string	0x285C29	0x285BF0
+ErrantryResultTableAccessor	isSucess	status	string	0x285C8D	0x285C54
+ErrantryTableAccessor	searchKey	index	double	0x285D79	0x285D48
+ErrantryTableAccessor	searchKey	id	string	0x285D90	0x285D48
+ErrantryTableAccessor	getLeastTotalIntelligence	leastTotalIntelligence	double	0x285DCE	0x285DAC
+ErrantryTableAccessor	getCosts	costTypes	ArrayList	0x285E04	0x285DDC
+ErrantryTableAccessor	getCosts	costAmounts	ArrayList	0x285E15	0x285DDC
+ErrantryTableAccessor	getCostTypes	costTypes	ArrayList	0x285EA6	0x285E80
+ErrantryTableAccessor	getResourceType	costTypes	ArrayList	0x285EE0	0x285EB4
+ErrantryTableAccessor	getCostAmounts	costAmounts	ArrayList	0x285F76	0x285F50
+ErrantryTableAccessor	getDueInterval	dueInterval	double	0x285FA6	0x285F84
+ErrantryTableAccessor	getName	nameId	string	0x285FE4	0x285FB4
+ErrantryTableAccessor	getImageId	imageId	string	0x28601A	0x285FF8
+ErrantryTableAccessor	getResultFileName	result	string	0x28604A	0x286028
+GiganticRaidBossTableAccessor	getNameMessageId	name	string	0x2860D6	0x2860B0
+GiganticRaidBossTableAccessor	getName	name	string	0x28610F	0x2860E4
+GiganticRaidBossTableAccessor	getHp	hp	double	0x286143	0x286120
+GiganticRaidBossTableAccessor	getPhase	phase	double	0x286172	0x286150
+GiganticRaidBossTableAccessor	getVoice	voice	string	0x2861A6	0x286180
+GiganticRaidBossTableAccessor	getImages	images	string	0x2861DA	0x2861B4
+GiganticRaidBossTableAccessor	getAssetName	assetName	string	0x28620E	0x2861E8
+GiganticRaidBossTableAccessor	getSuffix	suffix	string	0x286242	0x28621C
+GiganticRaidBossTableAccessor	getResultSuffix	resultSuffix	string	0x286276	0x286250
+GiganticRaidBossTableAccessor	getMenuEffect	menuEffect	string	0x2862AA	0x286284
+GiganticRaidBossTableAccessor	getNamePlate	namePlate	string	0x2862DE	0x2862B8
+GiganticRaidBossTableAccessor	getMenuBg	menuBg	string	0x286312	0x2862EC
+GiganticTextLogTableAccessor	maxChain	chainRange	ArrayList	0x2863C2	0x2863A0
+GiganticTextLogTableAccessor	minChain	chainRange	ArrayList	0x2863FE	0x2863DC
+GiganticTextLogTableAccessor	maxDamage	damageRange	ArrayList	0x28643B	0x286418
+GiganticTextLogTableAccessor	minDamage	damageRange	ArrayList	0x286477	0x286454
+GiganticTextLogTableAccessor	getMessageIdChain	chainLogMessageId	string	0x2864B6	0x286490
+GiganticTextLogTableAccessor	getMessageIdDamage	damageLogMessageId	string	0x2864EA	0x2864C4
+LotteryTableAccessor	getCost	costAmount	double	0x286A3A	0x286A18
+MigrateTableAccessor	getCredit	credit	double	0x286A8E	0x286A6C
+MigrateTableAccessor	getInterval	interval	double	0x286ABF	0x286A9C
+NationalPowerGoalTableAccessor	getName	name	string	0x286B33	0x286B0C
+NationalPowerGoalTableAccessor	getDesc	desc	string	0x286B6B	0x286B44
+NationalPowerGoalTableAccessor	getPower	nationalPower	double	0x286B9E	0x286B7C
+NationalPowerShopTableAccessor	getName	name	string	0x286C13	0x286BEC
+NationalPowerShopTableAccessor	getBrief	brief	string	0x286C4B	0x286C24
+NationalPowerShopTableAccessor	getOpenedDesc	openDesc	string	0x286C82	0x286C5C
+NationalPowerShopTableAccessor	getLockedDesc	lockDesc	string	0x286CB6	0x286C90
+NationalPowerShopTableAccessor	getCategoryType	category	int	0x286D00	0x286CC4
+NationalPowerShopTableAccessor	getClassBuildingType	class		0x286F33	0x286D18
+NationalPowerShopTableAccessor	getClassBuildingType	class		0x286F52	0x286D18
+NationalPowerShopTableAccessor	getClassBuildingType	class	int	0x286F6F	0x286D18
+NationalPowerShopTableAccessor	getClassItemType	class		0x287037	0x286F84
+NationalPowerShopTableAccessor	getClassItemType	class		0x287056	0x286F84
+NationalPowerShopTableAccessor	getClassItemType	class	int	0x287073	0x286F84
+NationalPowerShopTableAccessor	isSet	isSet	bool	0x2870AA	0x287088
+NationalPowerShopTableAccessor	getItemIds	itemIds	ArrayList	0x2870DA	0x2870B8
+NationalPowerShopTableAccessor	getItemIds	quantities	ArrayList	0x2870EB	0x2870B8
+NationalPowerShopTableAccessor	getItemIdsArray	itemIds	ArrayList	0x287176	0x287154
+NationalPowerShopTableAccessor	getIconName	iconName	string	0x2871A6	0x287184
+NationalPowerShopTableAccessor	getCosts	costTypes	ArrayList	0x2871D6	0x2871B4
+NationalPowerShopTableAccessor	getCosts	costAmounts	ArrayList	0x2871E7	0x2871B4
+NationalPowerShopTableAccessor	isOpenCondition	openCondition	bool	0x287272	0x287250
+NationalPowerShopTableAccessor	isListingCondition	listingCondition	bool	0x2872A2	0x287280
+NationalPowerShopTableAccessor	isNew	isNew	bool	0x2872D2	0x2872B0
+NationalPowerShopTableAccessor	getDiscountRate	discount	double	0x287302	0x2872E0
+NationalPowerShopTableAccessor	getSortNo	sortno	double	0x287332	0x287310
+NationalPowerShopTableAccessor	getCredit	credit	double	0x287362	0x287340
+NationalPowerShopTableAccessor	getQuantities	quantities	ArrayList	0x287392	0x287370
+ShopItemBgTableAccessor	IsEnable	isEnable	bool	0x2878A6	0x287884
+ShopItemBgTableAccessor	getSortIndex	sortIndex	double	0x2878D6	0x2878B4
+ShopItemBgTableAccessor	IsNew	isNew	bool	0x287906	0x2878E4
+ShopItemBgTableAccessor	getCategory	category	string	0x28793A	0x287914
+ShopItemBgTableAccessor	getItemIds	itemIds	ArrayList	0x28796A	0x287948
+ShopItemBgTableAccessor	getCredit	credit	double	0x28799A	0x287978
+ShopItemBgTableAccessor	getName	name	string	0x287A1D	0x2879E0
+ShopItemBgTableAccessor	getDesc	desc	string	0x287A6D	0x287A30
+ShopItemBgTableAccessor	getIconName	iconName	string	0x287AA6	0x287A80
+SsBannerTableAccessor	getImageFile	value	string	0x287B3E	0x287B14
+SsBannerTableAccessor	getUrl	value	string	0x287B76	0x287B4C
+TrophyCommonTableAccessor	getName	name	string	0x287BFF	0x287BD4
+TrophyCommonTableAccessor	getDesc	desc	string	0x287C3B	0x287C10
+TrophyCommonTableAccessor	getCategory	category	string	0x287C72	0x287C4C
+TrophyCommonTableAccessor	getClearAmount	clearAmount	double	0x287CA2	0x287C80
+TrophyCommonTableAccessor	getReward	clearReward	string	0x287CD6	0x287CB0
+VsBattleRankBonusTableAccessor	getDesc	desc	string	0x287D8F	0x287D68
+WaterBorneTradeResultTableAccessor	getMessageId	message	string	0x287E41	0x287E08
+WaterBorneTradeResultTableAccessor	isSucess	status	string	0x287EA5	0x287E6C
+WaterBorneTradeTableAccessor	searchKey	index	double	0x287F75	0x287F44
+WaterBorneTradeTableAccessor	searchKey	id	string	0x287F8C	0x287F44
+WaterBorneTradeTableAccessor	getLeastTotalIntelligence	leastTotalIntelligence	double	0x287FCA	0x287FA8
+WaterBorneTradeTableAccessor	getCosts	costTypes	ArrayList	0x288000	0x287FD8
+WaterBorneTradeTableAccessor	getCosts	costAmounts	ArrayList	0x288011	0x287FD8
+WaterBorneTradeTableAccessor	getCostTypes	costTypes	ArrayList	0x2880A2	0x28807C
+WaterBorneTradeTableAccessor	getResourceType	costTypes	ArrayList	0x2880DC	0x2880B0
+WaterBorneTradeTableAccessor	getCostAmounts	costAmounts	ArrayList	0x288172	0x28814C
+WaterBorneTradeTableAccessor	getDueInterval	dueInterval	double	0x2881A2	0x288180
+WaterBorneTradeTableAccessor	getName	nameId	string	0x2881E0	0x2881B0
+WaterBorneTradeTableAccessor	getImageId	imageId	string	0x288216	0x2881F4
+WaterBorneTradeTableAccessor	getResultFileName	result	string	0x28824D	0x288224
+WaterBorneTradeTableAccessor	getResultFileName	friendResult	string	0x28825E	0x288224
+playerLevelupMessageTaleAccessor	getNaviMessage	naviMessages	ArrayList	0x2882EA	0x2882C4
+TacticsTableAccessor	getName	name	string	0x288763	0x288738
+TacticsTableAccessor	getDesc	desc	string	0x28879F	0x288774
+TacticsTableAccessor	getCategory	category	int	0x288841	0x2887B0
+TacticsTableAccessor	getActivateRatio	activateRatio	double	0x28887A	0x288858
+TacticsTableAccessor	getTiming	timing	int	0x2888E6	0x288888
+TacticsTableAccessor	getRarity	rarity	string	0x288922	0x2888FC
+TacticsTableAccessor	getTarget	effect1Target	int	0x2889D2	0x288930
+TacticsTableAccessor	getYomiSortId	yomiSortNo	double	0x288A0A	0x2889E8
+TacticsTableAccessor	getCBTImages	cbtimages	string	0x288A3E	0x288A18
+TacticsTableAccessor	getImage	images	string	0x288A72	0x288A4C
+TacticsTableAccessor	getEffectCategory	effectCategory		0x288AA6	0x288A80
+TacticsTableAccessor	getSalePrice	sellPrice	double	0x288AD6	0x288AB4
+TacticsTableAccessor	getDedication	dedication	double	0x288B0A	0x288AE4
+TrophySettingTableAccessor	getMaxLevel	maxLevel	double	0x28A3F6	0x28A3D4
+TrophyTableAccessor	getName	name	string	0x28A453	0x28A428
+TrophyTableAccessor	getDesc	desc	string	0x28A48F	0x28A464
+TrophyTableAccessor	getCategory	category	string	0x28A4C6	0x28A4A0
+TrophyTableAccessor	getAmount	clearAmount	double	0x28A4F6	0x28A4D4
+TrophyTableAccessor	getReward	clearReward	string	0x28A52A	0x28A504
+TrophyTableAccessor	getIconImage	iconImage	string	0x28A55E	0x28A538
+TurfWarBattleFieldCatalogTableAccessor	getName	name	string	0x28A91E	0x28A8F8
+TurfWarBattleFieldCatalogTableAccessor	getAge	age	string	0x28A95E	0x28A938
+TurfWarBattleFieldCatalogTableAccessor	getDesc	desc	string	0x28A99E	0x28A978
+TurfWarBattleFieldCatalogTableAccessor	getAssetName	assetName	string	0x28AB22	0x28AAFC
+TurfWarBattleFieldTableAccessor	getCatalogId	catalogId	string	0x28ABAA	0x28AB84
+TurfWarBriefCache	get_BattlefieldsInformation	situation	Hashtable	0x28AE58	0x28AE30
+TurfWarBriefCache	get_BattlefieldsInformation	battlefields	Hashtable	0x28AE69	0x28AE30
+TurfWarBriefCache	set_Battlefield	selfBelong	Hashtable	0x28AF3A	0x28AF10
+TurfWarBriefCache	get_BattleRuleId	battleRules	Hashtable	0x28AF8A	0x28AF54
+TurfWarBriefCache	getBattleRuleTitle	battleRules	Hashtable	0x28AFBD	0x28AFA4
+TurfWarBriefCache	getBattleRuleDesc	battleRules	Hashtable	0x28B011	0x28AFF8
+TurfWarBriefCache	getFieldAdvantage	situation	Hashtable	0x28B0D8	0x28B0B0
+TurfWarBriefCache	getFieldAdvantage	battlefields	Hashtable	0x28B0E9	0x28B0B0
+TurfWarBriefCache	getFieldAdvantage	advantage	string	0x28B107	0x28B0B0
+TurfWarBriefCache	get_Advantage	situation	Hashtable	0x28B138	0x28B114
+TurfWarBriefCache	get_Advantage	global	Hashtable	0x28B149	0x28B114
+TurfWarBriefCache	get_Advantage	advantage	string	0x28B15A	0x28B114
+TurfWarBriefCache	get_IsMoveable	isMovable	bool	0x28B1CA	0x28B1A4
+TurfWarBriefCache	getBonusRestTime	bonus	Hashtable	0x28B25C	0x28B214
+TurfWarBriefCache	getBonusRestTime	team	string	0x28B26D	0x28B214
+TurfWarBriefCache	getBonusRestTime	endTime	double	0x28B291	0x28B214
+TurfWarBriefCache	getBonusRestTime	battlefield	string	0x28B2DB	0x28B214
+TurfWarBriefCache	setup	status	string	0x28B34A	0x28B308
+TurfWarBriefCache	setup	closeWarTime	double	0x28B360	0x28B308
+TurfWarDetail	setup	field	string	0x28B5D8	0x28B5B0
+TurfWarDetailCenter	setupModule	westPoint	double	0x28BDB2	0x28BCC0
+TurfWarDetailCenter	setupModule	eastPoint	double	0x28BDC5	0x28BCC0
+TurfWarDetailCenter	setupModule	west	double	0x28BDFC	0x28BCC0
+TurfWarDetailCenter	setupModule	east	double	0x28BE0F	0x28BCC0
+TurfWarDetailCenter	setRescue	bonus	Hashtable	0x28BF35	0x28BF18
+TurfWarDetailCenter	setRescue	endTime	double	0x28BF4F	0x28BF18
+TurfWarDetailCenter	setRescue	team	string	0x28BF65	0x28BF18
+TurfWarDetailCenter	setRescue	battlefield	string	0x28BF84	0x28BF18
+TurfWarDetailSide	setupModule	avatar	Hashtable	0x28C368	0x28C1E0
+TurfWarDetailSide	setupModule	baseId	string	0x28C37B	0x28C1E0
+TurfWarDetailSide	setupModule	grade	double	0x28C38E	0x28C1E0
+TurfWarDetailSide	setupModule	rank	double	0x28C4C3	0x28C1E0
+TurfWarDetailSide	setupModule	country	string	0x28C4D7	0x28C1E0
+TurfWarDetailSide	setupModule	username	string	0x28C518	0x28C1E0
+TurfWarInformation	setupModule	advantage	string	0x28C719	0x28C6C4
+TurfWarInformation	setupModule	westPoint	double	0x28C739	0x28C6C4
+TurfWarInformation	setupModule	eastPoint	double	0x28C75E	0x28C6C4
+TurfWarInformation	setupModule	advantage	string	0x28C82D	0x28C7D8
+TurfWarRankingDialog	setup	battlefieldId		0x28C906	0x28C8EC
+TurfWarRankingDialog	setup	team	int	0x28C917	0x28C8EC
+TurfWarRankingDialog	setup	order	int	0x28C928	0x28C8EC
+TurfWarRankingDialog	setup	span	int	0x28C939	0x28C8EC
+TurfWarRescue	setup	bonus	Hashtable	0x28CA5B	0x28CA38
+TurfWarRescue	setup	team	string	0x28CA6C	0x28CA38
+TurfWarRescue	setup	battlefield	string	0x28CAAA	0x28CA38
+TurfWarRescue	setup	endTime	double	0x28CAF3	0x28CA38
+TurfWarRescueAll	setup	bonus	Hashtable	0x28CCAD	0x28CC90
+TurfWarRescueAll	setup	team	string	0x28CCC5	0x28CC90
+TurfWarRescueAll	setup	battlefield	string	0x28CCD6	0x28CC90
+TurfWarRescueAll	setup	endTime	double	0x28CD14	0x28CC90
+TurfWarWorldMap	setRescue	bonus	Hashtable	0x28D389	0x28D36C
+TurfWarWorldMap	setRescue	endTime	double	0x28D3A3	0x28D36C
+TurfWarWorldMap	setRescue	team	string	0x28D3B9	0x28D36C
+TurfWarWorldMap	setRescue	battlefield	string	0x28D3D8	0x28D36C
+TurfWarWorldMap	onDecide	field		0x28D4AB	0x28D47C
+TurfWarResultRenderer	convertHtmlParameter	schedule	Hashtable	0x28DA5C	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	open	double	0x28DA6F	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	close	double	0x28DA89	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	gainRedSoul	double	0x28DAE3	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	rank	double	0x28DB04	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	score	double	0x28DB3B	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	defenseScore	double	0x28DB4F	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	global	Hashtable	0x28DB8F	0x28DA20
+TurfWarResultRenderer	convertHtmlParameter	battlefield	Hashtable	0x28DBA9	0x28DA20
+TurfWarResultRenderer	convertBonus	bonuses	Hashtable	0x28DC73	0x28DC60
+TurfWarResultRenderer	convertGlobalRanking	end	Hashtable	0x28DD79	0x28DD60
+TurfWarResultRenderer	convertGlobalRanking	score	double	0x28DD8A	0x28DD60
+TurfWarResultRenderer	convertGlobalRanking	rank	double	0x28DD9C	0x28DD60
+TurfWarResultRenderer	convertGlobalRanking	defenseScore	double	0x28DDAE	0x28DD60
+TurfWarResultRenderer	convertGlobalRanking	daily	Hashtable	0x28DE27	0x28DD60
+TurfWarResultRenderer	convertGlobalRanking	score	double	0x28DE76	0x28DD60
+TurfWarResultRenderer	convertGlobalRanking	rank	double	0x28DE89	0x28DD60
+TurfWarResultRenderer	convertGlobalRanking	defenseScore	double	0x28DE9C	0x28DD60
+TurfWarResultRenderer	convertBattlefieldRanking	end	Hashtable	0x28DF63	0x28DF44
+TurfWarResultRenderer	convertBattlefieldRanking	score	double	0x28DFB2	0x28DF44
+TurfWarResultRenderer	convertBattlefieldRanking	rank	double	0x28DFC6	0x28DF44
+TurfWarResultRenderer	convertBattlefieldRanking	daily	Hashtable	0x28E04F	0x28DF44
+TurfWarResultRenderer	convertBattlefieldRanking	score	double	0x28E0DD	0x28DF44
+TurfWarResultRenderer	convertBattlefieldRanking	rank	double	0x28E0F1	0x28DF44
+UserStatus	updateMapEntry	map	Hashtable	0x28F671	0x28F638
+UserStatus	updateMapEntry	buildingTypeId	string	0x28F85D	0x28F638
+UserStatus	updateMapEntry	buildingTypeId	string	0x28F873	0x28F638
+UserStatus	updateMapEntry	deployedMapKey	string	0x28F8A8	0x28F638
+UserStatus	addCharacterCount	characters	Hashtable	0x28FB4A	0x28FB38
+UserStatus	addEquipCount	equips	Hashtable	0x28FC66	0x28FC54
+UserStatus	updateErrantry	errantry	Hashtable	0x2901C6	0x290160
+UserStatus	updateLoginStamp	nextStampDate	string	0x290210	0x2901F8
+UserStatus	addLoginBounus	itemId	string	0x2902F8	0x290268
+UserStatus	addLoginBounus	amount	double	0x29030A	0x290268
+UserStatus/Navigators	update	id	string	0x290AED	0x290AB8
+UserStatus/Navigators	update	colorIndex	string	0x290B03	0x290AB8
+UserStatus/Navigators	updateFriendMap	navigator	Hashtable	0x290B26	0x290B14
+UserStatus/Navigators	updateFriendMap	id	string	0x290B38	0x290B14
+UserStatus/Navigators	updateFriendMap	colorIndex	string	0x290B4E	0x290B14
+UserStatus/PossessionLimits	update	base	double	0x290BE7	0x290BB0
+UserStatus/PossessionLimits	update	creditExpireAt	double	0x290BFE	0x290BB0
+UserStatus/PossessionLimits	update	result	double	0x290C15	0x290BB0
+UserStatus/ValueCounter	update	base	double	0x290CDB	0x290CA4
+UserStatus/PotionEntry	update	amount	double	0x290E4A	0x290DBC
+VoiceTableAccessor	getActorName	actor	string	0x2912E4	0x2912B8
+VoiceTableAccessor	getCategory	category	double	0x291316	0x2912F4
+VoiceTableAccessor	getVoiceChangeEnable	buyable	bool	0x29143A	0x291418
+VoiceTableAccessor	getVoicePrice	price	double	0x291486	0x291464
+AuctionSellCharacterPage	setDeckCard	0	Hashtable	0x298908	0x298778
+AuctionSellCharacterPage	setDeckCard	0	Hashtable	0x298923	0x298778
+AuctionSellCharacterPage	setDeckCard	0	Hashtable	0x29893F	0x298778
+AuctionSellCharacterPage	setDeckCard	1	Hashtable	0x29895B	0x298778
+AuctionSellCharacterPage	setDeckCard	0	Hashtable	0x298977	0x298778
+AuctionSellCharacterPage	setDeckCard	1	Hashtable	0x298993	0x298778
+BattleFlowManager	updateStateSequence	Remove timeline [		0x29FAD7	0x29FA4C
+BattleFlowManager	sequenceChange	PG Event [		0x2A0696	0x2A0630
+BattleFlowManager	sequenceChange	Event [		0x2A0712	0x2A0630
+BattleFlowManager/TimelinePlayer	update	track 	int	0x2A124F	0x2A1168
+BattleLogManager/Information/Base	getAttributeInitial	H		0x2A85EE	0x2A85C4
+BattleLogManager/Process	setup	event		0x2AA4D9	0x2AA48C
+BattleLogManager/Process	checkOverkillFlags	overkillRemainHP	long	0x2ABAF1	0x2AB8F4
+BattleResultManager	setAllInformationOff	RaidBossPointText		0x2B1CC9	0x2B1B04
+BattleResultManager	setAllInformationOff	BattlePointText		0x2B1CE8	0x2B1B04
+BattleResultManager	setAllInformationOff	ContributePointText		0x2B1CFA	0x2B1B04
+BattleResultManager	firstUpdate	RaidBossPointText		0x2B2920	0x2B202C
+BattleResultManager	firstUpdate	BattlePointText		0x2B2981	0x2B202C
+BattleResultManager	firstUpdate	ContributePointText		0x2B2993	0x2B202C
+BattleResultManager	firstUpdate	BattlePointText		0x2B2A2C	0x2B202C
+BattleResultManager	firstUpdate	ContributePointText		0x2B2A3E	0x2B202C
+BattleResultManager	firstUpdate	ChainPointTextG		0x2B2B3C	0x2B202C
+BattleResultManager	<Start>m__536	TaishoBustUp		0x2B3B07	0x2B3AF0
+BattleTacticsTableAccessor	getName	name	string	0x2B49DE	0x2B49B8
+BattleTacticsTableAccessor	getDesc	desc	string	0x2B4A12	0x2B49EC
+BattleTacticsTableAccessor	getCategory	category	string	0x2B4A46	0x2B4A20
+BattleTacticsTableAccessor	getType	type	string	0x2B4A7A	0x2B4A54
+BattleTacticsTableAccessor	getRariry	rarity	string	0x2B4AAE	0x2B4A88
+BattleTacticsTableAccessor	getActivateRatio	activateRatio	string	0x2B4ADE	0x2B4ABC
+BattleTacticsTableAccessor	getTiming	timing	string	0x2B4B16	0x2B4AF0
+BattleTacticsTableAccessor	getEffectAction	effect1Action	string	0x2B4B47	0x2B4B24
+BattleTacticsTableAccessor	getEffectAction	effect1ValueA		0x2B4B59	0x2B4B24
+BattleTacticsTableAccessor	getEffectAction	effect1ValueB		0x2B4B6C	0x2B4B24
+BattleTacticsTableAccessor	getEffect	effect	string	0x2B4BA2	0x2B4B7C
+BattleTacticsTableAccessor	getSE	se	string	0x2B4BD6	0x2B4BB0
+BattleTacticsTableAccessor	getImage	image	string	0x2B4C0A	0x2B4BE4
+BattleTextureManager	Update	Success to attach [		0x2B576B	0x2B56DC
+BattleEventList_Friend	create	change		0x2C7BC7	0x2C7B54
+BattleEventList_Intro	addIntroStart	param	TypeSpec(0x1B000366)	0x2C89EF	0x2C899C
+BattleEventList_Intro	addIntroStart	ADI	TypeSpec(0x1B000366)	0x2C89FE	0x2C899C
+BattleEventList_Intro	addIntroStart	param	TypeSpec(0x1B000367)	0x2C8A92	0x2C899C
+BattleEventList_Intro	addIntroStart	HP	TypeSpec(0x1B000367)	0x2C8AA1	0x2C899C
+BattleEventList_Intro	addIntroStart	param	long	0x2C8B15	0x2C899C
+BattleEventList_Intro	addIntroStart	maxHP	long	0x2C8B24	0x2C899C
+BattleEventList_Intro	addIntroStart	param	long	0x2C8B3B	0x2C899C
+BattleEventList_Intro	addIntroStart	initHP	long	0x2C8B4A	0x2C899C
+BattleEventList_OXBattleRes	create	atk		0x2C9C55	0x2C9BFC
+BattleEventList_OXBattleRes	create	critical	bool	0x2C9C6C	0x2C9BFC
+BattleEventList_OXBattleRes	create	def		0x2C9C82	0x2C9BFC
+BattleEventList_OXBattleRes	create	critical	bool	0x2C9C9C	0x2C9BFC
+BattleEventList_PreAttribBonus	attribBonusEffect	turns	TypeSpec(0x1B000369)	0x2CA68A	0x2CA658
+BattleEventList_PreAttribBonus	attribBonusEffect	ADI	TypeSpec(0x1B000366)	0x2CA6C0	0x2CA658
+BattleEventList_PreRound_Initialize	create	atk_a		0x2CA9FE	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	atk_a		0x2CAA28	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	atk_d		0x2CAA54	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	atk_d		0x2CAA7E	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	def_a		0x2CAAAA	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	def_a		0x2CAAD4	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	def_d		0x2CAB00	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	atk_d		0x2CAB2A	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	intel_a		0x2CAB56	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	atk_a		0x2CAB80	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	intel_d		0x2CABAC	0x2CA9BC
+BattleEventList_PreRound_Initialize	create	atk_d		0x2CABD6	0x2CA9BC
+BattleEventList_PreSkill	skillEffect	ADI	TypeSpec(0x1B000366)	0x2CAE2B	0x2CACCC
+BattleEventList_PreSkill	genmaSkillEffect	turns	TypeSpec(0x1B00036B)	0x2CAECE	0x2CAE54
+BattleEventList_PreSkill	genmaSkillEffect	ADI	TypeSpec(0x1B000366)	0x2CAFC6	0x2CAE54
+BattleEventList_PreSkill	addSkillNames	turns	TypeSpec(0x1B00036B)	0x2CB098	0x2CB058
+BattleEventList_PreTactics	tacticsEffect	turns	TypeSpec(0x1B00036F)	0x2CB56A	0x2CB538
+BattleEventList_PreTactics	tacticsEffect	ADI	TypeSpec(0x1B000366)	0x2CB85D	0x2CB538
+BattleEventList_Round	create	round	int	0x2CBB29	0x2CBAB0
+BattleEventList_Round	create	roundId	int	0x2CBB38	0x2CBAB0
+BattleEventList_Round	create	round	int	0x2CBB84	0x2CBAB0
+BattleEventList_Round	create	order	int	0x2CBB93	0x2CBAB0
+BattleEventList_Round	changeRoundParams	attacker	BattleLogManager/Process/HPManager/Ev	0x2CBE62	0x2CBDF8
+BattleEventList_RoundAttrib	roundAttribEffect	turns	TypeSpec(0x1B000374)	0x2CC93F	0x2CC928
+BattleEventList_RoundAttrib	roundAttribEffect	ADI	TypeSpec(0x1B000366)	0x2CC9A4	0x2CC928
+BattleEventList_RoundBattleRes	create	change		0x2CCA99	0x2CCA44
+BattleEventList_RoundSkill	create	turns		0x2CD6F2	0x2CD63C
+BattleEventList_RoundSkill	roundSkillEffect	turns	TypeSpec(0x1B000376)	0x2CD751	0x2CD710
+BattleEventList_RoundTactics	roundTacticsEffect	turns	TypeSpec(0x1B000375)	0x2CDFF5	0x2CDFBC
+BattleEventList_RoundTactics	addTacticsNames_Old	ids	TypeSpec(0x1B00001A)	0x2CE49E	0x2CE474
+BoardBody	get_PlayerStrategyTeamId	team	string	0x2D0703	0x2D06C4
+BoardControl/EventStatusUpdater	<request>m__5A1	team	string	0x2D11A7	0x2D1160
+BoosterPackObject	setButton	singleRange		0x2DA076	0x2DA030
+BoosterPackObject	setButton	giftRange		0x2DA08C	0x2DA030
+BoosterPackResultWindow	setup	prizes	TypeSpec(0x1B0003C7)	0x2DAA0B	0x2DA9E0
+BoosterPackResultWindow	setup	characters	TypeSpec(0x1B0003C8)	0x2DAA27	0x2DA9E0
+BoosterPackScene	<Start>m__5D0	busho		0x2DB398	0x2DB310
+BoosterPack_Work	buyCallBack	amount	double	0x2DBCA0	0x2DBACC
+BoosterPack_Work	<Start>m__5DA	potions	Hashtable	0x2DCB97	0x2DCB80
+BoosterPack_Work	<Start>m__5DA	amount	double	0x2DCBEB	0x2DCB80
+DailyMissionScene	convertRewardByUsePotionsAPIResult	result	Hashtable	0x2DE124	0x2DE10C
+DailyMissionScene	convertRewardByUsePotionsAPIResult	point	double	0x2DE1B2	0x2DE10C
+DailyMissionScene	setMallItemShopId	shopItems	Hashtable	0x2DE306	0x2DE2F4
+DailyMissionScene	<processPotions>m__5E7	potions	Hashtable	0x2DEA11	0x2DE9F8
+DailyMissionScene	<processPotions>m__5E7	amount	double	0x2DEA9E	0x2DE9F8
+DailyMissionScene	<processPotions>m__5E7	amount	double	0x2DEAEC	0x2DE9F8
+DailyMissionScene	<refreshActivePt>m__5E8	Result		0x2DEB62	0x2DEB48
+DrawLotter	OnDrawCallback	Result	Hashtable	0x2DF308	0x2DF2E8
+DrawSystem	onGetServerData	Result	Hashtable	0x2DFBC6	0x2DFBB4
+DrawSystem	onGetServerData	mission	Hashtable	0x2DFBD7	0x2DFBB4
+DrawSystem	onGetServerData	reward	Hashtable	0x2DFBE8	0x2DFBB4
+DrawSystem	onGetServerData	point	double	0x2DFC08	0x2DFBB4
+DrawSystem	ParseMission	curCount	double	0x2DFC7B	0x2DFC20
+DrawSystem	ParseMission	totalCount	double	0x2DFC93	0x2DFC20
+DrawSystem	ParseMission	getPoint	double	0x2DFCAB	0x2DFC20
+DrawSystem	ParseReward	itemId	string	0x2DFD59	0x2DFD10
+DrawSystem	ParseReward	contents	string	0x2DFD70	0x2DFD10
+DrawSystem	ParseReward	amount	double	0x2DFD87	0x2DFD10
+DebugCheckCharacterMenu	ShowSkill	L		0x2E1AFE	0x2E1A5C
+DebugCheckCharacterMenu	ShowSkill	S		0x2E1BDA	0x2E1A5C
+DebugCheckCharacterMenu	ShowMSkill	L		0x2E1E7A	0x2E1DD8
+DebugCheckCharacterMenu/ItemInfo	setId	descId	string	0x2E24B4	0x2E2438
+DebugFindItemInfoMenu/ItemInfo	setId	descId	string	0x2E2C6C	0x2E2BF0
+DebugMakeCharacterMenu	OnGUI	grade	string	0x2E35D6	0x2E31DC
+DebugMakeCharacterMenu	OnGUI	level	string	0x2E3631	0x2E31DC
+DebugMakeCharacterMenu	OnGUI	atk	string	0x2E36A2	0x2E31DC
+DebugMakeCharacterMenu	OnGUI	def	string	0x2E3716	0x2E31DC
+DebugMakeCharacterMenu	OnGUI	int	string	0x2E378A	0x2E31DC
+DebugMakeCharacterMenu	OnGUI	atkAdd	string	0x2E3809	0x2E31DC
+DebugMakeCharacterMenu	OnGUI	defAdd	string	0x2E387D	0x2E31DC
+DebugMakeCharacterMenu	OnGUI	intAdd	string	0x2E38F1	0x2E31DC
+DebugMakeEquipMenu	OnGUI	grade	string	0x2E47F4	0x2E4540
+DebugMakeEquipMenu	OnGUI	level	string	0x2E484F	0x2E4540
+DebugMakeEquipMenu	OnGUI	atk	string	0x2E48C0	0x2E4540
+DebugMakeEquipMenu	OnGUI	def	string	0x2E4934	0x2E4540
+DebugMakeEquipMenu	OnGUI	int	string	0x2E49A8	0x2E4540
+DeckAddMaxCharacter	setUpCharacter	character	Hashtable	0x2EC349	0x2EC2EC
+DeckAddMaxCharacter	setUpEquip	equip		0x2EC419	0x2EC400
+DeckAddMaxCharacterWindow	setup	characterMax	int	0x2ECB0E	0x2ECABC
+DeckAddMaxCharacterWindow	setup	characterStorageMax	int	0x2ECB24	0x2ECABC
+DeckAddMaxCharacterWindow	setup	characterCount	int	0x2ECB3A	0x2ECABC
+DeckAddMaxCharacterWindow	setup	characterStorageCount	int	0x2ECB50	0x2ECABC
+DeckAddMaxCharacterWindow	setup	characterTime	long	0x2ECB66	0x2ECABC
+DeckAddMaxCharacterWindow	setup	characterStorageTime	long	0x2ECB7C	0x2ECABC
+DeckConflateCards_Character	createStatus	atk	double	0x2F1577	0x2F14D4
+DeckConflate_SkillRefresh	checkPayment	credit		0x2F4ECC	0x2F4E54
+DeckConflate_UseItemWindow	setup	potions	Hashtable	0x2F53D7	0x2F53B4
+DeckConflate_UseItemWindow	setup	itemIds	String[]	0x2F53EE	0x2F53B4
+DeckConflate_UseItemWindow	setup	amount	double	0x2F5496	0x2F53B4
+DeckMake	setDeckCard	0	Hashtable	0x2F71A4	0x2F7010
+DeckMake	setDeckCard	0	Hashtable	0x2F71BF	0x2F7010
+DeckMake	setDeckCard	0	Hashtable	0x2F71DB	0x2F7010
+DeckMake	setDeckCard	1	Hashtable	0x2F71F7	0x2F7010
+DeckMake	setDeckCard	0	Hashtable	0x2F7213	0x2F7010
+DeckMake	setDeckCard	1	Hashtable	0x2F722F	0x2F7010
+DeckMake	setDeckCard	inErrantries	Hashtable	0x2F726D	0x2F7010
+DeckMake	setDeckCard	isEntryStrategy	bool	0x2F730A	0x2F7010
+DeckMake	setDeckCard	isEntrySiege	bool	0x2F7320	0x2F7010
+DeckSale	<startCall>m__6C9	dedicationRanking	Hashtable	0x2FE421	0x2FE3F8
+DeckSale_Character	<delivery>m__6D3	rank	double	0x2FF5A5	0x2FF4B0
+DeckSale_Character	<delivery>m__6D3	point	double	0x2FF5B7	0x2FF4B0
+DeckSale_Character	<delivery>m__6D3	limit	double	0x2FF5C9	0x2FF4B0
+DeckSale_Equip	<delivery>m__6DC	rank	double	0x30010E	0x300008
+DeckSale_Equip	<delivery>m__6DC	point	double	0x300120	0x300008
+DeckSale_Equip	<delivery>m__6DC	limit	double	0x300132	0x300008
+DeckScene	set_StorageInfoHash	nextOpenLimit	double	0x300F0B	0x300EEC
+DeckScene	<OnEnable>m__6F5	id		0x301E6D	0x301D98
+DeckScene	<OnEnable>m__6F5	bonus	Hashtable	0x301E91	0x301D98
+DeckScene	<OnEnable>m__6F6	inheritPoint	double	0x301F7B	0x301F44
+DeckScene	<OnEnable>m__6F6	possessionLimits	Hashtable	0x301F97	0x301F44
+DeckScene	<OnEnable>m__6F6	possessionLimits	Hashtable	0x301FC3	0x301F44
+DeckScene	<OnEnable>m__6F6	skillCoins	double	0x301FD9	0x301F44
+DeckStorage	startCall	lastOpenDate	double	0x304DCB	0x304CA4
+DeckUseItem	<startCall>m__74C	potions	Hashtable	0x305F6B	0x305F4C
+DeckUseItem_confimation	useUpItemAfterProcess	amount	double	0x306E69	0x306E28
+DeckUseItem_confimation	useUpItemAfterProcess	amount	double	0x306ECF	0x306E28
+FriendConfirmationWindow	setupWindow	data	FriendData	0x3095DB	0x3095B0
+FriendConfirmationWindow	setupWindow	confirmMode		0x3095F6	0x3095B0
+FriendConfirmationWindow	doResult	0		0x30980A	0x309798
+FriendSpecWindow	setupWindow	data	FriendData	0x30CABB	0x30CA90
+FriendData	addSpecData	message		0x30D49A	0x30D3C8
+FriendData	addSpecData	habits	Hashtable	0x30D4AF	0x30D3C8
+GiganticRaidBossDataCache	setup	status	string	0x30E709	0x30E6B8
+GiganticRaidBossDataCache	setup	closeTime	double	0x30E71F	0x30E6B8
+giganticRaidBossScene	resetInformation	attackList	Hashtable	0x30F212	0x30F200
+giganticRaidBossScene	resetInformation	endTime	double	0x30F253	0x30F200
+giganticRaidBossScene	resetInformation	chain	double	0x30F26A	0x30F200
+giganticRaidBossScene	resetInformation	phase	double	0x30F281	0x30F200
+giganticRaidBossScene	resetInformation	monsterId		0x30F298	0x30F200
+giganticRaidBossScene	<setup>m__7B4	attackList	Hashtable	0x30F7E8	0x30F7C8
+giganticRaidBossScene	<setup>m__7B4	punishPoint	double	0x30F84D	0x30F7C8
+giganticRaidBossScene	<setup>m__7B4	chain	double	0x30F864	0x30F7C8
+giganticRaidBossScene	<setup>m__7B4	phase	double	0x30F87B	0x30F7C8
+giganticRaidBossScene	<setup>m__7B4	endTime	double	0x30F892	0x30F7C8
+giganticRaidBossScene	<setup>m__7B4	monsterId		0x30F8A9	0x30F7C8
+giganticRaidBossStatus	setBossStatus	needPoint	Hashtable	0x30F970	0x30F94C
+InboxReader	convertHtmlParameter	parcels	Hashtable	0x30FD56	0x30FD14
+InboxReader	convertHtmlParameter	totalCount	double	0x30FFE3	0x30FD14
+InboxReader	reload	start	double	0x31009B	0x310074
+InboxReader	reload	end	double	0x3100B2	0x310074
+InboxReader	<openEditor>m__7BE	parcels	Hashtable	0x310164	0x31014C
+KokugiDedicateWindow	setParam	name		0x310794	0x31074C
+KokugiItem	setParam	battleType	ArrayList	0x310F02	0x310D84
+KokugiItem	setParam	type		0x31114F	0x310D84
+KokugiScene	listupIds	valid		0x311740	0x311700
+KokugiScene	listupIds	type		0x311761	0x311700
+KokugiScene	toLevel	levelUpType		0x311C76	0x311C58
+KokugiScene	toPoint	levelUpType		0x311CEA	0x311CCC
+KokugiScene	toMaxLevel	maxLevel		0x311D88	0x311D6C
+KokugiScene	toName	name		0x311DB9	0x311D98
+KokugiScene	toDescription	desc		0x311E06	0x311DCC
+LessonTableAccessor	getTriggerMissions	triggerMissions	ArrayList	0x3140EE	0x3140CC
+LessonTableAccessor	getTitle	title		0x314122	0x3140FC
+LessonTableAccessor	getScript	script		0x314176	0x314150
+LessonTableAccessor	getGrade	grade		0x3141AA	0x314184
+LessonTableAccessor	getCategory	category		0x3141DE	0x3141B8
+LessonTableAccessor	getSortId	sort	double	0x31420E	0x3141EC
+LoginColorMapAccessor	getName	name	string	0x315062	0x31503C
+LoginColorMapAccessor	getKey	key	string	0x315096	0x315070
+LoginColorMapAccessor	getNumber	number		0x3150C6	0x3150A4
+LoginCountryAccessor	getIconOffsetX	iconoffset_x		0x315FB2	0x315F8C
+LoginCountryAccessor	getIconOffsetY	iconoffset_y		0x315FEA	0x315FC4
+LoginCountryNameSetter	handler_selecting	region_width	int	0x316566	0x3164B0
+LoginCountryNameSetter	handler_selecting	region_left	int	0x316579	0x3164B0
+LoginCountryNameSetter	handler_selecting	src_width	int	0x31658B	0x3164B0
+LoginCountryNameSetter	handler_selecting	src_height	int	0x3165A0	0x3164B0
+LoginCountryNameSetter	handler_selecting	region_height	int	0x3165B3	0x3164B0
+LoginCountryNameSetter	handler_selecting	region_top	int	0x3165C7	0x3164B0
+LoginEnvironment	createNewPlayer	color		0x3176AE	0x31767C
+LoginNoticeMenuTableAccessor	getImageBanner	banner	string	0x318EFE	0x318ED8
+LoginNoticeMenuTableAccessor	getTitle	title	string	0x318F32	0x318F0C
+LoginNoticeMenuTableAccessor	getDesc	desc	string	0x318F66	0x318F40
+LoginNoticeMenuTableAccessor	getNoticeURL	notice_url	string	0x318FA0	0x318F74
+LoginNoticeMenuTableAccessor	getURL	url	string	0x318FD6	0x318FB0
+LoginNoticeMenuTableAccessor	isChannellingMask	channelling		0x319006	0x318FE4
+LoginNoticeMenuTableAccessor	isChannellingMask	channelling	ArrayList	0x319027	0x318FE4
+LoginTransInvitationCodeEntry	Start	SYSTEM_MSG_LOGIN_FRIENDCODE_WARNING_YMGBA		0x31B5FF	0x31B594
+LoginTransInvitationCodeEntry	Start	SYSTEM_MSG_LOGIN_FRIENDCODE_WARNING		0x31B61A	0x31B594
+DedicateOfMaterials	onResult	isSucceed	bool	0x31C2CC	0x31C2A8
+DedicateOfMaterials	onResult	result	Hashtable	0x31C2DD	0x31C2A8
+DedicateOfMaterialsDialog	onDedicateResult	gainPoint	double	0x31C6DE	0x31C6CC
+DedicateOfMaterialsDialog	getResultMessage	gainPoint	double	0x31C7CA	0x31C7B8
+DedicateOfMaterialsDialog	getResultMessage	myRank	Hashtable	0x31C7DC	0x31C7B8
+DedicateOfMaterialsDialog	getResultMessage	rank	double	0x31C7ED	0x31C7B8
+DedicateOfMaterialsDialog	getResultMessage	countryRank	double	0x31C7FF	0x31C7B8
+MightOfNationDialog	updateInformation	dedicationRanking	Hashtable	0x31D015	0x31CFFC
+MightOfNationDialog	updateInformation	battleRanking	Hashtable	0x31D026	0x31CFFC
+MightOfNationDialog	updateInformation	nationalPowerRanking	Hashtable	0x31D037	0x31CFFC
+MightOfNationDialog	updateInformation	change	double	0x31D142	0x31CFFC
+MightOfNationDialog	updateInformation	prev	double	0x31D1D0	0x31CFFC
+MightOfNationDialog	updateInformation	prev	double	0x31D1F8	0x31CFFC
+MightOfNationDialog	updateInformation	rank	string	0x31D228	0x31CFFC
+MightOfNationDialog	updateInformation	rank	string	0x31D247	0x31CFFC
+MightOfNationDialog	updateInformation	prev	double	0x31D27A	0x31CFFC
+MightOfNationDialog	updateInformation	prev	double	0x31D2A2	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D2D0	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D2F8	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D31B	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D345	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D384	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D3AC	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D3EB	0x31CFFC
+MightOfNationDialog	updateInformation	current	double	0x31D413	0x31CFFC
+MightOfNationDialog	updateInformation	nationalPower	double	0x31D446	0x31CFFC
+MightOfNationDialog	updateInformation	dedication	double	0x31D474	0x31CFFC
+MightOfNationDialog	updateInformation	kokudaka	double	0x31D4C9	0x31CFFC
+MightOfNationDialog	updateInformation	nationalPower	double	0x31D633	0x31CFFC
+MightOfNationDialog	updateInformation	dedication	double	0x31D64E	0x31CFFC
+MightOfNationDialog	addGold	dedication	double	0x31D7A1	0x31D6DC
+MightOfNationDialog	createSigeResult	enable	bool	0x31D93C	0x31D908
+MightOfNationDialog	<onDedicate>m__80A	change	double	0x31DEF4	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	gainPoint	double	0x31DF06	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	dedication	Hashtable	0x31DF2E	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	point	double	0x31DF4A	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	nationalPower	double	0x31DF5F	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	gainPoint	double	0x31DF71	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	dedicationRanking	Hashtable	0x31DF9E	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	nationalPowerRanking	Hashtable	0x31DFB4	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	myRank	Hashtable	0x31DFC6	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	rank		0x31DFDF	0x31DED0
+MightOfNationDialog	<onDedicate>m__80A	countryRank		0x31DFF7	0x31DED0
+MightOfNationSiegeResult	setupModule	won	double	0x31E0D0	0x31E070
+MightOfNationSiegeResult	setupModule	oppositions	Hashtable	0x31E0E2	0x31E070
+MigrateCountryNameSetter	handler_selecting	region_width	int	0x31EE7F	0x31EDB8
+MigrateCountryNameSetter	handler_selecting	region_left	int	0x31EE92	0x31EDB8
+MigrateCountryNameSetter	handler_selecting	src_width	int	0x31EEA4	0x31EDB8
+MigrateCountryNameSetter	handler_selecting	src_height	int	0x31EEB9	0x31EDB8
+MigrateCountryNameSetter	handler_selecting	region_height	int	0x31EECC	0x31EDB8
+MigrateCountryNameSetter	handler_selecting	region_top	int	0x31EEE0	0x31EDB8
+mypage	startExec	battleLog		0x3252CA	0x325254
+mypage	startExec	battleLog		0x32530A	0x325254
+mypage	debugAddColections	items	ArrayList	0x3258DF	0x325884
+mypageAvatar	<init>m__825	baseId	string	0x325C77	0x325C38
+mypageAvatar	<init>m__825	grade	double	0x325C8D	0x325C38
+mypageBattleLog/mypageBattleLogObj	.ctor	1st	string	0x326BDB	0x326AD8
+mypageBattleLog/mypageBattleLogObj	.ctor	2nd	string	0x326BF3	0x326AD8
+mypageBattleLog/mypageBattleLogObj	.ctor	3rd	string	0x326C0B	0x326AD8
+mypageBattleLog/mypageBattleLogObj	.ctor	4th	string	0x326C23	0x326AD8
+mypageBattleLog/mypageBattleLogObj	.ctor	5th	string	0x326C3B	0x326AD8
+mypageBgSelectWindow	setup	no	int	0x328039	0x328008
+mypageCollectionItem	rewardCallback	Payable	int	0x32A9C9	0x32A9B0
+mypageCollectionItem	rewardCallback	Receive	int	0x32A9DA	0x32A9B0
+mypageCollectionReward	setup	ItemId	string	0x32AEC5	0x32AE90
+mypageCollectionReward	setup	Receive	int	0x32AEE0	0x32AE90
+mypageCollectionSeriesDetail	setup	Param	mypageCollectionSeriesParam	0x32B02B	0x32AFD4
+mypageCollectionSeriesDetail	setup	ItemType	int	0x32B046	0x32AFD4
+mypageCollectionSeriesDetail	setup	RewardId	string	0x32B061	0x32AFD4
+mypageCollectionSeriesDetail	rewardCallback	Payable	int	0x32B740	0x32B720
+mypageCollectionSeriesDetail	rewardCallback	Receive	int	0x32B751	0x32B720
+mypageCollectionSeriesItemDetail	setup	ItemType	int	0x32BDCF	0x32BDA4
+mypageCollectionSeriesItemDetail	setup	Param	mypageCollectionItemParam	0x32BDEB	0x32BDA4
+mypageCollectionSeriesItemDetail	setup	SeriesId	string	0x32BE18	0x32BDA4
+mypageEmigrateUpdate	setup	MYPAGE_MSG_EMIGRATE_INFOMATION_YMBGA		0x32E3FD	0x32E3B0
+mypageEmigrateUpdate	setup	MYPAGE_MSG_EMIGRATE_INFOMATION		0x32E418	0x32E3B0
+mypageEmigrateUpdate	<setEmigrate>m__848	migratableTime	double	0x32E5E7	0x32E5C0
+mypageEmigrateUpdate	<setEmigrate>m__848	migratePlans	Hashtable	0x32E5F9	0x32E5C0
+mypageInvitation	<getInvitationCode>m__84C	myCode		0x32EABC	0x32EA8C
+mypageLibrary	collectChara	enable	bool	0x3307DE	0x330794
+mypageLibrary	collectChara	value	double	0x3307FD	0x330794
+mypageLibrary	collectChara	{0:D7}	int	0x3308B8	0x330794
+mypageProfileUpdate	init	red	double	0x333464	0x3332AC
+mypageProfileUpdate	init	blue	double	0x333498	0x3332AC
+mypageProfileUpdate	init	purple	double	0x3334CC	0x3332AC
+mypageProfileUpdate	init	yellow	double	0x333500	0x3332AC
+mypageProfileUpdate	init	green	double	0x333534	0x3332AC
+mypageProfileUpdate	init	black	double	0x333568	0x3332AC
+mypageProfileUpdate	init	white	double	0x33359C	0x3332AC
+mypageProfileUpdate	init	message	string	0x333671	0x3332AC
+mypageProfileUpdate	init	habits	Hashtable	0x3336A3	0x3332AC
+mypageProfileUpdate	init	0	string	0x3336BD	0x3332AC
+mypageProfileUpdate	init	1	string	0x3336DA	0x3332AC
+mypageProfileUpdate	init	2	string	0x3336F7	0x3332AC
+mypageProfileUpdate	init	0	string	0x333710	0x3332AC
+mypageProfileUpdate	init	1	string	0x333721	0x3332AC
+mypageProfileUpdate	init	2	string	0x333732	0x3332AC
+mypageProfileUpdate	update	text	string	0x333982	0x333970
+mypageProfileUpdate	update	0	string	0x3339AD	0x333970
+mypageProfileUpdate	update	1	string	0x3339C9	0x333970
+mypageProfileUpdate	update	2	string	0x3339E5	0x333970
+mypageProfileUpdate	update	0	string	0x333A09	0x333970
+mypageProfileUpdate	update	1	string	0x333A19	0x333970
+mypageProfileUpdate	update	2	string	0x333A29	0x333970
+mypageRankingWindow	makeVsAllInfo	timestamp	string	0x336132	0x336120
+mypageRecord	<getKobanLogs>m__933	logs	Hashtable	0x33B5E3	0x33B5BC
+mypageRecord/mypageRecordKoban	init	creditAmount		0x33B74F	0x33B6FC
+mypageRecordUpdate	update	vsBattle	Hashtable	0x33B82D	0x33B810
+mypageRecordUpdate	update	quest	Hashtable	0x33B843	0x33B810
+mypageRecordUpdate	update	collection	Hashtable	0x33B859	0x33B810
+mypageRecordUpdate	update	battle	Hashtable	0x33B86F	0x33B810
+mypageRecordUpdate	update	errantry	Hashtable	0x33B885	0x33B810
+mypageSelfIntroduction	setup	message	string	0x33BF88	0x33BF40
+mypageSelfIntroduction	setup	key1	int	0x33BFB6	0x33BF40
+mypageSelfIntroduction	setup	value1	int	0x33BFCB	0x33BF40
+mypageSelfIntroduction	setup	key2	int	0x33BFEE	0x33BF40
+mypageSelfIntroduction	setup	value2	int	0x33C003	0x33BF40
+mypageSelfIntroduction	setup	key3	int	0x33C026	0x33BF40
+mypageSelfIntroduction	setup	value3	int	0x33C03B	0x33BF40
+mypageSelfIntroduction	confirmCallback	text	string	0x33C26B	0x33C22C
+mypageSelfIntroduction	confirmCallback	keyIndex1	int	0x33C286	0x33C22C
+mypageSelfIntroduction	confirmCallback	valueIndex1	int	0x33C29B	0x33C22C
+mypageSelfIntroduction	confirmCallback	keyIndex2	int	0x33C2B7	0x33C22C
+mypageSelfIntroduction	confirmCallback	valueIndex2	int	0x33C2CC	0x33C22C
+mypageSelfIntroduction	confirmCallback	keyIndex3	int	0x33C2E8	0x33C22C
+mypageSelfIntroduction	confirmCallback	valueIndex3	int	0x33C2FD	0x33C22C
+mypageSelfIntroductionConfirm	init	text	string	0x33CA5C	0x33CA28
+mypageSelfIntroductionConfirm	init	valueText1	string	0x33CA78	0x33CA28
+mypageSelfIntroductionConfirm	init	valueText2	string	0x33CA95	0x33CA28
+mypageSelfIntroductionConfirm	init	valueText3	string	0x33CAB2	0x33CA28
+mypageSerialCode	<getSerialCodeRecordLogs>m__93C	logs	Hashtable	0x33DB3B	0x33DB14
+mypageSerialCodeWindow	resultSerialCode	itemIds	Hashtable	0x33E1DE	0x33E0E8
+mypageShopBgWindow	<phaseInit>m__944	shopItems	Hashtable	0x33EDEE	0x33EDD4
+mypageTrophyItemDetail	update	id	string	0x33F478	0x33F460
+mypageTrophyItemDetail	update	status	string	0x33F492	0x33F460
+mypageTrophyItemDetail	update	level	int	0x33F4A8	0x33F460
+mypageTrophyItemDetail	update	nowlevel	int	0x33F4BE	0x33F460
+mypageTrophyReward	setup	id	string	0x33F831	0x33F7FC
+mypageTrophyUpdate	init	level		0x33FE47	0x33FDE0
+mypageTrophyUpdate	init	status	string	0x33FE5A	0x33FDE0
+NavigatorChangeEnv	<selection_create>m__956	type	int	0x340BD9	0x340BA4
+NavigatorChangeSelectType	onDecide	type	NavigatorChangeNode/Type	0x342E3D	0x342DE8
+OnikujiResultWindow	setup	prizes	onikujiWork/LotData	0x343370	0x34334C
+onikujiNetCafeExchange	onResult	yellowSoul	Hashtable	0x345A05	0x3459E4
+onikujiNetCafeExchange	onResult	current	double	0x345A16	0x3459E4
+onikujiNetCafeExchangeDialog	onExchangeNPointResult	npoint	Hashtable	0x345B06	0x345AF4
+onikujiNetCafeExchangeDialog	onExchangeNPointResult	yellowSoul	Hashtable	0x345B17	0x345AF4
+onikujiNetCafeExchangeDialog	onExchangeNPointResult	prev	double	0x345B28	0x345AF4
+onikujiNetCafeExchangeDialog	onExchangeNPointResult	current	double	0x345B3A	0x345AF4
+onikujiNetCafeExchangeDialog	onExchangeNPointResult	prev	double	0x345B4C	0x345AF4
+onikujiNetCafeExchangeDialog	onExchangeNPointResult	current	double	0x345B5F	0x345AF4
+onikujiWork	getLotGetCharacterCount	prizes	Hashtable	0x3463B1	0x346354
+onikujiWork	getLotGetEquipCount	prizes	Hashtable	0x346531	0x3464D4
+onikujiWork	setLot	id	string	0x34691C	0x346720
+SiegeBriefDataCache	setup	isEntry	bool	0x3470F6	0x3470D4
+SiegeBriefDataCache	setup	status	string	0x34710E	0x3470D4
+SiegeBriefDataCache	setup	advantage		0x347124	0x3470D4
+SiegeBriefDataCache	setup	closeTime	double	0x34713A	0x3470D4
+SiegeBriefDataCache	get_MapData	map	Hashtable	0x347178	0x347154
+SiegeBriefDataCache	get_BattlefieldData	battlefield	Hashtable	0x3471B4	0x347190
+SiegeBriefDataCache	get_CellData	cell	Hashtable	0x3471E4	0x3471C0
+SiegeBriefDataCache	get_SelfData	self	Hashtable	0x347214	0x3471F0
+siegeBriefMenuDesc	setup	day	double	0x34762B	0x347618
+siegeBriefMenuDesc	setup	stage	double	0x347642	0x347618
+siegeBriefMenuDesc	setup	isEntry	bool	0x347659	0x347618
+siegeBriefMenuDesc	setup	winner	Hashtable	0x3476C4	0x347618
+siegeBriefMenuDesc	setup	attacker	Hashtable	0x34770B	0x347618
+siegeBriefMenuDesc	setup	defender	Hashtable	0x347771	0x347618
+siegeBriefMenuDesc	setup	role	string	0x3477D5	0x347618
+siegeBriefMenu	<siegeDeck>m__993	siege	Hashtable	0x348735	0x34871C
+siegeBriefMenu	<siegeDeck>m__993	ids	Hashtable	0x348767	0x34871C
+siegeBriefMenu	<siegeDeck>m__993	0		0x34877A	0x34871C
+StrategySelect	isEmptyDeck	4		0x348DDA	0x348D94
+StrategySelect	<Start>m__99B	strategy	Hashtable	0x349056	0x349038
+StrategySelect	<setup>m__99D	a	Hashtable	0x3490FD	0x3490A4
+StrategySelect	<setup>m__99D	b	Hashtable	0x34910D	0x3490A4
+StrategySelect	<setup>m__99D	current	double	0x349135	0x3490A4
+StrategySelect	<setup>m__99D	max	double	0x349146	0x3490A4
+AdversaryData	.ctor	hierarchy		0x34B4F7	0x34B480
+AdversaryData	.ctor	base	double	0x34B50D	0x34B480
+AdversaryData	.ctor	countryRankBonus	double	0x34B524	0x34B480
+AdversaryData	.ctor	dailyPoint	double	0x34B564	0x34B480
+CardSet	setPlayerCard	atk		0x34B8FE	0x34B794
+CardSet	setAdversaryCard	baseId		0x34BA31	0x34B9E8
+CardSet	setAdversaryCard	grade	double	0x34BA51	0x34B9E8
+CardSet	setTacticsCard	amount	double	0x34BB36	0x34BAA4
+CardSet	resetTacticsCard	amount	double	0x34BC8D	0x34BBCC
+CountryRanking/Record	.ctor	won	double	0x34C164	0x34C124
+CountryRanking/Record	.ctor	lost	double	0x34C17B	0x34C124
+decisiveBattleSituation	setup	battlefield		0x34D71A	0x34D6B8
+decisiveBattleSituation	setup	team		0x34D731	0x34D6B8
+decisiveBattleSituation	setup	battlefields	Hashtable	0x34D758	0x34D6B8
+decisiveBattleSituation	setup	east	double	0x34D784	0x34D6B8
+decisiveBattleSituation	setup	west	double	0x34D798	0x34D6B8
+decisiveBattleSituation	setup	eastPoint	double	0x34D7AE	0x34D6B8
+decisiveBattleSituation	setup	westPoint	double	0x34D7C7	0x34D6B8
+decisiveBattleSituation	setup	advantage		0x34D82A	0x34D6B8
+vsSetting	<Start>m__9CD	id		0x34EE6A	0x34EDA8
+vsSetting	<Start>m__9CD	bonus	Hashtable	0x34EE8E	0x34EDA8
+vsSettingMacroProvisionWindow	<completeInput>m__9DC	successful	bool	0x34F6AD	0x34F684
+vsSetting_Siege	setBattleCost	0	Hashtable	0x35030D	0x3502DC
+vsSetting_Siege	setSituation	stage		0x350340	0x350320
+vsSetting_Siege	setCharge	consecutiveWinCount	double	0x3507A3	0x3506E4
+vsSetting_Siege	<getSiegeSituation>m__9EB	selfDeck	Hashtable	0x3511B1	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	costs	Hashtable	0x3511C1	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	rival	Hashtable	0x3511D9	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	situation	Hashtable	0x3511EF	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	charge	Hashtable	0x3511FF	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	record	Hashtable	0x35120F	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	dischargeLogs	Hashtable	0x351225	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	siegeBattlePoint	Hashtable	0x35124F	0x351190
+vsSetting_Siege	<getSiegeSituation>m__9EB	record	Hashtable	0x351265	0x351190
+vsSetting_Siege	<attack>m__9EC	gainBlackSoul	double	0x3512E8	0x3512B0
+vsSetting_Siege/Player	setData	baseId		0x3513A3	0x351368
+vsSetting_SiegeBattleField	setField	attackerScore		0x3515CC	0x3515B0
+vsSetting_SiegeBattleField	setField	defenderScore		0x3515F7	0x3515B0
+SnapshotUploader/<OnUploadProcess>c__Iterator5F	MoveNext	id	double	0x35BE0C	0x35BCA4
+SnapshotUploader/<onError>c__Iterator62	MoveNext	result	bool	0x35C198	0x35C158
+SnapshotUploader/<onError>c__Iterator62	MoveNext	error	double	0x35C1DB	0x35C158
+Chat/<sendIRCMessage>c__Iterator73	<>m__7E	succeeded	bool	0x35E8FE	0x35E8AC
+PoliticButton/<attachPluginIcon>c__Iterator8B	<>m__255	pluginTime	Hashtable	0x360ED6	0x360EB0
+PoliticSFButtons/<attachPluginIcon>c__Iterator9D	<>m__30D	pluginTime	Hashtable	0x3620FE	0x3620D8
+QuestDataCache/<process>c__IteratorB5	<>m__349	baseId	string	0x3646B4	0x364638
+QuestScriptCommand/<startQuest>c__IteratorBD	MoveNext	obstacle	Hashtable	0x36587C	0x365524
+QuestScriptCommand/<startQuest>c__IteratorBD	MoveNext	script	string	0x365943	0x365524
+QuestScriptCommand/<processQuestResult>c__IteratorBF	MoveNext	area	Hashtable	0x3660A6	0x365F48
+QuestScriptCommand/<processQuestResult>c__IteratorBF	MoveNext	chapter	Hashtable	0x3660C6	0x365F48
+QuestScriptCommand/<processQuestResult>c__IteratorBF	MoveNext	quest	Hashtable	0x3660E6	0x365F48
+QuestScriptCommand/<openQuest>c__IteratorC1	MoveNext	DialogCode		0x366660	0x3664B8
+QuestScriptCommand/<checkQuestActionPoint>c__IteratorCC	<>m__378	potions	Hashtable	0x367B49	0x367B30
+QuestScriptCommand/<checkQuestActionPoint>c__IteratorCC	<>m__378	amount	double	0x367B7C	0x367B30
+QuestScriptCommand/<openTreasureBox>c__IteratorD5	MoveNext	open	bool	0x3686C9	0x368648
+QuestScriptCommand/<openTreasureBox>c__IteratorD5	MoveNext	reward	Hashtable	0x368711	0x368648
+QuestScriptCommand/<clearObstacle>c__IteratorD7	MoveNext	isSuccess	bool	0x3689B1	0x368914
+QuestScriptCommand/<clearObstacle>c__IteratorD7	MoveNext	uses	Hashtable	0x368B02	0x368914
+QuestScriptCommand/<clearObstacle>c__IteratorD7	MoveNext	category	string	0x368B2E	0x368914
+StatusView/<setupStatus>c__IteratorDF	<>m__41C	entity	Hashtable	0x369BCA	0x369BB0
+StatusView/<setupStatus>c__IteratorDF	<>m__41C	actionPoints	Hashtable	0x369BE0	0x369BB0
+StatusView/<setupStatus>c__IteratorDF	<>m__41C	resources	Hashtable	0x369BF6	0x369BB0
+StatusView/<setupStatus>c__IteratorDF	<>m__41C	navigators	Hashtable	0x369C0C	0x369BB0
+StrategyBuildingIcon/<onCreateBattleEffect>c__IteratorE0	MoveNext	buildingId	string	0x369E06	0x369D90
+Strategy/<onSetup>c__IteratorE1	<>m__445	strategy	Hashtable	0x36A07E	0x36A060
+StrategyHUDController/<updateCoolingTimer>c__IteratorE5	MoveNext	nextOperableTime	double	0x36A630	0x36A5C8
+StrategyHUDController/<updateInputTimer>c__IteratorE6	MoveNext	nextOperableTime	double	0x36A7D1	0x36A760
+StrategyHUDController/<updateInputTimer>c__IteratorE6	MoveNext	nextOperableTime	double	0x36A894	0x36A760
+StrategyHUDController/<transitionLogWindowUpdate>c__IteratorE7	MoveNext	isAlive	bool	0x36AA24	0x36A948
+StrategyHUDController/<transitionLogWindowUpdate>c__IteratorE7	MoveNext	route	Hashtable	0x36AB77	0x36A948
+StrategyHUDController/<transitionLogWindowUpdate>c__IteratorE7	MoveNext	command	string	0x36AC30	0x36A948
+StrategyHUDController/<transitionLogWindowUpdate>c__IteratorE7	<>m__4A4	isAlive	bool	0x36AD32	0x36AD18
+StrategyHUDController/<updateTurnEndTimer>c__IteratorEC	MoveNext	openTime	double	0x36B355	0x36B2D8
+StrategyHUDController/<updateTurnEndTimer>c__IteratorEC	MoveNext	interval	double	0x36B371	0x36B2D8
+StrategyHUDController/<updateTurnEndTimer>c__IteratorEC	MoveNext	turn	Hashtable	0x36B394	0x36B2D8
+StrategyHUDController/<updateTurnEndTimer>c__IteratorEC	MoveNext	current	double	0x36B3AF	0x36B2D8
+StrategyHUDController/<updateTurnEndTimer>c__IteratorEC	MoveNext	max	double	0x36B3CB	0x36B2D8
+TableLoad/<_setup>c__IteratorF0	MoveNext	server	double	0x36BB2A	0x36BA8C
+TableLoad/<_setup>c__IteratorF0	MoveNext	unity	double	0x36BB4B	0x36BA8C
+TableLoad/<_setup>c__IteratorF0	MoveNext	table	double	0x36BB6C	0x36BA8C
+TableLoad/<_setup>c__IteratorF0	MoveNext	root	double	0x36BB8D	0x36BA8C
+TrophyWindow/<init>c__IteratorF2	MoveNext	level		0x36C02D	0x36BF64
+TrophyWindow/<init>c__IteratorF2	MoveNext	status	string	0x36C048	0x36BF64
+TrophyWindow/<init>c__IteratorF2	MoveNext	window		0x36C063	0x36BF64
+DeckConflate_Evo/<evolitionEffect>c__Iterator115	MoveNext	grade	int	0x36FC89	0x36FC48
+DeckConflate_Evo/<evolitionEffect>c__Iterator115	MoveNext	res	bool	0x36FCA4	0x36FC48
+DeckConflate_Evo/<evolitionEffect>c__Iterator115	MoveNext	learning	bool	0x36FCBF	0x36FC48
+DeckEquip_Evo/<evolitionEffect>c__Iterator121	MoveNext	grade	int	0x371DF9	0x371DB8
+DeckEquip_Evo/<evolitionEffect>c__Iterator121	MoveNext	res	bool	0x371E14	0x371DB8
+DeckEquip_Evo/<evolitionEffect>c__Iterator121	MoveNext	learning	bool	0x371E2F	0x371DB8
+DeckPostPanelAuction/<WaitForAllCharcterCardsComplete>c__Iterator124	MoveNext	Unable to find card, id : 	int	0x372607	0x372434
+DeckScene/<setUp>c__Iterator125	<>m__6F8	id		0x37282C	0x3727A0
+LessonMissionSimpleStatusManager/<setup>c__Iterator137	<>m__7D7	states	Hashtable	0x37487A	0x374860
+LessonScriptCommand/<getReward>c__Iterator138	MoveNext	reward	Hashtable	0x374973	0x3748BC
+LessonScriptCommand/<getReward>c__Iterator138	MoveNext	toInbox	Hashtable	0x37498E	0x3748BC
+DedicateOfMaterialsDialog/<onDedicateSuccessProcedure>c__Iterator13E	MoveNext	bonus	Hashtable	0x375171	0x375104
+CountryRanking/<setup>c__Iterator150	<>m__9A7	countryId	GameObject	0x376F91	0x376DD0
+CountryRanking/<setup>c__Iterator150	<>m__9A7	countryId	double	0x37703A	0x376DD0
+CountryRanking/<setup>c__Iterator150	<>m__9A7	rank	double	0x37704B	0x376DD0
+CountryRanking/<setupForSkipBattle>c__Iterator151	<>m__9AB	countryId		0x3774BE	0x37736C
+CountryRanking/<setupForSkipBattle>c__Iterator151	<>m__9AB	rank	double	0x37753E	0x37736C
+vsSetting/<executeSkipBattle>c__Iterator158	<>m__9D4	id		0x378DA3	0x378D18
+vsSetting/<executeSkipBattle>c__Iterator158	<>m__9D4	bonus	Hashtable	0x378DC7	0x378D18
+Configs/<GetUserInfo>c__AnonStorey168/<GetUserInfo>c__AnonStorey167	<>m__12	playerId		0x37BBC0	0x37BB9C
+Configs/<GetUserInfo>c__AnonStorey168/<GetUserInfo>c__AnonStorey167	<>m__13	now	double	0x37BC01	0x37BBE8
+SceneResources/<Awake>c__AnonStorey16A	<>m__21	now	double	0x37BEB6	0x37BE98
+SessionKeeper/<devLogin>c__AnonStorey184	<>m__43	succeeded	bool	0x37C81F	0x37C7B8
+SessionKeeper/<debugLogin>c__AnonStorey185	<>m__45	succeeded	bool	0x37C8CF	0x37C8A4
+SessionKeeper/<debugLoginCog>c__AnonStorey186	<>m__47	isCreatedPlayer	bool	0x37C967	0x37C93C
+SessionKeeper/<directLogin>c__AnonStorey187	<>m__49	succeeded	bool	0x37CA0B	0x37C9E0
+SessionKeeper/<login>c__AnonStorey188	<>m__4B	succeeded	bool	0x37CAAB	0x37CA80
+SessionKeeper/<guestLogin>c__AnonStorey189	<>m__4D	isCreatedPlayer	bool	0x37CBA7	0x37CB7C
+SessionKeeper/<guestLogin>c__AnonStorey189	<>m__4D	loginHash	string	0x37CBDE	0x37CB7C
+WebApiClient/<debugCreateQuestEncount>c__AnonStorey195	<>m__62	playerId		0x37D16E	0x37D154
+HTMLBbsMediator/<getIconURL>c__AnonStorey1A5	<>m__AA	baseId	string	0x37DB7F	0x37DB10
+HTMLBbsMediator/<getIconURL>c__AnonStorey1A5	<>m__AA	grade	double	0x37DB92	0x37DB10
+HTMLBbsMediator/<sendMails>c__AnonStorey1B3	<>m__A0	to	ArrayList	0x37E6C3	0x37E6A0
+HTMLBbsMediator/<callBbsAPI>c__AnonStorey19B/<callBbsAPI>c__AnonStorey19C	<>m__A1	sess_key		0x37E764	0x37E740
+HTMLUtil/<getFriendProfile>c__AnonStorey230	<>m__171	countryId		0x3819FF	0x381918
+HTMLUtil/<getFriendProfile>c__AnonStorey230	<>m__171	countryId		0x381A25	0x381918
+InventoryEvolutionList/<execute>c__AnonStorey233	<>m__176	errorReason	string	0x381BC5	0x381B9C
+PluginPoliticDataManager/<checkRaiseEdictMission>c__AnonStorey23C	<>m__1A6	politicPoint	double	0x381F6B	0x381F4C
+PluginPoliticDataManager/<checkRaiseEdictMission>c__AnonStorey23C	<>m__1A6	nextTriggerPoliticPoint	double	0x381F88	0x381F4C
+PluginRunner_DoEdict/<DoEdict>c__AnonStorey242	<>m__1C3	mission	Hashtable	0x382245	0x38222C
+PluginRunner_DoEdict/<DoEdict>c__AnonStorey242	<>m__1C3	reward	Hashtable	0x3822AB	0x38222C
+PluginTaskManager/<buyTime>c__AnonStorey24C	<>m__1ED	creditExpireAt	Hashtable	0x3827F9	0x3827E0
+PluginTaskManager/<buyTime>c__AnonStorey24C	<>m__1ED	pluginTime	double	0x382810	0x3827E0
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252	<>m__204	completecount	double	0x382C4F	0x382C08
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252	<>m__204	acceleratecount	double	0x382C7A	0x382C08
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252/<resetFriendMap>c__AnonStorey253	<>m__205	friendInfo	Hashtable	0x382D1D	0x382CBC
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252/<resetFriendMap>c__AnonStorey253	<>m__205	turfWar	Hashtable	0x382D34	0x382CBC
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252/<resetFriendMap>c__AnonStorey253	<>m__205	team	string	0x382D56	0x382CBC
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252/<resetFriendMap>c__AnonStorey253	<>m__205	map	Hashtable	0x382D8E	0x382CBC
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252/<resetFriendMap>c__AnonStorey253	<>m__205	buildings	Hashtable	0x382DA0	0x382CBC
+Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252/<resetFriendMap>c__AnonStorey253	<>m__205	tasks	Hashtable	0x382DB2	0x382CBC
+PoliticBuilding/<accelerateProduceTask>c__AnonStorey259/<accelerateProduceTask>c__AnonStorey25A	<>m__21E	producings	Hashtable	0x383493	0x38347C
+PoliticBuilding/<accelerateProduceTask>c__AnonStorey259/<accelerateProduceTask>c__AnonStorey25B	<>m__21F	producings	Hashtable	0x3835D3	0x3835BC
+PoliticBuilding/<accelerateProduceTask>c__AnonStorey259/<accelerateProduceTask>c__AnonStorey25B	<>m__21F	acceleratecount	double	0x383628	0x3835BC
+PoliticBuilding/<deployInventory>c__AnonStorey260/<deployInventory>c__AnonStorey25F/<deployInventory>c__AnonStorey25E	<>m__226	buildingId	double	0x38378D	0x383758
+PoliticBuilding/<deployInventory>c__AnonStorey260/<deployInventory>c__AnonStorey25F/<deployInventory>c__AnonStorey25E	<>m__226	building	Hashtable	0x3837DB	0x383758
+PoliticBuilding/<deployInventory>c__AnonStorey260/<deployInventory>c__AnonStorey25F/<deployInventory>c__AnonStorey25E	<>m__226	autoProducings	Hashtable	0x3837EC	0x383758
+PoliticBuilding/<buildOnField>c__AnonStorey262/<buildOnField>c__AnonStorey263	<>m__22A	errorReason	string	0x383964	0x38391C
+PoliticBuilding/<buildOnField>c__AnonStorey262/<buildOnField>c__AnonStorey263	<>m__22A	now	double	0x383999	0x38391C
+PoliticBuilding/<buildOnField>c__AnonStorey262/<buildOnField>c__AnonStorey263	<>m__22A	building	Hashtable	0x3839D7	0x38391C
+PoliticBuilding/<buildAndComplete>c__AnonStorey264/<buildAndComplete>c__AnonStorey265	<>m__22C	errorReason	string	0x383B05	0x383ACC
+PoliticBuilding/<buildAndComplete>c__AnonStorey264/<buildAndComplete>c__AnonStorey265	<>m__22C	building	Hashtable	0x383B46	0x383ACC
+PoliticBuilding/<buildAndComplete>c__AnonStorey264/<buildAndComplete>c__AnonStorey265	<>m__22C	autoProducings	Hashtable	0x383B57	0x383ACC
+PoliticBuilding/<SerialBuildAndComplete>c__AnonStorey268/<SerialBuildAndComplete>c__AnonStorey269	<>m__230	autoProducings	Hashtable	0x383DB6	0x383D98
+PoliticBuilding/<SerialBuildAndComplete>c__AnonStorey268/<SerialBuildAndComplete>c__AnonStorey269	<>m__230	x		0x383DF4	0x383D98
+PoliticBuilding/<SerialBuildAndComplete>c__AnonStorey268/<SerialBuildAndComplete>c__AnonStorey269	<>m__230	y		0x383E0A	0x383D98
+PoliticBuilding/<SerialBuildAndComplete>c__AnonStorey268/<SerialBuildAndComplete>c__AnonStorey269	<>m__230	errorReason	string	0x383E52	0x383D98
+PoliticBuilding/<SerialBuildAndComplete>c__AnonStorey268/<SerialBuildAndComplete>c__AnonStorey269	<>m__230	building	Hashtable	0x383E94	0x383D98
+PoliticFSMBatchUpgrade/<DoBatchUpgrade>c__AnonStorey278	<>m__27D	errorReason	string	0x3845B4	0x384580
+PoliticFSMConstruction/<setSerialSelectBuilding>c__AnonStorey27A	<>m__28F	buildings	Hashtable	0x38478F	0x384770
+PoliticFSMConstruction/<setSerialSelectBuilding>c__AnonStorey27A	<>m__28F	autoProducings	Hashtable	0x3847A0	0x384770
+PoliticFSMConstruction/<setSerialSelectBuilding>c__AnonStorey27A	<>m__28F	originCoords	Hashtable	0x3847B1	0x384770
+PoliticFSMConstruction/<setSerialSelectBuilding>c__AnonStorey27A	<>m__28F	0	double	0x384812	0x384770
+PoliticFSMConstruction/<setSerialSelectBuilding>c__AnonStorey27A	<>m__28F	1	double	0x384826	0x384770
+PoliticFSMProduct/<phaseSelectProduceAll>c__AnonStorey27B	<>m__2C3	producings	Hashtable	0x384AF2	0x384AB8
+PoliticFSMProduct/<phaseCollectivelyLevelUp>c__AnonStorey27D	<>m__2C5	resultBuildings	Hashtable	0x384C59	0x384C40
+PoliticFSMProduct/<phaseCollectivelyLevelUp>c__AnonStorey27D	<>m__2C5	totalUsedPoint	double	0x384D34	0x384C40
+PoliticFSMProduct/<phaseCollectivelyLevelUp>c__AnonStorey27D	<>m__2C5	restResources	Hashtable	0x384D4B	0x384C40
+PoliticMissionManager/<checkRaiseEdictMission>c__AnonStorey285	<>m__2F1	politicPoint	double	0x3852F3	0x3852D4
+PoliticMissionManager/<checkRaiseEdictMission>c__AnonStorey285	<>m__2F1	nextTriggerPoliticPoint	double	0x385310	0x3852D4
+PoliticMissionManager/<solveLevelCap>c__AnonStorey286	<>m__2F2	cap	double	0x3853A9	0x385370
+QuestDataCache/<cacheRandomQuestInfo>c__AnonStorey296	<>m__34C	score	double	0x385DA8	0x385D88
+QuestDataCache/<cacheRandomQuestInfo>c__AnonStorey296	<>m__34C	rank	double	0x385DBF	0x385D88
+QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B	<>m__357	potions	Hashtable	0x386151	0x386138
+QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B	<>m__357	amount	double	0x386184	0x386138
+QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B	<>m__357	amount	double	0x3861F3	0x386138
+QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B	<>m__357	amount	double	0x386264	0x386138
+QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B	<>m__357	amount	double	0x3862D5	0x386138
+RaidBossBattleInfoList/<setRaidBossHistory>c__AnonStorey2A8	<>m__3AE	name		0x386AAD	0x386A2C
+RaidBossBattleInfoList/<setRaidBossHistory>c__AnonStorey2A8	<>m__3AE	id		0x386B32	0x386A2C
+RaidBossBattleInfoList/<setRaidBossHistory>c__AnonStorey2A8	<>m__3AE	playerId		0x386B6D	0x386A2C
+ShopItemNationalPower/<saleWindowResult>c__AnonStorey2AE	<>m__3D7	errorReason		0x386D24	0x386CE4
+ShopItemNationalPower/<saleWindowResult>c__AnonStorey2AE	<>m__3D7	resources	Hashtable	0x386D57	0x386CE4
+ShopUpdate/<load>c__AnonStorey2AF	<>m__3DA	shopItems	Hashtable	0x386DF1	0x386DD8
+ShopUpdate/<load>c__AnonStorey2AF	<>m__3DA	recommendedItems	Hashtable	0x386E02	0x386DD8
+ShopUpdateNationalPower/<load>c__AnonStorey2B0	<>m__3DE	shopItems	Hashtable	0x386EE5	0x386ECC
+ShopUpdateNationalPower/<load>c__AnonStorey2B0	<>m__3DE	recommendedItems	Hashtable	0x386EF6	0x386ECC
+ShopItemBuild/<saleWindowResult>c__AnonStorey2B1	<>m__3E0	errorReason		0x387034	0x386FF4
+ShopItemBuild/<saleWindowResult>c__AnonStorey2B1	<>m__3E0	resources	Hashtable	0x387067	0x386FF4
+ShopItemSupport/<saleWindowResult>c__AnonStorey2B2	<>m__3E3	errorReason		0x38714C	0x38710C
+ShopItemSupport/<saleWindowResult>c__AnonStorey2B2	<>m__3E3	resources	Hashtable	0x3871B4	0x38710C
+StatusView/<setupEventInformation>c__AnonStorey2C7	<>m__421	turfWar	Hashtable	0x38790B	0x3878C4
+StatusView/<setupEventInformation>c__AnonStorey2C7	<>m__421	strategy	Hashtable	0x387956	0x3878C4
+StatusView/<setupEventInformation>c__AnonStorey2C7	<>m__421	siege	Hashtable	0x3879A1	0x3878C4
+StatusView/<setupEventInformation>c__AnonStorey2C7	<>m__421	giganticRaidBoss	Hashtable	0x3879EC	0x3878C4
+StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5	<>m__41F	entity	Hashtable	0x387AA6	0x387A64
+StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5	<>m__41F	actionPoints	Hashtable	0x387AC6	0x387A64
+StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5	<>m__41F	resources	Hashtable	0x387AE6	0x387A64
+StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5/<resetStatus>c__AnonStorey2C6	<>m__420	now	double	0x387B4A	0x387B2C
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	consumption	Hashtable	0x388053	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	acquire	Hashtable	0x388064	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	cellBattleContribution	Hashtable	0x388075	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	contributionPercent	double	0x388087	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	forceSizes	Hashtable	0x3880F3	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	buildingId	string	0x38810B	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	terrainId	string	0x388123	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	occupied	string	0x388154	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	a	double	0x38819B	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	b	double	0x3881AE	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	playerCounts	Hashtable	0x388246	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	position	string	0x38827D	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	proficiency	double	0x3883E3	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	STRATEGY_MSG_COMMAND_TRAINING_INFO0	int	0x3883F7	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	base	string	0x38845A	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	base	string	0x388474	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	STRATEGY_MSG_COMMAND_CONSCRIPT_INFO0	int	0x3884F3	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	a		0x388694	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	b		0x3886AC	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	gold		0x3886C3	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	food		0x3886DA	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	wood		0x3886F1	0x388034
+StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1	<>m__470	iron	double	0x388708	0x388034
+StrategyHUDController/<sendMarchCancel>c__AnonStorey2E0	<>m__4A2	nextOperableTime		0x388CD4	0x388CB0
+StrategyHUDController/<sendMarchCancel>c__AnonStorey2E0	<>m__4A2	operatedTime		0x388CEF	0x388CB0
+StrategyHUDController/<sendMarchCancel>c__AnonStorey2E0	<>m__4A2	position		0x388D0A	0x388CB0
+StrategyHUDController/<sendMarchCancel>c__AnonStorey2E0	<>m__4A2	base		0x388D25	0x388CB0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	reachable	bool	0x389013	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	route	Hashtable	0x389037	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	route	Hashtable	0x389047	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	terrainId	string	0x3890C7	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	route	Hashtable	0x3890D9	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	coolTime	double	0x3890FB	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	seqId	double	0x38910C	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	consumption	Hashtable	0x389122	0x388FF0
+StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2/<createConfirmDialog>c__AnonStorey2E3/<createConfirmDialog>c__AnonStorey2E4	<>m__4AB	cellBattleContribution	Hashtable	0x389137	0x388FF0
+StrategyMoveableRegionSelector/<executeCommand>c__AnonStorey2E6/<executeCommand>c__AnonStorey2E7	<>m__4AD	route	Hashtable	0x389232	0x389160
+StrategyStrategizeRegionSelector/<createConfirmDialog>c__AnonStorey2EA/<createConfirmDialog>c__AnonStorey2EB/<createConfirmDialog>c__AnonStorey2EC	<>m__4BB	terrainId	string	0x3895CE	0x389584
+StrategyStrategizeRegionSelector/<createConfirmDialog>c__AnonStorey2EA/<createConfirmDialog>c__AnonStorey2EB/<createConfirmDialog>c__AnonStorey2EC	<>m__4BB	consumption	Hashtable	0x3895FA	0x389584
+StrategyStrategizeRegionSelector/<createConfirmDialog>c__AnonStorey2EA/<createConfirmDialog>c__AnonStorey2EB/<createConfirmDialog>c__AnonStorey2EC	<>m__4BB	cellBattleContribution	Hashtable	0x38960F	0x389584
+TurfWarBriefCache/<setup>c__AnonStorey2F5	<>m__4D1	selfBelong	Hashtable	0x389821	0x3897F4
+TurfWarBriefCache/<setup>c__AnonStorey2F5	<>m__4D1	team	string	0x389837	0x3897F4
+TurfWarBriefCache/<setup>c__AnonStorey2F5	<>m__4D1	team	string	0x389883	0x3897F4
+TurfWarBriefCache/<setup>c__AnonStorey2F5	<>m__4D1	battlefield	string	0x38989E	0x3897F4
+TurfWarBriefCache/<entryWar>c__AnonStorey2F6	<>m__4D2	team	string	0x389923	0x389904
+UserStatus/<setMapName>c__AnonStorey2FE	<>m__4E8	succeeded	bool	0x389CEC	0x389CB0
+BoardAvatar/<init>c__AnonStorey34B	<>m__589	baseId	string	0x38CED0	0x38CE8C
+BoardAvatar/<init>c__AnonStorey34B	<>m__589	grade	double	0x38CEEB	0x38CE8C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	curCount		0x38ECA3	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	totalCount		0x38ECBE	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	getPoint		0x38ECDA	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	itemId		0x38EDBC	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	amount		0x38EDD3	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	state		0x38EDEF	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	itemId		0x38EF0A	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	amount		0x38EF21	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	state		0x38EF3D	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	itemId		0x38F031	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	amount		0x38F048	0x38EB2C
+DailyMissionScene/<Start>c__AnonStorey36F	<>m__5E9	getPoint		0x38F078	0x38EB2C
+DailyMissionScene/<delegateRewardBtn>c__AnonStorey370	<>m__5EA	Result	Hashtable	0x38F26D	0x38F248
+DailyMissionScene/<delegateRewardBtn>c__AnonStorey370	<>m__5EB	Result		0x38F37F	0x38F35C
+DailyMissionScene/<delegateRewardBtn>c__AnonStorey370	<>m__5EB	Result		0x38F39A	0x38F35C
+DailyMissionScene/<onConfirmBuy>c__AnonStorey371	<>m__5EC	resources	Hashtable	0x38F48D	0x38F468
+DailyMissionScene/<onConfirmBuy>c__AnonStorey371	<>m__5EC	result	Hashtable	0x38F4A2	0x38F468
+DeckAddMaxCharacter/<createAddCharacterWindow>c__AnonStorey37A/<createAddCharacterWindow>c__AnonStorey379	<>m__613	possessionLimits	Hashtable	0x38F92F	0x38F8F4
+DeckAddMaxCharacter/<createAddCharacterWindow>c__AnonStorey37A/<createAddCharacterWindow>c__AnonStorey379	<>m__613	character	Hashtable	0x38F971	0x38F8F4
+DeckChangeVoice/<changeVoice>c__AnonStorey37E	<>m__62B	amount	double	0x38FD6D	0x38FD24
+DeckConflateCards_StrageCharacter/<setup>c__AnonStorey385	<>m__640	extendSlot	double	0x39012C	0x3900E8
+DeckConflate_Conflate/<conflateFablicConnection>c__AnonStorey388/<conflateFablicConnection>c__AnonStorey389	<>m__64F	atk	double	0x390A67	0x390864
+DeckConflate_Conflate/<conflateFablicConnection>c__AnonStorey388/<conflateFablicConnection>c__AnonStorey389	<>m__64F	def	double	0x390AFF	0x390864
+DeckConflate_Conflate/<conflateFablicConnection>c__AnonStorey388/<conflateFablicConnection>c__AnonStorey389	<>m__64F	int	double	0x390B97	0x390864
+DeckConflate_Evo/<evolutionFablicConnection>c__AnonStorey38B/<evolutionFablicConnection>c__AnonStorey38C	<>m__65D	id		0x3914D3	0x3911D0
+DeckConflate_Skill/<skillAccessionConnection>c__AnonStorey390	<>m__668	removeCharacterId		0x3918D3	0x391854
+DeckConflate_Skill/<skillAccessionConnection>c__AnonStorey390/<skillAccessionConnection>c__AnonStorey391	<>m__669	inheritPoint	double	0x3919E9	0x39193C
+DeckConflate_Skill/<skillAccessionConnection>c__AnonStorey390/<skillAccessionConnection>c__AnonStorey391	<>m__669	useItems	Hashtable	0x391B00	0x39193C
+DeckConflate_Skill/<skillAccessionConnection>c__AnonStorey390/<skillAccessionConnection>c__AnonStorey391	<>m__669	0		0x391B0F	0x39193C
+DeckConflate_SkillRefresh/<sendRefreshRequest>c__AnonStorey394	<>m__67A	result	Hashtable	0x392164	0x392130
+DeckConflate_SkillRefresh/<sendRefreshRequest>c__AnonStorey394	<>m__67A	character	Hashtable	0x39217B	0x392130
+DeckConflate_SkillRefresh/<sendRefreshRequest>c__AnonStorey394	<>m__67A	category		0x392196	0x392130
+DeckConflate_SkillRefresh/<sendRefreshRequest>c__AnonStorey394	<>m__67A	amount		0x3921C0	0x392130
+DeckConflate_SkillRefresh/<sendRefreshRequest>c__AnonStorey394	<>m__67A	category		0x392226	0x392130
+DeckConflate_SkillRefresh/<sendRefreshRequest>c__AnonStorey394	<>m__67A	amount		0x39224F	0x392130
+DeckEquip_Conflate/<conflateFablicConnection>c__AnonStorey397/<conflateFablicConnection>c__AnonStorey398	<>m__686	atk	double	0x392AA3	0x3928A0
+DeckEquip_Conflate/<conflateFablicConnection>c__AnonStorey397/<conflateFablicConnection>c__AnonStorey398	<>m__686	def	double	0x392B3B	0x3928A0
+DeckEquip_Conflate/<conflateFablicConnection>c__AnonStorey397/<conflateFablicConnection>c__AnonStorey398	<>m__686	int	double	0x392BD3	0x3928A0
+DeckEquip_Evo/<evolutionFablicConnection>c__AnonStorey39A/<evolutionFablicConnection>c__AnonStorey39B	<>m__694	id		0x393533	0x39320C
+DeckMake/<deckSave>c__AnonStorey39D	<>m__69E	0		0x393863	0x39372C
+DeckMake/<deckSave>c__AnonStorey39D	<>m__69E	0		0x39389F	0x39372C
+DeckMake/<deckSave>c__AnonStorey39D	<>m__69E	0		0x3938DB	0x39372C
+DeckSale_Character/<debugDelivery>c__AnonStorey3AB	<>m__6D2	rank	double	0x394391	0x394288
+DeckSale_Character/<debugDelivery>c__AnonStorey3AB	<>m__6D2	point	double	0x3943A3	0x394288
+DeckSale_Character/<debugDelivery>c__AnonStorey3AB	<>m__6D2	limit	double	0x3943B5	0x394288
+DeckSale_Tactics/<delivery>c__AnonStorey3B4	<>m__6E9	rank	double	0x394E3A	0x394C90
+DeckSale_Tactics/<delivery>c__AnonStorey3B4	<>m__6E9	point	double	0x394E4C	0x394C90
+DeckSale_Tactics/<delivery>c__AnonStorey3B4	<>m__6E9	limit	double	0x394E5E	0x394C90
+DeckStorage/<endCall>c__AnonStorey3BC	<>m__740	now	double	0x3953B3	0x3952B4
+FriendConfirmationWindow/<invokeAccept>c__AnonStorey3C0	<>m__767	result	bool	0x395774	0x395754
+FriendConfirmationWindow/<invokeReject>c__AnonStorey3C1	<>m__768	result	bool	0x395800	0x3957E0
+giganticRaidBossScene/<gotoBattle>c__AnonStorey3CD	<>m__7BC	phase	double	0x395FFC	0x395FDC
+LoginEnvironment/<registerInvitationCode>c__AnonStorey3D5	<>m__7ED	invitation	Hashtable	0x3962C5	0x3962AC
+LoginEnvironment/<registerName>c__AnonStorey3D6	<>m__7EE	succeeded	bool	0x39636F	0x396350
+MightOfNationDialog/<OnGUI>c__AnonStorey3E3	<>m__80C	score	double	0x3966F5	0x3966CC
+MightOfNationDialog/<OnGUI>c__AnonStorey3E3	<>m__80C	nationalPower	double	0x39670F	0x3966CC
+MightOfNationDialog/<OnGUI>c__AnonStorey3E3	<>m__811	nationalPower	double	0x3967C2	0x3967A0
+MigrateEnv/<getMyBushoTexture>c__AnonStorey3E6/<getMyBushoTexture>c__AnonStorey3E7	<>m__819	baseId	string	0x3969DF	0x396984
+MigrateEnv/<getMyBushoTexture>c__AnonStorey3E6/<getMyBushoTexture>c__AnonStorey3E7	<>m__819	grade	double	0x3969F0	0x396984
+mypageBattleLogUpdateStrategy/<load>c__AnonStorey3EC	<>m__82A	logs	Hashtable	0x396C19	0x396C00
+mypageBattleLogUpdateStrategy/<load>c__AnonStorey3EC	<>m__82A	details	Hashtable	0x396C2A	0x396C00
+mypageBattleLogUpdateStrategy/<load>c__AnonStorey3EC	<>m__82A	turfWarResultLogCount	double	0x396C41	0x396C00
+mypageBattleLogUpdateTurfWar/<load>c__AnonStorey3ED	<>m__82D	logs	Hashtable	0x396D05	0x396CEC
+mypageBattleLogUpdateTurfWar/<load>c__AnonStorey3ED	<>m__82D	details	Hashtable	0x396D16	0x396CEC
+mypageBattleLogUpdateTurfWar/<load>c__AnonStorey3ED	<>m__82D	turfWarResultLogCount	double	0x396D2D	0x396CEC
+mypageBattleLogUpdateVs/<load>c__AnonStorey3EE	<>m__830	logs	Hashtable	0x396DF1	0x396DD8
+mypageBattleLogUpdateVs/<load>c__AnonStorey3EE	<>m__830	details	Hashtable	0x396E02	0x396DD8
+mypageCollectionWork/<execReward>c__AnonStorey3F2	<>m__843	reward	Hashtable	0x3970DE	0x3970A4
+mypageCollectionWork/<execReward>c__AnonStorey3F2	<>m__843	toInbox	Hashtable	0x3970F0	0x3970A4
+mypageCollectionWork/<execReward>c__AnonStorey3F2	<>m__844	reward	Hashtable	0x39714A	0x397110
+mypageCollectionWork/<execReward>c__AnonStorey3F2	<>m__844	toInbox	Hashtable	0x39715C	0x397110
+mypageSelfIntroduction/<confirmCallback>c__AnonStorey40D	<>m__938	succeeded	bool	0x398DF2	0x398D94
+mypageTrophyReward/<load>c__AnonStorey410	<>m__948	progress	Hashtable	0x398FD3	0x398FB4
+mypageTrophyReward/<load>c__AnonStorey410	<>m__948	rewards	Hashtable	0x398FEE	0x398FB4
+mypageTrophyReward/<load>c__AnonStorey410	<>m__948	characters	Hashtable	0x399009	0x398FB4
+mypageTrophyReward/<load>c__AnonStorey410	<>m__948	equips	Hashtable	0x399024	0x398FB4
+mypageTrophyReward/<load>c__AnonStorey410	<>m__948	toInBox	Hashtable	0x39903F	0x398FB4
+onikujiWork/<executeLot>c__AnonStorey421	<>m__986	prizes	Hashtable	0x399721	0x399708
+decisiveBattleSituation/<setup>c__AnonStorey428	<>m__9BB	endTime	double	0x399CB6	0x399B0C
+vsSettingCache/<getWarAdversary>c__AnonStorey42A	<>m__9D9	rivals	Hashtable	0x399DBC	0x399D9C
+vsSettingCache/<getWarAdversary>c__AnonStorey42A	<>m__9D9	updateTime	double	0x399ECA	0x399D9C
+vsSettingCache/<getAdversary>c__AnonStorey42B	<>m__9DA	rivals	Hashtable	0x399F7C	0x399F5C
+vsSettingCache/<getAdversary>c__AnonStorey42B	<>m__9DA	updateTime	double	0x39A08A	0x399F5C
+vsSettingVcodeImage/<loadVcodeImage>c__AnonStorey42C	<>m__9DF	VCodeImage	string	0x39A12F	0x39A118
+vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D	<>m__9EE	amount	double	0x39A250	0x39A1F4
+vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D	<>m__9EE	tactics	Hashtable	0x39A296	0x39A1F4
+vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D	<>m__9EF	grade	double	0x39A320	0x39A2C4
+vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D	<>m__9EF	equip	Hashtable	0x39A366	0x39A2C4
+vsSetting_Siege/<setExchangeResource>c__AnonStorey42E	<>m__9F0	charge	Hashtable	0x39A48D	0x39A3E0
+vsSetting_Siege/<attack>c__AnonStorey42F	<>m__9ED	situation	Hashtable	0x39A4D6	0x39A4A8
+vsSetting_Siege/<attack>c__AnonStorey42F	<>m__9ED	charge	Hashtable	0x39A4EB	0x39A4A8
+vsSetting_Siege/<attack>c__AnonStorey42F	<>m__9ED	record	Hashtable	0x39A500	0x39A4A8
+vsSetting_Siege/<attack>c__AnonStorey42F	<>m__9ED	dischargeLogs	Hashtable	0x39A520	0x39A4A8
+vsSetting_Siege/<attack>c__AnonStorey42F	<>m__9ED	selfDeck	Hashtable	0x39A540	0x39A4A8
+vsSetting_Siege/<attack>c__AnonStorey42F	<>m__9ED	costs	Hashtable	0x39A555	0x39A4A8
+vsSetting_Siege/<attack>c__AnonStorey42F	<>m__9ED	rival	Hashtable	0x39A577	0x39A4A8

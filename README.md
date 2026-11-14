@@ -119,6 +119,10 @@ python tools/import_tables.py --source /path/to/extracted/tables
 `Assembly-CSharp.dll` 的提取后结构验证与反编译方法见
 [`docs/analysis/pc-assembly.md`](docs/analysis/pc-assembly.md)。
 
+PC IL 全量 body 校验、键类型、HTTP 动词、回调扇出和响应形状重跑说明见
+[`docs/analysis/il-static-analysis.md`](docs/analysis/il-static-analysis.md)。
+分析工具依赖单独的 `requirements-analysis.txt`，不影响服务端运行环境。
+
 ## 部署
 
 见 `deploy/` 的 systemd 单元与 `docs/architecture.md`。Stub 绑定 `127.0.0.1:18080`，对外由 `tools/proxy80.py` 在 80 端口转发。
