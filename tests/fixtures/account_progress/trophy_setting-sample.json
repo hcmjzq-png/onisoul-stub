@@ -1,0 +1,9 @@
+{
+  "trophy_setting": {
+    "totalWin": {
+      "id": "totalWin",
+      "maxLevel": 6,
+      "access": "mypage"
+    }
+  }
+}

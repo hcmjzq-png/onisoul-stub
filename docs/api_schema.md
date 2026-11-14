@@ -136,3 +136,21 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | 生产未实现错误 errorReason | bundle + 待验证 | 字段来自 GameRestarter.cs:61-94 的过滤器，WebApiClient.cs:324-333 据此跳过回调；错误文案/no stub response 是本服务诊断，不宣称原服错误码。四个生产占位写接口和 completeTasks 的生产分支明确失败、不写档。通用错误 UI 待真机验收。 |
 
 范围与未决规则见 [生产链报告](analysis/production-contract-20261115/README.md)。
+
+## 2026-11-15 A–H 汇总接入
+
+完整逐组范围、暂缓项及证据见 [汇总审核](analysis/parallel-342/review/README.md)。
+本批 8 项限定端点接入，其他 21 个候选组件仍未挂载。
+
+| 字段 / 行为 | 来源 | 证据与限制 |
+| --- | --- | --- |
+| `politic/shop/sellBuildings.buildings/gainGold/buildingCount` | bundle / 待验证 | A 组 evidence.json；InventoryUpdateSaleBuild.createItemObject 按 ItemIdToShopIdTableAccessor.getPrice 得到售价，消费方只读被售建筑键、gainGold 和总数。buildings 值保留原记录为兼容选择，非原服抓包。仅库存空闲建筑、无引用、无溢出整笔出售。 |
+| `deck/sellCharacters.sellPrice/characterIds`、`deck/sellEquips.sellPrice/equipIds` | bundle | C 组 evidence.json；原出售消费者读 sellPrice 和数字键映射的数值实例 ID，价格来自 character/equip.sellPrice。保护/六种编队/头像引用不可出售，重复请求不再次付款。禁止溢出是本服保守边界，原溢出处理待证。 |
+| `politic/lottery/getSouls.<red/blue/purple/yellow/green/black/white>` | bundle / 待验证 | onikujiWork.cs:199-206 遍历所有根值并强转 double，使用裸数值映射。读取现有 souls；未存余额返回零为兼容策略，不证明原服赠送规则、不发魂。 |
+| `common/getPlayerCogid.playerId` | bundle / 待验证 | H 组 Configs.GetUserInfo 消费 playerId.ToString。会话 playerId 作为本服身份映射，不声称恢复 COG 平台绑定。 |
+| `plugin/getPluginData.pluginData/pluginTime.pluginTime` | bundle / 待验证 | PluginTaskManager.OnGetServerData；PluginPoliticSetting/PluginBattleSetting/HashAccessor 强类型读取三类设置，DreamSpaceType 必须有可用的 0/1 索引。返回内部 accountProgress 的已保存设置/到期秒数；无记录为空设置和零时长为兼容策略。plugin/setPluginData 仍未接入，不发时长。 |
+| `plugin/getPluginLog.logdatas`、`plugin/addPluginLog` 的 logdata.action/reward/time | bundle / 待验证 | H 组 PluginTaskManager/PluginLog 消费者。仅诊断存储，reward 不作奖励；服务端覆盖 time、按追加序号保存并限制 200 条为本服策略。无 nonce，重试允许重复日志。 |
+
+背景 `setBackground` 的 mapId 仍待确认（原 mypageBgSelectWindow 传 1，而候选只支持 0）。
+`trophy/getTrophyProgress` 旧 SCALAR_ROOT 记录不足以指导全部 access；至少 mypage 消费者要求根记录映射，
+本批不接入该业务、不将其算完成。其余商业规则和状态生产者仍按汇总逐项标记为待验证。

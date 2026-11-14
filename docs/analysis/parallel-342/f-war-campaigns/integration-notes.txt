@@ -1,0 +1,62 @@
+F 集成说明（本分支不编辑共享文件，不部署）
+
+1. 当前未挂载。不应立即开放活动。
+   总集成若已接入权威观测生产端，可在 app/business/gameplay.py 的 register 中：
+     from app.business.war_campaigns_services import WarCampaignsServices
+     WarCampaignsServices(self).register(registry)
+   它只替换 strategy/isAlive，保留其余 46 入口及既有编队/活动状态行为。
+   app/business/registry.py 不需加通用分派规则；response_shapes.py 的正常 envelope 可复用。
+   成功 payload 只有 isAlive:boolean；失败沿用 _failure 的 errorReason，Unity 过滤器须验收。
+   禁止用“没有活动”默认 alive=true 或 false 填记录，也禁止从客户端参数导入观测。
+
+2. 内部状态生产端（尚未实现）：
+   玩家存档 _warCampaigns.strategy={ownerId:str,observedAt:秒,validUntil:秒,isAlive:bool}。
+   不是原协议字段，不回传 ownerId/时间，不需要新角色初始化或旧档补赠。
+   authoritative isAlive 必须来自真实参战/回合结算；validUntil 由可信结算服务给定，不能猜活动日期。
+   任何影响存活的命令/战斗需在同一个权威事务中更新或失效观测；否则即使没过有效期也可能陈旧。
+   不得单独开放此查询来宣称国战闭环。跨进程写入必须沿用 revision/数据库事务。
+
+3. B 组依赖：
+   battle/* 不归 F，本分支不触碰。请提供当前战场/回合/账号的已提交战斗结果和版本。
+   strategy/getStrategyBattleLogs 无 force 重载对应 StrategyLogAnalizer.convPlayerBattleHashFromServer；
+   有 force 重载实际 battle/getVsBattleLogs，现 api_callback_fanout.tsv 按名字映射可能混入其调用者。
+   总集成修 tools/分析工具及 docs/analysis/api_*.tsv 时必须以调用签名/目标 token 区分重载。
+   战斗结算若同时改多个玩家、格子、队伍分数，单玩家锁不够：
+   建议数据库同一事务锁 campaign/turn、相关格子及参与账号（固定顺序），检查版本与命令去重键；
+   一次提交玩家费用/兵力/格子归属/日志/积分事件，失败整体回滚。此为设计建议，不是已实现方案。
+
+4. G 组依赖：
+   待真实结算规则确认后输出内部事件：campaignId/turnId/playerId/eventId、积分增量及结算时刻。
+   这些是内部对接建议，不是原字段。eventId 应随结算事务持久化，G 消费必须去重。
+   城战原响应 day/stage/winner.dayN；公会战结果存在 daily/end 与 schedule.open/close。
+   客户端显示循环不能证明真实周期长度/时区重置规则，不硬编码每日/三日/十五日赛程。
+
+5. 原表与报价：
+   mercenary_hire_cost(defines,count) 只复现原菜单 count*mercenaryPrice；不校验兵力上限/报名、不扣钱。
+   command_cost_terms(strategy_command,command) 只返回资源/计算标签/系数。
+   force/diffMaxForce 的单位、取整和技能顺序未知，不能把解析结果直接当最终费用。
+   strategy_battlefield/combo 仍缺；其余表存在不代表每个引用行有效。
+   app/state.py/app/db.py/sessions/state/db 无本组更改；无迁移、无数据回填。
+
+6. 契约与现有行为：
+   总集成更新 docs/api_schema.md 时标注 isAlive 为 bundle 证据，内部观测模式为兼容设计。
+   其余接口保留“部分消费者/包装器/待证规则”标签，不因找到字段就标已实现。
+   common/getEventStatuses 现有省略未开放活动根键行为保持；deck/strategy/siege 的编队保存保持。
+   endpoint_progress/http_smoke 的全局数字不由本分支修改。
+
+7. 最小独占客户端验证（由总集成安排，本组没有运行）：
+   客户端→hosts→proxy80→stub，先分别记录本机与局域网地址，不修改本组环境配置。
+   取得缺失的原地图表/资产或可信原响应后，在隔离账号打开对应活动：
+   a. 国战：报名与成功回调扣币，getStrategyStatus 层级，traceroute→march2 的 seqId；
+      一个回合的 isAlive true/false/失败过滤，保存后重登对比。不用自造地图证明原规则。
+   b. 城战：enter→openingBet→discharge，记录前后实际资源、charge/record、失败时是否跳过扣显示资源。
+   c. 公会战：entryWar 的 team，选择/切换 battlefield，首次领奖与重试/重登；记录响应与存档差异。
+   d. 原 HTML 配对/日志/结果页面全链取证；确认仅包装器入口是否真的触发。
+   本组 HTTP/内存测试不能代替 Unity 验收；若调试监控面板出现，保持原游戏尺寸，监控等大对齐。
+
+8. 无跨账号付费/奖励写入实现，不能申请解除这些入口的失败保护。
+   不将可测观测读取或内部报价函数计为完整战争玩法，仍需生产端、共享事务及 UI 验证。
+
+9. 完整回归的既有警告：tests/test_gap_verdicts.py:102、tests/test_no_key_inventory.py:22
+   使用 io.open(...).read() 未显式关闭文件，Python 3.15 报 ResourceWarning；测试仍全部通过。
+   由总集成改为 with 管理文件，本分支按范围限制不改公共测试。

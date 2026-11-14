@@ -1,0 +1,764 @@
+{
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "original_protocol": [
+    {
+      "endpoint": "common/recordChat",
+      "request": "token,roomName,content",
+      "response": "succeeded bool",
+      "evidence": "WebApiClient.cs:2328 recordChat; Chat.cs:497-504",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "聊天室发送/记录分工、保留周期未知"
+    },
+    {
+      "endpoint": "community/bbs/closeBbs",
+      "request": "token,sess_key,type",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2573 closeBBS; HTMLBbsMediator.cs:360",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/closeThread",
+      "request": "token,sess_key,type,thread_id",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2562 closeBBSThread; HTMLBbsMediator.cs:527",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/createBbs",
+      "request": "token,sess_key,type,name",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2419 createBBS; HTMLBbsMediator.cs:332",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/createThread",
+      "request": "token,sess_key,type,name,description,commit",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2440 createBBSThread; HTMLBbsMediator.cs:388",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/deleteBbs",
+      "request": "token,sess_key,type",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2430 deleteBBS; HTMLBbsMediator.cs:346",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/deleteComment",
+      "request": "token,sess_key,type,thread_id,comment_id,commit",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2504 deleteBBSThreadComment; HTMLBbsMediator.cs:571",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/deleteThread",
+      "request": "token,sess_key,type,thread_id,commit",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2453 deleteBBSThread; HTMLBbsMediator.cs:406",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/getBbsId",
+      "request": "token,type",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2553 getBBSId; HTMLBbsMediator.cs:656",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/getBbsList",
+      "request": "token",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2545 getBBSList; HTMLBbsMediator.cs:642",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/infoComment",
+      "request": "token,type,thread_id,comment_id,adjust",
+      "response": "comment.comment",
+      "evidence": "WebApiClient.cs:2533 getBBSInfoThreadComment; HTMLBbsMediator.cs:620",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/infoThread",
+      "request": "token,type,thread_id,num_of_comment_type",
+      "response": "thread.name/description/username",
+      "evidence": "WebApiClient.cs:2480 getBBSInfoThread; HTMLBbsMediator.cs:456",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/listComment",
+      "request": "token,type,thread_id,page,order,order_key,item_per_page,select_target,short_comment",
+      "response": "list.<id>.comment/username; optional prevPage/nextPage",
+      "evidence": "WebApiClient.cs:2517 getBBSThreadCommentList; HTMLBbsMediator.cs:585",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/listThread",
+      "request": "token,type,page,order,order_key,item_per_page,num_of_comment_type",
+      "response": "list.<id>.name/description/username",
+      "evidence": "WebApiClient.cs:2465 getBBSThreadList; HTMLBbsMediator.cs:426",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/openBbs",
+      "request": "token,sess_key,type",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2583 openBBS; HTMLBbsMediator.cs:374",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/openThread",
+      "request": "token,sess_key,type,thread_id",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2593 openBBSThread; HTMLBbsMediator.cs:541",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/bbs/postComment",
+      "request": "token,sess_key,type,thread_id,comment,commit",
+      "response": "opaque Hashtable forwarded to HTML",
+      "evidence": "WebApiClient.cs:2491 postBBSThreadComment; HTMLBbsMediator.cs:555",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证"
+    },
+    {
+      "endpoint": "community/libs/bbsSession",
+      "request": "token",
+      "response": "sess_key string",
+      "evidence": "WebApiClient.cs:2411 getBBSSession; HTMLBbsMediator.cs:318-329",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "会话有效期、账号绑定、BBS type权限未知"
+    },
+    {
+      "endpoint": "friend/cancelFriendOffer",
+      "request": "token,friendPlayerId",
+      "response": "result bool; detail.0 failure text",
+      "evidence": "WebApiClient.cs:2632 cancelFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+      "tables": "playerLevel.friend; defines.friendoffer_*",
+      "persistence": "双方同事务 friends/socialOffers（内部）",
+      "permission_cost_retry": "认证已创建角色；仅接收方确认/拒绝、发送方取消；不扣费是兼容策略；即时重试安全；跨新申请周期延迟重放无法区分",
+      "status": "limited_unmounted",
+      "next_step": "仅未过期双边生命周期；reply=ok/excuse；双方容量；事务适配器必需"
+    },
+    {
+      "endpoint": "friend/dissolutionFriend",
+      "request": "token,friendPlayerId",
+      "response": "result bool; detail.0 failure text",
+      "evidence": "WebApiClient.cs:2641 dissolutionFriend; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+      "tables": "playerLevel.friend; defines.friendoffer_*",
+      "persistence": "双方同事务 friends/socialOffers（内部）",
+      "permission_cost_retry": "认证已创建角色；仅接收方确认/拒绝、发送方取消；不扣费是兼容策略；即时重试安全；跨新申请周期延迟重放无法区分",
+      "status": "limited_unmounted",
+      "next_step": "仅未过期双边生命周期；reply=ok/excuse；双方容量；事务适配器必需"
+    },
+    {
+      "endpoint": "friend/feedbackFriendOffer",
+      "request": "token,friendPlayerId,reply",
+      "response": "result bool; detail.0 failure text",
+      "evidence": "WebApiClient.cs:2622 feedbackFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+      "tables": "playerLevel.friend; defines.friendoffer_*",
+      "persistence": "双方同事务 friends/socialOffers（内部）",
+      "permission_cost_retry": "认证已创建角色；仅接收方确认/拒绝、发送方取消；不扣费是兼容策略；即时重试安全；跨新申请周期延迟重放无法区分",
+      "status": "limited_unmounted",
+      "next_step": "仅未过期双边生命周期；reply=ok/excuse；双方容量；事务适配器必需"
+    },
+    {
+      "endpoint": "friend/findFriends",
+      "request": "token,type,conditions",
+      "response": "bare <playerId> -> FriendData",
+      "evidence": "WebApiClient.cs:2658 findFriends; FriendListWindow.cs:60-116; FriendSearchIf.cs:66; FriendSearchWindow.cs",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "near/higher/lower阈值、排序、索引和推荐筛选未知"
+    },
+    {
+      "endpoint": "friend/findFriendsAndSend",
+      "request": "token,friendMax",
+      "response": "bare <playerId> -> FriendData",
+      "evidence": "WebApiClient.cs:2734 getFindFriendsAndSend; FriendListMissionWindow.cs:40-58",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "教程调用 friendMax=8；选择规则和整批跨账号事务未知"
+    },
+    {
+      "endpoint": "friend/getFriendMap",
+      "request": "token,friendPlayerId",
+      "response": "unknown; wrapper only",
+      "evidence": "WebApiClient.cs:2679 getFriendMap; WebApiClient.cs:getFriendMap",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "wrapper_only",
+      "next_step": "旧包装器，未确认业务消费者，不能用新版响应代填"
+    },
+    {
+      "endpoint": "friend/getFriendMapData",
+      "request": "token,friendPlayerId",
+      "response": "unknown for legacy overload",
+      "evidence": "WebApiClient.cs:2688 getFriendMapData; WebApiClient.cs:getFriendMapData",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "wrapper_only",
+      "next_step": "无 mapId 旧包装器；不可直接与 Data2 等同"
+    },
+    {
+      "endpoint": "friend/getFriendMapData2",
+      "request": "token,friendPlayerId,mapId",
+      "response": "completecount/acceleratecount; map/buildings/tasks/friendInfo.turfWar.team",
+      "evidence": "WebApiClient.cs:2697 getFriendMapData; Politic.cs:312-352; PoliticMapInfo.cs",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "mapId=-1 默认；地图白名单、剩余助产计数、非好友访问均待集成"
+    },
+    {
+      "endpoint": "friend/getFriendProfile",
+      "request": "token,friendPlayerId,forHTML",
+      "response": "name/country/level/baseId/grade/status + username/friendCount/guildName/post/lastLogin/rank/kokudaka/selfIntroduction.message,habits.0/1/2",
+      "evidence": "WebApiClient.cs:2724 getFriendProfile; FriendData.cs:40-94; Politic.cs:362-368; HTMLUtil.cs:20-66",
+      "tables": "playerLevel.friend; defines.friendoffer_*",
+      "persistence": "只读；沿用PlayerServices兼容规范化保存",
+      "permission_cost_retry": "只读公开投影，拒绝未知玩家；费用不适用",
+      "status": "limited_unmounted",
+      "next_step": "仅 forHTML=false；公开投影；无工会/登录统计时为空或0属兼容策略"
+    },
+    {
+      "endpoint": "friend/getFriends",
+      "request": "token,option",
+      "response": "bare <playerId>.name/country/level/baseId/grade/status; optional isFirst",
+      "evidence": "WebApiClient.cs:2604 getFriends; FriendListWindow.cs:38-116; FriendData.cs:40-59",
+      "tables": "playerLevel.friend; defines.friendoffer_*",
+      "persistence": "只读；沿用PlayerServices兼容规范化保存",
+      "permission_cost_retry": "只读公开投影，拒绝未知玩家；费用不适用",
+      "status": "limited_unmounted",
+      "next_step": "仅持久好友/未过期申请；option 空/ok/send/receive"
+    },
+    {
+      "endpoint": "friend/getVisitFriendLogs",
+      "request": "token",
+      "response": "bare numeric-index -> record",
+      "evidence": "WebApiClient.cs:2716 getVisitFriendLogs; mypageRecord.cs:185-198,240-253",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "根表全遍历；记录保留/排序/帮助记录语义待证"
+    },
+    {
+      "endpoint": "friend/sendFriendOffer",
+      "request": "token,friendPlayerId",
+      "response": "result bool; detail.0 failure text",
+      "evidence": "WebApiClient.cs:2613 sendFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+      "tables": "playerLevel.friend; defines.friendoffer_*",
+      "persistence": "双方同事务 friends/socialOffers（内部）",
+      "permission_cost_retry": "认证已创建角色；仅接收方确认/拒绝、发送方取消；不扣费是兼容策略；即时重试安全；跨新申请周期延迟重放无法区分",
+      "status": "limited_unmounted",
+      "next_step": "仅未过期双边生命周期；reply=ok/excuse；双方容量；事务适配器必需"
+    },
+    {
+      "endpoint": "friend/setGuestMap",
+      "request": "token,mapId",
+      "response": "callback ignores payload",
+      "evidence": "WebApiClient.cs:2300 setGuestMap; mypageCastleTownUpdate.cs:128-146",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "选择默认客访地图；UI禁地图2；支城解锁/持久化入口待A核对"
+    },
+    {
+      "endpoint": "friend/updateFriendData",
+      "request": "token",
+      "response": "count.ok/send/receive; remove map",
+      "evidence": "WebApiClient.cs:2650 updateFriendData; FriendWindowControll.cs:118-127; FriendConfirmationWindow.cs:168-184",
+      "tables": "playerLevel.friend; defines.friendoffer_*",
+      "persistence": "只读；沿用PlayerServices兼容规范化保存",
+      "permission_cost_retry": "只读公开投影，拒绝未知玩家；费用不适用",
+      "status": "limited_unmounted",
+      "next_step": "仅计数；remove 空；过期清理未实现且明确失败"
+    },
+    {
+      "endpoint": "friend/visitFriendMap",
+      "request": "token,friendPlayerId",
+      "response": "navigator data + reward menu payload; not fully recovered",
+      "evidence": "WebApiClient.cs:2707 visitFriendMap; Politic.cs:322-325; PoliticFriendMapRewardMenu.cs; UserStatus.cs:updateFriendMap",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "访城日志/首次奖励/计数更新未知；不得空成功"
+    },
+    {
+      "endpoint": "inbox/getParcels",
+      "request": "token,start,end",
+      "response": "parcels.<id>.createdTime/rewards; totalCount",
+      "evidence": "WebApiClient.cs:3451 getParcels; InboxReader.cs:92-177",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "makeDummy不作原服数据证据；分页边界/过期/附件数据来源待证"
+    },
+    {
+      "endpoint": "inbox/resolveParcels",
+      "request": "token,responses",
+      "response": "successful.<parcelId>.rewards; failed map",
+      "evidence": "WebApiClient.cs:3461 resolveParcels; InboxResolveWorker.cs:11-35,48-105",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "responses 映射/accept；30条分批；奖励分类、容量、领取幂等与C协同"
+    },
+    {
+      "endpoint": "invitation/getMyCode",
+      "request": "token",
+      "response": "invitation.myCode",
+      "evidence": "WebApiClient.cs:2091 getMyInvitationCode; mypageInvitation.cs:95-113",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "邀请码生成/关联/唯一性未知，不用账号ID伪造"
+    },
+    {
+      "endpoint": "invitation/getPlayer",
+      "request": "token,code",
+      "response": "invitation.playerId (presence indicates valid)",
+      "evidence": "WebApiClient.cs:2082 registerInvitationCode; LoginEnvironment.cs:228-249",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "code校验包装器不证明绑定或奖励，和H创建角色对接"
+    },
+    {
+      "endpoint": "mailbox/deleteMails",
+      "request": "token,status,mailIds",
+      "response": "callback ignores payload",
+      "evidence": "WebApiClient.cs:3384 deleteMails; HTMLMailCore.cs:122-149",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "status/mailIds；删单侧还是双方/附件处理待证"
+    },
+    {
+      "endpoint": "mailbox/getMailBody",
+      "request": "token,status,mailId",
+      "response": "body string; other fields passed to HTML",
+      "evidence": "WebApiClient.cs:3374 getMailBody; HTMLMailCore.cs:99-119",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "读取是否标已读、邮件归属、status仍待证"
+    },
+    {
+      "endpoint": "mailbox/getMailHeaders",
+      "request": "token,status,start,end",
+      "response": "mailHeaders.<id>.createdTime; other fields passed to HTML",
+      "evidence": "WebApiClient.cs:3363 getMailHeaders; HTMLMailCore.cs:69-96",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "status值/分页末端/收发归属需原pcweb证据"
+    },
+    {
+      "endpoint": "mailbox/sendMails",
+      "request": "token,to,subject,body",
+      "response": "failed map",
+      "evidence": "WebApiClient.cs:3352 sendMails; HTMLMailCore.cs:30-66",
+      "tables": "未证明规则表；见说明",
+      "persistence": "未实现；不伪造存档",
+      "permission_cost_retry": "权限/费用/重试未完整证实",
+      "status": "consumer_evidence_pending_rules",
+      "next_step": "to/subject/body没有附件字段；多收件人失败/身份解析/事务未知"
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "references": [
+        "WebApiClient.cs:2328 recordChat; Chat.cs:497-504",
+        "WebApiClient.cs:2573 closeBBS; HTMLBbsMediator.cs:360",
+        "WebApiClient.cs:2562 closeBBSThread; HTMLBbsMediator.cs:527",
+        "WebApiClient.cs:2419 createBBS; HTMLBbsMediator.cs:332",
+        "WebApiClient.cs:2440 createBBSThread; HTMLBbsMediator.cs:388",
+        "WebApiClient.cs:2430 deleteBBS; HTMLBbsMediator.cs:346",
+        "WebApiClient.cs:2504 deleteBBSThreadComment; HTMLBbsMediator.cs:571",
+        "WebApiClient.cs:2453 deleteBBSThread; HTMLBbsMediator.cs:406",
+        "WebApiClient.cs:2553 getBBSId; HTMLBbsMediator.cs:656",
+        "WebApiClient.cs:2545 getBBSList; HTMLBbsMediator.cs:642",
+        "WebApiClient.cs:2533 getBBSInfoThreadComment; HTMLBbsMediator.cs:620",
+        "WebApiClient.cs:2480 getBBSInfoThread; HTMLBbsMediator.cs:456",
+        "WebApiClient.cs:2517 getBBSThreadCommentList; HTMLBbsMediator.cs:585",
+        "WebApiClient.cs:2465 getBBSThreadList; HTMLBbsMediator.cs:426",
+        "WebApiClient.cs:2583 openBBS; HTMLBbsMediator.cs:374",
+        "WebApiClient.cs:2593 openBBSThread; HTMLBbsMediator.cs:541",
+        "WebApiClient.cs:2491 postBBSThreadComment; HTMLBbsMediator.cs:555",
+        "WebApiClient.cs:2411 getBBSSession; HTMLBbsMediator.cs:318-329",
+        "WebApiClient.cs:2632 cancelFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2641 dissolutionFriend; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2622 feedbackFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2658 findFriends; FriendListWindow.cs:60-116; FriendSearchIf.cs:66; FriendSearchWindow.cs",
+        "WebApiClient.cs:2734 getFindFriendsAndSend; FriendListMissionWindow.cs:40-58",
+        "WebApiClient.cs:2679 getFriendMap; WebApiClient.cs:getFriendMap",
+        "WebApiClient.cs:2688 getFriendMapData; WebApiClient.cs:getFriendMapData",
+        "WebApiClient.cs:2724 getFriendProfile; FriendData.cs:40-94; Politic.cs:362-368; HTMLUtil.cs:20-66",
+        "WebApiClient.cs:2604 getFriends; FriendListWindow.cs:38-116; FriendData.cs:40-59",
+        "WebApiClient.cs:2716 getVisitFriendLogs; mypageRecord.cs:185-198,240-253",
+        "WebApiClient.cs:2613 sendFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2300 setGuestMap; mypageCastleTownUpdate.cs:128-146",
+        "WebApiClient.cs:2650 updateFriendData; FriendWindowControll.cs:118-127; FriendConfirmationWindow.cs:168-184",
+        "WebApiClient.cs:2707 visitFriendMap; Politic.cs:322-325; PoliticFriendMapRewardMenu.cs; UserStatus.cs:updateFriendMap",
+        "WebApiClient.cs:3451 getParcels; InboxReader.cs:92-177",
+        "WebApiClient.cs:3461 resolveParcels; InboxResolveWorker.cs:11-35,48-105",
+        "WebApiClient.cs:2091 getMyInvitationCode; mypageInvitation.cs:95-113",
+        "WebApiClient.cs:2082 registerInvitationCode; LoginEnvironment.cs:228-249",
+        "WebApiClient.cs:3384 deleteMails; HTMLMailCore.cs:122-149",
+        "WebApiClient.cs:3374 getMailBody; HTMLMailCore.cs:99-119",
+        "WebApiClient.cs:3363 getMailHeaders; HTMLMailCore.cs:69-96",
+        "WebApiClient.cs:3352 sendMails; HTMLMailCore.cs:30-66",
+        "WebApiClient.cs:2697 getFriendMapData; Politic.cs:312-352; PoliticMapInfo.cs"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendData.cs",
+      "sha256": "98404adc46c6af34914115dfa82cedc4a747b0a49c9c5fb4c500e5a44f503796",
+      "references": [
+        "WebApiClient.cs:2724 getFriendProfile; FriendData.cs:40-94; Politic.cs:362-368; HTMLUtil.cs:20-66",
+        "WebApiClient.cs:2604 getFriends; FriendListWindow.cs:38-116; FriendData.cs:40-59"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendListWindow.cs",
+      "sha256": "bc37ace82c5c3c3b68c512d605fe147222e210da006599480d8c3edcebaea10a",
+      "references": [
+        "WebApiClient.cs:2658 findFriends; FriendListWindow.cs:60-116; FriendSearchIf.cs:66; FriendSearchWindow.cs",
+        "WebApiClient.cs:2604 getFriends; FriendListWindow.cs:38-116; FriendData.cs:40-59"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendConfirmationWindow.cs",
+      "sha256": "3f0ca33259a4eae557cff290955b07c1b97ca6783b40b8effb1e560b5f3d1d1b",
+      "references": [
+        "WebApiClient.cs:2632 cancelFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2641 dissolutionFriend; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2622 feedbackFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2613 sendFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2650 updateFriendData; FriendWindowControll.cs:118-127; FriendConfirmationWindow.cs:168-184"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendSpecWindow.cs",
+      "sha256": "f0a0ae5059fe59d37ad51b99f81952f074b2d42e25a3a511a198e31835663ead",
+      "references": [
+        "WebApiClient.cs:2632 cancelFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2641 dissolutionFriend; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2622 feedbackFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
+        "WebApiClient.cs:2613 sendFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendWindowControll.cs",
+      "sha256": "96d5e8354fe955ecd15abfb79ae9dcaf0201808b1f74d0714b56a374366f37cb",
+      "references": [
+        "WebApiClient.cs:2650 updateFriendData; FriendWindowControll.cs:118-127; FriendConfirmationWindow.cs:168-184"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PlayerLevelTableAccessor.cs",
+      "sha256": "4c952d3a3c4fb3e1947e5343c1cc2e563e21b4f96d06ad96f80a3ef08848ad72",
+      "references": [
+        "see README/integration-notes methods"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DefinesTableAccessor.cs",
+      "sha256": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4",
+      "references": [
+        "see README/integration-notes methods"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessor.cs",
+      "sha256": "f35537d17a9758c7bebf1ec8d42c61ebf696a53d460f46b9e77bb60405c6df2e",
+      "references": [
+        "see README/integration-notes methods"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLUtil.cs",
+      "sha256": "de63460c2c0a5e2eae8c83eaa94a97d92c85fb531ce08fa50074a6cc9faa1a56",
+      "references": [
+        "WebApiClient.cs:2724 getFriendProfile; FriendData.cs:40-94; Politic.cs:362-368; HTMLUtil.cs:20-66"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\Politic.cs",
+      "sha256": "c56766260a6b1db8fbd3c163c37dd054c8de125998aa1e56f4741ab0e7b3c528",
+      "references": [
+        "WebApiClient.cs:2724 getFriendProfile; FriendData.cs:40-94; Politic.cs:362-368; HTMLUtil.cs:20-66",
+        "WebApiClient.cs:2707 visitFriendMap; Politic.cs:322-325; PoliticFriendMapRewardMenu.cs; UserStatus.cs:updateFriendMap",
+        "WebApiClient.cs:2697 getFriendMapData; Politic.cs:312-352; PoliticMapInfo.cs"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticUserInfo.cs",
+      "sha256": "d49b826c62e125fb8de2080cac7c6d33abcf351d5285e07f4a213296d37ffe69",
+      "references": [
+        "see README/integration-notes methods"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMFriendMap.cs",
+      "sha256": "1fe5804d921f9da73570df2cb6d51cf22f010cc869cd2166fa312e341e036325",
+      "references": [
+        "see README/integration-notes methods"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuilding.cs",
+      "sha256": "12ce58588bea07a4eb39f70c86d54b7cabb00380846dcef449c104b227fd5a9a",
+      "references": [
+        "see README/integration-notes methods"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFriendMapRewardMenu.cs",
+      "sha256": "b0f070d5e48dd4b122fe202b699cfd7c3abcd6597ca6f6836c83999b93e2d0c4",
+      "references": [
+        "WebApiClient.cs:2707 visitFriendMap; Politic.cs:322-325; PoliticFriendMapRewardMenu.cs; UserStatus.cs:updateFriendMap"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+      "references": [
+        "WebApiClient.cs:2707 visitFriendMap; Politic.cs:322-325; PoliticFriendMapRewardMenu.cs; UserStatus.cs:updateFriendMap"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMapInfo.cs",
+      "sha256": "93d7567d0292f12f4acb01559560cd717abae8de124c91befcf08e34aaec3e0e",
+      "references": [
+        "see README/integration-notes methods",
+        "WebApiClient.cs:2697 getFriendMapData; Politic.cs:312-352; PoliticMapInfo.cs"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLBbsMediator.cs",
+      "sha256": "84503b0cebc54778bf537755c889077302954ecc8be6e99b18d7ce1427c2151a",
+      "references": [
+        "WebApiClient.cs:2573 closeBBS; HTMLBbsMediator.cs:360",
+        "WebApiClient.cs:2562 closeBBSThread; HTMLBbsMediator.cs:527",
+        "WebApiClient.cs:2419 createBBS; HTMLBbsMediator.cs:332",
+        "WebApiClient.cs:2440 createBBSThread; HTMLBbsMediator.cs:388",
+        "WebApiClient.cs:2430 deleteBBS; HTMLBbsMediator.cs:346",
+        "WebApiClient.cs:2504 deleteBBSThreadComment; HTMLBbsMediator.cs:571",
+        "WebApiClient.cs:2453 deleteBBSThread; HTMLBbsMediator.cs:406",
+        "WebApiClient.cs:2553 getBBSId; HTMLBbsMediator.cs:656",
+        "WebApiClient.cs:2545 getBBSList; HTMLBbsMediator.cs:642",
+        "WebApiClient.cs:2533 getBBSInfoThreadComment; HTMLBbsMediator.cs:620",
+        "WebApiClient.cs:2480 getBBSInfoThread; HTMLBbsMediator.cs:456",
+        "WebApiClient.cs:2517 getBBSThreadCommentList; HTMLBbsMediator.cs:585",
+        "WebApiClient.cs:2465 getBBSThreadList; HTMLBbsMediator.cs:426",
+        "WebApiClient.cs:2583 openBBS; HTMLBbsMediator.cs:374",
+        "WebApiClient.cs:2593 openBBSThread; HTMLBbsMediator.cs:541",
+        "WebApiClient.cs:2491 postBBSThreadComment; HTMLBbsMediator.cs:555",
+        "WebApiClient.cs:2411 getBBSSession; HTMLBbsMediator.cs:318-329"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLMailCore.cs",
+      "sha256": "67985a7192bd5a89739fd119e2351d20bdaa00fcb478bb4bf71d96f2821f666e",
+      "references": [
+        "WebApiClient.cs:3384 deleteMails; HTMLMailCore.cs:122-149",
+        "WebApiClient.cs:3374 getMailBody; HTMLMailCore.cs:99-119",
+        "WebApiClient.cs:3363 getMailHeaders; HTMLMailCore.cs:69-96",
+        "WebApiClient.cs:3352 sendMails; HTMLMailCore.cs:30-66"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InboxReader.cs",
+      "sha256": "7d0813b7767a8baf4a11f430ff0588ebf8a1cae990453f8eef9dc3ed2d050023",
+      "references": [
+        "WebApiClient.cs:3451 getParcels; InboxReader.cs:92-177"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InboxResolveWorker.cs",
+      "sha256": "b29e223b35246675f030f795004128e91dba2e3df374a5962c9af4ab59f91d16",
+      "references": [
+        "WebApiClient.cs:3461 resolveParcels; InboxResolveWorker.cs:11-35,48-105"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageRecord.cs",
+      "sha256": "4a4d72b3101c917bfe7c5045ce85ea76b9cb3cd139d8b734c82627768d5f8bbf",
+      "references": [
+        "WebApiClient.cs:2716 getVisitFriendLogs; mypageRecord.cs:185-198,240-253"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageInvitation.cs",
+      "sha256": "fc3d2c3049cd6c8b057e38db0ed8749e17dba4e8a7c85a4e26f2cc8d96eebeb7",
+      "references": [
+        "WebApiClient.cs:2091 getMyInvitationCode; mypageInvitation.cs:95-113"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\LoginEnvironment.cs",
+      "sha256": "87b4a22f7b127aa2b52306f61511cceb0faef556f7846acd58f6f8703ad26fe3",
+      "references": [
+        "WebApiClient.cs:2082 registerInvitationCode; LoginEnvironment.cs:228-249"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageCastleTownUpdate.cs",
+      "sha256": "3168a926cffdebac2d0d22a68c27fe87228dbcf8d273d56b341daf836e465f50",
+      "references": [
+        "WebApiClient.cs:2300 setGuestMap; mypageCastleTownUpdate.cs:128-146"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendListMissionWindow.cs",
+      "sha256": "2c0be109a0185baa940ffee5a61326b26f51ca3b7676c3f9d0f20a094bca6b7a",
+      "references": [
+        "WebApiClient.cs:2734 getFindFriendsAndSend; FriendListMissionWindow.cs:40-58"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendSearchIf.cs",
+      "sha256": "921071681b304be694028cfa9fd9a485abaeef6871d642aa14053668918ce83e",
+      "references": [
+        "WebApiClient.cs:2658 findFriends; FriendListWindow.cs:60-116; FriendSearchIf.cs:66; FriendSearchWindow.cs"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendSearchWindow.cs",
+      "sha256": "3a10baeb5f1296667826a2613c8986579848d92cb10d1fd8fc1e1e380ef0d5fd",
+      "references": [
+        "WebApiClient.cs:2658 findFriends; FriendListWindow.cs:60-116; FriendSearchIf.cs:66; FriendSearchWindow.cs"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\Chat.cs",
+      "sha256": "d20d939aec68804102eb9fc57787acee04c1b98d089b0805d680de82fb7960c7",
+      "references": [
+        "WebApiClient.cs:2328 recordChat; Chat.cs:497-504"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\defines.json",
+      "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+      "rows": [
+        "friendoffer_send_max",
+        "friendoffer_receive_max",
+        "friendoffer_expire_time"
+      ],
+      "sample": "tests/fixtures/social/defines.json",
+      "sample_sha256": "ad9b117ace684b3a5cfe44c03b48bf7b6263be3ea700d51b89775ef7fa38ed20"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\playerLevel.json",
+      "sha256": "a04583b4e84018c501265e4ad1048e7f38fd5ae120861f1f9e8a1189369d3531",
+      "rows": [
+        "1",
+        "2"
+      ],
+      "sample": "tests/fixtures/social/playerLevel.json",
+      "sample_sha256": "322fd06787e457a98a2f84c98216ea5ca86e2702820c6154d18bfb6949113e63"
+    }
+  ],
+  "compatibility_decisions": [
+    "friends holds accepted IDs only; socialOffers holds pending status/createdAt; these are server internal",
+    "Same-state immediate retries are no-ops except repeat rejection returns result=false; no request id exists to distinguish delayed retries across new offers",
+    "No resource cost/reward; not a claim about original server fees",
+    "Expiry threshold used only to reject unsupported stale records, not to implement original cleanup",
+    "Missing public profile guild/post/rank fields empty; lastLogin/kokudaka 0 if absent; no ranking or login history invented",
+    "Only Unity forHTML=false implemented; nonfriends can read public profile",
+    "Normal envelope follows shared response_shapes; getFriends is bare; detail diagnostics are simulator text",
+    "No production transaction adapter, registration, deployment, or global endpoint count changes"
+  ]
+}

@@ -1,0 +1,1204 @@
+{
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "source_root": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115",
+  "table_root": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables",
+  "original_protocol": {
+    "common/getActionPoints": {
+      "wrappers": [
+        {
+          "method": "getActionPoints",
+          "line": 516,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "未知；不能从 getPlayerParams 类推",
+      "callback": "WebApiClient.cs 请求包装器；全树未找到业务调用者",
+      "status": "只有包装器证据"
+    },
+    "common/getResources": {
+      "wrappers": [
+        {
+          "method": "getResources",
+          "line": 524,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "未知；不能从 getPlayerParams 类推",
+      "callback": "WebApiClient.cs 请求包装器；全树未找到业务调用者",
+      "status": "只有包装器证据"
+    },
+    "common/getAnnouncement": {
+      "wrappers": [
+        {
+          "method": "getAnnouncement",
+          "line": 540,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "未知；不能从 getPlayerParams 类推",
+      "callback": "WebApiClient.cs 请求包装器；全树未找到业务调用者",
+      "status": "只有包装器证据"
+    },
+    "common/getShopcredit2": {
+      "wrappers": [
+        {
+          "method": "getShopCedit2",
+          "line": 4581,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "未知；不能从 getPlayerParams 类推",
+      "callback": "WebApiClient.cs 请求包装器；全树未找到业务调用者",
+      "status": "只有包装器证据"
+    },
+    "common/getRevisions": {
+      "wrappers": [
+        {
+          "method": "getRevisions",
+          "line": 361,
+          "request_fields": []
+        }
+      ],
+      "response": "root.server/unity/table/root: number",
+      "callback": "TableLoad.cs:_setup",
+      "status": "已实现限定查询，未挂载"
+    },
+    "common/getPlayerCogid": {
+      "wrappers": [
+        {
+          "method": "getPlayerCogid",
+          "line": 500,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.playerId",
+      "callback": "Configs.cs:GetUserInfo",
+      "status": "已实现本服身份映射，未挂载"
+    },
+    "common/getLoginStampSheet": {
+      "wrappers": [
+        {
+          "method": "getLoginStampSheet",
+          "line": 679,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.startDate/endDate/stampCount/loginSheet.dayN.{itemId,amount,anniversary}",
+      "callback": "mypageLoginStampDialog.cs:processMenu;PoliticFSMLogin.cs:login;LoginBounusMenu.cs:setup;UserStatus.cs:addLoginBounus",
+      "status": "待证规则"
+    },
+    "common/stampLoginSheet": {
+      "wrappers": [
+        {
+          "method": "stampLoginSheet",
+          "line": 671,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.startDate/endDate/stampCount/loginSheet.dayN.{itemId,amount,anniversary}",
+      "callback": "mypageLoginStampDialog.cs:processMenu;PoliticFSMLogin.cs:login;LoginBounusMenu.cs:setup;UserStatus.cs:addLoginBounus",
+      "status": "待证规则"
+    },
+    "dailymission/getDailyMission": {
+      "wrappers": [
+        {
+          "method": "getDailyMission",
+          "line": 4520,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "裸根分组 -> point/mission/reward/exchange/item；mission.<id>.curCount/totalCount/getPoint",
+      "callback": "DailyMissionScene.cs:Start",
+      "status": "待证规则"
+    },
+    "dailymission/getPoint": {
+      "wrappers": [
+        {
+          "method": "getActivePt",
+          "line": 4546,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.Result: integer",
+      "callback": "DailyMissionScene.cs:refreshActivePt",
+      "status": "待证规则"
+    },
+    "dailymission/exchangeDailyMissionItem": {
+      "wrappers": [
+        {
+          "method": "exchangeDailyMissionItem",
+          "line": 4528,
+          "request_fields": [
+            "token",
+            "rewardIndex"
+          ]
+        }
+      ],
+      "response": "root.Result.<rewardIndex>: remainingPoint",
+      "callback": "DailyMissionScene.cs:delegateRewardBtn (exchange branch)",
+      "status": "待证规则"
+    },
+    "dailymission/getDailyMissionReward": {
+      "wrappers": [
+        {
+          "method": "getDailyMissionReward",
+          "line": 4537,
+          "request_fields": [
+            "token",
+            "rewardIndex"
+          ]
+        }
+      ],
+      "response": "root.Result: claimedIndex",
+      "callback": "DailyMissionScene.cs:delegateRewardBtn (reward branch)",
+      "status": "待证规则"
+    },
+    "depletionmission/getDepletionMission": {
+      "wrappers": [
+        {
+          "method": "getDepletionMission",
+          "line": 4651,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.Result.{mission,reward,point}",
+      "callback": "DailyMissionTab.cs:OnDrawSystemCallBack;DrawSystem.cs:onGetServerData/ParseMission/ParseReward",
+      "status": "待证规则"
+    },
+    "depletionmission/exchangeDepletionPoint": {
+      "wrappers": [
+        {
+          "method": "ExchangeDepletionPoint",
+          "line": 4667,
+          "request_fields": [
+            "missionId",
+            "token"
+          ]
+        }
+      ],
+      "response": "root.Result: integer",
+      "callback": "DrawSystem.cs:onExchanged",
+      "status": "待证规则"
+    },
+    "depletionmission/drawDepletionItem": {
+      "wrappers": [
+        {
+          "method": "DrawDepletionMission",
+          "line": 4659,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.Result.<rewardList index>: value未消费",
+      "callback": "DrawLotter.cs:OnDrawCallback",
+      "status": "待证规则"
+    },
+    "plugin/getPluginData": {
+      "wrappers": [
+        {
+          "method": "getPluginData",
+          "line": 4589,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.pluginData；root.pluginTime.pluginTime",
+      "callback": "PluginTaskManager.cs:OnGetServerData;PluginPoliticSetting.cs:SyncTaskDataToUI;PluginBattleSetting.cs:SyncTaskDataToUI",
+      "status": "已实现限定存储读取，非普通玩法，未挂载"
+    },
+    "plugin/setPluginData": {
+      "wrappers": [
+        {
+          "method": "setPluginData",
+          "line": 4604,
+          "request_fields": [
+            "token",
+            "pluginSetting"
+          ]
+        }
+      ],
+      "response": "确认信封；原调用 responder=null",
+      "callback": "PluginTaskManager.cs:SendPluginData;WebApiClient.cs:setPluginData",
+      "status": "已实现限定设置存储，非普通玩法，未挂载"
+    },
+    "plugin/getPluginLog": {
+      "wrappers": [
+        {
+          "method": "getPluginLog",
+          "line": 4616,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.logdatas.<numericString>.{action,reward,time}",
+      "callback": "PluginLogManager.cs:requestLogData/ParseLogData",
+      "status": "已实现限定诊断读取，非普通玩法，未挂载"
+    },
+    "plugin/addPluginLog": {
+      "wrappers": [
+        {
+          "method": "addPluginLog",
+          "line": 4627,
+          "request_fields": [
+            "token",
+            "logdata"
+          ]
+        }
+      ],
+      "response": "确认信封；原调用 responder=null",
+      "callback": "PluginLogManager.cs:SendLog;WebApiClient.cs:addPluginLog",
+      "status": "已实现限定诊断追加，非普通玩法，未挂载"
+    },
+    "plugin/buyPluginTime": {
+      "wrappers": [
+        {
+          "method": "buyPluginTime",
+          "line": 4639,
+          "request_fields": [
+            "pluginId",
+            "token"
+          ]
+        }
+      ],
+      "response": "root.creditExpireAt.pluginTime",
+      "callback": "PluginTaskManager.cs:buyTime",
+      "status": "待证规则"
+    },
+    "politic/mypage/claimReward": {
+      "wrappers": [
+        {
+          "method": "claimReward",
+          "line": 4510,
+          "request_fields": [
+            "token",
+            "reward"
+          ]
+        }
+      ],
+      "response": "root.result/rewards/toInbox/resources",
+      "callback": "NineGridDataManager.cs:OnClaimReward;NineGridDataParser.cs:ParseNineGridClaimRewardData",
+      "status": "待证规则"
+    },
+    "politic/mypage/getArtifactSeries": {
+      "wrappers": [
+        {
+          "method": "getArtifactSeries",
+          "line": 2185,
+          "request_fields": [
+            "token",
+            "category",
+            "page",
+            "seriesMax"
+          ]
+        }
+      ],
+      "response": "root.page/pageMax/series.<id>.{payableCount,receiveCount,items}",
+      "callback": "mypageCollectionArtifact.cs:load/setSeries;mypageCollectionSeriesParam.cs:setup",
+      "status": "待证规则"
+    },
+    "politic/mypage/getArtifactSeriesReward": {
+      "wrappers": [
+        {
+          "method": "getArtifactSeriesReward",
+          "line": 2196,
+          "request_fields": [
+            "token",
+            "seriesId"
+          ]
+        }
+      ],
+      "response": "root.series/reward/toInbox",
+      "callback": "mypageCollectionWork.cs:execReward;RewardProcessor.cs:processAll",
+      "status": "待证规则"
+    },
+    "politic/mypage/getJewelSeries": {
+      "wrappers": [
+        {
+          "method": "getJewelSeries",
+          "line": 2165,
+          "request_fields": [
+            "token",
+            "category",
+            "page",
+            "seriesMax"
+          ]
+        }
+      ],
+      "response": "root.page/pageMax/series.<id>.{payableCount,receiveCount,items}",
+      "callback": "mypageCollectionJewel.cs:load/setSeries;mypageCollectionSeriesParam.cs:setup",
+      "status": "待证规则"
+    },
+    "politic/mypage/getJewelSeriesReward": {
+      "wrappers": [
+        {
+          "method": "getJewelSeriesReward",
+          "line": 2176,
+          "request_fields": [
+            "token",
+            "seriesId"
+          ]
+        }
+      ],
+      "response": "root.series/reward/toInbox",
+      "callback": "mypageCollectionWork.cs:execReward;RewardProcessor.cs:processAll",
+      "status": "待证规则"
+    },
+    "politic/mypage/getCharacterCollection": {
+      "wrappers": [
+        {
+          "method": "getCharacterCollection",
+          "line": 2253,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "裸根 <压缩武将编号>: grade",
+      "callback": "mypageLibrary.cs:initUseList",
+      "status": "待证规则"
+    },
+    "politic/mypage/getCreditLogs": {
+      "wrappers": [
+        {
+          "method": "getCreditLogs",
+          "line": 2261,
+          "request_fields": [
+            "token",
+            "start",
+            "end"
+          ]
+        }
+      ],
+      "response": "root.logs.<key>.{access,reason,quantity,creditAmount?,createdTime}",
+      "callback": "mypageRecord.cs:mypageRecordKoban.init/getKobanLogs",
+      "status": "待证规则"
+    },
+    "politic/mypage/getCredit2Logs": {
+      "wrappers": [
+        {
+          "method": "getCredit2Logs",
+          "line": 2271,
+          "request_fields": [
+            "token",
+            "start",
+            "end"
+          ]
+        }
+      ],
+      "response": "未知；不能自动等同 getCreditLogs",
+      "callback": "WebApiClient.cs:getCredit2Logs",
+      "status": "只有包装器证据"
+    },
+    "politic/mypage/getEventcodeLogs": {
+      "wrappers": [
+        {
+          "method": "getEventcodeLogs",
+          "line": 2290,
+          "request_fields": [
+            "token",
+            "start",
+            "end"
+          ]
+        }
+      ],
+      "response": "root.logs.<key>.eventcode/name/createdTime",
+      "callback": "mypageSerialCode.cs:mypageSerialCodeRecord.init/getSerialCodeRecordLogs",
+      "status": "待证规则"
+    },
+    "politic/mypage/useEventcode": {
+      "wrappers": [
+        {
+          "method": "useEventcode",
+          "line": 2281,
+          "request_fields": [
+            "token",
+            "eventcode"
+          ]
+        }
+      ],
+      "response": "root.error/name/itemIds",
+      "callback": "mypageSerialCodeWindow.cs:resultSerialCode",
+      "status": "待证规则"
+    },
+    "politic/mypage/getPlayerRecords": {
+      "wrappers": [
+        {
+          "method": "getPlayerRecords",
+          "line": 2216,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.vsBattle/quest/collection/battle/errantry",
+      "callback": "mypageRecordUpdate.cs:update/updateVsBattle/updateQuest/updateBattle/updateCollection/updateErrantry",
+      "status": "待证规则"
+    },
+    "politic/mypage/getMigratePlansStatus": {
+      "wrappers": [
+        {
+          "method": "getMigratePlanStatus",
+          "line": 4160,
+          "request_fields": [
+            "token"
+          ]
+        }
+      ],
+      "response": "root.migratableTime/migratePlans",
+      "callback": "mypageEmigrateUpdate.cs:setEmigrate;mypageEmigrateObject.cs:setUp",
+      "status": "待证规则"
+    },
+    "politic/mypage/getMigratePlanCountryStatus": {
+      "wrappers": [
+        {
+          "method": "getMigratePlanCountryStatus",
+          "line": 4168,
+          "request_fields": [
+            "token",
+            "migratePlan"
+          ]
+        }
+      ],
+      "response": "root.migratePlan/countries/selfCountry.{country,rank}",
+      "callback": "mypageEmigrateUpdate.cs:onEmigrate;MigrateCache.cs:setUpMigrateData",
+      "status": "待证规则"
+    },
+    "politic/mypage/migrate": {
+      "wrappers": [
+        {
+          "method": "migrate",
+          "line": 4177,
+          "request_fields": [
+            "token",
+            "countryId",
+            "navigatorId",
+            "colorIndex",
+            "migratePlan",
+            "migrateKey"
+          ]
+        }
+      ],
+      "response": "回调不读负载，转场重载",
+      "callback": "MigrateComfirmation.cs:迁居调用;WebApiClient.cs:migrate",
+      "status": "待证规则"
+    },
+    "trophy/getTrophyProgress": {
+      "wrappers": [
+        {
+          "method": "getTrophyProgress",
+          "line": 2224,
+          "request_fields": [
+            "token",
+            "access"
+          ]
+        },
+        {
+          "method": "getEventsTrophyProgress",
+          "line": 3613,
+          "request_fields": [
+            "token",
+            "access"
+          ]
+        },
+        {
+          "method": "getTrophyRaidBoss",
+          "line": 3685,
+          "request_fields": [
+            "token",
+            "access"
+          ]
+        },
+        {
+          "method": "getTrophyGiganticRaidBoss",
+          "line": 3722,
+          "request_fields": [
+            "token",
+            "access"
+          ]
+        }
+      ],
+      "response": "mypage: 裸根 <category>.level/status/window；其他 access 另审",
+      "callback": "TrophyWindow.cs:init;mypageTrophyUpdate.cs:init;WebApiClient.cs:getTrophyProgress",
+      "status": "待证规则"
+    },
+    "trophy/completeTrophy": {
+      "wrappers": [
+        {
+          "method": "completeTrophy",
+          "line": 2233,
+          "request_fields": [
+            "token",
+            "access",
+            "category"
+          ]
+        },
+        {
+          "method": "receiveEventsTrophy",
+          "line": 3622,
+          "request_fields": [
+            "token",
+            "access",
+            "category"
+          ]
+        },
+        {
+          "method": "receiveTrophyRaidBoss",
+          "line": 3694,
+          "request_fields": [
+            "token",
+            "access",
+            "category"
+          ]
+        },
+        {
+          "method": "receiveTrophyGiganticRaidBoss",
+          "line": 3731,
+          "request_fields": [
+            "token",
+            "access",
+            "category"
+          ]
+        }
+      ],
+      "response": "mypage: root.progress/rewards/characters/equips/toInBox",
+      "callback": "mypageTrophyReward.cs:回调",
+      "status": "待证规则"
+    },
+    "trophy/messageWindowTrophy": {
+      "wrappers": [
+        {
+          "method": "message_window_trophy",
+          "line": 2243,
+          "request_fields": [
+            "token",
+            "access",
+            "category"
+          ]
+        }
+      ],
+      "response": "回调未读取负载",
+      "callback": "WebApiClient.cs:message_window_trophy;TrophyWindow.cs:init",
+      "status": "待证规则"
+    }
+  },
+  "sources": {
+    "ArtifactSeriesTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ArtifactSeriesTableAccessor.cs",
+      "sha256": "44347ebdd8de1524e2f566099794b06f3e60f46c6ff4728626a856de77a1807f",
+      "method_lines": []
+    },
+    "Configs.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\Configs.cs",
+      "sha256": "53b24ca9c1848d12472b4b60411d69a68c4b27417fa577cd68268b8507268994",
+      "method_lines": [
+        {
+          "line": 1327,
+          "declaration": "public void GetUserInfo(Callback callback)"
+        }
+      ]
+    },
+    "DailyMissionScene.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionScene.cs",
+      "sha256": "ade4b5a99ee026617af780168c79d71759d0b7d0514166e026bd7546e0a78bc1",
+      "method_lines": [
+        {
+          "line": 74,
+          "declaration": "private void Start()"
+        },
+        {
+          "line": 331,
+          "declaration": "private void delegateRewardBtn(ref POINTER_INFO ptr)"
+        },
+        {
+          "line": 560,
+          "declaration": "private void refreshActivePt()"
+        }
+      ]
+    },
+    "DailyMissionTab.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionTab.cs",
+      "sha256": "8c8c0f82fec10f7d4f92481f1e5a12a8c3945938c4b88146f6234a78c7b36530",
+      "method_lines": [
+        {
+          "line": 49,
+          "declaration": "private void OnDrawSystemClick()"
+        },
+        {
+          "line": 58,
+          "declaration": "private void OnDrawSystemCallBack(object obj)"
+        }
+      ]
+    },
+    "DailyMissionTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionTableAccessor.cs",
+      "sha256": "de31787416e375d13de315fb0e6e39eecfb97da9d12e58afe32932f7ea4eaac1",
+      "method_lines": []
+    },
+    "DrawLotter.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DrawLotter.cs",
+      "sha256": "37a7f9992a7368006db0a34536b0f7ee95bda778970864751cc52bae7017f2e6",
+      "method_lines": [
+        {
+          "line": 144,
+          "declaration": "private void OnDrawCallback(object obj)"
+        }
+      ]
+    },
+    "DrawSystem.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DrawSystem.cs",
+      "sha256": "36c68a305a1bdf578d67f68d7d70506ea19a74a2206059757dd03ec04daaa54c",
+      "method_lines": [
+        {
+          "line": 23,
+          "declaration": "public void onGetServerData(Hashtable hash)"
+        },
+        {
+          "line": 34,
+          "declaration": "public void ParseMission(Hashtable mission)"
+        },
+        {
+          "line": 51,
+          "declaration": "public void ParseReward(Hashtable reward)"
+        },
+        {
+          "line": 101,
+          "declaration": "private void onExchanged(object obj)"
+        }
+      ]
+    },
+    "GameRestarter.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\GameRestarter.cs",
+      "sha256": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea",
+      "method_lines": []
+    },
+    "HashAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessor.cs",
+      "sha256": "f35537d17a9758c7bebf1ec8d42c61ebf696a53d460f46b9e77bb60405c6df2e",
+      "method_lines": []
+    },
+    "JewelSeriesTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\JewelSeriesTableAccessor.cs",
+      "sha256": "40be576174991613bae07446e6ed73d02b653be3f0d6715fc8722665122b4c0e",
+      "method_lines": []
+    },
+    "LoginBounusMenu.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\LoginBounusMenu.cs",
+      "sha256": "43a8f9c6d0ffb457fa641abc743f8aa3fc102c61bfc1e3868d78d59928c54e47",
+      "method_lines": [
+        {
+          "line": 191,
+          "declaration": "private void setupItem(GameObject go, int index, Hashtable hash, bool isCleared)"
+        },
+        {
+          "line": 256,
+          "declaration": "private void setup(Hashtable hash, bool isBrowseMode)"
+        }
+      ]
+    },
+    "MigrateCache.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\MigrateCache.cs",
+      "sha256": "426bf2ff370e842342d08b2d41b9912e1bb326c795bf28596f2b9ca539273226",
+      "method_lines": [
+        {
+          "line": 27,
+          "declaration": "public void setUpMigrateData(Hashtable dataTable)"
+        }
+      ]
+    },
+    "MigrateComfirmation.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\MigrateComfirmation.cs",
+      "sha256": "cce1f905ce3db95b21ca17545a9f83194988f8ca3621c9e71ddb1b2b8bc60d58",
+      "method_lines": []
+    },
+    "NineGridDataManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridDataManager.cs",
+      "sha256": "20f65fd87a4bc495dfdc9cc99ac6c524aeaaaca5dedc423d4ef08f76ee5db7da",
+      "method_lines": [
+        {
+          "line": 112,
+          "declaration": "private void OnClaimReward(object p_payload)"
+        }
+      ]
+    },
+    "NineGridDataParser.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridDataParser.cs",
+      "sha256": "255290d3bdd379b3baa45533b0de1d71a123bf74e5079135fc57de55d87aa6e4",
+      "method_lines": [
+        {
+          "line": 239,
+          "declaration": "public NineGridClaimRewardData ParseNineGridClaimRewardData(Hashtable p_data)"
+        }
+      ]
+    },
+    "PluginBattleSetting.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginBattleSetting.cs",
+      "sha256": "b32824a837cef40c42a612b5e2d9f9a7d4183b755d4980f801f4eab6adf0d56e",
+      "method_lines": [
+        {
+          "line": 191,
+          "declaration": "public void SyncTaskDataToUI()"
+        },
+        {
+          "line": 197,
+          "declaration": "public void SyncTaskDataToUI_Battle()"
+        },
+        {
+          "line": 231,
+          "declaration": "public void SyncTaskDataToUI_Potion()"
+        }
+      ]
+    },
+    "PluginLogManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginLogManager.cs",
+      "sha256": "36b50417f22bbc53e933ff0d7f4ac380efbe95d4d1850253f7f19bc57b1f0e28",
+      "method_lines": [
+        {
+          "line": 48,
+          "declaration": "public void requestLogData()"
+        },
+        {
+          "line": 68,
+          "declaration": "public void SendLog(string action, Hashtable reward)"
+        },
+        {
+          "line": 93,
+          "declaration": "private List<PluginLog> ParseLogData(Hashtable srcData)"
+        }
+      ]
+    },
+    "PluginPoliticSetting.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginPoliticSetting.cs",
+      "sha256": "69077805abacdf9d12a0c553a7126b2ca0ae369fa255d9d2ef08efb6a14a828b",
+      "method_lines": [
+        {
+          "line": 67,
+          "declaration": "public void SyncTaskDataToUI()"
+        }
+      ]
+    },
+    "PluginTaskDataConverter.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginTaskDataConverter.cs",
+      "sha256": "f9b8233f2c72034d4acc57ef4926d8f9f80b6a97d47320c5904c561ae6f6f0ff",
+      "method_lines": []
+    },
+    "PluginTaskManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginTaskManager.cs",
+      "sha256": "3af63f8b2810f8813b05dc4a7b1e7d11790498438306ab04c84c91e813d8ae92",
+      "method_lines": [
+        {
+          "line": 97,
+          "declaration": "public void SendPluginData()"
+        },
+        {
+          "line": 117,
+          "declaration": "public void OnGetServerData(object result)"
+        },
+        {
+          "line": 138,
+          "declaration": "public void buyTime(string id, Action<long> callback)"
+        },
+        {
+          "line": 171,
+          "declaration": "public void SyncTaskDataToUI()"
+        }
+      ]
+    },
+    "PluginUIManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginUIManager.cs",
+      "sha256": "847b860c5560ce722ce2ff8466d52ff140659c0b92cd9249b1ea5a7a089ddbb6",
+      "method_lines": []
+    },
+    "PoliticFSMLogin.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMLogin.cs",
+      "sha256": "28b74f8c1868368eb5ce978435f9017dfea2b2f4638243fa1ed624197007c2b9",
+      "method_lines": [
+        {
+          "line": 44,
+          "declaration": "private int login(int signal)"
+        },
+        {
+          "line": 80,
+          "declaration": "private int loginWait(int signal)"
+        }
+      ]
+    },
+    "RewardProcessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardProcessor.cs",
+      "sha256": "00a403c195aa271fd36691b605034890c2a2f8b53aa1d58cdf8654d368eb9bb4",
+      "method_lines": [
+        {
+          "line": 164,
+          "declaration": "public static void processAll(Hashtable in_reward, Hashtable toInbox)"
+        }
+      ]
+    },
+    "TableLoad.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TableLoad.cs",
+      "sha256": "82e4f0f8b794f0d6984647425553c471be5c4c006e9b3348dd30d2b989361943",
+      "method_lines": [
+        {
+          "line": 38,
+          "declaration": "private IEnumerator _setup()"
+        }
+      ]
+    },
+    "TrophySettingTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TrophySettingTableAccessor.cs",
+      "sha256": "919d9751810bf25211424d735d90291145ca55487394f8760ab69faf4128041e",
+      "method_lines": []
+    },
+    "TrophyTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TrophyTableAccessor.cs",
+      "sha256": "82413830e859443d75604883733e6ac17303ba424d078edaaa41db1f5d71b4fc",
+      "method_lines": []
+    },
+    "TrophyWindow.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TrophyWindow.cs",
+      "sha256": "968db0c18a7db01c412586db83af5fd9ef5e28798ff4d8ffd35d22ff1ea6abbc",
+      "method_lines": [
+        {
+          "line": 36,
+          "declaration": "public void init(string trophyId, string id, string status, int level, int nowLevel, int maxLevel)"
+        },
+        {
+          "line": 79,
+          "declaration": "public IEnumerator init(Hashtable hash)"
+        }
+      ]
+    },
+    "UserStatus.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+      "method_lines": [
+        {
+          "line": 1799,
+          "declaration": "public void addLoginBounus(Hashtable hash)"
+        }
+      ]
+    },
+    "WebApiClient.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "method_lines": [
+        {
+          "line": 2224,
+          "declaration": "public void getTrophyProgress(Responder responder)"
+        },
+        {
+          "line": 2243,
+          "declaration": "public void message_window_trophy(string category, Responder responder)"
+        },
+        {
+          "line": 2271,
+          "declaration": "public void getCredit2Logs(int startIndex, int endIndex, Responder responder)"
+        },
+        {
+          "line": 4177,
+          "declaration": "public void migrate(string countryId, string navigatorId, string colorIndex, string planId, Responder responder)"
+        },
+        {
+          "line": 4604,
+          "declaration": "public void setPluginData(Hashtable pluginSetting, Responder p_responder)"
+        },
+        {
+          "line": 4627,
+          "declaration": "public void addPluginLog(Hashtable logdata, Responder p_responder)"
+        }
+      ]
+    },
+    "mypageCollectionArtifact.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageCollectionArtifact.cs",
+      "sha256": "d9d2dc05d3188800f1ea717f31a15cc787e0cd071b1f9cca73dbb1265ab4728f",
+      "method_lines": [
+        {
+          "line": 6,
+          "declaration": "public override void load(int category, int page, int seriesMax, mypageCollectionController.mypageCollectionControllerCallback callback)"
+        },
+        {
+          "line": 30,
+          "declaration": "private void setSeries(Hashtable seriesListHash)"
+        }
+      ]
+    },
+    "mypageCollectionJewel.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageCollectionJewel.cs",
+      "sha256": "ae6fb411a51c4de834c81fae5db87c9019f1f3c1a1d27f7cca3940a4fa46b2cc",
+      "method_lines": [
+        {
+          "line": 6,
+          "declaration": "public override void load(int category, int page, int seriesMax, mypageCollectionController.mypageCollectionControllerCallback callback)"
+        },
+        {
+          "line": 30,
+          "declaration": "private void setSeries(Hashtable seriesListHash)"
+        }
+      ]
+    },
+    "mypageCollectionSeriesParam.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageCollectionSeriesParam.cs",
+      "sha256": "49e4eb86237042c0ed4c39d75157be7c33c0c07a01764c0cf4c6999d7a53ca65",
+      "method_lines": [
+        {
+          "line": 47,
+          "declaration": "public void setup(CollectionType collectionType, string seriesId, Hashtable seriesHash)"
+        }
+      ]
+    },
+    "mypageCollectionWork.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageCollectionWork.cs",
+      "sha256": "3339619b4449ade164d80aec78f9b7f2336915279523a24cc0534ae666ca15b4",
+      "method_lines": [
+        {
+          "line": 137,
+          "declaration": "public void execReward(CollectionType type, string seriesId, mypageCollectionCallback callback)"
+        },
+        {
+          "line": 180,
+          "declaration": "private void execRewardCallback(Hashtable seriesHash, Hashtable rewardHash)"
+        }
+      ]
+    },
+    "mypageEmigrateObject.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageEmigrateObject.cs",
+      "sha256": "b080211ce6d71cdef601a301e6ab623a12cfafd4974091be2c569a61e24a802a",
+      "method_lines": [
+        {
+          "line": 33,
+          "declaration": "public void setUp(mypageEmigrateUpdate updateObj, string name, Hashtable hashtable, long canTime)"
+        }
+      ]
+    },
+    "mypageEmigrateUpdate.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageEmigrateUpdate.cs",
+      "sha256": "6da309c3567f61dec57a5df7b37721174aa40dbc2292e5b30d6882b5a8969b90",
+      "method_lines": [
+        {
+          "line": 59,
+          "declaration": "private void setEmigrate()"
+        },
+        {
+          "line": 130,
+          "declaration": "public void onEmigrate(string id)"
+        }
+      ]
+    },
+    "mypageLibrary.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageLibrary.cs",
+      "sha256": "95b240d303807b797916400bda175e8dc7a4a2005c1ec911d80e921302882d6a",
+      "method_lines": [
+        {
+          "line": 449,
+          "declaration": "private void initUseList(Hashtable hash)"
+        }
+      ]
+    },
+    "mypageLoginStampDialog.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageLoginStampDialog.cs",
+      "sha256": "3104d8b4383c1f00a8c26c395c8c3a058ef7821c2109084141cd246abcf9cafa",
+      "method_lines": [
+        {
+          "line": 8,
+          "declaration": "public override bool setup(WindowController.WindowParameter parameter)"
+        },
+        {
+          "line": 16,
+          "declaration": "private IEnumerator processMenu()"
+        }
+      ]
+    },
+    "mypageRecord.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageRecord.cs",
+      "sha256": "4a4d72b3101c917bfe7c5045ce85ea76b9cb3cd139d8b734c82627768d5f8bbf",
+      "method_lines": [
+        {
+          "line": 35,
+          "declaration": "public void init(int index, Hashtable hash)"
+        },
+        {
+          "line": 77,
+          "declaration": "public void init(int index, Hashtable hash)"
+        },
+        {
+          "line": 174,
+          "declaration": "public override bool init(string key)"
+        },
+        {
+          "line": 202,
+          "declaration": "private void getKobanLogs()"
+        },
+        {
+          "line": 466,
+          "declaration": "private string setKobanString(mypageRecordKoban koban)"
+        }
+      ]
+    },
+    "mypageRecordUpdate.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageRecordUpdate.cs",
+      "sha256": "233c3b94cb89a8f7c11b349309efe9a8bc1eb54f8c4f0fdf32c9d77d4deb5c0f",
+      "method_lines": [
+        {
+          "line": 155,
+          "declaration": "public override void update(Hashtable hash)"
+        },
+        {
+          "line": 170,
+          "declaration": "private void updateVsBattle(Hashtable vsBattleHash)"
+        },
+        {
+          "line": 199,
+          "declaration": "private void updateQuest(Hashtable questHash)"
+        },
+        {
+          "line": 211,
+          "declaration": "private void updateBattle(Hashtable battleHash)"
+        },
+        {
+          "line": 236,
+          "declaration": "private void updateCollection(Hashtable collectionHash)"
+        },
+        {
+          "line": 252,
+          "declaration": "private void updateErrantry(Hashtable errantHash)"
+        }
+      ]
+    },
+    "mypageSerialCode.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageSerialCode.cs",
+      "sha256": "c8174e8c431e513bf9f120620a933b89454e97132024d6caa3fcd9328b2044d8",
+      "method_lines": [
+        {
+          "line": 23,
+          "declaration": "public void init(int index, Hashtable hash)"
+        },
+        {
+          "line": 106,
+          "declaration": "public override bool init(string key)"
+        },
+        {
+          "line": 119,
+          "declaration": "private void getSerialCodeRecordLogs()"
+        }
+      ]
+    },
+    "mypageSerialCodeWindow.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageSerialCodeWindow.cs",
+      "sha256": "b82c641796dc96b2447d871aedf2afa9dba0d6859f267c9906fd057c9f8650a8",
+      "method_lines": [
+        {
+          "line": 206,
+          "declaration": "private void resultSerialCode(Hashtable hash)"
+        }
+      ]
+    },
+    "mypageTrophyReward.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyReward.cs",
+      "sha256": "ca646d8e4b049e63e44d790d6afc2458959e6f9c3894378311b1267d021a3ae3",
+      "method_lines": []
+    },
+    "mypageTrophyUpdate.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyUpdate.cs",
+      "sha256": "9194d403626f3d313e879b25c34735bc37512a9008cc8d2f8944ae6a6bb10b61",
+      "method_lines": [
+        {
+          "line": 28,
+          "declaration": "public void init(string trophyId, string id, string status, int level, int nowLevel, int maxLevel)"
+        },
+        {
+          "line": 93,
+          "declaration": "private void init(Hashtable hash)"
+        }
+      ]
+    }
+  },
+  "tables": {
+    "daily_mission": {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\daily_mission.json",
+      "sha256": "16bac33bc794bbffd8e7e84601ffb565ba4732cd4e99ae6ba2e2e939b4b0c86a",
+      "rows": 85,
+      "sample_key": "daily_mission_1",
+      "sample_sha256": "979faa6e94c29f3bb6e3ff9a76d313f36757686049ed886be589c077333c9682"
+    },
+    "artifactSeries": {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\artifactSeries.json",
+      "sha256": "739fc85926d3614f7a3340cfdc8bc6d7bed44cd14c61c73cd468eed9df8b76a9",
+      "rows": 470,
+      "sample_key": "series09_01001",
+      "sample_sha256": "988c983af9e4fb0b97f027c78a418116b283c7d929ca713eb3d1c8dce04c8755"
+    },
+    "jewelSeries": {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\jewelSeries.json",
+      "sha256": "8a34b904f78468fd4fb59d5c8b4290481cfb0a6a1a54510f9ca6a6d03d36ded3",
+      "rows": 261,
+      "sample_key": "series08_01001",
+      "sample_sha256": "fd8a4c85eb1945032246ec58117259263f3265a7d19f076daed7cd7f520b3a84"
+    },
+    "trophy_setting": {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\trophy_setting.json",
+      "sha256": "fb1abc96bb59a902484e8de08a8122026e6276ac96149ab6e7528301870dfa72",
+      "rows": 15,
+      "sample_key": "totalWin",
+      "sample_sha256": "3cf03a1ad382b35021f5a0c9f3bdee046fd553645d76f7373ce4b611c576a399"
+    },
+    "mypage_trophy": {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\mypage_trophy.json",
+      "sha256": "1c5fc611a4a90509d4887463f9dfee789175a66c1067afce6e210072273aa89f",
+      "rows": 65,
+      "sample_key": "totalWin_001",
+      "sample_sha256": "ef936a7dc1cccf8d6c392c0c8a608bc4189ba08ee2ac356aaa0f1c1ea04c97ad"
+    },
+    "plugin_time": {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\plugin_time.json",
+      "sha256": "b50851c510e93eaaf0c7b96cb2d421259500a67d1a7cb174be06c5886dabdad9",
+      "rows": 3,
+      "sample_key": "plugin_0001",
+      "sample_sha256": "b3758ca609079d9e856205c43003fd0c54ea081d2f751c7ba101a93a818d7fe9"
+    },
+    "migrate": {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\migrate.json",
+      "sha256": "c66ae118e97bfe1c5f38f0778796d091ca65680673efc0f05a9dd54bf1c1e426",
+      "rows": 1,
+      "sample_key": "migrate_0001",
+      "sample_sha256": "79a1ae4b5cc0d5503538da9f75ff9f05121e4810be29a8d3e9c25b825bc1cb6d"
+    }
+  },
+  "compatibility_decisions": [
+    "accountProgress is internal storage, not a protocol field",
+    "revision values must be explicitly injected by deployment",
+    "COG playerId uses authenticated stub identity, not an external COG binding",
+    "empty settings/logs and expiry zero are local no-grant defaults",
+    "settings replace atomically, flat scalar section transport; task semantics remain elsewhere",
+    "plugin entitlement check follows client SendPluginData time gate; no purchase implementation",
+    "log sequence, 200-row retention and length bounds are local policy; time is server Unix seconds",
+    "diagnostic log retries append (no request nonce); reward field never changes inventory",
+    "no source establishes server reward probability, activity calendar, or migration reset policy"
+  ],
+  "setting_fixture": {
+    "path": "tests/fixtures/account_progress/plugin-setting.json",
+    "sha256": "e2ed1a7e541c1c2ba57b75d27cd93b56930dd7da2b7cfa4464e6bf0d2e1aad23",
+    "source": "PluginTaskManager.cs:CreateSampleTask:81-92",
+    "purpose": "storage round-trip only; not default configuration"
+  }
+}

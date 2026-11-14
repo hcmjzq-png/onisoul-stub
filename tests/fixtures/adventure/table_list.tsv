@@ -1,0 +1,2 @@
+table_file	root_key	accessor_classes
+quest_1_index.json	quest_1_index	QuestIndexTableAccessor

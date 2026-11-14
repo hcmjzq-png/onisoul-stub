@@ -1,0 +1,23 @@
+{
+  "artifactSeries": {
+    "series09_01001": {
+      "id": "series09_01001",
+      "category": 1,
+      "name": "SERIES_MSG_09_0000000_NAME_KEN_001",
+      "desc": "SERIES_MSG_09_0000000_DESC_KEN_001",
+      "value": "COUNTRY_MSG_001_NAME",
+      "rewardFirst": "reward04_02_01001_1",
+      "reward": "reward04_02_01001_2",
+      "items": [
+        "item09_0100101",
+        "item09_0100102",
+        "item09_0100103",
+        "item09_0100104",
+        "item09_0100105",
+        "item09_0100106",
+        "item09_0100107",
+        "item09_0100108"
+      ]
+    }
+  }
+}

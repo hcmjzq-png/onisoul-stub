@@ -1,0 +1,81 @@
+C 组交付；没有生产挂载，不减少全局342占位数，不部署。
+
+1. 挂载（总集成执行）
+app/business/gameplay.py 的 GameplayService.register 中，与 PlayerServices(self).register(registry)
+并列导入并调用：
+  from app.business.card_growth_services import CardGrowthServices
+  CardGrowthServices(self).register(registry)
+必须用注册后的 _guard → PlayerServices.call → _session_player/_save 链路。
+不可直接把 sell/transfer 当公开 handler；它们是锁内玩家字典动作。
+只替换 deck/sellCharacters、deck/sellEquips、deck/transferStoreCharacters、politic/lottery/getSouls。
+保留现有 common/getCharacters/getEquips/getTactics、deck/setDecks、保护、仓库查询全部行为；
+不替换 inventory/protect/shop，不触碰 completeTasks 或城市生产。
+
+2. 响应契约（总集成执行）
+app/business/response_shapes.py：把 politic/lottery/getSouls 记作裸映射，证据 onikujiWork.cs:181-206。
+当前独立模块成功路径已自行剥离信封，仅七色数值；错误带 errorReason 由 GameRestarter 过滤。
+docs/api_schema.md 和 docs/analysis/api_*.tsv 的修订依据 reviewed-endpoints.tsv；
+不能把其中“已见部分读取”当完整契约。特别注意 sale 的数值 ID 索引表、tactics 售出数量、
+药水 result.<pointType>.point 和 setSkillSlot 的 result 嵌套。
+tools/endpoint_progress.py 只能在正式挂载验收后重算；不能把未实现的28项计入完成。
+
+3. 存档/迁移
+复用 characters、storedCharacters、equips、protectedCards、decks、resources.gold.amount、
+counters.characterCount/equipCount、characterStore、souls。这些服务端存储键沿用本服务，
+不是通过原服存档推导的内部格式；不新增协议字段。
+转仓完整保留实例记录；保护名单不删。出售删除记录并同次存档增加gold。
+characterStore.nextOpenLimit 必须显式保存正整数秒；当前旧档缺失/0时拒绝，不擅自配置3600。
+若总集成选择3600，需明确标为本服兼容策略，再一次性、可备份地写入；不在登录时补发/迁移。
+lastOpenDate=成功转移提交时间为本服务策略，原服究竟在打开仓库还是提交时计时待动态验证。
+本批拒绝任何非零extendSlot/extendLimit，付费扩仓/到期回收另行实现；不得删除已有付费记录。
+存在携带/仓库同ID时拒绝，先审计修复；不能静默覆盖。
+原有 _possession_limits 仅实现基础容量；若其他组实现付费携带容量须一起审计此依赖。
+
+4. 事务与重试
+当前单账号操作沿用 GameplayService 玩家锁，先完整校验再修改；单次 _save 交给已有
+state/db revision CAS和原子文档写入。测试注入 StateConflictError，持久状态不变、返回失败。
+多服务实例需要共享DB CAS，不能声称进程内玩家锁解决跨进程冲突。
+已售实例/已转出来源不再存在，立即重试明确失败且不重复给金币，不重放客户端加钱回包。
+不要以请求参数散列永久去重：合法第二次堆叠出售与重试参数一样；转仓往返也一样。
+迟到请求在一次往返之后可能再次合法，等待协议层持久请求ID/会话序号去重方案。
+全局实例分配必须单调不复用，不以 max(现存实例)+1 代替持久分配器。
+app/state.py/app/db.py 的去重与CAS若需改，由总集成处理；本分支不修改共享代码。
+
+5. 给 D：交易资格
+本批出售/转仓拒绝头像与六组编队引用；出售额外拒绝protected；转仓允许protected。
+这是本服务保守不破坏引用的支持边界，不声称原版auction资格已证明。
+CardGrowthServices.references(player, kind) 可用于共同讨论，但不是跨账号交易授权函数。
+未实现auction/listing锁；D必须把挂牌、库存保留、出售/转仓资格放入一致事务，不能只靠玩家锁。
+跨账号交易须锁双方/库存与资源并一次提交或可证明的托管账本；本模块无跨账号交易。
+若D引入挂牌状态，正式挂载前必须让本模块检查它，避免已挂牌卡同时出售/入仓。
+
+6. 给 B/H：奖励入库
+characters/storedCharacters/equips 使用玩家内唯一实例ID映射；不可重用已售ID；
+baseId关联原character/equip行，实例其余字段必须来自已证明的初始化/成长过程。
+奖励与关卡/领奖标记必须同一玩家事务落盘；满容量处理/收件箱需要独立证据，不能静默丢弃。
+本组没有提供随机生成武将或统一grant函数，不能把测试中复制卡记录当奖励初始化算法。
+souls 是七色整数余额，与既有profile共享；getSouls不负责赠送或抽取。
+
+7. 给 A：内政与道具
+未实现技能触发、叠加、道路倍率或药水恢复公式。potion使用effects/uses并不证明服务器舍入；
+initialAmount不作为新玩家赠送。药水和技能变动若影响产量必须确定采样时点并与生产事务协调。
+不可把本组只读魂余额或转仓行为当作生产加成实现。
+
+8. 最小独占动态验证（由总集成安排；未启动客户端）
+a) 用隔离账号各选未保护/保护/头像/编队/仓库武将和装备，确认允许操作的按钮及请求，
+   对比出售前后金币、实例、重登数据；刻意丢响应后重试检查客户端是否重复显示加钱。
+b) 打开仓库不提交后退出，再立即打开，确定lastOpenDate起算；提交双向交换，
+   在冷却等于/大于边界读StorageInfoHash；验证付费扩容到期时只取不存规则。
+c) 用25最大点测试50%药水，分别数量1/2、当前满点/接近999，保留原始请求和前后状态，
+   以确定舍入/上限/逐个还是批量运算；不能用本服回包证明原版公式。
+d) getSouls返回七色裸数值后验收抽签菜单；不实际启用lot/卡包/九宫格。
+e) 强化、继承、租用、卡包需原始服务响应/可信日志、活动配置或更多原算法证据；
+   没有这些证据保留no stub response，不猜概率或历史活动日期。
+所有动态测试按客户端→hosts→proxy80→stub排查；本次不改链路配置。
+
+9. 验证
+python -m unittest tests.test_card_growth_services -v
+python -m unittest discover -s tests -v
+新增14项；完整240项通过，零跳过。test-results.txt为本地回归记录；没有真实服务器/Unity验收。
+现有公共测试 tests/test_gap_verdicts.py:102、tests/test_no_key_inventory.py:22 出现未关闭文件的
+ResourceWarning，测试仍通过；本组未修改，建议总集成用with管理对应文件读取。

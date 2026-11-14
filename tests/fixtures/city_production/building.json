@@ -1,0 +1,65 @@
+{
+  "building": {
+    "building200_041_01_01_1_1": {
+      "id": "building200_041_01_01_1_1",
+      "name": "田地",
+      "desc": "粮食生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_023_01_01_1_1",
+        "product060_001_01_01_1_1",
+        "product060_018_01_01_1_1",
+        "product060_007_01_01_1_1",
+        "product060_019_01_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200041",
+      "waitImages": [
+        "building200_041_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_013",
+      "sortno": 400,
+      "openShopItemId1": [
+        "shop0000039"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": [
+        "shop0000032"
+      ],
+      "openLevel2": 7,
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    }
+  }
+}

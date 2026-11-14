@@ -1,0 +1,217 @@
+{
+  "baseline_commit": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "integrated_candidate_branch": "review/parallel-342-20261115",
+  "deployment_changed": false,
+  "A_H_total": 310,
+  "reserved_debug_admin": 32,
+  "verdict_counts": {
+    "wrapper_only": 37,
+    "partial_evidence_rules_pending": 244,
+    "component_held_unmounted": 21,
+    "mounted_limited_in_review_candidate": 8,
+    "outside_A_H_review": 32
+  },
+  "groups": [
+    {
+      "group": "A",
+      "source_pr": 40,
+      "source_head": "e115f03a86242398133b63f34b1d8952e8cfa6a8",
+      "analyzed": 28,
+      "mounted": [
+        "politic/shop/sellBuildings"
+      ],
+      "held_components": [
+        "politic/map/getBackgrounds",
+        "politic/map/setBackground"
+      ],
+      "original_status_counts": {
+        "wrapper-only": 10,
+        "traced-rules-unresolved": 13,
+        "non-ordinary-unimplemented": 2,
+        "implemented-limited-unmounted": 3
+      },
+      "evidence_manifest_sha256": "e00a29b8070c7138cc6cd9e2512a6b7f7b1d5fae964358579d12664a844a496c"
+    },
+    {
+      "group": "B",
+      "source_pr": 43,
+      "source_head": "850de39d554b734a8b5c936980a066ed60066237",
+      "analyzed": 35,
+      "mounted": [],
+      "held_components": [
+        "quest/getChapterData",
+        "quest/getQuestCompleteFlags",
+        "quest/getQuestProgress",
+        "quest/getQuestRewardOpenFlags"
+      ],
+      "original_status_counts": {
+        "消费者部分已证_业务待实现": 22,
+        "只有包装器证据": 5,
+        "非普通玩法_待证业务规则": 4,
+        "限定查询已实现_未挂载_需可信存档生产者": 4
+      },
+      "evidence_manifest_sha256": "f9425743424bfe2f13cde400a23245cd88192d5238a6215efd53b6d7ec439ec1"
+    },
+    {
+      "group": "C",
+      "source_pr": 44,
+      "source_head": "edf6330e9540d225ed7939b4c735c43f480bfea8",
+      "analyzed": 32,
+      "mounted": [
+        "deck/sellCharacters",
+        "deck/sellEquips",
+        "politic/lottery/getSouls"
+      ],
+      "held_components": [
+        "deck/transferStoreCharacters"
+      ],
+      "original_status_counts": {
+        "回调/部分表证据，规则待证": 23,
+        "只有包装器证据": 3,
+        "限定范围实现，未生产挂载": 4,
+        "非普通玩法，待证": 2
+      },
+      "evidence_manifest_sha256": "5184d69b56b30f09c524a3e4863d240f52acdf1c69210abcaaba9897285e7465"
+    },
+    {
+      "group": "D",
+      "source_pr": 41,
+      "source_head": "18c928479759d802f22f18622eb0f6c4bdf2fdeb",
+      "analyzed": 39,
+      "mounted": [],
+      "held_components": [
+        "auction/auctionResourceBrowse",
+        "auction/auctionResourceSearch"
+      ],
+      "original_status_counts": {
+        "Callback traced; not implemented": 10,
+        "Partial callback trace; writes NOT implemented": 6,
+        "Implemented limited read semantics; unmounted; no live provider": 2,
+        "Non-ordinary operator feature; not implemented": 1,
+        "Callback/helper traced; lifecycle not implemented": 4,
+        "Wrapper only": 1,
+        "Callback/table traced; not implemented": 2,
+        "Catalogue/callback verified; no handler or purchase": 2,
+        "Wrapper only; not implemented": 2,
+        "Callback/table verified; not implemented": 2,
+        "Callback/helper traced; not implemented": 7
+      },
+      "evidence_manifest_sha256": "4f2e44e7736f692d75a0798a6164a5defc10a3176001dcea8ef4927538dbfc1e"
+    },
+    {
+      "group": "E",
+      "source_pr": 42,
+      "source_head": "e429f4dc7eaa152e22185894e3fee5a36716cea0",
+      "analyzed": 41,
+      "mounted": [],
+      "held_components": [
+        "friend/cancelFriendOffer",
+        "friend/dissolutionFriend",
+        "friend/feedbackFriendOffer",
+        "friend/getFriendProfile",
+        "friend/getFriends",
+        "friend/sendFriendOffer",
+        "friend/updateFriendData"
+      ],
+      "original_status_counts": {
+        "consumer_evidence_pending_rules": 32,
+        "limited_unmounted": 7,
+        "wrapper_only": 2
+      },
+      "evidence_manifest_sha256": "16641083111d1e94176d73f56f47bbddaf6a5f5083a1a4ae8cdc6b6e7a594850"
+    },
+    {
+      "group": "F",
+      "source_pr": 47,
+      "source_head": "e4ee9fe744742c3bc0ba6ceed8eaa052d5753965",
+      "analyzed": 47,
+      "mounted": [],
+      "held_components": [
+        "strategy/isAlive"
+      ],
+      "original_status_counts": {
+        "部分消费者已证/规则未证": 43,
+        "仅包装器/普通调用未证": 3,
+        "限定查询组件可测/未挂载/观测生产端未实现": 1
+      },
+      "evidence_manifest_sha256": "1e0e5738cdcaee52ad77bd6de116bd8900ff9222450f9dc80692f42a142b95d6"
+    },
+    {
+      "group": "G",
+      "source_pr": 45,
+      "source_head": "10aa7a6f91d2f1cf001af62157a726e367e37184",
+      "analyzed": 51,
+      "mounted": [],
+      "held_components": [
+        "ranking/getBriefOfKokudaka",
+        "ranking/getRankersInKokudaka"
+      ],
+      "original_status_counts": {
+        "cost shape and preview traced; mutation NOT implemented": 1,
+        "consumer traced; settlement/source pending; not implemented": 42,
+        "wrapper only; not implemented": 6,
+        "implemented snapshot query only; UNMOUNTED; production source integration pending": 2
+      },
+      "evidence_manifest_sha256": "ee58ba6ca53c1d602226e14dc60c5d64f0105e1a76815fa7c9523314e3fa0cf9"
+    },
+    {
+      "group": "H",
+      "source_pr": 46,
+      "source_head": "cb24a5c8b6609dc1a5e664cf04058c4bc47c9dbc",
+      "analyzed": 37,
+      "mounted": [
+        "common/getPlayerCogid",
+        "plugin/addPluginLog",
+        "plugin/getPluginData",
+        "plugin/getPluginLog"
+      ],
+      "held_components": [
+        "common/getRevisions",
+        "plugin/setPluginData"
+      ],
+      "original_status_counts": {
+        "只有包装器证据": 5,
+        "待证规则": 26,
+        "已实现本服身份映射，未挂载": 1,
+        "已实现限定查询，未挂载": 1,
+        "已实现限定诊断追加，非普通玩法，未挂载": 1,
+        "已实现限定存储读取，非普通玩法，未挂载": 1,
+        "已实现限定诊断读取，非普通玩法，未挂载": 1,
+        "已实现限定设置存储，非普通玩法，未挂载": 1
+      },
+      "evidence_manifest_sha256": "e99711845f6038d89eed0a3a4f742ca720396325052c3633d435c48cc064ca14"
+    }
+  ],
+  "evidence_verification": {
+    "manifest_references": 378,
+    "unique_local_files": 322,
+    "missing_files": 0,
+    "mismatches": 0,
+    "references_by_group": {
+      "A": 42,
+      "B": 43,
+      "C": 67,
+      "D": 34,
+      "E": 31,
+      "F": 46,
+      "G": 64,
+      "H": 51
+    }
+  },
+  "candidate_dispatch": {
+    "registered": 402,
+    "dedicated": 68,
+    "placeholders": 334
+  },
+  "warning": "Dispatch coverage is not gameplay completeness. No native Unity acceptance or production deployment in this review.",
+  "validation": {
+    "combined_original_tests": 316,
+    "reviewed_integration_tests": 323,
+    "skipped": 0,
+    "failed": 0,
+    "command": "python -W ignore::ResourceWarning -m unittest discover -s tests -q",
+    "git_diff_check": "passed",
+    "unity_live_acceptance": false,
+    "mysql_multi_process_integration": false
+  }
+}

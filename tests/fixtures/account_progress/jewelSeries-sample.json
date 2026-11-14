@@ -1,0 +1,20 @@
+{
+  "jewelSeries": {
+    "series08_01001": {
+      "id": "series08_01001",
+      "category": 1,
+      "name": "SERIES_MSG_08_01001_NAME",
+      "desc": "SERIES_MSG_08_01001_DESC",
+      "rewardFirst": "reward04_01_01001_1",
+      "reward": "reward04_01_01001_2",
+      "items": [
+        "item08_0100101",
+        "item08_0100102",
+        "item08_0100103",
+        "item08_0100104",
+        "item08_0100105"
+      ],
+      "needAmount": 5
+    }
+  }
+}
