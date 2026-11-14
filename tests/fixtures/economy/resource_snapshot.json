@@ -1,0 +1,10 @@
+{
+  "_source": "Synthetic internal snapshot; NOT an original-server response or economic rule",
+  "observed_at": 1000,
+  "listings": [
+    {"item_sn": "listing-a", "resource_type": "gold", "price": 100, "num": 1000, "period": 60, "expires_at": 1060},
+    {"item_sn": "listing-b", "resource_type": "gold", "price": 99, "num": 999, "period": 60, "expires_at": 1010},
+    {"item_sn": "listing-c", "resource_type": "food", "price": 100, "num": 999, "period": 60, "expires_at": 1030},
+    {"item_sn": "expired", "resource_type": "wood", "price": 1, "num": 1, "period": 60, "expires_at": 1000}
+  ]
+}
