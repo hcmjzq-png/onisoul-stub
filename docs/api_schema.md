@@ -105,3 +105,21 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | 点数超过 maxPoint 的存档读取 | bundle | `UserStatus.cs:861-890` 的 setActionPoint 允许 0..999，不以 maxPoint 截断；读取时保留超额值。药水公式及实际溢出上限仍待验证。 |
 
 `usePotions` 及 4 个 dailymission 入口仍是待办；新发现的准确响应层级记录于复核报告，不以缺乏规则的空成功回包代替业务实现。
+
+## 2026-11-15 城市与道路复核
+
+完整范围、原版文本证据与待办见 [城市接口报告](analysis/city-contract-20261115/README.md)。
+
+| 字段 / 行为 | 来源 | 证据与限制 |
+| --- | --- | --- |
+| 道路邻接提高生产量、修路不扣金钱/PP | bundle | 原教程 POM_MES_000006_03_001；三种道路的原 draft/building 行；PoliticBuilding.cs:1239-1275,2350-2387 的即时建造分支。已修正 PP，未猜收益加成系数。 |
+| `submitBulkBuildAndComplete.buildings/autoProducings/originCoords.<id>.0/1` | bundle | PoliticFSMConstruction.cs:472-532。坐标是按实例 ID 索引的数字键映射，删除旧契约根 0/1。仅免费道路批量建造。 |
+| `submitSerialBuildAndComplete.<index>.x/y/buildingId/building` | bundle | PoliticBuilding.cs:2402-2478 按数字根键读取，Count-2 个记录，另需 autoProducings。 |
+| 连续建造元数据 `now` | 待验证 | 消费者只证明两个非数字根键，其中一个 autoProducings。沿用已存在的 now，成功时省去 succeeded 来满足循环长度；这一组合是兼容实现，非原服抓包。 |
+| `relocateEnded` 请求 relocatedGrids | bundle | PoliticBuilding.cs:1750-1758 生成 xNyN→数值实例ID，PoliticBuildingList.cs:268-274 枚举完整布局。回调不读字段，返回原有确认信封。 |
+| 库存 deployedMapKey="none"；`deployBuilding.buildingId/building/autoProducings` | bundle | PoliticBuildingParameter.cs:284-291、PoliticMap.cs:278-287、PoliticBuilding.cs:842-895。只接入空闲普通建筑，不接自动生产/道路移除。 |
+| `levelUpBuilding.building` / `levelUpBuildings.output_buildings` | bundle | PoliticBuilding.cs:931-951、PoliticFSMBatchUpgrade.cs:77-111、PluginRunner_LevelUp.cs:46-69。建筑字段沿用原持久记录；缺经验/成本/PP 或非空闲失败。 |
+| `levelUpBuildingCollectively.resultBuildings/totalUsedPoint/restResources.<resource>.amount` | bundle | PoliticFSMProduct.cs:1086-1124；PoliticBuilding.cs:2258-2332。原 amount 在 restResources 内，非根字段。逐级扣经验与费用，未发放经验。 |
+| 城市回包 kokudaka | 待验证 | 单体贡献 helper 可见于 BuildingsTableAccessor.cs:637，但全局汇总/加成尚未核实。本批新入口省略可选字段，保留原存档值；UserStatus.cs:1820-1830 容许缺省。 |
+| `submitProduceTask.dueTime/now` | bundle | StateManualProduce.cs:51-66 → PoliticBuildingParameter.cs:172-182；仅修契约，生产服务尚未实现。 |
+| `submitBulkProduceTasks.producings.<id>.productId/createdTime/dueTime` | bundle | PoliticFSMCollectiveProduce.cs:98-125 → PoliticBuildingParameter.cs:191-199；仅修契约。收获时同名 producings 另有 reward/building/collaborator。 |

@@ -16,8 +16,9 @@ from app import sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import MissionChain, SYSTEM_MISSION
 from app.business.registry import Registry
-from app.business.player_services import PlayerServices
+from app.business.player_services import PlayerServices, integer
 from app.business.progression import ProgressionServices, level_cap
+from app.business.city_services import CityServices
 from app.tables import TableCatalog, TableError, default_catalog
 
 StateLoader = Callable[[str], dict[str, Any]]
@@ -68,10 +69,10 @@ def _coord(value: Any) -> tuple[int, int] | None:
             return None
     if isinstance(value, dict):
         value = [value.get("0", value.get("x")), value.get("1", value.get("y"))]
-    if not isinstance(value, (list, tuple)) or len(value) < 2:
+    if not isinstance(value, (list, tuple)) or len(value) != 2:
         return None
     try:
-        return int(value[0]), int(value[1])
+        return integer(value[0]), integer(value[1])
     except (TypeError, ValueError):
         return None
 
@@ -151,6 +152,7 @@ class GameplayService:
             registry.register(api, self._guard(api, handler))
         PlayerServices(self).register(registry)
         ProgressionServices(self).register(registry)
+        CityServices(self).register(registry)
         return registry
 
     def _lock_for(self, player_id: str) -> threading.RLock:
@@ -1046,6 +1048,8 @@ class GameplayService:
         cells: set[tuple[int, int]] = set()
         buildings = self._table("building")
         for record in player["buildings"].values():
+            if record.get("deployedMapKey") != player["entity"].get("currentMapKey"):
+                continue
             row = buildings.get(record.get("buildingTypeId") or "") or {}
             try:
                 width, height = map(int, (row.get("size") or [1, 1])[:2])
@@ -1092,6 +1096,10 @@ class GameplayService:
         row = self._table("building").get(building_type) or {}
         if not draft or not row:
             return None
+        # Original immediate decorations (including roads) do not spend PP.
+        point_cost = 0 if draft.get("immediateBuild") is True else 1
+        if int(player["actionPoints"]["politicPoint"].get("point") or 0) < point_cost:
+            return None
         if bool(draft.get("isConsume")) and not self._draft_amounts(player).get(draft_id):
             return None
         x, y = position
@@ -1116,7 +1124,7 @@ class GameplayService:
         costs = list(zip(row.get("costTypes") or [], row.get("costAmounts") or []))
         for resource, amount in costs:
             box = player["resources"].get(resource)
-            if box is not None and int(box.get("amount") or 0) < int(amount or 0):
+            if box is None or int(amount or 0) < 0 or int(box.get("amount") or 0) < int(amount or 0):
                 return None
         for resource, amount in costs:
             box = player["resources"].get(resource)
@@ -1144,7 +1152,7 @@ class GameplayService:
         point = player["actionPoints"].setdefault(
             "politicPoint", {"point": 0, "maxPoint": 0, "confirmTime": 0.0}
         )
-        point["point"] = max(0, int(point.get("point") or 0) - 1)
+        point["point"] = int(point.get("point") or 0) - point_cost
         return record
 
     def submit_build_task(

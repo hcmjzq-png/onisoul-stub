@@ -154,6 +154,48 @@ def run(host: str, port: int) -> None:
         assert api("common/increasePlayerLevel", own)["succeeded"]
         assert api("common/getPlayerParams", own)["entity"]["level"] == 2
         print("[http-smoke] lesson claim/retry/prerequisites, level gates/cumulative experience, clock/heartbeat/entity: OK")
+        # City checks use only this same disposable account. Grant a building's
+        # experience as a test fixture; production earning rules are not inferred.
+        built = api("politic/task/submitBuildAndComplete", {**own, "draftId": "draft2000041", "originCoord": [20, 20]})
+        assert built["succeeded"]
+        field_id = built["buildingId"]
+        fixture = state.load(initial["playerId"])
+        assert fixture["entity"]["username"] == account
+        fixture["buildings"][field_id]["exp"] = 120
+        fixture["actionPoints"]["politicPoint"]["point"] = 0
+        state.save(fixture, initial["playerId"])
+        before_roads = api("common/getPlayerParams", own)
+        road_params = {**own, "draftId": "draft2000051", "originCoords": [[21, 20], [22, 20]]}
+        roads = api("politic/task/submitBulkBuildAndComplete", road_params)
+        assert roads["succeeded"] and len(roads["buildings"]) == 2
+        assert api("politic/task/submitBulkBuildAndComplete", road_params)["buildings"] == roads["buildings"]
+        serial = api("politic/task/submitSerialBuildAndComplete", {**own, "draftId": "draft2000051", "originCoords": [[23, 20]]})
+        assert set(serial) == {"0", "autoProducings", "now"}
+        after_roads = api("common/getPlayerParams", own)
+        assert after_roads["resources"] == before_roads["resources"]
+        assert after_roads["actionPoints"]["politicPoint"]["point"] == 0
+        assert api("politic/building/putInBuildings", {**own, "buildingIds": [int(field_id)]})["succeeded"]
+        deployed = api("politic/building/deployBuilding", {**own, "buildingId": int(field_id), "originCoord": [25, 25]})
+        assert deployed["buildingId"] == int(field_id) and deployed["building"]["exp"] == 120
+        layout = api("politic/map/getMapData", own)["buildings"]
+        relocate = {f"x{int(row['x'])}y{int(row['y'])}": int(key) for key, row in layout.items() if row["deployedMapKey"] == "map001"}
+        del relocate["x25y25"]
+        relocate["x26y26"] = int(field_id)
+        assert api("politic/map/relocateEnded", {**own, "relocatedGrids": relocate})["succeeded"]
+        assert api("politic/map/getMapData", own)["occupiedGrids"]["26,26"] == field_id
+        fixture = state.load(initial["playerId"])
+        assert fixture["entity"]["username"] == account
+        fixture["actionPoints"]["politicPoint"]["point"] = 10
+        state.save(fixture, initial["playerId"])
+        gold = fixture["resources"]["gold"]["amount"]
+        first = api("politic/building/levelUpBuilding", {**own, "buildingId": int(field_id)})
+        assert first["building"]["level"] == 2 and first["building"]["exp"] == 100
+        second = api("politic/building/levelUpBuildingCollectively", {**own, "buildingIds": [field_id], "levelUpTimes": [1]})
+        assert second["resultBuildings"][field_id]["level"] == 3
+        assert second["totalUsedPoint"] == 1 and second["restResources"]["gold"]["amount"] == gold - 240
+        assert not api("politic/building/levelUpBuilding", {**own, "buildingId": int(field_id)})["succeeded"]
+        assert api("common/getPlayerParams", own)["actionPoints"]["politicPoint"]["point"] == 8
+        print("[http-smoke] zero-PP roads/retry, serial response count, storage/deployment/relocation and paid upgrades: OK")
         assert api("common/getPlayerParams", {}).get("error") == "UNAUTHORIZED"
         debug = api("debug/devLogin", {"username": account})
         assert debug.get("succeeded") is False and not debug.get("token")

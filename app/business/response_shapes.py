@@ -16,6 +16,7 @@ from app.protocol import envelope
 class ResponseShape(str, Enum):
     ENVELOPE = "envelope"
     BARE_MAP = "bare_map"
+    INDEXED_ROWS = "indexed_rows"
 
 
 # Each entry is backed by a callback that enumerates the response root and casts
@@ -68,6 +69,11 @@ SCALAR_ROOT_EVIDENCE: dict[str, str] = {
 
 
 def shape_for(api: str) -> ResponseShape:
+    # PoliticBuilding.SerialBuildAndComplete iterates 0..Count-3 and reads
+    # autoProducings. Exactly two metadata keys are allowed. Retain now, omit
+    # succeeded; this is a consumer-compatible shape, not an original capture.
+    if api == "politic/task/submitSerialBuildAndComplete":
+        return ResponseShape.INDEXED_ROWS
     if api in BARE_MAP_ENDPOINTS:
         return ResponseShape.BARE_MAP
     return ResponseShape.ENVELOPE
@@ -78,4 +84,9 @@ def success(api: str, payload: Mapping[str, Any] | None = None) -> dict[str, Any
     body = dict(payload or {})
     if shape_for(api) is ResponseShape.BARE_MAP:
         return body
+    if shape_for(api) is ResponseShape.INDEXED_ROWS:
+        result = envelope.ok(body)
+        if result.get("succeeded") is True:
+            result.pop("succeeded", None)
+        return result
     return envelope.ok(body)

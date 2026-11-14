@@ -1,0 +1,59 @@
+{
+  "draft": {
+    "draft2000041": {
+      "id": "draft2000041",
+      "name": "ITEM_MSG_04_0200041_NAME",
+      "desc": "粮食生产",
+      "buildType": "building200_041_01_01_1_1",
+      "isConsume": true,
+      "progressCount": 0,
+      "immediateBuild": false,
+      "continueBuild": false,
+      "initialAmount": 0
+    },
+    "draft2000002": {
+      "id": "draft2000002",
+      "name": "ITEM_MSG_04_0200002_NAME",
+      "desc": "城下町中心建筑物",
+      "buildType": "building200_002_01_01_1_1",
+      "isConsume": true,
+      "progressCount": 0,
+      "immediateBuild": false,
+      "continueBuild": false,
+      "initialAmount": 0
+    },
+    "draft2000051": {
+      "id": "draft2000051",
+      "name": "ITEM_MSG_04_0200051_NAME",
+      "desc": "道路",
+      "buildType": "building200_051_01_01_1_1",
+      "isConsume": false,
+      "progressCount": 0,
+      "immediateBuild": true,
+      "continueBuild": true,
+      "initialAmount": 0
+    },
+    "draft2000052": {
+      "id": "draft2000052",
+      "name": "ITEM_MSG_04_0200052_NAME",
+      "desc": "道路",
+      "buildType": "building200_052_01_01_1_1",
+      "isConsume": false,
+      "progressCount": 0,
+      "immediateBuild": true,
+      "continueBuild": true,
+      "initialAmount": 0
+    },
+    "draft2000053": {
+      "id": "draft2000053",
+      "name": "ITEM_MSG_04_0200053_NAME",
+      "desc": "道路",
+      "buildType": "building200_053_01_01_1_1",
+      "isConsume": false,
+      "progressCount": 0,
+      "immediateBuild": true,
+      "continueBuild": true,
+      "initialAmount": 0
+    }
+  }
+}

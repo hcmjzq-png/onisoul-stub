@@ -1,0 +1,44 @@
+{
+  "building": {
+    "source_sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+    "selected_rows": [
+      "building200_041_01_01_1_1",
+      "building200_002_01_01_1_1",
+      "building200_051_01_01_1_1",
+      "building200_052_01_01_1_1",
+      "building200_053_01_01_1_1"
+    ]
+  },
+  "draft": {
+    "source_sha256": "d92f775087b21acdbbaac789471687808dc08b159907783bc4ea8f771bf0a1c7",
+    "selected_rows": [
+      "draft2000041",
+      "draft2000002",
+      "draft2000051",
+      "draft2000052",
+      "draft2000053"
+    ]
+  },
+  "building_level": {
+    "source_sha256": "b4c2466cc4ad68de233e808afa72170c0b8d285352f51e6e9057ac8349da9813",
+    "selected_rows": [
+      "product_early1001",
+      "product_early1002",
+      "product_early1003",
+      "product_early1004",
+      "product_early1005",
+      "product_early1006",
+      "product_early1007",
+      "product_early1008",
+      "product_early1009",
+      "product_early1010"
+    ]
+  },
+  "defines": {
+    "source_sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+    "selected_rows": [
+      "politic_expend_point",
+      "level_limit"
+    ]
+  }
+}
