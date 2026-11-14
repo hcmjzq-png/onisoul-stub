@@ -105,6 +105,45 @@ class AccountProgressTest(unittest.TestCase):
             self.assertIn("errorReason", self.call("plugin/setPluginData", pluginSetting=setting))
             self.assertEqual(self.saved(), before)
 
+    def test_typed_client_settings_reject_crashing_payloads(self):
+        self.entitled()
+        before = self.saved()
+        bad = ({"battle": {}}, {"battle": {"DreamSpaceType": "2"}},
+               {"battle": {"DreamSpaceType": True}}, {"battle": {"DreamSpaceType": 0.5}},
+               {"battle": {"DreamSpaceType": "not-an-index"}},
+               {"potion": {"PoliticPotion": "yes"}}, {"potion": {"QuestPoint": True}},
+               {"potion": {"AllPotionID": 1}}, {"politic": {"Map0": 1}},
+               {"politic": {"ManualCount0": "10"}}, {"politic": {"TradeType": False}},
+               {"politic": {"HarvestCount": float("inf")}},
+               {"politic": {"HarvestCount": 10**400}})
+        for setting in bad:
+            with self.subTest(setting=setting):
+                self.assertIn("errorReason", self.call("plugin/setPluginData", pluginSetting=setting))
+                self.assertEqual(self.saved(), before)
+
+    def test_settings_accept_original_wire_types_without_executing_them(self):
+        self.entitled()
+        for index in ("0", "1", 0.0, 1.0):
+            setting = {**self.setting(), "battle": {"DreamSpaceType": index, "Battle": False,
+                       "BattleMoney": 25.0, "EventType": "quest_n_0001"},
+                       "politic": {"Map0": True, "ManualBuilding0": "", "ManualProduce0": "",
+                                   "ManualCount0": 0.0, "TradeType": ""}}
+            before = self.saved()
+            self.assertTrue(self.call("plugin/setPluginData", pluginSetting=setting)["succeeded"])
+            self.assertEqual(self.call("plugin/getPluginData")["pluginData"], setting)
+            self.assertEqual(self.saved()["resources"], before["resources"])
+            self.assertEqual(self.saved()["actionPoints"], before["actionPoints"])
+
+    def test_unsafe_imported_setting_is_not_returned_or_rewritten(self):
+        self.entitled()
+        player = self.saved()
+        player["accountProgress"]["pluginSetting"] = {"battle": {}}
+        self.states.save(player, self.session["playerId"])
+        before = self.saved()
+        result = self.call("plugin/getPluginData")
+        self.assertIn("errorReason", result)
+        self.assertEqual(self.saved(), before)
+
     def test_log_cannot_grant_rewards_or_change_entitlement(self):
         before = self.saved()
         log = {"action": "diagnostic only", "reward": {"item11_0000301": 5000}, "time": -100}
@@ -154,10 +193,12 @@ class AccountProgressTest(unittest.TestCase):
         self.assertEqual(self.saved(), before)
         self.assertTrue(self.call("plugin/setPluginData", pluginSetting=self.setting())["succeeded"])
 
-    def test_not_mounted_by_default(self):
+    def test_only_reviewed_account_subset_is_mounted(self):
         registry = self.service.register(Registry()).register_contract_defaults()
-        self.assertNotEqual(registry._handlers["plugin/getPluginData"].__module__,
-                            "app.business.account_progress_services")
+        for api in ("common/getRevisions", "plugin/setPluginData"):
+            self.assertEqual(registry._handlers[api].__module__, "app.business.placeholders")
+        self.assertEqual(registry.dispatch("plugin/getPluginData", {}, self.session)[1]["pluginTime"],
+                         {"pluginTime": 0.0})
 
 
 if __name__ == "__main__":

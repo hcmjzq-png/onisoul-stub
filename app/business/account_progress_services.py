@@ -1,4 +1,4 @@
-"""H account APIs, explicitly registered by the integrator (not mounted here).
+"""H account APIs; only the reviewed subset is mounted by GameplayService.
 
 Protocol evidence: docs/analysis/parallel-342/h-account-progress/evidence.json.
 accountProgress is INTERNAL storage, not an original protocol field. Plugin
@@ -9,12 +9,69 @@ from __future__ import annotations
 import copy
 import json
 import math
+import re
 import time
 from functools import partial
 from typing import Any, Callable, Mapping
 
 from app.business import response_shapes
 from app.business.player_services import PlayerServices, integer
+
+
+# Original PluginPoliticSetting / PluginBattleSetting use HashAccessor's typed
+# casts. Scalar-only validation is insufficient: e.g. a string cannot be a bool.
+SETTING_FIELDS = {
+    "politic": {
+        "bool": set("Map0 Map1 Map2 LevelUp PoliticBattle Mail Trade Harvest Manual AutoPoliticQuest".split()),
+        "number": {"PoliticPointKeep", "HarvestCount"},
+        "string": {"TradeType"},
+    },
+    "battle": {
+        "bool": set("OniQuest OniQuestHigh Event DreamSpace RaidBoss Battle BattleNormal BattleTenka BattleSiege".split()),
+        "number": set("OniQuestStory OniQuestChapter OniQuestEpisode BattleMoney".split()),
+        "string": {"EventType"},
+    },
+    "potion": {
+        "bool": set("PoliticPotion QuestPotion RaidbossPotion AllPotion".split()),
+        "number": set("PoliticPoint QuestPoint RaidbossPoint AllPotionPoint".split()),
+        "string": set("PoliticPotionID QuestPotionID RaidBossPotionID AllPotionID".split()),
+    },
+}
+
+
+def validate_plugin_setting(setting: Any) -> None:
+    """Validate client serialization, not task eligibility or original rules."""
+    if not isinstance(setting, dict) or set(setting) - SETTING_FIELDS.keys():
+        raise ValueError("pluginSetting must contain only client setting sections")
+    for name, section in setting.items():
+        if not isinstance(section, dict):
+            raise ValueError("plugin setting section must be a map")
+        # PluginBattleSetting dereferences this unconditionally and indexes the
+        # two-element PluginMisc.getDreamSpaceName array. Missing is unsafe too.
+        if name == "battle":
+            value = section.get("DreamSpaceType")
+            if not ((type(value) is str and value in {"0", "1"}) or
+                    (type(value) in (int, float) and value in (0, 1))):
+                raise ValueError("battle.DreamSpaceType must be 0 or 1")
+        for key, value in section.items():
+            if not isinstance(key, str):
+                raise ValueError("plugin setting key must be a string")
+            if name == "battle" and key == "DreamSpaceType":
+                continue
+            kind = next((kind for kind, keys in SETTING_FIELDS[name].items() if key in keys), None)
+            if name == "politic" and re.fullmatch(r"Manual(Building|Produce|Count)\d+", key):
+                kind = "number" if key.startswith("ManualCount") else "string"
+            if kind == "bool" and type(value) is bool:
+                continue
+            if kind == "string" and isinstance(value, str):
+                continue
+            if kind == "number" and type(value) in (int, float):
+                if -2147483648 <= value <= 2147483647 and math.isfinite(value):
+                    continue
+            raise ValueError("unknown plugin setting field or invalid client type: " + name + "." + key)
+    # Local storage limit, not an original server rule.
+    if len(json.dumps(setting, ensure_ascii=True)) > 65536:
+        raise ValueError("plugin settings exceed local storage limit")
 
 
 class AccountProgressServices(PlayerServices):
@@ -26,17 +83,20 @@ class AccountProgressServices(PlayerServices):
             key: float(integer(revisions[key])) for key in ("server", "unity", "table", "root")}
         self.clock = clock
 
-    def register(self, registry: Any) -> None:
-        registry.register("common/getRevisions", self.get_revisions)
-        registry.register("common/getPlayerCogid", self.service._guard(
-            "common/getPlayerCogid", self.get_cogid))
+    def register(self, registry: Any, *, apis: frozenset[str] | None = None) -> None:
+        if apis is None or "common/getRevisions" in apis:
+            registry.register("common/getRevisions", self.get_revisions)
+        if apis is None or "common/getPlayerCogid" in apis:
+            registry.register("common/getPlayerCogid", self.service._guard(
+                "common/getPlayerCogid", self.get_cogid))
         for api, action in {
             "plugin/getPluginData": self.plugin_data,
             "plugin/setPluginData": self.set_plugin_data,
             "plugin/getPluginLog": self.plugin_logs,
             "plugin/addPluginLog": self.add_plugin_log,
         }.items():
-            registry.register(api, self.service._guard(api, partial(self.call, api, action)))
+            if apis is None or api in apis:
+                registry.register(api, self.service._guard(api, partial(self.call, api, action)))
 
     def get_revisions(self, params: dict, session: dict | None) -> dict:
         # TableLoad requests this BEFORE authentication.
@@ -57,29 +117,20 @@ class AccountProgressServices(PlayerServices):
     @staticmethod
     def plugin_data(player: dict, params: dict) -> dict:
         stored = player.get("accountProgress", {})
-        return {"pluginData": copy.deepcopy(stored.get("pluginSetting", {})),
-                "pluginTime": {"pluginTime": float(stored.get("pluginExpiresAt", 0))}}
+        setting = stored.get("pluginSetting", {})
+        # Reject unsafe old/imported saves too; never return data that crashes
+        # the typed client callback, and do not silently rewrite the save.
+        validate_plugin_setting(setting)
+        expires = integer(stored.get("pluginExpiresAt", 0), maximum=9007199254740991)
+        return {"pluginData": copy.deepcopy(setting),
+                "pluginTime": {"pluginTime": float(expires)}}
 
     def set_plugin_data(self, player: dict, params: dict) -> dict:
         stored = player.get("accountProgress", {})
-        if stored.get("pluginExpiresAt", 0) < self.clock():
+        if integer(stored.get("pluginExpiresAt", 0), maximum=9007199254740991) < self.clock():
             raise ValueError("no stub response: plugin entitlement absent or expired")
         setting = params.get("pluginSetting")
-        if not isinstance(setting, dict) or set(setting) - {"politic", "battle", "potion"}:
-            raise ValueError("pluginSetting must contain only client setting sections")
-        # Opaque UI preferences: only flat scalar dictionaries, never state patches.
-        # Size limits are local storage policy, not original server rules.
-        for section in setting.values():
-            if not isinstance(section, dict):
-                raise ValueError("plugin setting section must be a map")
-            for key, value in section.items():
-                if not isinstance(key, str) or not isinstance(value, (str, bool, int, float)):
-                    raise ValueError("plugin setting values must be scalars")
-                if isinstance(value, (int, float)) and not isinstance(value, bool):
-                    if abs(value) > 2147483647 or not math.isfinite(value):
-                        raise ValueError("plugin setting number outside supported range")
-        if len(json.dumps(setting, ensure_ascii=True)) > 65536:
-            raise ValueError("plugin settings exceed local storage limit")
+        validate_plugin_setting(setting)
         player.setdefault("accountProgress", {})["pluginSetting"] = copy.deepcopy(setting)
         return {}
 

@@ -19,6 +19,9 @@ from app.business.registry import Registry
 from app.business.player_services import PlayerServices, integer
 from app.business.progression import ProgressionServices, level_cap
 from app.business.city_services import CityServices
+from app.business.city_production_services import CityProductionServices
+from app.business.card_growth_services import CardGrowthServices
+from app.business.account_progress_services import AccountProgressServices
 from app.tables import TableCatalog, TableError, default_catalog
 
 StateLoader = Callable[[str], dict[str, Any]]
@@ -153,6 +156,19 @@ class GameplayService:
         PlayerServices(self).register(registry)
         ProgressionServices(self).register(registry)
         CityServices(self).register(registry)
+        # A-H integration review: only endpoints backed by current save state
+        # and complete local transactions. Provider-dependent candidates stay
+        # unmounted; see docs/analysis/parallel-342/review/README.md.
+        CityProductionServices(self).register(registry, apis=frozenset({
+            "politic/shop/sellBuildings",
+        }))
+        CardGrowthServices(self).register(registry, apis=frozenset({
+            "deck/sellCharacters", "deck/sellEquips", "politic/lottery/getSouls",
+        }))
+        AccountProgressServices(self).register(registry, apis=frozenset({
+            "common/getPlayerCogid", "plugin/getPluginData",
+            "plugin/getPluginLog", "plugin/addPluginLog",
+        }))
         return registry
 
     def _lock_for(self, player_id: str) -> threading.RLock:

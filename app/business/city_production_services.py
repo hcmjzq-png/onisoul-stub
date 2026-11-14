@@ -1,6 +1,6 @@
 """Group A: verified inventory sales and explicitly owned background selection.
 
-Not mounted by GameplayService. Production settlement remains unimplemented.
+GameplayService mounts inventory sales only. Production settlement is unimplemented.
 backgroundOwnership/mapBackgrounds are proposed SERVER-INTERNAL save fields,
 not original wire fields. No ownership is granted by these handlers.
 """
@@ -14,13 +14,14 @@ from app.business.player_services import integer
 
 
 class CityProductionServices(CityServices):
-    def register(self, registry: Any) -> None:
+    def register(self, registry: Any, *, apis: frozenset[str] | None = None) -> None:
         for api, action in {
             "politic/shop/sellBuildings": self.sell_buildings,
             "politic/map/getBackgrounds": self.backgrounds,
             "politic/map/setBackground": self.set_background,
         }.items():
-            registry.register(api, self.service._guard(api, partial(self.call, api, action)))
+            if apis is None or api in apis:
+                registry.register(api, self.service._guard(api, partial(self.call, api, action)))
 
     def sell_buildings(self, player: dict, params: dict) -> dict:
         self.current_map(player)

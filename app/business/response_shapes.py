@@ -20,7 +20,8 @@ class ResponseShape(str, Enum):
 
 
 # Each entry is backed by a callback that enumerates the response root and casts
-# every value to Hashtable. Empty maps are valid "no records" placeholders.
+# every value to Hashtable (or to double for getSouls). Empty maps are valid
+# "no records" placeholders where the corresponding consumer permits them.
 # Shared enumerators are allowed when several endpoints consume through the same
 # helper: `DeckConflateCards.createStatus` is used by common/getCharacters,
 # common/getEquips and common/getTactics.
@@ -42,6 +43,7 @@ BARE_MAP_EVIDENCE: dict[str, str] = {
     "friend/findFriends": "FriendListWindow.cs:getFindData@0x30D6E8",
     "friend/getFriends": "FriendListWindow.cs:getFriendData@0x30D6A8",
     "politic/building/getDrafts": "UserStatus.cs:setDraftInfo@0x28FE58",
+    "politic/lottery/getSouls": "onikujiWork.cs:initSoul:199-206 (root values cast to double)",
     # UserStatus.cs:1393 的 ymbga 分支要求 Keys.Count == 1 且读 succeeded，
     # :1401 的非 ymbga 分支要求 Keys.Count == 0。运行时容器由 gameLogin 响应的
     # `container` 决定（SessionKeeper.cs:138-141 -> Configs.cs:1317，未知值回落 none），

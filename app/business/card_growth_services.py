@@ -1,4 +1,4 @@
-"""C-group opt-in handlers; not mounted by GameplayService.
+"""C-group handlers; GameplayService mounts sales and saved soul balances only.
 
 Evidence and conservative support limits: docs/analysis/parallel-342/c-card-growth/.
 Uses PlayerServices.call and GameplayService's lock/save/revision boundary.
@@ -16,7 +16,7 @@ SOUL_COLORS = ("red", "blue", "purple", "yellow", "green", "black", "white")
 
 
 class CardGrowthServices(PlayerServices):
-    def register(self, registry: Any) -> None:
+    def register(self, registry: Any, *, apis: frozenset[str] | None = None) -> None:
         handlers = {
             "deck/sellCharacters": partial(self.sell, kind="characters", table="character", field="characterIds"),
             "deck/sellEquips": partial(self.sell, kind="equips", table="equip", field="equipIds"),
@@ -24,14 +24,8 @@ class CardGrowthServices(PlayerServices):
             "politic/lottery/getSouls": self.souls,
         }
         for api, action in handlers.items():
-            registry.register(api, self.service._guard(api, partial(self.call, api, action)))
-
-    def call(self, api: str, action: Any, params: dict, session: dict | None) -> dict:
-        result = super().call(api, action, params, session)
-        if api == "politic/lottery/getSouls" and "errorReason" not in result:
-            # onikujiWork.initSoul casts EVERY root value to double.
-            return {color: result[color] for color in SOUL_COLORS}
-        return result
+            if apis is None or api in apis:
+                registry.register(api, self.service._guard(api, partial(self.call, api, action)))
 
     @staticmethod
     def ids(value: Any, *, allow_empty: bool = False) -> list[str]:
