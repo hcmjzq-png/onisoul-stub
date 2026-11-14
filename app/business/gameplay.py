@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import os
 import datetime as dt
 import json
 import re
@@ -404,9 +405,27 @@ class GameplayService:
         existing = bool((raw.get("entity") or {}).get("created"))
         return issued, existing
 
+    @staticmethod
+    def _debug_login_key() -> str:
+        """调试登录口令；为空表示不校验（仅限本机 stub 使用）。"""
+        return str(os.environ.get("STUB_DEBUG_LOGIN_KEY") or "")
+
+    def _debug_login_denied(
+        self, api: str, params: dict[str, Any]
+    ) -> dict[str, Any] | None:
+        expected = self._debug_login_key()
+        if not expected:
+            return None
+        if str(params.get("key") or "") == expected:
+            return None
+        return self._failure(api, "debug login key mismatch")
+
     def dev_login(
         self, params: dict[str, Any], session: dict[str, Any] | None
     ) -> dict[str, Any]:
+        denied = self._debug_login_denied("debug/devLogin", params)
+        if denied is not None:
+            return denied
         username = str(params.get("username") or "").strip()
         if not username:
             return self._failure("debug/devLogin", "username is required")
@@ -423,6 +442,9 @@ class GameplayService:
     def debug_login(
         self, params: dict[str, Any], session: dict[str, Any] | None
     ) -> dict[str, Any]:
+        denied = self._debug_login_denied("debug/debugLogin", params)
+        if denied is not None:
+            return denied
         username = str(params.get("username") or "").strip()
         if not username:
             return self._failure("debug/debugLogin", "username is required")

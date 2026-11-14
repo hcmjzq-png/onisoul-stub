@@ -47,6 +47,10 @@ python -m app.main --init-schema
 
 # 启动
 python -m app.main
+
+# 鉴权闸门默认 strict：无会话只能调 8 个放行端点（登录/换票/版本表）
+# 排查「客户端哪些接口在没登录时会打」时用 observe，只计数不拦截
+export AUTH_MODE=observe
 ```
 
 ## 契约层

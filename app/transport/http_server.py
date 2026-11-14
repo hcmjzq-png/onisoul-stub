@@ -3,6 +3,8 @@
 路由：
     GET  /client/status      健康检查（不经过业务注册表）
     POST /api/<api>          业务接口：解析 params → 校验 token → registry.dispatch
+                             无会话时按 app/auth.py 的放行名单判定，非名单内一律拒绝
+                             （strict；AUTH_MODE=observe 时只计数放行）
     GET  其余 PC 路径        WebPlayer / app.unity3d / AssetBundle / crossdomain
 
 只绑定 127.0.0.1；对外由 tools/proxy80.py 在 80 端口转发，本层不直接暴露公网。
@@ -11,12 +13,13 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from datetime import timezone
 from email.utils import formatdate, parsedate_to_datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 
-from app import sessions
+from app import auth, sessions
 from app.business.registry import Registry
 from app.protocol import envelope
 from app.transport.static import StaticFiles, StaticPathError, StaticResource
@@ -222,13 +225,30 @@ def make_handler(
             ctype = self.headers.get("Content-Type", "")
             params = envelope.parse_params(raw, ctype)
 
+            if api not in registry.known():
+                _json_response(
+                    self,
+                    404,
+                    envelope.error(envelope.ERR_NOT_FOUND, f"未知接口: {api}"),
+                )
+                return
+
             token = str(params.get("token") or "").strip()
             try:
                 session = sessions.resolve(token) if token else None
-            except Exception:
-                # 会话库不可用时按匿名继续：占位阶段响应不依赖会话，
-                # 至少保证「不因 DB 掉了就没响应」，否则客户端只能看到连接被掐断。
+            except Exception as exc:
+                # 会话库不可用：strict 模式下这里必然判为未认证（fail-closed）。
+                # 需要「DB 挂了也别掐连接」的可用性优先，把 AUTH_MODE 设成 observe。
+                print(
+                    f"[stub][auth] 会话解析失败 {api}: {type(exc).__name__}",
+                    file=sys.stderr,
+                )
                 session = None
+
+            denial = auth.check(api, session, has_token=bool(token))
+            if denial is not None:
+                _json_response(self, 200, denial)
+                return
 
             status, body = registry.dispatch(api, params, session)
             _json_response(self, status, body)
