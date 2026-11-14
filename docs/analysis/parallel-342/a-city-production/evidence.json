@@ -1,0 +1,896 @@
+{
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "source_root": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115",
+  "table_root": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables",
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "source_files": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AccelerateProduceTableAccessor.cs",
+      "sha256": "2bde92d91752300d8d13f3574019bdc8a1bc3d51a62e2f13ed46625281969bb4"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\GameRestarter.cs",
+      "sha256": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InventoryEvolutionList.cs",
+      "sha256": "9d17c126993ace2710a848ef6ae7d2951fa7b883e2ca2000a93b0fd166c78679"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InventoryItemSaleBuild.cs",
+      "sha256": "1700e609ace24f541bc998f144961d6bc7fd528187d67bed7c23b93552664de8"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InventorySaleList.cs",
+      "sha256": "81c6a7906446e5610a72692eb5f711a28c5b6622b69f4a15c9fa41ac29584748"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InventoryUpdateSaleBuild.cs",
+      "sha256": "2303b145a56f12304ce08bd0d0339633b8c9f55c64275cbf4a8032cb196788c9"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ItemIdToShopIdTableAccessor.cs",
+      "sha256": "3d3a19a4e9acf18ce4d0ff43d4ab1f3623b3709d94f3124b77876ac56655f301"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginManualProduce.cs",
+      "sha256": "2e7ed6d948ff37e4d95b199e04ac8021f017b2bc3685d0ea9211b20fecaed118"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\Politic.cs",
+      "sha256": "c56766260a6b1db8fbd3c163c37dd054c8de125998aa1e56f4741ab0e7b3c528"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuilding.cs",
+      "sha256": "12ce58588bea07a4eb39f70c86d54b7cabb00380846dcef449c104b227fd5a9a"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuildingParameter.cs",
+      "sha256": "ff7f635f305109926a5ad774eada7365352b7fdfed88e534d697df1d4e2e2996"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuildingState\\StateAutoProduce.cs",
+      "sha256": "7d82b4c4220823af6de97a6f2011745c26a7c965495469778aed5d0cd03933b2"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuildingState\\StateManualProduce.cs",
+      "sha256": "3570c727533ada094e5c25ff5602b5f695703a285c6ee17fd1eab34027d660cf"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticDebugMenu.cs",
+      "sha256": "6d75dbc92a36a0b2cb826fb6786f82285bd80cb137a7c1714eb372b331df0d4d"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticEdictProgressStatus.cs",
+      "sha256": "fefab9deda0ba8867a625525397be015a524ce1a05721a064eb4138afa6cfe63"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMChangeMap.cs",
+      "sha256": "d7ffdba2c8890243e8e22fa4e7b13f07a0b9752fdc10e2c8660b6166e2bf281c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMCollectiveProduce.cs",
+      "sha256": "b57fc3fe5e93c1354a7ef7fd9a5b939638776e75480d6b80ac9b3b01ca8f51c0"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMap.cs",
+      "sha256": "d1a5da4154088f6fbeacf24be5b5215267de11d80286ca44ce9c37ccbf4415d5"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMissionManager.cs",
+      "sha256": "6825f649fc6e4eae1e24ef462def4e2863f39d4aacf6eb757be18eaf78cf4567"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMissionProgressList.cs",
+      "sha256": "38b74b7269dc0398e746c16e291b3ec715977c5e2096ca6edde86fa506c66e4c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticScriptCommand.cs",
+      "sha256": "1e7810767f3f06d2d5166e24301ef3539901e9aaabb3fec0115f155e543241a3"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ProductItem.cs",
+      "sha256": "ea06ed85c4adeed1b6b4cf5c322342ae020f767c49d59427b7a183c270cf0d7c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ProductsTableAccessor.cs",
+      "sha256": "06c27eee427434ff9e23889f90956949a4ec192b9fc3d8b3f5b056e60df2d02f"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TitleRestoreUserData.cs",
+      "sha256": "9dab4571bad38a6aa460dfc1ef972e7576983cc0608ee190b3ed8177d1852170"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBgItemSelect.cs",
+      "sha256": "5fa022e45b096fe107fd2781aa2aca6d9213e8c3de54ff9a74822ae1db8db14a"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBgSelectWindow.cs",
+      "sha256": "2a6566b2fe2bf68e3df2e979c268369f12853b04fb419affeed8180a09691676"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMissionProgressStatusBase.cs",
+      "sha256": "530fdfb44dfd74c5079bed703f494c311999649596c57cbb04fd77938bafa149"
+    }
+  ],
+  "wrappers": [
+    {
+      "endpoint": "friend/building/getFriendProductsByBuilding",
+      "method": "getFriendProductsByBuilding",
+      "source": "WebApiClient.cs",
+      "lines": [
+        2743,
+        2750
+      ],
+      "request_keys": [
+        "token",
+        "friendPlayerId",
+        "buildingId"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "friend/task/accelerateFriendProduceTask",
+      "method": "accelerateFriendProduceTask",
+      "source": "WebApiClient.cs",
+      "lines": [
+        2764,
+        2773
+      ],
+      "request_keys": [
+        "token",
+        "friendPlayerId",
+        "mapId",
+        "buildingId",
+        "id"
+      ],
+      "textual_call_sites": [
+        "PoliticBuilding.cs:744"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "friend/task/completeFriendTasks",
+      "method": "completeFriendTask",
+      "source": "WebApiClient.cs",
+      "lines": [
+        2753,
+        2761
+      ],
+      "request_keys": [
+        "token",
+        "friendPlayerId",
+        "mapId",
+        "buildingId"
+      ],
+      "textual_call_sites": [
+        "PoliticBuildingState/StateAutoProduce.cs:318"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/building/conflateBuilding",
+      "method": "conflateBuilding",
+      "source": "WebApiClient.cs",
+      "lines": [
+        991,
+        998
+      ],
+      "request_keys": [
+        "token",
+        "first",
+        "second"
+      ],
+      "textual_call_sites": [
+        "InventoryEvolutionList.cs:112"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/building/getBuildingFabrics",
+      "method": "getBuildingFabrics",
+      "source": "WebApiClient.cs",
+      "lines": [
+        2139,
+        2144
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/building/getBuildingLevels",
+      "method": "getBuildingLevels",
+      "source": "WebApiClient.cs",
+      "lines": [
+        1747,
+        1753
+      ],
+      "request_keys": [
+        "token",
+        "buildingId"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/building/getBuildings",
+      "method": "getMapBuildings",
+      "source": "WebApiClient.cs",
+      "lines": [
+        732,
+        737
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/building/getHarvestCounts",
+      "method": "getHarvestCounts",
+      "source": "WebApiClient.cs",
+      "lines": [
+        1756,
+        1761
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/building/raiseBuildingEventOfBattle",
+      "method": "raiseBuildingEventOfBattle",
+      "source": "WebApiClient.cs",
+      "lines": [
+        780,
+        785
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [
+        "Politic.cs:210"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/building/resolveBuildingEvent",
+      "method": "resolveBuilding",
+      "source": "WebApiClient.cs",
+      "lines": [
+        771,
+        777
+      ],
+      "request_keys": [
+        "token",
+        "buildingId"
+      ],
+      "textual_call_sites": [
+        "PluginRunner_DoPoliticBattle.cs:57",
+        "PoliticScriptCommand.cs:1405"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/edict/changeState",
+      "method": "changeEdictMissionState",
+      "source": "WebApiClient.cs",
+      "lines": [
+        1718,
+        1725
+      ],
+      "request_keys": [
+        "token",
+        "missionIds",
+        "states"
+      ],
+      "textual_call_sites": [
+        "PluginRunner_DoEdict.cs:69",
+        "PoliticMissionProgressList.cs:1292"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/edict/getMissionsInProgress",
+      "method": "getEdictMissionsInProgress",
+      "source": "WebApiClient.cs",
+      "lines": [
+        1710,
+        1715
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [
+        "PluginPoliticDataManager.cs:209",
+        "PoliticMissionProgressList.cs:337"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/edict/raiseMission",
+      "method": "raiseEdictMission",
+      "source": "WebApiClient.cs",
+      "lines": [
+        1702,
+        1707
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [
+        "PluginPoliticDataManager.cs:275",
+        "PoliticMissionManager.cs:451"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/edict/setWorkingValue",
+      "method": "setEdictMissionWorkingValue",
+      "source": "WebApiClient.cs",
+      "lines": [
+        1728,
+        1736
+      ],
+      "request_keys": [
+        "token",
+        "missionId",
+        "indexes",
+        "values"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/fixMapProduct",
+      "method": "fixMapProduct",
+      "source": "WebApiClient.cs",
+      "lines": [
+        4152,
+        4157
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [
+        "PoliticDebugMenu.cs:476"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/map/cleanup",
+      "method": "cleanupUserData",
+      "source": "WebApiClient.cs",
+      "lines": [
+        4068,
+        4073
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [
+        "TitleRestoreUserData.cs:14"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/map/getBackgrounds",
+      "method": "getBackgrounds",
+      "source": "WebApiClient.cs",
+      "lines": [
+        2309,
+        2314
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [
+        "mypageBgSelectWindow.cs:111"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/map/getMap",
+      "method": "getMap",
+      "source": "WebApiClient.cs",
+      "lines": [
+        687,
+        692
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/map/setBackground",
+      "method": "setBackground",
+      "source": "WebApiClient.cs",
+      "lines": [
+        2317,
+        2325
+      ],
+      "request_keys": [
+        "token",
+        "mapId",
+        "nearGround",
+        "farGround"
+      ],
+      "textual_call_sites": [
+        "mypageBgSelectWindow.cs:140"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/map/setMapName",
+      "method": "setMapName",
+      "source": "WebApiClient.cs",
+      "lines": [
+        695,
+        701
+      ],
+      "request_keys": [
+        "token",
+        "mapName"
+      ],
+      "textual_call_sites": [
+        "mypageCastleTownRename.cs:128",
+        "UserStatus.cs:1376"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/map/switchMap",
+      "method": "switchMap",
+      "source": "WebApiClient.cs",
+      "lines": [
+        714,
+        720
+      ],
+      "request_keys": [
+        "token",
+        "mapId"
+      ],
+      "textual_call_sites": [
+        "PluginPoliticDataManager.cs:84",
+        "PluginRunner_DoHarvest.cs:50",
+        "PluginRunner_DoTrade.cs:85",
+        "PluginRunner_LevelUp.cs:41",
+        "PluginScene.cs:152",
+        "PoliticFSMChangeMap.cs:94"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/shop/sellBuildings",
+      "method": "sellBuildings",
+      "source": "WebApiClient.cs",
+      "lines": [
+        1043,
+        1049
+      ],
+      "request_keys": [
+        "token",
+        "buildingIds"
+      ],
+      "textual_call_sites": [
+        "InventorySaleList.cs:191"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/task/accelerateProduceTask",
+      "method": "accelerateProduceTask",
+      "source": "WebApiClient.cs",
+      "lines": [
+        926,
+        934
+      ],
+      "request_keys": [
+        "token",
+        "buildingId",
+        "id",
+        "count"
+      ],
+      "textual_call_sites": [
+        "PoliticBuilding.cs:720",
+        "PoliticTimeCrunchInstantWindow.cs:50",
+        "PoliticTimeCrunchInstantWindow.cs:62",
+        "PoliticTimeCrunchInstantWindow.cs:66",
+        "PoliticTimeCrunchWindow.cs:46"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/task/cancelTasks",
+      "method": "cancelTask",
+      "source": "WebApiClient.cs",
+      "lines": [
+        816,
+        824
+      ],
+      "request_keys": [
+        "token",
+        "buildingIds"
+      ],
+      "textual_call_sites": [
+        "PoliticBuilding.cs:1142",
+        "PoliticMenuWindow.cs:477"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/task/getTasksInCurrentMap",
+      "method": "getMapTasks",
+      "source": "WebApiClient.cs",
+      "lines": [
+        788,
+        793
+      ],
+      "request_keys": [
+        "token"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/task/submitBulkProduceTasks",
+      "method": "submitBulkProduceTasks",
+      "source": "WebApiClient.cs",
+      "lines": [
+        907,
+        914
+      ],
+      "request_keys": [
+        "token",
+        "buildingIds",
+        "productIds"
+      ],
+      "textual_call_sites": [
+        "PluginRunner_DoManual.cs:95",
+        "PoliticFSMCollectiveProduce.cs:98",
+        "PoliticFSMProduct.cs:870"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/task/submitProduceTask",
+      "method": "sumbitProduceTask",
+      "source": "WebApiClient.cs",
+      "lines": [
+        897,
+        904
+      ],
+      "request_keys": [
+        "token",
+        "buildingId",
+        "productId"
+      ],
+      "textual_call_sites": [
+        "PoliticBuildingState/StateManualProduce.cs:50"
+      ],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    },
+    {
+      "endpoint": "politic/task/submitSerialBuildTask",
+      "method": "sumbitSerialBuildTask",
+      "source": "WebApiClient.cs",
+      "lines": [
+        864,
+        872
+      ],
+      "request_keys": [
+        "token",
+        "draftId",
+        "originCoords"
+      ],
+      "textual_call_sites": [],
+      "note": "Text scan is not proof of runtime reachability; overload matches need manual disambiguation."
+    }
+  ],
+  "protocol_evidence": "See reviewed-endpoints.tsv evidence column and README lifecycle; no server captures obtained.",
+  "compatibility_decisions": [
+    "Only 3 new routes, no production mounting or global count changes.",
+    "Sale buildings values reuse sold records; UI consumes only keys.",
+    "Missing static row is no stub response, missing table file is stub has no assets.",
+    "Sale overflow rejected; missing instance retry rejected (no replayed gainGold).",
+    "backgroundOwnership and mapBackgrounds are proposed server-internal fields; no default ownership or new entitlement.",
+    "Background values {} are UI-key-only compatibility, not original wire values.",
+    "Only enabled shop_item_bg rows allowed; disabled far rows reference near IDs; no guess at base/free background ownership.",
+    "Main map uses existing service map001 / numeric mapId=0. Original UserStatus also checks map1 for sub-map, not proof of map001 original spelling."
+  ],
+  "tables": [
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building.json",
+      "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+      "root": "building",
+      "row_count": 1343,
+      "first_row_keys": [
+        "id",
+        "name",
+        "desc",
+        "category",
+        "size",
+        "grade",
+        "costTypes",
+        "costAmounts",
+        "products",
+        "produceType",
+        "durability",
+        "levelUpTypeId",
+        "connectChipType",
+        "itemId",
+        "waitImages",
+        "buildingImages",
+        "producingImages",
+        "startProductImage",
+        "sortno",
+        "openShopItemId1",
+        "openLevel1",
+        "openShopItemId2",
+        "openLevel2",
+        "openShopItemId3",
+        "openLevel3",
+        "kokudakaMin",
+        "kokudakaMax",
+        "regularSoldier",
+        "dedication",
+        "map0",
+        "map1",
+        "map2",
+        "map3",
+        "map4"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\product.json",
+      "sha256": "36f9de13973ed4c6f57c8dcbfba09a7fe9c69e13d2435ad8534b8e33ff8478c7",
+      "root": "product",
+      "row_count": 1288,
+      "first_row_keys": [
+        "id",
+        "name",
+        "desc",
+        "costTypes",
+        "costAmounts",
+        "dueInterval",
+        "rewardId",
+        "openLevel",
+        "openMission",
+        "buyable",
+        "buyableLevel",
+        "buyableMission",
+        "itemId",
+        "assetNames",
+        "completeUIName",
+        "resourceIconName",
+        "buildingExp",
+        "sortno"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building_level.json",
+      "sha256": "b4c2466cc4ad68de233e808afa72170c0b8d285352f51e6e9057ac8349da9813",
+      "root": "building_level",
+      "row_count": 2183,
+      "first_row_keys": [
+        "id",
+        "needExp",
+        "needCostRatio",
+        "costRatio",
+        "intervalRatio",
+        "name"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\itemIdToShopId.json",
+      "sha256": "bebb65d4a570760e4b234a9baccc43625ae469995d9f7c4c4149d963f5c04c71",
+      "root": "itemIdToShopId",
+      "row_count": 1733,
+      "first_row_keys": [
+        "id",
+        "shopId",
+        "price"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item_bg.json",
+      "sha256": "1779a2d3f40de582ffd7f3e0fb2188ebb3f3a988ece8af201ebaecf2689e13be",
+      "root": "shop_item_bg",
+      "row_count": 8,
+      "first_row_keys": [
+        "id",
+        "isEnable",
+        "sortIndex",
+        "isNew",
+        "category",
+        "itemIds",
+        "credit",
+        "name",
+        "desc",
+        "iconName"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\accelerate_produce_task.json",
+      "sha256": "667736282b09564f376f7c384afca860deafb6f6f09faa94c7ed80b207b59bdc",
+      "root": "accelerate_produce_task",
+      "row_count": 5,
+      "first_row_keys": [
+        "id",
+        "time",
+        "credit",
+        "displayStart"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building_event.json",
+      "sha256": "3d2256e18a372caa249f1b2cc6700b0356be4d7656375408f19cd3c5885d93de",
+      "root": "building_event",
+      "row_count": 671,
+      "first_row_keys": [
+        "id",
+        "categoryType",
+        "type",
+        "costTypes",
+        "costAmount",
+        "clearRewards",
+        "enterScript",
+        "buildingId"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building_event_raise_rate_of_battle.json",
+      "sha256": "abd280e3f8b67dbe5ca6363cf775d606d7ec2521887e735b3743b803ca8ba12f",
+      "root": "building_event_raise_rate_of_battle",
+      "row_count": 100,
+      "first_row_keys": [
+        "id",
+        "cost",
+        "maxEventCount",
+        "raiseRate",
+        "ratio1",
+        "eventId1",
+        "ratio2",
+        "eventId2",
+        "ratio3",
+        "eventId3",
+        "ratio4",
+        "eventId4",
+        "ratio5",
+        "eventId5",
+        "ratio6",
+        "eventId6",
+        "ratio7",
+        "eventId7",
+        "ratio8",
+        "eventId8",
+        "ratio9",
+        "eventId9",
+        "ratio10",
+        "eventId10"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\edictMission.json",
+      "sha256": "624e3a1b08c4ee8a9ef38a53422cc6f51772c58b723d7835840caffd0b1da6ab",
+      "root": "edictMission",
+      "row_count": 1172,
+      "first_row_keys": [
+        "id",
+        "index",
+        "costTypes",
+        "costAmount",
+        "costIcon",
+        "clearReward",
+        "periodType",
+        "startPeriod",
+        "endPeriod",
+        "periods",
+        "iconFileName",
+        "enterScript",
+        "exitScript"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\edict_mission_raise_rate.json",
+      "sha256": "0714b1707511987378bf21c937fbba5a952421b2e3e51090862f20a5fd8efeb3",
+      "root": "edict_mission_raise_rate",
+      "row_count": 100,
+      "first_row_keys": [
+        "id",
+        "cost",
+        "maxEventCount",
+        "raiseRate",
+        "ratio1",
+        "eventId1",
+        "ratio2",
+        "eventId2",
+        "ratio3",
+        "eventId3",
+        "ratio4",
+        "eventId4",
+        "ratio5",
+        "eventId5",
+        "ratio6",
+        "eventId6",
+        "ratio7",
+        "eventId7",
+        "ratio8",
+        "eventId8",
+        "ratio9",
+        "eventId9",
+        "ratio10",
+        "eventId10",
+        "ratio11",
+        "eventId11",
+        "ratio12",
+        "eventId12",
+        "ratio13",
+        "eventId13",
+        "ratio14",
+        "eventId14",
+        "ratio15",
+        "eventId15",
+        "ratio16",
+        "eventId16",
+        "ratio17",
+        "eventId17",
+        "ratio18",
+        "eventId18",
+        "ratio19",
+        "eventId19",
+        "ratio20",
+        "eventId20"
+      ]
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "tests/fixtures/city_production/building.json",
+      "sha256": "5d669feb7fac358fe878857c6274a1cd52f8ac8b0d47f94dcf7c010246ccca0a",
+      "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building.json",
+      "row_ids": [
+        "building200_041_01_01_1_1"
+      ],
+      "exact_original_rows": true
+    },
+    {
+      "path": "tests/fixtures/city_production/itemIdToShopId.json",
+      "sha256": "68ad2efd550818d859a8aab726f4909e19df8dd4ce652aa3499a63694a0a2976",
+      "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\itemIdToShopId.json",
+      "row_ids": [
+        "item05_0200041"
+      ],
+      "exact_original_rows": true
+    },
+    {
+      "path": "tests/fixtures/city_production/shop_item_bg.json",
+      "sha256": "11530fa09c1466a9808e3afe4f281e9059dd47454ae0e3f4e87d7dd3a0404385",
+      "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item_bg.json",
+      "row_ids": [
+        "bgstore_01_0001_0001",
+        "bgstore_01_0001_0002",
+        "bgstore_11_0001_0001",
+        "bgstore_11_0001_0002"
+      ],
+      "exact_original_rows": true
+    }
+  ]
+}

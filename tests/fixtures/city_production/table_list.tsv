@@ -1,0 +1,4 @@
+table_file	root_key	accessor_classes
+building.json	building	BuildingsTableAccessor
+itemIdToShopId.json	itemIdToShopId	ItemIdToShopIdTableAccessor
+shop_item_bg.json	shop_item_bg	ShopItemBgTableAccessor
