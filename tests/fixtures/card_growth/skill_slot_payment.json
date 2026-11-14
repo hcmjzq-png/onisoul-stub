@@ -1,0 +1,14 @@
+{
+  "skill_slot_payment": {
+    "slot_0001_1": {
+      "id": "slot_0001_1",
+      "category": "card",
+      "amount": 500
+    },
+    "slot_0002_1": {
+      "id": "slot_0002_1",
+      "category": "credit",
+      "amount": 5
+    }
+  }
+}

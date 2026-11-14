@@ -1,0 +1,19 @@
+{
+  "skillRefreshG6": {
+    "skill1_03794_01": {
+      "id": "skill1_03794_01",
+      "rate": 1,
+      "rate_credit": 1
+    },
+    "skill1_08493_01": {
+      "id": "skill1_08493_01",
+      "rate": 1,
+      "rate_credit": 2
+    },
+    "skill1_01141_01": {
+      "id": "skill1_01141_01",
+      "rate": 30,
+      "rate_credit": 20
+    }
+  }
+}

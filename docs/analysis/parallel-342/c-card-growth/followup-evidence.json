@@ -1,0 +1,279 @@
+{
+  "container": "D:\\onisoul\\work\\quest-contract-20261115\\tableAssets.bin",
+  "container_sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7",
+  "tables": [
+    {
+      "file": "deckMessage.json",
+      "root_key": "message",
+      "container_name_offset": 33308196,
+      "script_offset": 33308216,
+      "script_length": 37425,
+      "sha256": "0a5c348337014327837644fdb4cf264664fe54ce02c7bc6bff16ff21a16c167e",
+      "rows": 312
+    },
+    {
+      "file": "skillRefreshG2.json",
+      "root_key": "skillRefreshG2",
+      "container_name_offset": 100093476,
+      "script_offset": 100093500,
+      "script_length": 17710,
+      "sha256": "ddc950f0fd8e892b12e2865458ce43b4fe411154a4f7a8a422acc3ff6395b4de",
+      "rows": 200,
+      "rate_pairs": [
+        {
+          "rate": 1,
+          "rate_credit": 1,
+          "count": 29
+        },
+        {
+          "rate": 4,
+          "rate_credit": 6,
+          "count": 128
+        },
+        {
+          "rate": 30,
+          "rate_credit": 20,
+          "count": 43
+        }
+      ],
+      "rate_sum": 1831,
+      "rate_credit_sum": 1657,
+      "unresolved_skill_ids": [],
+      "exported_file_present": false,
+      "sample_rows": [
+        "skill1_03127_01",
+        "skill1_02003_01",
+        "skill1_01141_01"
+      ],
+      "sample_sha256": "2d90d25441c1b6c64c3a414fe6e5979b7a9e82eba81a989de6c8011f29f922a6",
+      "sample_path": "tests/fixtures/card_growth/skillRefreshG2.json"
+    },
+    {
+      "file": "skillRefreshG4.json",
+      "root_key": "skillRefreshG4",
+      "container_name_offset": 38154108,
+      "script_offset": 38154132,
+      "script_length": 20790,
+      "sha256": "e3cfc41829ff8be9cedbc36ef8fb245338f4515baf4b981a9261baac23e7ea84",
+      "rows": 235,
+      "rate_pairs": [
+        {
+          "rate": 1,
+          "rate_credit": 1,
+          "count": 33
+        },
+        {
+          "rate": 2,
+          "rate_credit": 4,
+          "count": 159
+        },
+        {
+          "rate": 30,
+          "rate_credit": 20,
+          "count": 43
+        }
+      ],
+      "rate_sum": 1641,
+      "rate_credit_sum": 1529,
+      "unresolved_skill_ids": [],
+      "exported_file_present": false,
+      "sample_rows": [
+        "skill1_03690_01",
+        "skill1_03585_01",
+        "skill1_01141_01"
+      ],
+      "sample_sha256": "ca93bd9850c8b974abd54e22de2bec9e6e17c4e7fba097e4ab9421b4a3599853",
+      "sample_path": "tests/fixtures/card_growth/skillRefreshG4.json"
+    },
+    {
+      "file": "skillRefreshG6.json",
+      "root_key": "skillRefreshG6",
+      "container_name_offset": 37938204,
+      "script_offset": 37938228,
+      "script_length": 14014,
+      "sha256": "a420b5834dba41176fae7fc64aa3904af32b6c5209b4f305a291011576cfda17",
+      "rows": 158,
+      "rate_pairs": [
+        {
+          "rate": 1,
+          "rate_credit": 1,
+          "count": 30
+        },
+        {
+          "rate": 1,
+          "rate_credit": 2,
+          "count": 85
+        },
+        {
+          "rate": 30,
+          "rate_credit": 20,
+          "count": 43
+        }
+      ],
+      "rate_sum": 1405,
+      "rate_credit_sum": 1060,
+      "unresolved_skill_ids": [],
+      "exported_file_present": false,
+      "sample_rows": [
+        "skill1_03794_01",
+        "skill1_08493_01",
+        "skill1_01141_01"
+      ],
+      "sample_sha256": "6219c358bb8e0681b5f612eeaca808dc9806f76be8a93e3e38b20f2eb5187aa9",
+      "sample_path": "tests/fixtures/card_growth/skillRefreshG6.json"
+    },
+    {
+      "file": "skill_slot_payment.json",
+      "root_key": "skill_slot_payment",
+      "container_name_offset": 14662636,
+      "script_offset": 14662664,
+      "script_length": 547,
+      "sha256": "90c6640741dfdb7c71742c0ae82aae071611cbb10d6160596681fdb0b5dfaeb4",
+      "rows": 6,
+      "fees": {
+        "slot_0001_1": {
+          "category": "card",
+          "amount": 500
+        },
+        "slot_0001_2": {
+          "category": "card",
+          "amount": 900
+        },
+        "slot_0001_3": {
+          "category": "card",
+          "amount": 1500
+        },
+        "slot_0002_1": {
+          "category": "credit",
+          "amount": 5
+        },
+        "slot_0002_2": {
+          "category": "credit",
+          "amount": 15
+        },
+        "slot_0002_3": {
+          "category": "credit",
+          "amount": 30
+        }
+      },
+      "sample_rows": [
+        "slot_0001_1",
+        "slot_0002_1"
+      ],
+      "sample_sha256": "d9dd6c439fa4b08c4dc4da4f5e1cac10b6b128670314d2be4e79bda4e68ee461",
+      "sample_path": "tests/fixtures/card_growth/skill_slot_payment.json"
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "methods_lines": [
+        "sendRequest:190-217",
+        "_httpCall:247-273",
+        "sellTactics:1305-1311",
+        "setSkillcoins/setSkillSlot:4554-4570"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RpcQueue.cs",
+      "sha256": "4396bce9b6cb125a2aef47c803fa40105df4be435db43256b6b66a9d178ef972",
+      "methods_lines": [
+        "reliable/predicable:107-121"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSaleTacticsObj.cs",
+      "sha256": "5d18f2285be483c59380e399956b0c30cf47128f542d1173da9f709f6b085b81",
+      "methods_lines": [
+        "SumLongPrice:57-66",
+        "setText:86-106"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Tactics.cs",
+      "sha256": "32062ed91691174f403d6695823bae885dd4195f994416e37984ebac29ad57b8",
+      "methods_lines": [
+        "postCallback:124-150",
+        "sale:307-368"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TacticsTableAccessor.cs",
+      "sha256": "82f3fe35a3d1d0ad4aedc655887da4086dac1da38190c066a37d65b628fb2d63",
+      "methods_lines": [
+        "getSalePrice:181-188"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TacticsStatus.cs",
+      "sha256": "82e4b1041ebcf43d76a4e858d5b4f4f43fca86e68934f0474b53ca895c4ae59f",
+      "methods_lines": [
+        "constructor:29-37"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_SkillRefresh.cs",
+      "sha256": "3f53464ce504c073bf669486782dfaad5e3321f6acb8c0de8cca0a6a1defe843",
+      "methods_lines": [
+        "postCallBack:105-171",
+        "conflateFablicConnection:215-274",
+        "sendRefreshRequest/transformPaymentId/checkPayment:512-604"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SkillRefreshPaymentTableAccessor.cs",
+      "sha256": "fc636f071eb7d5e545e8da6c28eef8e182b7a8a6d343f510582583ad21806560",
+      "methods_lines": [
+        "getCategory/getAmount:17-35"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterConflatePreview_Character.cs",
+      "sha256": "7d2520fd03f41cd40bee6b09dc7b597d9aaa520a560b6abc30603770a92f355c",
+      "methods_lines": [
+        "refreshBtnStatus:202-215"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckScene.cs",
+      "sha256": "c3660a1c80e2e44a403429206a5256cfca0bce6472c980a6a38859a5c5dd28e1",
+      "methods_lines": [
+        "getDecks callback:244-253"
+      ]
+    }
+  ],
+  "negative_searches": [
+    {
+      "source": "D:\\onisoul\\work\\quest-contract-20261115\\tableAssets.bin",
+      "term": "DECK_MSG_CONFIRM_ABSORB_CARDS",
+      "exact_utf8_occurrences": 0,
+      "limit": "Exact bytes in this container only; not all client resource files."
+    },
+    {
+      "source": "deckMessage.json",
+      "terms": {
+        "DECK_MSG_CONFIRM_ABSORB_CARDS": 0,
+        "skillCoins": 0,
+        "REFRESH": 0,
+        "技能币": 0
+      },
+      "limit": "Only this verified message TextAsset; not proof that no other resource contains a rate."
+    }
+  ],
+  "tactics": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\tactics.json",
+    "sha256": "4b3d489d969b4d03200fb047a244afe1304395cbe56e99439a69a95723726556",
+    "rows": 595,
+    "sample_rows": [
+      "card1_00001_01",
+      "card1_00002_01"
+    ],
+    "sample_sha256": "f37e3fe3c3d67f0021c3e02d84ccaba4c489dc6e7e5f938118309ca59a706cb5"
+  },
+  "protocol_vs_policy": {
+    "proven": "Tactic prices and quantities; response contains sold quantities. Six refresh fees and tier button mapping. Nonuniform candidate table values.",
+    "unknown": "Coin conversion rate; refresh sampling/replacement/learning rules; client request identity for retry deduplication.",
+    "service_policy": "Trusted integration-only operation_id, player-local durable receipt, cap 1024 without eviction, reject all deck references and gold overflow. No new wire field or HTTP handler."
+  }
+}
