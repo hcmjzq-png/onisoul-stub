@@ -265,3 +265,83 @@ p_dc76e9f0c0006e8f   created=true   username=流音   country=country37   state 
 结论：这 6 个包只能从**跑过原服、缓存里有副本的机器**上取（朋友机器 `D:\鬼武者魂\cache\data7` 里按哈希搜），拿到后落盘到 `assets/pc/bundles/chara/<hash>.unity3d`，「联机中断」才会消失。这是素材缺失，不是协议/逻辑错误，与第八节的三处服务端缺陷性质不同。
 
 附带一个已知内容缺口：`createPlayer` 写入的 `characters` 是空的——`_initial_characters` 依赖 `beginning_equipment` + `item01` + `character` 三张表，表空则初始武将 0 个。所以即便资源包到位，主城／编成里的武将列表仍需要最小初始存档来填。
+
+## 十、从客户端缓存还原 PC 资产包（方法进仓，二进制不入仓）
+
+原站 `client-onisoul.86joy.com` 已不可访问（服务器上 `getent hosts` 解析失败、`curl` 报 `Could not resolve host`），所以 PC 版的 `.unity3d` 资产包只能从**跑过原服的机器上的缓存副本**还原。方法固化在 `tools/extract_cached_bundles.py`，二进制本身不进 git。
+
+### 10.1 `.d` 记录格式（QtWebKit 4.x 磁盘缓存）
+
+一条记录就是一笔 HTTP 事务：
+
+```
+偏移 0   4 字节  记录长度
+偏移 4   4 字节  版本标记（观测值 0x00000007）
+偏移 8   4 字节  URL 长度（大端）
+偏移 12  N 字节  URL 明文（ASCII）
+...              状态行 + 响应头
+...              响应体
+```
+
+URL 按 MD5 首字符分到 `cache/data7/0` ~ `f` 共 16 个桶，记录文件名是 8 字符短名、与 URL 无关，因此必须逐条读 URL 才知道它是什么资源。
+
+响应体两种形态：明文（包体以 `UnityWeb` 开头，`app.unity3d` 那 4 MB 就是这样，魔数落在记录内偏移 304 附近）或 zlib／gzip 压缩流（解压后才以 `UnityWeb` 开头）。脚本按这个顺序尝试。
+
+### 10.2 本轮实测（2026-11-14，`DESKTOP-N8RCQR0`）
+
+```
+扫描 D:\鬼武者魂\cache\data7      164 条记录，43,414,472 B
+匹配 /assets/<dir>/<hash>.unity3d  130 条命中（含 6 条重复 URL）
+解出文件                          124 个，38,097,726 B
+命中方式                          plain 124 / zlib 0 / gzip 0 / 失败 0
+包体校验                          chara/1b3772… 前 8 字节 = UnityWeb
+```
+
+按目录：
+
+```
+bgm 3 / building 4 / cch 2 / chara 15 / item 40 / mission 1 / pbg 27
+pbm 1 / product 1 / scene 11 / scr 14 / se 1 / vse 4
+```
+
+### 10.3 部署与验证
+
+产物放在服务端 `/opt/onisoul/assets/pc/bundles`，正好命中 `app/transport/paths.py` 里静态层的第 1 条候选路径 `PC_BUNDLE_DIR/<dir>/<hash>.unity3d`。实测（`curl` 打 `127.0.0.1`，带 `?r=306620`）：
+
+```
+chara/1b3772fdd4b788f942075d29d2f32423 → 200 116,984 B
+scene/7bf2c1d92f87d89a4f646a9cefb8fb62 → 200 2,622,889 B
+bgm/5b7ebaae6b9ea0a8e79c014237bb83cd   → 200 1,510,109 B
+```
+
+这三条以前都是 404。
+
+### 10.4 复现步骤
+
+```bash
+# 1) 在有缓存副本的 Windows 机器上解包（--dry-run 先看统计）
+python3 tools/extract_cached_bundles.py --cache-dir "D:/鬼武者魂/cache/data7" --out ./bundles --dry-run
+python3 tools/extract_cached_bundles.py --cache-dir "D:/鬼武者魂/cache/data7" --out ./bundles
+
+# 2) 把 bundles/ 下各目录拷到服务端
+rsync -r ./bundles/ ubuntu@<server>:/opt/onisoul/assets/pc/bundles/
+
+# 3) 验证
+curl -s -o /dev/null -w "%{http_code} %{size_download}\n" \
+  "http://127.0.0.1/client/pc/jp/assets/chara/1b3772fdd4b788f942075d29d2f32423.unity3d?r=306620"
+```
+
+### 10.5 仍然缺的 6 个 chara 包
+
+```
+16 次请求  chara/adab798b1a597e970fa1995aa4a9dd11
+15 次请求  chara/759f9e91a56a2aab75b1d64bf101a5ef
+11 次请求  chara/b6c88175b58f489bebf782eef21ace35
+11 次请求  chara/69e30186b8b4e5649be7b31103de7558
+10 次请求  chara/395a38ee07917a3f1342358cdb6c4fff
+ 5 次请求  chara/1450fa13b6e0098ea407efee5de253b2
+```
+
+缓存里现有的 15 个 chara 包与这 6 个哈希**互不相同**（`c42732b9…`、`c07e9888…`、`84fa3ca2…`、`f1fc3313…`、`441147d9…`、`8b3d6b8a…`、`e2fba99c…`、`5fd8a8e6…`、`8151e5be…`、`616bf995…`、`497199bd…`、`1b3772fd…`、`58479003…`、`3e87841f…`、`5a10edfd…`），替补不了——这 6 个一直 404，失败响应不会进缓存。
+
+要补齐只能从另一台跑过原服、缓存里有这些哈希的机器上取，再走同一套脚本。
