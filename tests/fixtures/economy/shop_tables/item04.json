@@ -1,0 +1,60 @@
+{
+  "item04": {
+    "item04_0200090": {
+      "id": "item04_0200090",
+      "enable": true,
+      "value": 0,
+      "category": "draft",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_04_0200090_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_04_0200090_DESC",
+      "iconName": "item04_0200090",
+      "parameterId": "draft2000090"
+    },
+    "item04_0200101": {
+      "id": "item04_0200101",
+      "enable": true,
+      "value": 0,
+      "category": "draft",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_04_0200101_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_04_0200101_DESC",
+      "iconName": "item04_0200101",
+      "parameterId": "draft2000101"
+    },
+    "item04_0200648": {
+      "id": "item04_0200648",
+      "enable": true,
+      "value": 0,
+      "category": "draft",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_04_0200648_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_04_0200648_DESC",
+      "iconName": "item04_0200648",
+      "parameterId": "draft2000648"
+    },
+    "item04_0200651": {
+      "id": "item04_0200651",
+      "enable": true,
+      "value": 0,
+      "category": "draft",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_04_0200651_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_04_0200651_DESC",
+      "iconName": "item04_0200651",
+      "parameterId": "draft2000651"
+    }
+  }
+}
