@@ -1,0 +1,11 @@
+{
+  "plugin_time": {
+    "plugin_0001": {
+      "id": "plugin_0001",
+      "category": "plugin",
+      "expiration": 86400,
+      "credit": 19,
+      "enable": true
+    }
+  }
+}

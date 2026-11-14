@@ -1,0 +1,13 @@
+{
+  "mypage_trophy": {
+    "totalWin_001": {
+      "id": "totalWin_001",
+      "name": "PLAYRECORD_MSG_00101_NAME",
+      "desc": "PLAYRECORD_MSG_00101_DESC",
+      "category": "totalWin",
+      "clearAmount": 1,
+      "clearReward": "reward06_totalWin_001",
+      "iconImage": "trop1_000001"
+    }
+  }
+}
