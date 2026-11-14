@@ -110,6 +110,10 @@ python tools/import_tables.py --source /path/to/extracted/tables
 另有 4 张服务端运行时表由 `docs/analysis/server_tables.tsv` 管理。见
 `docs/tables.md` 和 `docs/gameplay-onboarding.md`。
 
+安装包中的 `data.bin` 已完成全文件验证，属于可由固定种子完整重建的随机填充，
+并非待解密的游戏资源包。证据与只读复核方法见
+[`docs/analysis/data-bin-verification.md`](docs/analysis/data-bin-verification.md)。
+
 ## 部署
 
 见 `deploy/` 的 systemd 单元与 `docs/architecture.md`。Stub 绑定 `127.0.0.1:18080`，对外由 `tools/proxy80.py` 在 80 端口转发。
