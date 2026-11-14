@@ -54,3 +54,30 @@ categoryGradeCount（建筑 grade/level=any）、eq_greater_than 条件。
 本批新增 6 个专用处理器：两项活动/商店状态、两个武将查询、编队读/写。
 登记端点仍为 402；专用处理器从 23 增至 29，通用占位从 379 降至 373。
 这个计数只表示派发覆盖，并不表示 29 项玩法已全部完成或通过 Unity 真机验收。
+
+## 第二批：编队依赖、资料与普通商店
+
+本批再接管 16 个端点，通用占位从 373 降至 357。完整清单由
+`python tools/endpoint_progress.py` 生成到 `analysis/player-loop-20261115/`；
+该清单的 next_work 是工作安排，不表示每条都已完成新的手工复核。
+以下源码沿用本文开头指纹对应的重新反编译目录。
+
+| 接口 / 字段 | 来源 | 实现及限制 |
+| --- | --- | --- |
+| `common/getEquips`、`common/getTactics` | bundle | `DeckConflateCards.createStatus`，返回当前玩家保存的裸映射；不生成不存在的装备/战术。 |
+| `deck/getProtectedCharacterIds/getProtectedEquipIds`、`setCharacterProtect/setEquipProtect` | bundle | `WebApiClient.cs:1249-1288`、`DeckScene.cs:179-202` 和对应 CharacterConflatePreview 的 protectOrRelease。参数 characterIds/equipIds 与布尔 enable；读取是索引到 ID 的裸映射，设置成功为空表。只修改已拥有卡（含已入仓武将）的保护状态；整批验证后保存。 |
+| `deck/getCharactersInStore` | bundle | `DeckConflateCards_StrageCharacter.cs:21-26` 把根表传给 createStatus，故纠正为裸映射。旧契约把另一个响应 StorageInfoHash.extendSlot 误挂到本端点。 |
+| `deck/getCharacterStoreInfo` | bundle / 待验证 | `DeckScene.cs:66-72,141-146`、`DeckStorage.cs:118,147-166`，需 characterCount/extendSlot/extendLimit/lastOpenDate/nextOpenLimit/now。计数取保存的仓库武将，其他值取存档；缺失填 0 表示没有扩仓/开仓记录。这是兼容初始化策略，原服冷却时长未恢复，未新增存取/付费扩仓业务。 |
+| `deck/getDeckBonus.deck.<kind>.<slot>.id/bonus` | bundle | `DeckScene.cs:214-238`、`vsSetting.cs:87-107`。读取实际编队中的 ID；当前未启用排行/限时加成，bonus 为空，不因存在 limitedTimeBonus 表就激活旧活动。不代表完整加成玩法实现。 |
+| `politic/mypage/getPlayerProfile` | bundle | `mypageProfileUpdate.cs:239-299`：username/level/country、三种 Point、characterCount/buildingCount/tacticCount/friendCount/raidBossPoint/rank、souls 七色、selfIntroduction.message/三项 habits。纠正旧契约把嵌套的 message、habits、颜色错误平铺到根。取玩家存档，无记录的统计为 0；无排行不伪造 rank。eachKokudaka 仅当前主城。 |
+| `politic/mypage/setSelfIntroduction` | bundle | `mypageSelfIntroduction.confirmCallback` 传 message 与 habits.0/1/2；长度按 defines.self_introduction_message_min/max_length，偏好 ID 按 habit 表，保存后 profile 返回。 |
+| `politic/map/setMapName2`，`getMapData.map.name` | bundle | `WebApiClient.cs:704-711` 的 mapId/mapName；`UserStatus.cs:1301-1332,1371-1404` 从 map.name 读取，none 容器以空表判改名成功。只支持主城 mapId=0，长度按 defines；不将支城旧实现引入。 |
+| `politic/mypage/getLessonStates.states` | bundle | `LessonMissionSimpleStatusManager.cs:66-127`、`LessonMissionSimpleStatus.cs:20-33`，索引数字字符串对应 L/C。枚举 lesson 表，按 lessonsDone 返回；未读不标完成。takeLesson 需要 reward14 等原奖励数据，仍在待办，未用空奖励冒充完成。 |
+| `politic/support_item/getPotions.potions.<id>.amount` | bundle | `PoliticItemInventory.setup/putInItemList`、`PotionTableAccessor.getItemId`，potion.itemID 映射已有 items；不把 initialAmount 字段当免费赠送。全自动用药条目明确回零余额，其余按实际库存返回。恢复公式尚未证实，usePotions 未纳入完成计数。 |
+| `politic/shop/getShopItems.shopItems/recommendedItems` | bundle / 待验证 | `ShopUpdate.cs:57-110,204-210` 要求两张表；条目读 state/isNewBuyable/discount。当前仅列出 isInitialSale=true、无折扣、有正价格且能发放的图纸/消耗品，其他商品不展示。isInitialSale 作为白名单是本模拟服保守策略，未声称复原原服上架/解锁规则。 |
+| `politic/shop/buyShopItem.resources/result` | bundle | `WebApiClient.cs:1036-1046` 请求 shopItemId/index/quantity/storetable；`ShopItemBuild/Support.saleWindowResult` 读取 resources，`DailyMissionScene.cs:440-450` 读取 result 中购买后物品余额。只接受普通 shop_item 表；整套/单件按 isSet/itemIds/quantities；countryshop 通过 shop_item_country 映射本国物品。 |
+| 商店费用 | bundle | `ShopUpdate.cs:114-146`、`ShopItem.sortResource`：credit 类型使用行内 credit 替换 costAmounts，不能相加；其他资源按表值。缺余额/未知商品/非整数或非正数量/错误下标/未知促销表均失败，整笔不扣款、不发物品。写入沿用玩家锁与数据库 revision 校验。 |
+
+新逻辑对应 `app/business/player_services.py`。商店发放进入现有 items，图纸通过
+getDrafts 可见，消耗品通过 getPotions 可见；保护、介绍、改名跨重登保留。
+没有实现战斗、关卡随机事件、领奖概率、药品恢复、付费扩仓和九项争议玩法。

@@ -37,7 +37,6 @@ debug/resetPlayer	1	called	ignored	PoliticDebugMenu.cs:464（回调体不读响�
 debug/resetQuest	1	called	hands_to_callee:getQuestProgress	QuestTypeSelector.cs
 debug/setQuestStep	1	called	ignored	Quest.cs:116（回调体不读响应键）
 debug/withdrawTurfWar	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
-deck/getCharacterStoreInfo	1	called	other	DeckScene.cs
 deck/getFormation	0	no_call_site	-	app/ 内无 .<method>( 调用点，仅 WebApiClient 包装方法存在
 deck/getProtectedCharacterIds	1	called	iterates_no_key_name	DeckScene.cs
 deck/getProtectedEquipIds	1	called	iterates_no_key_name	DeckScene.cs

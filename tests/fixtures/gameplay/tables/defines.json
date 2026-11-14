@@ -1,0 +1,24 @@
+{
+  "defines": {
+    "mapname_min_length": {
+      "id": "mapname_min_length",
+      "value": 1
+    },
+    "mapname_max_length": {
+      "id": "mapname_max_length",
+      "value": 10
+    },
+    "self_introduction_message_min_length": {
+      "id": "self_introduction_message_min_length",
+      "value": 0
+    },
+    "self_introduction_message_max_length": {
+      "id": "self_introduction_message_max_length",
+      "value": 120
+    },
+    "default_extend_character_store": {
+      "id": "default_extend_character_store",
+      "value": 100
+    }
+  }
+}

@@ -1,1 +1,16 @@
-{"item04":{"item04_0200001":{"id":"item04_0200001","category":"draft","parameterId":"draft2000001"},"item04_0200041":{"id":"item04_0200041","category":"draft","parameterId":"draft2000041"}}}
+{
+  "item04": {
+    "item04_0200001": {
+      "id": "item04_0200001",
+      "category": "draft",
+      "parameterId": "draft2000001",
+      "enable": true
+    },
+    "item04_0200041": {
+      "id": "item04_0200041",
+      "category": "draft",
+      "parameterId": "draft2000041",
+      "enable": true
+    }
+  }
+}

@@ -67,7 +67,7 @@ REAL_GAP_KEYS = {
 
 # 判读归给别人、但那批键必须在归属端点里真的声明过
 OWNER_KEYS = {
-    "deck/getDeckBonus": ["id", "bonus:Hashtable"],
+    "deck/getDeckBonus": ["deck.<kind>.<slot>.id", "deck.<kind>.<slot>.bonus:Hashtable"],
     "deck/getDecks": ["inheritPoint:double", "possessionLimits:Hashtable", "skillCoins:double"],
     "deck/getAvatarCharacters": ["baseId:string"],
     "ranking/getRecordOfCountryInBattle": ["countryId", "rank:double"],

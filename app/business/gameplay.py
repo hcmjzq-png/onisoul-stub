@@ -16,6 +16,7 @@ from app import sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import MissionChain, SYSTEM_MISSION
 from app.business.registry import Registry
+from app.business.player_services import PlayerServices
 from app.tables import TableCatalog, TableError, default_catalog
 
 StateLoader = Callable[[str], dict[str, Any]]
@@ -147,6 +148,7 @@ class GameplayService:
         }
         for api, handler in handlers.items():
             registry.register(api, self._guard(api, handler))
+        PlayerServices(self).register(registry)
         return registry
 
     def _lock_for(self, player_id: str) -> threading.RLock:
@@ -992,6 +994,8 @@ class GameplayService:
             "size": {"width": float(width), "height": float(height)},
             "occupiedGrids": occupied,
         }
+        if "0" in (player.get("mapNames") or {}):
+            map_data["name"] = player["mapNames"]["0"]
         return map_data, building_groups
 
     def get_map_data(

@@ -1,0 +1,147 @@
+{
+  "shop_item": {
+    "shop0000001": {
+      "id": "shop0000001",
+      "category": "draft",
+      "isSet": true,
+      "itemIds": [
+        "countryshop_00002"
+      ],
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        50000
+      ],
+      "credit": 0,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true
+    },
+    "shop0000002": {
+      "id": "shop0000002",
+      "category": "draft",
+      "isSet": true,
+      "itemIds": [
+        "countryshop_00001"
+      ],
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        50000
+      ],
+      "credit": 0,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true
+    },
+    "shop0000003": {
+      "id": "shop0000003",
+      "category": "draft",
+      "isSet": true,
+      "itemIds": [
+        "item04_0200001"
+      ],
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        50000
+      ],
+      "credit": 0,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": false
+    },
+    "shop0000041": {
+      "id": "shop0000041",
+      "category": "draft",
+      "isSet": true,
+      "itemIds": [
+        "item04_0200041"
+      ],
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        1000
+      ],
+      "credit": 0,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true
+    },
+    "shop0700005": {
+      "id": "shop0700005",
+      "category": "consumable",
+      "isSet": true,
+      "itemIds": [
+        "item07_0010006"
+      ],
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "credit"
+      ],
+      "costAmounts": [
+        40
+      ],
+      "credit": 21,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true
+    },
+    "shop0700006": {
+      "id": "shop0700006",
+      "category": "consumable",
+      "isSet": true,
+      "itemIds": [
+        "item07_0010002"
+      ],
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "credit"
+      ],
+      "costAmounts": [
+        40
+      ],
+      "credit": 21,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true
+    },
+    "shop0900001": {
+      "id": "shop0900001",
+      "category": "consumable",
+      "isSet": true,
+      "itemIds": [
+        "item07_0010001"
+      ],
+      "quantities": [
+        1
+      ],
+      "costTypes": [],
+      "costAmounts": [],
+      "credit": 0,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true
+    }
+  }
+}

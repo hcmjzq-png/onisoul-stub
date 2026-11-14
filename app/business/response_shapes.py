@@ -24,6 +24,7 @@ class ResponseShape(str, Enum):
 # helper: `DeckConflateCards.createStatus` is used by common/getCharacters,
 # common/getEquips and common/getTactics.
 BARE_MAP_EVIDENCE: dict[str, str] = {
+    "deck/getCharactersInStore": "DeckConflateCards_StrageCharacter.cs:setup",
     "auction/auctionCardSale": "AuctionDataManager.cs:OnGetMySellingCards@0x294278",
     "auction/auctionResourceSale": "AuctionDataManager.cs:OnGetMySellingResources@0x2951B8",
     "common/getCharacters": "DeckConflateCards.cs:createStatus@0x2F04E8",

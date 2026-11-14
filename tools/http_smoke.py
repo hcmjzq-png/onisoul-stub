@@ -15,7 +15,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from app import db
+from app import db, state
 
 
 def run(host: str, port: int) -> None:
@@ -95,6 +95,40 @@ def run(host: str, port: int) -> None:
         assert change("po_mission_00002", "accepted")["succeeded"]
         assert change("po_mission_00002", "closed")["succeeded"] is False
         print("[http-smoke] inactive events/shop, owned characters, deck persistence/avatar, mission prerequisites/rewards: OK")
+        assert api("deck/setCharacterProtect", {"token": token, "characterIds": [chosen], "enable": True}) == {}
+        assert chosen in api("deck/getProtectedCharacterIds", {"token": token}).values()
+        assert api("deck/setCharacterProtect", {"token": token, "characterIds": [2147483647], "enable": True}).get("errorReason")
+        assert api("common/getEquips", {"token": token}) == {}
+        assert api("common/getTactics", {"token": token}) == {}
+        assert api("deck/getCharactersInStore", {"token": token}) == {}
+        assert api("deck/getCharacterStoreInfo", {"token": token})["characterCount"] == 0
+        assert api("deck/getDeckBonus", {"token": token})["deck"]["attack"]["4"]["id"] == int(chosen)
+        habits = {"0": "habit0000101", "1": "none", "2": "none"}
+        assert api("politic/mypage/setSelfIntroduction", {"token": token, "message": "audit profile", "habits": habits})["succeeded"]
+        assert api("politic/mypage/getPlayerProfile", {"token": token})["selfIntroduction"]["message"] == "audit profile"
+        assert api("politic/map/setMapName2", {"token": token, "mapId": 0, "mapName": "AuditTown"}) == {}
+        assert api("politic/map/getMapData", {"token": token})["map"]["name"] == "AuditTown"
+        assert api("politic/mypage/getLessonStates", {"token": token})["states"]["1"] == "L"
+        shop = api("politic/shop/getShopItems", {"token": token, "category": "draft"})
+        assert "shop0000041" in shop["shopItems"] and isinstance(shop["recommendedItems"], dict)
+        purchase = {"token": token, "shopItemId": "shop0000041", "quantity": 2, "index": 0, "storetable": "shop_item"}
+        gold = api("common/getPlayerParams", {"token": token})["resources"]["gold"]["amount"]
+        bought = api("politic/shop/buyShopItem", purchase)
+        assert bought["succeeded"] and bought["resources"]["gold"]["amount"] == gold - 2000
+        assert api("politic/building/getDrafts", {"token": token})["draft2000041"]["amount"] == 2
+        # Production tutorial rewards do not grant credit. Fund only this freshly
+        # created, exact-account test fixture; never modify an existing player.
+        fixture = state.load(initial["playerId"])
+        assert fixture["entity"]["username"] == account and fixture["entity"]["created"]
+        fixture["resources"]["credit"]["amount"] = 100
+        state.save(fixture, initial["playerId"])
+        credit = 100
+        bought = api("politic/shop/buyShopItem", {**purchase, "shopItemId": "shop0700006", "quantity": 1})
+        assert bought["succeeded"] and bought["resources"]["credit"]["amount"] == credit - 21
+        assert api("politic/support_item/getPotions", {"token": token})["potions"]["potion0000102"]["amount"] == 1
+        assert api("politic/shop/buyShopItem", {**purchase, "quantity": 9999})["succeeded"] is False
+        assert api("politic/building/getDrafts", {"token": token})["draft2000041"]["amount"] == 2
+        print("[http-smoke] protection, inventory/storage, profile/map, lessons, gold/credit purchases and balances: OK")
         assert api("common/getPlayerParams", {}).get("error") == "UNAUTHORIZED"
         debug = api("debug/devLogin", {"username": account})
         assert debug.get("succeeded") is False and not debug.get("token")
