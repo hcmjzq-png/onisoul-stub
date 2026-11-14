@@ -30,6 +30,8 @@ onisoul-stub/
 ├── tools/proxy80.py         # 80 → 18080 转发代理
 ├── tools/contract_check.py  # 契约一致性检查（端点 / 边 / 批次 / 类型覆盖）
 ├── tools/import_tables.py   # 只导入清单内的 108 张配置表
+├── tools/check_pc_assembly.py # PC 程序集 PE/CLI 结构只读校验
+├── tools/decompile_pc_assembly.py # 校验后用 ilspycmd 反编译到仓库外
 ├── deploy/                  # systemd 单元
 ├── docs/                    # 架构与接口文档
 └── tests/                   # 协议层单测
@@ -113,6 +115,9 @@ python tools/import_tables.py --source /path/to/extracted/tables
 安装包中的 `data.bin` 已完成全文件验证，属于可由固定种子完整重建的随机填充，
 并非待解密的游戏资源包。证据与只读复核方法见
 [`docs/analysis/data-bin-verification.md`](docs/analysis/data-bin-verification.md)。
+
+`Assembly-CSharp.dll` 的提取后结构验证与反编译方法见
+[`docs/analysis/pc-assembly.md`](docs/analysis/pc-assembly.md)。
 
 ## 部署
 

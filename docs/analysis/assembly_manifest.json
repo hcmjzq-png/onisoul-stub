@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "source": {
+    "client": "OniSoul_Setup_20140712.exe",
+    "bundle": "app.unity3d",
+    "bundle_sha256": "a374083f4662a5e3d2480058cbd2712d43c29035699b8d453dd749d19a45e9ce",
+    "note": "Only file identities are recorded; client binaries and extracted assemblies are not committed."
+  },
+  "hash_algorithm": "sha256",
+  "provenance": {
+    "decompressed_bundle_size_bytes": 19463656,
+    "inner_layout": "bundle 内每个程序集都是「PE 头 + CLI Header + BSJB 元数据」的完整 .NET 映像，独立 DLL 从 PE 起始处切出",
+    "assembly_csharp_bsjb_offset_in_bundle": 3778036,
+    "assembly_csharp_bsjb_offset_note": "3,778,036 是 Assembly-CSharp 的 BSJB 元数据根在未压缩 app.unity3d 里的文件偏移，不是 PE 起始（PE 起始在它之前）；该偏移为本仓库复核时实测，可直接用于不解出 DLL 的元数据解析",
+    "extractor": "未入库：本仓库只保留「DLL 提取完成后」的结构校验与反编译，安装包 → bundle → 独立 DLL 的自动提取脚本仍未入库",
+    "verification_path": "docs/analysis/pc-assembly.md"
+  },
+  "assemblies": [
+    {
+      "name": "Assembly-CSharp-firstpass.dll",
+      "size_bytes": 366080,
+      "sha256": "35c255bad3d04f6edff8d1b1dc2365cffaf1190aaf480ff8179defc82538176c"
+    },
+    {
+      "name": "Assembly-CSharp.dll",
+      "size_bytes": 4584448,
+      "sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e"
+    },
+    {
+      "name": "Assembly-UnityScript.dll",
+      "size_bytes": 14336,
+      "sha256": "b683a35150764a543487b95d24e36c5103c27bfe3695c6059348b6d61a36d186"
+    },
+    {
+      "name": "bgmusic.dll",
+      "size_bytes": 5632,
+      "sha256": "99d783a52664136bb6e72fd9102423b38afee5a077ae77807a252dde33e27265"
+    },
+    {
+      "name": "Boo.Lang.dll",
+      "size_bytes": 125440,
+      "sha256": "1fcac84a170e98c03cab19dfe5ba657086e42003016d5bae48cb9f59fd9f578f"
+    },
+    {
+      "name": "EventCodeCrypt.dll",
+      "size_bytes": 11264,
+      "sha256": "c0f20ec6e05ea202c57d7e35be8ef9f8be68060f2966ab7e53addd6f11a69ee3"
+    },
+    {
+      "name": "Ionic.Zlib.CF.dll",
+      "size_bytes": 74240,
+      "sha256": "29e3708aa002d1496bf1a0511b29fb92cf760885e758fbbce3820abc9c0b0a48"
+    },
+    {
+      "name": "Irc.dll",
+      "size_bytes": 3072,
+      "sha256": "e7f008793e05591babaa73a6997ec027e2adb5aa1632b1723870b27c5c5aa862"
+    },
+    {
+      "name": "MsgPack.dll",
+      "size_bytes": 36864,
+      "sha256": "6dec974aa2f5bc8ca78ee240e695b6757a2b19042e744bc0f692f15546aae777"
+    },
+    {
+      "name": "PlayMaker.dll",
+      "size_bytes": 117248,
+      "sha256": "e4b450579c3bbe01220d5fdac91caa7e65e6d7b6711e2804c3d30a54c194dcde"
+    },
+    {
+      "name": "System.Xml.dll",
+      "size_bytes": 1072128,
+      "sha256": "f487d000f52e54474f7c4d8cb8199b950c18dd41b723c0af69db1d11da76e8b1"
+    },
+    {
+      "name": "UnityScript.Lang.dll",
+      "size_bytes": 13824,
+      "sha256": "9971d08da65e50fc716a3d900c8a4fe0b0a209c3bdb09b23e4df69475b1dd56a"
+    }
+  ]
+}

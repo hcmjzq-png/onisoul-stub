@@ -1,7 +1,14 @@
-"""show_off 队列回归：客户端不接受空数组，任何时刻都必须给出一条。"""
+"""show_off 队列回归：客户端不接受空数组，任何时刻都必须给出一条。
+
+用例自带一个临时 bundle 目录，不依赖部署资产（assets/pc/bundles）是否存在，
+保证干净 clone 也能全绿。
+"""
 from __future__ import annotations
 
+import hashlib
+import tempfile
 import unittest
+from pathlib import Path
 
 from app.business import periodic, show_off
 
@@ -9,8 +16,19 @@ from app.business import periodic, show_off
 class ShowOffQueueTest(unittest.TestCase):
     def setUp(self) -> None:
         show_off.reset()
+        self._bundle_dir = tempfile.TemporaryDirectory()
+        self._original_bundle_dir = show_off.paths.PC_BUNDLE_DIR
+        bundle_root = Path(self._bundle_dir.name)
+        (bundle_root / "chara").mkdir()
+        digest = hashlib.md5(
+            show_off.DEFAULT_CHARACTER_ID.encode("utf-16-le")
+        ).hexdigest()
+        (bundle_root / "chara" / f"{digest}.unity3d").write_bytes(b"")
+        show_off.paths.PC_BUNDLE_DIR = bundle_root
 
     def tearDown(self) -> None:
+        show_off.paths.PC_BUNDLE_DIR = self._original_bundle_dir
+        self._bundle_dir.cleanup()
         show_off.reset()
 
     def test_default_entry_is_valid_and_has_both_key_spellings(self) -> None:

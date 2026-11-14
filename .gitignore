@@ -33,6 +33,9 @@ venv/
 *.tmp
 *.sql-wal
 
+# 反编译工具与临时工作目录（ilspycmd 等二进制禁止入库）
+work/
+
 # 系统 / 编辑器
 .DS_Store
 Thumbs.db
