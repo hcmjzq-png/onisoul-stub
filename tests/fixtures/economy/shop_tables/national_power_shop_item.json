@@ -1,0 +1,85 @@
+{
+  "national_power_shop_item": {
+    "np_shop0000001": {
+      "id": "np_shop0000001",
+      "name": "NATIONAL_ITEM_MSG_0000001_NAME",
+      "brief": "NATIONAL_ITEM_MSG_0000001_DESC",
+      "openDesc": "資源を限定生産",
+      "goal": "shop_01",
+      "limitPerPerson": 1,
+      "category": "nationalPower",
+      "class": "goldProduction",
+      "isSet": true,
+      "itemIds": [
+        "countryshop_00003"
+      ],
+      "iconName": "",
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        2000
+      ],
+      "credit": 0,
+      "discount": 0,
+      "sortno": 1
+    },
+    "np_shop0000005": {
+      "id": "np_shop0000005",
+      "name": "NATIONAL_ITEM_MSG_0000005_NAME",
+      "brief": "NATIONAL_ITEM_MSG_0000005_DESC",
+      "openDesc": "鑑賞",
+      "goal": "shop_05",
+      "limitPerPerson": 1,
+      "category": "nationalPower",
+      "class": "decor",
+      "isSet": true,
+      "itemIds": [
+        "item04_0200651"
+      ],
+      "iconName": "",
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        500
+      ],
+      "credit": 0,
+      "discount": 0,
+      "sortno": 5
+    },
+    "np_shop0000009": {
+      "id": "np_shop0000009",
+      "name": "NATIONAL_ITEM_MSG_0000009_NAME",
+      "brief": "NATIONAL_ITEM_MSG_0000009_DESC",
+      "openDesc": "植物",
+      "goal": "shop_01",
+      "limitPerPerson": 10,
+      "category": "nationalPower",
+      "class": "decor",
+      "isSet": true,
+      "itemIds": [
+        "item04_0200648"
+      ],
+      "iconName": "",
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        100
+      ],
+      "credit": 0,
+      "discount": 0,
+      "sortno": 9
+    }
+  }
+}

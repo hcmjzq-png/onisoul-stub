@@ -1,0 +1,32 @@
+{
+  "item13": {
+    "item13_0000004": {
+      "id": "item13_0000004",
+      "enable": true,
+      "value": 0,
+      "category": "nearground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_13_0000004_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_13_0000004_DESC",
+      "iconName": "none",
+      "parameterId": "pbsm1_set000004"
+    },
+    "item13_0000005": {
+      "id": "item13_0000005",
+      "enable": true,
+      "value": 4,
+      "category": "nearground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_13_0000005_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_13_0000005_DESC",
+      "iconName": "none",
+      "parameterId": "pbsm1_set000005"
+    }
+  }
+}

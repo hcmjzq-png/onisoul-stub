@@ -92,10 +92,11 @@ def main():
             "Inclusive bounds match adjacent client dropdown ranges; original server boundary captures unavailable",
             "Page size cap 300, stable item_sn tie break, numeric root display slots, decimal string scalars are local compatibility decisions",
             "Expiry is derived from internal expires_at and snapshot observed_at; not a recovered storage schema",
-            "No writes, no production registration, no global endpoint count change, no permanent background grant"],
+            "Four shop handlers added in economy_shop_services; shop-evidence.json separates policy from protocol; no production registration/global count change"],
         limitations=["Original-server economics, auction tax constants, listing eligibility, event schedules and retry IDs unavailable",
-            "item13.json and item14.json not in the supplied 662-table extraction: does NOT prove missing installed assets",
-            "No original-server replay or Unity dynamic verification; read provider not integrated"])
+            "item13/item14 recovered from hash-verified original container by build_shop_evidence.py; only small samples committed",
+            "No original-server replay or Unity dynamic verification; read provider and authoritative national context not integrated"],
+        continuation="shop-evidence.json: recovered assets, national table audit, deeper callbacks and internal sale policies")
     (OUT / "evidence.json").write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     rows = []
     for api in endpoints:
@@ -134,7 +135,7 @@ def review(api, name):
                 "Tax coefficients originate in response; no verified constants", "Owned escrow/listings; expired collection state unknown",
                 "Only seller listings; taxes and expiry settlement unknown", "Callback traced; not implemented", "Prove tax values and expiry/collection, implement persisted market query")
         return ("status maintenance guard then delegated callback; success settlement shape not fully verified",
-            "AuctionDataManager post/buy/remove callbacks", "No server tax/price/duration constants proven",
+            "AuctionDataManager post/buy/remove; AuctionPostToSellBtn/AuctionSellResourcePage fee preview (shop-evidence.json)", "Client fee formula/defaults traced; original server coefficients and serialized eligibility still unproven",
             "Shared listing + escrow + buyer/seller saves must commit atomically",
             "Owner-only remove; buy must recheck listing and funds; retries require ledger; C trade eligibility for cards",
             "Partial callback trace; writes NOT implemented", "Trace downstream UI; prove taxes; implement database transaction/ledger before registering")
@@ -151,18 +152,18 @@ def review(api, name):
             return ("shopItems.<shopId> (keys only)" if name.startswith("get") else "optional resources.<kind>.amount",
                 "mypageShopBgWindow.phaseInit/phaseBuyMenu/phaseBuyItem; ShopItemBgTableAccessor; mypageBgItemSelect.init",
                 "shop_item_bg: 8 rows, 4 enabled, credit=168; itemIds are item13/item14 IDs",
-                "Proposal only: one A/D shared ownership store, no second permanent grant",
-                "Category near/far; credit cost proven; ownership duration/initial rights and live-sale rules unproven",
-                "Catalogue/callback verified; no handler or purchase", "Verify item13/item14 and initial ownership/expiry; agree shared A state before charging")
+                "Implemented single ownership in player.items; same save as credit; no automatic initial grant",
+                "Opt-in static enabled catalogue only; retry owned item never charges; original live-sale/expiry rules unproven",
+                "Implemented limited static background sales/query; default disabled and unmounted", "Integrate A via same items source; original item13/item14 recovered, see shop-evidence.json; do not infer original perpetual licence")
         return ("shopItems/recommendedItems.<id>.{state,remain}" if name.startswith("get") else "resources.<kind>.amount; errorReason",
             "ShopUpdateNationalPower.createItemObject/setShopList; ShopItemNationalPower.saleWindowResult",
             "national_power_shop_item.goal/limitPerPerson/costTypes/costAmounts; shop_item_country maps national draft",
-            "National goal activation + per-player remaining quota and inventory require atomic save",
-            "Set purchase uses index=-1; live goal activation/reset period/retry identity unknown",
-            "Callback/table verified; not implemented", "Prove goal unlock/reset and persist quota; preserve ordinary shop handler")
+            "Implemented one-per-period ledger, gold and draft inventory in one player save; authoritative context held through save",
+            "27/38 rows support quota=1 gold sets/index=-1 quantity=1; current national power and global period externally supplied; repeat rejected",
+            "Implemented limited national query/purchase; no production context, unmounted", "Integrate locked authoritative country/period; 11 wider-quota rows remain unsupported; no invented reset date")
     if "/kokugi/" in api:
         shape = {"getStatus": "selfPoint,levelRate,kokugiPoint.<id>", "develop": "usedPoint,point", "addPoint": "Unknown: wrapper only"}[name]
-        return (shape, "KokugiScene.listupInvokedIds/updatePageItems; KokugiDedicateWindow.doDedicate (addPoint has no external caller)",
+        return (shape, "KokugiScene.listupInvokedIds/updatePageItems/toLevel/toPoint; KokugiDedicateWindow.doDedicate (addPoint has no external caller)",
             "kokugi/kokugiLevel; global levelRate is response-derived", "Self points and country shared progress need transaction",
             "Do not accept arbitrary addPoint; source/cost, country multiplier and reset unproven",
             "Wrapper only" if name == "addPoint" else "Callback/table traced; not implemented", "Prove point source and shared-country scope; give A/B effect definitions after verification")
@@ -183,7 +184,7 @@ def review(api, name):
         "receive": "results.<event>.reward.<itemId>; deck/building updates delegated",
         "call": "delegated cancellation/building update; full shape pending"}[name]
     return (shape, "PoliticFSMWaterTradeEntry/Reward; PoliticWaterTradeWindow; PoliticWaterTradeProgressStatus.setup; PoliticMissionProgressList.updateWaterTradeList",
-        "building_waterborne_trade -> dynamic WaterBorneTradeTableAccessor result sheets", "Per-building voyage + fleet/deck reservation + claims; friends may cross accounts",
+        "building_waterborne_trade -> WaterBorneTradeTableAccessor.getResultFileName: index=4 uses result; other slots use friendResult", "Per-building voyage + fleet/deck reservation + claims; friends may cross accounts",
         "Owned map/building; friend permission required; effects, outcome distribution and cancellation/refund incomplete",
         "Callback/helper traced; not implemented", "Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations")
 

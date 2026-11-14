@@ -1,0 +1,32 @@
+{
+  "item14": {
+    "item14_1000048": {
+      "id": "item14_1000048",
+      "enable": true,
+      "value": 1,
+      "category": "farground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_14_1000048_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_14_1000048_DESC",
+      "iconName": "item14_1000048",
+      "parameterId": "pbsm2_0049"
+    },
+    "item14_1000049": {
+      "id": "item14_1000049",
+      "enable": true,
+      "value": 2,
+      "category": "farground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_14_1000049_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_14_1000049_DESC",
+      "iconName": "item14_1000049",
+      "parameterId": "pbsm2_0050"
+    }
+  }
+}
