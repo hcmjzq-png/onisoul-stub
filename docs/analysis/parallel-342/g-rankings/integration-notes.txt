@@ -1,0 +1,53 @@
+G 基线 1f287e33123afa452d2f5d2aac2427566d549f73；不部署、不动公共文件。
+
+1. 生产挂载（目前未做）
+   app/business/gameplay.py 的 GameplayService.register 中，在通用占位注册之前：
+   from app.business.rankings_services import RankingsServices
+   RankingsServices(self, snapshots=verified_country_snapshot_provider).register(registry)
+   只覆盖 ranking/getRankersInKokudaka 与 ranking/getBriefOfKokudaka。
+   未提供 provider 时明确失败；不要为了通过页面而注入空榜或现有未经核实的分数。
+   保留现有所有其他处理器、商店/资料/生产行为；不要将其他 49 入口换成空成功。
+
+2. 数据/事务/迁移（生产前必须完成）
+   provider(country: str) -> SnapshotPair(current, last)，内部结构见 rankings_services.py。
+   每个 Snapshot 是该国家全体合资格玩家的完整一致视图，包含稳定 playerId、真实 username、country、已验证 score。
+   一次事务/同一revision读出当前与上期；不能用多个玩家锁逐个扫描拼装不同时间的榜。
+   本模块不持久保存快照。总集成在 state/db 设计独立的版本化快照存储和发布事务；保留历史不可变快照。
+   None=未取得，空 tuple=明确没有参与者；不要把丢失历史迁移成全员 rank=-1。
+   源数据刷新时点/结榜边界、同分策略、参与资格需要确认。现有模拟同分策略明确标记为兼容选择。
+   只读接口沿用 PlayerServices.call，正常数据不写档；已有 dirty 规范化行为仍沿用现有框架。
+   国家必须由认证玩家 entity.country 派生；请求的 playerId/country 不可选择他人个人记录。
+
+3. docs/api_schema.md / docs/analysis/api_*.tsv（仅总集成改）
+   石高列表 entries(number)、myRecord.rank/score、rankers.<pageIndex>.rank/score/username/playerId/country。
+   石高摘要 brief.rank/score/lastRank；未上榜 rank=-1，score 缺省；没有捏造 rankingId/时间戳。
+   响应使用现有 envelope；不需要修改 response_shapes.py。
+   更新 endpoint_progress.py 输出前必须完成真实 provider 和生产挂载；本分支不减少占位计数。
+   旧契约 common/dedicate 把 limit/point/rank 平铺根层有误，见 evidence/README 的嵌套层级。
+   common/getBriefOfNationalPower 缺少 helper 的大量必读字段，不应继续把仅 dedicationRanking 视为完整契约。
+
+4. 跨组依赖与 H 交接
+   A：仅消费经过验证的城市石高，要求全玩家同一快照；不拿 player level 代替。
+   B：战斗 score、won/lost、恶鬼积分、最大伤害、随机关卡指标须来自结算记录；无数据不得造榜。
+   F：战场/阵营/action/role/event 周期必须分离；国战/城战/天下分目无法共用“等级分”。
+   H：玩家记录的贡献来自献纳账本，国家国力来自国家聚合，战绩来自 B/F，石高来自 A。
+   UserStatus.Dedication.point/limit/rank 是献纳状态；common 国力摘要的 dedication 却是数值，不能互换。
+   未实现 common/getPlayerRecords，不接管 H 文件。
+
+5. 献纳未来写事务
+   需要单事务内资产验证/扣除、个人贡献、国家聚合、账本序号、重试去重与结果；单玩家锁不覆盖国家共享状态。
+   客户端无业务幂等键，不能以相同数量永久去重（用户可连续献纳）；需请求层可靠队列语义或另有证据。
+   数据库冲突必须整笔回滚；冻结/失败不得本地扣费并回成功。没有重开原始未实现写接口。
+
+6. 最小独占客户端验证（总集成安排；本分支不启动客户端）
+   路径：客户端→hosts→proxy80→stub；保持本机/局域网配置分开，不改原游戏尺寸。
+   两个隔离账号本国、一个异国；取得 A 确认的不同石高。验证第一页、第二页、Around、本人页外、同分、空榜。
+   刷新/重登验证石高与名次一致；上期不可从当前复制；快照缺失必须走 errorReason，不能显示伪造第一。
+   献纳仅在可用原服证据或可信存档下采样：1000/2000金币、贴上限、溢出、一次卡片献纳、重试及重登；留取脱敏前后状态与回包。
+   所需未证规则：时效倍率、周期边界、贡献清零/国力衰减、同分/资格、国家结算、去重语义。
+   模拟服自己生成的回包不能反过来作为原版规则证据。
+
+7. 回归结果
+   python -m unittest tests.test_rankings_services -v：9 passed。
+   python -m unittest discover -s tests：235 passed，0 skipped；原公共测试 ResourceWarning 未改。
+   源码/表仅只读；主目录原暂存修改不动；没有网络服务器部署或客户端修改。

@@ -1,0 +1,1405 @@
+{
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "original_sources": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BuildingsTableAccessor.cs",
+      "sha256": "ee603805c74613e5e0c3a8d2b5a7453a15a44fe19dedad3d23adaa5dedf20bfb"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterTableAccessor.cs",
+      "sha256": "7903fa9f44bd2ccef4c660e55489831b45d00e5e80f848137438a48ff530fad1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CountryRankTableAccessor.cs",
+      "sha256": "1010a2b90127a537b7a57c35866c8abfbd60880b3ee79d0f36951393fa26d653"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CountryRanking.cs",
+      "sha256": "d9090ead2054b9391401ded6f94a4fd6265a0d257df26c7be520295220934216"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale.cs",
+      "sha256": "9a6c0116541c2944a4a5f84b646ddfe2934588fa14ed698f4f7aed8cc83e1961"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Character.cs",
+      "sha256": "26b474f6222926e42292fe04ec7d62bb2e21e1b078292a7aaface0cfb12e2847"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Equip.cs",
+      "sha256": "cb3630c4771f5ad06081a4cb919b49f93fdda0f1fe9a80fb959c9e17478b5bee"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Tactics.cs",
+      "sha256": "32062ed91691174f403d6695823bae885dd4195f994416e37984ebac29ad57b8"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DedicateOfMaterialsDialog.cs",
+      "sha256": "afe537b1fb9d690d2b81c341ed5b23550fe2e67e422154cc8c066e0200d0b320"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DefinesTableAccessor.cs",
+      "sha256": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\EquipTableAccessor.cs",
+      "sha256": "a0450a69ff959417e6655b6300b4a3a241db2a690e48211ce47c189170be7034"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator.cs",
+      "sha256": "93ee8fe49678acb52b9906f274acfd63102601ea07e04426b0e4c4ae513e0659"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Battle.cs",
+      "sha256": "d83922962edf3757c67dbb594d2bc25f6317e7071faa7b623fc247dc6b51efde"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_BrawnNational.cs",
+      "sha256": "83ce25c7f14bdeaf80d685215dbd4ac61be66c73b803b58101a4a51761c0e66e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_BrawnNationalWeekly.cs",
+      "sha256": "c182a87dd19f2d4f80b564ed44338759d2ff777f48d311946fa6f4b0a176e0bd"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Country.cs",
+      "sha256": "af302ac53f671e104525b7ebce92366a33221b8682c836dd059d2183741288cb"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Debug.cs",
+      "sha256": "5a69392c4c0d70c6f4163e71a44f64aade684ba6ffa81ae5dab4b040399dfe3f"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_DedicationNational.cs",
+      "sha256": "186305fe808b521da38286b8136e33612c8dc7cb279a1254346a15c30d794617"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_DedicationNationalWeekly.cs",
+      "sha256": "d6fdfd5eef406f95e489d453ae9bce05e8fedaae1ab80909526298d06177ccd3"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Delivery.cs",
+      "sha256": "ac252f3c810defe586e6cda48978ee4958715dcac608a1e9ebed27a5552cc6b1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_GenmuStep.cs",
+      "sha256": "ebb8aca8a31bea2e213389ea2d951ca0937a1609731d3aec9e639da43b1c34e5"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_GiganticMaxDamage.cs",
+      "sha256": "4d544365e9f4ddab486458b8b907a834cd0447d26b8bd5cb1cba38c8f00ab409"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_GiganticPoint.cs",
+      "sha256": "abcba6d82154992554645b471705aebaff33190090c0d0b6f01ddf749e83e0d2"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_GiganticRaidBoss.cs",
+      "sha256": "ee17a32aeb99be0b3883e33a869188683b8ca519ec79eac23884dc5bc56c8aa3"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_GiganticRaidBossBrawnNational.cs",
+      "sha256": "ba2abc13aa169e998e6af41d4ee2e19516aec9e285128713b6e1a282fa6ad0cc"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_GiganticRaidBossBrawnNationalWeekly.cs",
+      "sha256": "e2b4cde15ba94e9b304a998e2bc46fd98ebe49b8e127e913af9bc63715c627c1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Kokudaka.cs",
+      "sha256": "4a07f15e579208b51986f6989fc79a89af3f9f51a160953f20b0403ec217432c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_NationalPower.cs",
+      "sha256": "e4012de27c799918313e32069eb03a3750937615490e26f5f2165e9e819f3034"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_NationalRanking.cs",
+      "sha256": "c5ec31154206af909e0bf5cd7787ac542dd44aef06e12a65f658991e8e0c3686"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_RaidBoss.cs",
+      "sha256": "22b2d779be437246067dca6036a76eb9cd734defddf360a6425dd42c94f86994"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_RaidBossNational.cs",
+      "sha256": "3112faa88fba2415b26c4d713dd92e33906d1612561eecfcb060aa8f60713c3c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_RaidBossNationalWeekly.cs",
+      "sha256": "138d57a7c35b4e87a0bf95f01be445f2f6ef5fe21f21b8643c7febd0e36779b1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_RandomQuestNational.cs",
+      "sha256": "46296226af9e9cf841934fa1411d165dc13ecddde89370d02e6013a33d7a5396"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_RandomQuestNationalWeekly.cs",
+      "sha256": "546cf4f8bb2a3efe4efeafe5d803824111fee9dc87c8a26f02626baf2d910894"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Saga.cs",
+      "sha256": "9512a509b95aaf139526faffbbd22ca755008dfb9d624205a9be0777845edc73"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Siege.cs",
+      "sha256": "c4d4d823d85c751dff815f292bbcf70242e11b0901081186cf102127a540ef28"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Strategy.cs",
+      "sha256": "990107f6082b33e4fcaafc58be697c4cce3822573564c9a4b555f65ee4908025"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_StrategyRate.cs",
+      "sha256": "491a479e3e9d951ac00a807b1097309bc9aa9c8429cf308eb7727a806ea580b2"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Tenka.cs",
+      "sha256": "1ab0b7e64aef6c65a77592b27dc94e0b88e776498c69018d3f4bb7eef7546b37"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_WeeklyNationalRanking.cs",
+      "sha256": "830acbd94db472f71e2a964883acace49cfa1f3b439052c2083464f44a5e8fb3"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRewardMediator.cs",
+      "sha256": "429ce811be2917db641d95db4b518d6309b990b65d8b50d71952b09c7ee9c157"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRewardMediatorWeekly.cs",
+      "sha256": "7550ae2aed85dc1754c8f9691c2bc48539b7dc162467449aee0f14c166fd8347"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessFuncs.cs",
+      "sha256": "517f91fc078044b7461ff9ea14d92d9dfe57c8bebe218c40c5af995ae85ad15c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessor.cs",
+      "sha256": "f35537d17a9758c7bebf1ec8d42c61ebf696a53d460f46b9e77bb60405c6df2e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InventoryDeliverList.cs",
+      "sha256": "91cea87861555f264cc26cbae3169f85a27a94a32ee7df427e6b7ac9adc30fa5"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\MightOfNation.cs",
+      "sha256": "1e761022ba4788a6d7ac34d0d75f4b7146999761fa6b8ca6b7e569047b8eb416"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\MightOfNationDialog.cs",
+      "sha256": "2baa31b417d244242d0553776678412b4bfa331f68f5e720727173e43801b619"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NationalPowerGoalTableAccessor.cs",
+      "sha256": "1f7f42d7d074e011bc88a957c15593631035d5e45bf68567c933d39a0e28a146"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RankingRewardTableAccessor.cs",
+      "sha256": "1d0287c8d0f710df6c1ced40cc9fb19ca6f5eb1b87e26a0c88cab8ba1c05d601"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RankingTableAccessor.cs",
+      "sha256": "0b37243e24b9a5768ef1db2c347f696015756532f8d41cc2ee46b68869180db5"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyRankingPicker.cs",
+      "sha256": "a97c435977410db78ae97e8b2e6ee5170a83628325c96630831e1668f9596d05"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TacticsTableAccessor.cs",
+      "sha256": "82f3fe35a3d1d0ad4aedc655887da4086dac1da38190c066a37d65b628fb2d63"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarBriefCache.cs",
+      "sha256": "d3834cf7aa9a42f51fcd52d7bcbc27c58ed63b3992d0ca36c49444a6640c0868"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\giganticRaidBossRankingPicker.cs",
+      "sha256": "fd91161f2513060fdb750642a511a3606e99bc2cad4fc1287de4838837ba1298"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageRankingWindow.cs",
+      "sha256": "33f15cbe8a805b1a1bb462baa4d8bc65ab7b3da5927f66438fb020e49dbc5a61"
+    }
+  ],
+  "original_tables": [
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\defines.json",
+      "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+      "sample_key": "scale_kokudaka_for_dedication",
+      "row_count": 111
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\ranking.json",
+      "sha256": "2db99a1f36dc55839f2dbcf35c6a10b6086ba4431bb9810ac1bf83d004fb68d8",
+      "sample_key": "RANKING_000001",
+      "row_count": 54
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\national_power_goal.json",
+      "sha256": "caf66505e98dc93b1ecef32ff75e3f70ab1569e15af530a6dbb1e37931c23529",
+      "sample_key": "1",
+      "row_count": 11
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\character.json",
+      "sha256": "811b7dc8d58563dc287cfdce07104cabf5bda49823d976e1fd9440f0f05f90c8",
+      "sample_key": "chara1_00001_01",
+      "row_count": 3814
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building.json",
+      "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+      "sample_key": "building200_000_01_01_1_1",
+      "row_count": 1343
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\equip.json",
+      "sha256": "ded9093daf4a6d9832ca73174646c57847395517f64a3f5cac88ce726af4d900",
+      "sample_key": "equip_00000_01",
+      "row_count": 72
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\tactics.json",
+      "sha256": "4b3d489d969b4d03200fb047a244afe1304395cbe56e99439a69a95723726556",
+      "sample_key": "card1_00001_01",
+      "row_count": 595
+    }
+  ],
+  "endpoints": {
+    "common/dedicate": {
+      "wrappers": [
+        {
+          "method": "dedicateCharacter",
+          "line": 596,
+          "request_keys": [
+            "token",
+            "category",
+            "article"
+          ],
+          "literal_parameters": [
+            [
+              "category",
+              "character"
+            ]
+          ]
+        },
+        {
+          "method": "dedicateBuilding",
+          "line": 606,
+          "request_keys": [
+            "token",
+            "category",
+            "article"
+          ],
+          "literal_parameters": [
+            [
+              "category",
+              "building"
+            ]
+          ]
+        },
+        {
+          "method": "dedicateTactics",
+          "line": 616,
+          "request_keys": [
+            "token",
+            "category",
+            "article"
+          ],
+          "literal_parameters": [
+            [
+              "category",
+              "tactics"
+            ]
+          ]
+        },
+        {
+          "method": "dedicateEquip",
+          "line": 626,
+          "request_keys": [
+            "token",
+            "category",
+            "article"
+          ],
+          "literal_parameters": [
+            [
+              "category",
+              "equip"
+            ]
+          ]
+        },
+        {
+          "method": "dedicateGold",
+          "line": 636,
+          "request_keys": [
+            "token",
+            "category",
+            "article"
+          ],
+          "literal_parameters": [
+            [
+              "category",
+              "gold"
+            ]
+          ]
+        }
+      ],
+      "direct_call_references": [
+        "DeckSale_Character.cs:294",
+        "DeckSale_Character.cs:390",
+        "DeckSale_Equip.cs:347",
+        "DeckSale_Tactics.cs:398",
+        "DedicateOfMaterialsDialog.cs:53",
+        "DedicateOfMaterialsDialog.cs:68",
+        "DedicateOfMaterialsDialog.cs:86",
+        "DedicateOfMaterialsDialog.cs:101",
+        "DedicateOfMaterialsDialog.cs:116",
+        "InventoryDeliverList.cs:250",
+        "MightOfNationDialog.cs:334"
+      ],
+      "helper_review": "DedicateOfMaterialsDialog.cs:onDedicateResult/onDedicateSuccessProcedure; MightOfNationDialog.cs:updateInformation/onDedicate; UserStatus.cs:Dedication.update",
+      "status": "cost shape and preview traced; mutation NOT implemented"
+    },
+    "common/getBriefOfNationalPower": {
+      "wrappers": [
+        {
+          "method": "getBriefOfNationalPowerSetting",
+          "line": 663,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "DeckSale.cs:152",
+        "MightOfNation.cs:19"
+      ],
+      "helper_review": "DedicateOfMaterialsDialog.cs:onDedicateResult/onDedicateSuccessProcedure; MightOfNationDialog.cs:updateInformation/onDedicate; UserStatus.cs:Dedication.update",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfBattle": {
+      "wrappers": [
+        {
+          "method": "getBriefOfBattle",
+          "line": 3005,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:250",
+        "mypageRankingWindow.cs:322"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfBattleDaily": {
+      "wrappers": [
+        {
+          "method": "getBriefOfBattleDaily",
+          "line": 3013,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:226",
+        "mypageRankingWindow.cs:375"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfBrawn": {
+      "wrappers": [
+        {
+          "method": "getBriefOfBrawn",
+          "line": 3211,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:234",
+        "mypageRankingWindow.cs:719"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfCountriesInGiganticRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getBriefOfCountriesInGiganticRaidBoss",
+          "line": 2963,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "mypageRankingWindow.cs:1182"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfCountryBattle": {
+      "wrappers": [
+        {
+          "method": "getBriefOfCountryBattle",
+          "line": 2979,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "mypageRankingWindow.cs:253"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfDedication": {
+      "wrappers": [
+        {
+          "method": "getBriefOfDedication",
+          "line": 3173,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:266",
+        "mypageRankingWindow.cs:622"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfDedicationMonthly": {
+      "wrappers": [
+        {
+          "method": "getBriefOfDedicationMonthly",
+          "line": 3181,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Delivery.cs:95",
+        "mypageRankingWindow.cs:667"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfGiganticRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getBriefOfGiganticRaidBoss",
+          "line": 2939,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "mypageRankingWindow.cs:1235"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfGiganticRaidBossDaily": {
+      "wrappers": [
+        {
+          "method": "getBriefOfGiganticRaidBossDaily",
+          "line": 2955,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [],
+      "helper_review": "not confirmed; do not inherit generic response without callback evidence",
+      "status": "wrapper only; not implemented"
+    },
+    "ranking/getBriefOfKokudaka": {
+      "wrappers": [
+        {
+          "method": "getBriefOfKokudaka",
+          "line": 3021,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Kokudaka.cs:43",
+        "mypageRankingWindow.cs:526"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "implemented snapshot query only; UNMOUNTED; production source integration pending"
+    },
+    "ranking/getBriefOfMaxDamageInGiganticRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getBriefOfMaxDamageInGiganticRaidBoss",
+          "line": 2947,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "mypageRankingWindow.cs:1288"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfNationalPower": {
+      "wrappers": [
+        {
+          "method": "getBriefOfNationalPower",
+          "line": 3154,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "mypageRankingWindow.cs:570"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfNationalRanking": {
+      "wrappers": [
+        {
+          "method": "getBriefOfNationalRanking",
+          "line": 2995,
+          "request_keys": [
+            "token",
+            "rankingGroup",
+            "rankingPeriod"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:333",
+        "HTMLRewardMediatorWeekly.cs:102",
+        "mypageRankingWindow.cs:1398",
+        "mypageRankingWindow.cs:1455"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getBriefOfRaidBoss",
+          "line": 2923,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:258",
+        "mypageRankingWindow.cs:428"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfRaidBossDaily": {
+      "wrappers": [
+        {
+          "method": "getBriefOfRaidBossDaily",
+          "line": 2931,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_RaidBoss.cs:95",
+        "HTMLRewardMediator.cs:218",
+        "mypageRankingWindow.cs:481"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfRaidBossNational": {
+      "wrappers": [
+        {
+          "method": "getBriefOfRaidBossNational",
+          "line": 2987,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:326",
+        "mypageRankingWindow.cs:1341"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfRandomQuest": {
+      "wrappers": [
+        {
+          "method": "getBriefOfRandomQuest",
+          "line": 3230,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:242",
+        "mypageRankingWindow.cs:772"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfSiege": {
+      "wrappers": [
+        {
+          "method": "getBriefOfSiege",
+          "line": 3249,
+          "request_keys": [
+            "token",
+            "role"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRewardMediator.cs:274",
+        "HTMLRewardMediator.cs:282",
+        "mypageRankingWindow.cs:1127"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfStrategy": {
+      "wrappers": [
+        {
+          "method": "getBriefOfStrategy",
+          "line": 3270,
+          "request_keys": [
+            "token",
+            "battlefield",
+            "team",
+            "action"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [],
+      "helper_review": "not confirmed; do not inherit generic response without callback evidence",
+      "status": "wrapper only; not implemented"
+    },
+    "ranking/getBriefOfTurfWar": {
+      "wrappers": [
+        {
+          "method": "getBriefOfTurfWar",
+          "line": 3319,
+          "request_keys": [
+            "token",
+            "battlefield",
+            "team"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "mypageRankingWindow.cs:819"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getBriefOfTurfWarDaily": {
+      "wrappers": [
+        {
+          "method": "getBriefOfTurfWarDaily",
+          "line": 3342,
+          "request_keys": [
+            "token",
+            "battlefield",
+            "team"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "mypageRankingWindow.cs:819"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getDailyRankersAroundMeInTurfWar": {
+      "wrappers": [
+        {
+          "method": "getDailyRankersAroundMeInTurfWar",
+          "line": 2915,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [],
+      "helper_review": "not confirmed; do not inherit generic response without callback evidence",
+      "status": "wrapper only; not implemented"
+    },
+    "ranking/getDailyRankersInBattle": {
+      "wrappers": [
+        {
+          "method": "getDailyRankersInBattle",
+          "line": 3040,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Battle.cs:29",
+        "HTMLRankingMediator_Battle.cs:63",
+        "HTMLRankingMediator_Battle.cs:102"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getDailyRankersInRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getDailyRankersInRaidBoss",
+          "line": 3073,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_RaidBoss.cs:29",
+        "HTMLRankingMediator_RaidBoss.cs:63",
+        "HTMLRankingMediator_RaidBoss.cs:103"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getDailyRankersInTurfWar": {
+      "wrappers": [
+        {
+          "method": "getDailyRankersInTurfWar",
+          "line": 3329,
+          "request_keys": [
+            "token",
+            "term",
+            "battlefield",
+            "team",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Tenka.cs:160",
+        "HTMLRankingMediator_Tenka.cs:193",
+        "HTMLRankingMediator_Tenka.cs:232"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getDailyTopRankersInTurfWar": {
+      "wrappers": [
+        {
+          "method": "getDailyTopRankersInTurfWar",
+          "line": 2905,
+          "request_keys": [
+            "token",
+            "battlefield",
+            "team"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [],
+      "helper_review": "not confirmed; do not inherit generic response without callback evidence",
+      "status": "wrapper only; not implemented"
+    },
+    "ranking/getMonthlyRankersInDedication": {
+      "wrappers": [
+        {
+          "method": "getMonthlyRankersInDedication",
+          "line": 3200,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Delivery.cs:83",
+        "HTMLRankingMediator_Delivery.cs:103"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getMyRankInTurfWar": {
+      "wrappers": [
+        {
+          "method": "getMyRankInTurfWar",
+          "line": 2971,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [],
+      "helper_review": "not confirmed; do not inherit generic response without callback evidence",
+      "status": "wrapper only; not implemented"
+    },
+    "ranking/getRankersAroundMeInTurfWar": {
+      "wrappers": [
+        {
+          "method": "getRankersAroundMeInTurfWar",
+          "line": 2896,
+          "request_keys": [
+            "token",
+            "battlefield"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [],
+      "helper_review": "not confirmed; do not inherit generic response without callback evidence",
+      "status": "wrapper only; not implemented"
+    },
+    "ranking/getRankersInBattle": {
+      "wrappers": [
+        {
+          "method": "getRankersInBattle",
+          "line": 3029,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Battle.cs:30",
+        "HTMLRankingMediator_Battle.cs:50",
+        "HTMLRankingMediator_Battle.cs:82"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInBrawn": {
+      "wrappers": [
+        {
+          "method": "getRankersInBrawn",
+          "line": 3219,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Saga.cs:22",
+        "HTMLRankingMediator_Saga.cs:36",
+        "HTMLRankingMediator_Saga.cs:55"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInDedication": {
+      "wrappers": [
+        {
+          "method": "getRankersInDedication",
+          "line": 3189,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Delivery.cs:29",
+        "HTMLRankingMediator_Delivery.cs:30",
+        "HTMLRankingMediator_Delivery.cs:50",
+        "HTMLRankingMediator_Delivery.cs:69"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInGiganticRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getRankersInGiganticRaidBoss",
+          "line": 3121,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_GiganticRaidBoss.cs:27",
+        "HTMLRankingMediator_GiganticRaidBoss.cs:46",
+        "HTMLRankingMediator_GiganticRaidBoss.cs:65"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInKokudaka": {
+      "wrappers": [
+        {
+          "method": "getRankersInKokudaka",
+          "line": 3051,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Kokudaka.cs:17",
+        "HTMLRankingMediator_Kokudaka.cs:31",
+        "HTMLRankingMediator_Kokudaka.cs:51"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "implemented snapshot query only; UNMOUNTED; production source integration pending"
+    },
+    "ranking/getRankersInNationalPower": {
+      "wrappers": [
+        {
+          "method": "getRankersInNationalPower",
+          "line": 3162,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_NationalPower.cs:70",
+        "HTMLRankingMediator_NationalPower.cs:84",
+        "HTMLRankingMediator_NationalPower.cs:103"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInNationalRanking": {
+      "wrappers": [
+        {
+          "method": "getRankersInNationalRanking",
+          "line": 3095,
+          "request_keys": [
+            "token",
+            "rankingGroup",
+            "term",
+            "startIndex",
+            "stopIndex",
+            "rankingPeriod"
+          ],
+          "literal_parameters": [
+            [
+              "rankingPeriod",
+              "all"
+            ]
+          ]
+        },
+        {
+          "method": "getWeeklyRankersInNationalRanking",
+          "line": 3108,
+          "request_keys": [
+            "token",
+            "rankingGroup",
+            "term",
+            "startIndex",
+            "stopIndex",
+            "rankingPeriod"
+          ],
+          "literal_parameters": [
+            [
+              "rankingPeriod",
+              "weekly"
+            ]
+          ]
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_NationalRanking.cs:31",
+        "HTMLRankingMediator_NationalRanking.cs:45",
+        "HTMLRankingMediator_NationalRanking.cs:64",
+        "HTMLRankingMediator_WeeklyNationalRanking.cs:31",
+        "HTMLRankingMediator_WeeklyNationalRanking.cs:45",
+        "HTMLRankingMediator_WeeklyNationalRanking.cs:64"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getRankersInRaidBoss",
+          "line": 3062,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_RaidBoss.cs:30",
+        "HTMLRankingMediator_RaidBoss.cs:50",
+        "HTMLRankingMediator_RaidBoss.cs:82"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInRaidBossNational": {
+      "wrappers": [
+        {
+          "method": "getRankersInRaidBossNational",
+          "line": 3084,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "stopIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_RaidBossNational.cs:32",
+        "HTMLRankingMediator_RaidBossNational.cs:46",
+        "HTMLRankingMediator_RaidBossNational.cs:65"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInRandomQuest": {
+      "wrappers": [
+        {
+          "method": "getRankersInRandomQuest",
+          "line": 3238,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_GenmuStep.cs:22",
+        "HTMLRankingMediator_GenmuStep.cs:36",
+        "HTMLRankingMediator_GenmuStep.cs:55"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInSiege": {
+      "wrappers": [
+        {
+          "method": "getRankersInSiege",
+          "line": 3258,
+          "request_keys": [
+            "token",
+            "role",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Siege.cs:59",
+        "HTMLRankingMediator_Siege.cs:78",
+        "HTMLRankingMediator_Siege.cs:97"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInStrategy": {
+      "wrappers": [
+        {
+          "method": "getRankersInStrategy",
+          "line": 3281,
+          "request_keys": [
+            "token",
+            "term",
+            "battlefield",
+            "team",
+            "action",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Strategy.cs:74",
+        "HTMLRankingMediator_Strategy.cs:99",
+        "HTMLRankingMediator_Strategy.cs:128",
+        "HTMLRewardMediator.cs:290",
+        "HTMLRewardMediator.cs:299"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInStrategyForMypage": {
+      "wrappers": [
+        {
+          "method": "getRankersInStrategyForMypage",
+          "line": 3295,
+          "request_keys": [
+            "token",
+            "action",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Strategy.cs:82",
+        "HTMLRankingMediator_Strategy.cs:106",
+        "HTMLRankingMediator_Strategy.cs:135",
+        "StrategyRankingPicker.cs:29",
+        "StrategyRankingPicker.cs:46"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInStrategyPie": {
+      "wrappers": [
+        {
+          "method": "getRankersInStrategyPie",
+          "line": 2885,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_StrategyRate.cs:32",
+        "HTMLRankingMediator_StrategyRate.cs:43"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersInTurfWar": {
+      "wrappers": [
+        {
+          "method": "getRankersInTurfWar",
+          "line": 3306,
+          "request_keys": [
+            "token",
+            "term",
+            "battlefield",
+            "team",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Tenka.cs:159",
+        "HTMLRankingMediator_Tenka.cs:180",
+        "HTMLRankingMediator_Tenka.cs:212"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersOfCountriesInGiganticRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getRankersOfCountriesInGiganticRaidBoss",
+          "line": 3132,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_GiganticPoint.cs:32",
+        "HTMLRankingMediator_GiganticPoint.cs:43",
+        "HTMLRewardMediator.cs:308"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankersOfMaxDamageInGiganticRaidBoss": {
+      "wrappers": [
+        {
+          "method": "getRankersOfMaxDamageInGiganticRaidBoss",
+          "line": 3143,
+          "request_keys": [
+            "token",
+            "term",
+            "startIndex",
+            "endIndex"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "giganticRaidBossRankingPicker.cs:29",
+        "giganticRaidBossRankingPicker.cs:46",
+        "HTMLRankingMediator_GiganticMaxDamage.cs:32",
+        "HTMLRankingMediator_GiganticMaxDamage.cs:51",
+        "HTMLRankingMediator_GiganticMaxDamage.cs:70",
+        "HTMLRewardMediator.cs:317"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo;HTMLRewardMediator.cs:requestFromRankingRewardTable/requestFromRankingRewardTableByRankingId/setTimeStamp",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRankingOfCountriesInBattle": {
+      "wrappers": [
+        {
+          "method": "getRankingOfCountriesInBattle",
+          "line": 2876,
+          "request_keys": [
+            "token",
+            "term"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "HTMLRankingMediator_Country.cs:32",
+        "HTMLRankingMediator_Country.cs:43"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getRecordOfCountryInBattle": {
+      "wrappers": [
+        {
+          "method": "getRecordOfCountryInBattle",
+          "line": 2860,
+          "request_keys": [
+            "token"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "CountryRanking.cs:105",
+        "CountryRanking.cs:189"
+      ],
+      "helper_review": "CountryRanking.cs:setup/Record",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    },
+    "ranking/getTopRankersInTurfWar": {
+      "wrappers": [
+        {
+          "method": "getTurfWarTopRankers",
+          "line": 2850,
+          "request_keys": [
+            "token",
+            "battlefield",
+            "team"
+          ],
+          "literal_parameters": []
+        }
+      ],
+      "direct_call_references": [
+        "TurfWarBriefCache.cs:428"
+      ],
+      "helper_review": "HTMLRankingMediator.cs:commonOutput/createMyRankHash/send/calcRankRange/convToTurnStr; mypageRankingWindow.cs:makeBriefInfo",
+      "status": "consumer traced; settlement/source pending; not implemented"
+    }
+  },
+  "protocol_evidence": [
+    "zero-based inclusive pagination; current/last; indexed rankers",
+    "brief and myRecord nesting differ",
+    "common national power uses dedication scalar; dedication mutation returns nested dedication"
+  ],
+  "server_compatibility_decisions": [
+    "competition ties with playerId ordering not proven original",
+    "100-row request limit",
+    "explicit complete country snapshot provider; never infer scores from level",
+    "missing period fails; proven empty snapshot yields rank=-1; no fake timestamp/reset",
+    "no production registration; no full gameplay completion claim"
+  ]
+}
