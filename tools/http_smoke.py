@@ -60,6 +60,41 @@ def run(host: str, port: int) -> None:
         assert api("auth/gameLogin", {"token": token})["succeeded"]
         params = api("common/getPlayerParams", {"token": token}, "GET")
         assert params["entity"]["username"] == account and params["characterCount"] > 0
+        for name in ("common/getEventStatuses", "common/getShopsale"):
+            result = api(name, {"token": token})
+            assert result["succeeded"] and set(result) == {"succeeded", "now"}, name
+        characters = api("common/getCharacters", {"token": token})
+        assert len(characters) == int(params["characterCount"])
+        deck = api("deck/getDecks", {"token": token})
+        groups = ("avatar", "attack", "defense", "politic", "quest", "strategy", "siege")
+        value = {key: deck[key] for key in groups}
+        ids = list(characters)
+        chosen = ids[-1]
+        value["avatar"]["id"] = int(chosen)
+        value["attack"]["0"]["ids"] = {"4": int(chosen)}
+        assert api("deck/setDecks", {"token": token, "decks": value}) == {}
+        reread = api("deck/getDecks", {"token": token})
+        assert {key: reread[key] for key in groups} == value
+        assert set(api("deck/getAvatarCharacters", {"token": token, "playerIds": []})) == {chosen}
+        assert set(api("common/getSelectCharacters", {"token": token, "ids": [int(chosen)]})) == {chosen}
+        bad = json.loads(json.dumps(value))
+        bad["attack"]["0"]["ids"] = {"0": 2147483647}
+        assert api("deck/setDecks", {"token": token, "decks": bad}).get("errorReason")
+        assert api("deck/getDecks", {"token": token})["attack"] == value["attack"]
+        def change(mission, state):
+            return api("politic/mission/changeState", {"token": token,
+                "missionIds": [mission], "states": [state]})
+        assert change("po_mission_00001", "closed")["succeeded"] is False
+        assert change("po_mission_00002", "accepted")["succeeded"] is False
+        assert change("po_mission_00001", "accepted")["succeeded"]
+        assert change("po_mission_00001", "finished")["succeeded"]
+        assert change("po_mission_00001", "closed")["succeeded"]
+        after_reward = api("common/getPlayerParams", {"token": token})["resources"]
+        assert change("po_mission_00001", "closed")["reward"] == {}
+        assert api("common/getPlayerParams", {"token": token})["resources"] == after_reward
+        assert change("po_mission_00002", "accepted")["succeeded"]
+        assert change("po_mission_00002", "closed")["succeeded"] is False
+        print("[http-smoke] inactive events/shop, owned characters, deck persistence/avatar, mission prerequisites/rewards: OK")
         assert api("common/getPlayerParams", {}).get("error") == "UNAUTHORIZED"
         debug = api("debug/devLogin", {"username": account})
         assert debug.get("succeeded") is False and not debug.get("token")

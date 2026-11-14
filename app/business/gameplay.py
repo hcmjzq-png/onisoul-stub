@@ -13,8 +13,8 @@ from collections.abc import Callable
 from typing import Any
 
 from app import sessions, state
-from app.business import placeholders, response_shapes
-from app.business.mission_chain import MissionChain, SYSTEM_MISSION, STATE_TO_LETTER
+from app.business import decks, mission_validation, placeholders, response_shapes
+from app.business.mission_chain import MissionChain, SYSTEM_MISSION
 from app.business.registry import Registry
 from app.tables import TableCatalog, TableError, default_catalog
 
@@ -124,9 +124,15 @@ class GameplayService:
             "auth/refreshToken": self.refresh_token,
             "auth/registerName": self.register_name,
             "common/getPlayerParams": self.get_player_params,
+            "common/getCharacters": self.get_characters,
+            "common/getSelectCharacters": self.get_select_characters,
+            "common/getEventStatuses": self.get_event_statuses,
+            "common/getShopsale": self.get_shop_sale,
             "debug/debugLogin": self.debug_login,
             "debug/devLogin": self.dev_login,
             "deck/getAvatarCharacters": self.get_avatar_characters,
+            "deck/getDecks": self.get_decks,
+            "deck/setDecks": self.set_decks,
             "politic/map/getMapData": self.get_map_data,
             "politic/building/getBuildCounts": self.get_build_counts,
             "politic/building/getDrafts": self.get_drafts,
@@ -296,6 +302,7 @@ class GameplayService:
         if not isinstance(result.get("missions"), dict):
             result["missions"] = {}
         result["missions"].setdefault("0", "C")
+        mission_validation.seed_auto(result, self.missions.rows())
         result["unlockBits"] = self._unlock_bits(result)
         for key in ("buildings", "occupiedGrids", "produce", "items", "characters", "decks"):
             if not isinstance(result.get(key), dict):
@@ -303,6 +310,11 @@ class GameplayService:
         result["counters"]["buildingCount"] = len(result["buildings"])
         result["counters"]["characterCount"] = len(result["characters"])
         self._apply_limits(result)
+        country = str(result["entity"].get("country") or DEFAULT_COUNTRY)
+        result["decks"] = decks.initialize(
+            result, self._level_row(int(result["entity"].get("level") or 1)),
+            self._table("beginning_equipment").get(country) or {}, self._table("item01"),
+        )
         return result
 
     def _apply_limits(self, player: dict[str, Any]) -> None:
@@ -654,14 +666,87 @@ class GameplayService:
         if isinstance(found, dict):
             return found
         _player_id, player, dirty = found
+        requested = params.get("playerIds") or []
+        if not isinstance(requested, list) or any(str(value) != _player_id for value in requested):
+            return self._failure("deck/getAvatarCharacters", "other players' avatars are not implemented")
         if dirty:
             self._save(player, _player_id)
-        result = {
-            character_id: _deep(record)
-            for character_id, record in (player.get("characters") or {}).items()
-            if isinstance(record, dict)
-        }
+        avatar = (player["decks"].get("avatar") or {}).get("id")
+        result = {}
+        if avatar is not None:
+            key = decks.character_id(avatar)
+            record = player["characters"].get(key)
+            if record is not None:
+                result[key] = _deep(record)
         return response_shapes.success("deck/getAvatarCharacters", result)
+
+    def get_characters(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        found = self._session_player("common/getCharacters", session)
+        if isinstance(found, dict):
+            return found
+        player_id, player, dirty = found
+        if dirty:
+            self._save(player, player_id)
+        return _deep(player["characters"])
+
+    def get_select_characters(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        api = "common/getSelectCharacters"
+        found = self._session_player(api, session)
+        if isinstance(found, dict):
+            return found
+        player_id, player, dirty = found
+        values = params.get("ids")
+        if not isinstance(values, list):
+            return self._failure(api, "ids must be an array")
+        try:
+            ids = [decks.character_id(value) for value in values]
+        except ValueError as exc:
+            return self._failure(api, str(exc))
+        if any(key not in player["characters"] for key in ids):
+            return self._failure(api, "character not owned")
+        if dirty:
+            self._save(player, player_id)
+        return {key: _deep(player["characters"][key]) for key in ids}
+
+    def get_event_statuses(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        # StatusView.isEventOpen checks key existence. No events are scheduled here.
+        return response_shapes.success("common/getEventStatuses", {})
+
+    def get_shop_sale(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        # PoliticShopSaleManager uses absent sale keys to select the normal shop.
+        return response_shapes.success("common/getShopsale", {})
+
+    def get_decks(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        api = "deck/getDecks"
+        found = self._session_player(api, session)
+        if isinstance(found, dict):
+            return found
+        player_id, player, dirty = found
+        if not player["characters"]:
+            return self._failure(api, "player has no characters")
+        if dirty:
+            self._save(player, player_id)
+        payload = _deep(player["decks"])
+        payload.update({"inheritPoint": float(player.get("inheritPoint") or 0),
+                        "skillCoins": float(player.get("skillCoins") or 0),
+                        "possessionLimits": self._possession_limits(player)})
+        return response_shapes.success(api, payload)
+
+    def set_decks(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        api = "deck/setDecks"
+        found = self._session_player(api, session)
+        if isinstance(found, dict):
+            return found
+        player_id, player, _dirty = found
+        try:
+            value = decks.validate(params.get("decks"), player,
+                                   self._level_row(int(player["entity"].get("level") or 1)))
+        except ValueError as exc:
+            return self._failure(api, str(exc))
+        player["decks"] = value
+        self._save(player, player_id)
+        # DeckMake.deckSave explicitly tests Hashtable.Count == 0.
+        return {}
 
     def get_mission_states(
         self, params: dict[str, Any], session: dict[str, Any] | None
@@ -740,30 +825,37 @@ class GameplayService:
             mission_ids = [str(params["missionId"])]
         if not states and params.get("state"):
             states = [str(params["state"])]
+        api = "politic/mission/changeState"
+        if not mission_ids or len(mission_ids) != len(states):
+            return self._failure(api, "missionIds and states must be nonempty arrays of equal length")
+        if len(set(mission_ids)) != len(mission_ids):
+            return self._failure(api, "duplicate mission ids")
         out: dict[str, Any] = {}
         reward_total: dict[str, int] = {}
         changed = False
         for mission_id, new_state in zip(mission_ids, states):
-            letter = STATE_TO_LETTER.get(new_state)
-            if not letter or mission_id not in self.missions.rows():
-                continue
+            try:
+                previous = mission_validation.transition(
+                    player, self.missions.rows(), self._table("building"), mission_id, new_state,
+                )
+            except (ValueError, TypeError) as exc:
+                # _load returns a copy; failed batches never persist partial changes/rewards.
+                return self._failure(api, str(exc))
             progress = player["missionProgress"].setdefault(mission_id, {})
-            previous = str(progress.get("state") or "")
             progress.update({"state": new_state, "timestamp": _now()})
-            player["missions"][str(self.missions.row(mission_id).get("index"))] = letter
             changed = True
             reward: dict[str, float] = {}
             if new_state == "closed" and previous != "closed":
                 granted = player["missionRewards"].get(mission_id)
-                if not granted:
+                if mission_id not in player["missionRewards"]:
+                    reward_id = self.missions.clear_reward(mission_id)
+                    if reward_id and reward_id not in self._table("reward01_politic"):
+                        return self._failure(api, "mission reward table row is missing")
                     items = self._mission_reward(player, mission_id)
-                    if items:
-                        granted = {
-                            "items": {str(key): int(value) for key, value in items.items()}
-                        }
-                        player["missionRewards"][mission_id] = granted
-                        for item_id, amount in items.items():
-                            reward_total[item_id] = reward_total.get(item_id, 0) + amount
+                    granted = {"items": {str(key): int(value) for key, value in items.items()}}
+                    player["missionRewards"][mission_id] = granted
+                    for item_id, amount in items.items():
+                        reward_total[item_id] = reward_total.get(item_id, 0) + amount
                 reward = {
                     str(item): float(amount)
                     for item, amount in ((granted or {}).get("items") or {}).items()

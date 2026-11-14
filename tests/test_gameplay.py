@@ -109,7 +109,7 @@ class GameplayFlowTest(unittest.TestCase):
     def test_main_map_and_avatar_payload_shapes(self):
         session = self._login_and_create()
         avatars = self.service.get_avatar_characters({}, session)
-        self.assertEqual(len(avatars), 4)
+        self.assertEqual(len(avatars), 1)
         first = next(iter(avatars.values()))
         self.assertIn("baseId", first)
         self.assertIn("grade", first)
@@ -128,7 +128,7 @@ class GameplayFlowTest(unittest.TestCase):
     def test_missions_1_to_4_rewards_buildings_and_persistence(self):
         session = self._login_and_create()
         baseline = self.service.get_mission_states({}, session)
-        self.assertEqual(baseline["states"], {"0": "C"})
+        self.assertEqual(baseline["states"], {"0": "C", "1": "O"})
         self.assertEqual(self.service.get_drafts({}, session)["draft2000002"]["amount"], 1.0)
 
         for state in ("opened", "accepted", "finished", "closed"):
