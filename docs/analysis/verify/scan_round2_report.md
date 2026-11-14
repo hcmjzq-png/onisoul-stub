@@ -53,3 +53,19 @@ python3 tools/extract_read_context.py --root <反编译树根> --out /tmp/ctx
 PYTHONPATH=. python3 -m unittest discover -s tests   # 88 tests
 python3 tools/contract_check.py                       # 1108 键 / 627 带类型 / 0 问题
 ```
+
+### 归属核实：`StrategyDataCache.setup()` 的 `isEntry/status/closeTime`
+
+三个调用点传进去的 `strategy` 对象都不是 `getStrategyStatus` 的回包，而是
+**`common/getEventStatuses` 的 `strategy` 子对象**：
+
+| 调用点 | 来源 |
+|---|---|
+| `Strategy.cs:75` | `:72` `webApiClient.getEventStatuses(...)` 回包的 `result["strategy"]` |
+| `StrategySelect.cs:55` | `:52` 同上 |
+| `StatusView.cs:500` | `:485` 同上，`activeEvents_["strategy"]` |
+
+而 `common/getEventStatuses` 契约里**早已声明** `strategy.isEntry:bool` /
+`strategy.status:string` / `strategy.closeTime:double`（另有 `endTime` / `resultCloseTime`），
+所以这三处读键不需要改动，也不该挂到 `getStrategyStatus` 下面。
+`StrategyDataCache.getTime(key)` 是通用取值器，键名由调用方传入，不构成新键。
