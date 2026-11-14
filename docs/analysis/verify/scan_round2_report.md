@@ -33,7 +33,7 @@
 2. **481 个无类型键**：`cast` 列能唯一定型 31 个，**450 个没有 cast 证据**。
    → 建议：这 31 个可以直接补（机械依据充分）；450 个要么回客户端看 `HashAccessor.getXxx`
    访问器调用（工作量大），要么明确接受「裸键照旧」并在文档里写死这个限制。
-3. `eventInfo` 其余事件分支、`getStrategyStatus.map` 两类嵌套子表仍未取证。
+3. ~~`eventInfo` 其余事件分支、`getStrategyStatus.map` 两类嵌套子表仍未取证~~ → **round3 已完成**，见 `verify/nested_round3.tsv`（`encountInfo{monsterId,name,encountId}`、`eventScript`、`executeInfo.now`、`getStrategyStatus.map` / `battlefield.id`，共 8 个键）。
 
 ## 四、复跑命令
 
