@@ -1,0 +1,93 @@
+{
+  "basis": "Original installer provenance in ../static-review-20261115/source-proof.json and ../quest-contract-20261115/source-proof.json; prior city proof retains historical conclusions.",
+  "base_commit": "9055fa4",
+  "source_hashes": {
+    "WebApiClient.cs": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+    "GameRestarter.cs": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea",
+    "UserStatus.cs": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+    "PluginManualProduce.cs": "2e7ed6d948ff37e4d95b199e04ac8021f017b2bc3685d0ea9211b20fecaed118",
+    "ProductItem.cs": "ea06ed85c4adeed1b6b4cf5c322342ae020f767c49d59427b7a183c270cf0d7c",
+    "ProductUpdate.cs": "780f1c56aa65f2dc1f4f02be7b0916b50cd6c643a931055816ad2121b7a450cd",
+    "ProductsTableAccessor.cs": "06c27eee427434ff9e23889f90956949a4ec192b9fc3d8b3f5b056e60df2d02f",
+    "PoliticFSMProduct.cs": "5aac8d8f1fcfa9f817d96dca48e87a9baa8e2780f6131a340a968f529e80c3c3",
+    "PoliticFSMCollectiveProduce.cs": "b57fc3fe5e93c1354a7ef7fd9a5b939638776e75480d6b80ac9b3b01ca8f51c0",
+    "PoliticBuilding.cs": "12ce58588bea07a4eb39f70c86d54b7cabb00380846dcef449c104b227fd5a9a",
+    "PoliticBuildingParameter.cs": "ff7f635f305109926a5ad774eada7365352b7fdfed88e534d697df1d4e2e2996",
+    "PoliticBuildingState/StateManualProduce.cs": "3570c727533ada094e5c25ff5602b5f695703a285c6ee17fd1eab34027d660cf",
+    "PoliticBuildingState/StateAutoProduce.cs": "7d82b4c4220823af6de97a6f2011745c26a7c965495469778aed5d0cd03933b2",
+    "PoliticRoadChecker.cs": "bfd17102fa64a2c88f8c387068a605e0860324b43bdf3ae26b7ad9a3727a2158",
+    "PoliticConnectBase.cs": "2018962ff12a1fd0ee58b67d7f6a66443a97c1c8e457ae1b447bc5ebe6db2fed"
+  },
+  "table_hashes": {
+    "product": "36f9de13973ed4c6f57c8dcbfba09a7fe9c69e13d2435ad8534b8e33ff8478c7",
+    "building": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+    "reward01_politic": "ba1c4d8ff335af146b020924bf7b9c6e51436ccd90496dc1e30afc9e28cfc525",
+    "building_level": "b4c2466cc4ad68de233e808afa72170c0b8d285352f51e6e9057ac8349da9813",
+    "defines": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560"
+  },
+  "localized_text_container_sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7",
+  "original_texts": [
+    {
+      "id": "POM_MES_000006_03_001",
+      "text": "「邻接道路的建筑物拥有提高生产量的效果，\n　因此建议在建筑物的旁边建设道路。\n　此外，RGBA(1,0.6,0.2,1)建筑道路并不会消耗金钱和内政点数。RGBA(1,1,1,1)」@",
+      "offset": 387830
+    },
+    {
+      "id": "SKILL_MSG_1_10041_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升5%。",
+      "offset": 4237948
+    },
+    {
+      "id": "SKILL_MSG_1_10042_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升10%。",
+      "offset": 4238178
+    },
+    {
+      "id": "SKILL_MSG_1_10043_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升15%。",
+      "offset": 4238409
+    },
+    {
+      "id": "SKILL_MSG_1_10044_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升20%。",
+      "offset": 4238640
+    },
+    {
+      "id": "SKILL_MSG_1_10045_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升25%。",
+      "offset": 4238871
+    },
+    {
+      "id": "SKILL_MSG_1_10046_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升30%。",
+      "offset": 4239102
+    },
+    {
+      "id": "SKILL_MSG_1_10047_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升35%。",
+      "offset": 4239333
+    },
+    {
+      "id": "SKILL_MSG_1_10048_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升40%。",
+      "offset": 4239564
+    },
+    {
+      "id": "SKILL_MSG_1_10049_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升45%。",
+      "offset": 4239795
+    },
+    {
+      "id": "SKILL_MSG_1_10050_01_DESC",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升50%。",
+      "offset": 4240026
+    },
+    {
+      "id": "TIPS_MSG_17",
+      "text": "道路\n建筑物若与道路邻接，生产量会增加。",
+      "offset": 53615293
+    }
+  ],
+  "fixture_hash": "f4917bca2ac47d5a6176a21e3805d230e4376d2615981f8abe2062532dcff9d1",
+  "fixture_scope": "Unmodified five original field product rows selected through building200_041_01_01_1_1.products; no full original assets committed."
+}

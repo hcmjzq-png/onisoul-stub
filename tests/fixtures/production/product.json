@@ -1,0 +1,149 @@
+{
+  "product": {
+    "product060_023_01_01_1_1": {
+      "id": "product060_023_01_01_1_1",
+      "name": "短时间少量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        0
+      ],
+      "dueInterval": 10,
+      "rewardId": "reward01_01_00001_01",
+      "openLevel": 1,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060023",
+      "assetNames": [
+        "product060_023_01_01_1_1",
+        "product060_023_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 10,
+      "sortno": 1
+    },
+    "product060_001_01_01_1_1": {
+      "id": "product060_001_01_01_1_1",
+      "name": "短时间少量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        10
+      ],
+      "dueInterval": 900,
+      "rewardId": "reward01_01_00014_01",
+      "openLevel": 5,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060001",
+      "assetNames": [
+        "product060_001_01_01_1_1",
+        "product060_001_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 30,
+      "sortno": 6
+    },
+    "product060_018_01_01_1_1": {
+      "id": "product060_018_01_01_1_1",
+      "name": "中时间中量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        20
+      ],
+      "dueInterval": 3600,
+      "rewardId": "reward01_01_00095_01",
+      "openLevel": 8,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060018",
+      "assetNames": [
+        "product060_018_01_01_1_1",
+        "product060_018_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 80,
+      "sortno": 11
+    },
+    "product060_007_01_01_1_1": {
+      "id": "product060_007_01_01_1_1",
+      "name": "中时间中量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        30
+      ],
+      "dueInterval": 7200,
+      "rewardId": "reward01_01_00017_01",
+      "openLevel": 11,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060007",
+      "assetNames": [
+        "product060_007_01_01_1_1",
+        "product060_007_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 110,
+      "sortno": 16
+    },
+    "product060_019_01_01_1_1": {
+      "id": "product060_019_01_01_1_1",
+      "name": "中时间中量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        40
+      ],
+      "dueInterval": 28800,
+      "rewardId": "reward01_01_00098_01",
+      "openLevel": 14,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060019",
+      "assetNames": [
+        "product060_019_01_01_1_1",
+        "product060_019_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 300,
+      "sortno": 21
+    }
+  }
+}

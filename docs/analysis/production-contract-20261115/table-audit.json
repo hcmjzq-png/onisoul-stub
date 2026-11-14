@@ -1,0 +1,52 @@
+{
+  "buildings": 1343,
+  "products": 1288,
+  "building_level_rows": 2183,
+  "drafts": 837,
+  "building_produce_types": {
+    "auto": 928,
+    "none": 291,
+    "single": 78,
+    "manual": 41,
+    "friend": 5
+  },
+  "product_issues": {
+    "count_range_settlement_unverified": 588,
+    "selection_rule_unverified": 625,
+    "reward_row_missing": 8
+  },
+  "missing_product_references": [],
+  "missing_initial_building_levels": [
+    {
+      "building": "building200_605_01_01_1_1",
+      "level_key": "guuk1001"
+    },
+    {
+      "building": "building200_605_02_01_1_1",
+      "level_key": "guuk2001"
+    },
+    {
+      "building": "building200_605_03_01_1_1",
+      "level_key": "guuk3001"
+    }
+  ],
+  "road_buildings": [
+    "building200_051_01_01_1_1",
+    "building200_052_01_01_1_1",
+    "building200_053_01_01_1_1"
+  ],
+  "recipe_open_level": "player level: PluginManualProduce.cs:105-113 -> UserStatus.getLevelValue",
+  "open_mission_values": {
+    "null": 1288
+  },
+  "preview_quantity": "ProductItem.cs:98-102 -> UserStatus.cs:1735-1740: floor(float32(min + (level-1)*(max-min)/(grade*10-1))); first reward slot, item15 uses damage value instead; preview is not settlement proof",
+  "table_hashes": {
+    "building": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+    "product": "36f9de13973ed4c6f57c8dcbfba09a7fe9c69e13d2435ad8534b8e33ff8478c7",
+    "reward01_politic": "ba1c4d8ff335af146b020924bf7b9c6e51436ccd90496dc1e30afc9e28cfc525",
+    "building_level": "b4c2466cc4ad68de233e808afa72170c0b8d285352f51e6e9057ac8349da9813",
+    "draft": "d92f775087b21acdbbaac789471687808dc08b159907783bc4ea8f771bf0a1c7",
+    "defines": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560"
+  },
+  "scope": "Static table joins only. Count min/max do not establish randomness, road-bonus formula or payout. Missing references may concern unused rows, not observed client failures."
+}

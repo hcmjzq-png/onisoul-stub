@@ -162,6 +162,17 @@ def run(host: str, port: int) -> None:
         built = api("politic/task/submitBuildAndComplete", {**own, "draftId": "draft2000041", "originCoord": [20, 20]})
         assert built["succeeded"]
         field_id = built["buildingId"]
+        recipes = api("politic/building/getProductsByBuilding", {**own, "buildingId": int(field_id)})
+        assert recipes["succeeded"] and recipes["products"] == {"product060_023_01_01_1_1": {}}
+        assert "level" not in recipes and "buildingTypeId" not in recipes
+        before_production = state.load(initial["playerId"])
+        for name in ("submitProduceTask", "submitBulkProduceTasks", "cancelTasks", "accelerateProduceTask"):
+            blocked = api("politic/task/" + name, {**own, "buildingId": int(field_id),
+                          "buildingIds": [int(field_id)], "productId": "product060_023_01_01_1_1"})
+            assert not blocked["succeeded"] and "no stub response" in blocked["message"]
+            assert blocked["errorReason"] == blocked["message"]
+        assert state.load(initial["playerId"]) == before_production
+        print("[http-smoke] player-level recipe query; four production placeholders explicitly fail without writes: OK")
         fixture = state.load(initial["playerId"])
         assert fixture["entity"]["username"] == account
         fixture["buildings"][field_id]["exp"] = 120
