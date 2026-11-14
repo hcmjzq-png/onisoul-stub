@@ -212,6 +212,30 @@ def make_handler(
                     head_only=head_only,
                 )
                 return
+            # 站点入口：客户端偶尔从根路径进入，根下只有原版 app.html，
+            # 而它的 js/img 全在 /client/ 下，根下逐个 404，窗口就是一片白。
+            # 这里直接 302 到重建的登录页，任何入口都落到同一个页面。
+            if self.path.split("?")[0] == "/":
+                _html_response(
+                    self,
+                    302,
+                    b"",
+                    head_only=head_only,
+                    location="/index.php/gwz/client/login/",
+                )
+                return
+            # 客户端部分子系统（社会信息、任务、商店轮询）走 GET 打业务接口，
+            # 原先一路落到静态层，返回 404 "stub has no assets"。
+            # 这里把 /api/ 的 GET 也接进注册表，参数从 query string 取。
+            if self.path.split("?")[0].startswith("/api/"):
+                import urllib.parse as _urlparse
+
+                query = self.path.split("?", 1)[1] if "?" in self.path else ""
+                params = dict(_urlparse.parse_qsl(query, keep_blank_values=True))
+                self._serve_api(
+                    self.path.split("?")[0], params, head_only=head_only
+                )
+                return
             if login_page.matches(self.path):
                 query = self.path.split("?", 1)[1] if "?" in self.path else ""
                 result = login_page.handle_get(query, head_only=head_only, user_agent=self.headers.get("User-Agent", ""))
@@ -236,6 +260,38 @@ def make_handler(
                 return
             _static_not_found(self, head_only=head_only)
 
+        def _serve_api(
+            self, path: str, params: dict[str, Any], *, head_only: bool = False
+        ) -> None:
+            """业务接口统一入口：POST 与 GET 共用。"""
+            api = path[len("/api/"):].strip("/")
+            if api not in registry.known():
+                _json_response(
+                    self,
+                    404,
+                    envelope.error(envelope.ERR_NOT_FOUND, f"未知接口: {api}"),
+                    head_only=head_only,
+                )
+                return
+
+            token = str(params.get("token") or "").strip()
+            try:
+                session = sessions.resolve(token) if token else None
+            except Exception as exc:
+                print(
+                    f"[stub][auth] 会话解析失败 {api}: {type(exc).__name__}",
+                    file=sys.stderr,
+                )
+                session = None
+
+            denial = auth.check(api, session, has_token=bool(token))
+            if denial is not None:
+                _json_response(self, 200, denial, head_only=head_only)
+                return
+
+            status, body = registry.dispatch(api, params, session)
+            _json_response(self, status, body, head_only=head_only)
+
         def do_GET(self) -> None:
             self._serve_get(head_only=False)
 
@@ -258,39 +314,11 @@ def make_handler(
                 _json_response(self, 404, envelope.error(envelope.ERR_NOT_FOUND))
                 return
 
-            api = path[len("/api/"):].strip("/")
             length = int(self.headers.get("Content-Length") or 0)
             raw = self.rfile.read(length) if length > 0 else b""
             ctype = self.headers.get("Content-Type", "")
             params = envelope.parse_params(raw, ctype)
-
-            if api not in registry.known():
-                _json_response(
-                    self,
-                    404,
-                    envelope.error(envelope.ERR_NOT_FOUND, f"未知接口: {api}"),
-                )
-                return
-
-            token = str(params.get("token") or "").strip()
-            try:
-                session = sessions.resolve(token) if token else None
-            except Exception as exc:
-                # 会话库不可用：strict 模式下这里必然判为未认证（fail-closed）。
-                # 需要「DB 挂了也别掐连接」的可用性优先，把 AUTH_MODE 设成 observe。
-                print(
-                    f"[stub][auth] 会话解析失败 {api}: {type(exc).__name__}",
-                    file=sys.stderr,
-                )
-                session = None
-
-            denial = auth.check(api, session, has_token=bool(token))
-            if denial is not None:
-                _json_response(self, 200, denial)
-                return
-
-            status, body = registry.dispatch(api, params, session)
-            _json_response(self, status, body)
+            self._serve_api(path, params, head_only=False)
 
     return StubHandler
 

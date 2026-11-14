@@ -57,6 +57,20 @@ class PeriodicInquiryTest(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn("show_off", body)
 
+    def test_handler_includes_gm_message(self) -> None:
+        # ChatInfo.setOperationMessage 读 gmMessage 时没有 ContainsKey 守卫，
+        # 缺键会在 Replace 上抛 NullReferenceException（联机中断(1) 的真因）。
+        body = periodic.handler({}, None)
+        self.assertIn("gmMessage", body)
+        self.assertIsInstance(body["gmMessage"], str)
+
+    def test_registry_dispatch_keeps_gm_message(self) -> None:
+        from app.main import build_registry
+
+        status, body = build_registry().dispatch("common/periodicInquiry", {}, None)
+        self.assertEqual(status, 200)
+        self.assertIn("gmMessage", body)
+
 
 if __name__ == "__main__":
     unittest.main()
