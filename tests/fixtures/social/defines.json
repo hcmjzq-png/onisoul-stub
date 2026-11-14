@@ -1,0 +1,14 @@
+{
+  "friendoffer_send_max": {
+    "id": "friendoffer_send_max",
+    "value": 10
+  },
+  "friendoffer_receive_max": {
+    "id": "friendoffer_receive_max",
+    "value": 10
+  },
+  "friendoffer_expire_time": {
+    "id": "friendoffer_expire_time",
+    "value": 604800
+  }
+}
