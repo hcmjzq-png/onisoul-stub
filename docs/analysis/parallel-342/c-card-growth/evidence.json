@@ -587,8 +587,9 @@
         }
       ],
       "response_reads": "sellPrice/tactics.<cardId>=售出数量",
-      "status": "回调/部分表证据，规则待证",
-      "remaining": "堆叠余额不能用实例消失防重；共享请求去重待集成"
+      "status": "结算与持久收据实现；可信操作ID集成待办；未注册HTTP",
+      "remaining": "总集成提供跨重试稳定、不同意图唯一的可信ID；不可从原请求参数或token猜出；D组挂牌锁与长期收据归档",
+      "followup_evidence": "followup-evidence.json"
     },
     {
       "api": "deck/setCharacterVoice",
@@ -651,8 +652,9 @@
         }
       ],
       "response_reads": "result.character/result.category/result.amount",
-      "status": "回调/部分表证据，规则待证",
-      "remaining": "paymentId映射与随机洗槽/支付待证，不是简单启用槽"
+      "status": "六档费用/候选表已证，抽样及替换规则未证；未实现",
+      "remaining": "原包候选表有200/235/158行，rate/rate_credit非均匀；过滤/抽样/重复/learning/visible及替换槽待证；不扣费",
+      "followup_evidence": "followup-evidence.json"
     },
     {
       "api": "deck/setSkillcoins",
@@ -673,8 +675,9 @@
         }
       ],
       "response_reads": "characterIds.<index>/skillCoins",
-      "status": "回调/部分表证据，规则待证",
-      "remaining": "换币率、特殊素材与重试规则待证"
+      "status": "消费/回包/重登链已证，兑换率未证；未实现",
+      "remaining": "不得把MaterialPoint或moneyCost_当兑换率/费用；需要原算法或可信前后余额记录",
+      "followup_evidence": "followup-evidence.json"
     },
     {
       "api": "deck/transferStoreCharacters",
@@ -1136,7 +1139,21 @@
     "Require saved nextOpenLimit>0; defines character_storage_open_interval=3600 is NOT automatically installed.",
     "lastOpenDate is successful commit Unix second; original timestamp semantics unproven.",
     "Reject paid warehouse extensions; no initial gifts/migration.",
-    "No replay cache; missing source instances reject immediate retries. Stacked sales and paid operations await request-id support.",
+    "Original instance sales/storage reject missing sources on immediate retry. Tactic integration-only settlement has a durable player-local receipt; original HTTP still lacks trusted intent IDs. Paid operations remain pending.",
     "Absent soul colors are zero consistent with existing profile, not a gift."
-  ]
+  ],
+  "followup": {
+    "report": "followup-tactics-skills.md",
+    "evidence": "followup-evidence.json",
+    "sha256": "1ca5e036cbbf8ea43ff72fa96a16fa19b9c38c8c512f2007fd508faffe232341",
+    "scope": [
+      "deck/sellTactics",
+      "deck/setSkillcoins",
+      "deck/setSkillSlot"
+    ],
+    "integration_only": [
+      "CardGrowthServices.sell_tactics_with_receipt"
+    ],
+    "additional_registered_endpoints": 0
+  }
 }

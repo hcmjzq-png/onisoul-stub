@@ -5,6 +5,8 @@ Uses PlayerServices.call and GameplayService's lock/save/revision boundary.
 """
 from __future__ import annotations
 
+import copy
+import hashlib
 import time
 from functools import partial
 from typing import Any
@@ -16,6 +18,23 @@ SOUL_COLORS = ("red", "blue", "purple", "yellow", "green", "black", "white")
 
 
 class CardGrowthServices(PlayerServices):
+    def sell_tactics_with_receipt(
+        self, params: dict, session: dict | None, *, operation_id: str
+    ) -> dict:
+        """Integration-only transaction entry, NOT an original request field.
+
+        The trusted dispatcher must supply a durable ID, identical for transport
+        retries and different for each new intent. Never derive it from the body,
+        a token or a time bucket. The original client supplies no such ID, so this
+        method is deliberately NOT registered as a public HTTP handler.
+        """
+        api = "deck/sellTactics"
+        # Snapshot before taking the lock: the caller cannot mutate the request
+        # between validation, settlement and receipt persistence.
+        request = copy.deepcopy(params)
+        action = partial(self._sell_tactics, operation_id=operation_id)
+        return self.service._guard(api, partial(self.call, api, action))(request, session)
+
     def register(self, registry: Any) -> None:
         handlers = {
             "deck/sellCharacters": partial(self.sell, kind="characters", table="character", field="characterIds"),
@@ -132,6 +151,64 @@ class CardGrowthServices(PlayerServices):
         player["characterStore"] = {**info, "lastOpenDate": now, "nextOpenLimit": interval}
         player.setdefault("counters", {})["characterCount"] = len(owned)
         return self.storage_info(player, {})
+
+    def _sell_tactics(self, player: dict, params: dict, *, operation_id: str) -> dict:
+        """All quantities, gold and receipt commit in PlayerServices.call's save."""
+        self.require_player(player)
+        if (not isinstance(operation_id, str) or not operation_id.isascii()
+                or not 1 <= len(operation_id) <= 128
+                or any(not (c.isalnum() or c in "-_.:") for c in operation_id)):
+            raise ValueError("no stub response: trusted sale operation id required")
+        raw = params.get("tactics")
+        if not isinstance(raw, dict) or not 1 <= len(raw) <= 8:
+            raise ValueError("tactics must contain one to eight card types")
+        if any(not isinstance(key, str) or not key for key in raw):
+            raise ValueError("tactic ids must be nonempty strings")
+        quantities = {key: integer(value, 1) for key, value in sorted(raw.items())}
+        # Service-internal durable ledger; not sent as a protocol field. No TTL
+        # or eviction: expiring a receipt would make a delayed retry spend again.
+        receipts = player.get("cardGrowthTacticSales") or {}
+        receipt_key = hashlib.sha256(operation_id.encode("ascii")).hexdigest()
+        if receipt_key in receipts:
+            receipt = receipts[receipt_key]
+            if receipt["quantities"] != quantities:
+                raise ValueError("sale operation id was already used for different quantities")
+            return copy.deepcopy(receipt["payload"])
+        # Bound this initial internal ledger without silently evicting receipts.
+        # This is a service support limit, not an original game limit.
+        if len(receipts) >= 1024:
+            raise ValueError("no stub response: tactic sale receipt archive required")
+        owned = player.get("tactics") or {}
+        referenced = set()
+        for kind in KINDS:
+            for deck in ((player.get("decks") or {}).get(kind) or {}).values():
+                referenced.update((deck.get("tactics") or {}).values())
+        if any(key not in owned or key in referenced for key in quantities):
+            raise ValueError("tactic is unowned or referenced by a deck")
+        rows = self.table("tactics")
+        remaining = {}
+        total = 0
+        for key, quantity in quantities.items():
+            remaining[key] = integer(owned[key].get("amount", 0)) - quantity
+            if remaining[key] < 0:
+                raise ValueError("insufficient tactic quantity")
+            row = rows.get(key)
+            if not row or "sellPrice" not in row:
+                raise ValueError("no stub response: tactic sale table row or sellPrice missing")
+            total += quantity * integer(row["sellPrice"])
+        gold = player["resources"]["gold"]
+        amount = integer(gold["amount"])
+        if total > 2147483647 or amount + total > integer(gold["maxAmount"]):
+            raise ValueError("no stub response: sale gold overflow is unsupported")
+        # Callback subtracts sold quantities; zero rows may remain in inventory.
+        payload = {"sellPrice": float(total),
+                   "tactics": {key: float(value) for key, value in quantities.items()}}
+        for key, value in remaining.items():
+            owned[key]["amount"] = value
+        gold["amount"] = amount + total
+        player["cardGrowthTacticSales"] = {**receipts, receipt_key: {
+            "quantities": quantities, "payload": copy.deepcopy(payload)}}
+        return payload
 
     @staticmethod
     def souls(player: dict, params: dict) -> dict:

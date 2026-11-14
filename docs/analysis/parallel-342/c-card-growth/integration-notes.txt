@@ -39,7 +39,7 @@ state/db revision CAS和原子文档写入。测试注入 StateConflictError，�
 不要以请求参数散列永久去重：合法第二次堆叠出售与重试参数一样；转仓往返也一样。
 迟到请求在一次往返之后可能再次合法，等待协议层持久请求ID/会话序号去重方案。
 全局实例分配必须单调不复用，不以 max(现存实例)+1 代替持久分配器。
-app/state.py/app/db.py 的去重与CAS若需改，由总集成处理；本分支不修改共享代码。
+app/state/player.py、app/db.py 的去重与CAS若需改，由总集成处理；本分支不修改共享代码。
 
 5. 给 D：交易资格
 本批出售/转仓拒绝头像与六组编队引用；出售额外拒绝protected；转仓允许protected。
@@ -76,6 +76,44 @@ e) 强化、继承、租用、卡包需原始服务响应/可信日志、活动�
 9. 验证
 python -m unittest tests.test_card_growth_services -v
 python -m unittest discover -s tests -v
-新增14项；完整240项通过，零跳过。test-results.txt为本地回归记录；没有真实服务器/Unity验收。
+本组26项（本次新增12项）；完整252项通过，零跳过。test-results.txt为本地回归记录；没有真实服务器/Unity验收。
 现有公共测试 tests/test_gap_verdicts.py:102、tests/test_no_key_inventory.py:22 出现未关闭文件的
 ResourceWarning，测试仍通过；本组未修改，建议总集成用with管理对应文件读取。
+
+10. 本次追加：战术出售内部事务入口（不直接挂HTTP）
+CardGrowthServices(service).sell_tactics_with_receipt(params, authenticated_session, operation_id=trusted_id)
+内部自行调用 service._guard 和 PlayerServices.call；调用方不得再绕过会话认证。
+params只沿用原tactics:<cardId,数量>，operation_id是内部调用参数，不是原协议字段。
+只允许可信上层提供同一意图跨重试稳定、不同意图不复用的ID；禁止从请求正文、会话token、
+参数散列、秒级时间窗生成。原客户端 WebApiClient.sendRequest 自动重发同一form，
+没有上传httpCallId；目前服务路由也没有可信操作ID，故本分支register不挂sellTactics。
+不允许用新随机ID包装每次HTTP重试来声称去重。缺可信ID前只能保留待集成状态。
+必须由总集成先落实端到端的意图区分/标识获取，不能单凭本模块就完成原版HTTP对接。
+
+cardGrowthTacticSales是本服内部玩家文档字段：SHA256(operation_id) -> quantities/payload。
+与战术余额和gold一次保存，不回传为协议字段。相同ID/数量重放原业务回包；相同ID不同数量失败。
+新ID允许相同数量的新交易。响应tactics是售出量，客户端自行扣减；回放只适用于同一次未完成请求，
+不能作为新UI点击的成功回包，否则客户端会重复显示加钱。
+无TTL、不静默淘汰收据；1024条后拒绝新交易（本服支持上限，不是原版限制），旧收据仍可重放。
+正式长期运行需事务化收据归档/独立持久账本，保持历史ID不重新执行；不自动迁移现有档。
+战术零余额保留原行，仅amount=0，现有查询及profile按余额读取。
+保守拒绝六组编队引用的战术、金币溢出、数量不足、未知类型，整批无部分结算。
+两服务实例CAS冲突测试用隔离内存CAS模拟，不等于验证真实MySQL；原状态适配器已具有revision事务。
+仍需D组挂牌锁/托管库存协调；本代码不声称解决auction并发。
+
+11. 技能换币/技能槽与表资源
+setSkillcoins消耗characterIds列表（最多8张），返回characterIds索引表和最终skillCoins；
+未找到原兑换率，不能把DeckConflate_SkillRefresh中遗留强化预览MaterialPoint或moneyCost套入。
+setSkillSlot的六档费用已核实：card=500/900/1500；credit=5/15/30，对应按钮G2/G4/G6。
+原包包含skillRefreshG2/G4/G6（200/235/158行），不是资源缺失；all-tables尚未导出这三表。
+总集成如需扩展tools/extract_tables_from_bundle.py的声明清单，使用精确文件名/根名skillRefreshG2等，
+不能修改/替换原文件，先核对followup-evidence.json的偏移和散列。现有table_inventory.tsv已列出三表，
+本次没有宣称首次发现这些表。脚本card_growth_followup_audit.py仅只读核验并输出小样本。
+rate/rate_credit并不均匀，表不是抽取算法；保留种群过滤、重复技能、等级/learning/visible和替换目标待证。
+不注册setSkillcoins/setSkillSlot，不扣素材/金币/点券，不计完成。
+
+12. 追加最小验证
+获得可信原服务日志或服务器算法后，比较普通/高阶/强化素材的单张换币增量；不能用本服输出证明兑换率。
+刷新分别以card/credit支付同一档位，保存完整技能记录前后，确定替换哪个槽、经验是否归零、
+是否允许同技能和未学习技能；仅有限次抓包不能推导概率，候选表还需服务端算法证据。
+模拟断响应以观察自动重试；验证稳定操作ID来自可信链路并随真正新点击变化后，才允许挂sellTactics。

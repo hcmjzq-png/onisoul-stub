@@ -32,6 +32,18 @@ test_revision_conflict_does_not_commit_or_report_success (test_card_growth_servi
 test_sale_prices_ids_and_reload (test_card_growth_services.CardGrowthTest.test_sale_prices_ids_and_reload) ... ok
 test_sale_retry_cannot_pay_twice_even_after_login (test_card_growth_services.CardGrowthTest.test_sale_retry_cannot_pay_twice_even_after_login) ... ok
 test_souls_bare_numeric_balance_no_grants (test_card_growth_services.CardGrowthTest.test_souls_bare_numeric_balance_no_grants) ... ok
+test_tactic_auth_account_scope_and_missing_identity (test_card_growth_services.CardGrowthTest.test_tactic_auth_account_scope_and_missing_identity) ... ok
+test_tactic_concurrent_same_receipt_and_distinct_intents (test_card_growth_services.CardGrowthTest.test_tactic_concurrent_same_receipt_and_distinct_intents) ... ok
+test_tactic_conflict_and_save_failure_leave_no_receipt_or_spending (test_card_growth_services.CardGrowthTest.test_tactic_conflict_and_save_failure_leave_no_receipt_or_spending) ... ok
+test_tactic_invalid_batch_and_insufficient_stock_atomic (test_card_growth_services.CardGrowthTest.test_tactic_invalid_batch_and_insufficient_stock_atomic) ... ok
+test_tactic_ledger_limit_never_evicts_old_receipts (test_card_growth_services.CardGrowthTest.test_tactic_ledger_limit_never_evicts_old_receipts) ... ok
+test_tactic_missing_assets_and_missing_row_are_distinct (test_card_growth_services.CardGrowthTest.test_tactic_missing_assets_and_missing_row_are_distinct) ... ok
+test_tactic_receipt_id_cannot_be_reused_for_changed_quantities (test_card_growth_services.CardGrowthTest.test_tactic_receipt_id_cannot_be_reused_for_changed_quantities) ... ok
+test_tactic_receipt_survives_reload_replenishment_and_changed_table (test_card_growth_services.CardGrowthTest.test_tactic_receipt_survives_reload_replenishment_and_changed_table) ... ok
+test_tactic_references_all_groups_and_gold_overflow (test_card_growth_services.CardGrowthTest.test_tactic_references_all_groups_and_gold_overflow) ... ok
+test_tactic_sale_partial_batch_and_client_subtraction_roundtrip (test_card_growth_services.CardGrowthTest.test_tactic_sale_partial_batch_and_client_subtraction_roundtrip) ... ok
+test_tactic_settlement_is_not_registered_as_public_handler (test_card_growth_services.CardGrowthTest.test_tactic_settlement_is_not_registered_as_public_handler) ... ok
+test_tactic_two_service_instances_cas_loser_retries_from_receipt (test_card_growth_services.CardGrowthTest.test_tactic_two_service_instances_cas_loser_retries_from_receipt) ... ok
 test_transfer_no_policy_paid_extension_and_bad_sources (test_card_growth_services.CardGrowthTest.test_transfer_no_policy_paid_extension_and_bad_sources) ... ok
 test_transfer_protected_card_preserves_record_and_reload (test_card_growth_services.CardGrowthTest.test_transfer_protected_card_preserves_record_and_reload) ... ok
 test_active_production_is_not_moved_cancelled_or_put_in_storage (test_city_services.CityTest.test_active_production_is_not_moved_cancelled_or_put_in_storage) ... ok
@@ -267,6 +279,6 @@ test_self_belong_is_sentinel_not_empty (test_turf_war_situation.TurfWarHandlerTe
 test_situation_chain_is_readable (test_turf_war_situation.TurfWarHandlerTest.test_situation_chain_is_readable) ... ok
 
 ----------------------------------------------------------------------
-Ran 240 tests in 2.338s
+Ran 252 tests in 2.167s
 
 OK
