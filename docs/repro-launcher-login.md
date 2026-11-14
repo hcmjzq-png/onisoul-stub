@@ -415,3 +415,101 @@ sudo bash -c 'set -a; . /etc/onisoul/stub.env; set +a;
 
 # 3) 只补缺失的表时加 --only-missing，不会覆盖已有文件
 ```
+
+## 十二、2026-11-14 追加：进主城「联机中断(1)」的真因是 common/periodicInquiry
+
+### 12.1 怎么会看到客户端日志
+
+Unity WebPlayer 默认写随机名日志 `log_<hash>.txt`，只有带 `UNITY_KEEP_LOG_FILES=1` 启动才会
+固定写 `%TEMP%\UnityWebPlayer\log\log_debug.txt`（常量名与文件名从 `npUnity3D32.dll` 里挖出）。
+带该变量启动后，进主城那一轮日志里能直接读到：
+
+```
+582:start httpCall: common/periodicInquiry
+Theres no data in show_off field
+
+## 十二、2026-11-14 追加：进主城「联机中断(1)」的真因是 common/periodicInquiry
+
+### 12.1 怎么会看到客户端日志
+
+Unity WebPlayer 默认写随机名日志 `log_<hash>.txt`，只有带 `UNITY_KEEP_LOG_FILES=1` 启动才会
+固定写 `%TEMP%\UnityWebPlayer\log\log_debug.txt`（常量名与文件名从 `npUnity3D32.dll` 里挖出）。
+带该变量启动后，进主城那一轮日志里能直接读到：
+
+```
+582:start httpCall: common/periodicInquiry
+There's no data in "show_off" field
+ERROR: WebAPI api = common/periodicInquiry error = exception error : {"succeeded": true, "now": 1794666426.0, "show_off": []}
+```
+
+早一轮（同一日志文件的前一个实例块）报的是另一句：
+
+```
+There's no "show_off" field in return payload
+ERROR: WebAPI api = common/periodicInquiry error = exception error : {"succeeded": true, "now": 1794665756.0}
+```
+
+### 12.2 这个接口是干什么的
+
+`common/periodicInquiry` 是主城「幸运用户」广播条的数据源：有人抽到稀有武将时，服务端把
+`{UserName, CharacterId, SkillId}` 放进 show_off 队列，客户端周期轮询取一条，由 `ShowOffMsg`
+浮层在主城画面上飘过几秒。证据（均在解压后的 `app_unity3d.bin` 字符串表里）：
+
+| 证据 | 位置 |
+|---|---|
+| `ShowOffData, UserName:{0}, CharacterId:{1}, SkillId:{2}` | 约 5,640,374 |
+| `show_off` / `Get data: ` / `There's no data in "show_off" field` | 约 5,640,574 起 |
+| `There's no "show_off" field in return payload` / `Show lucky user: ` / `  time : ` | 约 5,640,686 |
+| `PeriodicChecking` / `ShowOffMsg` / `Unable to create "ShowOffMsg", is it in the asset bundle?` / `POLITIC_MSG_SHOWOFF` | 约 5,640,834 |
+| 成员名 `ParseSingleData / p_hash / UserName / CharacterId / SkillId / showOffData / ShowLuckyUser / StartShowing / existDuration / moveVelocity / alphaSpeed` | 程序集元数据区 5,294,047 |
+| 客户端自带测试数据 `g6msg` / `test2` / `chara1_02065_01` / `skill1_01002_01` | 约 5,640,486 |
+
+### 12.3 客户端对「没有幸运用户」没有合法表达
+
+源码把两种「空」都当异常：字段缺失、数组为空。异常被 `WebApiClient` 捕获后统一弹
+「联机中断(1)」，并关掉 plugin window。也就是说：**协议里不存在「这一轮没人抽到、什么都不显示」
+这个状态**。占位响应当初只回 `{succeeded, now}`，所以第一轮就炸；改成 `show_off: []` 后炸第二条。
+
+### 12.4 修法：永远至少给一条
+
+`app/business/show_off.py` 提供队列，`app/business/periodic.py` 直接取一条下发：
+
+| 状态 | 下发内容 |
+|---|---|
+| 有未播事件 | 取最早一条（FIFO），记为「最近已播」 |
+| 队列空、播过 | 回最近一条；内容不变，客户端按条目哈希去重，不重复飘 |
+| 队列空、从未播过 | 内置占位条目 `onn` + `chara1_00726_01` + `skill1_01002_01` |
+
+两条约束写进实现里：
+
+1. **武将必须在服务端有包**：bundle 名 = `md5(UTF-16LE(characterId))`，`push()` 先校验
+   `assets/pc/bundles/chara/<md5>.unity3d` 是否存在，缺包拒绝入队，否则浮层加载武将图会再报一次错。
+   实测：客户端自带测试数据里的 `chara1_02065_01` 在服务端 **没有包**（`32251c4f…` MISS），
+   所以不能照抄它的测试数据；`chara1_00726_01` 有包（`1b3772fd…`，116,984 B）。
+2. **键名双拼**：条目同时给 `userName`/`UserName`、`characterId`/`CharacterId`、`skillId`/`SkillId`。
+   客户端按成员名反射映射，多给的键被忽略；这样避免「猜错大小写 → 用户再跑一轮」。
+   全站请求键命名惯例是 lowerCamel（`mapName` / `draftId` / `characterId`，见 API 定义表
+   约 5,512,000 区段），而该类成员名是 PascalCase，因此两种都发。
+
+真实触发点留了口子：契约表里的 `politic/lottery/lot`（鬼签抽卡，返回 `characters` Hashtable）
+命中稀有度时调 `show_off.push()` 即可。本 Stub 目前 **没有抽卡实现**（`app/business/` 里搜
+`lottery|getSouls|onikuji` 零命中，`logs/capture-*.jsonl` 里 lottery 调用 0 次），所以现在只能
+靠 `push()` 手工喂数据；抽卡实装单独一件，前提是先补武将包覆盖。
+
+### 12.5 验证
+
+```bash
+# 单测（含新增 8 条 show_off 回归）
+PYTHONPATH=/opt/onisoul python3 -m unittest discover -s tests   # Ran 116 tests OK
+
+# 契约自检
+PYTHONPATH=/opt/onisoul python3 tools/contract_check.py         # 402/392/111/0 问题
+
+# 线上回包（用任一有效 token）
+curl -s -X POST http://127.0.0.1:18080/api/common/periodicInquiry \
+  -H 'Content-Type: application/json' -d '{"token":"<token>"}'
+# → {"succeeded": true, "now": ..., "show_off": [{"userName": "onn", ...}]}
+```
+
+客户端侧待确认：条目被接受后是否还要求额外字段（例如时间戳）；本报文写入时尚未取得
+「非空数组的一次完整主城运行」日志。
