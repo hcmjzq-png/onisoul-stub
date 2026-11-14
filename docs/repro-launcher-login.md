@@ -186,3 +186,82 @@ createPlayer: True
 ```
 
 说明：本节只验证到「服务端不再拒绝该请求」，真机上从「最终决定」到主城是否走通，尚未复验。
+
+## 九、2026-11-14 追加：账号鉴权改造，以及进主城后的资源卡点
+
+### 9.1 注册落库 + 登录校验（commit `922a7d0`，PR #20）
+
+改造前的行为是「任意账号 + 任意 ≥3 位密码都发 token」，注册页只做格式校验、不落库（页面明写「stub 不落库，注册仅演示流程」）。改造后：
+
+- 新表 `users(account_key varchar(64) PK, password_hash varchar(128), salt varchar(64), created_at double)`，由登录页首次 GET 时惰性 `CREATE TABLE IF NOT EXISTS`，不依赖迁移脚本；
+- 密码存 PBKDF2-HMAC-SHA256（12000 轮）+ 每账号 16 字节随机 salt，不存明文；
+- 注册重复 → 「该账号已注册，请直接登录或换一个账号」；
+- 登录未注册 → 「该账号尚未注册，请先点『注册新账号』」；密码错 → 「密码错误」；校验通过才 `sessions.issue` 发 token 并 302。
+
+服务端 curl 实测（`http://127.0.0.1/index.php/gwz/client/login/`）：
+
+```
+1) POST account=authtest1&password=abc123  (?page=register)  → 200 页面含「账号已创建」
+2) 同一账号再注册                                            → 200 页面含「该账号已注册」
+3) POST account=ghost999&password=abc123                     → 200 页面含「该账号尚未注册」
+4) POST account=authtest1&password=wrongpass                 → 200 页面含「密码错误」
+5) POST account=authtest1&password=abc123                    → 302 → /client/app.html?token=…
+```
+
+库里 `users` 落了一行：`authtest1  aece2d94634b…  1794657595.9`。
+
+### 9.2 「记住账号密码」勾选框（同 commit）
+
+原页面 `#remember` 是个 `<span class="ui-radio checked">` 死图：没有 onclick，也没有任何持久化，点了没反应、下次也不记。现在：
+
+- 点击切换 `ui-radio` / `ui-radio checked`；
+- 勾着提交时把 `{a:账号, p:密码}` 写进 cookie `oni_login`（180 天），取消勾选提交则删除；
+- 下次加载自动回填并置为选中；
+- 用 `document.cookie` 而不是 `localStorage`——容器是 QtWebKit 4.x，localStorage 持久化没有保证。
+
+边界：密码是明文存在客户端本机 cookie 里的，只适合本地 stub；要不要改成「只记账号」另行决定。登录页体积 7604 → 9031 字节，响应头 `Cache-Control: no-store, no-cache, must-revalidate`。
+
+### 9.3 真机链路：建号这次真的成功了
+
+```
+20:01:16 POST /api/auth/registerName  200 {"succeeded": true}
+20:01:26 POST /api/auth/createPlayer  200 {"succeeded": true, "playerId": "p_dc76e9f0c0006e8f"}
+```
+
+库里该玩家（`SELECT player_id, JSON_EXTRACT(state_json,'$.entity.created') …`）：
+
+```
+p_dc76e9f0c0006e8f   created=true   username=流音   country=country37   state 1101 字节
+```
+
+真机截图上 HUD 已渲染（编成／物语／合战／鬼签、商店／建筑／仓库／每日奖励），说明客户端已经过建号、进了主城骨架。
+
+### 9.4 现行卡点：6 个 `chara/*.unity3d` 404 触发「联机中断(1)」
+
+建号前后那几秒，所有 API 都是 200，唯一的失败请求是角色资源包：
+
+```
+20:01:17 404 /client/pc/jp/assets/chara/395a38ee07917a3f1342358cdb6c4fff.unity3d  ×5
+20:01:18 404 /client/pc/jp/assets/chara/1450fa13b6e0098ea407efee5de253b2.unity3d  ×5
+```
+
+累计请求次数（`capture-20261114.jsonl` 全文 grep）：
+
+```
+16  chara/adab798b1a597e970fa1995aa4a9dd11.unity3d
+15  chara/759f9e91a56a2aab75b1d64bf101a5ef.unity3d
+11  chara/b6c88175b58f489bebf782eef21ace35.unity3d
+11  chara/69e30186b8b4e5649be7b31103de7558.unity3d
+10  chara/395a38ee07917a3f1342358cdb6c4fff.unity3d
+ 5  chara/1450fa13b6e0098ea407efee5de253b2.unity3d
+```
+
+两边都没有这些文件：
+
+- 服务端：`PC_BUNDLE_DIR=/opt/onisoul/assets/pc/bundles`、`PC_CACHE_DIR=/opt/onisoul/assets/pc/cache` 两个目录 `exists: False`（`assets/pc` 下只有 `web`），`paths.py` 里那 6 条候选路径全部 miss；
+- 客户端：`D:\鬼武者魂` 按这 6 个哈希名搜索命中 0；`cache` 下只有 `data7`（16 桶 163 条 `.d`）、`prepared`（0 文件）、`WebpageIcons.db`（68608 B），`WebPlayer\Cache\Temp` 0 文件；
+- 源站：`client-onisoul.86joy.com` 在服务器上 `getent hosts` 解析失败、`curl` 报 `Could not resolve host`，不可回源。
+
+结论：这 6 个包只能从**跑过原服、缓存里有副本的机器**上取（朋友机器 `D:\鬼武者魂\cache\data7` 里按哈希搜），拿到后落盘到 `assets/pc/bundles/chara/<hash>.unity3d`，「联机中断」才会消失。这是素材缺失，不是协议/逻辑错误，与第八节的三处服务端缺陷性质不同。
+
+附带一个已知内容缺口：`createPlayer` 写入的 `characters` 是空的——`_initial_characters` 依赖 `beginning_equipment` + `item01` + `character` 三张表，表空则初始武将 0 个。所以即便资源包到位，主城／编成里的武将列表仍需要最小初始存档来填。
