@@ -1,0 +1,62 @@
+{
+  "strategy_command": {
+    "changeBase": {
+      "id": "changeBase",
+      "name": "STRATEGY_MSG_COMMAND15_NAME",
+      "proficiency": 0,
+      "terrain": [
+        "castle",
+        "fort",
+        "base",
+        "backyard"
+      ],
+      "occupied": [
+        "own"
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costCalculationTypes": [
+        "fixed"
+      ],
+      "costAmounts": [
+        1000
+      ],
+      "contributionRatio": 0.0,
+      "coolTime": 3,
+      "desc": "STRATEGY_MSG_COMMAND15_DESC"
+    },
+    "returnBase": {
+      "id": "returnBase",
+      "name": "STRATEGY_MSG_COMMAND15_NAME",
+      "proficiency": 0,
+      "terrain": [],
+      "occupied": [],
+      "costTypes": [],
+      "costCalculationTypes": [],
+      "costAmounts": [],
+      "contributionRatio": 0.0,
+      "coolTime": 0,
+      "desc": "STRATEGY_MSG_COMMAND15_DESC"
+    },
+    "march": {
+      "id": "march",
+      "name": "STRATEGY_MSG_COMMAND1_NAME",
+      "proficiency": 0,
+      "terrain": [],
+      "occupied": [],
+      "costTypes": [
+        "food"
+      ],
+      "costCalculationTypes": [
+        "force"
+      ],
+      "costAmounts": [
+        1
+      ],
+      "contributionRatio": 0.0,
+      "coolTime": 5,
+      "desc": "STRATEGY_MSG_COMMAND1_DESC"
+    }
+  }
+}
