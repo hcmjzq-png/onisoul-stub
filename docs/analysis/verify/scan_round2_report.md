@@ -44,6 +44,12 @@ python3 tools/unguarded_reads.py gap --dump /tmp/pairs.tsv \
     --receivers docs/analysis/verify/gap_receivers.tsv \
     --origins docs/analysis/verify/gap_origins.tsv \
     --filter origin --out /tmp/check_gaps.tsv   # 应 33 行
+```bash
+# 客户端侧取证（数据不入仓，只入仓脚本）：产出 read_context.tsv / key_type_profile.tsv / type_evidence.tsv
+python3 tools/extract_read_context.py --root <反编译树根> --out /tmp/ctx
+```
+
+```bash
 PYTHONPATH=. python3 -m unittest discover -s tests   # 88 tests
 python3 tools/contract_check.py                       # 1108 键 / 627 带类型 / 0 问题
 ```
