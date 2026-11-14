@@ -1,0 +1,57 @@
+H 组集成说明（未挂载、未部署；基线 1f287e33123afa452d2f5d2aac2427566d549f73）
+
+1. 生产挂载（仅由总集成修改）
+app/business/gameplay.py 的 GameplayService.register：
+  from app.business.account_progress_services import AccountProgressServices
+  AccountProgressServices(self, revisions=verified_manifest).register(registry)
+应放在原有业务注册之后、register_contract_defaults 之前。只接管 6 项：
+common/getRevisions、common/getPlayerCogid、plugin/getPluginData、plugin/setPluginData、plugin/getPluginLog、plugin/addPluginLog。
+本分支没有修改 GameplayService/registry/main/response_shapes/placeholders；测试显式注册。
+verified_manifest 必须含 server/unity/table/root 四个非负整数；来自实际部署资源清单，不能从当前日期或资源单一 URL 猜全套值。
+getRevisions 在原 TableLoad._setup 登录前调用；总集成核对 app/main.py 的认证策略，允许该端点匿名读取，其他五项必须使用会话。
+getPlayerCogid 返回本服 session.playerId（Configs.GetUserInfo 只读 playerId.ToString）；不是原平台 COG 绑定恢复，平台链接不属于此实现。
+保留 getPlayerParams、创建角色、初始资源、PlayerServices 既有处理器全部行为。6 项没有覆盖其中任何处理器。
+
+2. 存档/锁/事务
+accountProgress 为新增内部存档命名空间，绝不直接返回此根键：
+pluginSetting -> 回包 pluginData；pluginExpiresAt -> pluginTime.pluginTime；pluginLogs -> logdatas；pluginLogSequence 为内部单调序号。
+PlayerServices.call + GameplayService._guard/_save 保持既有锁和存档机制；单玩家变更先校验后修改。
+当前 _prepare_state 会保留未知字段，测试已验证跨重新登录保留；无需改公共默认状态。缺字段读空设置/空日志/零时长是兼容策略，不是原服初值。
+时长只能由后续可信购买事务或有证据的迁移写入。H 没有任何发放时长入口；不要为了让设置可写而给新角色免费时长。
+设置接口仅存储三类扁平标量参数，不解释、不运行、不校验每个业务任务的地图/物品合法性；执行入口必须各自校验归属/费用，不信任这些参数。
+设置替换重试幂等，过期后重试会拒绝但不改原存档；日志无 nonce，重试会追加诊断条目，不承诺去重。
+日志 reward 仅诊断文字/数量，不能计入资源、收藏、成就、任务或战绩。服务器覆盖 time，最近200条保留/大小限额为本服务策略。
+多进程仍依赖现有存储 revision CAS；本分支测试注入 StateConflictError 验证失败不落档，没有伪称实测 DB 跨进程事务。
+兑换码全局限额、迁居国家计数、其他跨账号事务未实现，不能用单玩家锁替代 DB 原子提交。
+
+3. 公共响应契约待改
+app/business/response_shapes.py 的 SCALAR_ROOT_EVIDENCE 对 trophy/getTrophyProgress 的记录与原源码相反：
+TrophyWindow.cs:82-93 和 mypageTrophyUpdate.cs:95-108 遍历根表，逐项读 level/status/window。
+至少 access=mypage 必须裸映射；WebApiClient 同端点有其他 access 包装，不能不区分 access 就全局修改。先逐类复核，再调整 shape_for/处理器/失败过滤。
+politic/mypage/getCharacterCollection 同样裸映射（mypageLibrary.cs:450-470），值是 grade；不要添加 now/succeeded，不要把当前库存假装历史图鉴。
+common/getActionPoints/getResources/getAnnouncement/getShopcredit2 只有包装器证据，未挂载查询；不能把 getPlayerParams 嵌套字段当独立接口协议。
+docs/api_schema.md、docs/analysis/api_*.tsv 由总集成吸收 reviewed-endpoints.tsv；H 未编辑公共表。
+错误应通过 errorReason 阻止 GameRestarter 后续成功回调。未实现业务是 no stub response；缺实际文件/表才是 stub has no assets。单独静态行引用异常不算资产文件缺失。
+
+4. 组间边界
+C：claimReward 请求参数实际为 reward（数字字符串），NineGridDataManager/Parser 证实属于九宫格；响应 result/rewards/toInbox/resources。与 C 的 getNineGridInfo/playNineGridGacha 统一资格与领奖账本，H 不独立发奖。
+C：收藏表确实存在（artifactSeries 470 / jewelSeries 261），但旧库存和领取实现没有因此获证。rewardFirst/reward、payableCount/receiveCount、items 需统一消耗/奖励事务。
+A+C：迁居需要明确地图/建筑/武将/编队/任务保留与重置清单；不得调用创建角色流程再次赠送5000金及行动点。
+G：战绩与国家 rank 必须给真实事件累计来源；当前库存/客户端插件日志不能反推历史战绩。
+D：credit/credit2 消费日志和付费插件使用同一真实账本；plugin_time 的价格/期限并不能证明 credit2 优先级与续费算法。
+公共每日计数、日界线、领奖幂等键、旧档迁移由总集成协调，不在 H 写共享模块。
+
+5. 最小独占动态验证（总集成安排，本分支没有启动客户端）
+沿客户端→hosts→proxy80→stub 保存脱敏请求、原始响应、调用前后状态。模拟服输出只验兼容，不是原版规则证据。
+- 引导前 getRevisions：四个 revision 与真实资源请求 URL 对齐；不得以改版本掩盖资源缺失。
+- 可信有效时长账号：打开插件设置，改一项，重开/重登；过期账号同请求不写档；日志显示时间/顺序及重复请求行为。
+- 印章：原服或可靠历史样本同日首次/重复、跨日、断签、重登；收集排期和奖品目录，勿假造日期。
+- 每日/消耗/成就：一个真实事件前后、费用不足、重复领取、跨日、重登；同时获取服务端目录/概率/事件计数来源。
+- 收藏：取得一件、凑齐、首次领取、重复领取后 item/payableCount/receiveCount 对照，确认分页起点。
+- 迁居：先只读预检，不执行迁居；需要完整保留清单与可回滚隔离账号后才进行。
+本机与局域网分别记录路由；H 不改 hosts/proxy80/config.ini，不部署服务器、不改变游戏尺寸或监控 UI。
+
+6. 验证
+python -m unittest tests.test_account_progress_services -q：12 项通过。
+python -m unittest discover -s tests -q：238 项通过，无跳过/缺可选依赖；基线测试有 ResourceWarning，不是失败。
+全局占位数量不变，6 个限定处理器只有本组测试显式挂载，不表示 37 项玩法完成。
