@@ -129,6 +129,31 @@ def run(host: str, port: int) -> None:
         assert api("politic/shop/buyShopItem", {**purchase, "quantity": 9999})["succeeded"] is False
         assert api("politic/building/getDrafts", {"token": token})["draft2000041"]["amount"] == 2
         print("[http-smoke] protection, inventory/storage, profile/map, lessons, gold/credit purchases and balances: OK")
+        own = {"token": token}
+        assert api("common/getPlayerEntity", {**own, "playerId": "another"})["playerId"] == initial["playerId"]
+        assert isinstance(api("common/getServerTime", own)["now"], float)
+        assert set(api("auth/keepAliveContainer", own)) == {"succeeded", "now"}
+        assert api("common/solvePlayerLevelCap", {**own, "cap": 100})["cap"] == 5
+        gold = api("common/getPlayerParams", own)["resources"]["gold"]["amount"]
+        lesson = {**own, "lessonId": "lesson_00001"}
+        assert api("politic/mypage/takeLesson", lesson)["reward"] == {"item11_0000101": 5000}
+        assert api("politic/mypage/takeLesson", lesson)["reward"] == {}
+        assert api("politic/mypage/getLessonStates", own)["states"]["1"] == "C"
+        assert api("common/getPlayerParams", own)["resources"]["gold"]["amount"] == gold + 5000
+        assert not api("politic/mypage/takeLesson", {**own, "lessonId": "lesson_00002"})["succeeded"]
+        # Only the isolated audit account receives experience for this check.
+        fixture = state.load(initial["playerId"])
+        assert fixture["entity"]["username"] == account and fixture["entity"]["created"]
+        fixture["entity"]["exp"] = 200
+        state.save(fixture, initial["playerId"])
+        assert api("common/increasePlayerLevel", own)["succeeded"]
+        after_level = api("common/getPlayerParams", own)
+        assert after_level["entity"]["level"] == 2 and after_level["entity"]["exp"] == 200
+        assert after_level["actionPoints"]["missionPoint"]["point"] == 25
+        assert after_level["actionPoints"]["missionPoint"]["maxPoint"] == 30
+        assert api("common/increasePlayerLevel", own)["succeeded"]
+        assert api("common/getPlayerParams", own)["entity"]["level"] == 2
+        print("[http-smoke] lesson claim/retry/prerequisites, level gates/cumulative experience, clock/heartbeat/entity: OK")
         assert api("common/getPlayerParams", {}).get("error") == "UNAUTHORIZED"
         debug = api("debug/devLogin", {"username": account})
         assert debug.get("succeeded") is False and not debug.get("token")

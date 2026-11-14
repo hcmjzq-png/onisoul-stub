@@ -72,7 +72,7 @@ categoryGradeCount（建筑 grade/level=any）、eq_greater_than 条件。
 | `politic/mypage/getPlayerProfile` | bundle | `mypageProfileUpdate.cs:239-299`：username/level/country、三种 Point、characterCount/buildingCount/tacticCount/friendCount/raidBossPoint/rank、souls 七色、selfIntroduction.message/三项 habits。纠正旧契约把嵌套的 message、habits、颜色错误平铺到根。取玩家存档，无记录的统计为 0；无排行不伪造 rank。eachKokudaka 仅当前主城。 |
 | `politic/mypage/setSelfIntroduction` | bundle | `mypageSelfIntroduction.confirmCallback` 传 message 与 habits.0/1/2；长度按 defines.self_introduction_message_min/max_length，偏好 ID 按 habit 表，保存后 profile 返回。 |
 | `politic/map/setMapName2`，`getMapData.map.name` | bundle | `WebApiClient.cs:704-711` 的 mapId/mapName；`UserStatus.cs:1301-1332,1371-1404` 从 map.name 读取，none 容器以空表判改名成功。只支持主城 mapId=0，长度按 defines；不将支城旧实现引入。 |
-| `politic/mypage/getLessonStates.states` | bundle | `LessonMissionSimpleStatusManager.cs:66-127`、`LessonMissionSimpleStatus.cs:20-33`，索引数字字符串对应 L/C。枚举 lesson 表，按 lessonsDone 返回；未读不标完成。2026-11-15 从原表包找到 reward14_lesson（24 行）；takeLesson 的条件和领取事务仍在待办。 |
+| `politic/mypage/getLessonStates.states` | bundle | `LessonMissionSimpleStatusManager.cs:66-127`、`LessonMissionSimpleStatus.cs:20-33`，索引数字字符串对应 L/C。枚举 lesson 表，按 lessonsDone 返回；未读不标完成。2026-11-15 从原表包找到 reward14_lesson（24 行）；takeLesson 已实现的限定范围见下文成长流程复核。 |
 | `politic/support_item/getPotions.potions.<id>.amount` | bundle | `PoliticItemInventory.setup/putInItemList`、`PotionTableAccessor.getItemId`，potion.itemID 映射已有 items；不把 initialAmount 字段当免费赠送。全自动用药条目明确回零余额，其余按实际库存返回。恢复公式尚未证实，usePotions 未纳入完成计数。 |
 | `politic/shop/getShopItems.shopItems/recommendedItems` | bundle / 待验证 | `ShopUpdate.cs:57-110,204-210` 要求两张表；条目读 state/isNewBuyable/discount。当前仅列出 isInitialSale=true、无折扣、有正价格且能发放的图纸/消耗品，其他商品不展示。isInitialSale 作为白名单是本模拟服保守策略，未声称复原原服上架/解锁规则。 |
 | `politic/shop/buyShopItem.resources/result` | bundle | `WebApiClient.cs:1036-1046` 请求 shopItemId/index/quantity/storetable；`ShopItemBuild/Support.saleWindowResult` 读取 resources，`DailyMissionScene.cs:440-450` 读取 result 中购买后物品余额。只接受普通 shop_item 表；整套/单件按 isSet/itemIds/quantities；countryshop 通过 shop_item_country 映射本国物品。 |
@@ -89,3 +89,19 @@ getDrafts 可见，消耗品通过 getPotions 可见；保护、介绍、改名�
 本批仅修复服务端表加载与 UTF-8 数据，不新增接口处理器；旧 api_contract.tsv 中的
 quest 扁平字段并非完整协议，后续实现以该复核记录为依据。事件概率、初始进度、
 战斗运算及领取条件仍待验证，不使用占位值替代这些规则。
+
+## 2026-11-15 成长流程复核
+
+原安装包来源、逐接口证据与限制见 [357 接口复核](analysis/remaining-services-20261115/README.md)。
+
+| 字段 / 行为 | 来源 | 证据与范围 |
+| --- | --- | --- |
+| `politic/mypage/takeLesson.reward/toInbox` | bundle | `LessonScriptCommand.cs:148-167` 读取两张表；按 lesson.triggerMissions 要求 C，按 reward14_lesson 确定数量发资源/经验。24 项中支持 19 项；其余 5 项或资源溢出明确失败、不记完成。成功的 toInbox 为空，因为本批只支持可直接交付的奖励。 |
+| `common/solvePlayerLevelCap.cap` | bundle | `PoliticMissionManager.cs:461-496` 读取 double；playerLevel.requirementForNext 和 defines.level_limit=15，依任务 C 状态依次开放 5/10/15。 |
+| `common/increasePlayerLevel.kokudaka/possessionLimits` | bundle | `StatusView.cs:331-338` 调用 updateKokudaka/updateActionPointTotal/updateLimits，后续 resetStatus 重取状态。前两字段取存档与原级别容量；未证实的升级点数奖励不发放，保留点数。累计 exp 的门槛由 `UserStatus.cs:262-334,1247-1286` 和 PlayerLevelTableAccessor 支持。 |
+| `common/getPlayerEntity.playerId` | bundle | `WebApiClient.cs:1562-1576` 的 debugCreateQuestEncount 读取根 playerId.ToString；返回当前认证账号，不接受参数替换成其他玩家。额外字段未证实。 |
+| `common/getServerTime.now` | bundle | `SceneResources.cs:114-117`、`Configs.cs:1336-1339` 按 double 读 now；返回当前 Unix 秒数，沿用已有信封。 |
+| `auth/keepAliveContainer` | bundle | `SessionKeeper.cs:207-218` 回调不读负载；返回已有确认信封，HTTP token 解析层触碰会话。删除旧契约误抄 guestLogin 的 isCreatedPlayer/loginHash。 |
+| 点数超过 maxPoint 的存档读取 | bundle | `UserStatus.cs:861-890` 的 setActionPoint 允许 0..999，不以 maxPoint 截断；读取时保留超额值。药水公式及实际溢出上限仍待验证。 |
+
+`usePotions` 及 4 个 dailymission 入口仍是待办；新发现的准确响应层级记录于复核报告，不以缺乏规则的空成功回包代替业务实现。

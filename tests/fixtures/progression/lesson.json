@@ -1,0 +1,64 @@
+{
+  "lesson": {
+    "lesson_00001": {
+      "id": "lesson_00001",
+      "triggerMissions": [
+        "none"
+      ],
+      "reward": "reward14_01_00001",
+      "script": "scr6_000001_01",
+      "grade": "beginner",
+      "category": "system",
+      "sort": 1,
+      "title": "LESSONMISSION_MSG_00001_001"
+    },
+    "lesson_00002": {
+      "id": "lesson_00002",
+      "triggerMissions": [
+        "po_mission_00012"
+      ],
+      "reward": "reward14_01_00002",
+      "script": "scr6_000002_01",
+      "grade": "beginner",
+      "category": "character",
+      "sort": 6,
+      "title": "LESSONMISSION_MSG_00002_001"
+    },
+    "lesson_00008": {
+      "id": "lesson_00008",
+      "triggerMissions": [
+        "po_mission_00013"
+      ],
+      "reward": "reward14_01_00008",
+      "script": "scr6_000008_01",
+      "grade": "beginner",
+      "category": "character",
+      "sort": 12,
+      "title": "LESSONMISSION_MSG_00008_001"
+    },
+    "lesson_00022": {
+      "id": "lesson_00022",
+      "triggerMissions": [
+        "po_mission_00013"
+      ],
+      "reward": "reward14_01_00022",
+      "script": "scr6_000022_01",
+      "grade": "beginner",
+      "category": "battle",
+      "sort": 3,
+      "title": "LESSONMISSION_MSG_00022_001"
+    },
+    "lesson_00023": {
+      "id": "lesson_00023",
+      "triggerMissions": [
+        "po_mission_00013"
+      ],
+      "reward": "reward14_01_00023",
+      "script": "scr6_000023_01",
+      "grade": "beginner",
+      "category": "politic",
+      "sort": 4,
+      "title": "LESSONMISSION_MSG_00023_001"
+    }
+  }
+}

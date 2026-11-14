@@ -1,0 +1,34 @@
+{
+  "source_basis": "quest-contract-20261115/source-proof.json; fresh original installer decompilation",
+  "source_hashes": {
+    "Configs.cs": "53b24ca9c1848d12472b4b60411d69a68c4b27417fa577cd68268b8507268994",
+    "DailyMissionScene.cs": "ade4b5a99ee026617af780168c79d71759d0b7d0514166e026bd7546e0a78bc1",
+    "DailyMissionTableAccessor.cs": "de31787416e375d13de315fb0e6e39eecfb97da9d12e58afe32932f7ea4eaac1",
+    "DefinesTableAccessor.cs": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4",
+    "LessonMissionSimpleStatus.cs": "df4cd6f4f5cd9719ddbc163e72ce0d7c7f5a76ecb124c04bff7179bd6e4df4f4",
+    "LessonMissionSimpleStatusManager.cs": "533afa1df6083245eb0857c48b19bac9d344cb90d22796ada8990141d72516ef",
+    "LessonScriptCommand.cs": "2a333238fbd671effeb9e0a728f3c4ff167f47f31184055991e750f527a2fe54",
+    "LessonTableAccessor.cs": "7706d9130d4b42828a6a7eb37456537f1781c69fce3176c717ff02c5ba9c0358",
+    "PlayerLevelTableAccessor.cs": "4c952d3a3c4fb3e1947e5343c1cc2e563e21b4f96d06ad96f80a3ef08848ad72",
+    "PoliticItemInventory.cs": "cab5f604d9b3ac41214147246b428abd68608fa21d252cb6f30b63595163423e",
+    "PoliticMissionManager.cs": "6825f649fc6e4eae1e24ef462def4e2863f39d4aacf6eb757be18eaf78cf4567",
+    "PoliticMissionProgressList.cs": "38b74b7269dc0398e746c16e291b3ec715977c5e2096ca6edde86fa506c66e4c",
+    "PotionTableAccessor.cs": "618796e19cebba7caacee13ce02ba08e3a4c1b8a2255312b3cab3b863c202a08",
+    "RewardProcessor.cs": "00a403c195aa271fd36691b605034890c2a2f8b53aa1d58cdf8654d368eb9bb4",
+    "SceneResources.cs": "98fd8f79f177384a112e9a130fbb075453bcec5b85984e92356533b5ea804fcc",
+    "SessionKeeper.cs": "2f04661dea4962be2760fb647c8a9235d54b504c5e62f3c2cfc1422c849d7aa9",
+    "SimpleInventoryDialog.cs": "62f0100a3852d7fffe67bd7d02ca19997a216f80ebd2773eacfdc26f184ccbe6",
+    "StatusView.cs": "d9ad258353c61c09fb044c54355270e023114687afdc4d64aae538463eb6b3a3",
+    "UserStatus.cs": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+    "WebApiClient.cs": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+  },
+  "table_hashes": {
+    "lesson": "9a9f379eb682d8924754806543625d938e25e5452e70e0243f24b175cf1014b5",
+    "reward14_lesson": "d39031763b3a713f4b398aca4e366fb6ab3b30902350c1ced480d10ca657643a",
+    "playerLevel": "a04583b4e84018c501265e4ad1048e7f38fd5ae120861f1f9e8a1189369d3531",
+    "politicMission": "1f8b764ee8d9f078d4fb4250f91d22ec055570162239b4be8613aa3c9e75863b",
+    "defines": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+    "potion": "8120c12f4f93dad913f82392a1d06af5d999cdd029b319c129397211d338dbfd",
+    "daily_mission": "16bac33bc794bbffd8e7e84601ffb565ba4732cd4e99ae6ba2e2e939b4b0c86a"
+  }
+}

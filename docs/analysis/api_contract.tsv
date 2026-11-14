@@ -21,7 +21,7 @@ auction/auctionStatus	auctionStatus	token			status*	1	AuctionDataManager.Auction
 auth/createPlayer	createPlayer	colorIndex,countryId,invitationCode,navigatorId,token,username				0	BootUp.dummyPlayerCreate|LoginEnvironment.createNewPlayer	2
 auth/gameLogin	gameLogin	token			certifiedInternetCafe:bool*;container:string*;succeeded:bool	3	SessionKeeper.login	1
 auth/guestLogin	guestLogin	loginHash,platform			isCreatedPlayer:bool;loginHash:string	2	BootUp.guestlogin|SessionKeeper.guestLogin	2
-auth/keepAliveContainer	refreshKeepAliveContainer	token			isCreatedPlayer:bool;loginHash:string	2	SessionKeeper.refreshKeepAliveContainer	1
+auth/keepAliveContainer	refreshKeepAliveContainer	token				0	SessionKeeper.refreshKeepAliveContainer	1
 auth/login	pubLogin	sessionKey			succeeded:bool	1	SessionKeeper.directLogin	1
 auth/refreshToken	refreshToken	token				0	BoosterPackScene.buyCredit	1
 auth/registerName	registerName	token,username			succeeded:bool	1	BootUp.dummyPlayerCreate|LoginEnvironment.registerName|LoginTransNameEntry.onDecide|MigrateTransEntry.Start|MigrateTransEntry.Start#responder=Singleton<UserStatus>.Instance.Entry.userName_	5
@@ -48,7 +48,7 @@ common/getEquips	getEquips	token			equip:Hashtable;grade:double	2	DeckConflateCa
 common/getEventStatuses	getEventStatuses	token			giganticRaidBoss:Hashtable*;giganticRaidBoss.closeTime:double*;giganticRaidBoss.endTime:double*;giganticRaidBoss.isEntry:bool*;giganticRaidBoss.resultCloseTime:double*;giganticRaidBoss.status:string*;siege:Hashtable*;siege.advantage:string*;siege.closeTime:double*;siege.endTime:double*;siege.isEntry:bool*;siege.resultCloseTime:double*;siege.status:string*;strategy:Hashtable*;strategy.closeTime:double*;strategy.endTime:double*;strategy.isEntry:bool*;strategy.resultCloseTime:double*;strategy.status:string*;turfWar:Hashtable*;turfWar.closeWarTime:double*;turfWar.endWarTime:double*;turfWar.resultCloseTime:double*;turfWar.status:string*;turfWar.updateTime:double*	25	BoardBody.reqWebActiveEvents|BoardBody.reqWebActiveEvents#responder=responder|PluginRunner_DoBattleSiege.checkSiegeEvent|StatusView.setupEventInformation|Strategy.onSetup|StrategySelect.Start|giganticRaidBossScene.Start	7
 common/getLoginStampSheet	getLoginStampSheet	token	loginSheet.day<N>		loginSheet:Hashtable;nextStampDate:string;stampCount:int	3	mypageLoginStampDialog.processMenu	1
 common/getPlayerCogid	getPlayerCogid	token			now:double;playerId	2	Configs.GetUserInfo	1
-common/getPlayerEntity	getPlayerEntry	token				0		0
+common/getPlayerEntity	getPlayerEntry	token			playerId:string	1	WebApiClient.debugCreateQuestEncount	1
 common/getPlayerParams	getPlayerParams	token			actionPoints:Hashtable;characterCount:double*;entity:Hashtable;equipCount:double*;errantryTimes:double*;kokudaka:double*;loginStamp:Hashtable*;navigators:Hashtable;nextStampDate:string;now:double;possessionLimits:Hashtable*;resources:Hashtable	12	StatusView.resetStatus|StatusView.setupStatus	2
 common/getResources	getResources	token				0	JsonTableAccessorCore.reset|JsonTableAccessorCore.reset#responder=filename|TableAccessorCore.reset|TableAccessorCore.reset#responder=filename	4
 common/getRevisions	getRevisions				root:int;server:int;table:int;unity:int	4	TableLoad._setup	1
@@ -57,7 +57,7 @@ common/getServerTime	getServerTime	token			now:double	1	Configs.GetUserInfo|Scen
 common/getShopcredit2	getShopCedit2	token				0		0
 common/getShopsale	getShopSale	token			endTime:double*;openTime:double*;storetable:string*	3	PoliticShopSaleManager.AskGetShopSaleDataNow|PoliticShopSaleManager.getShopSaleData	2
 common/getTactics	getTactics	token			amount:double;tactics:Hashtable	2	DeckConflateCards_Tactics.setup|DeckPostPanel.initPostCard|DeckPostPanel.initPostCard#responder=text2,stopLoad: false|PlayerDeck.getTactics|vsSetting_Siege.playerCharacterSet	5
-common/increasePlayerLevel	increasePlayerLevel	token			kokudaka:double*	1	StatusView.sendlevelup	1
+common/increasePlayerLevel	increasePlayerLevel	token			kokudaka:double*;possessionLimits:Hashtable*	2	StatusView.sendlevelup	1
 common/periodicInquiry	periodicInquiry	token				0	PeriodicRounder.refresh	1
 common/recordChat	recordChat	content,roomName,token			succeeded:bool	1	Chat.sendIRCMessage	1
 common/solvePlayerLevelCap	solvePlayerLevelCap	token			cap:double	1	PoliticMissionManager.solveLevelCap	1

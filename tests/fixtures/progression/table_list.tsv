@@ -1,0 +1,6 @@
+table_file	root_key	accessor_classes
+lesson.json	lesson	verified installer fixture subset
+reward14_lesson.json	reward14_lesson	verified installer fixture subset
+playerLevel.json	playerLevel	verified installer fixture subset
+politicMission.json	politicMission	verified installer fixture subset
+defines.json	defines	verified installer fixture subset

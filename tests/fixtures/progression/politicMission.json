@@ -1,0 +1,295 @@
+{
+  "politicMission": {
+    "po_mission_00012": {
+      "id": "po_mission_00012",
+      "index": 12,
+      "iconFileName": "mission_000002",
+      "iconIndex": 13,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00011"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconSignal",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "storyQuestClear"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "1"
+      ],
+      "conditionTargets1": [
+        "1"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00012_01",
+      "acceptUnlocks": [
+        "unlockQuest",
+        "unlockMyPage"
+      ],
+      "clearUnlocks": [],
+      "enterScript": "scr1_000012_01",
+      "exitScript": "scr1_000012_03"
+    },
+    "po_mission_00013": {
+      "id": "po_mission_00013",
+      "index": 13,
+      "iconFileName": "mission_000002",
+      "iconIndex": 17,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00269"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconScroll",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "missionStatus"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "accepted"
+      ],
+      "conditionTargets1": [
+        "po_mission_00013"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00013_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [
+        "unlockInventory",
+        "unlockHarvest",
+        "unlockPutIn",
+        "unlockVsBattle",
+        "unlockRecommendation",
+        "unlockKuji",
+        "unlockMessageBoard",
+        "unlockErrantry",
+        "unlockTurfWar",
+        "unlockBooster",
+        "unlockNationalPolitic",
+        "unlockMailBox"
+      ],
+      "enterScript": "scr1_000013_01",
+      "exitScript": "scr1_000013_03"
+    },
+    "po_mission_07000": {
+      "id": "po_mission_07000",
+      "index": 69,
+      "iconFileName": "mission_000025",
+      "iconIndex": -1,
+      "bootCheckFunc": "player_level",
+      "bootCheckData": [
+        "5"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "serverCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconLevelUp",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "getKokudaka"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "any"
+      ],
+      "conditionTargets1": [
+        "any"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1200
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_07000_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_007000_01",
+      "exitScript": "scr1_007000_03"
+    },
+    "po_mission_07001": {
+      "id": "po_mission_07001",
+      "index": 147,
+      "iconFileName": "mission_000025",
+      "iconIndex": -1,
+      "bootCheckFunc": "player_level",
+      "bootCheckData": [
+        "10"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "serverCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconLevelUp",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "getKokudaka"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "any"
+      ],
+      "conditionTargets1": [
+        "any"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        2000
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_07001_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_007001_01",
+      "exitScript": "scr1_007001_03"
+    },
+    "po_mission_07002": {
+      "id": "po_mission_07002",
+      "index": 148,
+      "iconFileName": "mission_000025",
+      "iconIndex": -1,
+      "bootCheckFunc": "disable",
+      "bootCheckData": [
+        "15"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "serverCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconLevelUp",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "getKokudaka"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "any"
+      ],
+      "conditionTargets1": [
+        "any"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        2800
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_07002_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_007002_01",
+      "exitScript": "scr1_007002_03"
+    }
+  }
+}

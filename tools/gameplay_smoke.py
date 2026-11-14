@@ -77,10 +77,14 @@ def main(argv: list[str] | None = None) -> int:
     params = service.get_player_params({}, session)
     if params["characterCount"] <= 0:
         raise RuntimeError("createPlayer produced no characters")
-    expected_cap = max(int(key) for key in service._table("playerLevel"))
+    levels = service._table("playerLevel")
+    expected_cap = min((int(key) for key, row in levels.items()
+                        if row.get("requirementForNext") not in (None, "", "none")),
+                       default=max(int(key) for key in levels))
+    expected_cap = min(expected_cap, int((service._table("defines").get("level_limit") or {}).get("value") or expected_cap))
     if params["entity"]["cap"] != expected_cap:
         raise RuntimeError(
-            f"entity.cap={params['entity']['cap']} does not match max level {expected_cap}"
+            f"entity.cap={params['entity']['cap']} does not match first locked level gate {expected_cap}"
         )
     map_data = service.get_map_data({}, session)
     if "size" not in map_data["map"]:
