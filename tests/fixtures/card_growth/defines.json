@@ -1,0 +1,12 @@
+{
+  "defines": {
+    "default_extend_character_store": {
+      "id": "default_extend_character_store",
+      "value": 100
+    },
+    "character_storage_open_interval": {
+      "id": "character_storage_open_interval",
+      "value": 3600
+    }
+  }
+}
