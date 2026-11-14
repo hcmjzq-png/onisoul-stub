@@ -1,0 +1,48 @@
+{
+  "quest_1_index": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_1_index.json",
+    "sha256": "8941d1b097a1a776ee2148d8c34a4136878e863fd24afcce30ce1cc521d9443e",
+    "rows": 315,
+    "enabled_and_client_enabled": 41
+  },
+  "quest_2_index": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_2_index.json",
+    "sha256": "f383e6d4f7f33dcc6b766d9fc2770123c9ae06e1617978e9223240b604e574d6",
+    "rows": 25,
+    "enabled_and_client_enabled": 0
+  },
+  "quest_3_index": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_index.json",
+    "sha256": "efe320129f68449717703f138f8112f0529bf8e269cfa3bb55e6f4a661d60b98",
+    "rows": 305,
+    "enabled_and_client_enabled": 0
+  },
+  "quest_4_index": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_4_index.json",
+    "sha256": "fc32d14ffcd99e09a432288049eb495114a492f384e4a9b184f3c649b7e12fc4",
+    "rows": 25,
+    "enabled_and_client_enabled": 0
+  },
+  "quest_5_index": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_5_index.json",
+    "sha256": "c15ce073aa876bf064793c32e3fbc19a5a0c115ab667b2e49980addca39fc431",
+    "rows": 100,
+    "enabled_and_client_enabled": 0
+  },
+  "quest_6_index": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_index.json",
+    "sha256": "09e213cde7f2ee2c7db3eba5993f1f07ed4798ab3f5eb1f86730cf0f104e970d",
+    "rows": 100,
+    "enabled_and_client_enabled": 0
+  },
+  "quest_1_0000": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_1_0000.json",
+    "sha256": "09f3384f4af7f315e67e3c9dfd1376efd262ac81da8293b647508ee87dd17a2d",
+    "rows": 10
+  },
+  "quest_1_0000_reward": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_1_0000_reward.json",
+    "sha256": "33683a1af7a5f7c7c118c560a12b7eca368e6d764ace9f8feb2e417887c6e5ea",
+    "rows": 16
+  }
+}

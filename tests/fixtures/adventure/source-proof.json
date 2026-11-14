@@ -1,0 +1,14 @@
+{
+  "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_1_index.json",
+  "sha256": "8941d1b097a1a776ee2148d8c34a4136878e863fd24afcce30ce1cc521d9443e",
+  "rows": [
+    "0_1",
+    "0_2",
+    "1_1",
+    "1_2",
+    "1_3",
+    "1_4",
+    "1_5"
+  ],
+  "note": "Unmodified original rows; fixture subset, not full table."
+}
