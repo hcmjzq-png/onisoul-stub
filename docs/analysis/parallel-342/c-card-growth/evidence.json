@@ -1,0 +1,1142 @@
+{
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "source_kind": "original installer decompilation; no old AI/client edits",
+  "sources": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BoosterPackScene.cs",
+      "sha256": "8387aca62d2df69cbddc87b3949b4a7e3d3cdc432219ed62097efe807dc06c0e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BoosterPack_Work.cs",
+      "sha256": "291dbaea98ce74fea8a17c4adfe31779613c123baf5dcb1e43b5b4ed25f65336"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterConflateFablic.cs",
+      "sha256": "16583039d597b0a931a5ef24452815245838a3eb26f1a932d30f201817064736"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterGradeTableAccessor.cs",
+      "sha256": "0ede83a49930d4e0f254abaf2e7139fa42194d85adf7bfcff1f8ee32f2fe1b86"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterLavelTableAccessor.cs",
+      "sha256": "d36e2631ebedb1fd999165efc92cbe60cea653281babc5dd1ca4df01860855fd"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterStatus.cs",
+      "sha256": "15c42f061d3aef4279513a5301803afb5f53d038ae58ccc287195841c9d7e673"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterTableAccessor.cs",
+      "sha256": "7903fa9f44bd2ccef4c660e55489831b45d00e5e80f848137438a48ff530fad1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionScene.cs",
+      "sha256": "ade4b5a99ee026617af780168c79d71759d0b7d0514166e026bd7546e0a78bc1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckAddMaxCharacter.cs",
+      "sha256": "306c168db6675cc036a3da676f6c9bc9a4e34fe12a0984c34189cad9e3dcfcab"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckChangeVoice.cs",
+      "sha256": "7b6990ef56b502aba4fbd7e98a878c18d9e6f06185dc284dadda5ed421f4c698"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_Conflate.cs",
+      "sha256": "a123dd67f34ef85066f7a77341e769d41ac644df3ab868bdf02a0a67e5cd19fa"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_Evo.cs",
+      "sha256": "39e783a836c1a4c846894705a468305b8ba6b7338f3a8df286b521fcb0af00a3"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_Skill.cs",
+      "sha256": "975dd8d1526794fd2a350650be3e0e6f3231a24a282abfe9c276ff477001e722"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_SkillRefresh.cs",
+      "sha256": "3f53464ce504c073bf669486782dfaad5e3321f6acb8c0de8cca0a6a1defe843"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckEquip_Conflate.cs",
+      "sha256": "a59f8faa36dd53d3a08684f5826004f0f910b276b4d287160e8b363e25840040"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckEquip_Evo.cs",
+      "sha256": "35f5a4223d91360d02391c18c06492237ea15aec316c6631bc5a616aaedb9911"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckMode.cs",
+      "sha256": "a4f84a5f9d449c717ab47cebd04b32ec63a6ab3d02aafc7dacef9e52cc202725"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Character.cs",
+      "sha256": "26b474f6222926e42292fe04ec7d62bb2e21e1b078292a7aaface0cfb12e2847"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Equip.cs",
+      "sha256": "cb3630c4771f5ad06081a4cb919b49f93fdda0f1fe9a80fb959c9e17478b5bee"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Tactics.cs",
+      "sha256": "32062ed91691174f403d6695823bae885dd4195f994416e37984ebac29ad57b8"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckScene.cs",
+      "sha256": "c3660a1c80e2e44a403429206a5256cfca0bce6472c980a6a38859a5c5dd28e1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckStorage.cs",
+      "sha256": "b988e97d6f0d699eaf7ff1f2ceef97e54a9d570967fdb36f788aa545e4c5b52a"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckUseItem_confimation.cs",
+      "sha256": "b95010aa22cf20b65ddbc298b082735de0328373692ca16990900cd902d39d94"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DefinesTableAccessor.cs",
+      "sha256": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\EnlargeCharacterLimitTableAccessor.cs",
+      "sha256": "0c08bb90aa4afbfb185e6bb4a196d924ec9173d96abc8fb032892f5b45567cc0"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\EquipGradeTableAccessor.cs",
+      "sha256": "3078fd875c2c15091efce6a89ef1b6344596bb62dd1e027568e42fe25aeda1cb"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\EquipLevelTableAccessor.cs",
+      "sha256": "329c65808fed377b6c6f2ff41a3565025079bd5b64392766f559022d32d1c9c2"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\EquipStatus.cs",
+      "sha256": "9d8d6a57edf15af252d421bf516b17be1263484ece766a645b70ca96c54483f8"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\EquipTableAccessor.cs",
+      "sha256": "a0450a69ff959417e6655b6300b4a3a241db2a690e48211ce47c189170be7034"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessFuncs.cs",
+      "sha256": "517f91fc078044b7461ff9ea14d92d9dfe57c8bebe218c40c5af995ae85ad15c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessor.cs",
+      "sha256": "f35537d17a9758c7bebf1ec8d42c61ebf696a53d460f46b9e77bb60405c6df2e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\LotteryTableAccessor.cs",
+      "sha256": "4041a8d5318f096690fb1cc5dee3bf9e1c6e1dd224bf07c06c1af263c295921d"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NavigatorChangeEnv.cs",
+      "sha256": "64f628efd6a04c5237e05cc1e23db114005f5af1c4f9e75a687adaa31edcae79"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NavigatorChangeSelect.cs",
+      "sha256": "a95ad980b244f327588216d48b226fc9d97dbcb1c78f10d84db8ba0805535760"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NavigatorChangeSelectRental.cs",
+      "sha256": "1a198935ac43ddd79693e9dd48934a1f45873ccda9a5504d9a1cb62c2d563d0a"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NavigatorTableAccessor.cs",
+      "sha256": "82b5ef6e36b82d6cced0a656c7eb5214db8c1226d5f0fb4a92ac32561c0bf3e1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridDataManager.cs",
+      "sha256": "20f65fd87a4bc495dfdc9cc99ac6c524aeaaaca5dedc423d4ef08f76ee5db7da"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridDataParser.cs",
+      "sha256": "255290d3bdd379b3baa45533b0de1d71a123bf74e5079135fc57de55d87aa6e4"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoPotionAll.cs",
+      "sha256": "e8687f75ca11674659ffa74e9834b303c799ad9cd7d5ff8fa98e5ee2a538c017"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoPotionPolitic.cs",
+      "sha256": "f62aeab9bde921bb0eebcdd62c4319ad32ea910be5eeabab65b038aabb59c8f8"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoPotionQuest.cs",
+      "sha256": "d620059161f0090d72aece2b474210222f82e5bafa16c53766b459147af0a006"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoPotionRaidboss.cs",
+      "sha256": "09f0e45b5912bbdce39367e619ddcccb7b68e5678aa61d44ae321ecd1badd319"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticItemInventory.cs",
+      "sha256": "cab5f604d9b3ac41214147246b428abd68608fa21d252cb6f30b63595163423e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PotionTableAccessor.cs",
+      "sha256": "618796e19cebba7caacee13ce02ba08e3a4c1b8a2255312b3cab3b863c202a08"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestScriptCommand.cs",
+      "sha256": "39c8a0a662ad34428c23d1dbb9544817836292154af28ab66adda5c91eb11466"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SimpleInventoryDialog.cs",
+      "sha256": "62f0100a3852d7fffe67bd7d02ca19997a216f80ebd2773eacfdc26f184ccbe6"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SkillTableAccessor.cs",
+      "sha256": "cac0aec16ab9fce274d80cb5a93540392842b3634c01b39ea69b9b0200f41fbf"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TacticsTableAccessor.cs",
+      "sha256": "82f3fe35a3d1d0ad4aedc655887da4086dac1da38190c066a37d65b628fb2d63"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\VoiceTableAccessor.cs",
+      "sha256": "f3ae7a908d188a1f27e69037a867f895765c503c281e2e93deadf81f74105a09"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\onikujiWork.cs",
+      "sha256": "95722a0cc6d0d157e31ef63a1653569938aa4d3415daeaf153fd1793f84df3f4"
+    }
+  ],
+  "tables": [
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\booster_packs.json",
+      "sha256": "bbc7937e67b5dac760b767f0659b058cd489469b5a979e8a26c04b4f96ff98ee",
+      "root": "booster_packs",
+      "row_count": 69
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\character.json",
+      "sha256": "811b7dc8d58563dc287cfdce07104cabf5bda49823d976e1fd9440f0f05f90c8",
+      "root": "character",
+      "row_count": 3814,
+      "sample_path": "tests/fixtures/card_growth/character.json",
+      "sample_rows": [
+        "chara1_00001_01",
+        "chara1_00002_01"
+      ],
+      "sample_sha256": "10f874151a278265140963366a598046ea1f50776b7fe9ba7f73bff125f6e03f"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\characterGrade.json",
+      "sha256": "b589e60d0d201319d24a3d6e0c5a27128a9752edcbe2c8efc98dbe92bc705334",
+      "root": "characterGrade",
+      "row_count": 10
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\characterLevel.json",
+      "sha256": "78b5c85d31a997884ba77f46edc2184182dd963cfdc9b46cd16c61b1ac2856f7",
+      "root": "characterLevel",
+      "row_count": 850
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\characterVoice.json",
+      "sha256": "9d15b80efb6618910bfbd0a6afd125e73b8015c8bb8f958248f7247a09d5de9d",
+      "root": "characterVoice",
+      "row_count": 338
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\defines.json",
+      "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+      "root": "defines",
+      "row_count": 111,
+      "sample_path": "tests/fixtures/card_growth/defines.json",
+      "sample_rows": [
+        "default_extend_character_store",
+        "character_storage_open_interval"
+      ],
+      "sample_sha256": "1b239909983d93a2f1d71cc4c0616aaf19bf25431d40d039e3ce03a856db3e01"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\enlarge_character_limit.json",
+      "sha256": "4df83a70f9046f129e4153598b3229d331b7453800e523077c51a20b48e3d78a",
+      "root": "enlarge_character_limit",
+      "row_count": 4
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\equip.json",
+      "sha256": "ded9093daf4a6d9832ca73174646c57847395517f64a3f5cac88ce726af4d900",
+      "root": "equip",
+      "row_count": 72,
+      "sample_path": "tests/fixtures/card_growth/equip.json",
+      "sample_rows": [
+        "equip_00000_01",
+        "equip_00001_01"
+      ],
+      "sample_sha256": "2b4cfe9e79ba6f715fdd9c1dd6d2aa610b46a12a725a8adb585e495e85aa035f"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\equipGrade.json",
+      "sha256": "ad71443448a2a7856563c191d9e0feda76e85c1904f3c9b5e3ad9d713c739722",
+      "root": "equipGrade",
+      "row_count": 10
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\equipLevel.json",
+      "sha256": "7ebb3349bad93eef1efdb42f7c06b72f163ea28615807862565202358b216c26",
+      "root": "equipLevel",
+      "row_count": 850
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\lottery.json",
+      "sha256": "635886af413a5898197ee07c5a916a809e2d4b01d278eea5f9db5102bb079d9e",
+      "root": "lottery",
+      "row_count": 7
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\navigator.json",
+      "sha256": "dcf58d8a4bf41e028a3bea8787def495ad02f1e337bd07fb1187e8579a75dcab",
+      "root": "navigator",
+      "row_count": 11
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\playerLevel.json",
+      "sha256": "a04583b4e84018c501265e4ad1048e7f38fd5ae120861f1f9e8a1189369d3531",
+      "root": "playerLevel",
+      "row_count": 100
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\potion.json",
+      "sha256": "8120c12f4f93dad913f82392a1d06af5d999cdd029b319c129397211d338dbfd",
+      "root": "potion",
+      "row_count": 215
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\skill.json",
+      "sha256": "f1fa45ed69abb41a758b30445c038c39a2d17f92e78a410fa678df82ac9d5cd3",
+      "root": "skill",
+      "row_count": 4129
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\tactics.json",
+      "sha256": "4b3d489d969b4d03200fb047a244afe1304395cbe56e99439a69a95723726556",
+      "root": "tactics",
+      "row_count": 595
+    }
+  ],
+  "endpoints": [
+    {
+      "api": "deck/enlargeCharacterLimit",
+      "request_keys": [
+        "token",
+        "enlargeId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "enlargeCharacterLimit",
+        "start_line": 1333,
+        "end_line": 1340
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckAddMaxCharacter.cs",
+          "line": 143
+        }
+      ],
+      "response_reads": "possessionLimits.character.credit",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "续期叠加与到期回收、支付重试待证"
+    },
+    {
+      "api": "deck/extendCharacterStore",
+      "request_keys": [
+        "token",
+        "enlargeId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "enlargeStorageLimit",
+        "start_line": 1368,
+        "end_line": 1375
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckAddMaxCharacter.cs",
+          "line": 161
+        }
+      ],
+      "response_reads": "characterCount/extendSlot/extendLimit/lastOpenDate/nextOpenLimit/now",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "扩仓续期与到期超容量、付费重试待证"
+    },
+    {
+      "api": "deck/getFormation",
+      "request_keys": [
+        "token",
+        "atkOrdef"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "getFormation",
+        "start_line": 4676,
+        "end_line": 4683
+      },
+      "direct_call_sites": [],
+      "response_reads": "未知",
+      "status": "只有包装器证据",
+      "remaining": "只有包装器；无直接调用方，不能当作setDecks"
+    },
+    {
+      "api": "deck/gradeUpCharacter",
+      "request_keys": [
+        "token",
+        "baseId",
+        "materialId",
+        "itemId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "characterGradeUp",
+        "start_line": 1201,
+        "end_line": 1210
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckConflate_Evo.cs",
+          "line": 204
+        }
+      ],
+      "response_reads": "result/usedId/usedResources/grade/learningSkills/characterData",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "概率、失败材料损耗、学习技能与跨等级属性待证"
+    },
+    {
+      "api": "deck/gradeUpEquip",
+      "request_keys": [
+        "token",
+        "baseId",
+        "materialId",
+        "itemId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "equipGradeUp",
+        "start_line": 1179,
+        "end_line": 1188
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckEquip_Evo.cs",
+          "line": 200
+        }
+      ],
+      "response_reads": "result/usedId/usedResources/grade/learningSkills/equipData",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "旧强化不可作证据；概率、成长属性与材料损耗待证"
+    },
+    {
+      "api": "deck/inheritCharacterSkill",
+      "request_keys": [
+        "token",
+        "destCharacterId",
+        "destSkillSlot",
+        "srcCharacterId",
+        "srcSkillSlot",
+        "potionId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "skillAccessionCharacters",
+        "start_line": 1283,
+        "end_line": 1294
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckConflate_Skill.cs",
+          "line": 314
+        }
+      ],
+      "response_reads": "isSucceed/useCost/removeCharacterId/inheritPoint",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "继承失败损耗、槽合法性、character更新待证"
+    },
+    {
+      "api": "deck/powerUpCharacter",
+      "request_keys": [
+        "token",
+        "baseId",
+        "materialIds",
+        "itemId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "characterPowerUp",
+        "start_line": 1190,
+        "end_line": 1199
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckConflate_Conflate.cs",
+          "line": 260
+        },
+        {
+          "file": "DeckConflate_Conflate.cs",
+          "line": 522
+        },
+        {
+          "file": "DeckConflate_SkillRefresh.cs",
+          "line": 436
+        },
+        {
+          "file": "DeckEquip_Conflate.cs",
+          "line": 535
+        }
+      ],
+      "response_reads": "usedIds/usedResources/addExp/addLevel/addParams",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "多消费者分支不一致；随机成功等级、经验与舍入待证"
+    },
+    {
+      "api": "deck/powerUpEquip",
+      "request_keys": [
+        "token",
+        "baseId",
+        "materialIds",
+        "itemId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "equipPowerUp",
+        "start_line": 1168,
+        "end_line": 1177
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckEquip_Conflate.cs",
+          "line": 259
+        }
+      ],
+      "response_reads": "usedIds/usedResources/addExp/addLevel/addParams/powerUpRank",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "随机成功等级、属性增长与舍入待证"
+    },
+    {
+      "api": "deck/sellCharacters",
+      "request_keys": [
+        "token",
+        "characterIds"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "sellCharacters",
+        "start_line": 1296,
+        "end_line": 1303
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckSale_Character.cs",
+          "line": 242
+        },
+        {
+          "file": "DeckSale_Character.cs",
+          "line": 347
+        }
+      ],
+      "response_reads": "sellPrice/characterIds.<index>",
+      "status": "限定范围实现，未生产挂载",
+      "remaining": "已实现未挂载：自有未保护未引用武将，1..8张，金币不溢出"
+    },
+    {
+      "api": "deck/sellEquips",
+      "request_keys": [
+        "token",
+        "equipIds"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "sellEquips",
+        "start_line": 1314,
+        "end_line": 1321
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckSale_Equip.cs",
+          "line": 290
+        }
+      ],
+      "response_reads": "sellPrice/equipIds.<index>",
+      "status": "限定范围实现，未生产挂载",
+      "remaining": "已实现未挂载：自有未保护未引用装备，1..8件，金币不溢出"
+    },
+    {
+      "api": "deck/sellTactics",
+      "request_keys": [
+        "token",
+        "tactics"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "sellTactics",
+        "start_line": 1305,
+        "end_line": 1312
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckSale_Tactics.cs",
+          "line": 337
+        }
+      ],
+      "response_reads": "sellPrice/tactics.<cardId>=售出数量",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "堆叠余额不能用实例消失防重；共享请求去重待集成"
+    },
+    {
+      "api": "deck/setCharacterVoice",
+      "request_keys": [
+        "token",
+        "characterId",
+        "voiceId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "setCharacterVoice",
+        "start_line": 1235,
+        "end_line": 1243
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckChangeVoice.cs",
+          "line": 415
+        }
+      ],
+      "response_reads": "credit.amount/character",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "默认/已购/重新购买费用与替换归属完整规则待证"
+    },
+    {
+      "api": "deck/setFormation",
+      "request_keys": [
+        "token",
+        "formation",
+        "atkOrDef"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "setFormation",
+        "start_line": 4685,
+        "end_line": 4693
+      },
+      "direct_call_sites": [],
+      "response_reads": "未知",
+      "status": "只有包装器证据",
+      "remaining": "只有包装器；atkOrDef与查询atkOrdef大小写不同"
+    },
+    {
+      "api": "deck/setSkillSlot",
+      "request_keys": [
+        "token",
+        "baseId",
+        "paymentId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "setSkillSlot",
+        "start_line": 4563,
+        "end_line": 4571
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckConflate_SkillRefresh.cs",
+          "line": 526
+        }
+      ],
+      "response_reads": "result.character/result.category/result.amount",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "paymentId映射与随机洗槽/支付待证，不是简单启用槽"
+    },
+    {
+      "api": "deck/setSkillcoins",
+      "request_keys": [
+        "token",
+        "characterIds"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "setSkillcoins",
+        "start_line": 4554,
+        "end_line": 4561
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckConflate_SkillRefresh.cs",
+          "line": 250
+        }
+      ],
+      "response_reads": "characterIds.<index>/skillCoins",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "换币率、特殊素材与重试规则待证"
+    },
+    {
+      "api": "deck/transferStoreCharacters",
+      "request_keys": [
+        "token",
+        "toStoreIds",
+        "toCharacterIds"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "moveStorageCharacter",
+        "start_line": 1358,
+        "end_line": 1366
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckStorage.cs",
+          "line": 179
+        }
+      ],
+      "response_reads": "characterCount/extendSlot/extendLimit/lastOpenDate/nextOpenLimit/now",
+      "status": "限定范围实现，未生产挂载",
+      "remaining": "已实现未挂载：显式冷却策略，无付费扩容；提交时间作lastOpenDate为兼容决策"
+    },
+    {
+      "api": "navigator/activateNavigator",
+      "request_keys": [
+        "token",
+        "navigatorId",
+        "colorIndex"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "activateNavigator",
+        "start_line": 2028,
+        "end_line": 2036
+      },
+      "direct_call_sites": [
+        {
+          "file": "NavigatorChangeSelect.cs",
+          "line": 499
+        }
+      ],
+      "response_reads": "回调不读负载，随后重查details",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "已有租用/颜色归属、到期恢复默认与保存关系待证"
+    },
+    {
+      "api": "navigator/getNavigatorDetails",
+      "request_keys": [
+        "token",
+        "navigatorId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "getNavigatorDetails",
+        "start_line": 2046,
+        "end_line": 2053
+      },
+      "direct_call_sites": [
+        {
+          "file": "NavigatorChangeSelect.cs",
+          "line": 401
+        }
+      ],
+      "response_reads": "navigatorDetails.<color>.status/expireAt",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "状态枚举与默认/买断/租用归属来源待证"
+    },
+    {
+      "api": "navigator/getNavigators",
+      "request_keys": [
+        "token"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "getNavigators",
+        "start_line": 2020,
+        "end_line": 2026
+      },
+      "direct_call_sites": [],
+      "response_reads": "未知",
+      "status": "只有包装器证据",
+      "remaining": "只有包装器；无直接调用方，不伪造可用列表"
+    },
+    {
+      "api": "navigator/getUsableNavigators",
+      "request_keys": [
+        "token"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "getUsableNavigators",
+        "start_line": 2038,
+        "end_line": 2044
+      },
+      "direct_call_sites": [
+        {
+          "file": "NavigatorChangeEnv.cs",
+          "line": 70
+        }
+      ],
+      "response_reads": "activeNavigatorId/navigatorIds",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "开放权限与默认/租赁状态闭环待证"
+    },
+    {
+      "api": "navigator/hireNavigator",
+      "request_keys": [
+        "token",
+        "navigatorId",
+        "colorIndex"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "hireNavigator",
+        "start_line": 2055,
+        "end_line": 2063
+      },
+      "direct_call_sites": [
+        {
+          "file": "NavigatorChangeSelectRental.cs",
+          "line": 36
+        }
+      ],
+      "response_reads": "credit.amount，随后重查details",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "租期起算、续租/重复支付、颜色归属待证"
+    },
+    {
+      "api": "politic/boosterPack/buy",
+      "request_keys": [
+        "token",
+        "boosterPackId",
+        "quantity",
+        "cost"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "buy",
+        "start_line": 3421,
+        "end_line": 3430
+      },
+      "direct_call_sites": [
+        {
+          "file": "BoosterPack_Work.cs",
+          "line": 346
+        }
+      ],
+      "response_reads": "items/characters/extraItems/toInbox/boosterPackId/remains/creditStepCount/receivedGiftExtra/credit.amount",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "概率、阶梯付费次数、赠品、活动开放未证；不信任请求cost"
+    },
+    {
+      "api": "politic/boosterPack/buyWithItem",
+      "request_keys": [
+        "token",
+        "boosterPackId",
+        "quantity",
+        "useItemId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "buyWithItem",
+        "start_line": 3432,
+        "end_line": 3441
+      },
+      "direct_call_sites": [
+        {
+          "file": "BoosterPack_Work.cs",
+          "line": 342
+        }
+      ],
+      "response_reads": "items/characters/extraItems/toInbox/boosterPackId/remains/creditStepCount/receivedGiftExtra",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "票券数量、赠品与概率未证"
+    },
+    {
+      "api": "politic/boosterPack/getRemains",
+      "request_keys": [
+        "token"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "getRemains",
+        "start_line": 3413,
+        "end_line": 3419
+      },
+      "direct_call_sites": [
+        {
+          "file": "BoosterPackScene.cs",
+          "line": 39
+        }
+      ],
+      "response_reads": "remains.busho/creditStepCount/receivedGiftExtra",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "历史活动表不能推导当前剩余次数或排期"
+    },
+    {
+      "api": "politic/lottery/getSouls",
+      "request_keys": [
+        "token"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "getSouls",
+        "start_line": 3394,
+        "end_line": 3400
+      },
+      "direct_call_sites": [
+        {
+          "file": "onikujiWork.cs",
+          "line": 186
+        }
+      ],
+      "response_reads": "裸根七色数值",
+      "status": "限定范围实现，未生产挂载",
+      "remaining": "已实现未挂载：只读魂余额；无记录为0是兼容策略，不发放"
+    },
+    {
+      "api": "politic/lottery/lot",
+      "request_keys": [
+        "token",
+        "lotteryId",
+        "times",
+        "enableLog"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "lot",
+        "start_line": 3402,
+        "end_line": 3411
+      },
+      "direct_call_sites": [
+        {
+          "file": "onikujiWork.cs",
+          "line": 295
+        }
+      ],
+      "response_reads": "prizes.<index>.<itemId>/characters",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "概率算法、费用次数、溢出入箱和重试待证"
+    },
+    {
+      "api": "politic/mypage/getNineGridInfo",
+      "request_keys": [
+        "token"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "getNineGridInfo",
+        "start_line": 4492,
+        "end_line": 4499
+      },
+      "direct_call_sites": [
+        {
+          "file": "NineGridDataManager.cs",
+          "line": 35
+        }
+      ],
+      "response_reads": "status/characters/rewards/gacha_cost/played_gacha_times",
+      "status": "非普通玩法，待证",
+      "remaining": "非普通玩法；服务端活动配置与日期未证"
+    },
+    {
+      "api": "politic/mypage/playNineGridGacha",
+      "request_keys": [
+        "token"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "playGacha",
+        "start_line": 4501,
+        "end_line": 4508
+      },
+      "direct_call_sites": [
+        {
+          "file": "NineGridDataManager.cs",
+          "line": 52
+        }
+      ],
+      "response_reads": "character/rewards/played_gacha_times/resources",
+      "status": "非普通玩法，待证",
+      "remaining": "非普通玩法；抽取概率、付费次数与奖励状态闭环待证"
+    },
+    {
+      "api": "politic/support_item/useDopingItem",
+      "request_keys": [
+        "token",
+        "potionId",
+        "characterId",
+        "count"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "useDopingItemForCharacter",
+        "start_line": 1224,
+        "end_line": 1233
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckUseItem_confimation.cs",
+          "line": 227
+        }
+      ],
+      "response_reads": "potion.<potionId>.amount/character",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "属性效果、上限与批量消耗舍入待证"
+    },
+    {
+      "api": "politic/support_item/useDopingRemoveItem",
+      "request_keys": [
+        "token",
+        "potionId",
+        "characterId"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "useDopingRemoveItemForCharacter",
+        "start_line": 1323,
+        "end_line": 1331
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckUseItem_confimation.cs",
+          "line": 163
+        }
+      ],
+      "response_reads": "addItems/changeItems/character",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "返还道具换算、保护与恢复上限待证"
+    },
+    {
+      "api": "politic/support_item/usePotions",
+      "request_keys": [
+        "token",
+        "potionId",
+        "quantity"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "usePotion",
+        "start_line": 2129,
+        "end_line": 2137
+      },
+      "direct_call_sites": [
+        {
+          "file": "DailyMissionScene.cs",
+          "line": 608
+        },
+        {
+          "file": "PluginRunner_DoPotionAll.cs",
+          "line": 36
+        },
+        {
+          "file": "PluginRunner_DoPotionPolitic.cs",
+          "line": 34
+        },
+        {
+          "file": "PluginRunner_DoPotionQuest.cs",
+          "line": 34
+        },
+        {
+          "file": "PluginRunner_DoPotionRaidboss.cs",
+          "line": 34
+        },
+        {
+          "file": "PoliticItemInventory.cs",
+          "line": 112
+        },
+        {
+          "file": "QuestScriptCommand.cs",
+          "line": 1630
+        },
+        {
+          "file": "SimpleInventoryDialog.cs",
+          "line": 277
+        }
+      ],
+      "response_reads": "result.<pointType>.point",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "50%恢复舍入、超上限与批量数量待证；initialAmount不作赠送"
+    },
+    {
+      "api": "politic/support_item/useSkillPotion",
+      "request_keys": [
+        "token",
+        "potionId",
+        "slot",
+        "characterId",
+        "count"
+      ],
+      "wrapper": {
+        "file": "WebApiClient.cs",
+        "method": "useDopingSkillItemForCharacter",
+        "start_line": 1212,
+        "end_line": 1222
+      },
+      "direct_call_sites": [
+        {
+          "file": "DeckUseItem_confimation.cs",
+          "line": 211
+        }
+      ],
+      "response_reads": "potion.<potionId>.amount/character/addPoint",
+      "status": "回调/部分表证据，规则待证",
+      "remaining": "slot是UI索引+1字符串；经验成长、上限与批量扣量待证"
+    }
+  ],
+  "protocol_evidence": [
+    {
+      "claim": "sale prices read directly from base table",
+      "references": [
+        "DeckSale_Character.cs:85-92",
+        "CharacterTableAccessor.cs:341-348",
+        "DeckSale_Equip.cs:108-115",
+        "EquipTableAccessor.cs:211-218"
+      ]
+    },
+    {
+      "claim": "protected characters may move to storage; avatar may not",
+      "references": [
+        "CharacterConflateFablic.cs:549-610"
+      ]
+    },
+    {
+      "claim": "warehouse cooldown strict greater-than; base capacity from defines",
+      "references": [
+        "DeckMode.cs:371-390",
+        "DeckStorage.cs:150-151",
+        "DefinesTableAccessor.cs:355-362"
+      ]
+    },
+    {
+      "claim": "souls enumerates every root value as double",
+      "references": [
+        "onikujiWork.cs:9-18",
+        "onikujiWork.cs:181-206"
+      ]
+    },
+    {
+      "claim": "potions nested action-point result; quantity wrapper",
+      "references": [
+        "PoliticItemInventory.cs:107-141",
+        "WebApiClient.cs:2129-2136"
+      ]
+    },
+    {
+      "claim": "nine-grid nested parsing",
+      "references": [
+        "NineGridDataParser.cs:7-240"
+      ]
+    }
+  ],
+  "compatibility_decisions": [
+    "No production registration; opt-in four handlers.",
+    "Conservatively reject six deck-group references on sale/storage; not original auction eligibility evidence.",
+    "Reject gold overflow, no truncation or invented inbox.",
+    "Require saved nextOpenLimit>0; defines character_storage_open_interval=3600 is NOT automatically installed.",
+    "lastOpenDate is successful commit Unix second; original timestamp semantics unproven.",
+    "Reject paid warehouse extensions; no initial gifts/migration.",
+    "No replay cache; missing source instances reject immediate retries. Stacked sales and paid operations await request-id support.",
+    "Absent soul colors are zero consistent with existing profile, not a gift."
+  ]
+}

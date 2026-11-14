@@ -1,0 +1,46 @@
+{
+  "equip": {
+    "equip_00000_01": {
+      "id": "equip_00000_01",
+      "equipCode": 400,
+      "sortNo": 4,
+      "yomiSortNo": 60,
+      "equipNum": 1,
+      "rarity": 1,
+      "growRate": 2,
+      "equipGrade": 1,
+      "mood": 1,
+      "atkMin": 500,
+      "atkMax": 1000,
+      "defMin": 0,
+      "defMax": 0,
+      "intMin": 0,
+      "intMax": 0,
+      "materialPoint": 240,
+      "sellPrice": 150,
+      "dedication": 3,
+      "images": "equip_00000"
+    },
+    "equip_00001_01": {
+      "id": "equip_00001_01",
+      "equipCode": 401,
+      "sortNo": 4,
+      "yomiSortNo": 10,
+      "equipNum": 2,
+      "rarity": 1,
+      "growRate": 2,
+      "equipGrade": 1,
+      "mood": 1,
+      "atkMin": 180,
+      "atkMax": 450,
+      "defMin": 0,
+      "defMax": 0,
+      "intMin": 0,
+      "intMax": 0,
+      "materialPoint": 240,
+      "sellPrice": 150,
+      "dedication": 3,
+      "images": "equip_00001"
+    }
+  }
+}
