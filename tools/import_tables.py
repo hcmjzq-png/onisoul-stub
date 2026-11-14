@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Import only the 108 client-declared JSON tables into the runtime directory."""
+"""Import only manifest-declared fixed, dynamic quest and server JSON tables."""
 from __future__ import annotations
 
 import argparse
@@ -19,7 +19,7 @@ if str(ROOT) not in sys.path:
 
 from app import paths  # noqa: E402
 from app.minijson import MiniJsonError, parse_json_document  # noqa: E402
-from app.tables import MANIFEST_PATH, SERVER_MANIFEST_PATH  # noqa: E402
+from app.tables import MANIFEST_PATH, QUEST_MANIFEST_PATH, SERVER_MANIFEST_PATH  # noqa: E402
 
 
 def sha256(path: Path) -> str:
@@ -119,6 +119,7 @@ def main(argv: list[str] | None = None) -> int:
         help="optional server-only table manifest TSV",
     )
     parser.add_argument("--check-only", action="store_true", help="validate without copying")
+    parser.add_argument("--quest-manifest", help="dynamic quest table manifest TSV")
     parser.add_argument("--strict", action="store_true", help="return failure when manifest tables are missing")
     parser.add_argument("--json", action="store_true", help="print a machine-readable report")
     args = parser.parse_args(argv)
@@ -138,6 +139,11 @@ def main(argv: list[str] | None = None) -> int:
         if not server_manifest.is_file():
             parser.error(f"server manifest not found: {server_manifest}")
         manifests.append(server_manifest)
+    if args.quest_manifest or manifest == MANIFEST_PATH.resolve():
+        quest_manifest = Path(args.quest_manifest or QUEST_MANIFEST_PATH).resolve()
+        if not quest_manifest.is_file():
+            parser.error(f"quest manifest not found: {quest_manifest}")
+        manifests.append(quest_manifest)
 
     if not args.check_only:
         dest.mkdir(parents=True, exist_ok=True)

@@ -1,126 +1,135 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""从客户端 UnityWeb 资产包里抽出清单声明的配置表。
+"""Extract manifest-declared JSON TextAssets from the original PC UnityWeb bundle.
 
-PC 客户端的 108 张配置表不是单独文件，而是作为 JSON 文本内嵌在场景包
-（`scene/*.unity3d`，本机缓存里是 `scene/1243ea6aa6…`，解压后约 100 MB）里，
-形如 `{"<root_key>": {"<行id>": {...}, ...}}`。服务端要用同一批数据，就得把它们
-按 `docs/analysis/table_list.tsv` 的声明抠出来落盘。
-
-包格式（Unity 3.5.6f4 / UnityWeb）
---------------------------------
-    "UnityWeb" + uint32 + "3.x.x" + nul + "3.5.6f4" + nul + 若干大小字段
-    之后是 LZMA 块：props `5d 00 00 80 00`（lc3/lp0/pb2，字典 8 MB）+ 8 字节原始长度 + 数据
-
-用法
-----
-    python3 tools/extract_tables_from_bundle.py \
-        --bundle /path/to/scene_xxx.unity3d \
-        --out /opt/onisoul/assets/pc/tables
-
-脚本会按清单逐张校验：能找到 root_key 且解析成功才落盘，末尾打印成功/缺失清单。
-表文件含玩家/角色数据，不进 git（`.gitignore` 已排除 `assets/pc/tables`）。
+The verified Unity 3.5 TextAsset layout stores an LE length-prefixed UTF-8 name,
+4-byte alignment, then an LE byte length and the UTF-8 script. Match both lengths
+and the JSON root; do not scan arbitrary JSON fragments or rewrite string data.
+This is a targeted extractor for this client's table bundle, not a Unity parser.
 """
-
 from __future__ import annotations
 
 import argparse
-import csv
+import hashlib
 import json
 import lzma
-import os
 import re
+import struct
 import sys
+from dataclasses import dataclass
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CLIENT_MANIFEST = os.path.join(ROOT, 'docs', 'analysis', 'table_list.tsv')
-SERVER_MANIFEST = os.path.join(ROOT, 'docs', 'analysis', 'server_tables.tsv')
-LZMA_PROPS = b'\x5d\x00\x00\x80\x00'
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from app.minijson import MiniJsonError, parse_json_document  # noqa: E402
+from app.tables import MANIFEST_PATH, QUEST_MANIFEST_PATH, SERVER_MANIFEST_PATH  # noqa: E402
+from tools.import_tables import read_manifest  # noqa: E402
+
+LZMA_PROPS = b"\x5d\x00\x00\x80\x00"
+# Catalog references also match, but must pass script length, JSON and root checks.
+NAME_PATTERN = re.compile(rb"([\x01-\x7f]\x00\x00\x00)([A-Za-z0-9_]+\.json)")
 
 
-def decompress_bundle(path: str) -> bytes:
-    blob = open(path, 'rb').read()
-    idx = blob.find(b'UnityWeb')
+@dataclass(frozen=True)
+class TextAsset:
+    file: str
+    root_key: str
+    name_offset: int
+    script_offset: int
+    raw: bytes
+    rows: int
+
+    def evidence(self) -> dict:
+        return {
+            "file": self.file, "root_key": self.root_key,
+            "container_name_offset": self.name_offset,
+            "script_offset": self.script_offset, "script_length": len(self.raw),
+            "sha256": hashlib.sha256(self.raw).hexdigest(), "rows": self.rows,
+        }
+
+
+def decompress_bundle(path: str | Path) -> bytes:
+    blob = Path(path).read_bytes()
+    idx = blob.find(b"UnityWeb")
     if idx < 0:
-        raise SystemExit('不是 UnityWeb 包: %s' % path)
+        raise ValueError(f"not a UnityWeb bundle: {path}")
     off = blob.find(LZMA_PROPS, idx)
     if off < 0:
-        raise SystemExit('找不到 LZMA 块: %s' % path)
+        raise ValueError(f"LZMA block not found: {path}")
     return lzma.LZMADecompressor(format=lzma.FORMAT_ALONE).decompress(blob[off:])
 
 
-def strip_trailing_commas(text: str) -> str:
-    return re.sub(r',\s*([}\]])', r'\1', text)
-
-
-def read_manifest(path: str) -> list[dict[str, str]]:
-    with open(path, encoding='utf-8', newline='') as handle:
-        return [row for row in csv.DictReader(handle, delimiter='\t')
-                if (row.get('table_file') or '').strip() and (row.get('root_key') or '').strip()]
-
-
-def extract_table(text: str, root_key: str) -> dict | None:
-    marker = '"%s"' % root_key
-    decoder = json.JSONDecoder()
-    pos = 0
-    while True:
-        idx = text.find(marker, pos)
-        if idx < 0:
-            return None
-        brace = text.find('{', idx + len(marker))
-        if brace < 0:
-            return None
-        if text[idx + len(marker):brace].strip() != ':':
-            pos = idx + 1
+def extract_assets(container: bytes, declared: dict[str, str]) -> dict[str, TextAsset]:
+    """Return validated named TextAssets; reject ambiguous duplicate assets."""
+    found: dict[str, TextAsset] = {}
+    for match in NAME_PATTERN.finditer(container):
+        name = match.group(2).decode("ascii")
+        if name not in declared or struct.unpack("<I", match.group(1))[0] != len(name):
             continue
-        chunk = strip_trailing_commas(text[brace:brace + 8_000_000])
+        length_offset = (match.end() + 3) & ~3
+        if length_offset + 4 > len(container):
+            continue
+        size = struct.unpack_from("<I", container, length_offset)[0]
+        start = length_offset + 4
+        if size < 2 or size > len(container) - start:
+            continue
+        raw = container[start:start + size]
+        if not raw.lstrip().startswith((b"{", b"\xef\xbb\xbf")):
+            continue
         try:
-            obj = decoder.raw_decode(chunk)[0]
-        except json.JSONDecodeError:
-            pos = idx + 1
+            document = parse_json_document(raw)
+        except MiniJsonError:
             continue
-        if isinstance(obj, dict) and obj:
-            # 表体直接就是 行id -> 记录，外面补 root_key
-            return obj if root_key in obj else {root_key: obj}
-        pos = idx + 1
+        root = declared[name]
+        if not isinstance(document, dict) or not isinstance(document.get(root), dict):
+            continue
+        if name in found:
+            raise ValueError(f"duplicate TextAsset: {name}")
+        found[name] = TextAsset(name, root, match.start(2), start, raw, len(document[root]))
+    return found
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--bundle', required=True, help='UnityWeb 包路径（scene/*.unity3d）')
-    parser.add_argument('--out', required=True, help='表目录，默认对应服务端 assets/pc/tables')
-    parser.add_argument('--only-missing', action='store_true', help='只补写目录里还没有的表')
-    args = parser.parse_args()
-
-    text = decompress_bundle(args.bundle).decode('ascii', 'replace')
-    print('解压后: %d 字符' % len(text))
-
-    entries = read_manifest(CLIENT_MANIFEST) + read_manifest(SERVER_MANIFEST)
-    os.makedirs(args.out, exist_ok=True)
-
-    ok, miss, skip = [], [], []
-    for row in entries:
-        name = row['table_file'].strip()
-        root_key = row['root_key'].strip()
-        target = os.path.join(args.out, name)
-        if args.only_missing and os.path.exists(target):
-            skip.append(name)
+    parser.add_argument("--bundle", required=True)
+    parser.add_argument("--out", required=True)
+    parser.add_argument("--only-missing", action="store_true")
+    parser.add_argument("--report", help="JSON report with hashes and TextAsset byte offsets")
+    args = parser.parse_args(argv)
+    declared: dict[str, str] = {}
+    for path in (MANIFEST_PATH, SERVER_MANIFEST_PATH, QUEST_MANIFEST_PATH):
+        for row in read_manifest(path):
+            name, root = row["table_file"].strip(), row["root_key"].strip()
+            if name in declared and declared[name] != root:
+                raise ValueError(f"conflicting table root: {name}")
+            declared[name] = root
+    container = decompress_bundle(args.bundle)
+    assets = extract_assets(container, declared)
+    out = Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+    skipped = 0
+    for name, asset in assets.items():
+        target = out / name
+        if args.only_missing and target.exists():
+            skipped += 1
             continue
-        table = extract_table(text, root_key)
-        if table is None:
-            miss.append((name, root_key))
-            continue
-        payload = json.dumps(table, ensure_ascii=False).encode('utf-8')
-        with open(target, 'wb') as handle:
-            handle.write(payload)
-        ok.append((name, len(table[root_key]), len(payload)))
+        temporary = target.with_suffix(".json.tmp")
+        temporary.write_bytes(asset.raw)
+        temporary.replace(target)
+    missing = sorted(set(declared) - assets.keys())
+    if args.report:
+        Path(args.report).write_text(json.dumps({
+            "bundle_sha256": hashlib.sha256(Path(args.bundle).read_bytes()).hexdigest(),
+            "container_sha256": hashlib.sha256(container).hexdigest(),
+            "tables": [assets[name].evidence() for name in sorted(assets)],
+            "missing": missing,
+        }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"validated={len(assets)} written={len(assets) - skipped} skipped={skipped} missing={len(missing)}")
+    for name in missing:
+        print(f"stub has no assets: {name}")
+    return 1 if missing else 0
 
-    print('写出 %d 张，合计 %d 字节；跳过 %d 张；缺失 %d 张' % (
-        len(ok), sum(size for _, _, size in ok), len(skip), len(miss)))
-    for name, root_key in miss:
-        print('   MISS %-34s root=%s' % (name, root_key))
-    return 0 if not miss else 1
 
-
-if __name__ == '__main__':
-    sys.exit(main())
+if __name__ == "__main__":
+    raise SystemExit(main())
