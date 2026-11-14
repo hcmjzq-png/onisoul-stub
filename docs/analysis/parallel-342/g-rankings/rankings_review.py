@@ -128,6 +128,18 @@ for name in ("defines", "ranking", "national_power_goal", "character", "building
 proof = {"baseline": "1f287e33123afa452d2f5d2aac2427566d549f73", "original_sources": source_proofs,
     "original_tables": table_proofs, "endpoints": evidence_endpoints,
     "protocol_evidence": ["zero-based inclusive pagination; current/last; indexed rankers", "brief and myRecord nesting differ", "common national power uses dedication scalar; dedication mutation returns nested dedication"],
-    "server_compatibility_decisions": ["competition ties with playerId ordering not proven original", "100-row request limit", "explicit complete country snapshot provider; never infer scores from level", "missing period fails; proven empty snapshot yields rank=-1; no fake timestamp/reset", "no production registration; no full gameplay completion claim"]}
+    "server_compatibility_decisions": ["competition ties with playerId ordering not proven original", "100-row request limit", "explicit complete country snapshot provider; never infer scores from level", "missing period fails; proven empty snapshot yields rank=-1; no fake timestamp/reset", "no production registration; no full gameplay completion claim",
+        "reject scores that cannot round-trip through float32 and Int32; never clamp or round source scores; support constraint, not original cap",
+        "one immutable pair per response; separate requests may observe different publications; no invented revision wire field"],
+    "kokudaka_self_review": {
+        "list_paths": {"entries": "HTMLRankingMediator.cs:251", "myRecord.rank/score": "HTMLRankingMediator.cs:281-290",
+                       "rankers.<pageIndex>.rank/score/username/playerId/country": "HTMLRankingMediator.cs:304-344"},
+        "brief_paths": {"brief.rank/score/lastRank": "mypageRankingWindow.cs:787-797",
+                        "brief.rank for Around": "HTMLRankingMediator_Kokudaka.cs:43-53"},
+        "numeric_conversion": ["mypageRankingWindow.cs:503: getInt after makeBriefInfo.getLong",
+                               "HashAccessFuncs.cs:94-118: float.TryParse then (int)",
+                               "HTMLRankingMediator.cs:327: list score via getDouble then (long)"],
+        "known_client_limit": "Kokudaka historical Around calls a term-less current brief before requesting term=last; cannot change brief semantics or add guessed request fields",
+        "concurrency_test_boundary": "two authenticated readers plus concurrent publication, paused after pair capture; proves request-local consistency only, not producer/database transactions"}}
 (OUT / "evidence.json").write_text(json.dumps(proof, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(f"Wrote {len(rows)} endpoints, {len(source_proofs)} source hashes, {len(table_proofs)} small table samples")
