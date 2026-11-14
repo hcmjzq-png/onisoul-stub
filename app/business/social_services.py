@@ -10,6 +10,7 @@ storage decisions, not original response records. No mail, gifts or visit reward
 from __future__ import annotations
 
 import copy
+import math
 import time
 from contextlib import ExitStack
 from functools import partial
@@ -18,7 +19,7 @@ from typing import Any, Callable, ContextManager, Protocol
 from app import state
 from app.business import response_shapes
 from app.business.decks import character_id
-from app.business.player_services import PlayerServices
+from app.business.player_services import PlayerServices, integer
 
 
 class AtomicPlayers(Protocol):
@@ -59,17 +60,25 @@ class SocialServices(PlayerServices):
 
     def offers(self, player: dict) -> dict:
         offers = player.get("socialOffers") or {}
+        if not isinstance(offers, dict):
+            raise ValueError("no stub response: social offer migration required")
         if offers:
             row = self.table("defines").get("friendoffer_expire_time")
             if not row or "value" not in row:
                 raise ValueError("no stub response: missing friend expiry table row")
+            lifetime = integer(row["value"], 1)
+            now = self.clock()
+            if type(now) not in (int, float) or not math.isfinite(now) or now < 0:
+                raise ValueError("no stub response: invalid social clock")
             for offer in offers.values():
-                if (offer.get("status") not in ("send", "receive")
-                        or not isinstance(offer.get("createdAt"), (int, float))):
+                if (not isinstance(offer, dict) or offer.get("status") not in ("send", "receive")
+                        or type(offer.get("createdAt")) not in (int, float)
+                        or not math.isfinite(offer["createdAt"])
+                        or not 0 <= offer["createdAt"] <= now):
                     raise ValueError("no stub response: social offer migration required")
                 # Original cleanup timing/removal reason is not established. Fail
                 # closed instead of granting a stale offer or inventing cleanup.
-                if self.clock() - offer["createdAt"] >= row["value"]:
+                if now - offer["createdAt"] >= lifetime:
                     raise ValueError("no stub response: expired friend offer cleanup is not implemented")
         return offers
 
@@ -170,6 +179,8 @@ class SocialServices(PlayerServices):
         a, b = self.relation(left, target), self.relation(right, actor)
         if (a, b) not in (("", ""), ("send", "receive"), ("receive", "send"), ("ok", "ok")):
             raise ValueError("no stub response: inconsistent friend relationship requires repair")
+        if a in ("send", "receive") and lo[target]["createdAt"] != ro[actor]["createdAt"]:
+            raise ValueError("no stub response: friend offer timestamps require repair")
         if name == "sendFriendOffer":
             if a in ("send", "ok"):
                 return  # Retry policy: no duplicate entry or timestamp refresh.
@@ -182,6 +193,8 @@ class SocialServices(PlayerServices):
             if sum(o["status"] == "receive" for o in ro.values()) >= self.offer_limit("receive"):
                 raise ValueError("already reached receive count")
             timestamp = float(self.clock())
+            if not math.isfinite(timestamp) or timestamp < 0:
+                raise ValueError("no stub response: invalid social clock")
             left.setdefault("socialOffers", {})[target] = {"status": "send", "createdAt": timestamp}
             right.setdefault("socialOffers", {})[actor] = {"status": "receive", "createdAt": timestamp}
             return

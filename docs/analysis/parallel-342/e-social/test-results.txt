@@ -218,10 +218,21 @@ test_push_rejects_empty_field (test_show_off.ShowOffQueueTest.test_push_rejects_
 test_push_rejects_missing_bundle (test_show_off.ShowOffQueueTest.test_push_rejects_missing_bundle) ... ok
 test_push_then_deliver_fifo (test_show_off.ShowOffQueueTest.test_push_then_deliver_fifo) ... ok
 test_registry_dispatch_shape (test_show_off.ShowOffQueueTest.test_registry_dispatch_shape) ... ok
+test_commit_succeeds_but_response_fails_then_retry_cannot_credit_again (test_social_services.SocialInboxServicesTest.test_commit_succeeds_but_response_fails_then_retry_cannot_credit_again) ... ok
+test_concurrent_claim_credits_and_returns_delta_once (test_social_services.SocialInboxServicesTest.test_concurrent_claim_credits_and_returns_delta_once) ... ok
+test_owned_parcel_only_and_request_cannot_supply_rewards (test_social_services.SocialInboxServicesTest.test_owned_parcel_only_and_request_cannot_supply_rewards) ... ok
+test_pagination_and_empty_invalid_requests (test_social_services.SocialInboxServicesTest.test_pagination_and_empty_invalid_requests) ... ok
+test_parcel_atomic_overflow_and_mixed_batch (test_social_services.SocialInboxServicesTest.test_parcel_atomic_overflow_and_mixed_batch) ... ok
+test_plugin_can_resolve_more_than_ui_batch_size (test_social_services.SocialInboxServicesTest.test_plugin_can_resolve_more_than_ui_batch_size) ... ok
+test_query_claim_retry_reload_query_lifecycle (test_social_services.SocialInboxServicesTest.test_query_claim_retry_reload_query_lifecycle) ... ok
+test_reused_ids_are_not_new_parcels_and_no_old_mail_migration (test_social_services.SocialInboxServicesTest.test_reused_ids_are_not_new_parcels_and_no_old_mail_migration) ... ok
+test_save_conflict_rolls_back_reward_and_tombstone (test_social_services.SocialInboxServicesTest.test_save_conflict_rolls_back_reward_and_tombstone) ... ok
+test_unknown_reward_decline_invalid_amount_and_expiry_metadata_stay_pending (test_social_services.SocialInboxServicesTest.test_unknown_reward_decline_invalid_amount_and_expiry_metadata_stay_pending) ... ok
 test_authentication_self_unknown_and_wrong_direction_do_not_write (test_social_services.SocialServicesTest.test_authentication_self_unknown_and_wrong_direction_do_not_write) ... ok
 test_broken_pair_and_missing_row_vs_missing_table (test_social_services.SocialServicesTest.test_broken_pair_and_missing_row_vs_missing_table) ... ok
 test_competing_acceptances_cannot_exceed_capacity (test_social_services.SocialServicesTest.test_competing_acceptances_cannot_exceed_capacity) ... ok
 test_concurrent_duplicate_send_and_accept_and_reverse_requests (test_social_services.SocialServicesTest.test_concurrent_duplicate_send_and_accept_and_reverse_requests) ... ok
+test_expiry_boundary_and_invalid_timestamps_never_clear_or_accept (test_social_services.SocialServicesTest.test_expiry_boundary_and_invalid_timestamps_never_clear_or_accept) ... ok
 test_lifecycle_lists_counts_profile_reload_and_dissolution (test_social_services.SocialServicesTest.test_lifecycle_lists_counts_profile_reload_and_dissolution) ... ok
 test_missing_adapter_and_expired_offer_fail_without_saving (test_social_services.SocialServicesTest.test_missing_adapter_and_expired_offer_fail_without_saving) ... ok
 test_offer_and_accepted_caps_on_both_accounts_no_cost (test_social_services.SocialServicesTest.test_offer_and_accepted_caps_on_both_accounts_no_cost) ... ok
@@ -264,6 +275,6 @@ test_self_belong_is_sentinel_not_empty (test_turf_war_situation.TurfWarHandlerTe
 test_situation_chain_is_readable (test_turf_war_situation.TurfWarHandlerTest.test_situation_chain_is_readable) ... ok
 
 ----------------------------------------------------------------------
-Ran 237 tests in 2.273s
+Ran 248 tests in 2.201s
 
 OK

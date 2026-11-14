@@ -3,7 +3,7 @@ E 组集成交接（未挂载；不修改全局实现数）
 1. 挂载位置：app/business/gameplay.py 的 GameplayService.register 或 app/main.py 的组装点，导入 app.business.social_services.SocialServices。
    调用 SocialServices(gameplay, atomic_players=state.atomic_players).register(registry)。state.atomic_players 尚不存在，由总集成新增；缺省 adapter 时四个跨账号写接口 result=false，不能算业务完成。
    不改变已有 PlayerServices 注册，不覆盖 A 的 friend/building/*、friend/task/*，不动 completeTasks。
-   仅 register 中列出的 7 个入口替代占位，其余 34 项不挂载。本批未修这些占位的假成功问题，生产开放应由总集成统一拒绝未知写接口。
+   SocialServices 7 个入口及新增 SocialInboxServices 2 个入口可显式替代占位，其余 32 项不挂载。收件箱挂载调用 SocialInboxServices(gameplay).register(registry)，来源 app.business.social_inbox_services；同样未生产挂载。本批未修这些占位的假成功问题，生产开放应由总集成统一拒绝未知写接口。
 
 2. 真正事务方案：在 app/state/player.py 增加原子多玩家上下文（对外经 app/state/__init__.py 导出），使用 app/db 的同一个 connection 事务。
    按排序后的 player_id 对两个现有 players 行 SELECT ... FOR UPDATE；缺失角色拒绝，不能创建账号。
@@ -16,7 +16,7 @@ E 组集成交接（未挂载；不修改全局实现数）
 
 3. 状态兼容：friends={acceptedPlayerId:{}}；socialOffers={peerId:{status:send|receive,createdAt:unix_seconds}} 都是内部设计。
    PlayerServices.profile 的 friendCount 已按 len(friends) 计数，因此禁止把 pending 放入 friends。
-   审查 app/business/gameplay.py 的 periodicInquiry/getPlayerParams 社交通知，按 pending receive 导出 FriendOfferCount（确切协议键需复核 UserStatus.SocialInformation）；本组不擅改公共状态。
+   审查 app/business/gameplay.py 的 periodicInquiry/getPlayerParams 社交通知，按 pending receive 导出 FriendOfferCount（已复核 UserStatus.cs:148-164 根键 friendOffer；inboxParcel 与 unreadMail 同层）；本组不擅改公共状态。
    旧存档 friends/社交字段不可直接信任或覆盖；先备份并核验双边关系，再迁移。无旧字段的新角色从空关系开始，不发资源。
    过期申请目前 fail closed，清理返回 remove 的真实原因/时机需要证据，不能把空 remove 当完整增量协议。
    请求无去重 ID：旧反馈在全新申请周期重放不能区分。网络重试只能保证同一状态即时重试不重复写；若需要严格防重放需上层受验证的请求序列方案。
@@ -30,7 +30,7 @@ E 组集成交接（未挂载；不修改全局实现数）
 5. A 依赖：只把 accepted 双边关系作为助产身份的候选条件；访问本人/非好友/好友与地图解锁是不同维度。
    原 PoliticFSMFriendMap:62-78 存在非好友访问，不能一刀切禁止；默认客访 mapId=-1 的选择与 setGuestMap 需地图持久化协议。
    助产时应在同一多玩家事务内重验关系、归属、产物/费用/奖励；不能先读关系解锁后再单独发奖。friend/building/task 3 项仍只归 A。
-   C 依赖：inbox.resolveParcels 未发奖；需 C 的物品类型/容量/保护规则和D的资源事务策略，消费 parcel 与发放在同一原子写入，失败保留待领，重复不得再发。不得把 mailIds 当 parcelIds。
+   C 依赖：inbox.resolveParcels 新增仅确定数量四资源发放；其他类型需 C 的物品类型/容量/保护规则和D的资源事务策略。消费 parcel 与发放在同一原子写入，失败保留待领，重复不得再发。不得把 mailIds 当 parcelIds。
    H 依赖：invitation/getPlayer 仅证明 code 查询 invitation.playerId；创建角色绑定/奖励与 H 对接，不能伪造邀请码。
 
 6. 最小独占动态验证（由总集成安排，本任务不启动客户端）：
@@ -41,5 +41,7 @@ E 组集成交接（未挂载；不修改全局实现数）
    inbox 用隔离小样本验证重复领取、满库存、混合成功失败，禁止真实账号收发。
    链路定位遵守 客户端→hosts→proxy80→stub；资源下载失败与业务无返回分别记 stub has no assets / no stub response。
 
-7. 回归：python -m unittest discover -s tests -v，237 项通过，无跳过；详见 test-results.txt。
+7. 回归：python -m unittest discover -s tests -v，248 项通过，无跳过；详见 test-results.txt。
    没有触碰主工作树暂存文件；没有访问或部署腾讯云服务器；用户唯一审批合并。
+
+8. 追加收件箱集成约束详见 expiry-inbox-followup.md：socialInbox v1 仅内部账本；没有包裹发行、旧数据迁移或原pcweb标题正文字段。永久 resolved ID 禁止复用/擅自裁剪；客户端丢失首回包后的空增量需要权威资源快照刷新或重登。未知ID会进入failed并影响客户端badge，需periodicInquiry.inboxParcel纠正。原版30条仅UI分批，插件一次可发500条。审批上线前须解决包裹来源、回包丢失后显示重同步、真实DB并发回滚和原页面消费验证。
