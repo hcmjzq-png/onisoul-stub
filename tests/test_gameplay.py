@@ -96,7 +96,11 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertEqual(params["entity"]["country"], "country01")
         self.assertEqual(params["entity"]["cap"], 2)
         self.assertEqual(params["actionPoints"]["politicPoint"]["point"], 25)
-        self.assertEqual(params["resources"]["gold"]["amount"], 0)
+        self.assertEqual(params["resources"]["gold"]["amount"], 5000)
+        for resource in ("food", "wood", "iron", "credit"):
+            self.assertEqual(params["resources"][resource]["amount"], 0)
+        self.assertEqual(params["actionPoints"]["missionPoint"]["point"], 25)
+        self.assertEqual(params["actionPoints"]["battlePoint"]["point"], 100)
         self.assertEqual(params["characterCount"], 4.0)
         self.assertEqual(params["possessionLimits"]["character"]["result"], 400.0)
 
@@ -105,6 +109,23 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertEqual(login_again["playerId"], session["playerId"])
         game_login = self.service.game_login({"token": session["token"]}, session)
         self.assertTrue(game_login["succeeded"])
+
+    def test_starting_gold_is_not_reissued_on_load_login_or_repeated_create(self):
+        session = self._login_and_create()
+        player = self.states.load(session["playerId"])
+        player["resources"]["gold"]["amount"] = 123
+        self.states.save(player, session["playerId"])
+        self.service.get_player_params({}, session)
+        self.service.game_login({"token": session["token"]}, session)
+        self.service.create_player({"username": "new-player", "countryId": "country01"}, session)
+        self.assertEqual(self.states.load(session["playerId"])["resources"]["gold"]["amount"], 123)
+
+    def test_existing_zero_balance_is_not_retroactively_funded(self):
+        session = self._login_and_create()
+        player = self.states.load(session["playerId"])
+        player["resources"]["gold"]["amount"] = 0
+        self.states.save(player, session["playerId"])
+        self.assertEqual(self.service.get_player_params({}, session)["resources"]["gold"]["amount"], 0)
 
     def test_main_map_and_avatar_payload_shapes(self):
         session = self._login_and_create()
@@ -135,14 +156,14 @@ class GameplayFlowTest(unittest.TestCase):
             result = self._change(session, "po_mission_00001", state)
             self.assertIn("mission", result)
         player = self.states.load(session["playerId"])
-        self.assertEqual(player["resources"]["gold"]["amount"], 5000)
+        self.assertEqual(player["resources"]["gold"]["amount"], 10000)
         self.assertEqual(player["resources"]["credit"]["amount"], 25)
         self.assertEqual(player["missions"]["1"], "C")
 
         duplicate = self._change(session, "po_mission_00001", "closed")
         self.assertEqual(duplicate["reward"], {})
         player = self.states.load(session["playerId"])
-        self.assertEqual(player["resources"]["gold"]["amount"], 5000)
+        self.assertEqual(player["resources"]["gold"]["amount"], 10000)
 
         self._change(session, "po_mission_00002", "accepted")
         build = self.service.submit_build_task(

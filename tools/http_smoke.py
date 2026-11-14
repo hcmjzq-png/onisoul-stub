@@ -60,6 +60,9 @@ def run(host: str, port: int) -> None:
         assert api("auth/gameLogin", {"token": token})["succeeded"]
         params = api("common/getPlayerParams", {"token": token}, "GET")
         assert params["entity"]["username"] == account and params["characterCount"] > 0
+        assert params["resources"]["gold"]["amount"] == 5000
+        assert all(params["resources"][key]["amount"] == 0 for key in ("food", "wood", "iron", "credit"))
+        assert [params["actionPoints"][key]["point"] for key in ("missionPoint", "politicPoint", "battlePoint")] == [25, 25, 100]
         for name in ("common/getEventStatuses", "common/getShopsale"):
             result = api(name, {"token": token})
             assert result["succeeded"] and set(result) == {"succeeded", "now"}, name

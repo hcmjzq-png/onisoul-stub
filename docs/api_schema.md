@@ -112,6 +112,7 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 
 | 字段 / 行为 | 来源 | 证据与限制 |
 | --- | --- | --- |
+| 新角色 `resources`、`actionPoints` | bundle + 用户首次进游戏截图 | beginning_equipment.common：gold=5000，food/wood/iron/credit=0；所有国家行这五项为 0。playerLevel.1：MP=25、PP=25、BP=100。截图逐项相符，来源散列见本批 source-proof.json。资源仅在创建角色时发放，读档/重登不补发，任务及教程奖励独立按原表结算。修正旧代码把初始 5000 金钱归到任务奖励的错误。 |
 | 道路邻接提高生产量、修路不扣金钱/PP | bundle | 原教程 POM_MES_000006_03_001；三种道路的原 draft/building 行；PoliticBuilding.cs:1239-1275,2350-2387 的即时建造分支。已修正 PP，未猜收益加成系数。 |
 | `submitBulkBuildAndComplete.buildings/autoProducings/originCoords.<id>.0/1` | bundle | PoliticFSMConstruction.cs:472-532。坐标是按实例 ID 索引的数字键映射，删除旧契约根 0/1。仅免费道路批量建造。 |
 | `submitSerialBuildAndComplete.<index>.x/y/buildingId/building` | bundle | PoliticBuilding.cs:2402-2478 按数字根键读取，Count-2 个记录，另需 autoProducings。 |

@@ -145,6 +145,7 @@ class CoreGameplayTest(unittest.TestCase):
         self.assertEqual(self.saved()["resources"], before)
 
     def test_unknown_completion_predicate_never_grants_reward(self):
+        initial_gold = self.saved()["resources"]["gold"]["amount"]
         rows = copy.deepcopy(self.service.missions.rows())
         rows["po_mission_00001"]["conditionTypes1"] = ["unverified"]
         with patch.object(self.service.missions, "rows", return_value=rows):
@@ -152,7 +153,7 @@ class CoreGameplayTest(unittest.TestCase):
             result = self.change(1, "closed")
         self.assertFalse(result["succeeded"])
         self.assertIn("unsupported", result["errorReason"])
-        self.assertEqual(self.saved()["resources"]["gold"]["amount"], 0)
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], initial_gold)
 
     def test_castle_condition_ignores_unfinished_and_other_map_buildings(self):
         player = self.saved()

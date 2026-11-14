@@ -264,8 +264,8 @@ class GameplayService:
                     "confirmTime": 0.0,
                 },
             },
-            # beginning_equipment.common.gold is not applied here: the observed
-            # novice flow receives its 5000 gold from mission 1's reward.
+            # Neutral merge defaults. Starting resources are granted only when
+            # creating a character, never while loading an existing save.
             "resources": {
                 key: {"amount": 0, "maxAmount": int(level.get(field) or 0)}
                 for key, field in (
@@ -414,6 +414,9 @@ class GameplayService:
             "id": navigator_id,
             "colorIndex": color_index or DEFAULT_COLOR,
         }
+        common = self._table("beginning_equipment").get("common") or {}
+        for resource in ("gold", "food", "wood", "iron", "credit"):
+            player["resources"][resource]["amount"] = integer(common.get(resource, 0))
         player["characters"] = self._initial_characters(country)
         player["counters"]["characterCount"] = len(player["characters"])
         return self._prepare_state(player, player_id)

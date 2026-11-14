@@ -34,5 +34,35 @@
       "id": "POM_MES_000006_03_001",
       "tw": "「邻接道路的建筑物拥有提高生产量的效果，\n　因此建议在建筑物的旁边建设道路。\n　此外，RGBA(1,0.6,0.2,1)建筑道路并不会消耗金钱和内政点数。RGBA(1,1,1,1)」@"
     }
+  },
+  "new_player_baseline": {
+    "user_evidence": "User identified the attached image as first entry for a new player on 2026-11-15",
+    "image_name": "codex-clipboard-85c287e0-5bbc-4d32-9613-fd3086339ac3.png",
+    "image_sha256": "28f8ad35f1dbb966ff60e1e9afd37da9e7a1febbdb679d55c531e11b95215ee4",
+    "visible_values": {
+      "gold": 5000,
+      "food": 0,
+      "wood": 0,
+      "iron": 0,
+      "credit": 0,
+      "missionPoint": 25,
+      "politicPoint": 25,
+      "battlePoint": 100,
+      "level": 1,
+      "cap": 5
+    },
+    "table_hashes": {
+      "beginning_equipment": "edb6020f34de12e6cd5a1463ccb16ebc2ca10cf6bf0210ee6273db6213fe1441",
+      "playerLevel": "a04583b4e84018c501265e4ad1048e7f38fd5ae120861f1f9e8a1189369d3531"
+    },
+    "common_resource_values": {
+      "gold": 5000,
+      "food": 0,
+      "wood": 0,
+      "iron": 0,
+      "credit": 0
+    },
+    "all_country_resource_values_zero": true,
+    "scope": "Starting resources are applied only on character creation. Existing saves and separate original mission/lesson reward tables are not rewritten."
   }
 }

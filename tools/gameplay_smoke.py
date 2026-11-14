@@ -75,6 +75,9 @@ def main(argv: list[str] | None = None) -> int:
         raise RuntimeError("createPlayer failed")
 
     params = service.get_player_params({}, session)
+    starting_gold = params["resources"]["gold"]["amount"]
+    if starting_gold != service._table("beginning_equipment")["common"]["gold"]:
+        raise RuntimeError("new player did not receive original starting resources")
     if params["characterCount"] <= 0:
         raise RuntimeError("createPlayer produced no characters")
     levels = service._table("playerLevel")
@@ -94,7 +97,7 @@ def main(argv: list[str] | None = None) -> int:
         service.change_mission_state(
             {"missionIds": ["po_mission_00001"], "states": [state]}, session
         )
-    if states.load(session["playerId"])["resources"]["gold"]["amount"] <= 0:
+    if states.load(session["playerId"])["resources"]["gold"]["amount"] <= starting_gold:
         raise RuntimeError("mission 1 did not grant gold")
 
     service.change_mission_state(
