@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+import json
 import secrets
 import sys
 import time
@@ -346,7 +347,7 @@ def _news_rows() -> str:
 def render(account: str = "", password: str = "", error: str = "") -> bytes:
     body = _LOGIN_BODY.replace("{menu}", _MENU).replace("{news}", _news_rows())
     body = body.replace("{account}", html.escape(account, quote=True))
-    body = body.replace("{password}", html.escape(password, quote=True))
+    body = body.replace("{password}", "")
     body = body.replace("{error}", html.escape(error))
     return _document(body)
 
@@ -385,8 +386,8 @@ def register_submit(form: dict[str, Any]) -> LoginResult:
     if status != "ok":
         return LoginResult(200, _register_error(reason))
     dialog = (
-        "jQuery(function(){ the37.alert(%r, 1, function(){ location.href=\"%s\"; }); });"
-        % ("账号已创建：" + account + "，点关闭回到登录页", LOGIN_PATH)
+        "jQuery(function(){ the37.alert(%s, 1, function(){ location.href=\"%s\"; }); });"
+        % (json.dumps("账号已创建：" + account + "，点关闭回到登录页", ensure_ascii=True).replace("<", "\\u003c"), LOGIN_PATH)
     )
     content = ('<p class="lead">账号 <span class="tip_strong">%s</span> 已创建。</p>'
                '<div class="btnrow"><span class="btn_s" onclick="go(\'login\')">返回登录</span></div>'
@@ -484,7 +485,7 @@ def verify_user(account: str, password: str) -> str:
                     return "no_user"
                 stored = row["password_hash"] if isinstance(row, dict) else row[0]
                 salt = row["salt"] if isinstance(row, dict) else row[1]
-                if _hash_password(password, salt) != stored:
+                if not secrets.compare_digest(_hash_password(password, salt), stored):
                     return "bad_password"
                 return "ok"
     except Exception as exc:
@@ -494,14 +495,10 @@ def verify_user(account: str, password: str) -> str:
 
 def _issue(account: str) -> tuple[str, str]:
     ident = secrets.token_hex(20)
-    try:
-        from app import sessions
+    from app import sessions
 
-        session = sessions.issue(account)
-        return str(session["token"]), ident
-    except Exception as exc:
-        print(f"[stub][login] 会话不可用，退化 token: {type(exc).__name__}: {exc}", file=sys.stderr)
-        return secrets.token_hex(16), ident
+    session = sessions.issue(account)
+    return str(session["token"]), ident
 
 
 def submit(form: dict[str, Any]) -> LoginResult:
@@ -518,10 +515,14 @@ def submit(form: dict[str, Any]) -> LoginResult:
         return LoginResult(200, render(account, password, "密码错误"))
     if state != "ok":
         return LoginResult(200, render(account, password, "服务器校验失败，请稍后重试"))
-    token, ident = _issue(account)
+    try:
+        token, ident = _issue(account)
+    except Exception as exc:
+        print(f"[stub][login] session issue failed: {type(exc).__name__}", file=sys.stderr)
+        return LoginResult(503, render(account, error="登录会话创建失败，请稍后重试"))
     location = redirect_url(token, ident)
     print(
-        f"[stub][login] account={account} token={token[:8]}… id={ident[:8]}… -> {location}",
+        "[stub][login] authenticated; redirecting to game",
         file=sys.stdout,
         flush=True,
     )

@@ -199,6 +199,30 @@ def make_handler(
 
     class StubHandler(BaseHTTPRequestHandler):
         server_version = "OniSoulStub/0.1"
+        timeout = 15
+
+        def _read_body(self) -> bytes | None:
+            if self.headers.get("Transfer-Encoding"):
+                self.send_error(501, "Transfer-Encoding is unsupported")
+                return None
+            lengths = self.headers.get_all("Content-Length", [])
+            raw_length = lengths[0] if lengths else "0"
+            if len(lengths) > 1 or not raw_length.isascii() or not raw_length.isdecimal():
+                self.send_error(400, "Invalid Content-Length")
+                return None
+            length = int(raw_length)
+            if length > 2 * 1024 * 1024:
+                self.send_error(413, "Request body too large")
+                return None
+            try:
+                raw = self.rfile.read(length) if length else b""
+            except TimeoutError:
+                self.send_error(408)
+                return None
+            if len(raw) != length:
+                self.send_error(400, "Incomplete request body")
+                return None
+            return raw
 
         def log_message(self, fmt: str, *args: Any) -> None:  # 静默默认访问日志
             return
@@ -228,10 +252,11 @@ def make_handler(
             # 原先一路落到静态层，返回 404 "stub has no assets"。
             # 这里把 /api/ 的 GET 也接进注册表，参数从 query string 取。
             if self.path.split("?")[0].startswith("/api/"):
-                import urllib.parse as _urlparse
-
+                if head_only:
+                    self.send_error(405, "HEAD is unsupported for business APIs")
+                    return
                 query = self.path.split("?", 1)[1] if "?" in self.path else ""
-                params = dict(_urlparse.parse_qsl(query, keep_blank_values=True))
+                params = envelope.parse_params(query.encode("utf-8"), "application/x-www-form-urlencoded")
                 self._serve_api(
                     self.path.split("?")[0], params, head_only=head_only
                 )
@@ -269,7 +294,7 @@ def make_handler(
                 _json_response(
                     self,
                     404,
-                    envelope.error(envelope.ERR_NOT_FOUND, f"未知接口: {api}"),
+                    envelope.error(envelope.ERR_NOT_FOUND, f"no stub response: {api}"),
                     head_only=head_only,
                 )
                 return
@@ -300,9 +325,10 @@ def make_handler(
 
         def do_POST(self) -> None:
             path = self.path.split("?")[0]
+            raw = self._read_body()
+            if raw is None:
+                return
             if login_page.matches(path):
-                length = int(self.headers.get("Content-Length") or 0)
-                raw = self.rfile.read(length) if length > 0 else b""
                 form = login_page.parse_form(raw, self.headers.get("Content-Type", ""))
                 query = self.path.split("?", 1)[1] if "?" in self.path else ""
                 result = login_page.handle_post(form, login_page.page_of(query))
@@ -314,8 +340,6 @@ def make_handler(
                 _json_response(self, 404, envelope.error(envelope.ERR_NOT_FOUND))
                 return
 
-            length = int(self.headers.get("Content-Length") or 0)
-            raw = self.rfile.read(length) if length > 0 else b""
             ctype = self.headers.get("Content-Type", "")
             params = envelope.parse_params(raw, ctype)
             self._serve_api(path, params, head_only=False)

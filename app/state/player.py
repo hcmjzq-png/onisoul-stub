@@ -38,7 +38,7 @@ def _default_state(player_id: str) -> dict[str, Any]:
 
 
 def load(player_id: str = DEFAULT_PLAYER_ID) -> dict[str, Any]:
-    """读玩家状态；无存档返回默认占位。JSON 损坏时同样退回默认，不带崩服务。"""
+    """Only absent players receive defaults; corrupt saves must never be overwritten."""
     pid = str(player_id or DEFAULT_PLAYER_ID)
     with db.connection() as con:
         with con.cursor() as cur:
@@ -50,10 +50,10 @@ def load(player_id: str = DEFAULT_PLAYER_ID) -> dict[str, Any]:
         return _default_state(pid)
     try:
         data = json.loads(row["state_json"])
-    except (ValueError, TypeError):
-        return _default_state(pid)
-    if not isinstance(data, dict):
-        return _default_state(pid)
+    except (ValueError, TypeError) as exc:
+        raise ValueError("invalid persisted player state") from exc
+    if not isinstance(data, dict) or not isinstance(data.get("entity", {}), dict):
+        raise ValueError("invalid persisted player state")
     data.setdefault("entity", {})["playerId"] = pid
     try:
         data["_revision"] = int(data.get("_revision") or 0)

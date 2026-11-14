@@ -5,6 +5,8 @@ After=network.target mysql.service
 [Service]
 Type=simple
 User=ubuntu
+NoNewPrivileges=true
+UMask=0077
 WorkingDirectory=/opt/onisoul
 Environment=ONI_ROOT=/opt/onisoul
 Environment=ONI_CONFIG_DIR=/opt/onisoul/config
