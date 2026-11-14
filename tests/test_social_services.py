@@ -12,6 +12,7 @@ from app import state
 from app.business.gameplay import GameplayService
 from app.business.registry import Registry
 from app.business.social_services import SocialServices
+from app.business.social_inbox_services import SocialInboxServices
 from app.tables import TableCatalog, MissingTableError
 from tools.gameplay_smoke import MemoryState, MemorySessions
 
@@ -230,6 +231,176 @@ class SocialServicesTest(unittest.TestCase):
         self.social.table = SocialServices.table.__get__(self.social)
         with patch.object(self.service.catalog, "load", side_effect=MissingTableError("defines")):
             self.assertIn("stub has no assets", self.call("getFriends", self.a, option="")["errorReason"])
+
+    def test_expiry_boundary_and_invalid_timestamps_never_clear_or_accept(self):
+        self.send()
+        created = self.now
+        self.now = created + 604799
+        self.assertEqual(self.call("updateFriendData", self.a)["count"]["send"], 1.)
+        self.now = created + 604800
+        before = copy.deepcopy(self.states.rows)
+        for operation in (lambda: self.call("updateFriendData", self.a),
+                          lambda: self.call("feedbackFriendOffer", self.b, self.a, reply="ok")):
+            self.assertIn("expired", str(operation()))
+        self.assertEqual(before, self.states.rows)
+        self.now = created + 1
+        for timestamp in (True, -1, self.now + 1, float("inf"), float("nan"), "1000"):
+            self.states.rows[self.a["playerId"]]["socialOffers"][self.b["playerId"]]["createdAt"] = timestamp
+            before_text = json.dumps(self.states.rows, sort_keys=True)
+            self.assertFalse(self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["result"])
+            self.assertEqual(before_text, json.dumps(self.states.rows, sort_keys=True))
+        self.states.rows[self.a["playerId"]]["socialOffers"][self.b["playerId"]]["createdAt"] = created + .5
+        self.assertIn("timestamps", self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["detail"]["0"])
+
+
+class SocialInboxServicesTest(unittest.TestCase):
+    def setUp(self):
+        self.h = SocialServicesTest()
+        self.h.setUp()
+        self.attach()
+        self.seed()
+
+    def attach(self):
+        self.inbox = SocialInboxServices(self.h.service)
+        self.inbox.register(self.h.registry)
+
+    def seed(self):
+        row = self.h.states.load(self.h.a["playerId"])
+        row["socialInbox"] = json.loads((FIXTURES / "social" / "inbox-resource-parcels.json").read_text(encoding="utf-8"))
+        self.h.states.save(row, self.h.a["playerId"])
+
+    def saved(self):
+        return self.h.states.load(self.h.a["playerId"])
+
+    def call(self, name, actor=None, **params):
+        code, body = self.h.registry.dispatch("inbox/" + name, params, self.h.a if actor is None else actor)
+        self.assertEqual(code, 200, body)
+        return body
+
+    def resolve(self, requests=None, **extra):
+        return self.call("resolveParcels", responses={"synthetic-resource-1": "accept"} if requests is None else requests, **extra)
+
+    def test_query_claim_retry_reload_query_lifecycle(self):
+        listing = self.call("getParcels", start=0, end=499)
+        self.assertEqual(listing["totalCount"], 2.)
+        self.assertEqual(list(listing["parcels"]), ["synthetic-resource-2", "synthetic-resource-1"])
+        before = self.saved()["resources"]
+        got = self.resolve()
+        self.assertEqual(got["successful"]["synthetic-resource-1"]["rewards"], {"item11_0000101": 7., "item11_0000201": 3.})
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], before["gold"]["amount"] + 7)
+        self.h.reload(); self.attach()
+        snapshot = self.saved()
+        self.assertEqual(self.resolve()["successful"]["synthetic-resource-1"], {"rewards": {}})
+        self.assertEqual(self.saved(), snapshot)
+        self.assertEqual(self.call("getParcels", start=0, end=-1)["totalCount"], 1.)
+        self.assertNotIn("resolved", self.call("getParcels", start=0, end=-1))
+
+    def test_owned_parcel_only_and_request_cannot_supply_rewards(self):
+        before = copy.deepcopy(self.h.states.rows)
+        self.assertIn("synthetic-resource-1", self.call("resolveParcels", actor=self.h.b,
+            responses={"synthetic-resource-1": "accept"})["failed"])
+        self.assertIn("errorReason", self.call("resolveParcels", actor={}, responses={"synthetic-resource-1": "accept"}))
+        self.assertEqual(before, self.h.states.rows)
+        self.resolve(rewards={"item11_0000101": 999999}, playerId=self.h.b["playerId"])
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], before[self.h.a["playerId"]]["resources"]["gold"]["amount"] + 7)
+
+    def test_concurrent_claim_credits_and_returns_delta_once(self):
+        before = self.saved()["resources"]["gold"]["amount"]
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results = list(pool.map(lambda _: self.resolve(), range(30)))
+        self.assertEqual(sum(r["successful"]["synthetic-resource-1"]["rewards"].get("item11_0000101", 0) for r in results), 7)
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], before + 7)
+
+    def test_save_conflict_rolls_back_reward_and_tombstone(self):
+        before = self.saved()
+        with patch.object(self.h.service, "save_state", side_effect=state.StateConflictError("injected")):
+            result = self.resolve({"synthetic-resource-1": "accept", "synthetic-resource-2": "accept"})
+        self.assertIn("errorReason", result)
+        self.assertEqual(before, self.saved())
+        self.assertEqual(self.resolve()["failed"], {})
+
+    def test_commit_succeeds_but_response_fails_then_retry_cannot_credit_again(self):
+        original_save = self.h.service.save_state
+        before = self.saved()["resources"]["gold"]["amount"]
+
+        def commit_then_fail(player, player_id):
+            original_save(player, player_id)
+            raise RuntimeError("simulated lost response after commit")
+
+        with patch.object(self.h.service, "save_state", side_effect=commit_then_fail):
+            status, _ = self.h.registry.dispatch("inbox/resolveParcels",
+                {"responses": {"synthetic-resource-1": "accept"}}, self.h.a)
+        self.assertEqual(status, 500)
+        self.h.reload(); self.attach()
+        self.assertEqual(self.resolve()["successful"]["synthetic-resource-1"]["rewards"], {})
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], before + 7)
+
+    def test_parcel_atomic_overflow_and_mixed_batch(self):
+        row = self.saved()
+        row["resources"]["wood"]["amount"] = row["resources"]["wood"]["maxAmount"]
+        self.h.states.save(row, self.h.a["playerId"])
+        result = self.resolve({"synthetic-resource-1": "accept", "synthetic-resource-2": "accept", "foreign": "accept"})
+        self.assertEqual(set(result["failed"]), {"synthetic-resource-1", "foreign"})
+        saved = self.saved()
+        self.assertEqual(saved["resources"]["gold"], row["resources"]["gold"])
+        self.assertEqual(saved["resources"]["food"]["amount"], 5)
+        self.assertIn("synthetic-resource-1", saved["socialInbox"]["pending"])
+        self.assertNotIn("synthetic-resource-1", saved["socialInbox"]["resolved"])
+        saved["resources"]["wood"]["amount"] -= 3
+        self.h.states.save(saved, self.h.a["playerId"])
+        retry = self.resolve({"synthetic-resource-1": "accept", "synthetic-resource-2": "accept"})
+        self.assertEqual(retry["failed"], {})
+        self.assertEqual(retry["successful"]["synthetic-resource-2"]["rewards"], {})
+        self.assertEqual(self.saved()["resources"]["wood"]["amount"], saved["resources"]["wood"]["maxAmount"])
+        self.assertEqual(self.saved()["resources"]["food"]["amount"], 5)
+
+    def test_unknown_reward_decline_invalid_amount_and_expiry_metadata_stay_pending(self):
+        for record in ({"createdTime": 1, "rewards": {"item01_unknown": 1}},
+                       {"createdTime": 1, "rewards": {"item11_0000101": True}},
+                       {"createdTime": 1, "rewards": {"item11_0000101": -1}},
+                       {"createdTime": 1, "rewards": {"item11_0000101": 1.5}},
+                       {"createdTime": float("inf"), "rewards": {"item11_0000101": 1}},
+                       {"createdTime": 1, "expiresAt": 2, "rewards": {"item11_0000101": 1}}):
+            row = self.saved(); row["socialInbox"]["pending"]["synthetic-resource-1"] = record
+            self.h.states.save(row, self.h.a["playerId"])
+            before = self.saved()
+            result = self.resolve()
+            self.assertIn("synthetic-resource-1", result["failed"])
+            self.assertEqual(before, self.saved())
+        self.seed()
+        before = self.saved()
+        self.assertIn("synthetic-resource-1", self.resolve({"synthetic-resource-1": "reject"})["failed"])
+        self.assertEqual(before, self.saved())
+
+    def test_reused_ids_are_not_new_parcels_and_no_old_mail_migration(self):
+        self.resolve()
+        row = self.saved()
+        row["socialInbox"]["pending"]["synthetic-resource-1"] = {"createdTime": 2000, "rewards": {"item11_0000101": 999}}
+        self.h.states.save(row, self.h.a["playerId"])
+        before = self.saved()
+        self.assertIn("errorReason", self.resolve())
+        self.assertEqual(before, self.saved())
+        row.pop("socialInbox"); row["inbox"] = {"old-mail": {"rewards": {"item11_0000101": 999}}}
+        self.h.states.save(row, self.h.a["playerId"])
+        self.assertEqual(self.call("getParcels", start=0, end=-1)["totalCount"], 0.)
+
+    def test_pagination_and_empty_invalid_requests(self):
+        self.assertEqual(list(self.call("getParcels", start=1, end=1)["parcels"]), ["synthetic-resource-1"])
+        self.assertEqual(self.call("getParcels", start=2, end=499)["parcels"], {})
+        self.assertEqual(self.resolve({})["successful"], {})
+        for requests in ([], None, {"": "accept"}, {str(i): "accept" for i in range(501)}):
+            self.assertIn("errorReason", self.call("resolveParcels", responses=requests))
+        for start, end in ((True, 0), (-1, 1), (2, 1), (0, 500), (0, -2)):
+            self.assertIn("errorReason", self.call("getParcels", start=start, end=end))
+
+    def test_plugin_can_resolve_more_than_ui_batch_size(self):
+        row = self.saved()
+        row["socialInbox"]["pending"] = {str(i): {"createdTime": 1000, "rewards": {"item11_0000101": 1}} for i in range(500)}
+        self.h.states.save(row, self.h.a["playerId"])
+        result = self.resolve({str(i): "accept" for i in range(500)})
+        self.assertEqual(len(result["successful"]), 500)
+        self.assertEqual(result["failed"], {})
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], row["resources"]["gold"]["amount"] + 500)
 
 
 if __name__ == "__main__":
