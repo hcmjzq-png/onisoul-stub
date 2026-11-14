@@ -1247,7 +1247,16 @@ class GameplayService:
         player_id, player, _dirty = found
         completed: dict[str, Any] = {}
         changed = False
-        for value in _parse_ids(params.get("buildingIds")):
+        requested = _parse_ids(params.get("buildingIds"))
+        # A successful empty producings map makes StateManualProduce clear the
+        # client's task. Reject before completing any construction in a mixed
+        # batch; harvesting/road bonuses have not been established yet.
+        for value in requested:
+            key, record = self._find_building(player, value)
+            if record is not None and (str(key) in player["produce"] or record.get("status") == "producing"):
+                return self._failure("politic/task/completeTasks",
+                                     "no stub response: production settlement and road bonuses are not implemented")
+        for value in requested:
             key, record = self._find_building(player, value)
             if record is None or str(record.get("status") or "") != "building":
                 continue

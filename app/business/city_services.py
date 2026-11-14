@@ -40,6 +40,7 @@ def level_cost(amount: Any, ratio: Any) -> int:
 class CityServices(PlayerServices):
     def register(self, registry: Any) -> None:
         actions = {
+            "politic/building/getProductsByBuilding": self.products,
             "politic/map/relocateEnded": self.relocate,
             "politic/building/putInBuildings": self.store_buildings,
             "politic/building/deployBuilding": self.deploy,
@@ -51,6 +52,29 @@ class CityServices(PlayerServices):
         }
         for api, action in actions.items():
             registry.register(api, self.service._guard(api, partial(self.call, api, action)))
+
+    def products(self, player: dict, params: dict) -> dict:
+        """Original UI consumes keys only; unlocking uses the player's level."""
+        _, _, building = self.owned(player, params.get("buildingId"))
+        codes = building.get("products")
+        if not isinstance(codes, list):
+            raise ValueError("stub has no assets: building products list missing")
+        catalogue = self.table("product")
+        level = integer(player["entity"]["level"], 1)
+        products = {}
+        for code in codes:
+            if code == "none":
+                continue
+            if not isinstance(code, str) or not isinstance(catalogue.get(code), dict):
+                raise ValueError("stub has no assets: referenced product row missing")
+            row = catalogue[code]
+            # All 1,288 original rows use the literal string "null". Do not
+            # silently invent a mission-unlock rule for a different catalogue.
+            if row.get("openMission") != "null":
+                raise ValueError("product mission unlock rules are not implemented")
+            if integer(row.get("openLevel")) <= level:
+                products[code] = {}
+        return {"products": products}
 
     @staticmethod
     def current_map(player: dict) -> str:

@@ -124,3 +124,15 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | 城市回包 kokudaka | 待验证 | 单体贡献 helper 可见于 BuildingsTableAccessor.cs:637，但全局汇总/加成尚未核实。本批新入口省略可选字段，保留原存档值；UserStatus.cs:1820-1830 容许缺省。 |
 | `submitProduceTask.dueTime/now` | bundle | StateManualProduce.cs:51-66 → PoliticBuildingParameter.cs:172-182；仅修契约，生产服务尚未实现。 |
 | `submitBulkProduceTasks.producings.<id>.productId/createdTime/dueTime` | bundle | PoliticFSMCollectiveProduce.cs:98-125 → PoliticBuildingParameter.cs:191-199；仅修契约。收获时同名 producings 另有 reward/building/collaborator。 |
+
+## 2026-11-15 生产链追加证据
+
+| 字段 / 行为 | 来源 | 证据与限制 |
+| --- | --- | --- |
+| getProductsByBuilding 请求 buildingId、响应 products 的键 | bundle | WebApiClient.cs:973-979、PoliticFSMProduct.cs:608-616,652-659、ProductUpdate.cs:121-144。按账号主城建筑原 products 与玩家等级过滤；level/buildingTypeId 由客户端 Add，不能预填。 |
+| products.<productId> 的空对象值 | 待验证 | 消费者只读键。空对象是模拟服兼容选择，原服值尚未抓包证实。 |
+| product.openLevel / openMission | bundle | PluginManualProduce.cs:105-113 → UserStatus.cs:1212-1215 使用玩家等级；该类为原包自动操作插件。原 1288 行 openMission 均为字符串 null；非空门槛不猜实现。 |
+| 菜单产量 countMin/countMax | bundle | ProductItem.cs:98-102 → UserStatus.cs:1735-1740 按建筑 grade/level 做 float32 线性插值后向下取整；item15 改用伤害值。只证明预览，不证明含道路/技能的最终结算。 |
+| 生产未实现错误 errorReason | bundle + 待验证 | 字段来自 GameRestarter.cs:61-94 的过滤器，WebApiClient.cs:324-333 据此跳过回调；错误文案/no stub response 是本服务诊断，不宣称原服错误码。四个生产占位写接口和 completeTasks 的生产分支明确失败、不写档。通用错误 UI 待真机验收。 |
+
+范围与未决规则见 [生产链报告](analysis/production-contract-20261115/README.md)。

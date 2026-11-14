@@ -47,7 +47,7 @@ def audit(table_dir: Path, out: Path) -> dict:
                 group = reward.get(f"group{i}")
                 ranges.append(f"{item}:{low}..{high}")
                 if low != high:
-                    issues.append("count_range_semantics_unverified")
+                    issues.append("count_range_settlement_unverified")
                 if isinstance(low, (int, float)) and isinstance(high, (int, float)) and low > high:
                     issues.append("inverted_count_range")
                 if group in groups or reward.get(f"ratio{i}min") != 1 or reward.get(f"ratio{i}max") != 1:
@@ -58,7 +58,7 @@ def audit(table_dir: Path, out: Path) -> dict:
                      "openLevel": product.get("openLevel"), "openMission": product.get("openMission"),
                      "dueInterval": product.get("dueInterval"), "buildingExp": product.get("buildingExp"),
                      "issues": ";".join(sorted(set(issues))),
-                     "status": "not_implemented; road bonus/level scaling/settlement still require evidence"})
+                     "status": "recipe query implemented; road bonus/selection/settlement still require evidence"})
     out.mkdir(parents=True, exist_ok=True)
     with (out / "product-dependencies.tsv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter="\t", lineterminator="\n")
@@ -69,6 +69,9 @@ def audit(table_dir: Path, out: Path) -> dict:
         "product_issues": dict(Counter(issue for row in rows for issue in row["issues"].split(";") if issue)),
         "missing_product_references": missing_products, "missing_initial_building_levels": missing_initial_levels,
         "road_buildings": [code for code, row in buildings.items() if row.get("connectChipType") == "road"],
+        "recipe_open_level": "player level: PluginManualProduce.cs:105-113 -> UserStatus.getLevelValue",
+        "open_mission_values": dict(Counter(str(row.get("openMission")) for row in products.values())),
+        "preview_quantity": "ProductItem.cs:98-102 -> UserStatus.cs:1735-1740: floor(float32(min + (level-1)*(max-min)/(grade*10-1))); first reward slot, item15 uses damage value instead; preview is not settlement proof",
         "table_hashes": {name: hashlib.sha256(catalog.path_for(name).read_bytes()).hexdigest()
                          for name in ("building", "product", "reward01_politic", "building_level", "draft", "defines")},
         "scope": "Static table joins only. Count min/max do not establish randomness, road-bonus formula or payout. Missing references may concern unused rows, not observed client failures."

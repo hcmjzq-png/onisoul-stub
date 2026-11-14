@@ -13,8 +13,18 @@ from typing import Any, Callable
 
 from app.business import contract
 from app.business import response_shapes
+from app.protocol import envelope
 
 RESERVED = {"succeeded", "now"}
+
+# Keep these in the placeholder count. Their callbacks advance client state on
+# success, so a fabricated dueTime/empty map is not a harmless discovery reply.
+BLOCKED_WRITES = {
+    "politic/task/submitProduceTask": "production settlement and road bonuses",
+    "politic/task/submitBulkProduceTasks": "production settlement and road bonuses",
+    "politic/task/cancelTasks": "cancellation and refund rules",
+    "politic/task/accelerateProduceTask": "production timing and acceleration rules",
+}
 
 _DEFAULT: dict[str, Any] = {
     "int": 0,
@@ -67,6 +77,12 @@ def payload(api: str) -> dict[str, Any]:
 
 def make_handler(api: str) -> Callable[[dict[str, Any], dict[str, Any] | None], dict[str, Any]]:
     def handler(params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        if api in BLOCKED_WRITES:
+            message = f"no stub response: {api}; unimplemented {BLOCKED_WRITES[api]}"
+            # GameRestarter.isError checks errorReason, not succeeded. Without
+            # this key WebApiClient still invokes the success callback.
+            return envelope.error(envelope.ERR_INTERNAL, message,
+                                  {**payload(api), "errorReason": message})
         return response_shapes.success(api, payload(api))
 
     handler.__name__ = f"placeholder_{api.replace('/', '_')}"

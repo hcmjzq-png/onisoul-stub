@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import unittest
 
-from app.business import contract, response_shapes
+from app.business import contract, placeholders, response_shapes
 from app.business.registry import Registry
 from app.main import build_registry
 
@@ -60,7 +60,7 @@ class ResponseShapeTest(unittest.TestCase):
             with self.subTest(api=api):
                 status, body = registry.dispatch(api, {}, None)
                 self.assertEqual(status, 200)
-                self.assertIs(body["succeeded"], True)
+                self.assertIs(body["succeeded"], api not in placeholders.BLOCKED_WRITES)
                 self.assertIsInstance(body["now"], float)
                 for field in contract.response(api):
                     key, typ = field["key"], field["type"]

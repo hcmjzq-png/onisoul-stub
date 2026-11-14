@@ -12,6 +12,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from app.main import build_registry
+from app.business.placeholders import BLOCKED_WRITES
 
 NEXT = {
     "debug": "开发/调试命令；先确认需要与授权边界，不能开放任意改档",
@@ -43,7 +44,7 @@ def report(out: Path) -> dict:
         group = api.split("/")[0]
         rows.append({"endpoint": api, "module": group, "status": "contract_placeholder",
                      "direct_il_refs": evidence.get(api, {}).get("direct_il_refs", "unknown"),
-                     "next_work": NEXT.get(group, "追踪原始请求/响应与持久化规则，再实现并联调"),
+                     "next_work": ("已阻止空成功回包；待核实 " + BLOCKED_WRITES[api] + "，见 production-contract-20261115/README.md") if api in BLOCKED_WRITES else NEXT.get(group, "追踪原始请求/响应与持久化规则，再实现并联调"),
                      "evidence_index": "static-review-20261115/endpoints.tsv"})
     out.mkdir(parents=True, exist_ok=True)
     with (out / "remaining-endpoints.tsv").open("w", encoding="utf-8", newline="") as handle:

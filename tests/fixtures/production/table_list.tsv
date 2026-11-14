@@ -1,0 +1,2 @@
+table_file	root_key	accessor_classes
+product.json	product	ProductsTableAccessor
