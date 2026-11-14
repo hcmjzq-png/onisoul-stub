@@ -546,7 +546,9 @@ class GameplayService:
         color_index = str(params.get("colorIndex") or DEFAULT_COLOR).strip()
         if not username:
             return self._failure("auth/createPlayer", "username is required")
-        if country not in self._table("beginning_equipment"):
+        known_countries = self._table("beginning_equipment")
+        # 表缺失时不做白名单校验：国名集合本来来自客户端表，手里没有表就不能据此判非法。
+        if known_countries and country not in known_countries:
             return self._failure("auth/createPlayer", "invalid countryId")
         navigators = self._table("navigator")
         if navigators and navigator_id not in navigators:
@@ -554,6 +556,8 @@ class GameplayService:
         if not re.fullmatch(r"color[0-9]+", color_index):
             return self._failure("auth/createPlayer", "invalid colorIndex")
         player, _dirty = self._load(player_id)
+        # _create_player 会重建默认态，若不带回版本号，保存时会被乐观锁判成并发冲突。
+        revision = int(player.get("_revision") or 0)
         if not player["entity"].get("created"):
             player = self._create_player(
                 player_id,
@@ -562,6 +566,7 @@ class GameplayService:
                 navigator_id=navigator_id,
                 color_index=color_index,
             )
+            player["_revision"] = revision
         self._save(player, player_id)
         return self._success("auth/createPlayer", {"playerId": player_id})
 

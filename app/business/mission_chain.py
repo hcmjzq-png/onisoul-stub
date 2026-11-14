@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from app.tables import TableCatalog
+from app.tables import TableCatalog, TableError
 
 UNLOCK_BITS: dict[str, int] = {
     "unlockFull": 0x0FFFFFFF,
@@ -52,7 +52,11 @@ class MissionChain:
         self.catalog = catalog
 
     def rows(self) -> dict[str, dict[str, Any]]:
-        return self.catalog.load("politicMission")
+        # 表缺失不应炸整条请求链：与 GameplayService._table 同策略，缺表按空表处理。
+        try:
+            return self.catalog.load("politicMission")
+        except TableError:
+            return {}
 
     def row(self, mission_id: str) -> dict[str, Any]:
         return self.rows().get(mission_id) or {}

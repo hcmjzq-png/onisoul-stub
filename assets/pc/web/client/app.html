@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>鬼武者魂</title>
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<script type="text/javascript" src="js/UnityObject.js?r=30662"></script>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="js/login.js?r=30662"></script>
+		<!-- for ranking window and the others -->
+		<LINK href="app.css?r=30662" rel="stylesheet" type="text/css">
+
+		<script type="text/javascript">
+		<!--
+			document.write('<script type="text/javascript" language="javascript" src="js/revision.js?'+(new Date().getTime())+ '"></script>');
+			var container = main.getContainer();
+			function reload() { main.reload(); }
+			function reloadTop() { main.reloadTop(); }
+			function login() { main.login(); }
+			function start() { main.start(); }
+			function update( param ) { main.storeParam( param ); }
+			function tweet( param ) { social.tweet( param ); }
+			function netcafe( param ) { social.netcafe( param ); }
+
+			function callback() {
+		        var img = document.getElementById('unityPlayer_img');
+		        var div_unityPlayer = document.getElementById('unityPlayer');
+
+		        if( img != null ){
+		            var current = img.parentNode;
+		            var divcount = 0;
+		            while( current!= null && current != div_unityPlayer ){
+		                if( current.tagName == 'A' ){
+		                    current.style.position = "relative";
+                            current.style.top = "0%";
+                            current.style.margin = "auto";
+                            current.style.width = "1080px";
+                            current.style.height = "608px";
+		                }
+
+		                if( current.tagName == 'DIV' ){
+		                    if( divcount == 0 ){
+		                        current.style.position = "absolute";
+                                current.style.top = "5%";
+                                current.style.left = "0%";
+                                current.style.width = "1280px";
+                                current.style.margin = "auto";
+                                current.style.display = "block";
+                            }else{
+		                        current.style.position = "absolute";
+                                current.style.top = "0%";
+                                current.style.left = "0%";
+                                current.style.width = "1280px";
+                                current.style.height = "720px";
+                                current.style.margin = "auto";
+                                current.style.display = "block";
+                            }
+                            divcount++;
+		                }
+
+		                current = current.parentNode;
+		            }
+
+	                img.src = "img/install.jpg";
+	                img.width = 1080;
+	                img.height = 608;
+		        }
+			}
+
+		-->
+		</script>
+		<script type="text/javascript" src="js/social.js?r=30662"></script>
+		<script type="text/javascript" src="js/unityProxy.js?r=30662"></script>
+		<script type="text/javascript" src="js/commontool.js?r=30662"></script>
+		<script type="text/javascript" src="js/app.js?r=30662"></script>
+		<script type="text/javascript">
+		<!--
+			if (typeof unityObject != "undefined") {
+				var params = {
+					disableContextMenu: true,
+					backgroundcolor: "000000",
+					bordercolor: "000000",
+					textcolor: "FFE7FFAD",
+					logoimage: "img/logo.png",
+					progressbarimage: "img/progressBar.png",
+					progressframeimage: "img/progressFrame.png"
+				};
+				unityObject.embedUnity("unityPlayer", "app.unity3d?revision=" + ONI_SOUL_REVISION, 1280, 720, params, null, callback );
+
+			}
+		-->
+		</script>
+		<style type="text/css">
+		<!--
+		*focus {
+			outline: none;
+		}
+		a:focus {
+			outline: none;
+		}
+		a {
+			-moz-outline-style: none;
+		}
+		object, embed {
+			outline: 0;
+		}
+		body {
+			font-family: 'ＭＳ Ｐゴシック', Osaka, 'MS PGothic', Helvetica, Verdana, Arial, sans-serif;
+			background:url(img/bg_body.jpg) #000 no-repeat center top;
+			color: white;
+			text-align: center;
+		}
+		a:link, a:visited {
+			color: #bfbfbf;
+		}
+		a:active, a:hover {
+			color: #bfbfbf;
+		}
+		p.header {
+			font-size: small;
+		}
+		p.header span {
+			font-weight: bold;
+		}
+		p.footer {
+			font-size: x-small;
+		}
+		div.content {
+			margin: auto;
+			width: 1280px;
+		}
+		div.missing {
+			margin: auto;
+			position: relative;
+			top: 5%;
+			width: 1080px;
+		}
+		div.missing a {
+			height: 608px;
+			position: relative;
+			top: -31px;
+		}
+		div.missing img {
+			border-width: 0px;
+		}
+		div#unityPlayer {
+			cursor: default;
+			height: 720px;
+			width: 1280px;
+		}
+		-->
+		</style>
+
+<script type="text/javascript">
+<!--
+var _container='';
+function appendExContentsObj(src){if(src[_container]){try{$('#exc').html(src[_container]);}catch(e){};}}
+$(function()
+{
+	var _ls=String(location.search.split('?')[1]).split('&');
+	var _disable=true;
+	for(var i=0; i<_ls.length; i++)
+	{
+		var _is=_ls[i].split('=');
+		if(String(_is[0])=='container')
+		{
+			_container=String(_is[1]);
+			_disable=false;break;
+		}
+	}
+	if(_disable)
+	{
+		return;
+	}
+	var _js=$('<div id="exc" style="width:100%;position:relative;"></div>');
+	$('.content').append(_js);
+	var scrUri='http://';
+	scrUri += location.host;
+	/*
+	if(location.host.indexOf('client.oni-soul.jp')!= -1){
+		scrUri+='members.oni-soul.jp';
+	}else{
+		scrUri+='debug-members.oni-soul.net';
+	}*/
+	/*
+	scrUri+='/client/js/appendExContents.js';
+	_js.empty();
+	_js.append($('<script src="'+scrUri+'" type="text/javascript"><\/script>'));
+	*/
+});
+-->
+</script>
+	</head>
+	<body>
+		<p class="header"><span>鬼武者魂</span></p>
+		<div class="content">
+			<div id="unityPlayer">
+				<div class="missing">
+					<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+						<img alt="Unity Web Player. Install now!" src="img/getunity.png" width="193" height="63" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
