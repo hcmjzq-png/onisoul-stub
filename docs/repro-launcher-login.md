@@ -418,6 +418,8 @@ sudo bash -c 'set -a; . /etc/onisoul/stub.env; set +a;
 
 ## 十二、2026-11-14 追加：进主城「联机中断(1)」的真因是 common/periodicInquiry
 
+> 结论已作废，真因见第十三节。
+
 ### 12.1 怎么会看到客户端日志
 
 Unity WebPlayer 默认写随机名日志 `log_<hash>.txt`，只有带 `UNITY_KEEP_LOG_FILES=1` 启动才会
@@ -585,3 +587,88 @@ show_off["1"] = { "username": "test2", "character_id": "chara1_02065_01", "skill
 | `show_off: []` / `[{...}]`（数组） | `There's no data in "show_off" field`（isinst Hashtable → null） |
 | `show_off: {}`（空 map） | 同上，队列空 |
 | 条目键 `UserName`/`characterId` | 条目解析后三个字段全空字符串（switch 默认分支跳过） |
+
+## 十三、2026-11-15 追加：真因是 `ChatInfo.setOperationMessage` 读 `gmMessage` 无守卫
+
+第十二节把原因归到 `show_off` 形状，两次实机日志已经否证：`show_off` 为 `{}`、为带条目的 map、
+以及额外补 `politicPoint` / `nextTriggerPoliticPoint`，客户端都照样抛——说明异常不在 `show_off`
+解析里，而在同一轮推送的另一个订阅者身上。
+
+### 13.1 先修好 RVA → 文件偏移（此前所有偏移都错在这）
+
+`app_unity3d.bin` 不是 PE，而是 UnityWebData 容器：头部是大端 `u32` 的条目数（本文件 25），
+随后每条 `[name\0][offset u32 BE][size u32 BE]`，数据区自第 0x258 字节起。
+
+```
+Assembly-CSharp.dll  offset=1474648  size=4584448     （1474648..6059096）
+PE: .text  va=0x2000  ptr=0x200
+=> 文件偏移 = rva + 1466968
+```
+
+校验：元数据目录 RVA `0x23439C` 换算得 3,778,036，正好是本文件里 `BSJB` 元数据根的偏移，
+所以这个换算是精确的。此前用「按 token 反查方法起点 + 区间顺序遍历」得到的偏移有错位，
+把 `politic/edict/raiseMission` 的回调误当成 `periodicInquiry` 的回调——那是上一轮加
+`politicPoint` 的由来，也是它被实测否证的原因。
+
+### 13.2 periodicInquiry 的真实调用链
+
+| 环节 | token / 文件偏移 | 做什么 |
+| --- | --- | --- |
+| `WebApiClient.periodicInquiry` | `0x06001110` / 1,838,464 | 只塞 `token`，挂回调 `<>m__61`，走 `httpCall` |
+| `<>m__61` | 3,657,880 | 校验 `token` / `now`（都有 `ContainsKey` 守卫），可选 `left_time`，然后 `responder.Invoke(result)` |
+| `PeriodicRounder.refresh` | 2,063,396 | 建 `response` 委托，交 `RpcQueue.predicable` 轮询 |
+| `<>m__193` | 3,677,748 | `callCallbacks(result)`，并把 `elapsedTime_` 归零 |
+| `PeriodicRounder.callCallbacks` | 2,063,284 | 遍历 `callbacks_`，逐个 `Invoke(result)` |
+
+也就是说：**回包整体会被四个回调各自处理一遍**，任何一个抛异常都会被 `WebApiClient.Send`
+的 catch 捕获，打成 `exception error : <回包原文>`。
+
+### 13.3 四个订阅者与各自的键
+
+`PeriodicRounder.regist`（`0x06001B79`）只有四个调用点：
+
+| 回调 | 文件偏移 | 读的键 | 有守卫吗 |
+| --- | --- | --- | --- |
+| `SessionKeeper.updatePeriodic` | 1,824,708 | `token` / `now` | 有 |
+| `ChatInfo.setOperationMessage` | 1,915,936 | **`gmMessage`** | **没有** |
+| `ShowOffManager.ShowOffDataHandler` | 2,486,604 | `show_off` | 有（缺失 / 非 map 只 warning，不入队） |
+| `SocialInformation.update` | 2,688,804 | `inboxParcel` / `friendOffer` / `unreadMail` | 有 |
+
+`setOperationMessage` 的头几行就是异常点：
+
+```
+1915955  ldarg.1
+1915960  ldstr    "gmMessage"
+1915965  callvirt get_Item
+1915970  castclass string        // null 也能过
+1915977  ldstr    "\r"
+1915987  callvirt Replace         // ← 键不存在时 NullReferenceException
+```
+
+键不存在 → `get_Item` 返回 null → `Replace` 抛 NRE。反过来，给空串是安全的：后面
+`1916011 ldloc.0; call op_Equality("", s)` 命中就提前 `ret`。
+
+### 13.4 因此最小合法回包
+
+```json
+{"succeeded": true, "now": 1794675157.0, "show_off": {}, "gmMessage": ""}
+```
+
+- `show_off` 为空 map：合法，循环零次，不打印任何 warning；
+- `gmMessage` 为空串：`setOperationMessage` 直接返回；
+- `now` 必须是 JSON 小数（客户端 `unbox.any System.Double` 后 `conv.u4`）。
+
+已实现于 `app/business/periodic.py`，并在 `tests/test_periodic_inquiry.py` 里加了两条断言
+（`gmMessage` 存在且是字符串、走注册表分发后仍在），本地空资产跑 134 tests OK。
+
+### 13.5 现场自检
+
+```bash
+TOKEN=$(sudo mysql -uroot -N -e "SELECT token FROM game_db.sessions ORDER BY created_at DESC LIMIT 1")
+curl -s -X POST http://127.0.0.1:18080/api/common/periodicInquiry \
+  -H 'Content-Type: application/json' -d "{\"token\":\"$TOKEN\"}"
+# {"succeeded": true, "now": ..., "show_off": {}, "gmMessage": ""}
+```
+
+客户端那边只要 `log_debug.txt` 里不再出现 `exception error : ...periodicInquiry` 的回包原文，
+并且 `periodicInquiry` 之后仍有后续请求，就说明这条链路通了。
