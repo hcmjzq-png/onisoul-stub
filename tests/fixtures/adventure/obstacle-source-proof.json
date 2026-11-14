@@ -1,0 +1,32 @@
+[
+  {
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_1_0000.json",
+    "sha256": "09f3384f4af7f315e67e3c9dfd1376efd262ac81da8293b647508ee87dd17a2d",
+    "selected_rows": [
+      "1_1_1",
+      "1_1_2",
+      "1_1_3",
+      "1_1_4",
+      "1_1_5",
+      "1_1_6",
+      "1_1_7",
+      "1_1_8",
+      "1_1_9",
+      "1_1_10"
+    ]
+  },
+  {
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0023.json",
+    "sha256": "f2b4e9d2af471ac763be495116c9a2fa8a014c7cad2d81bde1959ab41678945d",
+    "selected_rows": [
+      "1_1_1"
+    ]
+  },
+  {
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_index.json",
+    "sha256": "efe320129f68449717703f138f8112f0529bf8e269cfa3bb55e6f4a661d60b98",
+    "selected_rows": [
+      "23_1"
+    ]
+  }
+]

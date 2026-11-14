@@ -1,22 +1,21 @@
 {
   "date": "2026-11-15",
-  "scope": "B isolated worktree, memory-state tests, no deployment",
+  "scope": "B worktree, isolated memory/CAS stores; no production policy or event producer",
   "checks": [
     {
-      "command": "python -m unittest discover -s tests -p test_adventure_services.py -q",
+      "command": "python -m unittest discover -s tests -p test_adventure*.py -v",
       "exit_code": 0,
-      "summary": "----------------------------------------------------------------------\nRan 12 tests in 0.111s\n\nOK",
+      "summary": "----------------------------------------------------------------------\nRan 23 tests in 0.214s\n\nOK",
       "existing_resource_warnings": false
     },
     {
       "command": "python -m unittest discover -s tests -q",
       "exit_code": 0,
-      "summary": "----------------------------------------------------------------------\nRan 238 tests in 2.092s\n\nOK",
+      "summary": "----------------------------------------------------------------------\nRan 249 tests in 2.157s\n\nOK",
       "existing_resource_warnings": true
     }
   ],
   "reviewed_endpoint_count": 35,
-  "original_source_hashes_verified": 43,
   "optional_dependency_skips": 0,
   "production_mounted": false,
   "client_validated": false

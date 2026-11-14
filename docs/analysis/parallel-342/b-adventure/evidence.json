@@ -1113,7 +1113,7 @@
       "battle/executeBattle": {
         "response": "log/information/process/result; optional additionalResult/commandResult/giganticResult",
         "evidence": "BattleLogManager.cs:5563-5582;BattleApiClient.cs:26-142",
-        "scope_or_unknown": "请求battleInformation按battleType分支；事件归属/编队/费用/战斗算法/结算幂等需同一事务，不能固定胜利"
+        "scope_or_unknown": "BattleLogManager.cs:3249-3312 parses server process; :4539-4567 random is voice selection; result.bonus/payment consumed by PluginQuestStepHelper.cs:289-298; authoritative formula and encounter retry/loss semantics unknown."
       },
       "battle/getRaidBossDetail": {
         "response": "ownerInfo/raidBossInfo/playersInfo/now",
@@ -1198,7 +1198,7 @@
       "quest/checkCompleteQuestEx": {
         "response": "reward.area/chapter/quest; toInbox按层",
         "evidence": "PluginQuestStepHelper.cs:56-81;QuestScriptCommand.cs:993-1049",
-        "scope_or_unknown": "推进/首领/宝箱/领奖账本同一状态机；确定领取条件和库存事务后实现"
+        "scope_or_unknown": "QuestScriptCommand.cs:1769-1794 is UI trigger only; :1016-1025 requires reward.area/chapter/quest; cannot award solely on maxStep while boss pending. Receipt/reward transaction still unimplemented."
       },
       "quest/checkEmergencyQuest": {
         "response": "根保存EmergencyQuestTimes；下游结构继续核对",
@@ -1206,14 +1206,14 @@
         "scope_or_unknown": "event3排期与时区未知；不可猜日期或把空表当完整实现"
       },
       "quest/clearObstacle": {
-        "response": "isSuccess:boolean; optional reward/toInbox",
-        "evidence": "QuestScriptCommand.cs:2172-2205;QuestScriptCommand.cs:724-732",
-        "scope_or_unknown": "障碍归属与category/type/needAmount，余额扣除/奖项/幂等规则未证"
+        "response": "isSuccess:boolean; success uses.category + uses.<resource> numeric; optional reward/toInbox",
+        "evidence": "QuestScriptCommand.cs:2172-2291;PluginQuestStepHelper.cs:186-245",
+        "scope_or_unknown": "Only four-resource no-reward settlement; no production authorizer/producer exists. Do not count as complete original obstacle gameplay."
       },
       "quest/executeQuestEx": {
         "response": "executeInfo.step/missionPoint/now; eventInfo.eventType/eventScript; rewardInfo/bonusInfo",
         "evidence": "QuestScriptCommand.cs:490-785;PluginQuestStepHelper.cs:28-53",
-        "scope_or_unknown": "quest索引->区域section->奖励；原ratio不是已证百分比，事件生成与结算未知"
+        "scope_or_unknown": "section_at/displayed_cost port original pre-step lookup/backward cost inheritance (preview only); retry has no key (WebApiClient.cs:190-216,247-276); no MP debit, RNG, or event producer implemented."
       },
       "quest/executeQuestEx2": {
         "response": "未证实，不假定与executeQuestEx相同",
@@ -1248,7 +1248,7 @@
       "quest/getQuestEncountWorks": {
         "response": "obstacle.<type>.questId/chapter/area/step/amount/needAmount/category/type",
         "evidence": "QuestScriptCommand.cs:332-367,429-444,724-732",
-        "scope_or_unknown": "障碍恢复；amount应与真实库存一致；不把陈旧缓存余额回传，未实现"
+        "scope_or_unknown": "Resource-only supported; source event generation, potion/soul/rewards and activity activation remain unknown."
       },
       "quest/getQuestProgress": {
         "response": "裸<type>.last.quest/chapter/area/step; story.current同结构",
@@ -1271,7 +1271,7 @@
         "scope_or_unknown": "普通/随机/活动开启并非统一动作；解锁/排期/首次生成/重试未知"
       },
       "quest/openTreasureBox": {
-        "response": "open:boolean/reward/[toInbox]",
+        "response": "open:boolean/reward/[toInbox]; plugin additionally reads root item (PluginQuestStepHelper.cs:340-345)",
         "evidence": "QuestScriptCommand.cs:2120-2147;WebApiClient.cs:1911-1931",
         "scope_or_unknown": "treasureId必须关联自己未结算事件；useItem不可由客户端决定奖或费用，开箱概率/事务待证"
       },
@@ -1458,7 +1458,7 @@
   },
   "compatibility_decisions": [
     "adventureV1 is SERVER-INTERNAL versioned snapshot; no original server schema claim",
-    "Only four read APIs are registered explicitly in tests; no production mount",
+    "Four snapshot queries plus separately registered obstacle recovery/resource write module; no production mount",
     "No initial progress or reward inferred; missing snapshot fails with no stub response",
     "Snapshot location bounded by client-enabled index rows; stricter supported subset, not original server policy",
     "Five explicit flags required; no implicit false or completion-to-reward conversion",
@@ -1478,5 +1478,7 @@
     ],
     "note": "Unmodified original rows; fixture subset, not full table."
   },
-  "table_audit": "table-audit.json"
+  "table_audit": "table-audit.json",
+  "lifecycle_followup": "lifecycle-evidence.json",
+  "additional_fixture_proof": "tests/fixtures/adventure/obstacle-source-proof.json"
 }
