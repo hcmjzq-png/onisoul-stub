@@ -17,6 +17,7 @@ from app.business import decks, mission_validation, placeholders, response_shape
 from app.business.mission_chain import MissionChain, SYSTEM_MISSION
 from app.business.registry import Registry
 from app.business.player_services import PlayerServices
+from app.business.progression import ProgressionServices, level_cap
 from app.tables import TableCatalog, TableError, default_catalog
 
 StateLoader = Callable[[str], dict[str, Any]]
@@ -149,6 +150,7 @@ class GameplayService:
         for api, handler in handlers.items():
             registry.register(api, self._guard(api, handler))
         PlayerServices(self).register(registry)
+        ProgressionServices(self).register(registry)
         return registry
 
     def _lock_for(self, player_id: str) -> threading.RLock:
@@ -331,7 +333,9 @@ class GameplayService:
             box = player["actionPoints"][point_key]
             cap = int(level.get(level_key) or box.get("maxPoint") or 0)
             box["maxPoint"] = cap
-            box["point"] = min(int(box.get("point") or 0), cap)
+            # UserStatus.setActionPoint allows stored values above maxPoint;
+            # reading a player must not destroy previously saved excess points.
+            box["point"] = max(int(box.get("point") or 0), 0)
         for resource_key, level_key in (
             ("gold", "maxGold"),
             ("wood", "maxWood"),
@@ -341,7 +345,8 @@ class GameplayService:
             player["resources"][resource_key]["maxAmount"] = int(
                 level.get(level_key) or 0
             )
-        player["entity"]["cap"] = self._max_level()
+        limit = int((self._table("defines").get("level_limit") or {}).get("value") or self._max_level())
+        player["entity"]["cap"] = level_cap(player, self._table("playerLevel"), self.missions.rows(), limit)
         map_count = sum(bool(level.get(f"mapSize{i}")) for i in range(5))
         player["entity"]["maxMapCount"] = max(1, map_count)
 

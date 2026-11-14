@@ -1,0 +1,25 @@
+lesson	required_closed_missions	reward_row	item_ranges	status	reason
+lesson_00001	none	reward14_01_00001	item11_0000101:5000..5000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00002	po_mission_00012	reward14_01_00002	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00003	po_mission_00013	reward14_01_00003	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00004	po_mission_00013	reward14_01_00004	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00005	po_mission_00013	reward14_01_00005	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00006	po_mission_00013	reward14_01_00006	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00007	po_mission_00013	reward14_01_00007	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00008	po_mission_00013	reward14_01_00008	item11_0000101:1000..1000;item01_0163301:1..1	blocked	character/tactic delivery unimplemented
+lesson_00009	po_mission_00013	reward14_01_00009	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00010	po_mission_00013	reward14_01_00010	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00011	po_mission_00013	reward14_01_00011	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00012	po_mission_00022	reward14_01_00012	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00013	po_mission_00022	reward14_01_00013	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00014	po_mission_00022	reward14_01_00014	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00015	po_mission_00142	reward14_01_00015	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00016	po_mission_00013	reward14_01_00016	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00017	po_mission_00016	reward14_01_00017	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00018	po_mission_00016	reward14_01_00018	item11_0000101:1000..1000;item03_0013101:5..5;item03_0013601:5..5;item03_0014101:5..5	blocked	character/tactic delivery unimplemented
+lesson_00019	po_mission_00016	reward14_01_00019	item11_0000101:1000..1000	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00020	po_mission_00016	reward14_01_00020	item11_0000101:1000..1000;item01_0163201:1..1	blocked	character/tactic delivery unimplemented
+lesson_00021	po_mission_00013	reward14_01_00021	item11_0000101:1000..1000;item01_0209401:2..2;item01_0134101:2..2;item01_0154401:1..1;item01_0156501:1..1;item01_0156001:1..1	blocked	character/tactic delivery unimplemented
+lesson_00022	po_mission_00013	reward14_01_00022	item11_0000101:1500..1000;item11_0000501:25..25;item03_0000101:10..10;item03_0000601:10..10	blocked	original count1min=1500 > count1max=1000; other delivery also unsupported
+lesson_00023	po_mission_00013	reward14_01_00023	item11_0000101:1000..1000;item11_0000501:50..50	supported_within_scope	deterministic resources/exp; reject overflow; once only
+lesson_00024	po_mission_00013	reward14_01_00024	item11_0000101:1000..1000;item11_0000501:50..50	supported_within_scope	deterministic resources/exp; reject overflow; once only

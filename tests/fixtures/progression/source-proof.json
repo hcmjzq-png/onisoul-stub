@@ -1,0 +1,59 @@
+{
+  "lesson": {
+    "source_sha256": "9a9f379eb682d8924754806543625d938e25e5452e70e0243f24b175cf1014b5",
+    "selected_rows": [
+      "lesson_00001",
+      "lesson_00002",
+      "lesson_00008",
+      "lesson_00022",
+      "lesson_00023"
+    ]
+  },
+  "reward14_lesson": {
+    "source_sha256": "d39031763b3a713f4b398aca4e366fb6ab3b30902350c1ced480d10ca657643a",
+    "selected_rows": [
+      "reward14_01_00001",
+      "reward14_01_00002",
+      "reward14_01_00008",
+      "reward14_01_00022",
+      "reward14_01_00023"
+    ]
+  },
+  "playerLevel": {
+    "source_sha256": "a04583b4e84018c501265e4ad1048e7f38fd5ae120861f1f9e8a1189369d3531",
+    "selected_rows": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ]
+  },
+  "politicMission": {
+    "source_sha256": "1f8b764ee8d9f078d4fb4250f91d22ec055570162239b4be8613aa3c9e75863b",
+    "selected_rows": [
+      "po_mission_00012",
+      "po_mission_00013",
+      "po_mission_07000",
+      "po_mission_07001",
+      "po_mission_07002"
+    ]
+  },
+  "defines": {
+    "source_sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+    "selected_rows": [
+      "level_limit"
+    ]
+  }
+}

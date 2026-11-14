@@ -1,0 +1,8 @@
+{
+  "defines": {
+    "level_limit": {
+      "id": "level_limit",
+      "value": 15
+    }
+  }
+}
