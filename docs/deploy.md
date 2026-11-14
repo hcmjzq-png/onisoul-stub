@@ -40,8 +40,14 @@ sudo mysql <<SQL
 ALTER USER 'game_app'@'127.0.0.1' IDENTIFIED BY '${PW}';
 ALTER USER 'game_app'@'localhost'    IDENTIFIED BY '${PW}';
 SQL
-sudo mysql < db/schema.sql
+sudo mysql --database=game_db < db/schema.sql
 ```
+
+`db/schema.sql` 只包含表定义，手动导入时必须选定已有目标库。使用自定义库名时，
+导入目标与 `ONI_DB_NAME` 保持一致。也可由有建库/建表权限的账号运行
+`python -m app.main --init-schema`：它先连接 MySQL 服务，按 `ONI_DB_NAME` 建库，
+再导入表定义并启动 Stub；新库不存在时也能初始化。MySQL DDL 会隐式提交，
+失败后可重跑 `IF NOT EXISTS` 语句，但不能依赖事务回滚已执行的 DDL。
 
 ### 4. 环境变量
 

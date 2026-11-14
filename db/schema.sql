@@ -1,10 +1,8 @@
 -- OniSoul Stub MySQL schema (MySQL 8.x)
 -- 与旧 SQLite 版字段对齐：时间一律存 epoch 秒（DOUBLE，time.time()），便于迁移。
--- 字符集 utf8mb4。
-
-CREATE DATABASE IF NOT EXISTS game_db
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE game_db;
+-- 字符集 utf8mb4。仅定义表，不切换数据库。
+-- python -m app.main --init-schema 按 ONI_DB_NAME 建库并选择目标库。
+-- 手动导入时先建库，再用 mysql --database=<目标库> < db/schema.sql。
 
 -- 账号 ↔ 玩家
 CREATE TABLE IF NOT EXISTS accounts (
