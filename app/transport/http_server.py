@@ -212,6 +212,18 @@ def make_handler(
                     head_only=head_only,
                 )
                 return
+            # 站点入口：客户端偶尔从根路径进入，根下只有原版 app.html，
+            # 而它的 js/img 全在 /client/ 下，根下逐个 404，窗口就是一片白。
+            # 这里直接 302 到重建的登录页，任何入口都落到同一个页面。
+            if self.path.split("?")[0] == "/":
+                _html_response(
+                    self,
+                    302,
+                    b"",
+                    head_only=head_only,
+                    location="/index.php/gwz/client/login/",
+                )
+                return
             if login_page.matches(self.path):
                 query = self.path.split("?", 1)[1] if "?" in self.path else ""
                 result = login_page.handle_get(query, head_only=head_only, user_agent=self.headers.get("User-Agent", ""))
