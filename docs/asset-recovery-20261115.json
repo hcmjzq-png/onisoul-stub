@@ -1,0 +1,159 @@
+{
+  "source_root": "E:/oni-soul",
+  "recovered": [
+    {
+      "cid": "chara1_00341",
+      "url": "/client/pc/jp/assets/chara/69e30186b8b4e5649be7b31103de7558.unity3d",
+      "status": "rebuilt_from_matching_artwork",
+      "source_bundle": "work/generated_chara_all_20261115/assets/chara/chara__69e30186b8b4e5649be7b31103de7558.unity3d",
+      "bytes": 119037,
+      "sha256": "361b2682f936680bfd0a5c547fc4d5b71056d11ecf37365a3b45732c385458bc",
+      "textures": [
+        {
+          "name": "chara1_00341_01_1_03",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00341_01_1_03.tga",
+          "source_sha256": "ad5d462f693b04eef453b2fabb222e4542e302841ae5955e320e306428e80c8b",
+          "source_size": [
+            256,
+            256
+          ],
+          "bundle_size": [
+            256,
+            256
+          ],
+          "mean_absolute_rgba_error": 1.4068
+        },
+        {
+          "name": "chara1_00341_01_1_01",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00341_01_1_01.tga",
+          "source_sha256": "f7584a47c9a79b64ec8581ee459d31f5903587866818eb05ca1232889e19920d",
+          "source_size": [
+            128,
+            128
+          ],
+          "bundle_size": [
+            128,
+            128
+          ],
+          "mean_absolute_rgba_error": 0.8845
+        },
+        {
+          "name": "chara1_00341_01_3_01",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00341_01_3_01.tga",
+          "source_sha256": "77f1300e3ccb1f19a07d0352b1da0ab7975588ffc393b3f26cd701370b3fd229",
+          "source_size": [
+            1024,
+            1024
+          ],
+          "bundle_size": [
+            1024,
+            1024
+          ],
+          "mean_absolute_rgba_error": 0.2751
+        },
+        {
+          "name": "chara1_00341_01_1_02",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00341_01_1_02.tga",
+          "source_sha256": "03927a8b8c76b604c074b4a97bcc73d6833bfa5ec6da540f04cf0e49bcf1b76e",
+          "source_size": [
+            128,
+            256
+          ],
+          "bundle_size": [
+            128,
+            256
+          ],
+          "mean_absolute_rgba_error": 1.2595
+        }
+      ],
+      "http_verification": {
+        "local_relay": 200,
+        "cloud_proxy": 200,
+        "sha256_matches": true,
+        "unity_scene_rendered_after_recovery": false
+      }
+    },
+    {
+      "cid": "chara1_00689",
+      "url": "/client/pc/jp/assets/chara/b6c88175b58f489bebf782eef21ace35.unity3d",
+      "status": "rebuilt_from_matching_artwork",
+      "source_bundle": "work/generated_chara_all_20261115/assets/chara/chara__b6c88175b58f489bebf782eef21ace35.unity3d",
+      "bytes": 115508,
+      "sha256": "a11d75f056a576b2078a000998de508283e24ea32a8aa35b4dee92622aaa4791",
+      "textures": [
+        {
+          "name": "chara1_00689_01_1_03",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00689_01_1_03.tga",
+          "source_sha256": "9cc910eaec0fbca69be98a5c6f95a971c0d58180d26506e73dbab1d8960d4efb",
+          "source_size": [
+            256,
+            256
+          ],
+          "bundle_size": [
+            256,
+            256
+          ],
+          "mean_absolute_rgba_error": 1.6528
+        },
+        {
+          "name": "chara1_00689_01_1_01",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00689_01_1_01.tga",
+          "source_sha256": "ef9ffa9825fabba4949801630d868e8483366e21a26d5c397b8564e066d9f174",
+          "source_size": [
+            128,
+            128
+          ],
+          "bundle_size": [
+            128,
+            128
+          ],
+          "mean_absolute_rgba_error": 1.1141
+        },
+        {
+          "name": "chara1_00689_01_3_01",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00689_01_3_01.tga",
+          "source_sha256": "bd202afa15eb1794bc4dfd267527e9f90f8bb2e93587483c4bbe34b5ac38a35d",
+          "source_size": [
+            1024,
+            1024
+          ],
+          "bundle_size": [
+            1024,
+            1024
+          ],
+          "mean_absolute_rgba_error": 0.42
+        },
+        {
+          "name": "chara1_00689_01_1_02",
+          "source": "美术资源/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/1.6G鬼武者页游U3D版卡牌2D全套资源下载-UI界面，头像，卡牌，角色/chara1_00689_01_1_02.tga",
+          "source_sha256": "c747d24143fddf2311f04c472b6cf209cbd0746d589b96b47abf775ab70591fe",
+          "source_size": [
+            128,
+            256
+          ],
+          "bundle_size": [
+            128,
+            256
+          ],
+          "mean_absolute_rgba_error": 1.477
+        }
+      ],
+      "http_verification": {
+        "local_relay": 200,
+        "cloud_proxy": 200,
+        "sha256_matches": true,
+        "unity_scene_rendered_after_recovery": false
+      }
+    }
+  ],
+  "unresolved_historical_urls": [
+    "/client/pc/jp/assets/chara/adab798b1a597e970fa1995aa4a9dd11.unity3d",
+    "/client/pc/jp/assets/chara/759f9e91a56a2aab75b1d64bf101a5ef.unity3d",
+    "/client/pc/jp/assets/vse/4f462f4ef901ec77cdc48f0c54edb903.unity3d",
+    "/client/pc/jp/assets/chara/395a38ee07917a3f1342358cdb6c4fff.unity3d",
+    "/client/pc/jp/assets/vse/c7e2dee48aa62588e993bd83c992cc67.unity3d",
+    "/client/pc/jp/assets/chara/1450fa13b6e0098ea407efee5de253b2.unity3d",
+    "/client/pc/jp/assets/scene/0ad40c93f787e7782fb6cc049e9ba518.unity3d",
+    "/client/pc/jp/assets/chara/616bf9950c0a7a4c0f75dfe0f0f2c4f5.unity3d"
+  ]
+}
