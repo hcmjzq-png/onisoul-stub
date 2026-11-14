@@ -10,7 +10,13 @@
 | 登录页六个入口（官网/公告/注册/充值/客服、顶部菜单）在窗口内换页 | 可以 |
 | 注册账号 → 原版 `the37.alert` 弹层提示 | 可以（提示文案走缓存里的 `alertPlugin.js`） |
 | 开战 → 302 → `/client/app.html` → 原版 app 页 | 可以（页面与脚本都是原件） |
-| 真正进入游戏画面 | **不行**。`app.unity3d` 未入库，且容器 Qt WebKit 没有 Unity WebPlayer 插件 |
+| 开战之后 Unity 客户端真的启动并登录 | **可以**（实测 `/api/auth/gameLogin` 200，随后 `periodicInquiry`/`getServerTime`/`politic/map/cleanup`/`quest/checkEmergencyQuest` 全 200） |
+| 起角色名 → 进主城 | **不行**。`/api/auth/registerName` 返回 `500 / MissingTableError`，客户端重试 10 次后停在「讀取中」。原因是服务端没有导入 108 张表 JSON（`assets/pc/tables/` 为空） |
+
+> 2026-11-14 18:04、18:05 两次真机实测的请求序列（`logs/capture-*.jsonl`）：
+> `POST /index.php/gwz/client/login/` 302 → `GET /client/app.html` 200 → `GET /client/js/revision.js` 200
+> → `POST /api/auth/gameLogin` 200 → `POST /api/common/periodicInquiry` 200 → `POST /api/common/getServerTime` 200
+> → `POST /api/politic/map/cleanup` 200 → `POST /api/quest/checkEmergencyQuest` 200 → 起名 `POST /api/auth/registerName` 500 ×10。
 
 ## 二、文件清单与证据来源
 
@@ -131,7 +137,9 @@ curl.exe -s -o NUL -w "%{http_code} %{size_download}`n" "http://game-onisoul.86j
 3. **入口不能用 `<a href>`**：exe 内嵌 `linkClicked(QUrl)` / `QDesktopServices::openUrl`，容器会把链接点击交给系统浏览器；裸 `<a>` 点了没反应。因此入口元素全部改成 `<span>` + `location.href` 跳转（已真机验证在窗口内换页）。
 4. **`wrap_bg_sub.jpg` 是修补件**：原 `wrap_bg.jpg` 里 y=83~113 那 31 行把「游戏公告」四个字烘进像素。子页要显示各自标题，只能用镜像填充把那 31 行抹掉，再叠一条自绘的暗底金字标签。接缝处有一道很淡的水平痕迹，那块也没有原始卷轴饰带可用。
 5. **注册不落库**：`register_submit` 只校验（账号非空 ≤32、密码 ≥3）并写日志，不写 users 表；登录校验同样不查库，任意账号密码 ≥3 位都能拿到 302。页面底部那行「stub 不落库，注册仅演示流程」就是这事。
-6. **开战到不了游戏画面**：`app.unity3d` 未入库（缓存里有 4.0MB，属资源包，按仓库约定不入库），容器也没有 Unity WebPlayer 插件，页面会停在原版自带的「安装 Unity Web Player」缺省提示（`img/getunity.png`），这正是原页面在缺插件时的行为。
+6. **`app.unity3d` 不需要下发**：容器自带 Unity WebPlayer，客户端也自带 `app.unity3d`，真机从头到尾**没有请求过** `/client/app.unity3d`（capture 日志 0 条）。所以这个 4.0MB 包不入库不影响开战。
+7. **卡点在起名，不在页面**：`/api/auth/registerName` 直接 `500 MissingTableError`，因为没有 `assets/pc/tables/` 那 108 张表 JSON（表数据不入库，需用 `tools/import_tables.py` 从客户端 bundle 导一次）。客户端会重试 10 次，屏幕停在「讀取中」。
+8. **`/api/` 已通**：以前记录里「`/api/` 请求 0 条」的说法作废；现在 `gameLogin`、`periodicInquiry`、`getServerTime`、`politic/map/cleanup`、`quest/checkEmergencyQuest` 都是真实客户端发来的 200。
 
 ## 六、出问题怎么查
 
@@ -141,10 +149,12 @@ curl.exe -s -o NUL -w "%{http_code} %{size_download}`n" "http://game-onisoul.86j
 | 页面出来但样式全乱 | `/client/login/wrap_bg.jpg`、`spt-index.png`、`start.png` 是否 200 |
 | 点入口没反应 | 页面里入口是不是被改回 `<a href>` 了（见第五节第 3 条） |
 | 开战 404 | `assets/pc/web/client/app.html` 是否落位；`app/paths.py` 的 `ONI_PC_WEB_DIR` 是否指对 |
+| 停在「讀取中」 | 看 capture 日志：`/api/auth/gameLogin` 是否 200；`/api/auth/registerName` 是否 500 `MissingTableError`（缺表就按第五节第 7 条导表） |
 | 端口占用 | `netstat -ano | findstr ":80"` |
 
 ## 七、没做、也不打算在这版做的
 
-- 游戏本体资源（`app.unity3d` 及 `assets/pc/jp/assets/**` 数百个 bundle）、`globalAssets` / `tableAssets`
-- 真实账号体系（注册/登录落库、token 校验、`/api/` 闸门）
+- 108 张表 JSON 的导入（`assets/pc/tables/`，需要 `tools/import_tables.py` 对着客户端 bundle 导一次）；不导就卡在起名
+- 游戏资源 bundle（`assets/pc/jp/assets/**` 数百个 `.unity3d`）；注意 `app.unity3d` 本身**不需要**，客户端自带
+- 真实账号体系（登录/注册落库、token 校验）
 - 子页版式与原版注册/找回页对照（原件不存在，当前统一用金色面板版式）
