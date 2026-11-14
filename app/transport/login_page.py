@@ -25,6 +25,7 @@
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import secrets
 import sys
@@ -120,6 +121,43 @@ function go(p){ if(p==="login"){ location.href="{action}"; return; } location.hr
   var i=new Image();
   i.src="{action}?page=vp&w="+window.innerWidth+"&h="+window.innerHeight
        +"&sw="+screen.width+"&sh="+screen.height;
+})();
+/* 记住账号密码：勾选框可点，勾上时把账号密码写进本地 cookie，下次打开自动回填。
+   容器是 QtWebKit（无 localStorage 保障），所以走 document.cookie；仅本地 stub 用。 */
+(function(){
+  var CK="oni_login";
+  function getCookie(n){
+    var m=document.cookie.match(new RegExp("(^| )"+n+"=([^;]*)(;|$)"));
+    return m?m[2]:"";
+  }
+  function setCookie(n,v,days){
+    var d=new Date(); d.setTime(d.getTime()+(days*24*60*60*1000));
+    document.cookie=n+"="+v+";expires="+d.toUTCString()+";path=/";
+  }
+  var box=document.getElementById("remember");
+  var form=document.querySelector("form");
+  if(!box||!form){ return; }
+  var acc=form.querySelector('input[name="account"]');
+  var pwd=form.querySelector('input[name="password"]');
+  function isChecked(){ return box.className.indexOf("checked")>=0; }
+  var saved=getCookie(CK);
+  if(saved){
+    try{
+      var o=JSON.parse(decodeURIComponent(saved));
+      if(o&&o.a){ acc.value=o.a; pwd.value=o.p||""; box.className="ui-radio checked"; }
+      else{ box.className="ui-radio"; }
+    }catch(e){ box.className="ui-radio"; }
+  }
+  box.onclick=function(){
+    box.className = isChecked() ? "ui-radio" : "ui-radio checked";
+  };
+  form.onsubmit=function(){
+    if(isChecked()&&acc.value){
+      setCookie(CK, encodeURIComponent(JSON.stringify({a:acc.value,p:pwd.value})), 180);
+    }else{
+      setCookie(CK,"",-1);
+    }
+  };
 })();
 </script>
 </body>
@@ -319,7 +357,7 @@ def _sub(title: str, content: str, dialog_js: str = "") -> bytes:
                      .replace("{content}", content), dialog_js)
 
 
-def render_register(account: str = "", tip: str = "stub 不落库，注册仅演示流程。") -> bytes:
+def render_register(account: str = "", tip: str = "注册后账号写入服务器数据库；未注册的账号无法登录。") -> bytes:
     content = _REGISTER.replace("{account}", html.escape(account, quote=True)).replace("{tip}", html.escape(tip))
     return _sub("注册新账号", content)
 
@@ -341,7 +379,11 @@ def register_submit(form: dict[str, Any]) -> LoginResult:
         return LoginResult(200, _register_error("账号不能为空，且不超过 32 位"))
     if len(password) < 3:
         return LoginResult(200, _register_error("密码至少 3 位"))
-    print(f"[stub][register] account={account}", file=sys.stdout, flush=True)
+    status, reason = register_user(account, password)
+    if status == "exists":
+        return LoginResult(200, _register_error(reason))
+    if status != "ok":
+        return LoginResult(200, _register_error(reason))
     dialog = (
         "jQuery(function(){ the37.alert(%r, 1, function(){ location.href=\"%s\"; }); });"
         % ("账号已创建：" + account + "，点关闭回到登录页", LOGIN_PATH)
@@ -366,6 +408,90 @@ def redirect_url(token: str, ident: str) -> str:
     )
 
 
+_USERS_DDL = """
+CREATE TABLE IF NOT EXISTS users (
+  account_key   VARCHAR(64)  NOT NULL,
+  password_hash VARCHAR(128) NOT NULL,
+  salt          VARCHAR(64)  NOT NULL,
+  created_at    DOUBLE       NOT NULL,
+  PRIMARY KEY (account_key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+"""
+
+
+def _account_key(account: str) -> str:
+    return " ".join(str(account or "").strip().split())
+
+
+def _hash_password(password: str, salt: str) -> str:
+    return hashlib.pbkdf2_hmac(
+        "sha256", password.encode("utf-8"), salt.encode("utf-8"), 12000
+    ).hex()
+
+
+def _users_db():
+    from app import db
+
+    return db.connection()
+
+
+def ensure_users_table() -> None:
+    try:
+        with _users_db() as con:
+            with con.cursor() as cur:
+                cur.execute(_USERS_DDL)
+    except Exception as exc:
+        print(f"[stub][users] 建表失败: {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
+
+
+def register_user(account: str, password: str) -> tuple[str, str]:
+    """返回 (状态, 给用户看的说明)。状态：ok / exists / error。"""
+    key = _account_key(account)
+    salt = secrets.token_hex(16)
+    pwd_hash = _hash_password(password, salt)
+    try:
+        with _users_db() as con:
+            with con.cursor() as cur:
+                cur.execute(_USERS_DDL)
+                cur.execute("SELECT account_key FROM users WHERE account_key = %s", (key,))
+                row = cur.fetchone()
+                if row:
+                    return "exists", "该账号已注册，请直接登录或换一个账号"
+                cur.execute(
+                    "INSERT INTO users (account_key, password_hash, salt, created_at) "
+                    "VALUES (%s, %s, %s, %s)",
+                    (key, pwd_hash, salt, time.time()),
+                )
+    except Exception as exc:
+        print(f"[stub][register] 落库失败: {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
+        return "error", "服务器写入账号失败，请稍后重试"
+    print(f"[stub][register] 已落库 account={key}", file=sys.stdout, flush=True)
+    return "ok", ""
+
+
+def verify_user(account: str, password: str) -> str:
+    """返回 ok / no_user / bad_password / error。"""
+    key = _account_key(account)
+    try:
+        with _users_db() as con:
+            with con.cursor() as cur:
+                cur.execute(_USERS_DDL)
+                cur.execute(
+                    "SELECT password_hash, salt FROM users WHERE account_key = %s", (key,)
+                )
+                row = cur.fetchone()
+                if not row:
+                    return "no_user"
+                stored = row["password_hash"] if isinstance(row, dict) else row[0]
+                salt = row["salt"] if isinstance(row, dict) else row[1]
+                if _hash_password(password, salt) != stored:
+                    return "bad_password"
+                return "ok"
+    except Exception as exc:
+        print(f"[stub][login] 校验失败: {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
+        return "error"
+
+
 def _issue(account: str) -> tuple[str, str]:
     ident = secrets.token_hex(20)
     try:
@@ -385,6 +511,13 @@ def submit(form: dict[str, Any]) -> LoginResult:
         return LoginResult(200, render(account, password, "用户名与密码不能为空"))
     if len(password) < 3:
         return LoginResult(200, render(account, password, "密码至少 3 位"))
+    state = verify_user(account, password)
+    if state == "no_user":
+        return LoginResult(200, render(account, password, "该账号尚未注册，请先点「注册新账号」"))
+    if state == "bad_password":
+        return LoginResult(200, render(account, password, "密码错误"))
+    if state != "ok":
+        return LoginResult(200, render(account, password, "服务器校验失败，请稍后重试"))
     token, ident = _issue(account)
     location = redirect_url(token, ident)
     print(
@@ -411,7 +544,14 @@ def _viewport(query: str) -> None:
     )
 
 
+_users_ready = False
+
+
 def handle_get(query: str, head_only: bool = False, user_agent: str = "") -> LoginResult:
+    global _users_ready
+    if not _users_ready:
+        ensure_users_table()
+        _users_ready = True
     if user_agent:
         print(f"[stub][login] GET ua={user_agent[:120]}", file=sys.stdout, flush=True)
     page = page_of(query)
