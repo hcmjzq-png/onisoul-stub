@@ -259,10 +259,10 @@ p_dc76e9f0c0006e8f   created=true   username=流音   country=country37   state 
 两边都没有这些文件：
 
 - 服务端：`PC_BUNDLE_DIR=/opt/onisoul/assets/pc/bundles`、`PC_CACHE_DIR=/opt/onisoul/assets/pc/cache` 两个目录 `exists: False`（`assets/pc` 下只有 `web`），`paths.py` 里那 6 条候选路径全部 miss；
-- 客户端：`D:\鬼武者魂` 按这 6 个哈希名搜索命中 0；`cache` 下只有 `data7`（16 桶 163 条 `.d`）、`prepared`（0 文件）、`WebpageIcons.db`（68608 B），`WebPlayer\Cache\Temp` 0 文件；
+- 客户端：`<客户端安装目录>` 按这 6 个哈希名搜索命中 0；`cache` 下只有 `data7`（16 桶 163 条 `.d`）、`prepared`（0 文件）、`WebpageIcons.db`（68608 B），`WebPlayer\Cache\Temp` 0 文件；
 - 源站：`client-onisoul.86joy.com` 在服务器上 `getent hosts` 解析失败、`curl` 报 `Could not resolve host`，不可回源。
 
-结论：这 6 个包只能从**跑过原服、缓存里有副本的机器**上取（朋友机器 `D:\鬼武者魂\cache\data7` 里按哈希搜），拿到后落盘到 `assets/pc/bundles/chara/<hash>.unity3d`，「联机中断」才会消失。这是素材缺失，不是协议/逻辑错误，与第八节的三处服务端缺陷性质不同。
+结论：这 6 个包只能从**跑过原服、缓存里有副本的机器**上取（朋友机器 `<客户端安装目录>\cache\data7` 里按哈希搜），拿到后落盘到 `assets/pc/bundles/chara/<hash>.unity3d`，「联机中断」才会消失。这是素材缺失，不是协议/逻辑错误，与第八节的三处服务端缺陷性质不同。
 
 附带一个已知内容缺口：`createPlayer` 写入的 `characters` 是空的——`_initial_characters` 依赖 `beginning_equipment` + `item01` + `character` 三张表，表空则初始武将 0 个。所以即便资源包到位，主城／编成里的武将列表仍需要最小初始存档来填。
 
@@ -290,7 +290,7 @@ URL 按 MD5 首字符分到 `cache/data7/0` ~ `f` 共 16 个桶，记录文件�
 ### 10.2 本轮实测（2026-11-14，`DESKTOP-N8RCQR0`）
 
 ```
-扫描 D:\鬼武者魂\cache\data7      164 条记录，43,414,472 B
+扫描 <客户端安装目录>\cache\data7      164 条记录，43,414,472 B
 匹配 /assets/<dir>/<hash>.unity3d  130 条命中（含 6 条重复 URL）
 解出文件                          124 个，38,097,726 B
 命中方式                          plain 124 / zlib 0 / gzip 0 / 失败 0
