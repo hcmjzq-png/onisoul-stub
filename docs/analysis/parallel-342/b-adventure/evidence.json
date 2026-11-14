@@ -1,0 +1,1482 @@
+{
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "source_root": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115",
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "original_protocol": {
+    "request_wrappers": {
+      "battle/captchaVsBattle": [
+        {
+          "method": "captchaVsBattle",
+          "line": 1646,
+          "request_keys": [
+            "token",
+            "verificationCode"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "vsSettingMacroProvisionWindow.cs",
+              "lines": [
+                83
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/executeBattle": [
+        {
+          "method": "executeBattle",
+          "line": 1393,
+          "request_keys": [
+            "battleType",
+            "rivalId",
+            "itemId",
+            "isTurfWar",
+            "isBot",
+            "deckIndex",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                118
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5195,
+                5481
+              ]
+            },
+            {
+              "file": "PluginRunner_DoBattleNormal.cs",
+              "lines": [
+                158
+              ]
+            },
+            {
+              "file": "vsSetting.cs",
+              "lines": [
+                724
+              ]
+            }
+          ]
+        },
+        {
+          "method": "executeBattleSiege",
+          "line": 1410,
+          "request_keys": [
+            "battleType",
+            "rivalId",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                130
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5503
+              ]
+            },
+            {
+              "file": "PluginRunner_DoBattleSiege.cs",
+              "lines": [
+                195
+              ]
+            }
+          ]
+        },
+        {
+          "method": "executeBattleStrategy",
+          "line": 1423,
+          "request_keys": [
+            "battleType",
+            "rivalId",
+            "command",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                142
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5525
+              ]
+            }
+          ]
+        },
+        {
+          "method": "executeBattleRaidBoss",
+          "line": 1437,
+          "request_keys": [
+            "battleType",
+            "entry",
+            "deckIndex",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                50
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5290
+              ]
+            },
+            {
+              "file": "PluginRunner_DoRaidBoss.cs",
+              "lines": [
+                93
+              ]
+            }
+          ]
+        },
+        {
+          "method": "executeBattleGiganticRaidBoss",
+          "line": 1451,
+          "request_keys": [
+            "battleType",
+            "requestPhase",
+            "buildingId",
+            "difficulty",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                72
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5318
+              ]
+            }
+          ]
+        },
+        {
+          "method": "executeBattleNPC",
+          "line": 1492,
+          "request_keys": [
+            "battleType",
+            "npcId",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": []
+        },
+        {
+          "method": "executeBattlePlayer",
+          "line": 1505,
+          "request_keys": [
+            "battleType",
+            "rivalId",
+            "deckIndex",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                26
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5374
+              ]
+            }
+          ]
+        },
+        {
+          "method": "executeBattleQuest",
+          "line": 1519,
+          "request_keys": [
+            "battleType",
+            "questType",
+            "encountId",
+            "deckIndex",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                38
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5226,
+                5403
+              ]
+            },
+            {
+              "file": "PluginQuestStepHelper.cs",
+              "lines": [
+                285
+              ]
+            }
+          ]
+        },
+        {
+          "method": "executeBattleMonster",
+          "line": 1534,
+          "request_keys": [
+            "battleType",
+            "monsterId",
+            "deckIndex",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": []
+        },
+        {
+          "method": "executeBattleOutBreak",
+          "line": 1548,
+          "request_keys": [
+            "battleType",
+            "buildingId",
+            "deckIndex",
+            "token",
+            "battleInformation"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                107
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5459
+              ]
+            },
+            {
+              "file": "PluginRunner_DoPoliticBattle.cs",
+              "lines": [
+                98
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getRaidBossDetail": [
+        {
+          "method": "getRaidBossDetail",
+          "line": 3666,
+          "request_keys": [
+            "token",
+            "entry"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "RaidBossBattleInfoList.cs",
+              "lines": [
+                78
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getRaidBossEntries": [
+        {
+          "method": "getRaidBossEntries",
+          "line": 3632,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginRaidbossDataManager.cs",
+              "lines": [
+                24
+              ]
+            },
+            {
+              "file": "PoliticMissionProgressList.cs",
+              "lines": [
+                312
+              ]
+            },
+            {
+              "file": "QuestHUDController.cs",
+              "lines": [
+                240
+              ]
+            },
+            {
+              "file": "RaidBossScene.cs",
+              "lines": [
+                68
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getRaidBossLogs": [
+        {
+          "method": "getRaidBossLogs",
+          "line": 3640,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "mypageRasetsu.cs",
+              "lines": [
+                131
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getRivals2": [
+        {
+          "method": "getRivals",
+          "line": 2338,
+          "request_keys": [
+            "token",
+            "matchingType"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginRunner_DoBattleNormal.cs",
+              "lines": [
+                119
+              ]
+            },
+            {
+              "file": "vsSettingCache.cs",
+              "lines": [
+                94,
+                129
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getSelfRecord": [
+        {
+          "method": "getSelfRecord",
+          "line": 1629,
+          "request_keys": [
+            "token",
+            "matchingType"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "CountryRanking.cs",
+              "lines": [
+                153,
+                232
+              ]
+            },
+            {
+              "file": "decisiveBattleSituation.cs",
+              "lines": [
+                116
+              ]
+            },
+            {
+              "file": "PluginRunner_DoBattleNormal.cs",
+              "lines": [
+                36,
+                56,
+                189
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getTurfWarReplayData": [
+        {
+          "method": "getTurfWarReplayData",
+          "line": 1619,
+          "request_keys": [
+            "token",
+            "type",
+            "battleId"
+          ],
+          "direct_call_sites": []
+        }
+      ],
+      "battle/getVcode": [
+        {
+          "method": "getVcode",
+          "line": 4144,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "vsSettingVcodeImage.cs",
+              "lines": [
+                41
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getVsBattleLogs": [
+        {
+          "method": "getVsBattleLogs",
+          "line": 1589,
+          "request_keys": [
+            "token",
+            "type",
+            "force"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "mypageBattleLogUpdateVs.cs",
+              "lines": [
+                53
+              ]
+            }
+          ]
+        },
+        {
+          "method": "getTurfWarLogs",
+          "line": 1599,
+          "request_keys": [
+            "token",
+            "type",
+            "force"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "mypageBattleLogUpdateTurfWar.cs",
+              "lines": [
+                55
+              ]
+            }
+          ]
+        },
+        {
+          "method": "getStrategyBattleLogs",
+          "line": 3894,
+          "request_keys": [
+            "token",
+            "type",
+            "force"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "mypageBattleLogUpdateStrategy.cs",
+              "lines": [
+                55
+              ]
+            },
+            {
+              "file": "StrategyLogAnalizer.cs",
+              "lines": [
+                815
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/getVsCountryRecords": [
+        {
+          "method": "getVsCountryRecords",
+          "line": 1580,
+          "request_keys": [
+            "token",
+            "countryId"
+          ],
+          "direct_call_sites": []
+        }
+      ],
+      "battle/getVsReplayData": [
+        {
+          "method": "getVsReplayData",
+          "line": 1609,
+          "request_keys": [
+            "token",
+            "type",
+            "battleId"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                95
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5443
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/removeRaidBossWork": [
+        {
+          "method": "removeRaidBossWork",
+          "line": 3675,
+          "request_keys": [
+            "token",
+            "ownerId",
+            "index"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginRunner_DoRaidBoss.cs",
+              "lines": [
+                64
+              ]
+            },
+            {
+              "file": "RaidBossScene.cs",
+              "lines": [
+                176
+              ]
+            }
+          ]
+        }
+      ],
+      "battle/sendRescueRequest": [
+        {
+          "method": "sendRescueRequest",
+          "line": 3658,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "RaidBossScene.cs",
+              "lines": [
+                301
+              ]
+            }
+          ]
+        }
+      ],
+      "giganticRaidBoss/entryGiganticRaidBoss": [
+        {
+          "method": "entryGiganticRaidBoss",
+          "line": 3714,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "giganticRaidBossScene.cs",
+              "lines": [
+                89
+              ]
+            }
+          ]
+        }
+      ],
+      "giganticRaidBoss/getGiganticRaidBossBattleResult": [
+        {
+          "method": "getGiganticRaidBossBattleResult",
+          "line": 1466,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "BattleApiClient.cs",
+              "lines": [
+                83
+              ]
+            },
+            {
+              "file": "BattleLogManager.cs",
+              "lines": [
+                5339
+              ]
+            }
+          ]
+        }
+      ],
+      "giganticRaidBoss/getGiganticRaidBossEventResult": [
+        {
+          "method": "getGiganticRaidBossEventResult",
+          "line": 1474,
+          "request_keys": [
+            "token",
+            "term"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "GiganticRaidBossResultRenderer.cs",
+              "lines": [
+                153
+              ]
+            }
+          ]
+        },
+        {
+          "method": "getGiganticRaidBossEventResultLog",
+          "line": 1483,
+          "request_keys": [
+            "token",
+            "term"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "GiganticRaidBossResultRenderer.cs",
+              "lines": [
+                141
+              ]
+            }
+          ]
+        }
+      ],
+      "giganticRaidBoss/getGiganticRaidBossInformation": [
+        {
+          "method": "getGiganticRaidBossInfo",
+          "line": 3704,
+          "request_keys": [
+            "token",
+            "difficulty",
+            "buildingTypeId"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "giganticRaidBossScene.cs",
+              "lines": [
+                115,
+                255,
+                428
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/checkCompleteQuestEx": [
+        {
+          "method": "checkCompleteQuest",
+          "line": 1786,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId",
+            "chapterId",
+            "areaId"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginRunner_DoDreamSpace.cs",
+              "lines": [
+                112
+              ]
+            },
+            {
+              "file": "PluginRunner_DoEvent.cs",
+              "lines": [
+                173
+              ]
+            },
+            {
+              "file": "PluginRunner_DoOniQuest.cs",
+              "lines": [
+                173
+              ]
+            },
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                1007
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/checkEmergencyQuest": [
+        {
+          "method": "getEmergencyQuestTimes",
+          "line": 1980,
+          "request_keys": [
+            "token",
+            "questType"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "EmergencyQuestChecker.cs",
+              "lines": [
+                22
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/clearObstacle": [
+        {
+          "method": "clearObstacle",
+          "line": 1968,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId",
+            "chapterId",
+            "areaId"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginQuestStepHelper.cs",
+              "lines": [
+                222
+              ]
+            },
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                2180
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/executeQuestEx": [
+        {
+          "method": "executeQuest",
+          "line": 1773,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId",
+            "chapterId",
+            "areaId",
+            "assets"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginRunner_DoDreamSpace.cs",
+              "lines": [
+                84
+              ]
+            },
+            {
+              "file": "PluginRunner_DoEvent.cs",
+              "lines": [
+                72
+              ]
+            },
+            {
+              "file": "PluginRunner_DoOniQuest.cs",
+              "lines": [
+                146
+              ]
+            },
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                831
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/executeQuestEx2": [
+        {
+          "method": "executeQuestEx2",
+          "line": 1999,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId",
+            "chapterId",
+            "areaId",
+            "assets"
+          ],
+          "direct_call_sites": []
+        }
+      ],
+      "quest/getAutoStep": [
+        {
+          "method": "getAutoStep",
+          "line": 2012,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": []
+        }
+      ],
+      "quest/getChapterData": [
+        {
+          "method": "getQuestChapterData",
+          "line": 1834,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId",
+            "chapterId"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginRunner_DoEvent.cs",
+              "lines": [
+                82
+              ]
+            },
+            {
+              "file": "PluginRunner_DoOniQuest.cs",
+              "lines": [
+                81,
+                229
+              ]
+            },
+            {
+              "file": "QuestDataCache.cs",
+              "lines": [
+                570
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/getQuestBossPunish": [
+        {
+          "method": "getQuestBossPunish",
+          "line": 1947,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId",
+            "chapterId",
+            "areaId",
+            "step"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                455
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/getQuestCompleteFlags": [
+        {
+          "method": "getQuestCompleteFlags",
+          "line": 1806,
+          "request_keys": [
+            "token",
+            "questType"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginQuestDataManager.cs",
+              "lines": [
+                118
+              ]
+            },
+            {
+              "file": "PoliticMissionProgressList.cs",
+              "lines": [
+                347
+              ]
+            },
+            {
+              "file": "QuestDataCache.cs",
+              "lines": [
+                502
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/getQuestEncount": [
+        {
+          "method": "getQuestEncount",
+          "line": 1893,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                395
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/getQuestEncountWorks": [
+        {
+          "method": "getQuestEncountWorks",
+          "line": 1901,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                429
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/getQuestProgress": [
+        {
+          "method": "getQuestProgress",
+          "line": 1798,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginRunner_DoDreamSpace.cs",
+              "lines": [
+                49
+              ]
+            },
+            {
+              "file": "PoliticMissionProgressList.cs",
+              "lines": [
+                344
+              ]
+            },
+            {
+              "file": "QuestDataCache.cs",
+              "lines": [
+                659
+              ]
+            },
+            {
+              "file": "QuestTypeSelector.cs",
+              "lines": [
+                71,
+                354,
+                383,
+                417
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/getQuestRewardOpenFlags": [
+        {
+          "method": "getQuestRewardOpenFlags",
+          "line": 1824,
+          "request_keys": [
+            "token",
+            "questType",
+            "questId"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "QuestDataCache.cs",
+              "lines": [
+                536
+              ]
+            },
+            {
+              "file": "QuestStorySelector.cs",
+              "lines": [
+                190
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/getRandomQuestRanking": [
+        {
+          "method": "getRandomQuestRanking",
+          "line": 1960,
+          "request_keys": [
+            "token"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "QuestDataCache.cs",
+              "lines": [
+                1090
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/openQuest": [
+        {
+          "method": "openQuest",
+          "line": 1875,
+          "request_keys": [
+            "token",
+            "questType"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginQuestDataManager.cs",
+              "lines": [
+                37,
+                38
+              ]
+            },
+            {
+              "file": "PluginRunner_DoEvent.cs",
+              "lines": [
+                109
+              ]
+            },
+            {
+              "file": "QuestDataCache.cs",
+              "lines": [
+                466
+              ]
+            },
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                1121
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/openTreasureBox": [
+        {
+          "method": "openTreasureBox",
+          "line": 1911,
+          "request_keys": [
+            "token",
+            "treasureId",
+            "useItem"
+          ],
+          "direct_call_sites": [
+            {
+              "file": "PluginQuestStepHelper.cs",
+              "lines": [
+                326,
+                335
+              ]
+            },
+            {
+              "file": "QuestScriptCommand.cs",
+              "lines": [
+                2127
+              ]
+            }
+          ]
+        }
+      ],
+      "quest/useSoulToStep": [
+        {
+          "method": "getOnikujiGoStep",
+          "line": 1989,
+          "request_keys": [
+            "token",
+            "lotteryId",
+            "questType"
+          ],
+          "direct_call_sites": []
+        }
+      ]
+    },
+    "manual_review": {
+      "battle/captchaVsBattle": {
+        "response": "successful:boolean",
+        "evidence": "vsSettingMacroProvisionWindow.cs:83-98",
+        "scope_or_unknown": "验证码挑战与战斗准入绑定；有效期/次数/重试待证，不回固定true"
+      },
+      "battle/executeBattle": {
+        "response": "log/information/process/result; optional additionalResult/commandResult/giganticResult",
+        "evidence": "BattleLogManager.cs:5563-5582;BattleApiClient.cs:26-142",
+        "scope_or_unknown": "请求battleInformation按battleType分支；事件归属/编队/费用/战斗算法/结算幂等需同一事务，不能固定胜利"
+      },
+      "battle/getRaidBossDetail": {
+        "response": "ownerInfo/raidBossInfo/playersInfo/now",
+        "evidence": "RaidBossBattleInfoList.cs:78-104",
+        "scope_or_unknown": "entry关联真实首领与参与者；跨账号访问权限和一致快照待证"
+      },
+      "battle/getRaidBossEntries": {
+        "response": "player/friend; score/rank/normScore/now",
+        "evidence": "RaidBossList.cs:37-90;RaidBossScene.cs:68-86",
+        "scope_or_unknown": "真实首领实例/好友入口/排名读取；不得把表里的首领全部当活动实例"
+      },
+      "battle/getRaidBossLogs": {
+        "response": "裸数字索引->日志记录",
+        "evidence": "mypageRasetsu.cs:142-158",
+        "scope_or_unknown": "保存战斗与SENDRESCUE事件；根信封会被转Hashtable；共享形态修复交总集成"
+      },
+      "battle/getRivals2": {
+        "response": "rivals/[bots]/updateTime",
+        "evidence": "vsSettingCache.cs:94-145",
+        "scope_or_unknown": "matchingType区分vs/turfWar；真实匹配资格/刷新周期/机器人规则未证"
+      },
+      "battle/getSelfRecord": {
+        "response": "record/costs/verificationCode/bonus/turfWarBattlePoint",
+        "evidence": "decisiveBattleSituation.cs:116-128",
+        "scope_or_unknown": "record含won/lost/average及daily/total AttackPoint/DefensePoint；来自实际战绩，交G/F，不能虚构"
+      },
+      "battle/getTurfWarReplayData": {
+        "response": "未证实；不能直接假定等于getVsReplayData",
+        "evidence": "WebApiClient.cs:1619-1627",
+        "scope_or_unknown": "仅包装器，无本树直接调用；F需给战场记录契约及访问者校验"
+      },
+      "battle/getVcode": {
+        "response": "VCodeImage:string",
+        "evidence": "vsSettingVcodeImage.cs:41-54",
+        "scope_or_unknown": "URL解码后Base64图片；挑战生成/有效期/与captcha关联待证"
+      },
+      "battle/getVsBattleLogs": {
+        "response": "logs.<id>/details",
+        "evidence": "mypageBattleLogUpdateVs.cs:53-95",
+        "scope_or_unknown": "type包含attacker/defender及战场分支；仅查允许访问的历史记录，分页/保留期待证"
+      },
+      "battle/getVsCountryRecords": {
+        "response": "未证实",
+        "evidence": "WebApiClient.cs:1580-1587",
+        "scope_or_unknown": "仅包装器countryId；F提供国家战绩快照，不能凭字段名生成统计"
+      },
+      "battle/getVsReplayData": {
+        "response": "战斗回放交给共用解析器",
+        "evidence": "BattleLogManager.cs:5437-5450;BattleLogManager.cs:5563-5582",
+        "scope_or_unknown": "按type/battleId加载已存过程；须鉴权，不重新运算/扣费/发奖"
+      },
+      "battle/removeRaidBossWork": {
+        "response": "回调仅检查非null",
+        "evidence": "RaidBossScene.cs:169-182",
+        "scope_or_unknown": "删除ownerId/index对应实例；删除条件/领奖顺序/重试语义未知"
+      },
+      "battle/sendRescueRequest": {
+        "response": "根Count为通知人数",
+        "evidence": "RaidBossScene.cs:295-311",
+        "scope_or_unknown": "通知名单/好友资格/冷却未知；跨账号投递需事务或outbox；根信封污染人数"
+      },
+      "giganticRaidBoss/entryGiganticRaidBoss": {
+        "response": "回调不读负载",
+        "evidence": "giganticRaidBossScene.cs:80-98",
+        "scope_or_unknown": "首次入场触发；活动资格/报名持久化/重试待证，非普通物语"
+      },
+      "giganticRaidBoss/getGiganticRaidBossBattleResult": {
+        "response": "整根放入战斗additionalResult",
+        "evidence": "BattleLogManager.cs:5335-5346",
+        "scope_or_unknown": "关联当前真实战斗的追加结算，不能独立生成奖励；非普通物语"
+      },
+      "giganticRaidBoss/getGiganticRaidBossEventResult": {
+        "response": "schedule.open/end; country/punishPoint/gainRatio/countryRank; damage/contribute.top/self; luckyCountList",
+        "evidence": "GiganticRaidBossResultRenderer.cs:20-110,134-159",
+        "scope_or_unknown": "term区分当前/历史；实际活动快照/排行/结算未证，不能造活动日期"
+      },
+      "giganticRaidBoss/getGiganticRaidBossInformation": {
+        "response": "attackList/punishPoint/chain/phase/endTime/monsterId/giganticRaidBossPoint.status",
+        "evidence": "giganticRaidBossScene.cs:115-134",
+        "scope_or_unknown": "活动实例+国家共享阶段/连击；多人更新需事务，不因表存在就开活动"
+      },
+      "quest/checkCompleteQuestEx": {
+        "response": "reward.area/chapter/quest; toInbox按层",
+        "evidence": "PluginQuestStepHelper.cs:56-81;QuestScriptCommand.cs:993-1049",
+        "scope_or_unknown": "推进/首领/宝箱/领奖账本同一状态机；确定领取条件和库存事务后实现"
+      },
+      "quest/checkEmergencyQuest": {
+        "response": "根保存EmergencyQuestTimes；下游结构继续核对",
+        "evidence": "EmergencyQuestChecker.cs:17-26;UserStatus.cs:810",
+        "scope_or_unknown": "event3排期与时区未知；不可猜日期或把空表当完整实现"
+      },
+      "quest/clearObstacle": {
+        "response": "isSuccess:boolean; optional reward/toInbox",
+        "evidence": "QuestScriptCommand.cs:2172-2205;QuestScriptCommand.cs:724-732",
+        "scope_or_unknown": "障碍归属与category/type/needAmount，余额扣除/奖项/幂等规则未证"
+      },
+      "quest/executeQuestEx": {
+        "response": "executeInfo.step/missionPoint/now; eventInfo.eventType/eventScript; rewardInfo/bonusInfo",
+        "evidence": "QuestScriptCommand.cs:490-785;PluginQuestStepHelper.cs:28-53",
+        "scope_or_unknown": "quest索引->区域section->奖励；原ratio不是已证百分比，事件生成与结算未知"
+      },
+      "quest/executeQuestEx2": {
+        "response": "未证实，不假定与executeQuestEx相同",
+        "evidence": "WebApiClient.cs:1999-2009",
+        "scope_or_unknown": "仅包装器；assets固定map0；无本树直接调用，需动态证明用途"
+      },
+      "quest/getAutoStep": {
+        "response": "未证实",
+        "evidence": "WebApiClient.cs:2012-2017",
+        "scope_or_unknown": "仅包装器；无本树直接调用，不把名称解释成自动推进实现"
+      },
+      "quest/getChapterData": {
+        "response": "complete/clearCount; areaN.complete/step/maxStep/[itemN.open]",
+        "evidence": "QuestStoryAreaSelector.cs:51-97;QuestDataCache.cs:915-950;PluginRunner_DoEvent.cs:82-89",
+        "scope_or_unknown": "限定实现：adventureV1已存章节+原索引areaStep；不初始化/推进/领奖"
+      },
+      "quest/getQuestBossPunish": {
+        "response": "空根或script",
+        "evidence": "QuestScriptCommand.cs:455-475",
+        "scope_or_unknown": "需真实首领惩罚状态；根Count决定读script，空成功信封有风险，交总集成"
+      },
+      "quest/getQuestCompleteFlags": {
+        "response": "裸quest_type_id.chapter1..5数值",
+        "evidence": "QuestDataCache.cs:899-908;PluginQuestDataManager.cs:122-143",
+        "scope_or_unknown": "限定实现：只查明确保存的五项完成标记，不推算未开启内容"
+      },
+      "quest/getQuestEncount": {
+        "response": "<type>.questId(string)/chapter/area/step; optional entry",
+        "evidence": "QuestScriptCommand.cs:299-329,395-404",
+        "scope_or_unknown": "首领恢复查询；entry非空阻止恢复；实例ID/战斗生命周期未证，未实现"
+      },
+      "quest/getQuestEncountWorks": {
+        "response": "obstacle.<type>.questId/chapter/area/step/amount/needAmount/category/type",
+        "evidence": "QuestScriptCommand.cs:332-367,429-444,724-732",
+        "scope_or_unknown": "障碍恢复；amount应与真实库存一致；不把陈旧缓存余额回传，未实现"
+      },
+      "quest/getQuestProgress": {
+        "response": "裸<type>.last.quest/chapter/area/step; story.current同结构",
+        "evidence": "QuestDataCache.cs:789-857;HashAccessor.cs:34-40",
+        "scope_or_unknown": "限定实现：已存定位校验原索引；首次位置未知时明确失败"
+      },
+      "quest/getQuestRewardOpenFlags": {
+        "response": "根chapter1..5:boolean",
+        "evidence": "QuestStorySelector.cs:190-207",
+        "scope_or_unknown": "限定实现：已存布尔标记；不把完成标记转换为已领奖"
+      },
+      "quest/getRandomQuestRanking": {
+        "response": "score/rank数值",
+        "evidence": "QuestDataCache.cs:1085-1100",
+        "scope_or_unknown": "实际积分与排名统计窗口/并列规则未知，交G，不虚构名次"
+      },
+      "quest/openQuest": {
+        "response": "可选addWork:boolean；活动questType:string/questIds.<index>:number",
+        "evidence": "QuestDataCache.cs:431-474;QuestScriptCommand.cs:1081-1140;PluginQuestDataManager.cs:73-103",
+        "scope_or_unknown": "普通/随机/活动开启并非统一动作；解锁/排期/首次生成/重试未知"
+      },
+      "quest/openTreasureBox": {
+        "response": "open:boolean/reward/[toInbox]",
+        "evidence": "QuestScriptCommand.cs:2120-2147;WebApiClient.cs:1911-1931",
+        "scope_or_unknown": "treasureId必须关联自己未结算事件；useItem不可由客户端决定奖或费用，开箱概率/事务待证"
+      },
+      "quest/useSoulToStep": {
+        "response": "未证实",
+        "evidence": "WebApiClient.cs:1989-1996",
+        "scope_or_unknown": "仅包装器lotteryId/questType；无直接调用，不能猜魂消耗/步数"
+      }
+    }
+  },
+  "source_files": {
+    "BattleApiClient.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BattleApiClient.cs",
+      "sha256": "70e027944624ba41a2d6b3faa9a917f6f3d4a40616263a7a17fad257488113e7"
+    },
+    "BattleLogManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BattleLogManager.cs",
+      "sha256": "bf3ada868c109d0d2cc74fa46e9a626ceb9b2e1b619f8b10782fbfcfacf20d89"
+    },
+    "CountryRanking.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CountryRanking.cs",
+      "sha256": "d9090ead2054b9391401ded6f94a4fd6265a0d257df26c7be520295220934216"
+    },
+    "EmergencyQuestChecker.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\EmergencyQuestChecker.cs",
+      "sha256": "8d6e37566a059bb21be5c4821d29eb2e935a0e7d3c77ed9d29677b4ac98b5bfd"
+    },
+    "GameRestarter.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\GameRestarter.cs",
+      "sha256": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea"
+    },
+    "GiganticRaidBossResultRenderer.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\GiganticRaidBossResultRenderer.cs",
+      "sha256": "eb076bb39c1637cb9c3170a258902f8dbdb3a6b3c40a047e332f321584c4264a"
+    },
+    "HashAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessor.cs",
+      "sha256": "f35537d17a9758c7bebf1ec8d42c61ebf696a53d460f46b9e77bb60405c6df2e"
+    },
+    "PluginQuestDataManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginQuestDataManager.cs",
+      "sha256": "c32d7e5776325c06a6ba2e12c8c685f638740d80f070b9f5576418e35fa93b45"
+    },
+    "PluginQuestStepHelper.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginQuestStepHelper.cs",
+      "sha256": "834eea53e709fbce558112adc0f00ec2d2a076efbbd8cb848a0fc66a061dacc1"
+    },
+    "PluginRaidbossDataManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRaidbossDataManager.cs",
+      "sha256": "6710d3de7fd4727d1ee44e509c2fb385497110ea95577b3e5c838f3b76786f7f"
+    },
+    "PluginRunner_DoBattleNormal.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoBattleNormal.cs",
+      "sha256": "1941b1c23aedf26e5417a48e7438d3dfd851e686a9bc47b31e77fe3fbcf0cf78"
+    },
+    "PluginRunner_DoBattleSiege.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoBattleSiege.cs",
+      "sha256": "0d034a59e5f6b6f64db8154187be1dd62a9ca3f5825dc6e9bceeefc95b9c6394"
+    },
+    "PluginRunner_DoDreamSpace.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoDreamSpace.cs",
+      "sha256": "c3376aa38a31fd82dc0bcaab8d437958ba9eeb747859bf4e40fa365e253b25a4"
+    },
+    "PluginRunner_DoEvent.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoEvent.cs",
+      "sha256": "42f0a3a08c5e384246053160e6fa04cca7c2d49aee225a2be918adac29de70fc"
+    },
+    "PluginRunner_DoOniQuest.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoOniQuest.cs",
+      "sha256": "eb5a2e84325f3cef51843ce6efcae9521e65534854e0ddb41a5774a9232cf3a1"
+    },
+    "PluginRunner_DoPoliticBattle.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoPoliticBattle.cs",
+      "sha256": "bafcb8bccef268aa603252708d46f4fc1747e467e94334e74cb85764135adc8d"
+    },
+    "PluginRunner_DoRaidBoss.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoRaidBoss.cs",
+      "sha256": "7711cf8bee0417a0801133850847b5735c480318fda3e09773a07eb020955895"
+    },
+    "PoliticMissionProgressList.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMissionProgressList.cs",
+      "sha256": "38b74b7269dc0398e746c16e291b3ec715977c5e2096ca6edde86fa506c66e4c"
+    },
+    "QuestAreaTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestAreaTableAccessor.cs",
+      "sha256": "2cc0bae23604905b438fd1d7deedd41675c0521b4de75dabeaf5eac035548788"
+    },
+    "QuestDataCache.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestDataCache.cs",
+      "sha256": "95fc0a1e0573ffb57264f52a80302295456d312e4209defe8df7d84bb65c3b6b"
+    },
+    "QuestHUDController.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestHUDController.cs",
+      "sha256": "56900693def10b8b214ffda2a20e8d063ea091192f6a2f150bae08ed145e9689"
+    },
+    "QuestIndexTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestIndexTableAccessor.cs",
+      "sha256": "e44629b08fe132a611ab2b24ce8f186fa24eab1629abd6998e339de3abfb53e0"
+    },
+    "QuestRewardTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestRewardTableAccessor.cs",
+      "sha256": "edaee27c2e97e955057500007a69f4bb68a10f552ab63224f5b5c626631d542b"
+    },
+    "QuestScriptCommand.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestScriptCommand.cs",
+      "sha256": "39c8a0a662ad34428c23d1dbb9544817836292154af28ab66adda5c91eb11466"
+    },
+    "QuestStoryAreaSelector.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestStoryAreaSelector.cs",
+      "sha256": "b2b18b0a40176218f74a791863c126dd3e9e6bdb017c79b27b63eae1a667ae4d"
+    },
+    "QuestStorySelector.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestStorySelector.cs",
+      "sha256": "c7987db67c373dcaeb03ac4e6e55ccf6fcace1df9257a4ed9148ef567808126f"
+    },
+    "QuestTypeSelector.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestTypeSelector.cs",
+      "sha256": "2562c7f3020bcf5555a2dc5e9fe85b9b2c032c619a2eab93d0876284a0f2b462"
+    },
+    "RaidBossBattleInfoList.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RaidBossBattleInfoList.cs",
+      "sha256": "818ed39ea7a0049217612d08024286803e50152ca212bd2556be451ea4c4746c"
+    },
+    "RaidBossList.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RaidBossList.cs",
+      "sha256": "7228d47c7fbd96c21faa2dea77a24d89deb66bb0052cef333047ea96a8335dcd"
+    },
+    "RaidBossScene.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RaidBossScene.cs",
+      "sha256": "37599a5173bc1bd96bbc4ea84dd32d4b1f1080eb9a0f61b8ae5ebe34d2307111"
+    },
+    "StrategyLogAnalizer.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyLogAnalizer.cs",
+      "sha256": "022b5d769d7786c9aab3807cf9c35f5388a7dde02e42766ee72f5ba3530b98e8"
+    },
+    "UserStatus.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac"
+    },
+    "WebApiClient.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    "decisiveBattleSituation.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\decisiveBattleSituation.cs",
+      "sha256": "7ec79868c7420ad2a567b1b181a3689ece58caf43ce5d9d8b42b7de2fac0523e"
+    },
+    "giganticRaidBossScene.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\giganticRaidBossScene.cs",
+      "sha256": "f95547ff8d120178f5bfd94336ef35e34aba08af4e463b44b63f1d39ef1a936e"
+    },
+    "mypageBattleLogUpdateStrategy.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBattleLogUpdateStrategy.cs",
+      "sha256": "742ed9cd4b8753c5b3b7e5115f830b1c524fd0670c6403734bbe43da9cfb1707"
+    },
+    "mypageBattleLogUpdateTurfWar.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBattleLogUpdateTurfWar.cs",
+      "sha256": "11085eafbaa4aac9b9e13435b2a04e964edb641b2e87194f94b141843ce2096b"
+    },
+    "mypageBattleLogUpdateVs.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBattleLogUpdateVs.cs",
+      "sha256": "c9cc6638eb13f0030d5593ada2cc365a8f68279c48d3f4182ad63509a3e0af8d"
+    },
+    "mypageRasetsu.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageRasetsu.cs",
+      "sha256": "c52569b54e0d9fe1faf114018faaaeaf6ad99880d904a604f7a668c4ca292981"
+    },
+    "vsSetting.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\vsSetting.cs",
+      "sha256": "2c46afcb92a021495202df9ac00a05959e603d68cc3af4f2df2e1fb81fbbcc6c"
+    },
+    "vsSettingCache.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\vsSettingCache.cs",
+      "sha256": "4285abff1e6fa7ddf5e127484736f9c12cbbf8adda35a64a189b325c49f355b5"
+    },
+    "vsSettingMacroProvisionWindow.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\vsSettingMacroProvisionWindow.cs",
+      "sha256": "d05d49ac6bd80467f1a85a5bf23f82abefa7c60516de912805bb2d0e8fc0435a"
+    },
+    "vsSettingVcodeImage.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\vsSettingVcodeImage.cs",
+      "sha256": "9af6cb5be98e119049dd3e9b4645263d324e3d3a516bc426725e7eaf8f946735"
+    }
+  },
+  "compatibility_decisions": [
+    "adventureV1 is SERVER-INTERNAL versioned snapshot; no original server schema claim",
+    "Only four read APIs are registered explicitly in tests; no production mount",
+    "No initial progress or reward inferred; missing snapshot fails with no stub response",
+    "Snapshot location bounded by client-enabled index rows; stricter supported subset, not original server policy",
+    "Five explicit flags required; no implicit false or completion-to-reward conversion",
+    "Inherited PlayerServices.call may persist baseline normalization, never creates adventure state"
+  ],
+  "table_evidence": {
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_1_index.json",
+    "sha256": "8941d1b097a1a776ee2148d8c34a4136878e863fd24afcce30ce1cc521d9443e",
+    "rows": [
+      "0_1",
+      "0_2",
+      "1_1",
+      "1_2",
+      "1_3",
+      "1_4",
+      "1_5"
+    ],
+    "note": "Unmodified original rows; fixture subset, not full table."
+  },
+  "table_audit": "table-audit.json"
+}
