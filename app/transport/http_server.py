@@ -23,6 +23,7 @@ from app import auth, sessions
 from app.business.registry import Registry
 from app.protocol import envelope
 from app.transport.static import StaticFiles, StaticPathError, StaticResource
+from app.transport import login_page
 
 
 def _json_response(
@@ -40,6 +41,26 @@ def _json_response(
     handler.end_headers()
     if not head_only:
         handler.wfile.write(payload)
+
+
+def _html_response(
+    handler: BaseHTTPRequestHandler,
+    status: int,
+    body: bytes,
+    *,
+    head_only: bool = False,
+    location: str | None = None,
+) -> None:
+    handler.send_response(status)
+    if location:
+        handler.send_header("Location", location)
+    handler.send_header("Content-Type", "text/html; charset=utf-8")
+    handler.send_header("Content-Length", str(len(body)))
+    handler.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
+    handler.send_header("Connection", "close")
+    handler.end_headers()
+    if not head_only and body:
+        handler.wfile.write(body)
 
 
 def _not_modified(value: str, last_modified: float | None) -> bool:
@@ -191,6 +212,14 @@ def make_handler(
                     head_only=head_only,
                 )
                 return
+            if login_page.matches(self.path):
+                query = self.path.split("?", 1)[1] if "?" in self.path else ""
+                result = login_page.handle_get(query, head_only=head_only, user_agent=self.headers.get("User-Agent", ""))
+                _html_response(
+                    self, result.status, result.body, head_only=head_only,
+                    location=result.location,
+                )
+                return
             try:
                 resource = static.resolve(self.path)
             except StaticPathError as exc:
@@ -215,6 +244,16 @@ def make_handler(
 
         def do_POST(self) -> None:
             path = self.path.split("?")[0]
+            if login_page.matches(path):
+                length = int(self.headers.get("Content-Length") or 0)
+                raw = self.rfile.read(length) if length > 0 else b""
+                form = login_page.parse_form(raw, self.headers.get("Content-Type", ""))
+                query = self.path.split("?", 1)[1] if "?" in self.path else ""
+                result = login_page.handle_post(form, login_page.page_of(query))
+                _html_response(
+                    self, result.status, result.body, location=result.location
+                )
+                return
             if not path.startswith("/api/"):
                 _json_response(self, 404, envelope.error(envelope.ERR_NOT_FOUND))
                 return

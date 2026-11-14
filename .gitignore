@@ -1,7 +1,20 @@
 # 运行数据、日志与资源包（不入库，服务器本地保留）
 data/
 logs/
-assets/
+
+# 资源默认不入库；仅登录链路所需的原版 Web 页素材例外（见 docs/repro-launcher-login.md）
+assets/*
+!assets/pc/
+assets/pc/*
+!assets/pc/web/
+assets/pc/web/*
+!assets/pc/web/client/
+assets/pc/web/client/*
+!assets/pc/web/client/app.html
+!assets/pc/web/client/app.css
+!assets/pc/web/client/js/
+!assets/pc/web/client/img/
+!assets/pc/web/client/login/
 
 # Python
 __pycache__/
