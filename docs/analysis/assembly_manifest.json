@@ -7,6 +7,14 @@
     "note": "Only file identities are recorded; client binaries and extracted assemblies are not committed."
   },
   "hash_algorithm": "sha256",
+  "provenance": {
+    "decompressed_bundle_size_bytes": 19463656,
+    "inner_layout": "bundle 内每个程序集都是「PE 头 + CLI Header + BSJB 元数据」的完整 .NET 映像，独立 DLL 从 PE 起始处切出",
+    "assembly_csharp_bsjb_offset_in_bundle": 3778036,
+    "assembly_csharp_bsjb_offset_note": "3,778,036 是 Assembly-CSharp 的 BSJB 元数据根在未压缩 app.unity3d 里的文件偏移，不是 PE 起始（PE 起始在它之前）；该偏移为本仓库复核时实测，可直接用于不解出 DLL 的元数据解析",
+    "extractor": "未入库：本仓库只保留「DLL 提取完成后」的结构校验与反编译，安装包 → bundle → 独立 DLL 的自动提取脚本仍未入库",
+    "verification_path": "docs/analysis/pc-assembly.md"
+  },
   "assemblies": [
     {
       "name": "Assembly-CSharp-firstpass.dll",

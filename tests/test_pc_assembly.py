@@ -21,6 +21,8 @@ def make_pe(
     raw_size: int = 0x200,
     cli_rva: int = 0x2000,
     cli_size: int = 0x48,
+    machine: int = 0x14C,
+    magic: int = 0x10B,
 ) -> bytes:
     data = bytearray(0x400)
     data[:2] = mz
@@ -33,7 +35,7 @@ def make_pe(
         "<HHIIIHH",
         data,
         machine_offset,
-        0x14C,
+        machine,
         section_count,
         0,
         0,
@@ -43,7 +45,7 @@ def make_pe(
     )
 
     optional_offset = 0x98
-    struct.pack_into("<H", data, optional_offset, 0x10B)
+    struct.pack_into("<H", data, optional_offset, magic)
     struct.pack_into("<I", data, optional_offset + 92, 16)
     cli_directory = optional_offset + 96 + 14 * 8
     struct.pack_into("<II", data, cli_directory, cli_rva, cli_size)
@@ -149,6 +151,18 @@ class CheckPcAssemblyTest(unittest.TestCase):
         finally:
             temp.cleanup()
 
+    def test_rejects_machine_and_pe_kind_mismatch(self):
+        for machine, magic in ((0x8664, 0x10B), (0x014C, 0x20B)):
+            with self.subTest(machine=machine, magic=magic):
+                temp, path = self.write_pe(make_pe(machine=machine, magic=magic))
+                try:
+                    with self.assertRaisesRegex(
+                        check_pc_assembly.AssemblyFormatError, "不自洽"
+                    ):
+                        check_pc_assembly.inspect_assembly(path)
+                finally:
+                    temp.cleanup()
+
     def test_cli_error_returns_one(self):
         temp, path = self.write_pe(make_pe(mz=b"XX"))
         stderr = StringIO()
@@ -206,7 +220,9 @@ class DecompilePcAssemblyTest(unittest.TestCase):
         )
         self.assertNotIn("--project", default_command)
         self.assertIn("--project", project_command)
-        self.assertIn("--referencepath", project_command)
+        # --referencepath 是「引用程序集目录」，不是目标 DLL 所在目录，默认不传
+        self.assertNotIn("--referencepath", default_command)
+        self.assertNotIn("--referencepath", project_command)
         self.assertEqual(project_command[-1], str(assembly))
 
 

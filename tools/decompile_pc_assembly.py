@@ -38,10 +38,17 @@ def find_ilspycmd(explicit: str | None = None) -> Path:
         candidates.append(Path(from_path))
     candidates.extend(
         [
-            REPO_ROOT / "work" / "tools" / "ilspycmd.exe",
-            REPO_ROOT / "work" / "tools" / "ilspycmd",
+            Path.home() / ".cache" / "onisoul" / "tools" / "ilspycmd.exe",
+            Path.home() / ".cache" / "onisoul" / "tools" / "ilspycmd",
         ]
     )
+    if os.environ.get("ONISOUL_ALLOW_REPO_TOOL") == "1":
+        candidates.extend(
+            [
+                REPO_ROOT / "work" / "tools" / "ilspycmd.exe",
+                REPO_ROOT / "work" / "tools" / "ilspycmd",
+            ]
+        )
     for candidate in candidates:
         if candidate.is_file():
             return candidate.resolve()
@@ -77,16 +84,7 @@ def build_command(
     command = [str(ilspycmd)]
     if project:
         command.append("--project")
-    command.extend(
-        [
-            "--outputdir",
-            str(output),
-            "--referencepath",
-            str(assembly.parent),
-            "--disable-updatecheck",
-            str(assembly),
-        ]
-    )
+    command.extend(["--outputdir", str(output), "--disable-updatecheck", str(assembly)])
     return command
 
 
@@ -122,12 +120,18 @@ def main(argv: list[str] | None = None) -> int:
             cwd=assembly.parent,
             env=environment,
             check=False,
+            capture_output=True,
+            text=True,
         )
     except OSError as error:
         print(f"ERROR: 无法启动 ilspycmd：{error}", file=sys.stderr)
         return 1
+    if completed.stdout.strip():
+        print(completed.stdout.strip())
     if completed.returncode != 0:
         print(f"ERROR: ilspycmd 退出码 {completed.returncode}", file=sys.stderr)
+        if completed.stderr.strip():
+            print(completed.stderr.strip(), file=sys.stderr)
         return completed.returncode
 
     source_files = list(output.rglob("*.cs"))

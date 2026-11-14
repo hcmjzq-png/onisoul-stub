@@ -27,6 +27,14 @@ MACHINE_NAMES = {
     0xAA64: "ARM64",
 }
 
+# Machine 与 PE 种类必须自洽：32 位机器只能配 PE32，64 位机器只能配 PE32+
+EXPECTED_PE_KIND = {
+    0x014C: "PE32",
+    0x01C0: "PE32",
+    0x8664: "PE32+",
+    0xAA64: "PE32+",
+}
+
 
 class AssemblyFormatError(ValueError):
     """Raised when a file is not a supported PE/CLI assembly."""
@@ -99,6 +107,13 @@ def inspect_assembly(path: str | Path) -> dict[str, Any]:
         directory_offset = 112
     else:
         raise AssemblyFormatError(f"不支持的 Optional Header Magic：0x{magic:04x}")
+
+    expected_kind = EXPECTED_PE_KIND.get(machine)
+    if expected_kind and expected_kind != pe_kind:
+        raise AssemblyFormatError(
+            f"Machine 与 PE 种类不自洽：0x{machine:04x} "
+            f"({MACHINE_NAMES[machine]}) 应为 {expected_kind}，实际 {pe_kind}"
+        )
     required_optional_size = directory_offset + (CLI_HEADER_DIRECTORY_INDEX + 1) * 8
     if required_optional_size > optional_size:
         raise AssemblyFormatError(
