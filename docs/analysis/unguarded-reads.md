@@ -113,8 +113,9 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
   **716/867 个键有单一定型证据**（`type_evidence.tsv`，含 file:line 出处，不入仓），
   按**键名**对齐回补：**42 个键 / 101 处**补上类型（`double` 43 / `string` 33 / `Hashtable` 13 /
   `bool` 10 / `float` 2），带类型键 **658→757**，来源逐条记在
-  `verify/untyped_type_hints.tsv`。仍无定论 **351** 个（同名键在不同端点语义冲突、
-  或客户端根本没读过该键）——这批只能等有真实回包样本或用例再说，不再无证据硬猜。
+  `verify/untyped_type_hints.tsv`。契约侧仍无类型 **349 处**（117 个不同键名：
+  同名键在不同端点语义冲突，或客户端根本没读过该键），`untyped_backlog.tsv` 的 481 行
+  候选里还有 257 行 `no_cast_evidence`——这批等有真实回包样本或用例再说，不再无证据硬猜。
 
 ## 四类已在代码里确认的误报
 
