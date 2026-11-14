@@ -1,0 +1,8 @@
+{
+  "defines": {
+    "mercenaryPrice": {
+      "id": "mercenaryPrice",
+      "value": 50
+    }
+  }
+}
