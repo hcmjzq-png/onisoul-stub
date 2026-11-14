@@ -1,15 +1,16 @@
-"""show_off 回归：形状必须是 map、键是 snake_case，且不依赖部署资产。
+"""show_off 回归：形状必须是 map、无人抽卡是空 map、条目键是 snake_case，且不依赖部署资产。
 
-用例自带一个临时 bundle 目录，不依赖 assets/pc/bundles 是否存在，干净 clone 也能全绿。
-形状来自客户端 IL（ShowOffDataParser.ParseSingleData 的 switch 表 +
-PeriodicChecking 的 isinst Hashtable），见 docs/repro-launcher-login.md 第十二节。
+形状来自客户端 IL（PeriodicChecking 的 isinst Hashtable + ParseSingleData 的 switch 表），
+见 docs/repro-launcher-login.md 第十二节。用例自带临时 bundle 目录，干净 clone 也能全绿。
 """
 from __future__ import annotations
 
 import hashlib
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from app.business import periodic, show_off
 
@@ -38,14 +39,17 @@ class ShowOffQueueTest(unittest.TestCase):
         for value in entry.values():
             self.assertTrue(value)
 
-    def test_payload_is_map_not_list(self) -> None:
+    def test_no_one_lottery_means_empty_map(self) -> None:
         payload = show_off.next_payload()
         self.assertIsInstance(payload, dict)
+        self.assertNotIsInstance(payload, list)
+        self.assertEqual(payload, {})
+
+    def test_fake_switch_gives_one_entry(self) -> None:
+        with mock.patch.dict(os.environ, {"ONI_SHOW_OFF_FAKE": "1"}):
+            payload = show_off.next_payload()
         self.assertEqual(len(payload), 1)
         self.assertIsInstance(payload["0"], dict)
-
-    def test_next_entry_never_empty(self) -> None:
-        self.assertEqual(show_off.next_entry()["character_id"], show_off.DEFAULT_CHARACTER_ID)
 
     def test_push_then_deliver_fifo(self) -> None:
         show_off.push("stream", "chara1_00726_01", "skill1_01002_01")
@@ -53,12 +57,7 @@ class ShowOffQueueTest(unittest.TestCase):
         self.assertEqual(show_off.pending_count(), 2)
         self.assertEqual(show_off.next_entry()["username"], "stream")
         self.assertEqual(show_off.next_entry()["username"], "stream2")
-
-    def test_after_queue_drained_repeats_last_entry(self) -> None:
-        show_off.push("stream", "chara1_00726_01", "skill1_01002_01")
-        first = show_off.next_entry()
-        second = show_off.next_entry()
-        self.assertEqual(first, second)
+        self.assertIsNone(show_off.next_entry())
 
     def test_push_rejects_missing_bundle(self) -> None:
         with self.assertRaises(ValueError):
@@ -68,14 +67,17 @@ class ShowOffQueueTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             show_off.push("", "chara1_00726_01", "skill1_01002_01")
 
-    def test_handler_returns_map_with_one_entry(self) -> None:
+    def test_handler_returns_map(self) -> None:
         body = periodic.handler({}, None)
         self.assertTrue(body.get("succeeded"))
         field = body["show_off"]
         self.assertIsInstance(field, dict)
         self.assertNotIsInstance(field, list)
-        self.assertEqual(len(field), 1)
-        entry = field["0"]
+
+    def test_handler_with_pending_entry(self) -> None:
+        show_off.push("stream", "chara1_00726_01", "skill1_01002_01")
+        body = periodic.handler({}, None)
+        entry = body["show_off"]["0"]
         self.assertEqual(set(entry), {"username", "character_id", "skill_id"})
 
     def test_registry_dispatch_shape(self) -> None:
@@ -84,7 +86,6 @@ class ShowOffQueueTest(unittest.TestCase):
         status, body = build_registry().dispatch("common/periodicInquiry", {}, None)
         self.assertEqual(status, 200)
         self.assertIsInstance(body["show_off"], dict)
-        self.assertIn("0", body["show_off"])
 
 
 if __name__ == "__main__":

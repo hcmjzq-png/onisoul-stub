@@ -1,7 +1,7 @@
 """幸运用户展示队列（show_off）。
 
 客户端主城周期轮询 ``common/periodicInquiry``，从回包根表的 ``show_off`` 取「幸运用户」
-广播条，交给 ``ShowOffDataHandler`` 排队，由 ``ShowOffMsg`` 浮层飘过。
+广播条，交给 ``ShowOffDataHandler`` 排队，再由 ``ShowOffMsg`` 浮层飘过。
 
 协议形状由客户端 IL 反汇编确定（``ShowOffDataParser.ParseSingleData`` /
 ``ShowOffManager.PeriodicChecking``，见 docs/repro-launcher-login.md 第十二节）：
@@ -10,18 +10,19 @@
     条目键是 snake_case 的三个字段：username / character_id / skill_id。
 
     // PeriodicChecking
-    if (!p_hash.ContainsKey("show_off"))  → warning「There's no "show_off" field in return payload」
-    var table = (Hashtable)p_hash["show_off"];      // 数组在这里 isinst 失败 → null
-    if (table == null)                    → warning「There's no data in "show_off" field」
+    if (!p_hash.ContainsKey("show_off"))  → "There's no \"show_off\" field in return payload"
+    var table = (Hashtable)p_hash["show_off"];      // 数组在这里 isinst 得 null
+    if (table == null)                    → "There's no data in \"show_off\" field"
     foreach (DictionaryEntry e in table) { ParseSingleData((Hashtable)e.Value) → AddToQueue }
 
     // ParseSingleData：按 key 走 switch 表（编译器 <switch$map39>）
     "username" → UserName, "character_id" → CharacterId, "skill_id" → SkillId
 
-所以数组和非空都解决不了问题：形状必须是 map。客户端对「没人抽到」没有合法表达，
-因此这里永远至少给一条。
+空 map ``{}`` 是合法状态：``isinst`` 通过、``foreach`` 空转、不弹窗，因此「没人抽卡
+就不广播」就落在这里。只有真的有人抽到且包齐了才 ``push()`` 一条。
 
-取值顺序：待播（FIFO）→ 最近已播（内容不变，客户端重复收也只是同一个条目）→ 内置占位。
+调试用：``ONI_SHOW_OFF_FAKE=1`` 时即使队列为空也下发一条占位条目（仅在需要肉眼确认
+广播条样式时打开，默认关闭）。
 """
 from __future__ import annotations
 
@@ -76,22 +77,20 @@ def push(user_name: str, character_id: str, skill_id: str) -> dict[str, Any]:
     return dict(entry)
 
 
-def next_entry() -> dict[str, Any]:
-    """取本轮要下发的那一条：待播 → 最近已播 → 内置占位。"""
-    global _last_delivered
+def next_entry() -> dict[str, Any] | None:
+    """取本轮要下发的那一条；真没人抽卡就返回 None（对应空 map，不广播）。"""
     with _LOCK:
         if _pending:
-            entry = _pending.pop(0)
-            _last_delivered = entry
-            return dict(entry)
-        if _last_delivered is not None:
-            return dict(_last_delivered)
-        return default_entry()
+            return dict(_pending.pop(0))
+        if os.environ.get("ONI_SHOW_OFF_FAKE") == "1":
+            return default_entry()
+        return None
 
 
 def next_payload() -> dict[str, Any]:
-    """包装成客户端要的 map 形状：{"0": 条目}，绝不返回空 map 或数组。"""
-    return {"0": next_entry()}
+    """客户端要的 map 形状；无人抽卡时是空 map，绝不返回数组。"""
+    entry = next_entry()
+    return {} if entry is None else {"0": entry}
 
 
 def pending_count() -> int:
