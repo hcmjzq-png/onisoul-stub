@@ -61,6 +61,7 @@ ORIGINS = {
     "local_build",    # 方法内自建的临时表
     "debug_build",    # debug 分支自造的表
     "message_table",  # 消息表（STRATEGY_MSG_* 等）
+    "nested_child",   # 读的是已声明的子表，根键是扫描伪键
 }
 SNIPPET_MAX = 70
 BODY_LIMIT = 4000

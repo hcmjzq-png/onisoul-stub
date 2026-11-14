@@ -33,10 +33,12 @@
 | `verify/final_check.txt` | 推送前完整性检查结果（990 键时期的快照，非当前口径；现由 `tools/contract_check.py` 每次重算） |
 | `verify/summary.json` | 计数汇总 |
 | `unguarded-reads.md` | 无守卫读键扫描：两段式流水线、基线数字、四类误报实证、抽验记录 |
-| `unguarded_gaps.tsv` | 扫描 + 契约对账产物（**已做来源过滤**）：36 条候选行 / 27 个端点（`endpoint / callsite / missing_keys / first_evidence`）；过滤前是 104 行 / 69 端点 |
+| `unguarded_gaps.tsv` | 扫描 + 契约对账产物（**已做来源过滤**）：33 条候选行 / 25 个端点，全部是方法级归属错（`endpoint / callsite / missing_keys / first_evidence`）；过滤前是 104 行 / 69 端点 |
 | `unguarded_gaps_verdicts.tsv` | 104 条判读台账：67 读的不是回包 / 33 归属另一端点 / 4 真缺口（`endpoint / callsite / missing_keys / verdict / real_owner / evidence / filter`，`filter` ∈ dropped/kept/mixed） |
 | `verify/gap_receivers.tsv` | 候选读键的接收者取证：178 行 `callsite / key / line / receiver / write`，来源过滤的机械依据 |
 | `verify/gap_origins.tsv` | 非回包来源表：`callsite / receiver / origin / evidence`，`gap --filter origin` 的 denylist |
+| `verify/zero_field_triage.tsv` | 122 个零字段端点的分诊：`no_call_site` 53 / `no_literal_read` 61 / `reads_present` 8（8 个已逐个核实并改判，均不需补键） |
+| `verify/untyped_backlog.tsv` | 481 个无类型键的 backlog：可唯一定型 31 / 无 cast 证据 450 |
 
 ## 当前覆盖
 

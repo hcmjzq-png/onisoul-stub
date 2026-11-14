@@ -25,8 +25,8 @@ CONTRACT = os.path.join(ROOT, "docs", "analysis", "api_contract.tsv")
 RECEIVERS = os.path.join(ROOT, "docs", "analysis", "verify", "gap_receivers.tsv")
 ORIGINS = os.path.join(ROOT, "docs", "analysis", "verify", "gap_origins.tsv")
 
-VERDICT_VOCAB = {"real_gap", "not_response", "other_endpoint"}
-FILTER_VOCAB = {"kept", "dropped", "mixed"}
+VERDICT_VOCAB = {"real_gap", "not_response", "other_endpoint", "covered_nested"}
+FILTER_VOCAB = {"kept", "dropped", "mixed", "nested"}
 ORIGIN_VOCAB = {
     "write",
     "html_request",
@@ -36,11 +36,13 @@ ORIGIN_VOCAB = {
     "local_build",
     "debug_build",
     "message_table",
+    "nested_child",
 }
 
 # 判读为真缺口、本批已补进契约的键
 REAL_GAP_KEYS = {
     "debug/dedicate": ["score:double"],
+    "debug/resetDedication": ["score:double"],
     "deck/extendCharacterStore": [
         "possessionLimits:Hashtable",
         "possessionLimits.character:Hashtable",
@@ -127,17 +129,18 @@ class GapVerdictsTest(unittest.TestCase):
         labels = Counter(r["filter"] for r in self.verdicts)
         self.assertEqual(len(self.verdicts), 104)
         self.assertEqual(
-            counts, Counter({"not_response": 67, "other_endpoint": 33, "real_gap": 4})
+            counts,
+            Counter({"not_response": 67, "other_endpoint": 33, "real_gap": 2, "covered_nested": 2}),
         )
-        self.assertEqual(labels, Counter({"dropped": 67, "kept": 36, "mixed": 1}))
+        self.assertEqual(labels, Counter({"dropped": 67, "kept": 33, "mixed": 2, "nested": 2}))
         for row in self.verdicts:
             self.assertIn(row["filter"], FILTER_VOCAB, row["endpoint"])
 
     def test_verdict_values_and_owner_shape(self) -> None:
         for row in self.verdicts:
             self.assertIn(row["verdict"], VERDICT_VOCAB, row["endpoint"])
-            if row["verdict"] == "real_gap":
-                self.assertEqual(row["real_owner"], "", "真缺口不该填归属端点：%s" % row["endpoint"])
+            if row["verdict"] in ("real_gap", "covered_nested"):
+                self.assertEqual(row["real_owner"], "", "真缺口/已声明嵌套不该填归属端点：%s" % row["endpoint"])
             elif row["verdict"] == "other_endpoint":
                 self.assertNotEqual(row["real_owner"], "", "归属错的行必须给出真端点：%s" % row["endpoint"])
                 for owner in row["real_owner"].split(";"):
@@ -153,8 +156,8 @@ class GapVerdictsTest(unittest.TestCase):
     def test_filtered_gaps_are_the_kept_rows(self) -> None:
         kept = {(r["endpoint"], r["callsite"]) for r in self.verdicts if r["filter"] == "kept"}
         out = {(r["endpoint"], r["callsite"]) for r in self.gaps}
-        self.assertEqual(len(self.gaps), 36, "过滤后候选行数变了，记得同步文档")
-        self.assertEqual(len({r["endpoint"] for r in self.gaps}), 27)
+        self.assertEqual(len(self.gaps), 33, "过滤后候选行数变了，记得同步文档")
+        self.assertEqual(len({r["endpoint"] for r in self.gaps}), 25)
         self.assertEqual(out, kept, "候选表与台账 kept 行不对应")
 
     def test_no_not_response_row_survives(self) -> None:
@@ -178,6 +181,8 @@ class GapVerdictsTest(unittest.TestCase):
                 self.assertEqual(row["verdict"], "not_response", row["endpoint"])
             elif row["filter"] == "kept":
                 self.assertIn(row["verdict"], {"real_gap", "other_endpoint"}, row["endpoint"])
+            elif row["filter"] == "nested":
+                self.assertEqual(row["verdict"], "covered_nested", row["endpoint"])
             else:
                 self.assertEqual(row["verdict"], "real_gap", "mixed 只该出现在真缺口行：%s" % row["endpoint"])
 
@@ -220,7 +225,7 @@ class GapVerdictsTest(unittest.TestCase):
             declared = self._roots(row["endpoint"])
             if row["filter"] == "dropped":
                 gone = set(row["missing_keys"].split(",")) - declared
-            elif row["filter"] == "mixed":
+            elif row["filter"] in ("mixed", "nested"):
                 pair = (row["endpoint"], row["callsite"])
                 gone = set(row["missing_keys"].split(",")) - out_keys.get(pair, set()) - declared
             else:

@@ -17,8 +17,8 @@ debug/addItems	PoliticDebugMenu.debug_ItemCategoryAdd	enable	not_response	配置
 debug/debugCreateEquip	DebugMakeEquipMenu.OnGUI	atk,grade,level	not_response	请求侧/本地数据	DebugMakeEquipMenu.cs:233-247 equipInfo_.status["atk"/"grade"/"level"]，调试菜单自填	dropped
 debug/debugCreateQuestEncount	BattleLogManager.getParameterFromServerForDebug	debug,monsterId	not_response	写侧赋值	BattleLogManager.cs:5219 同一次写侧赋值，非读回包	dropped
 debug/dedicate	MightOfNationDialog.OnGUI	dedication,nationalPower,score	real_gap		MightOfNationDialog.cs:433 读 res["score"]（debug 回调回包）；契约 0 键；table_["dedication"/"nationalPower"] 是本地写	mixed
-debug/resetDedication	MightOfNationDialog.OnGUI	dedication,score	real_gap		同 MightOfNationDialog.cs:433 的 score 读，与 debug/dedicate 同一回包键	kept
-deck/extendCharacterStore	DeckAddMaxCharacter.createAddCharacterWindow	character,possessionLimits	real_gap		DeckAddMaxCharacter.cs:147-151 读 possessionLimits → possessionLimits["character"]；契约仅 4 键	kept
+debug/resetDedication	MightOfNationDialog.OnGUI	dedication,score	real_gap		同 MightOfNationDialog.cs:433 的 score 读，与 debug/dedicate 同一回包键	mixed
+deck/extendCharacterStore	DeckAddMaxCharacter.createAddCharacterWindow	character,possessionLimits	covered_nested		DeckAddMaxCharacter.cs:147-151 读 possessionLimits → possessionLimits["character"]；契约仅 4 键｜round2 复核：客户端读的是已声明子表，根键是扫描伪键	nested
 deck/getAvatarCharacters	HTMLBbsMediator.getIconURL	playerIds	not_response	HTML 输入	HTMLBbsMediator.cs:485 input.hash["playerIds"]，调用参数	dropped
 deck/getDeckBonus	DeckScene.OnEnable	inheritPoint,possessionLimits,skillCoins	other_endpoint	deck/getDecks	DeckScene.cs:241-255 inheritPoint/possessionLimits/skillCoins 来自 getDecks 回包；该端点已声明三键	kept
 deck/getDeckBonus	HTMLBoosterMediator.addCardInfoHash	DeckAtk,DeckDef,DeckInt,amount,atk,attrib,category,def,icon,iconADIs,iconNum,intel,name,path,rarity,sex,type,yomi	not_response	配置表/本地表	HTMLBoosterMediator.cs:131-133 instance3.getDeckBonus(...) 是本地表访问器与 UI 自造表	dropped
@@ -44,7 +44,7 @@ politic/task/accelerateProduceTask	PoliticBuilding.accelerateProduceTask	acceler
 quest/checkCompleteQuestEx	PluginRunner_DoDreamSpace.onQuestExecute	executeInfo,step	other_endpoint	battle/executeBattle	PluginRunner_DoDreamSpace.cs:98-102 onQuestExecute(obj) 的 obj 是 executeBattle 回包，读 executeInfo.step	kept
 quest/checkCompleteQuestEx	PluginRunner_DoOniQuest.onQuestExecute	executeInfo,step	other_endpoint	battle/executeBattle	PluginRunner_DoOniQuest.cs:159-163 同上	kept
 quest/clearObstacle	PluginQuestStepHelper.OnObstacle	amount,category,needAmount,obstacleInfo,type	other_endpoint	battle/executeBattle	PluginQuestStepHelper.cs:28-49 ProcessQuestStep 的 hash 就是 executeBattle 回包（PluginRunner_DoDreamSpace.cs:117 传 hashtable，同 :100 obj）；eventInfo 是它的一级键，obstacleInfo.amount/needAmount/type/category 见 :186-192	kept
-quest/clearObstacle	QuestScriptCommand.clearObstacle	category,uses	real_gap		QuestScriptCommand.cs:2180-2210 res=clearObstacle 回包，读 res["uses"]→uses["category"]；契约仅 isSuccess	kept
+quest/clearObstacle	QuestScriptCommand.clearObstacle	category,uses	covered_nested		QuestScriptCommand.cs:2180-2210 res=clearObstacle 回包，读 res["uses"]→uses["category"]；契约仅 isSuccess｜round2 复核：客户端读的是已声明子表，根键是扫描伪键	nested
 quest/getQuestBossPunish	QuestScriptCommand.startQuest	obstacle	other_endpoint	quest/getQuestEncountWorks	QuestScriptCommand.cs:429-442 obstacle 来自 getQuestEncountWorks 回包；该端点已声明 obstacle	kept
 quest/getQuestEncount	QuestScriptCommand.startQuest	obstacle,script	other_endpoint	quest/getQuestEncountWorks;quest/getQuestBossPunish	同一 startQuest 序列：obstacle 属 getQuestEncountWorks，script 属 getQuestBossPunish（:467）；均已声明	kept
 quest/getQuestEncountWorks	QuestScriptCommand.startQuest	script	other_endpoint	quest/getQuestBossPunish	QuestScriptCommand.cs:455-467 script 来自 getQuestBossPunish 回包；该端点已声明 script:string	kept

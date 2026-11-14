@@ -19,3 +19,5 @@ StrategyStrategizeRegionSelector.createConfirmDialog	*	message_table	消息表 `
 HTMLBoosterMediator.addCardInfoHash	*	config_table	全部读自表访问器 `instance3.getDeckBonus(parameterId, key)["..."]`
 vsSetting_Siege.playerCharacterSet	charactersTable	html_request	equip / tactics 是玩家在 vs 编成界面填的请求侧参数
 StrategyCommandSelector.createConfirmDialog	*	message_table	该方法的读来自消息表 instance["STRATEGY_MSG_COMMAND_TRAINING_INFO0"]，不是端点回包
+DeckAddMaxCharacter.createAddCharacterWindow	hashtable3	nested_child	DeckAddMaxCharacter.cs:147-151：hashtable3 = res["possessionLimits"]，随后 hashtable3["character"] 读的是已声明的 possessionLimits.character，根键 character 是扫描伪键
+QuestScriptCommand.clearObstacle	uses	nested_child	QuestScriptCommand.cs:2207-2210：uses = res["uses"]，switch((string)uses["category"]) 读的是已声明的 uses.category，根键 category 是扫描伪键

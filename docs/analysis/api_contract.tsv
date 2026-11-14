@@ -21,11 +21,11 @@ auction/auctionStatus	auctionStatus	token			status*	1	AuctionDataManager.Auction
 auth/createPlayer	createPlayer	colorIndex,countryId,invitationCode,navigatorId,token,username				0	BootUp.dummyPlayerCreate|LoginEnvironment.createNewPlayer	2
 auth/gameLogin	gameLogin	token			certifiedInternetCafe:bool*;container:string*;succeeded:bool	3	SessionKeeper.login	1
 auth/guestLogin	guestLogin	loginHash,platform			isCreatedPlayer:bool;loginHash:string	2	BootUp.guestlogin|SessionKeeper.guestLogin	2
-auth/keepAliveContainer	refreshKeepAliveContainer	token			isCreatedPlayer;loginHash	2	SessionKeeper.refreshKeepAliveContainer	1
+auth/keepAliveContainer	refreshKeepAliveContainer	token			isCreatedPlayer:bool;loginHash:string	2	SessionKeeper.refreshKeepAliveContainer	1
 auth/login	pubLogin	sessionKey			succeeded:bool	1	SessionKeeper.directLogin	1
 auth/refreshToken	refreshToken	token				0	BoosterPackScene.buyCredit	1
 auth/registerName	registerName	token,username			succeeded:bool	1	BootUp.dummyPlayerCreate|LoginEnvironment.registerName|LoginTransNameEntry.onDecide|MigrateTransEntry.Start|MigrateTransEntry.Start#responder=Singleton<UserStatus>.Instance.Entry.userName_	5
-battle/captchaVsBattle	captchaVsBattle	token,verificationCode			successful	1	vsSettingMacroProvisionWindow.completeInput	1
+battle/captchaVsBattle	captchaVsBattle	token,verificationCode			successful:Hashtable	1	vsSettingMacroProvisionWindow.completeInput	1
 battle/executeBattle	executeBattle|executeBattleGiganticRaidBoss|executeBattleMonster|executeBattleNPC|executeBattleOutBreak|executeBattlePlayer|executeBattleQuest|executeBattleRaidBoss|executeBattleSiege|executeBattleStrategy	battleInformation,battleType,buildingId,command,deckIndex,difficulty,encountId,entry,isBot,isTurfWar,itemId,monsterId,npcId,questType,requestPhase,rivalId,token		{"battleType": ["ATTEMPT_BATTLE", "BOSS_BATTLE", "GIGANTIC_RAIDBOSS_BATTLE", "NPC_BATTLE", "PLAYER_BATTLE", "QUEST_BATTLE", "RAIDBOSS_BATTLE", "SIEGE_BATTLE", "STRATEGY_BATTLE", "VS_BATTLE"], "npcId": ["Npc0001_01"], "monsterId": ["monster2_00001_01"]}	 + name + ;additional;bonus:Hashtable;commandResult*;defenderName:string;log:Hashtable;payment:Hashtable;result:Hashtable;winner:string;executeInfo:Hashtable;executeInfo.step:double;executeInfo.missionPoint:double;eventInfo:Hashtable;eventInfo.eventType:double;eventInfo.obstacleInfo:Hashtable;eventInfo.obstacleInfo.amount:double;eventInfo.obstacleInfo.needAmount:double;eventInfo.obstacleInfo.type:string;eventInfo.obstacleInfo.category:string;eventInfo.treasureInfo:Hashtable;eventInfo.treasureInfo.keyItemId:string;eventInfo.treasureInfo.keyItemCount:double;eventInfo.treasureInfo.haveCount:double;eventInfo.treasureInfo.treasureId:double;eventInfo.treasureInfo.rewardId:string;rewardInfo:Hashtable;bonusInfo:Hashtable	27	BattleApiClient.executeBattle|BattleApiClient.executeBattle#responder=deckIndex,rivalId,itemId,isTurfWar,isBot,responder|BattleLogManager.getParameterFromServerForDebug|BattleLogManager.setParameter_as_VS|PluginRunner_DoBattleNormal.onGetRivals|vsSetting.executeSkipBattle	6
 battle/getRaidBossDetail	getRaidBossDetail	entry,token			id;name;playerId	3	RaidBossBattleInfoList.setRaidBossHistory	1
 battle/getRaidBossEntries	getRaidBossEntries	token			entry:Hashtable*;limit:double;normScore:double;player:Hashtable;raidBossInfo:Hashtable;rank:double;score:double	7	PluginRaidbossDataManager.requestRaidbossData|PoliticMissionProgressList.phaseInit|QuestHUDController.setup|RaidBossScene.createList	4
@@ -33,7 +33,7 @@ battle/getRaidBossLogs	getRaidBossLogs	token			<id>.amount	1	mypageRasetsu.init	
 battle/getRivals2	getRivals	matchingType,token			bots:Hashtable*;rivals:Hashtable;updateTime:double	3	PluginRunner_DoBattleNormal.Run|vsSettingCache.getAdversary|vsSettingCache.getWarAdversary	3
 battle/getSelfRecord	getSelfRecord	matchingType,token			0:Hashtable;costs:Hashtable;endTime:double;gold:double	4	CountryRanking.setup|CountryRanking.setupForSkipBattle|PluginRunner_DoBattleNormal.Init|PluginRunner_DoBattleNormal.Run|PluginRunner_DoBattleNormal.onBattleResult|decisiveBattleSituation.setup	6
 battle/getTurfWarReplayData	getTurfWarReplayData	battleId,token,type		{"type": ["turfWar"]}		0		0
-battle/getVcode	getVcode	token			VCodeImage	1	vsSettingVcodeImage.loadVcodeImage	1
+battle/getVcode	getVcode	token			VCodeImage:Hashtable	1	vsSettingVcodeImage.loadVcodeImage	1
 battle/getVsBattleLogs	getStrategyBattleLogs|getTurfWarLogs|getVsBattleLogs	force,token,type		{"type": ["strategy", "turfWar", "vs"]}	details:Hashtable;logs:Hashtable	2	mypageBattleLogUpdateVs.load	1
 battle/getVsCountryRecords	getVsCountryRecords	countryId,token				0		0
 battle/getVsReplayData	getVsReplayData	battleId,token,type			 + name + ;additional;commandResult*	3	BattleApiClient.getVsReplayData|BattleApiClient.getVsReplayData#responder=id,type,responder|BattleLogManager.setParameter_as_Replay	3
@@ -42,7 +42,7 @@ battle/sendRescueRequest	sendRescueRequest	token			RAIDBOSS_MSG_FRIEND_HELP;RAID
 common/dedicate	dedicateBuilding|dedicateCharacter|dedicateEquip|dedicateGold|dedicateTactics	article,category,token		{"category": ["building", "character", "equip", "gold", "tactics"]}	gainPoint:double;limit:double;point:double;rank:double	4	DeckSale_Character.debugDelivery|DeckSale_Character.delivery|DedicateOfMaterialsDialog.setupChara	3
 common/getActionPoints	getActionPoints	token				0		0
 common/getAnnouncement	getAnnouncement	token				0		0
-common/getBriefOfNationalPower	getBriefOfNationalPowerSetting	token			dedicationRanking	1	DeckSale.startCall|MightOfNation.Start	2
+common/getBriefOfNationalPower	getBriefOfNationalPowerSetting	token			dedicationRanking:Hashtable	1	DeckSale.startCall|MightOfNation.Start	2
 common/getCharacters	getCharacters	token				0	DeckConflateCards_Character.sendRequestGetCharacters|PlayerDeckCache.process	2
 common/getEquips	getEquips	token			equip:Hashtable;grade:double	2	DeckConflateCards_Equip.setup|PlayerDeck.getEquips|vsSetting_Siege.playerCharacterSet	3
 common/getEventStatuses	getEventStatuses	token			giganticRaidBoss:Hashtable*;giganticRaidBoss.closeTime:double;giganticRaidBoss.endTime:double;giganticRaidBoss.isEntry:bool;giganticRaidBoss.resultCloseTime:double;giganticRaidBoss.status:string;siege:Hashtable*;siege.advantage:string;siege.closeTime:double;siege.endTime:double;siege.isEntry:bool;siege.resultCloseTime:double;siege.status:string;strategy:Hashtable;strategy.closeTime:double;strategy.endTime:double;strategy.isEntry:bool;strategy.resultCloseTime:double;strategy.status:string;turfWar:Hashtable;turfWar.closeWarTime:double;turfWar.endWarTime:double;turfWar.resultCloseTime:double;turfWar.status:string;turfWar.updateTime:double	25	BoardBody.reqWebActiveEvents|BoardBody.reqWebActiveEvents#responder=responder|PluginRunner_DoBattleSiege.checkSiegeEvent|StatusView.setupEventInformation|Strategy.onSetup|StrategySelect.Start|giganticRaidBossScene.Start	7
@@ -78,11 +78,11 @@ community/bbs/listThread	getBBSThreadList	item_per_page,num_of_comment_type,orde
 community/bbs/openBbs	openBBS	sess_key,token,type			guid	1	HTMLBbsMediator.openBbs	1
 community/bbs/openThread	openBBSThread	sess_key,thread_id,token,type			guid	1	BoardBody.reqWebOpenThread|BoardBody.reqWebOpenThread#responder=settingBbsSession_.SessKey,(int)CurrentBoardType,CurrentThre|HTMLBbsMediator.openThread	3
 community/bbs/postComment	postBBSThreadComment	comment,commit,sess_key,thread_id,token,type			guid	1	BoardBody.reqWebPostComment|BoardBody.reqWebPostComment#responder=settingBbsSession_.SessKey,(int)CurrentBoardType,CurrentThre|HTMLBbsMediator.postComment	3
-community/libs/bbsSession	getBBSSession	token			sess_key	1	BoardBody.reqWebBbsSession|HTMLBbsMediator.callBbsAPI	2
+community/libs/bbsSession	getBBSSession	token			sess_key:string	1	BoardBody.reqWebBbsSession|HTMLBbsMediator.callBbsAPI	2
 dailymission/exchangeDailyMissionItem	exchangeDailyMissionItem	rewardIndex,token			Result:Hashtable	1	DailyMissionScene.delegateRewardBtn	1
-dailymission/getDailyMission	getDailyMission	token			amount;curCount;getPoint;itemId;point*;state;totalCount	7	DailyMissionScene.Start	1
-dailymission/getDailyMissionReward	getDailyMissionReward	rewardIndex,token			Result	1	DailyMissionScene.delegateRewardBtn	1
-dailymission/getPoint	getActivePt	token			Result	1	DailyMissionScene.refreshActivePt	1
+dailymission/getDailyMission	getDailyMission	token			amount;curCount:string;getPoint;itemId:Hashtable;point*;state:string;totalCount	7	DailyMissionScene.Start	1
+dailymission/getDailyMissionReward	getDailyMissionReward	rewardIndex,token			Result:Hashtable	1	DailyMissionScene.delegateRewardBtn	1
+dailymission/getPoint	getActivePt	token			Result:Hashtable	1	DailyMissionScene.refreshActivePt	1
 debug/addCollections	addCollections	ids,seriesId,token,type				0	mypage.debugAddColections	1
 debug/addItems	debug_addItems	ids,token				0	DebugMakeCharacterMenu.debug_ItemsAdd|DebugMakeEquipMenu.debug_ItemsAdd|PoliticDebugMenu.debug_ItemCategoryAdd|PoliticDebugMenu.debug_ItemsAdd	4
 debug/clearBuildings	debug_clearBuildings	token				0	PoliticDebugMenu.requestClearBuilding	1
@@ -111,7 +111,7 @@ debug/forceFeedbackFriendOffer	debug_forceFeedbackFriendOffer	receivePlayerId,re
 debug/forceProgressGiganticChain	debug_ForceProgressGiganticChain	token				0		0
 debug/forceProgressGiganticPhase	debug_ForceProgressGiganticPhase	token				0		0
 debug/forceProgressQuest	forceProgressQuest	area,chapter,questId,questType,token				0	QuestStoryAreaSelector.OnGUI|QuestStorySelector.OnGUI|QuestTypeSelector.OnGUI	3
-debug/resetDedication	debug_resetDedicateScore	token			nationalPower:double	1	MightOfNationDialog.OnGUI	1
+debug/resetDedication	debug_resetDedicateScore	token			nationalPower:double;score:double	2	MightOfNationDialog.OnGUI	1
 debug/resetPlayer	resetPlayer	isCreatePlayer,token				0	PoliticDebugMenu.debugResetPlayer	1
 debug/resetQuest	resetQuest	token				0	QuestTypeSelector.OnGUI	1
 debug/setQuestStep	setQuestStep	areaId,chapterId,questId,questType,step,token				0	Quest.OnGUI	1
@@ -120,27 +120,27 @@ deck/enlargeCharacterLimit	enlargeCharacterLimit	enlargeId,token			character:Has
 deck/extendCharacterStore	enlargeStorageLimit	enlargeId,token			extendLimit;extendSlot;nextOpenLimit;now;possessionLimits:Hashtable;possessionLimits.character:Hashtable	6	DeckAddMaxCharacter.createAddCharacterWindow	1
 deck/getAvatarCharacters	getAvatarCharacters	playerIds,token			 + name + ;baseId:string;grade:double	3	BoardAvatar.init|HTMLBbsMediator.getIconURL|MigrateEnv.getMyBushoTexture|Politic.resetMap|Politic.resetMapRanking|Politic.sendRequestGetMapData|QuestDataCache.process|mypageAvatar.init	8
 deck/getCharacterStoreInfo	getCharacterStorageInfo	token				0	DeckScene.getStorageInfo	1
-deck/getCharactersInStore	getStorageCharacters	token			extendSlot	1	DeckConflateCards_StrageCharacter.setup	1
-deck/getDeckBonus	getDeckBonus	token			bonus:Hashtable;id	2	DeckScene.OnEnable|HTMLBoosterMediator.addCardInfoHash|HTMLBoosterMediator.addCardInfoHash#responder=parameterId,key|vsSetting.Start|vsSetting.executeSkipBattle	5
-deck/getDecks	getDecks	token			0:Hashtable;1:Hashtable;4;character:Hashtable;equip;ids:Hashtable;inheritPoint:double;possessionLimits:Hashtable;siege:Hashtable;skillCoins:double;strategy:Hashtable*	11	DeckScene.OnEnable|PlayerDeck.getPlayerDeck|PlayerDeckCache.process|PluginRunner_DoBattleSiege.Init|QuestDataCache.process|Strategy.setupDeck|StrategySelect.setup|siegeBriefMenu.siegeDeck	8
+deck/getCharactersInStore	getStorageCharacters	token			extendSlot:double	1	DeckConflateCards_StrageCharacter.setup	1
+deck/getDeckBonus	getDeckBonus	token			bonus:Hashtable;id:Hashtable	2	DeckScene.OnEnable|HTMLBoosterMediator.addCardInfoHash|HTMLBoosterMediator.addCardInfoHash#responder=parameterId,key|vsSetting.Start|vsSetting.executeSkipBattle	5
+deck/getDecks	getDecks	token			0:Hashtable;1:Hashtable;4;character:Hashtable;equip:Hashtable;ids:Hashtable;inheritPoint:double;possessionLimits:Hashtable;siege:Hashtable;skillCoins:double;strategy:Hashtable*	11	DeckScene.OnEnable|PlayerDeck.getPlayerDeck|PlayerDeckCache.process|PluginRunner_DoBattleSiege.Init|QuestDataCache.process|Strategy.setupDeck|StrategySelect.setup|siegeBriefMenu.siegeDeck	8
 deck/getFormation	getFormation	atkOrdef,token				0		0
 deck/getProtectedCharacterIds	getProtectCharacters	token				0	DeckScene.OnEnable	1
 deck/getProtectedEquipIds	getProtectEquips	token				0	DeckScene.OnEnable	1
-deck/gradeUpCharacter	characterGradeUp	baseId,itemId,materialId,token			id;images	2	DeckConflate_Evo.evolutionFablicConnection	1
+deck/gradeUpCharacter	characterGradeUp	baseId,itemId,materialId,token			id;images:string	2	DeckConflate_Evo.evolutionFablicConnection	1
 deck/gradeUpEquip	equipGradeUp	baseId,itemId,materialId,token			id;images:string	2	DeckEquip_Evo.evolutionFablicConnection	1
-deck/inheritCharacterSkill	skillAccessionCharacters	destCharacterId,destSkillSlot,potionId,srcCharacterId,srcSkillSlot,token			0;inheritPoint:double;removeCharacterId;useItems:Hashtable	4	DeckConflate_Skill.skillAccessionConnection	1
+deck/inheritCharacterSkill	skillAccessionCharacters	destCharacterId,destSkillSlot,potionId,srcCharacterId,srcSkillSlot,token			0;inheritPoint:double;removeCharacterId:Hashtable;useItems:Hashtable	4	DeckConflate_Skill.skillAccessionConnection	1
 deck/powerUpCharacter	characterPowerUp	baseId,itemId,materialIds,token			atk:double;def:double;int:double	3	DeckConflate_Conflate.conflateFablicConnection|DeckConflate_Conflate.debugRun|DeckConflate_SkillRefresh.debugRun|DeckEquip_Conflate.debugRun	4
 deck/powerUpEquip	equipPowerUp	baseId,itemId,materialIds,token			atk:double;def:double;int:double	3	DeckEquip_Conflate.conflateFablicConnection	1
-deck/sellCharacters	sellCharacters	characterIds,token			sellPrice	1	DeckSale_Character.debugSale|DeckSale_Character.sale	2
-deck/sellEquips	sellEquips	equipIds,token			sellPrice	1	DeckSale_Equip.sale	1
-deck/sellTactics	sellTactics	tactics,token			sellPrice	1	DeckSale_Tactics.sale	1
+deck/sellCharacters	sellCharacters	characterIds,token			sellPrice:double	1	DeckSale_Character.debugSale|DeckSale_Character.sale	2
+deck/sellEquips	sellEquips	equipIds,token			sellPrice:double	1	DeckSale_Equip.sale	1
+deck/sellTactics	sellTactics	tactics,token			sellPrice:double	1	DeckSale_Tactics.sale	1
 deck/setCharacterProtect	setProtectCharacters	characterIds,enable,token				0	CharacterConflatePreview_Character.protectOrRelease	1
 deck/setCharacterVoice	setCharacterVoice	characterId,token,voiceId			amount:double	1	DeckChangeVoice.changeVoice	1
 deck/setDecks	setDecks	decks,token			0	1	DeckMake.deckSave	1
 deck/setEquipProtect	setProtectEquips	enable,equipIds,token				0	CharacterConflatePreview_Equip.protectOrRelease	1
 deck/setFormation	setFormation	atkOrDef,formation,token				0		0
-deck/setSkillSlot	setSkillSlot	baseId,paymentId,token			amount;category;character:Hashtable;result:Hashtable	4	DeckConflate_SkillRefresh.sendRefreshRequest	1
-deck/setSkillcoins	setSkillcoins	characterIds,token			skillCoins	1	DeckConflate_SkillRefresh.conflateFablicConnection	1
+deck/setSkillSlot	setSkillSlot	baseId,paymentId,token			amount;category:Hashtable;character:Hashtable;result:Hashtable	4	DeckConflate_SkillRefresh.sendRefreshRequest	1
+deck/setSkillcoins	setSkillcoins	characterIds,token			skillCoins:double	1	DeckConflate_SkillRefresh.conflateFablicConnection	1
 deck/transferStoreCharacters	moveStorageCharacter	toCharacterIds,toStoreIds,token			lastOpenDate:double;now:double	2	DeckStorage.endCall	1
 depletionmission/drawDepletionItem	DrawDepletionMission	token			Result	1	DrawLotter.StartLotter	1
 depletionmission/exchangeDepletionPoint	ExchangeDepletionPoint	missionId,token				0	DrawSystem.Exchange	1
@@ -154,22 +154,22 @@ friend/findFriendsAndSend	getFindFriendsAndSend	friendMax,token			FRIEND_MSG_AUT
 friend/getFriendMap	getFriendMap	friendPlayerId,token				0		0
 friend/getFriendMapData	getFriendMapData	friendPlayerId,token				0		0
 friend/getFriendMapData2	getFriendMapData	friendPlayerId,mapId,token			acceleratecount:double;buildings:Hashtable;completecount:double;deployedMapKey:string;friendInfo:Hashtable;friendInfo.turfWar:Hashtable;friendInfo.turfWar.team:string;height:double;map:Hashtable;occupiedGrids:Hashtable;producings:Hashtable;size:Hashtable*;tasks:Hashtable;team:string;turfWar:Hashtable;width:double	16	Politic.resetFriendMap	1
-friend/getFriendProfile	getFriendProfile	forHTML,friendPlayerId,token			 + name + ;attribute;country;countryId;func;guid;habits;limit;message;playerId;rank	11	FriendListFirstWindow.createFriendList|FriendSpcWindow.createSpecObj|HTMLBbsMediator.getFriendProfile|HTMLRanking.callTestFriendProfile|HTMLRanking.callTestFriendProfile#responder="dummy,debug302"|HTMLRankingMediator.getFriendProfile|HTMLUtil.getFriendProfile|Politic.resetMapRanking	8
+friend/getFriendProfile	getFriendProfile	forHTML,friendPlayerId,token			 + name + ;attribute;country:string;countryId:string;func;guid;habits:Hashtable;limit:double;message:string;playerId;rank	11	FriendListFirstWindow.createFriendList|FriendSpcWindow.createSpecObj|HTMLBbsMediator.getFriendProfile|HTMLRanking.callTestFriendProfile|HTMLRanking.callTestFriendProfile#responder="dummy,debug302"|HTMLRankingMediator.getFriendProfile|HTMLUtil.getFriendProfile|Politic.resetMapRanking	8
 friend/getFriends	getFriends	option,token			guid;playerIds	2	FriendListWindow.getFriendData|HTMLBbsMediator.getFriends|vsSetting.Start|vsSetting_Siege.Start	4
 friend/getVisitFriendLogs	getVisitFriendLogs	token				0	mypageRecord.getHelpLogs|mypageRecord.getVisitFriendLogs	2
 friend/sendFriendOffer	sendFriendOffer	friendPlayerId,token			0;guid	2	FriendConfirmationWindow.invokeOrder|HTMLBbsMediator.sendFriendOffer	2
 friend/setGuestMap	setGuestMap	mapId,token				0	mypageCastleTownUpdate.changeFriendMap	1
-friend/task/accelerateFriendProduceTask	accelerateFriendProduceTask	buildingId,friendPlayerId,id,mapId,token			acceleratecount;errno:double*;kokudaka:double*;producings:Hashtable	4	PoliticBuilding.accelerateProduceTask	1
+friend/task/accelerateFriendProduceTask	accelerateFriendProduceTask	buildingId,friendPlayerId,id,mapId,token			acceleratecount:Hashtable;errno:double*;kokudaka:double*;producings:Hashtable	4	PoliticBuilding.accelerateProduceTask	1
 friend/task/completeFriendTasks	completeFriendTask	buildingId,friendPlayerId,mapId,token			autoProducings:Hashtable;completecount:double;errno:double*;producings:Hashtable	4	StateAutoProduce.checkInnerProductionFriendMap	1
 friend/updateFriendData	updateFriendData	token			guid	1	FriendConfirmationWindow.doInvoke|FriendWindowControll.startFriendWindow|HTMLBbsMediator.updateFriendData	3
-friend/visitFriendMap	visitFriendMap	friendPlayerId,token			buildings:Hashtable;deployedMapKey:string;friendInfo;height:double;map:Hashtable;occupiedGrids:Hashtable;producings:Hashtable;size:Hashtable*;tasks:Hashtable;team:string;turfWar:Hashtable;width:double	12	Politic.resetFriendMap	1
+friend/visitFriendMap	visitFriendMap	friendPlayerId,token			buildings:Hashtable;deployedMapKey:string;friendInfo:Hashtable;height:double;map:Hashtable;occupiedGrids:Hashtable;producings:Hashtable;size:Hashtable*;tasks:Hashtable;team:string;turfWar:Hashtable;width:double	12	Politic.resetFriendMap	1
 giganticRaidBoss/entryGiganticRaidBoss	entryGiganticRaidBoss	token				0	giganticRaidBossScene.Start	1
 giganticRaidBoss/getGiganticRaidBossBattleResult	getGiganticRaidBossBattleResult	token			additionalResult	1	BattleApiClient.getGiganticRaidBossBattleResult|BattleApiClient.getGiganticRaidBossBattleResult#responder=responder|BattleLogManager.setParameter_as_Gigantic	3
 giganticRaidBoss/getGiganticRaidBossEventResult	getGiganticRaidBossEventResult|getGiganticRaidBossEventResultLog	term,token		{"term": ["current", "last"]}	contribute:Hashtable;contribute.self:Hashtable;contribute.self.rank:double;contribute.self.value:double;contribute.top:Hashtable;contribute.top.name:string;contribute.top.rank:double;contribute.top.value:double;country:string;countryRank:double;damage:Hashtable;damage.self:Hashtable;damage.self.rank:double;damage.self.value:double;damage.top:Hashtable;damage.top.name:string;damage.top.rank:double;damage.top.value:double;end:double;gainRatio:double;luckyCountList:Hashtable;name:string;open:double;punishPoint:string;rank:double;schedule:Hashtable;schedule.end:double;schedule.open:double;self:Hashtable;top:Hashtable;value:double	31	GiganticRaidBossResultRenderer.load	1
 giganticRaidBoss/getGiganticRaidBossInformation	getGiganticRaidBossInfo	buildingTypeId,difficulty,token			attackList:Hashtable;chain:double;damage:long;endTime:double;giganticRaidBossPoint:Hashtable;giganticRaidBossPoint.status:string;hp:long;monsterId:string;needPoint:Hashtable;needPoint.0:int;needPoint.1:int;needPoint.2:int;phase:double;punishPoint:double	14	giganticRaidBossScene.gotoBattle|giganticRaidBossScene.requestInformationAPI|giganticRaidBossScene.setup	3
 inbox/getParcels	getParcels	end,start,token			createdTime:double*;parcels:Hashtable;rewards:Hashtable*;totalCount:double	4	InboxReader.reload|PluginRunner_DoReceiveMail.Run	2
 inbox/resolveParcels	resolveParcels	responses,token			failed:Hashtable*;rewards:Hashtable*;successful:Hashtable*	3	InboxResolveWorker.onResolve|PluginRunner_DoReceiveMail.onGetParcels	2
-invitation/getMyCode	getMyInvitationCode	token			myCode	1	mypageInvitation.getInvitationCode	1
+invitation/getMyCode	getMyInvitationCode	token			myCode:string	1	mypageInvitation.getInvitationCode	1
 invitation/getPlayer	registerInvitationCode	code,token			invitation:Hashtable	1	LoginEnvironment.registerInvitationCode|LoginTransInvitationCodeEntry.onDecide	2
 mailbox/deleteMails	deleteMails	mailIds,status,token				0	HTMLMailBoxMediator.deleteMails|HTMLMailBoxMediator.deleteMails#responder=inJson|HTMLMailCore.deleteMails	3
 mailbox/getMailBody	getMailBody	mailId,status,token			body;func	2	HTMLMailBox.debugGetMailBody|HTMLMailBox.debugGetMailBody#responder=inJson|HTMLMailBoxMediator.getMailBody|HTMLMailBoxMediator.getMailBody#responder=inJson|HTMLMailCore.getMailBody	5
@@ -180,7 +180,7 @@ navigator/getNavigatorDetails	getNavigatorDetails	navigatorId,token				0	Navigat
 navigator/getNavigators	getNavigators	token				0		0
 navigator/getUsableNavigators	getUsableNavigators	token			type:int	1	NavigatorChangeEnv.getUsableNavigator	1
 navigator/hireNavigator	hireNavigator	colorIndex,navigatorId,token			 + name + 	1	NavigatorChangeSelectRental.onBuy	1
-netCafe/exchangeNpoint	exchangeNetCafeNpoint	token			normStatus	1	onikujiNetCafeExchangeDialog.exchangeNPoint	1
+netCafe/exchangeNpoint	exchangeNetCafeNpoint	token			normStatus:string	1	onikujiNetCafeExchangeDialog.exchangeNPoint	1
 plugin/addPluginLog	addPluginLog	logdata,token				0	PluginLogManager.SendLog|PluginLogManager.SendLog#responder=log,null	2
 plugin/buyPluginTime	buyPluginTime	pluginId,token			creditExpireAt:Hashtable;pluginTime:double	2	PluginTaskManager.DoMyWindow|PluginTaskManager.buyTime	2
 plugin/getPluginData	getPluginData	token			pluginData:Hashtable;pluginTime:Hashtable*	2	PluginTaskManager.SendServerRequest|PoliticButton.attachPluginIcon|PoliticSFButtons.attachPluginIcon	3
@@ -188,7 +188,7 @@ plugin/getPluginLog	getPluginLog	token			action:string;logdatas:Hashtable;reward
 plugin/setPluginData	setPluginData	pluginSetting,token				0	PluginTaskManager.SendPluginData|PluginTaskManager.SendPluginData#responder=pluginSetting,null	2
 politic/boosterPack/buy	buy	boosterPackId,cost,quantity,token			amount	1	BoosterPack_Work.excute	1
 politic/boosterPack/buyWithItem	buyWithItem	boosterPackId,quantity,token,useItemId			amount	1	BoosterPack_Work.excute	1
-politic/boosterPack/getRemains	getRemains	token			busho	1	BoosterPackScene.Start	1
+politic/boosterPack/getRemains	getRemains	token			busho:string	1	BoosterPackScene.Start	1
 politic/building/conflateBuilding	conflateBuilding	first,second,token			amount:double;errorReason:string	2	InventoryEvolutionList.execute	1
 politic/building/deployBuilding	deployMapBuilding	buildingId,originCoord,token			autoProducings:Hashtable;building:Hashtable;buildingId:double;kokudaka:double*	4	PoliticBuilding.deployInventory	1
 politic/building/getBuildCounts	getBuildCounts	token			type:Hashtable*	1	PoliticMissionProgressList.phaseInit	1
@@ -232,16 +232,16 @@ politic/mission/getMissionsInProgress	getPoliticMissionsInProgress	token			missi
 politic/mission/getStatesFromAllMissions	getStatesFromAllPoliticMissions	token			missions:Hashtable*;states:Hashtable*	2	LessonMissionSimpleStatusManager.setup|PoliticMissionProgressList.phaseInit	2
 politic/mission/setWorkingValue	setPoliticMissionWorkingValue	indexes,missionId,token,values				0	PoliticMissionProgressStatus.sendUnlockOperation	1
 politic/mypage/claimReward	claimReward	reward,token				0	NineGridDataManager.ClaimReward	1
-politic/mypage/getArtifactSeries	getArtifactSeries	category,page,seriesMax,token			pageMax;series	2	mypageCollectionArtifact.load	1
+politic/mypage/getArtifactSeries	getArtifactSeries	category,page,seriesMax,token			pageMax;series:Hashtable	2	mypageCollectionArtifact.load	1
 politic/mypage/getArtifactSeriesReward	getArtifactSeriesReward	seriesId,token			reward:Hashtable;series:Hashtable*;toInbox:Hashtable	3	mypageCollectionWork.execReward	1
 politic/mypage/getCharacterCollection	getCharacterCollection	token				0	mypageLibrary.init	1
 politic/mypage/getCredit2Logs	getCredit2Logs	end,start,token				0		0
 politic/mypage/getCreditLogs	getCreditLogs	end,start,token			logs:Hashtable	1	mypageRecord.getKobanLogs	1
 politic/mypage/getEventcodeLogs	getEventcodeLogs	end,start,token			logs:Hashtable	1	mypageSerialCode.getSerialCodeRecordLogs	1
-politic/mypage/getJewelSeries	getJewelSeries	category,page,seriesMax,token			pageMax;series	2	mypageCollectionJewel.load	1
+politic/mypage/getJewelSeries	getJewelSeries	category,page,seriesMax,token			pageMax;series:Hashtable	2	mypageCollectionJewel.load	1
 politic/mypage/getJewelSeriesReward	getJewelSeriesReward	seriesId,token			reward:Hashtable;series:Hashtable*;toInbox:Hashtable	3	mypageCollectionWork.execReward	1
 politic/mypage/getLessonStates	getLessonStates	token			states:Hashtable	1	LessonMissionSimpleStatusManager.setup	1
-politic/mypage/getMigratePlanCountryStatus	getMigratePlanCountryStatus	migratePlan,token			country;rank	2	mypageEmigrateUpdate.onEmigrate	1
+politic/mypage/getMigratePlanCountryStatus	getMigratePlanCountryStatus	migratePlan,token			country:string;rank	2	mypageEmigrateUpdate.onEmigrate	1
 politic/mypage/getMigratePlansStatus	getMigratePlanStatus	token			migratableTime:double;migratePlans:Hashtable	2	mypageEmigrateUpdate.setEmigrate	1
 politic/mypage/getNineGridInfo	getNineGridInfo	token				0	NineGridDataManager.GetNineGridInfoFromServer	1
 politic/mypage/getPlayerProfile	getPlayerProfile	token			0:string;1:string;2:string;black:double;blue:double;currentGuestMapId:double*;eachKokudaka:Hashtable*;green:double;habits:Hashtable;message:string;purple:double;red:double;white:double;yellow:double	14	mypageCastleTownUpdate.load|mypageProfileUpdate.load	2
@@ -252,17 +252,17 @@ politic/mypage/setSelfIntroduction	setSelfIntroduction	habits,message,token			su
 politic/mypage/takeLesson	takeLesson	lessonId,token			reward:Hashtable;toInbox:Hashtable	2	LessonScriptCommand.getReward	1
 politic/mypage/useEventcode	useEventcode	eventcode,token			itemIds:Hashtable	1	mypageSerialCodeWindow.sendSerialCode	1
 politic/shop/buyBackgroundItem	buyBackgroundItem	shopItemId,token			resources:Hashtable*	1	mypageShopBgWindow.phaseBuyItem	1
-politic/shop/buyShopItem	buyShopItem	index,quantity,shopItemId,storetable,token			DialogCode;SceneId;errorReason;resources;result:Hashtable	5	DailyMissionScene.onConfirmBuy|ShopItemBuild.saleWindowResult|ShopItemSupport.saleWindowResult|SimpleInventoryDialog.onBuyItem	4
+politic/shop/buyShopItem	buyShopItem	index,quantity,shopItemId,storetable,token			DialogCode;SceneId;errorReason;resources:Hashtable;result:Hashtable	5	DailyMissionScene.onConfirmBuy|ShopItemBuild.saleWindowResult|ShopItemSupport.saleWindowResult|SimpleInventoryDialog.onBuyItem	4
 politic/shop/buyShopItemCredit	buyShopItemCredit	index,quantity,shopItemId,storetable,token				0		0
-politic/shop/buyShopItemFromNationalPower	buyShopItemFromNationalPower	index,quantity,shopItemId,token			DialogCode;SceneId;errorReason;resources	4	ShopItemNationalPower.saleWindowResult	1
+politic/shop/buyShopItemFromNationalPower	buyShopItemFromNationalPower	index,quantity,shopItemId,token			DialogCode;SceneId;errorReason;resources:Hashtable	4	ShopItemNationalPower.saleWindowResult	1
 politic/shop/getBackgroundItems	getBackgroundItems	category,token			shopItems:Hashtable	1	mypageShopBgWindow.phaseInit	1
 politic/shop/getShopItems	getShopItems	category,token			recommendedItems;shopItems:Hashtable	2	DailyMissionScene.processShopItems|PoliticFSMShop.menuWait|ShopUpdate.load|SimpleInventoryDialog.processShopItems	4
 politic/shop/getShopItemsCredit	getShopItemsCredit	category,token				0		0
-politic/shop/getShopItemsFromNationalPower	getShopItemsFromNationalPower	token			recommendedItems;shopItems	2	ShopUpdateNationalPower.load	1
+politic/shop/getShopItemsFromNationalPower	getShopItemsFromNationalPower	token			recommendedItems;shopItems:Hashtable	2	ShopUpdateNationalPower.load	1
 politic/shop/sellBuildings	sellBuildings	buildingIds,token			buildings*;gainGold:double	2	InventorySaleList.sellBuilding	1
 politic/support_item/getPotions	getPotions	token			amount:double;potion0000102:Hashtable*;potion0000801:Hashtable*;potion0000802:Hashtable*;potion0000803:Hashtable*;potions:Hashtable;potions.potion0000102:Hashtable;potions.potion0000102.amount:double	8	BoosterPack_Work.Start|DailyMissionScene.processPotions|DeckUseItem.startCall|PoliticItemInventory.setup|QuestFullAutoSkipCaution.updatePotionText|QuestScriptCommand.checkQuestActionPoint|SimpleInventoryDialog.processPotions	7
 politic/support_item/useDopingItem	useDopingItemForCharacter	characterId,count,potionId,token			amount:double	1	DeckUseItem_confimation.callUseUpItem	1
-politic/support_item/useDopingRemoveItem	useDopingRemoveItemForCharacter	characterId,potionId,token			addItems;changeItems;character	3	DeckUseItem_confimation.callReleaseItem	1
+politic/support_item/useDopingRemoveItem	useDopingRemoveItemForCharacter	characterId,potionId,token			addItems;changeItems;character:Hashtable	3	DeckUseItem_confimation.callReleaseItem	1
 politic/support_item/usePotions	usePotion	potionId,quantity,token			point:double;result:Hashtable*	2	DailyMissionScene.useMallItem|PluginRunner_DoPotionAll.Run|PluginRunner_DoPotionPolitic.Run|PluginRunner_DoPotionQuest.Run|PluginRunner_DoPotionRaidboss.Run|PoliticItemInventory.useItem|QuestScriptCommand.checkQuestActionPoint|SimpleInventoryDialog.onUsePotion	8
 politic/support_item/useSkillPotion	useDopingSkillItemForCharacter	characterId,count,potionId,slot,token			amount:double	1	DeckUseItem_confimation.callUseUpSkillItem	1
 politic/task/accelerateProduceTask	accelerateProduceTask	buildingId,count,id,token			DirectMessage;producings:Hashtable	2	PoliticBuilding.accelerateProduceTask|PoliticTimeCrunchInstantWindow.useCredit|PoliticTimeCrunchInstantWindow.useCredit#responder="friend_accel"|PoliticTimeCrunchInstantWindow.useCredit#responder=accelId,accelCount,notify|PoliticTimeCrunchWindow.setup|PoliticTimeCrunchWindow.setup#responder=accelId	6
@@ -275,7 +275,7 @@ politic/task/submitBuildTask	sumbitBuildTask	draftId,originCoord,token			buildin
 politic/task/submitBulkBuildAndComplete	submitBulkBuildAndComplete	draftId,originCoords,token			0:double;1:double;autoProducings:Hashtable;buildings:Hashtable;kokudaka:double*;originCoords:Hashtable	6	PoliticFSMConstruction.setSerialSelectBuilding	1
 politic/task/submitBulkProduceTasks	submitBulkProduceTasks	buildingIds,productIds,token			producings:Hashtable	1	PluginRunner_DoManual.Run|PoliticFSMCollectiveProduce.selectProduceAll|PoliticFSMProduct.phaseSelectProduceAll	3
 politic/task/submitProduceTask	sumbitProduceTask	buildingId,productId,token				0	StateManualProduce.waitProduce	1
-politic/task/submitSerialBuildAndComplete	submitSerialBuildAndComplete	draftId,originCoords,token			autoProducings:Hashtable;building:Hashtable;buildingId*;errorReason:string;kokudaka:double*;x;y	7	PoliticBuilding.SerialBuildAndComplete	1
+politic/task/submitSerialBuildAndComplete	submitSerialBuildAndComplete	draftId,originCoords,token			autoProducings:Hashtable;building:Hashtable;buildingId*;errorReason:string;kokudaka:double*;x:float;y:float	7	PoliticBuilding.SerialBuildAndComplete	1
 politic/task/submitSerialBuildTask	sumbitSerialBuildTask	draftId,originCoords,token				0		0
 politic/waterborneTrade/call	callWaterTrade	buildingId,mapId,token				0	PoliticWaterTradeWindow.callWaterTrade	1
 politic/waterborneTrade/getFleet	getFleetWaterTrade	buildingId,mapId,token				0	PoliticFSMWaterTradeEntry.getFleetInfo	1
@@ -301,12 +301,12 @@ quest/getRandomQuestRanking	getRandomQuestRanking	token			rank:double;score:doub
 quest/openQuest	openQuest	questType,token			addWork:bool*;questIds:Hashtable;questType:string	3	PluginQuestDataManager.GetEventData|PluginRunner_DoEvent.onQuestChapterData|QuestDataCache.openQuest|QuestScriptCommand.openQuest	4
 quest/openTreasureBox	openTreasureBox	token,treasureId,useItem			item:Hashtable;open:bool;reward:Hashtable	3	PluginQuestStepHelper.CallOpenTreasure|QuestScriptCommand.openTreasureBox	2
 quest/useSoulToStep	getOnikujiGoStep	lotteryId,questType,token				0		0
-ranking/getBriefOfBattle	getBriefOfBattle	token			 + name + ;field:string*;isCurrent;ranksize;unit	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupVsWeekly	2
-ranking/getBriefOfBattleDaily	getBriefOfBattleDaily	token			 + name + ;field:string*;isCurrent;ranksize;unit	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupVsDaily	2
-ranking/getBriefOfBrawn	getBriefOfBrawn	token			 + name + ;field:string*;isCurrent;ranksize;unit	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupBrawn	2
+ranking/getBriefOfBattle	getBriefOfBattle	token			 + name + ;field:string*;isCurrent;ranksize;unit:Hashtable	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupVsWeekly	2
+ranking/getBriefOfBattleDaily	getBriefOfBattleDaily	token			 + name + ;field:string*;isCurrent;ranksize;unit:Hashtable	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupVsDaily	2
+ranking/getBriefOfBrawn	getBriefOfBrawn	token			 + name + ;field:string*;isCurrent;ranksize;unit:Hashtable	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupBrawn	2
 ranking/getBriefOfCountriesInGiganticRaidBoss	getBriefOfCountriesInGiganticRaidBoss	token			 + name + ;field:string*	2	mypageRankingWindow.setupGiganticRaidBossPunishPoint	1
 ranking/getBriefOfCountryBattle	getBriefOfCountryBattle	token			 + name + ;field:string*;timestamp:string*	3	mypageRankingWindow.setupVsAll	1
-ranking/getBriefOfDedication	getBriefOfDedication	token			 + name + ;field:string*;isCurrent;ranksize;unit	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupDelivery	2
+ranking/getBriefOfDedication	getBriefOfDedication	token			 + name + ;field:string*;isCurrent;ranksize;unit:Hashtable	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupDelivery	2
 ranking/getBriefOfDedicationMonthly	getBriefOfDedicationMonthly	token			 + name + ;aroundRank;field:string*	3	HTMLRankingMediator_Delivery.getRankersAroundMeInDeliveryMonthly|mypageRankingWindow.setupDeliveryMonthly	2
 ranking/getBriefOfGiganticRaidBoss	getBriefOfGiganticRaidBoss	token			 + name + ;field:string*	2	mypageRankingWindow.setupGiganticRaidBossContribute	1
 ranking/getBriefOfGiganticRaidBossDaily	getBriefOfGiganticRaidBossDaily	token				0		0
@@ -314,11 +314,11 @@ ranking/getBriefOfKokudaka	getBriefOfKokudaka	token			 + name + ;aroundRank;fiel
 ranking/getBriefOfMaxDamageInGiganticRaidBoss	getBriefOfMaxDamageInGiganticRaidBoss	token			 + name + ;field:string*	2	mypageRankingWindow.setupGiganticRaidBossMaxDamage	1
 ranking/getBriefOfNationalPower	getBriefOfNationalPower	token			 + name + ;field:string*	2	mypageRankingWindow.setupNationalPower	1
 ranking/getBriefOfNationalRanking	getBriefOfNationalRanking	rankingGroup,rankingPeriod,token			 + name + ;field:string*;isCurrent;ranksize	4	HTMLRewardMediator.requestCore|HTMLRewardMediatorWeekly.requestCore|mypageRankingWindow.setupRaidBossNational	3
-ranking/getBriefOfRaidBoss	getBriefOfRaidBoss	token			 + name + ;field:string*;isCurrent;ranksize;unit	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupRasetsu	2
-ranking/getBriefOfRaidBossDaily	getBriefOfRaidBossDaily	token			 + name + ;aroundRank;field:string*;isCurrent;ranksize;unit	6	HTMLRankingMediator_RaidBoss.getDailyAroundRankersInRaidBoss|HTMLRewardMediator.requestCore|mypageRankingWindow.setupRasetsuDaily	3
+ranking/getBriefOfRaidBoss	getBriefOfRaidBoss	token			 + name + ;field:string*;isCurrent;ranksize;unit:Hashtable	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupRasetsu	2
+ranking/getBriefOfRaidBossDaily	getBriefOfRaidBossDaily	token			 + name + ;aroundRank;field:string*;isCurrent;ranksize;unit:Hashtable	6	HTMLRankingMediator_RaidBoss.getDailyAroundRankersInRaidBoss|HTMLRewardMediator.requestCore|mypageRankingWindow.setupRasetsuDaily	3
 ranking/getBriefOfRaidBossNational	getBriefOfRaidBossNational	token			 + name + ;field:string*;isCurrent;ranksize	4	HTMLRewardMediator.requestCore|mypageRankingWindow.setupRaidBossNational	2
-ranking/getBriefOfRandomQuest	getBriefOfRandomQuest	token			 + name + ;field:string*;isCurrent;ranksize;unit	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupGenmuStep	2
-ranking/getBriefOfSiege	getBriefOfSiege	role,token			 + name + ;field:string*;isCurrent;ranksize;unit	5	HTMLRewardMediator.requestCore|mypageRankingWindow.makeSetupSiege	2
+ranking/getBriefOfRandomQuest	getBriefOfRandomQuest	token			 + name + ;field:string*;isCurrent;ranksize;unit:Hashtable	5	HTMLRewardMediator.requestCore|mypageRankingWindow.setupGenmuStep	2
+ranking/getBriefOfSiege	getBriefOfSiege	role,token			 + name + ;field:string*;isCurrent;ranksize;unit:Hashtable	5	HTMLRewardMediator.requestCore|mypageRankingWindow.makeSetupSiege	2
 ranking/getBriefOfStrategy	getBriefOfStrategy	action,battlefield,team,token				0		0
 ranking/getBriefOfTurfWar	getBriefOfTurfWar	battlefield,team,token				0		0
 ranking/getBriefOfTurfWarDaily	getBriefOfTurfWarDaily	battlefield,team,token				0		0
@@ -335,59 +335,59 @@ ranking/getRankersInBrawn	getRankersInBrawn	endIndex,startIndex,term,token			 + 
 ranking/getRankersInDedication	getRankersInDedication	endIndex,startIndex,term,token			rank	1	HTMLRankingMediator_Delivery.getRankersAroundMeInDelivery|HTMLRankingMediator_Delivery.getTopRankersInDelivery	2
 ranking/getRankersInGiganticRaidBoss	getRankersInGiganticRaidBoss	endIndex,startIndex,term,token			rank	1	HTMLRankingMediator_GiganticRaidBoss.getAroundRankersInGiganticRaidBoss|HTMLRankingMediator_GiganticRaidBoss.getTopRankersInGiganticRaidBoss	2
 ranking/getRankersInKokudaka	getRankersInKokudaka	endIndex,startIndex,term,token			 + name + 	1	HTMLRankingMediator_Kokudaka.getAroundRankersInKokudaka|HTMLRankingMediator_Kokudaka.getCurRank|HTMLRankingMediator_Kokudaka.getTopRankersInKokudaka	3
-ranking/getRankersInNationalPower	getRankersInNationalPower	endIndex,startIndex,term,token			 + name + ;hiddenAround;hiddenEntry;invaride;myrank;rank;score;size;username	9	HTMLRankingMediator_NationalPower.getCurRank|HTMLRankingMediator_NationalPower.getRankersAroundMeInNationalPower|HTMLRankingMediator_NationalPower.getRankingOfCountriesInNationalPower	3
+ranking/getRankersInNationalPower	getRankersInNationalPower	endIndex,startIndex,term,token			 + name + ;hiddenAround;hiddenEntry;invaride;myrank;rank;score:double;size;username:string	9	HTMLRankingMediator_NationalPower.getCurRank|HTMLRankingMediator_NationalPower.getRankersAroundMeInNationalPower|HTMLRankingMediator_NationalPower.getRankingOfCountriesInNationalPower	3
 ranking/getRankersInNationalRanking	getRankersInNationalRanking|getWeeklyRankersInNationalRanking	rankingGroup,rankingPeriod,startIndex,stopIndex,term,token		{"rankingPeriod": ["all", "weekly"]}	 + name + 	1	HTMLRankingMediator_NationalRanking.getAroundRankersInNationalRanking|HTMLRankingMediator_NationalRanking.getCurRank|HTMLRankingMediator_NationalRanking.getTopRankersInNationalRanking	3
 ranking/getRankersInRaidBoss	getRankersInRaidBoss	endIndex,startIndex,term,token			rank	1	HTMLRankingMediator_RaidBoss.getAroundRankersInRaidBoss|HTMLRankingMediator_RaidBoss.getTopRankersInRaidBoss	2
 ranking/getRankersInRaidBossNational	getRankersInRaidBossNational	startIndex,stopIndex,term,token			 + name + 	1	HTMLRankingMediator_RaidBossNational.getAroundRankersInRaidBoss|HTMLRankingMediator_RaidBossNational.getCurRank|HTMLRankingMediator_RaidBossNational.getTopRankersInRaidBoss	3
 ranking/getRankersInRandomQuest	getRankersInRandomQuest	endIndex,startIndex,term,token			 + name + 	1	HTMLRankingMediator_GenmuStep.getCurRank|HTMLRankingMediator_GenmuStep.getRankersAroundMeInGenmuStep|HTMLRankingMediator_GenmuStep.getTopRankersInGenmuStep	3
 ranking/getRankersInSiege	getRankersInSiege	endIndex,role,startIndex,term,token			 + name + 	1	HTMLRankingMediator_Siege.getAroundRankersInSiege|HTMLRankingMediator_Siege.getCurRank|HTMLRankingMediator_Siege.getTopRankersInSiege	3
-ranking/getRankersInStrategy	getRankersInStrategy	action,battlefield,endIndex,startIndex,team,term,token			 + name + ;isCurrent;rank;ranksize;score;unit	6	HTMLRankingMediator_Strategy.getAroundRankersInStrategy|HTMLRankingMediator_Strategy.getCurRank|HTMLRankingMediator_Strategy.getTopRankersInStrategy|HTMLRewardMediator.requestCore	4
+ranking/getRankersInStrategy	getRankersInStrategy	action,battlefield,endIndex,startIndex,team,term,token			 + name + ;isCurrent;rank;ranksize;score:double;unit:Hashtable	6	HTMLRankingMediator_Strategy.getAroundRankersInStrategy|HTMLRankingMediator_Strategy.getCurRank|HTMLRankingMediator_Strategy.getTopRankersInStrategy|HTMLRewardMediator.requestCore	4
 ranking/getRankersInStrategyForMypage	getRankersInStrategyForMypage	action,endIndex,startIndex,token			 + name + 	1	HTMLRankingMediator_Strategy.getAroundRankersInStrategy|HTMLRankingMediator_Strategy.getCurRank|HTMLRankingMediator_Strategy.getTopRankersInStrategy|StrategyRankingPicker.reloadToCache	4
-ranking/getRankersInStrategyPie	getRankersInStrategyPie	endIndex,startIndex,term,token			 + name + ;captionFileName;countryRanking;hiddenAround;hiddenEntry;hiddenPreButton;invaride;myrank;rank;score;size;username	12	HTMLRankingMediator_StrategyRate.getCurRank|HTMLRankingMediator_StrategyRate.getRankingOfStrategyRateInBattle	2
+ranking/getRankersInStrategyPie	getRankersInStrategyPie	endIndex,startIndex,term,token			 + name + ;captionFileName;countryRanking;hiddenAround;hiddenEntry;hiddenPreButton;invaride;myrank;rank;score:double;size;username:string	12	HTMLRankingMediator_StrategyRate.getCurRank|HTMLRankingMediator_StrategyRate.getRankingOfStrategyRateInBattle	2
 ranking/getRankersInTurfWar	getRankersInTurfWar	battlefield,endIndex,startIndex,team,term,token			rank	1	HTMLRankingMediator_Tenka.getRankersAroundMeInTenka|HTMLRankingMediator_Tenka.getTopRankersInTenka	2
-ranking/getRankersOfCountriesInGiganticRaidBoss	getRankersOfCountriesInGiganticRaidBoss	endIndex,startIndex,term,token			 + name + ;captionFileName;countryRanking;hiddenAround;hiddenEntry;hiddenPreButton;invaride;isCurrent;myrank;rank;ranksize;score;size;unit;username	15	HTMLRankingMediator_GiganticPoint.getCurRank|HTMLRankingMediator_GiganticPoint.getRankingOfGiganticPoint|HTMLRewardMediator.requestCore	3
-ranking/getRankersOfMaxDamageInGiganticRaidBoss	getRankersOfMaxDamageInGiganticRaidBoss	endIndex,startIndex,term,token			 + name + ;isCurrent;rank;ranksize;score;unit	6	HTMLRankingMediator_GiganticMaxDamage.getAroundRankersInMaxDamageGiganticRaidBoss|HTMLRankingMediator_GiganticMaxDamage.getTopRankersOfMaxDamageInGiganticRaidBoss|HTMLRewardMediator.requestCore|giganticRaidBossRankingPicker.reloadToCache	4
-ranking/getRankingOfCountriesInBattle	getRankingOfCountriesInBattle	term,token			 + name + ;captionFileName;countryRanking;hiddenEntry;invaride;myrank;rank;score;size;username	10	HTMLRankingMediator_Country.getCurRank|HTMLRankingMediator_Country.getRankingOfCountriesInBattle	2
-ranking/getRecordOfCountryInBattle	getRecordOfCountryInBattle	token			countryId;rank:double	2	CountryRanking.setup|CountryRanking.setupForSkipBattle	2
+ranking/getRankersOfCountriesInGiganticRaidBoss	getRankersOfCountriesInGiganticRaidBoss	endIndex,startIndex,term,token			 + name + ;captionFileName;countryRanking;hiddenAround;hiddenEntry;hiddenPreButton;invaride;isCurrent;myrank;rank;ranksize;score:double;size;unit:Hashtable;username:string	15	HTMLRankingMediator_GiganticPoint.getCurRank|HTMLRankingMediator_GiganticPoint.getRankingOfGiganticPoint|HTMLRewardMediator.requestCore	3
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	getRankersOfMaxDamageInGiganticRaidBoss	endIndex,startIndex,term,token			 + name + ;isCurrent;rank;ranksize;score:double;unit:Hashtable	6	HTMLRankingMediator_GiganticMaxDamage.getAroundRankersInMaxDamageGiganticRaidBoss|HTMLRankingMediator_GiganticMaxDamage.getTopRankersOfMaxDamageInGiganticRaidBoss|HTMLRewardMediator.requestCore|giganticRaidBossRankingPicker.reloadToCache	4
+ranking/getRankingOfCountriesInBattle	getRankingOfCountriesInBattle	term,token			 + name + ;captionFileName;countryRanking;hiddenEntry;invaride;myrank;rank;score:double;size;username:string	10	HTMLRankingMediator_Country.getCurRank|HTMLRankingMediator_Country.getRankingOfCountriesInBattle	2
+ranking/getRecordOfCountryInBattle	getRecordOfCountryInBattle	token			countryId:Hashtable;rank:double	2	CountryRanking.setup|CountryRanking.setupForSkipBattle	2
 ranking/getTopRankersInTurfWar	getTurfWarTopRankers	battlefield,team,token			battlefields:Hashtable;endTime:long;rankers	3	TurfWarBriefCache.getRanking	1
-siege/discharge	siegeDischarge	token			amount:double;charge:Hashtable;costs:Hashtable;dischargeLogs:Hashtable;equip:Hashtable;gainBlackSoul:double;grade:double;record:Hashtable;rival:Hashtable;selfDeck:Hashtable;situation:Hashtable;stage;tactics:Hashtable	13	PluginRunner_DoBattleSiege.CheckBattle|vsSetting_Siege.attack	2
+siege/discharge	siegeDischarge	token			amount:double;charge:Hashtable;costs:Hashtable;dischargeLogs:Hashtable;equip:Hashtable;gainBlackSoul:double;grade:double;record:Hashtable;rival:Hashtable;selfDeck:Hashtable;situation:Hashtable;stage:double;tactics:Hashtable	13	PluginRunner_DoBattleSiege.CheckBattle|vsSetting_Siege.attack	2
 siege/enter	siegeEnter	token				0	PluginRunner_DoBattleSiege.ProcessSiegeBattle|siegeBriefMenu.siegeEnter	2
 siege/getBrief	siegeBrief	token			attacker:Hashtable;day:double;defender:Hashtable;isEntry:bool;role:string;stage:double;winner:Hashtable	7	siegeBriefMenu.init	1
-siege/getPairings	siegeGetPairings	token			 + name + ;atk1;atk1Rank;isMe;size	5	HTMLSiegeMediator.request	1
-siege/getSiegeResultLog	getSiegeResultLog	token			attacker:Hashtable;bonus;close:double;defender:Hashtable;globalTotalScore:string;open:double;rank:double;record:Hashtable;record.globalTotalScore:string;record.rank:double;role:string;schedule:Hashtable;schedule.close:double;schedule.open:double;victoryPoint;winner:Hashtable	16	SiegeResultRenderer.load	1
-siege/getSiegeStatus	getSiegeStatus	token			0:Hashtable;amount:double;charge:Hashtable;consecutiveWinCount:double;costs:Hashtable;dischargeLogs:Hashtable;equip:Hashtable;gold:double;grade:double;playerId:string;record:Hashtable;rival:Hashtable;selfDeck:Hashtable;siegeBattlePoint:Hashtable;situation:Hashtable;spot:double;stage;tactics:Hashtable	18	PluginRunner_DoBattleSiege.ProcessEnterBattle|vsSetting_Siege.getSiegeSituation	2
-siege/lookSiegeResult	lookSiegeResult	token			attacker:Hashtable;bonus;close:double;defender:Hashtable;globalTotalScore:string;open:double;rank:double;record:Hashtable;record.globalTotalScore:string;record.rank:double;role:string;schedule:Hashtable;schedule.close:double;schedule.open:double;victoryPoint;winner:Hashtable	16	SiegeResultRenderer.load	1
-siege/openingBet	siegeOpeningBet	food,iron,spot,token,wood			charge;consecutiveWinCount:double	2	PluginRunner_DoBattleSiege.CheckOpenBet|vsSetting_Siege.setExchangeResource	2
-strategy/command/attack	sendStrategyCommandIntercept	command,token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyCommandSelector.assault|StrategyCommandSelector.battle|StrategyCommandSelector.refuge|StrategyCommandSelector.siege	4
-strategy/command/buildCastle	sendStrategyCommandBuildCastle	token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyCommandSelector.building	1
-strategy/command/cancelMarch	sendStrategyCommandCencelRouteMarch	token			base;nextOperableTime;operatedTime;position	4	StrategyHUDController.sendMarchCancel	1
-strategy/command/changeBase	sendStrategyCommandChangeBase	token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyCommandSelector.changeBase	1
-strategy/command/conscript	sendStrategyCommandConscript	token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyCommandSelector.recruit	1
+siege/getPairings	siegeGetPairings	token			 + name + ;atk1:string;atk1Rank;isMe;size	5	HTMLSiegeMediator.request	1
+siege/getSiegeResultLog	getSiegeResultLog	token			attacker:Hashtable;bonus:Hashtable;close:double;defender:Hashtable;globalTotalScore:string;open:double;rank:double;record:Hashtable;record.globalTotalScore:string;record.rank:double;role:string;schedule:Hashtable;schedule.close:double;schedule.open:double;victoryPoint;winner:Hashtable	16	SiegeResultRenderer.load	1
+siege/getSiegeStatus	getSiegeStatus	token			0:Hashtable;amount:double;charge:Hashtable;consecutiveWinCount:double;costs:Hashtable;dischargeLogs:Hashtable;equip:Hashtable;gold:double;grade:double;playerId:string;record:Hashtable;rival:Hashtable;selfDeck:Hashtable;siegeBattlePoint:Hashtable;situation:Hashtable;spot:double;stage:double;tactics:Hashtable	18	PluginRunner_DoBattleSiege.ProcessEnterBattle|vsSetting_Siege.getSiegeSituation	2
+siege/lookSiegeResult	lookSiegeResult	token			attacker:Hashtable;bonus:Hashtable;close:double;defender:Hashtable;globalTotalScore:string;open:double;rank:double;record:Hashtable;record.globalTotalScore:string;record.rank:double;role:string;schedule:Hashtable;schedule.close:double;schedule.open:double;victoryPoint;winner:Hashtable	16	SiegeResultRenderer.load	1
+siege/openingBet	siegeOpeningBet	food,iron,spot,token,wood			charge:Hashtable;consecutiveWinCount:double	2	PluginRunner_DoBattleSiege.CheckOpenBet|vsSetting_Siege.setExchangeResource	2
+strategy/command/attack	sendStrategyCommandIntercept	command,token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyCommandSelector.assault|StrategyCommandSelector.battle|StrategyCommandSelector.refuge|StrategyCommandSelector.siege	4
+strategy/command/buildCastle	sendStrategyCommandBuildCastle	token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyCommandSelector.building	1
+strategy/command/cancelMarch	sendStrategyCommandCencelRouteMarch	token			base;nextOperableTime:double;operatedTime;position	4	StrategyHUDController.sendMarchCancel	1
+strategy/command/changeBase	sendStrategyCommandChangeBase	token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyCommandSelector.changeBase	1
+strategy/command/conscript	sendStrategyCommandConscript	token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyCommandSelector.recruit	1
 strategy/command/march	sendStrategyCommandMarch	position,token				0		0
-strategy/command/march2	sendStrategyCommandRouteMarch	seqId,token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*;route:Hashtable	11	StrategyMoveableRegionSelector.executeCommand	1
+strategy/command/march2	sendStrategyCommandRouteMarch	seqId,token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*;route:Hashtable	11	StrategyMoveableRegionSelector.executeCommand	1
 strategy/command/returnBase	sendStrategyCommandReturnBase	token				0	StrategyCommandSelector.onDeadDialog	1
-strategy/command/revenge	sendStrategyCommandRevenge	position,token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyStrategizeRegionSelector.executeCommandRevenge	1
-strategy/command/strategize	sendStrategyCommandStrategize	position,token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyStrategizeRegionSelector.executeCommandStrategize	1
-strategy/command/supply	sendStrategyCommandSupply	token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyCommandSelector.resupply	1
-strategy/command/traceroute	getStrategyCommandTraceRoute	position,token			cellBattleContribution:Hashtable;consumption:Hashtable;coolTime:double;reachable:bool;route;seqId:double;terrainId:string	7	StrategyMoveableRegionSelector.createConfirmDialog	1
-strategy/command/training	sendStrategyCommandTraining	token			aroundEffect;command;currentForceSize;isAlive;isExecuted*;nextOperableTime;operatedTime;playerCounts*;proficiency;rivalId*	10	StrategyCommandSelector.training	1
+strategy/command/revenge	sendStrategyCommandRevenge	position,token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyStrategizeRegionSelector.executeCommandRevenge	1
+strategy/command/strategize	sendStrategyCommandStrategize	position,token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyStrategizeRegionSelector.executeCommandStrategize	1
+strategy/command/supply	sendStrategyCommandSupply	token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyCommandSelector.resupply	1
+strategy/command/traceroute	getStrategyCommandTraceRoute	position,token			cellBattleContribution:Hashtable;consumption:Hashtable;coolTime:double;reachable:bool;route:Hashtable;seqId:double;terrainId:string	7	StrategyMoveableRegionSelector.createConfirmDialog	1
+strategy/command/training	sendStrategyCommandTraining	token			aroundEffect:double;command:string;currentForceSize;isAlive:bool;isExecuted*;nextOperableTime:double;operatedTime;playerCounts*;proficiency:double;rivalId*	10	StrategyCommandSelector.training	1
 strategy/entryStrategy	entryStrategy	mercenaryCount,token				0	Strategy.entryDebug|StrategySelect.entryStrategy	2
-strategy/getMercenaryEmployInfo	getMercenaryEmployInfo	token			kokudaka;maxForceSize;regularSoldier	3	StrategySelect_army.Start	1
+strategy/getMercenaryEmployInfo	getMercenaryEmployInfo	token			kokudaka:double;maxForceSize;regularSoldier	3	StrategySelect_army.Start	1
 strategy/getStrategyActionLogs	getStrategyActionLogs	token				0		0
 strategy/getStrategyActionLogs2	getStrategyActionLogs2	token			 + name + ;posName;size	3	StrategyLogAnalizer.analize	1
-strategy/getStrategyBattleLogs	getStrategyBattleLogs	token			 + name + ;afterForceSize;battleRule;battleRuleTarget;blueSoul;command;consumeResources;contributionRatios;details:Hashtable;friends;logs:Hashtable;other;otherAfterForceSize;otherDamage;otherPreForceSize;palms;party;posName;posX;posY;posid;preForceSize;proc;procNum;proficiencies;size;skill;skillBusho;skillId;total;turfWarResultLogCount:double;turn	32	StrategyLogAnalizer.analize|mypageBattleLogUpdateStrategy.load	2
+strategy/getStrategyBattleLogs	getStrategyBattleLogs	token			 + name + ;afterForceSize;battleRule:string;battleRuleTarget;blueSoul;command:string;consumeResources;contributionRatios;details:Hashtable;friends:Hashtable;logs:Hashtable;other;otherAfterForceSize;otherDamage;otherPreForceSize;palms;party;posName;posX;posY;posid;preForceSize;proc;procNum;proficiencies;size;skill;skillBusho;skillId;total;turfWarResultLogCount:double;turn	32	StrategyLogAnalizer.analize|mypageBattleLogUpdateStrategy.load	2
 strategy/getStrategyBrief	getStrategyBrief	token			a:Hashtable;b:Hashtable;current:double;max:double	4	StrategyHUDController.Start|StrategySelect.setup	2
 strategy/getStrategyCellLogs	getStrategyCellLogs	position,token			 + name + ;posName;size	3	StrategyLogAnalizer.analize	1
-strategy/getStrategyCommandInfo	getStrategyCommandInfo	command,token			a:double;acquire:Hashtable;b:double;base:string;buildingId;cellBattleContribution:Hashtable;consumption:Hashtable;contributionPercent:double;coolTime:double;food;forceSizes;gold;iron;occupied;playerCounts:Hashtable;position:string;proficiency:double;reachable:bool;route;seqId:double;terrainId;wood	22	StrategyCommandSelector.createConfirmDialog|StrategyMoveableRegionSelector.createConfirmDialog|StrategyStrategizeRegionSelector.createConfirmDialog	3
+strategy/getStrategyCommandInfo	getStrategyCommandInfo	command,token			a:double;acquire:Hashtable;b:double;base:string;buildingId:string;cellBattleContribution:Hashtable;consumption:Hashtable;contributionPercent:double;coolTime:double;food;forceSizes:Hashtable;gold;iron;occupied:string;playerCounts:Hashtable;position:string;proficiency:double;reachable:bool;route:Hashtable;seqId:double;terrainId:string;wood	22	StrategyCommandSelector.createConfirmDialog|StrategyMoveableRegionSelector.createConfirmDialog|StrategyStrategizeRegionSelector.createConfirmDialog	3
 strategy/getStrategyLogs	getStrategyLogs	battlefield,cell,token				0	StrategyLogManager.getLogHash	1
 strategy/getStrategyNormRewardInfo	getStrategyNormRewardInfo	token			activityReward:double;strategyBattlePoint:Hashtable	2	NormRewardScene.setup	1
 strategy/getStrategyOverview	getStrategyOverview	token				0		0
-strategy/getStrategyPairings	getStrategyPairings	token			atk1;atk1Rank;attacker1Point;attackerPoint;defenderPoint;func;isMe;loseReward;loseRewardNum;size;winReward;winRewardNum	12	HTMLStrategyMatchMediator.request	1
+strategy/getStrategyPairings	getStrategyPairings	token			atk1:string;atk1Rank;attacker1Point;attackerPoint;defenderPoint;func;isMe;loseReward:string;loseRewardNum:string;size;winReward:string;winRewardNum:string	12	HTMLStrategyMatchMediator.request	1
 strategy/getStrategyPairingsChat	getStrategyPairingsChat	token				0		0
 strategy/getStrategyPersonalLogs	getStrategyPlayerLogs	token			 + name + ;fieldName;size	3	StrategyLogAnalizer.analize	1
 strategy/getStrategyPromptReport	getStrategyPromptReport	position,token			 + name + 	1	StrategyResultWindow2.setup	1
 strategy/getStrategyStatus	getStrategyStatus	token			battlefield:Hashtable;id:string;strategy:Hashtable;self:Hashtable;self.team:string;self.position:string;self.base:string;self.command:string;self.route:Hashtable;self.activityReward:double;self.contributions:Hashtable;self.executableCommands:Hashtable;self.strategize:Hashtable;self.trophyProgress:Hashtable;self.isAlive:bool;self.nextOperableTime:double;self.rivalId:string;cell:Hashtable;cell.attackLogs:Hashtable	19	BoardBody.reqWebStrategyStatus|BoardBody.reqWebStrategyStatus#responder=responder|Strategy.onPreSetup	3
-strategy/getStrategyWinLossRecords	getStrategyWinLossRecords	token			atk1;atk1Rank;attacker1Point;attackerPoint;category;date;defenderPoint;func;info;isMe;size;winner	12	HTMLStrategyMatchMediator_History.request	1
+strategy/getStrategyWinLossRecords	getStrategyWinLossRecords	token			atk1:string;atk1Rank;attacker1Point;attackerPoint;category;date:double;defenderPoint;func;info;isMe;size;winner	12	HTMLStrategyMatchMediator_History.request	1
 strategy/isAlive	getStrategyIsAlive	token			isAlive:bool	1	StrategyHUDController.transitionLogWindowUpdate	1
 strategy/lookStrategyResult	getStrategyReward	token				0	PoliticButton.goStrategySelect	1
 trophy/completeTrophy	completeTrophy|receiveEventsTrophy|receiveTrophyGiganticRaidBoss|receiveTrophyRaidBoss	access,category,token		{"access": ["giganticRaidBoss", "mypage", "raidBoss"]}	characters:Hashtable;equips:Hashtable;progress:Hashtable;rewards:Hashtable;toInBox:Hashtable	5	mypageTrophyReward.load	1
@@ -397,7 +397,7 @@ turfWar/entryBattlefield	entryTurfWarBattlefield	battlefield,token				0	TurfWarW
 turfWar/entryWar	entryTurfWar	token			team:string	1	TurfWarBriefCache.entryWar	1
 turfWar/getSelfRecord	getTurnfWarSelfRecord	token				0		0
 turfWar/getSelfSituation	getTurfWarSelfSituation	token				0		0
-turfWar/getTurfWarResultLog	getTurfWarResultLog	token			battlefield:Hashtable;bonuses:Hashtable;close:double;defenseScore:double;fieldWon:double*;gainRedSoul;global:Hashtable;open:double;rank:double;schedule:Hashtable;schedule.close:double;schedule.open:double;score:double;teamWon:double*;victory	15	TurfWarResultRenderer.load	1
+turfWar/getTurfWarResultLog	getTurfWarResultLog	token			battlefield:Hashtable;bonuses:Hashtable;close:double;defenseScore:double;fieldWon:double*;gainRedSoul:double;global:Hashtable;open:double;rank:double;schedule:Hashtable;schedule.close:double;schedule.open:double;score:double;teamWon:double*;victory	15	TurfWarResultRenderer.load	1
 turfWar/getWarSituation	getTurfWarSituation	token			battlefield:string;selfBelong:Hashtable;selfBelong.battlefield:string;selfBelong.team:string;team:string;isMovable:bool;bonus:Hashtable;bonus.battlefield:string;bonus.endTime:double;bonus.team:string;situation:Hashtable;situation.global:Hashtable;situation.global.advantage:string;situation.battlefields:Hashtable;situation.battlefields.<field>.advantage:string;situation.battlefields.<field>.east:double;situation.battlefields.<field>.eastPoint:double;situation.battlefields.<field>.west:double;situation.battlefields.<field>.westPoint:double;battleRules:Hashtable;battleRules.<field>:string	21	BoardBody.reqWebTurfWarSituation|BoardBody.reqWebTurfWarSituation#responder=responder|TurfWarBriefCache.setup	3
 turfWar/moveBattlefield	moveTurfWarBattlefield	battlefield,token				0	TurfWarWorldMap.onEntryBattlefield	1
 turfWar/receiveTurfWarReward	getTurfWarResult|getTurnfWarRceiveTurfWarReward	token			battlefield:Hashtable;battlefield.daily:Hashtable;battlefield.end:Hashtable;bonuses:Hashtable;defenseScore:double;gainRedSoul:double;global:Hashtable;global.daily:Hashtable;global.end:Hashtable;global.end.defenseScore:double;global.end.rank:double;global.end.score:double;rank:double;schedule:Hashtable;schedule.close:double;schedule.open:double;score:double	17	TurfWarResultRenderer.load	1

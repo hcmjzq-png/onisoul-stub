@@ -11,8 +11,10 @@
 `docs/analysis/unguarded_gaps_verdicts.tsv`）：**67 条读的不是回包、33 条读的是另一端点回包、
 只有 4 条是真缺口**。真缺口与逆推出来的 `common/getEventStatuses` / `turfWar/getWarSituation`
 嵌套字段都已补进契约。判读完成后又把 67 条误报的**来源特征**做成了机械规则
-（`gap --filter origin`），再跑一遍候选只剩 **36 行 / 27 个端点**——这 36 行就是
-「33 条归属错 + 3 条真缺口」的全部，不含任何「读的不是回包」的行。
+（`gap --filter origin`），再跑一遍候选只剩 **33 行 / 25 个端点**——**全部是
+`other_endpoint`（方法级归属错），真缺口已清零**，不含任何「读的不是回包」的行。
+最后 3 行的处置见下「round2 收尾」：1 条是真缺口（`debug/resetDedication.score`，已补），
+2 条是「根/嵌套双读」的扫描伪键（`deck/extendCharacterStore` / `quest/clearObstacle`）。
 
 ## 复现
 
@@ -50,8 +52,8 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 | 对账命中已声明 | 149 |
 | 候选缺口行 / 涉及端点（过滤前，2026-11-14 判读时的快照） | **104 / 69** |
 | 同上，按当前契约复跑（`--filter none`） | 105 / 69（多出的一行是 `strategy/getStrategyCommandInfo` 上 `StrategyCommandSelector.createConfirmDialog` 读的 `STRATEGY_MSG_COMMAND_TRAINING_INFO0`，判读台账建立时还没有这行，已被来源过滤按 `message_table` 剔除） |
-| 来源过滤剔除的键 | 157（`write` 35 / `html_request` 52 / `config_table` 41 / `message_table` 17 / `dialog_result` 7 / `task_param` 4 / `local_build` 1） |
-| **候选缺口行 / 涉及端点（过滤后）** | **36 / 27** |
+| 来源过滤剔除的键 | 159（`write` 35 / `html_request` 52 / `config_table` 41 / `message_table` 17 / `dialog_result` 7 / `task_param` 4 / `local_build` 1 / `nested_child` 2） |
+| **候选缺口行 / 涉及端点（过滤后）** | **33 / 25** |
 | 判读：读的不是回包（`not_response`） | 67 |
 | 判读：读的是另一端点回包（`other_endpoint`） | 33 |
 | 判读：真缺口（`real_gap`） | 4 |
@@ -84,6 +86,41 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 两张表的调用点都在契约 `call_sites` 里、`origin` 在词表里、以及**每个被剔除的键都能在这两张表
 里找到出处**——过滤掉的键必须可解释，不能靠人眼。
 
+## round2 收尾：最后 3 行怎么落的
+
+| 行 | 结论 | 依据 |
+|---|---|---|
+| `debug/resetDedication` · `score` | **真缺口，已补** `score:double` | `MightOfNationDialog.cs:430-435` 的回调就是 `debug_addDedicateScore` / `resetDedication` 的 responder，`:433` 直接 `hashtable["score"]` |
+| `deck/extendCharacterStore` · 根键 `character` | **伪键（`covered_nested`）** | `DeckAddMaxCharacter.cs:147` `hashtable3 = res["possessionLimits"]`，`:151` 读的是 `hashtable3["character"]`，即已声明的 `possessionLimits.character` |
+| `quest/clearObstacle` · 根键 `category` | **伪键（`covered_nested`）** | `QuestScriptCommand.cs:2207` `uses = res["uses"]`，`:2210` `switch((string)uses["category"])`，即已声明的 `uses.category` |
+
+两行伪键按新来源类别 `nested_child` 进了 `verify/gap_origins.tsv`（`receiver` 就写
+`hashtable3` / `uses`），所以机械口径也自动不再产出这两行。
+
+## 剩下的两块宽度工作（已量化，未动契约）
+
+扫描层面到这里已经收敛，剩下的是**覆盖宽度**，不是「缺口」：
+
+* **零字段端点 122**（`verify/zero_field_triage.tsv`）：`no_call_site` 53、
+  `no_literal_read` 61（调用点有、但 responder 里没有任何字面读键，属正常）、
+  `reads_present` 8 —— **8 个已逐个核实完毕，全部不需要补键**：
+  6 个是误报（`mypage.cs:334` 配置表 `items`、`PoliticDebugMenu.cs:64` 配置表 `enable`、
+  `DebugMakeEquipMenu.cs:32-34/233-241` 写侧自造 + 本地 UI `atk/grade/level`、
+  `HTMLMailCore.cs:110-112` 入参 `mailIds`、`NavigatorChangeSelect.cs:347-375` 写侧
+  `color1..color5`、`HTMLRankingMediator_Delivery.cs:46/66/100` 入参 + 写侧 `turn/aroundRank`），
+  2 个是归属错（`DeckScene.OnEnable` 读的是 `getDeckBonus`/`getDecks` 的回包，
+  5 个键在两个端点里都已声明）。
+* **已声明但无类型的键 481**（`verify/untyped_backlog.tsv`）：能靠 `dump` 的 `cast` 列
+  唯一定型的 **31** 个**已补类型**（25 `Hashtable` / 4 `string` / 2 `double`，带类型键
+  627→658）；剩下 450 个在 dump 里没有 cast 证据（客户端读键后没做强转，或类型藏在
+  `HashAccessor.getInt/getString` 这类访问器里）。客户端全树抽取后按键聚合出
+  **716/867 个键有单一定型证据**（`type_evidence.tsv`，含 file:line 出处，不入仓），
+  按**键名**对齐回补：**42 个键 / 101 处**补上类型（`double` 43 / `string` 33 / `Hashtable` 13 /
+  `bool` 10 / `float` 2），带类型键 **658→757**，来源逐条记在
+  `verify/untyped_type_hints.tsv`。契约侧仍无类型 **349 处**（117 个不同键名：
+  同名键在不同端点语义冲突，或客户端根本没读过该键），`untyped_backlog.tsv` 的 481 行
+  候选里还有 257 行 `no_cast_evidence`——这批等有真实回包样本或用例再说，不再无证据硬猜。
+
 ## 四类已在代码里确认的误报
 
 1. **方法级归属**：一个方法连发多个请求，读键判不到具体响应。
@@ -111,9 +148,10 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 逐行结论落在 `docs/analysis/unguarded_gaps_verdicts.tsv`（104 行，七列
 `endpoint / callsite / missing_keys / verdict / real_owner / evidence / filter`），每行都给到
 `file:line` 依据与归属结论；`filter` 列标出该行在**来源过滤后**的去向：`dropped` 67 行
-（读的不是回包，已被 `--filter origin` 剔除）、`kept` 36 行（过滤后仍是候选）、
-`mixed` 1 行（`debug/dedicate`：`dedication` / `nationalPower` 是本地写被剔除，
-`score` 已补进契约，该行不再产生候选）。
+（读的不是回包，已被 `--filter origin` 剔除）、`kept` 33 行（过滤后仍是候选，全部 `other_endpoint`）、
+`mixed` 2 行（`debug/dedicate`：`dedication` / `nationalPower` 是本地写被剔除，
+`score` 已补进契约）、`nested` 2 行（`covered_nested`：读的是已声明子表，根键是扫描伪键）。
+判读分布：67 `not_response` / 33 `other_endpoint` / 2 `real_gap` / 2 `covered_nested`。
 
 | verdict | 行数 | 含义 |
 |---|---|---|
@@ -186,7 +224,7 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 ## 还没做（别把上面的数字当普查结论）
 
 * 104 条候选行已全部逐条读码判读（67 `not_response` / 33 `other_endpoint` / 4 `real_gap`），
-  来源过滤后候选降到 36 行；但 `eventInfo` 的其余事件分支与 `getStrategyStatus.map`
+  来源过滤后候选降到 33 行（全部归属错，真缺口 0）；但 `eventInfo` 的其余事件分支与 `getStrategyStatus.map`
   两类嵌套子表仍未取证（见上「仍未取证」），别把 4 这个数字当成缺口总量。
 * 不覆盖：DTO / 构造函数里的读取（`AdversaryData` 一类）、跨方法传播的守卫、
   动态拼出的键（`string.Format` 等）、表访问器键。
