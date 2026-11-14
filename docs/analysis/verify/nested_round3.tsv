@@ -1,0 +1,9 @@
+endpoint	key	type	callsite	evidence
+battle/executeBattle	executeInfo.now	long	QuestScriptCommand.cs:783	info.getLong("now")
+battle/executeBattle	eventInfo.eventScript	string	QuestScriptCommand.cs:754	info.getString("eventScript")
+battle/executeBattle	eventInfo.encountInfo	Hashtable	PluginQuestStepHelper.cs:252/264/274	eventInfo["encountInfo"]
+battle/executeBattle	eventInfo.encountInfo.monsterId	string	PluginQuestStepHelper.cs:253	hashtable["monsterId"]
+battle/executeBattle	eventInfo.encountInfo.name	string	PluginQuestStepHelper.cs:265	hashtable["name"]
+battle/executeBattle	eventInfo.encountInfo.encountId	double	PluginQuestStepHelper.cs:275	hashtable["encountId"]
+strategy/getStrategyStatus	map	Hashtable	StrategyDataCache.cs:32	updateData_["map"]，UpdateData 即整包回包
+strategy/getStrategyStatus	battlefield.id	string	Strategy.cs:169 / :249	battlefield 的 id
