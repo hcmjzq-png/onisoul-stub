@@ -2,7 +2,7 @@
 
 基线 `1f287e33123afa452d2f5d2aac2427566d549f73`；只修改 F 独立工作树。
 47 个入口逐行见 `reviewed-endpoints.tsv`，原路径、SHA-256、包装器行号和消费者导航见 `evidence.json`。
-这不是 47 个完整玩法实现：部分字段消费者已证，部分仍只有包装器；HTML 下游尚未全部追踪。
+这不是 47 个完整玩法实现：部分字段消费者已证，部分仍只有包装器；原父网页桥接已验证，五个战争 iframe 本体仍缺。
 未部署、未改共享注册表，**不减少全局占位数**。
 
 ## 可集成代码
@@ -16,9 +16,14 @@
   `StrategySelect_army.Cost` 和 `StrategySelect.entryStrategy` 成功回调扣显示金币给出依据；容量、报名资格、实际扣费事务均未实现。
 - `command_cost_terms`：读取原 `strategy_command` 三个并列数组，保留 `fixed/force/diffMaxForce` 标签。
   不根据英文标签猜兵力单位、取整或贡献公式，不执行任何扣款。
+- `siege/getPairings`、`strategy/getStrategyWinLossRecords`：读取本人已保存、完整、有效的权威数据，
+  按原中介的 pairings/records/decisions 层级投影。序号缺口或类型错误整批失败；不算胜负、不造配对。
+  独立投影实现在 `app/business/war_campaigns_views.py`，真实数据生产端未实现；原 iframe 缺失，不声称全链验收。
 
 `_warCampaigns.strategy` 的 `ownerId/observedAt/validUntil/isAlive` 是**模拟服内部观测存储格式**。
 有效期是内部新鲜度限制，不代表原活动日期。此批没有观测导入 HTTP 接口、自动迁移或免费初始化。
+新增数据集位于内部 `_warCampaigns.queries[api]`，含 ownerId/observedAt/validUntil/complete/rows。
+只有可信生产端明确 complete=true 的空 rows 才可表示无记录，缺失快照绝不默认空成功。
 读取不保存 `_prepare_state` 的兼容修补，重试/并发读取不产生资源或状态副作用。
 
 ## 状态链路：已见客户端转换，非还原的服务端状态机
@@ -27,7 +32,7 @@
 | --- | --- | --- |
 | 国战 | getStrategyBrief 展示双方/回合 → getMercenaryEmployInfo 显示常备和上限 → entryStrategy(mercenaryCount) 成功后扣显示金币并进场 → getStrategyStatus 提供 map/battlefield/cell/self → 命令 → 日志/结果 | 报名资格、分队、地图和兵力计算、回合提交边界、胜负/奖励和原服持久化 |
 | 城战 | getBrief 的 day/stage/isEntry → enter → getSiegeStatus 的 selfDeck/costs/rival/situation/charge/record → openingBet 更新 charge 并扣显示资源 → discharge 读 gainBlackSoul 并刷新状态 → lookSiegeResult/结果日志 | 投入上限/倍率取整、匹配、累计/放出积分、跨日结算、重试和领奖去重 |
-| 公会战 | TurfWarBriefCache 在 open 且 team=none 时 entryWar → 回 team → entryBattlefield/moveBattlefield 成功后本地更新 Battlefield → B 的战斗 → receiveTurfWarReward/结果日志 | 分队及公会权限、战场容量/转移成本、积分周期、奖励发放与重登恢复 |
+| 公会战 | TurfWarBriefCache 在 open 且 team=none 时 entryWar → 回 team → **请求前**本地更新 Battlefield → entryBattlefield/moveBattlefield → B 的战斗 → receiveTurfWarReward/结果日志 | 分队及公会权限、战场容量/转移成本、失败界面恢复、积分周期、奖励发放与重登恢复 |
 
 注意：公会战所依赖的 `turfWar/getWarSituation` 不在本组分配的 47 个入口中，仅作依赖观察，不修改。
 原请求包装器存在不代表普通界面实际调用；`getStrategyOverview/getStrategyPairingsChat/getStrategyActionLogs` 等未找到普通 C# 调用，不能标记玩法完成。
@@ -54,14 +59,19 @@
 python -m unittest tests.test_war_campaigns_services -v
 python -m unittest discover -s tests -v
 python docs/analysis/parallel-342/f-war-campaigns/war_campaigns_build_audit.py
+python docs/analysis/parallel-342/f-war-campaigns/war_campaigns_web_audit.py
 ```
 
-新增 10 项、完整回归 236 项通过，0 跳过。记录见 `test-results.txt`。
+累计新增 16 项、完整回归 242 项通过，0 跳过。记录见 `test-results.txt`。
 覆盖布尔存活/死亡、重新登录读取、账号隔离、参数伪造、过期/坏记录、并发/重试无写入、表解析和原佣兵报价。
 只有内存隔离账号测试，没有共享客户端、服务器或真实活动操作。
+第二轮另覆盖非空配对/历史、未完整与真实空历史的区别、坏记录整批拒绝、无奖励副作用、响应独立副本。
 本批不执行付费、奖励或跨账号写入，因此费用不足/扣款回滚/结算幂等测试不适用于当前组件；不得据此声称这些业务已验证。
 只有内存状态重建/重登已测，数据库事务与真实 Unity 表现待总集成验收。
 
 小样本 fixture 仅三条 strategy_command 和一条 defines 原表行，未包含整表、原客户端或数据库。
 来源完整文件散列在 evidence.json；小样本与原行相等性由审计脚本核验。
 共享挂载建议、B/G 对接和最小动态验证步骤见 `integration-notes.txt`。
+原安装包 159 条缓存的去查询串清单、四份桥接正文散列见 `web-evidence.json`；
+完整桥接、五个缺失页面路径、报名到结算的逐边证据及剩余限制见 `html-lifecycle.md`。
+网页审计脚本依赖事先用 innoextract 将原缓存解到忽略目录；提取命令写在脚本头部。

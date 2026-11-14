@@ -251,6 +251,12 @@ test_bonus_and_flags_are_typed (test_turf_war_situation.TurfWarHandlerTest.test_
 test_handler_wins_over_placeholder (test_turf_war_situation.TurfWarHandlerTest.test_handler_wins_over_placeholder) ... ok
 test_self_belong_is_sentinel_not_empty (test_turf_war_situation.TurfWarHandlerTest.test_self_belong_is_sentinel_not_empty) ... ok
 test_situation_chain_is_readable (test_turf_war_situation.TurfWarHandlerTest.test_situation_chain_is_readable) ... ok
+test_history_nonempty_nested_matches_survive_relogin (test_war_campaigns_services.CampaignRecordQueriesTest.test_history_nonempty_nested_matches_survive_relogin) ... ok
+test_missing_incomplete_empty_and_expired_are_distinct (test_war_campaigns_services.CampaignRecordQueriesTest.test_missing_incomplete_empty_and_expired_are_distinct) ... ok
+test_partial_bad_rows_rejected_without_truncating_history (test_war_campaigns_services.CampaignRecordQueriesTest.test_partial_bad_rows_rejected_without_truncating_history) ... ok
+test_record_authentication_selectors_and_owner_isolation (test_war_campaigns_services.CampaignRecordQueriesTest.test_record_authentication_selectors_and_owner_isolation) ... ok
+test_record_retry_concurrency_no_write_or_reward_and_response_isolation (test_war_campaigns_services.CampaignRecordQueriesTest.test_record_retry_concurrency_no_write_or_reward_and_response_isolation) ... ok
+test_siege_numeric_hierarchy_and_no_html_derived_fields (test_war_campaigns_services.CampaignRecordQueriesTest.test_siege_numeric_hierarchy_and_no_html_derived_fields) ... ok
 test_asset_and_row_errors_are_distinct (test_war_campaigns_services.CostTermsTest.test_asset_and_row_errors_are_distinct) ... ok
 test_mercenary_quote_uses_original_define_without_mutation (test_war_campaigns_services.CostTermsTest.test_mercenary_quote_uses_original_define_without_mutation) ... ok
 test_original_small_sample_preserves_declarations (test_war_campaigns_services.CostTermsTest.test_original_small_sample_preserves_declarations) ... ok
@@ -263,6 +269,6 @@ test_retries_concurrency_and_failures_never_write (test_war_campaigns_services.W
 test_unavailable_is_business_failure_not_asset_failure (test_war_campaigns_services.WarCampaignsTest.test_unavailable_is_business_failure_not_asset_failure) ... ok
 
 ----------------------------------------------------------------------
-Ran 236 tests in 2.164s
+Ran 242 tests in 2.030s
 
 OK

@@ -9,6 +9,10 @@
       "sha256": "8ca4cc50e414653a3b5d822923c9d577d5be483d8f76116a9f723b3f0969d80f"
     },
     {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BrowserProxy.cs",
+      "sha256": "ba02b20688aea58470be85333fa6cafad7834e1a32f5adc63e0108464f8fd077"
+    },
+    {
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ComboTableAccessor.cs",
       "sha256": "8fa5d3b9a590a7c9878213f3948247e09af16fda4c6716e4245cd1de8e0dd95e"
     },
@@ -348,9 +352,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "HTML mediator transformation; complete hierarchy unverified",
-      "reviewed_evidence": "HTMLSiegeMediator.cs:request/analize",
-      "next_work": "追踪原 HTML 消费者，排除 debug 数据"
+      "reviewed_response_paths": "pairings.<index>.defender.0;pairings.<index>.attacker.0/optional 1 (countryId strings)",
+      "reviewed_evidence": "HTMLSiegeMediator.cs:61-118; original app.js:73-80,169-173; web-evidence.json",
+      "next_work": "限定只读投影已测；缺真实配对生产端及 siege/siege.html 本体，不能称配对算法完成"
     },
     "siege/getSiegeResultLog": {
       "wrappers": [
@@ -765,9 +769,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "route planning response unverified; do not assume command execution payload",
-      "reviewed_evidence": "StrategyCommandSelector.cs; StrategyCommandResultProcessor.cs:process/processCommonUpdate; StrategyHUDController.cs",
-      "next_work": "position=[x,y]；需路径算法、seqId 生命周期，不能猜地图"
+      "reviewed_response_paths": "reachable:boolean;route.<index>:position string;coolTime:number;seqId:number",
+      "reviewed_evidence": "StrategyMoveableRegionSelector.cs:145-168",
+      "next_work": "需地图、路径版本/占格规则；回调先改本地 self.route，seqId 传 march2，不能靠构造路径还原算法"
     },
     "strategy/command/training": {
       "wrappers": [
@@ -1120,9 +1124,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "HTML mediator transformation; complete hierarchy unverified",
-      "reviewed_evidence": "HTMLStrategyMatchMediator.cs:request/analize",
-      "next_work": "原页面层级/日历/配对来源待证"
+      "reviewed_response_paths": "root.match_01..N.a.0.countryId/rate;b.0/optional 1.countryId/rate;winReward/loseReward=reward IDs",
+      "reviewed_evidence": "HTMLStrategyMatchMediator.cs:134-221; original app.js:53-61; web-evidence.json",
+      "next_work": "winRewardNum/图标是客户端查表转换，仅预览第一槽 countMin；原 iframe 缺失，奖励结算未知"
     },
     "strategy/getStrategyPairingsChat": {
       "wrappers": [
@@ -1186,9 +1190,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "setupParams receives report; full hierarchy not traced",
-      "reviewed_evidence": "StrategyResultWindow2.cs:288-293/setupParams; WebApiClient.cs:getStrategyPromptReport",
-      "next_work": "请求 position 为字符串；继续追踪 setupParams 与页面消费者"
+      "reviewed_response_paths": "currentCellLog.turn.current/max,occupied,playerCounts/forceSizes/injureds/contributions.a/b;mainlyCells.<index>.position/playerCounts/forceSizes/occupied;topRankers.a/b.<index>.name/score",
+      "reviewed_evidence": "StrategyResultWindow2.cs:24-50,150-278",
+      "next_work": "hash(position/fieldCatalogId/matchId/team/commonEffectId/openHTML)是窗口参数，不能误混入 reportHash；缺真实格子结算和地图"
     },
     "strategy/getStrategyStatus": {
       "wrappers": [
@@ -1240,9 +1244,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "history mediator transforms records; complete hierarchy unverified",
-      "reviewed_evidence": "HTMLStrategyMatchMediator_History.cs:request/analize",
-      "next_work": "不要以 getDebugHash 为真实历史；周期定义交 G"
+      "reviewed_response_paths": "totalCount;records.<index>.openTime;decisions nested INSIDE records.<index>:match_01..N.a/b.<slot>.countryId/rate,winner",
+      "reviewed_evidence": "HTMLStrategyMatchMediator_History.cs:179-248; original app.js:53-61,169-173",
+      "next_work": "限定完整已保存历史的只读投影已测；真实结算生产端/分页/周期仍待证"
     },
     "strategy/isAlive": {
       "wrappers": [
@@ -1313,9 +1317,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "callback ignores payload then sets local Battlefield",
-      "reviewed_evidence": "TurfWarWorldMap.cs:entry; WebApiClient.cs:2799-2806",
-      "next_work": "资格/所属队/战场容量/重试未证，空回包不能算报名成功"
+      "reviewed_response_paths": "payload ignored; local Battlefield changed BEFORE request; callback clears isMovable/adversaries",
+      "reviewed_evidence": "TurfWarWorldMap.cs:283-328; TurfWarBriefCache.cs:IsMoveable; WebApiClient.cs:2799-2806",
+      "next_work": "资格/所属队/战场容量/重试未证；失败过滤不会撤销已改的本地 Battlefield"
     },
     "turfWar/entryWar": {
       "wrappers": [
@@ -1395,9 +1399,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "schedule.open/close;gainRedSoul;rank;score;defenseScore; nested ranking conversion (partial)",
-      "reviewed_evidence": "TurfWarResultRenderer.cs:load/convertHtmlParameter/convertGlobalRanking",
-      "next_work": "追踪原页面全部字段；日榜和总榜周期交 G"
+      "reviewed_response_paths": "schedule.open/close;gainRedSoul,rank,score,defenseScore;global.end/daily.<day>.score/rank/defenseScore;battlefield.end.<field>/daily.<day>.<field>.score/rank;bonuses.optional fieldWon/teamWon",
+      "reviewed_evidence": "TurfWarResultRenderer.cs:61-195,209-235; BrowserProxy.cs:65-101; original unityProxy.js:103-140",
+      "next_work": "names/victory/responseId 是桥接派生字段，不预填；原结果 HTML 缺失，奖励及领取幂等未知"
     },
     "turfWar/moveBattlefield": {
       "wrappers": [
@@ -1420,9 +1424,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "callback ignores payload then sets local Battlefield",
-      "reviewed_evidence": "TurfWarWorldMap.cs:entry; WebApiClient.cs:2809-2815",
-      "next_work": "移动费用/冷却/占领联动未知，需要多玩家事务"
+      "reviewed_response_paths": "payload ignored; local Battlefield changed BEFORE request; branch selected by warSituation.isMovable",
+      "reviewed_evidence": "TurfWarWorldMap.cs:291-328; TurfWarBriefCache.cs:IsMoveable; WebApiClient.cs:2809-2815",
+      "next_work": "移动费用/冷却/占领联动未知；动态验证失败恢复与重登对账"
     },
     "turfWar/receiveTurfWarReward": {
       "wrappers": [
@@ -1453,9 +1457,9 @@
           "note": "lexical navigation only; overload/debug reachability must be checked"
         }
       ],
-      "reviewed_response_paths": "same result renderer as getTurfWarResultLog; not proof of identical mutations",
-      "reviewed_evidence": "TurfWarResultRenderer.cs:load/convertHtmlParameter; WebApiClient.cs:1638-1643/2834-2839",
-      "next_work": "领取幂等/奖励入账/邮箱溢出都待证，不按固定红魂发放"
+      "reviewed_response_paths": "schedule.open/close;gainRedSoul,rank,score,defenseScore;global.end/daily.<day>.score/rank/defenseScore;battlefield.end.<field>/daily.<day>.<field>.score/rank;bonuses.optional fieldWon/teamWon",
+      "reviewed_evidence": "TurfWarResultRenderer.cs:61-195,209-235; BrowserProxy.cs:65-101; original unityProxy.js:103-140",
+      "next_work": "names/victory/responseId 是桥接派生字段，不预填；原结果 HTML 缺失，奖励及领取幂等未知"
     }
   },
   "compatibility_decisions": [
@@ -1464,7 +1468,11 @@
     "Existing success/error envelope reused; Unity error flow still needs validation",
     "Internal cost-array decoder; calculation labels do not prove formulas; no costs deducted",
     "Mercenary menu quote count*defines.mercenaryPrice is evidenced; negative/fractional/overflow rejection is internal safety policy, not original server error semantics",
-    "No production mounting, event activation, result generation, reward issuance or migration"
+    "No production mounting, event activation, result generation, reward issuance or migration",
+    "_warCampaigns.queries[api] ownerId/observedAt/validUntil/complete/rows is internal storage; authoritative producers are not implemented",
+    "siege/getPairings and strategy/getStrategyWinLossRecords project complete persisted datasets only; absent data is not empty success",
+    "History totalCount=len(rows) is a full-dataset supported scope, not recovered original pagination; projections reject malformed rows atomically",
+    "Original parent-page bridge verification and missing iframe body scope are recorded separately in web-evidence.json/html-lifecycle.md"
   ],
   "fixture_checks": [
     {

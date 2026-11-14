@@ -4,9 +4,12 @@ F 集成说明（本分支不编辑共享文件，不部署）
    总集成若已接入权威观测生产端，可在 app/business/gameplay.py 的 register 中：
      from app.business.war_campaigns_services import WarCampaignsServices
      WarCampaignsServices(self).register(registry)
-   它只替换 strategy/isAlive，保留其余 46 入口及既有编队/活动状态行为。
+   它只替换 strategy/isAlive、siege/getPairings、strategy/getStrategyWinLossRecords，
+   保留其余 44 入口及既有编队/活动状态行为。这三个入口当前都未生产挂载。
    app/business/registry.py 不需加通用分派规则；response_shapes.py 的正常 envelope 可复用。
-   成功 payload 只有 isAlive:boolean；失败沿用 _failure 的 errorReason，Unity 过滤器须验收。
+   存活查询 payload 只有 isAlive:boolean；配对是 pairings.<index>.attacker/defender；
+   历史是 totalCount、records.<index>.openTime/decisions.match_XX。
+   失败沿用 _failure 的 errorReason，Unity 过滤器须验收。
    禁止用“没有活动”默认 alive=true 或 false 填记录，也禁止从客户端参数导入观测。
 
 2. 内部状态生产端（尚未实现）：
@@ -15,6 +18,11 @@ F 集成说明（本分支不编辑共享文件，不部署）
    authoritative isAlive 必须来自真实参战/回合结算；validUntil 由可信结算服务给定，不能猜活动日期。
    任何影响存活的命令/战斗需在同一个权威事务中更新或失效观测；否则即使没过有效期也可能陈旧。
    不得单独开放此查询来宣称国战闭环。跨进程写入必须沿用 revision/数据库事务。
+   第二轮新内部记录：_warCampaigns.queries[api]={ownerId,observedAt,validUntil,complete,rows}。
+   complete 必须是 bool true，rows 为完整有序数据集（非分页），空数组只能表示已确认无记录。
+   siege rows 为 defender/attacker 的国家字符串索引；strategy history rows 为 openTime/decisions。
+   生产端负责本账号可见性/归属、时效与写入事务，不得从浏览器上传这些快照。
+   查询不写存档，不做结算，不发奖励；data source 缺失时报 no stub response。
 
 3. B 组依赖：
    battle/* 不归 F，本分支不触碰。请提供当前战场/回合/账号的已提交战斗结果和版本。
@@ -51,6 +59,7 @@ F 集成说明（本分支不编辑共享文件，不部署）
       一个回合的 isAlive true/false/失败过滤，保存后重登对比。不用自造地图证明原规则。
    b. 城战：enter→openingBet→discharge，记录前后实际资源、charge/record、失败时是否跳过扣显示资源。
    c. 公会战：entryWar 的 team，选择/切换 battlefield，首次领奖与重试/重登；记录响应与存档差异。
+      第二轮纠正：TurfWarWorldMap 在 HTTP 前已改本地 Battlefield，errorReason 不会自动撤销此显示值。
    d. 原 HTML 配对/日志/结果页面全链取证；确认仅包装器入口是否真的触发。
    本组 HTTP/内存测试不能代替 Unity 验收；若调试监控面板出现，保持原游戏尺寸，监控等大对齐。
 
@@ -60,3 +69,12 @@ F 集成说明（本分支不编辑共享文件，不部署）
 9. 完整回归的既有警告：tests/test_gap_verdicts.py:102、tests/test_no_key_inventory.py:22
    使用 io.open(...).read() 未显式关闭文件，Python 3.15 报 ResourceWarning；测试仍全部通过。
    由总集成改为 with 管理文件，本分支按范围限制不改公共测试。
+
+10. 原网页补全边界与契约纠错（详见 html-lifecycle.md/web-evidence.json）：
+    原安装包中查到 app.js/unityProxy.js/commontool.js/app.html；五个战争 iframe 本体未缓存。
+    未改静态服务，也未把旧修改页当原版；缺页路径不直接增加既有运行时资源缺失计数。
+    公会战 results 的 names/victory 用 Hashtable.Add 在客户端派生；responseId 由 BrowserProxy 加。
+    配对 size/isMe/def0Rank 等也是派生值，勿预填入原协议。
+    国战历史实际根 totalCount/records；不要把 getOneRecordDebugHash 的内层 match_XX 当整包。
+    保留 claim/look 入口未实现状态：共用 Renderer 不代表读与领取相同；iframe load 可能重复。
+    三个查询仅为可集成投影，真实 matching/settlement 数据生产端缺失，不能计完整玩法完成。
