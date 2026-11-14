@@ -103,9 +103,13 @@ python3 tools/unguarded_reads.py gap  --dump reads.tsv \
 
 * **零字段端点 122**（`verify/zero_field_triage.tsv`）：`no_call_site` 53、
   `no_literal_read` 61（调用点有、但 responder 里没有任何字面读键，属正常）、
-  `reads_present` 8。8 个里有 5 个的调用点是端点独占的，且读的键基本是 debug 自造表 /
-  消息表 / 请求入参（`color1..color5`、`items`、`enable`、`mailIds`），
-  与 104 条判读里的误报同源——**真正需要补键的接近 0**。
+  `reads_present` 8 —— **8 个已逐个核实完毕，全部不需要补键**：
+  6 个是误报（`mypage.cs:334` 配置表 `items`、`PoliticDebugMenu.cs:64` 配置表 `enable`、
+  `DebugMakeEquipMenu.cs:32-34/233-241` 写侧自造 + 本地 UI `atk/grade/level`、
+  `HTMLMailCore.cs:110-112` 入参 `mailIds`、`NavigatorChangeSelect.cs:347-375` 写侧
+  `color1..color5`、`HTMLRankingMediator_Delivery.cs:46/66/100` 入参 + 写侧 `turn/aroundRank`），
+  2 个是归属错（`DeckScene.OnEnable` 读的是 `getDeckBonus`/`getDecks` 的回包，
+  5 个键在两个端点里都已声明）。
 * **已声明但无类型的键 481**（`verify/untyped_backlog.tsv`）：能靠 `dump` 的 `cast` 列
   唯一定型的 **31** 个**已补类型**（25 `Hashtable` / 4 `string` / 2 `double`，带类型键
   627→658）；剩下 450 个在 dump 里没有 cast 证据（客户端读键后没做强转，或类型藏在

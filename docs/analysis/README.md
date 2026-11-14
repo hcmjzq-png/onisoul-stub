@@ -37,7 +37,7 @@
 | `unguarded_gaps_verdicts.tsv` | 104 条判读台账：67 读的不是回包 / 33 归属另一端点 / 4 真缺口（`endpoint / callsite / missing_keys / verdict / real_owner / evidence / filter`，`filter` ∈ dropped/kept/mixed） |
 | `verify/gap_receivers.tsv` | 候选读键的接收者取证：178 行 `callsite / key / line / receiver / write`，来源过滤的机械依据 |
 | `verify/gap_origins.tsv` | 非回包来源表：`callsite / receiver / origin / evidence`，`gap --filter origin` 的 denylist |
-| `verify/zero_field_triage.tsv` | 122 个零字段端点的分诊：`no_call_site` 53 / `no_literal_read` 61 / `reads_present` 8 |
+| `verify/zero_field_triage.tsv` | 122 个零字段端点的分诊：`no_call_site` 53 / `no_literal_read` 61 / `reads_present` 8（8 个已逐个核实并改判，均不需补键） |
 | `verify/untyped_backlog.tsv` | 481 个无类型键的 backlog：可唯一定型 31 / 无 cast 证据 450 |
 
 ## 当前覆盖

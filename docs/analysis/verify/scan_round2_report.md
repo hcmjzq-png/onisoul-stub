@@ -27,8 +27,9 @@
 ## 三、没做的（留给白天决策）
 
 1. **122 个零字段端点**：分诊结果 `no_call_site` 53 / `no_literal_read` 61 / `reads_present` 8。
-   8 个里有 5 个调用点独占，读的键基本是同源误报（debug 自造表、消息表、请求入参）。
-   → 建议：把 53 + 61 归档成「不回包/不读键」，不补；8 个逐个判读，预计补键数接近 0。
+   **8 个已逐个核实并改判（需补键 0）**：6 个误报（配置表 `items`/`enable`、写侧自造
+   `color1..color5`、写侧+本地 UI `atk/grade/level`、入参 `mailIds`、入参+写侧 `turn/aroundRank`），
+   2 个归属错（`DeckScene.OnEnable` 读 `getDeckBonus`/`getDecks` 回包）。
 2. **481 个无类型键**：`cast` 列能唯一定型 31 个，**450 个没有 cast 证据**。
    → 建议：这 31 个可以直接补（机械依据充分）；450 个要么回客户端看 `HashAccessor.getXxx`
    访问器调用（工作量大），要么明确接受「裸键照旧」并在文档里写死这个限制。
