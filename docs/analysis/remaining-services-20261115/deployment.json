@@ -1,0 +1,23 @@
+{
+  "head": "f4947d1bd0882c5131c4ad072e1699795fb60935",
+  "backup": "/var/backups/onisoul/remaining-services-20261115-f4947d1",
+  "mission_overlay_preserved": true,
+  "proxy_not_restarted": true,
+  "tables_unchanged": true,
+  "production_http_smoke": "passed",
+  "server_tests": {
+    "run": 200,
+    "passed": 197,
+    "skipped": 3
+  },
+  "skipped_reason": "optional static IL analysis dependencies unavailable on server; all 200 pass locally",
+  "original_lessons_supported": 19,
+  "original_lessons_blocked": 5,
+  "registered": 402,
+  "dedicated_handlers": 51,
+  "remaining_placeholders": 351,
+  "existing_player_count": 6,
+  "existing_player_states_equal": true,
+  "unity_client_acceptance": "pending",
+  "scope": "dispatch coverage only; progression and lesson support are limited as documented"
+}
