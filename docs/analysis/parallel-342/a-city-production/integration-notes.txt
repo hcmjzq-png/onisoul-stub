@@ -1,0 +1,58 @@
+A 组集成交付（未挂载、未部署）
+
+1. app/business/gameplay.py 的 register 中导入 CityProductionServices，并调用
+   CityProductionServices(self).register(registry)。应在通用占位注册之前按现架构接入；
+   本模块 register 只注册 sellBuildings/getBackgrounds/setBackground 三项，不调用父类 register。
+   保留 CityServices 原有所有入口与 completeTasks 建造处理及生产拒绝。
+   三项目前只有 tests/test_city_production_services.py 显式注册。
+
+2. app/business/gameplay.py::_map_state：在有真实 map.name 的主城 map_data 中合入
+   CityProductionServices.selected_background(player)；UserStatus.updateMapEntry 的背景读取
+   包在 map.ContainsKey("name") 分支内，不能仅增加 nearGround/farGround。
+   mapProfiles 如有实现也应采用同一选择记录，不能另外生成背景或支城。
+   当前测试验证保存/重登 helper，没有宣称共享 getMapData 已回显选择。
+
+3. 与 D 约定内部归属（提案，尚未达成组间确认）：
+   player.backgroundOwnership = {"nearGround": [itemId, ...], "farGround": [itemId, ...]}
+   player.mapBackgrounds = {"0": {"nearGround": itemId, "farGround": itemId}}
+   D 购买必须将扣款与归属一次保存；A 不赠送也不移除归属。
+   只读归属无数量消耗；若 D 有不同字段，用适配器统一，禁止并行建两个永久物品账本。
+   本批仅支持原 shop_item_bg 启用行；默认/赠送/期限背景未知，不自动填。
+   未迁移账号或任一类别为空明确失败；需先验证默认背景及现有归属再接 UI。
+   schema/default/migration 由总集成处理；无需在每次登录 setdefault 发放。
+
+4. docs/api_schema.md、相关 api_*.tsv、response_shapes.py 由总集成更新。
+   sellBuildings 成功现有 envelope + buildings/gainGold/buildingCount；客户端按键删库存，
+   values 选择售出记录只是兼容，不是原服证据。背景成功 envelope + nearGround/farGround
+   物品键，值 {}；setBackground 回调不读负载。未新增裸根枚举接口。
+   getBuildingLevels 的 buildingId 是数组，不要依名字改为 buildingIds。
+
+5. 表与错误：itemIdToShopId、shop_item_bg 使用现有 TableCatalog；运行时须有原表。
+   缺文件/无法加载表 => stub has no assets。已加载表缺引用行 => no stub response。
+   共享 city_services.py::owned/products/upgrade 仍把若干缺行归为 stub has no assets，
+   建议统一修正诊断；本分支不改共享文件，新售出路径已区分。
+
+6. 出售沿用 PlayerServices.call + GameplayService._guard：一次 load/validate/mutate/save。
+   保存 revision 冲突不能落下半笔资源/库存；生产数据库实现必须维持既有原子保存契约。
+   缺失实例重试拒绝，不回放 gainGold，避免客户端再次 addResourceValue。
+   超金钱容量拒绝整批（兼容边界，非原版溢出行为）；无费用不足场景。
+   当前独立测试用内存存档 + 注入 StateConflictError，不替代真实 DB 原子性验证。
+
+7. 与 E/C 的依赖（仅交付建议，没有修改他组）：
+   E 提供好友访问权限与目标地图归属；A 独有三个好友生产入口尚未实现。
+   好友写操作未来需数据库双玩家同事务、稳定加锁次序、双方 revision、唯一结算代次；
+   单玩家锁不能解决助产扣费/奖励/次数部分提交。不要用两个 save 拼成事务。
+   C 提供内政技能/药水与道路加成是否生效的可信状态；A 不推断结算顺序或倍率。
+
+8. 最小独占动态验证（由总集成安排，本任务未启动客户端）：
+   a) 记录主城背景选择窗口 no_ 与实际 setBackground.mapId，解释硬编码 1；重登
+      getMapData.map.name/nearGround/farGround，核对已有背景来源；不要创建假支城来绕过。
+   b) 空闲库存田地出售前后记录实例、金钱、buildingCount；丢弃响应后重试应只入账一次。
+   c) 若能获得可信原服/归档证据，同配方无路/贴边/贴角/多路/技能各一次：开工前余额与
+      PP、开工回包、重登 tasks、收获原始 reward/building/collaborator、取消/加速前后。
+      模拟服自行生成的回包只能验收兼容，不能证明原倍率/概率。
+   d) 两账号访问/助产记录权限、mapId、completecount/acceleratecount、每日边界和双方奖励。
+   e) 单独调用包装器入口确认响应根层级，不能套用 getMapData 辅助结构。
+
+9. 不修改 hosts/proxy80/config.ini、共享客户端、主目录暂存文件或服务器。
+   不计全局占位减少，用户是唯一审批/合并人，PR 必须保持 draft。

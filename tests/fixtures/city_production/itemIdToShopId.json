@@ -1,0 +1,9 @@
+{
+  "itemIdToShopId": {
+    "item05_0200041": {
+      "id": "item05_0200041",
+      "shopId": "shop0000041",
+      "price": 50
+    }
+  }
+}
