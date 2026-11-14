@@ -1,0 +1,50 @@
+{
+  "1": {
+    "id": 1,
+    "exp": 200,
+    "PP": 25,
+    "BP": 100,
+    "MP": 25,
+    "friend": 50,
+    "maxGold": 100000,
+    "maxFood": 100000,
+    "maxWood": 100000,
+    "maxIron": 100000,
+    "maxCharacter": 400,
+    "maxBuilding": 600,
+    "maxEquip": 100,
+    "mapSize0": [
+      30,
+      30
+    ],
+    "mapSize1": [],
+    "mapSize2": [],
+    "requirementForNext": "none",
+    "attackDeckCount": 1,
+    "dispMessage": "LVUP_MESS_0001"
+  },
+  "2": {
+    "id": 2,
+    "exp": 500,
+    "PP": 30,
+    "BP": 100,
+    "MP": 30,
+    "friend": 51,
+    "maxGold": 200000,
+    "maxFood": 200000,
+    "maxWood": 200000,
+    "maxIron": 200000,
+    "maxCharacter": 400,
+    "maxBuilding": 600,
+    "maxEquip": 100,
+    "mapSize0": [
+      30,
+      30
+    ],
+    "mapSize1": [],
+    "mapSize2": [],
+    "requirementForNext": "none",
+    "attackDeckCount": 1,
+    "dispMessage": "LVUP_MESS_0001"
+  }
+}

@@ -1,0 +1,45 @@
+E 组集成交接（未挂载；不修改全局实现数）
+
+1. 挂载位置：app/business/gameplay.py 的 GameplayService.register 或 app/main.py 的组装点，导入 app.business.social_services.SocialServices。
+   调用 SocialServices(gameplay, atomic_players=state.atomic_players).register(registry)。state.atomic_players 尚不存在，由总集成新增；缺省 adapter 时四个跨账号写接口 result=false，不能算业务完成。
+   不改变已有 PlayerServices 注册，不覆盖 A 的 friend/building/*、friend/task/*，不动 completeTasks。
+   仅 register 中列出的 7 个入口替代占位，其余 34 项不挂载。本批未修这些占位的假成功问题，生产开放应由总集成统一拒绝未知写接口。
+
+2. 真正事务方案：在 app/state/player.py 增加原子多玩家上下文（对外经 app/state/__init__.py 导出），使用 app/db 的同一个 connection 事务。
+   按排序后的 player_id 对两个现有 players 行 SELECT ... FOR UPDATE；缺失角色拒绝，不能创建账号。
+   在该事务内解析完整 JSON、保留所有模块字段和 _revision，隔离副本交给业务；校验后写回全部发生变化的行，逐行增加 revision；所有 UPDATE 与 commit 成功后才发布成功。
+   任意读/写/序列化/提交异常回滚两行；不得用两次现有 state.save/_save 代替。不得在业务回调之外提前提交。
+   其他模块继续 revision 校验，防止其旧快照覆盖社交事务。数据库锁处理跨进程；GameplayService._lock_for 只负责同进程。
+   SocialServices 在未持有 actor 锁时，统一按 ID 顺序取双方锁；不要额外套单玩家 _guard，否则反向申请会死锁。
+   adapter 每次读取最新行，退出后只保存变化行，支持重试无 revision 噪音；不可吞异常后仍提交。测试 AtomicMemory 只作此契约的示例，不能部署为持久层。
+   集成验收需真实隔离 DB 测试第二次 UPDATE/commit 故障、跨进程并发，以及与普通单玩家保存的 revision 冲突。
+
+3. 状态兼容：friends={acceptedPlayerId:{}}；socialOffers={peerId:{status:send|receive,createdAt:unix_seconds}} 都是内部设计。
+   PlayerServices.profile 的 friendCount 已按 len(friends) 计数，因此禁止把 pending 放入 friends。
+   审查 app/business/gameplay.py 的 periodicInquiry/getPlayerParams 社交通知，按 pending receive 导出 FriendOfferCount（确切协议键需复核 UserStatus.SocialInformation）；本组不擅改公共状态。
+   旧存档 friends/社交字段不可直接信任或覆盖；先备份并核验双边关系，再迁移。无旧字段的新角色从空关系开始，不发资源。
+   过期申请目前 fail closed，清理返回 remove 的真实原因/时机需要证据，不能把空 remove 当完整增量协议。
+   请求无去重 ID：旧反馈在全新申请周期重放不能区分。网络重试只能保证同一状态即时重试不重复写；若需要严格防重放需上层受验证的请求序列方案。
+
+4. 响应契约：docs/api_schema.md 补录 README 所列 7 项证据，诊断/默认值标兼容。
+   app/business/response_shapes.py：getFriends 已为裸映射，保持。findFriendsAndSend 应在未来实现时使用裸映射（FriendListMissionWindow.cs:45-56）。getVisitFriendLogs 也应裸映射（mypageRecord.cs:240-253）。本组只报告，不修改公共文件。
+   好友变更使用 result bool/detail.0，不能仅 succeeded=false；FriendConfirmationWindow.cs:220-232,246-258 用 result 恢复预扣计数。
+   forHTML=true 暂失败；HTMLUtil:60-65 访问 countryRank 表，空官阶的 HTML 可用性未证实；不要假造 rank。
+   实际 HTTP 层必须先解析有效 token 到 session；本模块沿用 GameplayService 的可信 session 注入约定，不自行解析客户端传入 playerId。
+
+5. A 依赖：只把 accepted 双边关系作为助产身份的候选条件；访问本人/非好友/好友与地图解锁是不同维度。
+   原 PoliticFSMFriendMap:62-78 存在非好友访问，不能一刀切禁止；默认客访 mapId=-1 的选择与 setGuestMap 需地图持久化协议。
+   助产时应在同一多玩家事务内重验关系、归属、产物/费用/奖励；不能先读关系解锁后再单独发奖。friend/building/task 3 项仍只归 A。
+   C 依赖：inbox.resolveParcels 未发奖；需 C 的物品类型/容量/保护规则和D的资源事务策略，消费 parcel 与发放在同一原子写入，失败保留待领，重复不得再发。不得把 mailIds 当 parcelIds。
+   H 依赖：invitation/getPlayer 仅证明 code 查询 invitation.playerId；创建角色绑定/奖励与 H 对接，不能伪造邀请码。
+
+6. 最小独占动态验证（由总集成安排，本任务不启动客户端）：
+   两个隔离测试角色：A 发申请，B 查看 receive，接受/拒绝各一次；在回包丢失后重试并重登，录原请求及回包和双方状态。
+   查看原接收上限/发送上限失败 detail 与接受时容量失败；确认倒计时/超时清理时 updateFriendData.remove 形态。
+   非好友、好友分别访问默认/指定地图；只读资料 forHTML false/true；记录访城前后首次状态、奖励、completecount/acceleratecount，不用本服数值证明原服规则。
+   BBS 创建预览(commit=false)/提交、作者与非作者删除、close/open 后访问，记录原 pcweb 页面来源URL、缓存记录SHA及输入/输出；邮箱 status 的原始值、分页边界、读正文是否标已读分别验证。
+   inbox 用隔离小样本验证重复领取、满库存、混合成功失败，禁止真实账号收发。
+   链路定位遵守 客户端→hosts→proxy80→stub；资源下载失败与业务无返回分别记 stub has no assets / no stub response。
+
+7. 回归：python -m unittest discover -s tests -v，237 项通过，无跳过；详见 test-results.txt。
+   没有触碰主工作树暂存文件；没有访问或部署腾讯云服务器；用户唯一审批合并。
