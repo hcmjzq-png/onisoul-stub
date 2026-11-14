@@ -1,0 +1,31 @@
+{
+  "national_power_shop_item": {
+    "np_shop0000001": {
+      "id": "np_shop0000001",
+      "name": "NATIONAL_ITEM_MSG_0000001_NAME",
+      "brief": "NATIONAL_ITEM_MSG_0000001_DESC",
+      "openDesc": "資源を限定生産",
+      "goal": "shop_01",
+      "limitPerPerson": 1,
+      "category": "nationalPower",
+      "class": "goldProduction",
+      "isSet": true,
+      "itemIds": [
+        "countryshop_00003"
+      ],
+      "iconName": "",
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        2000
+      ],
+      "credit": 0,
+      "discount": 0,
+      "sortno": 1
+    }
+  }
+}

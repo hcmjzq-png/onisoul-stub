@@ -1,0 +1,1061 @@
+{
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "scope": [
+    "auction/auctionCardBrowse",
+    "auction/auctionCardBuy",
+    "auction/auctionCardOffShelf",
+    "auction/auctionCardOnShelf",
+    "auction/auctionCardSale",
+    "auction/auctionCardSearchArmy",
+    "auction/auctionCardSearchFaction",
+    "auction/auctionCardSearchGender",
+    "auction/auctionCardSearchGrade",
+    "auction/auctionCardSearchName",
+    "auction/auctionCardSearchSkill",
+    "auction/auctionResourceBrowse",
+    "auction/auctionResourceBuy",
+    "auction/auctionResourceOffShelf",
+    "auction/auctionResourceOnShelf",
+    "auction/auctionResourceSale",
+    "auction/auctionResourceSearch",
+    "auction/auctionStatus",
+    "netCafe/exchangeNpoint",
+    "politic/errantry/call3",
+    "politic/errantry/getStatus3",
+    "politic/errantry/receive3",
+    "politic/errantry/send3",
+    "politic/kokugi/addPoint",
+    "politic/kokugi/develop",
+    "politic/kokugi/getStatus",
+    "politic/shop/buyBackgroundItem",
+    "politic/shop/buyShopItemCredit",
+    "politic/shop/buyShopItemFromNationalPower",
+    "politic/shop/getBackgroundItems",
+    "politic/shop/getShopItemsCredit",
+    "politic/shop/getShopItemsFromNationalPower",
+    "politic/waterborneTrade/call",
+    "politic/waterborneTrade/getFleet",
+    "politic/waterborneTrade/getFriendTraders",
+    "politic/waterborneTrade/getStatus",
+    "politic/waterborneTrade/receive",
+    "politic/waterborneTrade/send",
+    "politic/waterborneTrade/sendWithFriends"
+  ],
+  "original_protocol": {
+    "sources": [
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionDataManager.cs",
+        "sha256": "c8bc4dac82924af2d3db04557db6281c53ccd6da11251e8d4e81cef8fb41d901",
+        "methods": {
+          "OnAuctionStatus": [
+            80
+          ],
+          "OnGetAuctionCardsCommon": [
+            134
+          ],
+          "CreateStatus": [
+            532
+          ],
+          "OnGetMySellingCards": [
+            370
+          ],
+          "OnSearchResourceFromAuction": [
+            775
+          ],
+          "OnGetMySellingResources": [
+            844
+          ],
+          "ParseSingleResourceData": [
+            1068
+          ],
+          "ParseSingleCardData": [
+            1037
+          ],
+          "ParseTaxCardData": [
+            994
+          ],
+          "ParseTaxResourceData": [
+            1019
+          ],
+          "GetSortString": [
+            1148
+          ],
+          "SortAuctionResourceMap": [
+            630
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionResourcePriceDropListBtn.cs",
+        "sha256": "2fef4d81b67d9a4e5b774147421d684f216f5e9f192c8d05033691e5a4c38551",
+        "methods": {
+          "OnRange1Click": [
+            10
+          ],
+          "OnRange2Click": [
+            16
+          ],
+          "OnRange3Click": [
+            22
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionResourceAmountDropListBtn.cs",
+        "sha256": "4690e2fc64ab9a0244f73e045356657ab71a918a0fbd4c69eb10847c095e420d",
+        "methods": {
+          "OnRange1Click": [
+            10
+          ],
+          "OnRange7Click": [
+            46
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionBuyResourcePage.cs",
+        "sha256": "3347705400a1e804fe27aade1a647a256fd3f7146e6e4a405610a6a7ecc31b95",
+        "methods": {
+          "Search": [
+            168
+          ],
+          "SearchAll": [
+            160
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageShopBgWindow.cs",
+        "sha256": "89a26e6ec3f75cfcd51d1fe0c959a687c0cbb60a97c93edcf4bb237aaaf13032",
+        "methods": {
+          "phaseInit": [
+            145
+          ],
+          "phaseBuyMenu": [
+            196
+          ],
+          "phaseBuyItem": [
+            219
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ShopItemBgTableAccessor.cs",
+        "sha256": "af9cc414dc9c32a5cfaa79b87681520c50d379bbe642cd9eec3a55b3e2cb7fa4",
+        "methods": {
+          "IsEnable": [
+            22
+          ],
+          "getCategory": [
+            52
+          ],
+          "getItemIds": [
+            62
+          ],
+          "getCredit": [
+            72
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBgSelectWindow.cs",
+        "sha256": "2a6566b2fe2bf68e3df2e979c268369f12853b04fb419affeed8180a09691676",
+        "methods": {
+          "makeBgList": [
+            105
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBgItemSelect.cs",
+        "sha256": "5fa022e45b096fe107fd2781aa2aca6d9213e8c3de54ff9a74822ae1db8db14a",
+        "methods": {
+          "init": [
+            113
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ItemsTableAccessor.cs",
+        "sha256": "9cc83fb58f0bed02a4c38e9915c7804fc7434483b17d9cb4d14e5c5b8921a605",
+        "methods": {
+          "getValue": [
+            110,
+            290
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ShopUpdateNationalPower.cs",
+        "sha256": "363891752a8e7d54cba4c9f93880e19d683703db3f0dc72f5ad6dc18714e519d",
+        "methods": {
+          "createItemObject": [
+            174
+          ],
+          "setShopList": [
+            253
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ShopItemNationalPower.cs",
+        "sha256": "f3b44433dbb49b8050f74c1d6828f764e01f0d1076362de8722089831f7f5f81",
+        "methods": {
+          "saleWindowResult": [
+            160
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticErrantryEntryWindow.cs",
+        "sha256": "3a1243339e6abbe0b8235e5db0b37ee904a9c4fdbf04c401bbf38ee28565f9a3",
+        "methods": {
+          "callErrantry": [
+            211
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMErrantryReward.cs",
+        "sha256": "f00b45186b91ed3aa689ece8811145a7991d7f607167092752bb0a36a6ef84ae",
+        "methods": {
+          "createRewardAll": [
+            26
+          ],
+          "recieveErrantry": [
+            58
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+        "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+        "methods": {
+          "updateTravel": [
+            603
+          ],
+          "updateErrantry": [
+            1765
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMWaterTradeEntry.cs",
+        "sha256": "312e8907334e61c8519c4366387d62b04952a4a5cca1cfc378fd8219884f2f85",
+        "methods": {
+          "getFleetInfo": [
+            25
+          ],
+          "getFriendInfo": [
+            51
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticWaterTradeWindow.cs",
+        "sha256": "79a411a5ba27b527e02d535f3b9a2145a9f0d725bdb4bae0cef395a22a4a1ada",
+        "methods": {
+          "getTimeCrunchRate": [
+            41
+          ],
+          "getGoldSavingRate": [
+            51
+          ],
+          "getSuccessRate": [
+            61
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticWaterTradeProgressStatus.cs",
+        "sha256": "036100f4a6d297161663580cac29f16321231f4451db4069f5159e558f20ba72",
+        "methods": {
+          "setup": [
+            58
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMWaterTradeReward.cs",
+        "sha256": "e0ca7b98c40b04dd2cfda1da26bfda1b680ea20fd723cc575413e092ba097ac5",
+        "methods": {
+          "createRewardAll": [
+            31
+          ],
+          "recieveWaterTrade": [
+            63
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMissionProgressList.cs",
+        "sha256": "38b74b7269dc0398e746c16e291b3ec715977c5e2096ca6edde86fa506c66e4c",
+        "methods": {
+          "updateWaterTradeList": [
+            489
+          ],
+          "sendWaterTrade": [
+            531
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\KokugiScene.cs",
+        "sha256": "6ff68e6041dd0cb38c418736950a3d5af5cf2d31764583b3fd24030d9b456363",
+        "methods": {
+          "listupInvokedIds": [
+            307
+          ],
+          "updatePageItems": [
+            339
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\KokugiDedicateWindow.cs",
+        "sha256": "473bb270b47586250c44416a92875cd415d1fd15e5611a6f91e144abbe98ac7d",
+        "methods": {
+          "doDedicate": [
+            166
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\onikujiNetCafeExchangeDialog.cs",
+        "sha256": "73ce337436ee523c6cfe1bfc2dfdf419e8ca99840ad744d962ed28726abba240",
+        "methods": {
+          "onExchangeNPointResult": [
+            43
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ErrantryTableAccessor.cs",
+        "sha256": "01ca4b70ecaa856c273f5cd4cdc93e350bb043942ebec2e99b4660f643e87154",
+        "methods": {
+          "setup": [
+            22,
+            27
+          ],
+          "getResultFileName": [
+            158
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WaterBorneTradeTableAccessor.cs",
+        "sha256": "f256d8f97115e33525a60118d7a2aa7c3dcb37018294bd9137a6b7df0216ceb6",
+        "methods": {
+          "setup": [
+            17
+          ],
+          "getResultFileName": [
+            148
+          ]
+        }
+      },
+      {
+        "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+        "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+        "wrappers": {
+          "politic/shop/getShopItemsCredit": [
+            {
+              "method": "getShopItemsCredit",
+              "line": 1010,
+              "parameters": [
+                "category",
+                "token"
+              ]
+            }
+          ],
+          "politic/shop/buyShopItemCredit": [
+            {
+              "method": "buyShopItemCredit",
+              "line": 1019,
+              "parameters": [
+                "index",
+                "quantity",
+                "shopItemId",
+                "storetable",
+                "token"
+              ]
+            }
+          ],
+          "politic/shop/getShopItemsFromNationalPower": [
+            {
+              "method": "getShopItemsFromNationalPower",
+              "line": 1052,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "politic/shop/buyShopItemFromNationalPower": [
+            {
+              "method": "buyShopItemFromNationalPower",
+              "line": 1060,
+              "parameters": [
+                "index",
+                "quantity",
+                "shopItemId",
+                "token"
+              ]
+            }
+          ],
+          "politic/shop/getBackgroundItems": [
+            {
+              "method": "getBackgroundItems",
+              "line": 1071,
+              "parameters": [
+                "category",
+                "token"
+              ]
+            }
+          ],
+          "politic/shop/buyBackgroundItem": [
+            {
+              "method": "buyBackgroundItem",
+              "line": 1080,
+              "parameters": [
+                "shopItemId",
+                "token"
+              ]
+            }
+          ],
+          "politic/errantry/send3": [
+            {
+              "method": "sendErrantry",
+              "line": 3480,
+              "parameters": [
+                "buildingId",
+                "errantryId",
+                "mapId",
+                "token"
+              ]
+            }
+          ],
+          "politic/errantry/receive3": [
+            {
+              "method": "recieveErrantry",
+              "line": 3491,
+              "parameters": [
+                "mapId",
+                "token"
+              ]
+            }
+          ],
+          "politic/errantry/call3": [
+            {
+              "method": "callErrantry",
+              "line": 3500,
+              "parameters": [
+                "mapId",
+                "token"
+              ]
+            }
+          ],
+          "politic/errantry/getStatus3": [
+            {
+              "method": "getStatusAllErrantry",
+              "line": 3509,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "politic/kokugi/develop": [
+            {
+              "method": "develop",
+              "line": 3517,
+              "parameters": [
+                "kokugiId",
+                "token",
+                "usePoint"
+              ]
+            }
+          ],
+          "politic/kokugi/getStatus": [
+            {
+              "method": "getStatus",
+              "line": 3527,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "politic/kokugi/addPoint": [
+            {
+              "method": "addKokugiPoint",
+              "line": 3535,
+              "parameters": [
+                "addPoint",
+                "token"
+              ]
+            }
+          ],
+          "politic/waterborneTrade/getFleet": [
+            {
+              "method": "getFleetWaterTrade",
+              "line": 3544,
+              "parameters": [
+                "buildingId",
+                "mapId",
+                "token"
+              ]
+            }
+          ],
+          "politic/waterborneTrade/getFriendTraders": [
+            {
+              "method": "getFriendsWaterTrade",
+              "line": 3554,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "politic/waterborneTrade/send": [
+            {
+              "method": "sendWaterTrade",
+              "line": 3562,
+              "parameters": [
+                "buildingId",
+                "mapId",
+                "token",
+                "tradeId"
+              ]
+            }
+          ],
+          "politic/waterborneTrade/sendWithFriends": [
+            {
+              "method": "sendWaterTradeWithFriends",
+              "line": 3573,
+              "parameters": [
+                "buildingId",
+                "friendIds",
+                "mapId",
+                "token",
+                "tradeId"
+              ]
+            }
+          ],
+          "politic/waterborneTrade/receive": [
+            {
+              "method": "recieveWaterTrade",
+              "line": 3585,
+              "parameters": [
+                "buildingId",
+                "mapId",
+                "token"
+              ]
+            }
+          ],
+          "politic/waterborneTrade/call": [
+            {
+              "method": "callWaterTrade",
+              "line": 3595,
+              "parameters": [
+                "buildingId",
+                "mapId",
+                "token"
+              ]
+            }
+          ],
+          "politic/waterborneTrade/getStatus": [
+            {
+              "method": "getStatusAllWaterTrade",
+              "line": 3605,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "netCafe/exchangeNpoint": [
+            {
+              "method": "exchangeNetCafeNpoint",
+              "line": 4060,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionStatus": [
+            {
+              "method": "auctionStatus",
+              "line": 4224,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardBrowse": [
+            {
+              "method": "getAuctionCards",
+              "line": 4233,
+              "parameters": [
+                "item_per_page",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardSearchName": [
+            {
+              "method": "searchAuctionCardByName",
+              "line": 4245,
+              "parameters": [
+                "character_id",
+                "item_per_page",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            },
+            {
+              "method": "searchAuctionCardByName",
+              "line": 4267,
+              "parameters": [
+                "item_per_page",
+                "name",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardSearchSkill": [
+            {
+              "method": "searchAuctionCardBySkillName",
+              "line": 4280,
+              "parameters": [
+                "item_per_page",
+                "order",
+                "page_index",
+                "skill_id",
+                "sortby",
+                "token"
+              ]
+            },
+            {
+              "method": "searchAuctionCardBySkillName",
+              "line": 4299,
+              "parameters": [
+                "item_per_page",
+                "order",
+                "page_index",
+                "skill",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardSearchGrade": [
+            {
+              "method": "searchAuctionCardByGrade",
+              "line": 4312,
+              "parameters": [
+                "grade",
+                "item_per_page",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardSearchArmy": [
+            {
+              "method": "searchAuctionCardByTroop",
+              "line": 4326,
+              "parameters": [
+                "army",
+                "item_per_page",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardSearchGender": [
+            {
+              "method": "searchAuctionCardBySex",
+              "line": 4340,
+              "parameters": [
+                "gender",
+                "item_per_page",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardSearchFaction": [
+            {
+              "method": "searchAuctionCardByAttribute",
+              "line": 4354,
+              "parameters": [
+                "faction",
+                "item_per_page",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardOnShelf": [
+            {
+              "method": "postAuctionCard",
+              "line": 4368,
+              "parameters": [
+                "characters_id",
+                "name",
+                "period",
+                "price",
+                "skill_1",
+                "skill_2",
+                "skill_3",
+                "slot_id",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardOffShelf": [
+            {
+              "method": "removeAuctionCard",
+              "line": 4385,
+              "parameters": [
+                "item_sn",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardBuy": [
+            {
+              "method": "buyAuctionCard",
+              "line": 4394,
+              "parameters": [
+                "item_sn",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionCardSale": [
+            {
+              "method": "getMySellingCards",
+              "line": 4404,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionResourceBuy": [
+            {
+              "method": "buyResourceFromAuction",
+              "line": 4413,
+              "parameters": [
+                "item_sn",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionResourceBrowse": [
+            {
+              "method": "searchAllResourceFromAuction",
+              "line": 4423,
+              "parameters": [
+                "item_per_page",
+                "order",
+                "page_index",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionResourceSearch": [
+            {
+              "method": "searchResourceFromAuction",
+              "line": 4436,
+              "parameters": [
+                "amount_max",
+                "amount_min",
+                "item_per_page",
+                "order",
+                "page_index",
+                "price_max",
+                "price_min",
+                "resource_type",
+                "sortby",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionResourceSale": [
+            {
+              "method": "getMySellingResource",
+              "line": 4459,
+              "parameters": [
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionResourceOnShelf": [
+            {
+              "method": "postAuctionResource",
+              "line": 4468,
+              "parameters": [
+                "num",
+                "period",
+                "price",
+                "resource_type",
+                "slot_id",
+                "token"
+              ]
+            }
+          ],
+          "auction/auctionResourceOffShelf": [
+            {
+              "method": "removeAuctionResource",
+              "line": 4482,
+              "parameters": [
+                "item_sn",
+                "token"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item_bg.json",
+        "sha256": "1779a2d3f40de582ffd7f3e0fb2188ebb3f3a988ece8af201ebaecf2689e13be",
+        "root": "shop_item_bg",
+        "rows": 8,
+        "example_fields": [
+          "category",
+          "credit",
+          "desc",
+          "iconName",
+          "id",
+          "isEnable",
+          "isNew",
+          "itemIds",
+          "name",
+          "sortIndex"
+        ],
+        "sample_rows": [
+          "bgstore_01_0001_0001",
+          "bgstore_01_0001_0002"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\national_power_shop_item.json",
+        "sha256": "1e1019a0cb8e690873da1bb66fb8c00444187cb9ac6f4317442ba2dd26dfbc56",
+        "root": "national_power_shop_item",
+        "rows": 38,
+        "example_fields": [
+          "brief",
+          "category",
+          "class",
+          "costAmounts",
+          "costTypes",
+          "credit",
+          "discount",
+          "goal",
+          "iconName",
+          "id",
+          "isSet",
+          "itemIds",
+          "limitPerPerson",
+          "name",
+          "openDesc",
+          "quantities",
+          "sortno"
+        ],
+        "sample_rows": [
+          "np_shop0000001"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item.json",
+        "sha256": "4a2cd143a91d899d4df686b5730460933c31c9928d9fc69f5cae0a909b95fa8a",
+        "root": "shop_item",
+        "rows": 120,
+        "example_fields": [
+          "brief",
+          "category",
+          "class",
+          "costAmounts",
+          "costTypes",
+          "credit",
+          "discount",
+          "iconName",
+          "id",
+          "isInitialSale",
+          "isNew",
+          "isSet",
+          "itemIds",
+          "lockDesc",
+          "name",
+          "openDesc",
+          "quantities",
+          "sortno"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item_country.json",
+        "sha256": "9b38a0be51bd724cef6a788ea7529c5c7047abc76bf02a56c703895a4d25abd8",
+        "root": "shop_item_country",
+        "rows": 7,
+        "example_fields": [
+          "country01",
+          "country02",
+          "country03",
+          "country04",
+          "country05",
+          "country06",
+          "country07",
+          "country08",
+          "country09",
+          "country10",
+          "country11",
+          "country12",
+          "country13",
+          "country14",
+          "country15",
+          "country16",
+          "country17",
+          "country18",
+          "country19",
+          "country20",
+          "country21",
+          "country22",
+          "country23",
+          "country24",
+          "country25",
+          "country26",
+          "country27",
+          "country28",
+          "country29",
+          "country30",
+          "country31",
+          "country32",
+          "country33",
+          "country34",
+          "country35",
+          "country36",
+          "country37",
+          "country38",
+          "country39",
+          "country40",
+          "country41",
+          "country42",
+          "country43",
+          "country44",
+          "country45",
+          "country46",
+          "country47",
+          "id"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building_errantry.json",
+        "sha256": "b1e4f3802d3a9a6a76c70235692f6ba296a60a8e70e84c30a58595e948d969fe",
+        "root": "building_errantry",
+        "rows": 255,
+        "example_fields": [
+          "id",
+          "map0",
+          "map1",
+          "map2"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\errantry.json",
+        "sha256": "b803c189dd05b1f10e82ab39b2d332bb8a18c357fe17fe5413d77e6e084cc2d5",
+        "root": "errantry",
+        "rows": 6,
+        "example_fields": [
+          "costAmounts",
+          "costTypes",
+          "dueInterval",
+          "id",
+          "imageId",
+          "index",
+          "intelligenceBias",
+          "leastTotalIntelligence",
+          "nameId",
+          "result"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building_waterborne_trade.json",
+        "sha256": "96281fed59378237fbef042b6063309661167c4d136681a9c77d9ff8e98fbc6b",
+        "root": "building_waterborne_trade",
+        "rows": 1,
+        "example_fields": [
+          "id",
+          "map0",
+          "map1",
+          "map2"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\kokugi.json",
+        "sha256": "cb02a4ec49efb757c460e8b7ae5ff1b955ca9e79436c8aedb9ebe6a779fe4563",
+        "root": "kokugi",
+        "rows": 22,
+        "example_fields": [
+          "battleType",
+          "desc",
+          "id",
+          "levelUpType",
+          "lv1",
+          "lv2",
+          "lv3",
+          "lv4",
+          "lv5",
+          "maxLevel",
+          "name",
+          "param",
+          "type",
+          "valid"
+        ]
+      },
+      {
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\kokugiLevel.json",
+        "sha256": "c0a9c0df5df6a9e4e69fcecbe84eb056e79db9712ff99ac94987f978488c794f",
+        "root": "kokugiLevel",
+        "rows": 5,
+        "example_fields": [
+          "exSlow",
+          "fast",
+          "id",
+          "normal",
+          "slow",
+          "verySlow"
+        ]
+      }
+    ],
+    "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e"
+  },
+  "compatibility_decisions": [
+    "ResourceSnapshot/ResourceListing are internal, provider must read one consistent public snapshot",
+    "No provider means no stub response; never fake an empty market",
+    "Inclusive bounds match adjacent client dropdown ranges; original server boundary captures unavailable",
+    "Page size cap 300, stable item_sn tie break, numeric root display slots, decimal string scalars are local compatibility decisions",
+    "Expiry is derived from internal expires_at and snapshot observed_at; not a recovered storage schema",
+    "No writes, no production registration, no global endpoint count change, no permanent background grant"
+  ],
+  "limitations": [
+    "Original-server economics, auction tax constants, listing eligibility, event schedules and retry IDs unavailable",
+    "item13.json and item14.json not in the supplied 662-table extraction: does NOT prove missing installed assets",
+    "No original-server replay or Unity dynamic verification; read provider not integrated"
+  ]
+}

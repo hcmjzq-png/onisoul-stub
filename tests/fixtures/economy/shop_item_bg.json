@@ -1,0 +1,32 @@
+{
+  "shop_item_bg": {
+    "bgstore_01_0001_0001": {
+      "id": "bgstore_01_0001_0001",
+      "isEnable": true,
+      "sortIndex": 0,
+      "isNew": true,
+      "category": "near",
+      "itemIds": [
+        "item13_0000004"
+      ],
+      "credit": 168,
+      "name": "SHOP_ITEM_MSG_NAME_BG_01_0001_0001",
+      "desc": "SHOP_ITEM_MSG_DESC_BG_01_0001_0001",
+      "iconName": "sitem11_0000001"
+    },
+    "bgstore_01_0001_0002": {
+      "id": "bgstore_01_0001_0002",
+      "isEnable": true,
+      "sortIndex": 1,
+      "isNew": true,
+      "category": "near",
+      "itemIds": [
+        "item13_0000005"
+      ],
+      "credit": 168,
+      "name": "SHOP_ITEM_MSG_NAME_BG_01_0001_0002",
+      "desc": "SHOP_ITEM_MSG_DESC_BG_01_0001_0002",
+      "iconName": "sitem11_0000002"
+    }
+  }
+}
