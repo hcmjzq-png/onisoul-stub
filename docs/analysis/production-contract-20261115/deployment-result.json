@@ -1,0 +1,35 @@
+{
+  "head": "ad3549d8cbda527dba106df56c12c844bea5e03f",
+  "backup": "/var/backups/onisoul/production-contract-20261115-ad3549d",
+  "mission_overlay_preserved": true,
+  "proxy_not_restarted": true,
+  "tables_unchanged": true,
+  "production_http_smoke": "passed",
+  "server_tests": {
+    "run": 226,
+    "passed": 223,
+    "skipped": 3
+  },
+  "skipped_reason": "optional static IL analysis dependencies unavailable on server; all 226 pass locally",
+  "original_lessons_supported": 19,
+  "original_lessons_blocked": 5,
+  "registered": 402,
+  "dedicated_handlers": 60,
+  "remaining_placeholders": 342,
+  "existing_player_count": 6,
+  "existing_player_states_equal": true,
+  "unity_client_acceptance": "pending",
+  "initial_resources_verified_before_any_rewards": true,
+  "starting_gold": 5000,
+  "starting_points_MP_PP_BP": [
+    25,
+    25,
+    100
+  ],
+  "recipe_query_handlers_added": 1,
+  "production_placeholders_explicitly_rejected": 4,
+  "production_completion_guard": true,
+  "road_pp_and_gold_cost": 0,
+  "road_yield_bonus_formula": "unverified; not implemented",
+  "scope": "dispatch coverage only; city storage/upgrade/road operations have documented restrictions; production yields and kokudaka aggregation not restored"
+}
