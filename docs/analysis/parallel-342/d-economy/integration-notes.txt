@@ -1,0 +1,63 @@
+D 组集成交付；未挂载，未部署，不减少全局占位数。
+
+1. 生产注册（由总集成完成）
+   app/business/gameplay.py: GameplayService.register 的其他独立服务注册旁：
+       from app.business.economy_services import EconomyServices
+       EconomyServices(self, resource_snapshot=market_repository.public_resource_snapshot).register(registry)
+   market_repository/public_resource_snapshot 是建议的新依赖，当前不存在！禁止直接粘贴后声称挂载完成。
+   provider 必须返回 ResourceSnapshot(observed_at, tuple[ResourceListing,...])，一次数据库一致快照读取
+   所有活跃公开挂牌，排除 sold/cancelled/private 数据。字段是内部设计，不是协议证据。
+   不要用玩家存档遍历拼成跨时点市场，不要默认注入空 tuple 掩盖缺业务。
+   暂不开放购买 UI；读适配器通过集成验收后才允许单独统计这两项限定查询。
+
+2. app/business/response_shapes.py（仅建议）
+   将 auction/auctionResourceBrowse、auction/auctionResourceSearch 记为 bare map，证据
+   AuctionDataManager.OnSearchResourceFromAuction:775-807 / ParseSingleResourceData:1070。
+   本模块直接返回最终裸表，Registry 不二次包装；失败仅 errorReason，客户端 GameRestarter 可截断。
+   武将 Browse + SearchArmy/Faction/Gender/Grade/Name/Skill 也不能带标量信封：
+   CreateStatus:532 的循环只跳过 price/remain_time；保留这两个嵌套索引，不要套通用空表模板。
+   不修改已有 auctionCardSale/ResourceSale 的裸表规则。
+   docs/api_schema.md、api_contract.tsv/api_* 与 tools/endpoint_progress.py 的更新由总集成执行，
+   以 reviewed-endpoints.tsv/evidence.json 为依据。当前不挂载新写入口，不覆盖 PlayerServices 普通商城。
+
+3. app/state.py、app/db.py、state/、db/（共享事务建议，未实现）
+   买家单锁不足。建立持久 market_listing、escrow、settlement ledger（名称仅内部建议）。
+   一笔购买须在同一 DB transaction 锁住 listing 与按固定 playerId 顺序锁住双方存档行，
+   重验状态/版本/到期/归属/余额/容量/交易资格，原子执行买家扣款、卖家入账、托管交割、
+   双方 revision 和 listing sold、唯一 settlement 记录，commit 后才返回成功。
+   任一异常必须全部 rollback。禁止对两账号调用两次独立 _save 充当原子提交。
+   上架先原子移入托管；取消与购买竞争同一 listing 锁。过期退还也需唯一交割记录。
+   Buy(item_sn) 可据唯一成交记录同买家重放；OnShelf 请求没有证明存在 requestId，
+   相同参数既可能重试也可能新单，不能用参数 hash 永久去重。需要证明 slot_id 生命周期
+   或捕获上层重试语义后设计幂等令牌。先完成掉线/崩溃/双买家竞争/费用不足测试再挂载写操作。
+   C 负责卡牌可交易资格，服务端重算 name/skill 等属性，不信任 OnShelf 的客户端字段。
+
+4. A/D 背景归属建议
+   本组未授予任何背景，未新增玩家永久归属字段。背景选择由 A 负责。
+   统一一个所有权来源，建议 namespaced backgroundsOwned，键为 item13/item14 物品 ID，
+   其结构/期限必须先查证；不是 shop 商品 ID，不能 A/D 各自发放一份永久物品。
+   若既有存档已有权属，应迁移/引用同一数据，不因重登或查询补发。
+   shop_item_bg 的 isEnable 是静态信息，不是原服此刻销售排期证明；先拿到 item13/item14
+   和原服购买前后 getBackgrounds、重复购买、重登证据，再将 credit 扣减和归属同次保存。
+   662 表目录缺 item13/item14 仅表示本次资料未提供，不能等同于已确认 stub has no assets。
+
+5. 其他依赖
+   国家商城：goal 激活/关闭与 limitPerPerson 重置由国家共享进度提供；整套 index=-1。
+   国技：selfPoint 与共享 kokugiPoint 的权属/levelRate 尚不明确，不开放任意 addPoint；
+   查证后的效果定义交 A/B，不在本组修改他们模块。
+   水运好友由 E 提供访问/资格；预留船队与好友收益若跨账号，也需要共享事务。
+   现有 player_services.py/mission_chain.py 的行为全部保留，本分支未编辑。
+
+6. 最小独占动态验证（交总集成安排，本组不启动客户端）
+   a) 拍卖原始回包：资源浏览/搜索各一次，非空/空两种；观察根结构、item_sn/显示槽号、
+      credit 与 amount 排序、99/100 及 999/1000 区间边界、第二页/到期刷新。
+   b) 卖方查询抓 params；上架→断线重试→买方购买→两边重登；比较税费、到期、取消、
+      额度/卡资格与原始请求。模拟服生成值只能验证模拟服，不作原规则证据。
+   c) 背景 getBackgroundItems→购买前 getBackgrounds→购买→后 getBackgrounds→重复请求→重登；
+      同时取得 item13/item14 原表，验证初始归属/期限/购买是否跨地图可用。
+   d) 国家商城一次目标前后查询；游历/水运各一条真实出发、召回、领取、重登链；
+      国技记录 selfPoint/levelRate/kokugiPoint/usedPoint/point，避免猜奖励、税率或倍率。
+   监控面板与原游戏等大对齐，不修改游戏原始尺寸。
+
+7. 本地验证：专项 10/10，完整回归 236/236；无跳过。仅内存测试和源码分析。
+   未验证生产 DB 快照/事务，也未验证 Unity 真机行为；不将这些测试当作服务器部署验收。
