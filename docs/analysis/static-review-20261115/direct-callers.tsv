@@ -1,0 +1,643 @@
+endpoint	wrapper_token	wrapper	caller_token	caller	opcode	caller_scope	dll_offset
+auction/auctionCardBrowse	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	0x060064E6	AuctionDataManager/<GetAuctionCards>c__AnonStorey300::<>m__4F0	callvirt	client_caller	0x221E11
+auction/auctionCardBrowse	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	0x060064E6	AuctionDataManager/<GetAuctionCards>c__AnonStorey300::<>m__4F0	callvirt	client_caller	0x221E65
+auction/auctionCardBuy	0x06001292	buyAuctionCard(? p_cardId,? p_responder)	0x060064FC	AuctionDataManager/<BuyCardFromAuction>c__AnonStorey30B::<>m__4FC	callvirt	client_caller	0x222593
+auction/auctionCardOffShelf	0x06001291	removeAuctionCard(? p_itemSn,? p_responder)	0x060064FA	AuctionDataManager/<RemoveCardFromAuction>c__AnonStorey30A::<>m__4FB	callvirt	client_caller	0x22253F
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	0x060064F8	AuctionDataManager/<PostCardToAuction>c__AnonStorey309::<>m__4FA	callvirt	client_caller	0x2224E9
+auction/auctionCardSale	0x06001293	getMySellingCards(? p_responder)	0x06003572	AuctionDataManager::<GetMySellingCardsFromServer>m__4F9	callvirt	client_caller	0x12DD74
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	0x060064F2	AuctionDataManager/<SearchAuctionCardByTroop>c__AnonStorey306::<>m__4F6	callvirt	client_caller	0x222283
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	0x060064F2	AuctionDataManager/<SearchAuctionCardByTroop>c__AnonStorey306::<>m__4F6	callvirt	client_caller	0x2222BD
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	0x060064F6	AuctionDataManager/<SearchAuctionCardByAttribute>c__AnonStorey308::<>m__4F8	callvirt	client_caller	0x222435
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	0x060064F6	AuctionDataManager/<SearchAuctionCardByAttribute>c__AnonStorey308::<>m__4F8	callvirt	client_caller	0x22246A
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	0x060064F4	AuctionDataManager/<SearchAuctionCardBySex>c__AnonStorey307::<>m__4F7	callvirt	client_caller	0x222348
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	0x060064F4	AuctionDataManager/<SearchAuctionCardBySex>c__AnonStorey307::<>m__4F7	callvirt	client_caller	0x22237D
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	0x060064F0	AuctionDataManager/<SearchAuctionCardByGrade>c__AnonStorey305::<>m__4F5	callvirt	client_caller	0x2221CF
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	0x060064F0	AuctionDataManager/<SearchAuctionCardByGrade>c__AnonStorey305::<>m__4F5	callvirt	client_caller	0x222209
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	0x060064E8	AuctionDataManager/<SearchAuctionCardByName>c__AnonStorey301::<>m__4F1	callvirt	client_caller	0x221EFF
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	0x060064E8	AuctionDataManager/<SearchAuctionCardByName>c__AnonStorey301::<>m__4F1	callvirt	client_caller	0x221F39
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	0x060064EA	AuctionDataManager/<SearchAuctionCardByName>c__AnonStorey302::<>m__4F2	callvirt	client_caller	0x221FB3
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	0x060064EA	AuctionDataManager/<SearchAuctionCardByName>c__AnonStorey302::<>m__4F2	callvirt	client_caller	0x221FED
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	0x060064EC	AuctionDataManager/<SearchAuctionCardBySkillName>c__AnonStorey303::<>m__4F3	callvirt	client_caller	0x222067
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	0x060064EC	AuctionDataManager/<SearchAuctionCardBySkillName>c__AnonStorey303::<>m__4F3	callvirt	client_caller	0x2220A1
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	0x060064EE	AuctionDataManager/<SearchAuctionCardBySkillName>c__AnonStorey304::<>m__4F4	callvirt	client_caller	0x22211B
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	0x060064EE	AuctionDataManager/<SearchAuctionCardBySkillName>c__AnonStorey304::<>m__4F4	callvirt	client_caller	0x222155
+auction/auctionResourceBrowse	0x06001295	searchAllResourceFromAuction(? p_responder,? p_sortBy,? p_order,? p_pageIndex,? p_perPage)	0x06006502	AuctionDataManager/<SearchAllResourceFromAuction>c__AnonStorey30E::<>m__50B	callvirt	client_caller	0x222711
+auction/auctionResourceBuy	0x06001294	buyResourceFromAuction(? p_itemSn,? p_responder)	0x060064FE	AuctionDataManager/<BuyResourceFromAuction>c__AnonStorey30C::<>m__509	callvirt	client_caller	0x2225E7
+auction/auctionResourceOffShelf	0x06001299	removeAuctionResource(? p_itemSn,? p_responder)	0x06006506	AuctionDataManager/<RemoveResourceFromAuction>c__AnonStorey310::<>m__50E	callvirt	client_caller	0x222853
+auction/auctionResourceOnShelf	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	0x06006504	AuctionDataManager/<PostResourceToAuction>c__AnonStorey30F::<>m__50D	callvirt	client_caller	0x2227FD
+auction/auctionResourceSale	0x06001297	getMySellingResource(? p_responder)	0x0600357F	AuctionDataManager::<GetMySellingResourceFromServer>m__50C	callvirt	client_caller	0x12DE18
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	0x06006500	AuctionDataManager/<SearchResourceFromAuction>c__AnonStorey30D::<>m__50A	callvirt	client_caller	0x22268B
+auction/auctionStatus	0x06001286	auctionStatus(? p_responder)	0x06003571	AuctionDataManager::<AuctionStatus>m__4EF	callvirt	client_caller	0x12DD30
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	0x06006143	BootUp/<dummyPlayerCreate>c__AnonStorey198::<>m__76	callvirt	client_caller	0x215256
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	0x06006722	LoginEnvironment/<createNewPlayer>c__AnonStorey3D7::<>m__7E8	callvirt	client_caller	0x22E3B2
+auth/gameLogin	0x06001102	gameLogin(? token,? responder)	0x0600611F	SessionKeeper/<login>c__AnonStorey188::<>m__4C	callvirt	client_caller	0x214B14
+auth/guestLogin	0x06001105	guestLogin(? loginHash,? responder)	0x06006122	SessionKeeper/<guestLogin>c__AnonStorey189::<>m__4E	callvirt	client_caller	0x214BEB
+auth/keepAliveContainer	0x06001106	refreshKeepAliveContainer(? responder)	0x06006125	SessionKeeper/<refreshKeepAliveContainer>c__AnonStorey18A::<>m__50	callvirt	client_caller	0x214C2A
+auth/login	0x06001101	pubLogin(? sessionKey,? responder)	0x0600611C	SessionKeeper/<directLogin>c__AnonStorey187::<>m__4A	callvirt	client_caller	0x214A18
+auth/refreshToken	0x06001100	refreshToken(? responder)	0x06003E74	BoosterPackScene::<buyCredit>m__5CD	callvirt	client_caller	0x173290
+auth/registerName	0x060011A3	registerName(? username,? responder)	0x06006141	BootUp/<dummyPlayerCreate>c__AnonStorey198::<>m__71	callvirt	client_caller	0x2151FE
+auth/registerName	0x060011A3	registerName(? username,? responder)	0x0600671F	LoginEnvironment/<registerName>c__AnonStorey3D6::<>m__7E7	callvirt	client_caller	0x22E2F2
+battle/captchaVsBattle	0x06001178	captchaVsBattle(? verificationCode,? responder)	0x0600519A	vsSettingMacroProvisionWindow::<completeInput>m__9DB	callvirt	client_caller	0x1E7626
+battle/executeBattle	0x06001164	executeBattleSiege(? rivalId,? responder)	0x06001C2A	PluginRunner_DoBattleSiege::<CheckBattle>m__1BB	callvirt	client_caller	0x94AAD
+battle/executeBattle	0x06001166	executeBattleRaidBoss(? deckIndex,? entryId,? responder)	0x06001C9F	PluginRunner_DoRaidBoss::<atkRaidboss>m__1DB	callvirt	client_caller	0x977C5
+battle/executeBattle	0x0600116C	executeBattlePlayer(? deckIndex,? rivalId,? queestPoint,? responder)	0x06003693	BattleApiClient::executeBattlePlayer	callvirt	client_caller	0x133F54
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	0x06003694	BattleApiClient::executeBattleQuest	callvirt	client_caller	0x133F90
+battle/executeBattle	0x06001166	executeBattleRaidBoss(? deckIndex,? entryId,? responder)	0x06003695	BattleApiClient::executeBattleRaidBoss	callvirt	client_caller	0x133FCA
+battle/executeBattle	0x06001167	executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)	0x06003696	BattleApiClient::executeBattleGiganticRaidBoss	callvirt	client_caller	0x13405C
+battle/executeBattle	0x0600116F	executeBattleOutBreak(? deckIndex,? buildingId,? responder)	0x06003699	BattleApiClient::executeBattleOutBreak	callvirt	client_caller	0x13410D
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	0x0600369A	BattleApiClient::executeBattle	callvirt	client_caller	0x13414C
+battle/executeBattle	0x06001164	executeBattleSiege(? rivalId,? responder)	0x0600369B	BattleApiClient::executeBattleSiege	callvirt	client_caller	0x134183
+battle/executeBattle	0x06001165	executeBattleStrategy(? rivalId,? command,? responder)	0x0600369C	BattleApiClient::executeBattleStrategy	callvirt	client_caller	0x1341BE
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	0x060062DE	PluginQuestStepHelper/<CallAtkEnemy>c__AnonStorey23D::<>m__1AA	callvirt	client_caller	0x219FA0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	0x060062E5	PluginRunner_DoBattleNormal/<onGetRivals>c__AnonStorey240::<>m__1B2	callvirt	client_caller	0x21A0B1
+battle/executeBattle	0x0600116F	executeBattleOutBreak(? deckIndex,? buildingId,? responder)	0x060062F3	PluginRunner_DoPoliticBattle/<ProcessBattle>c__AnonStorey245::<>m__1D1	callvirt	client_caller	0x21A499
+battle/getRaidBossDetail	0x06001247	getRaidBossDetail(? bossHash,? responder)	0x060063FF	RaidBossBattleInfoList/<setRaidBossHistory>c__AnonStorey2A8::<>m__3AB	callvirt	client_caller	0x21E9CB
+battle/getRaidBossEntries	0x06001243	getRaidBossEntries(? responder)	0x06001BFD	PluginRaidbossDataManager::<requestRaidbossData>m__1AD	callvirt	client_caller	0x93934
+battle/getRaidBossEntries	0x06001243	getRaidBossEntries(? responder)	0x06002464	PoliticMissionProgressList::<phaseInit>m__2F3	callvirt	client_caller	0xCA16A
+battle/getRaidBossEntries	0x06001243	getRaidBossEntries(? responder)	0x06002833	QuestHUDController::<setup>m__35B	callvirt	client_caller	0xDE748
+battle/getRaidBossEntries	0x06001243	getRaidBossEntries(? responder)	0x060029FD	RaidBossScene::<createList>m__3BA	callvirt	client_caller	0xE9928
+battle/getRaidBossLogs	0x06001244	getRaidBossLogs(? responder)	0x06004DCB	mypageRasetsu::<init>m__92A	callvirt	client_caller	0x1D1D4C
+battle/getRivals2	0x060011BF	getRivals(? mode,? responder)	0x06001C12	PluginRunner_DoBattleNormal::<Run>m__1B1	callvirt	client_caller	0x94145
+battle/getRivals2	0x060011BF	getRivals(? mode,? responder)	0x0600682F	vsSettingCache/<getWarAdversary>c__AnonStorey42A::<>m__9D7	callvirt	client_caller	0x231D3D
+battle/getRivals2	0x060011BF	getRivals(? mode,? responder)	0x06006832	vsSettingCache/<getAdversary>c__AnonStorey42B::<>m__9D8	callvirt	client_caller	0x231EFD
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	0x06001C10	PluginRunner_DoBattleNormal::<Init>m__1AE	callvirt	client_caller	0x940ED
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	0x06001C11	PluginRunner_DoBattleNormal::<Run>m__1AF	callvirt	client_caller	0x94119
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	0x06001C13	PluginRunner_DoBattleNormal::<onBattleResult>m__1B3	callvirt	client_caller	0x94171
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	0x06006062	CountryRanking/<setup>c__Iterator150::<>m__9A6	callvirt	client_caller	0x20ED71
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	0x0600606C	CountryRanking/<setupForSkipBattle>c__Iterator151::<>m__9AA	callvirt	client_caller	0x20F30D
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	0x0600682A	decisiveBattleSituation/<setup>c__AnonStorey428::<>m__9BA	callvirt	client_caller	0x231AAD
+battle/getVcode	0x0600127D	getVcode(? responder)	0x06006835	vsSettingVcodeImage/<loadVcodeImage>c__AnonStorey42C::<>m__9DE	callvirt	client_caller	0x2320B8
+battle/getVsBattleLogs	0x06001260	getStrategyBattleLogs(? force,? responder)	0x0600675B	mypageBattleLogUpdateStrategy/<load>c__AnonStorey3EC::<>m__828	callvirt	client_caller	0x22EBA1
+battle/getVsBattleLogs	0x06001173	getTurfWarLogs(? force,? responder)	0x0600675E	mypageBattleLogUpdateTurfWar/<load>c__AnonStorey3ED::<>m__82B	callvirt	client_caller	0x22EC8D
+battle/getVsBattleLogs	0x06001172	getVsBattleLogs(? force,? responder)	0x06006761	mypageBattleLogUpdateVs/<load>c__AnonStorey3EE::<>m__82E	callvirt	client_caller	0x22ED79
+battle/getVsReplayData	0x06001174	getVsReplayData(? id,? type,? responder)	0x06003698	BattleApiClient::getVsReplayData	callvirt	client_caller	0x1340CA
+battle/removeRaidBossWork	0x06001248	removeRaidBossWork(? entry,? responder)	0x06001C9E	PluginRunner_DoRaidBoss::<removeRaidboss>m__1DA	callvirt	client_caller	0x9776E
+battle/removeRaidBossWork	0x06001248	removeRaidBossWork(? entry,? responder)	0x060029FE	RaidBossScene::<deleteOwnBoss>m__3BB	callvirt	client_caller	0xE995B
+battle/sendRescueRequest	0x06001246	sendRescueRequest(? responder)	0x06002A00	RaidBossScene::<helpAppeal>m__3BD	callvirt	client_caller	0xE99A1
+common/dedicate	0x06001111	dedicateCharacter(? ids,? responder)	0x0600672F	DedicateOfMaterialsDialog/<setupChara>c__AnonStorey3DD::<>m__7FA	callvirt	client_caller	0x22E49A
+common/dedicate	0x06001112	dedicateBuilding(? ids,? responder)	0x06006732	DedicateOfMaterialsDialog/<setupBuilding>c__AnonStorey3DE::<>m__7FB	callvirt	client_caller	0x22E4EE
+common/dedicate	0x06001113	dedicateTactics(? ids,? responder)	0x06006735	DedicateOfMaterialsDialog/<setupTactics>c__AnonStorey3DF::<>m__7FC	callvirt	client_caller	0x22E542
+common/dedicate	0x06001114	dedicateEquip(? ids,? responder)	0x06006738	DedicateOfMaterialsDialog/<setupEquip>c__AnonStorey3E0::<>m__7FD	callvirt	client_caller	0x22E596
+common/dedicate	0x06001115	dedicateGold(? count,? responder)	0x0600673B	DedicateOfMaterialsDialog/<setupGold>c__AnonStorey3E1::<>m__7FE	callvirt	client_caller	0x22E5EA
+common/getBriefOfNationalPower	0x06001118	getBriefOfNationalPowerSetting(? responder)	0x0600438B	DeckSale::<startCall>m__6C7	callvirt	client_caller	0x196398
+common/getBriefOfNationalPower	0x06001118	getBriefOfNationalPowerSetting(? responder)	0x0600494E	MightOfNation::<Start>m__807	callvirt	client_caller	0x1B4994
+common/getCharacters	0x06001145	getCharacters(? responder)	0x060041D7	DeckConflateCards_Character::<sendRequestGetCharacters>m__637	callvirt	client_caller	0x189A1C
+common/getCharacters	0x06001145	getCharacters(? responder)	0x06005AC8	PlayerDeckCache/<process>c__Iterator7E::<>m__197	callvirt	client_caller	0x1F756C
+common/getEquips	0x0600114B	getEquips(? responder)	0x0600511A	PlayerDeck::<getEquips>m__9AF	callvirt	client_caller	0x1E4A44
+common/getEquips	0x0600114B	getEquips(? responder)	0x06006641	DeckConflateCards_Equip/<setup>c__AnonStorey383::<>m__63B	callvirt	client_caller	0x227FAC
+common/getEquips	0x0600114B	getEquips(? responder)	0x06006839	vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D::<>m__9E3	callvirt	client_caller	0x232194
+common/getEventStatuses	0x060011EA	getEventStatuses(? responder)	0x06001C2B	PluginRunner_DoBattleSiege::<checkSiegeEvent>m__1BC	callvirt	client_caller	0x94AD4
+common/getEventStatuses	0x060011EA	getEventStatuses(? responder)	0x06005061	StrategySelect::<Start>m__996	callvirt	client_caller	0x1E0F38
+common/getEventStatuses	0x060011EA	getEventStatuses(? responder)	0x06005D66	Strategy/<onSetup>c__IteratorE1::<>m__443	callvirt	client_caller	0x201FC4
+common/getEventStatuses	0x060011EA	getEventStatuses(? responder)	0x06005F7B	giganticRaidBossScene/<Start>c__Iterator12F::<>m__7B7	callvirt	client_caller	0x20B7A0
+common/getEventStatuses	0x060011EA	getEventStatuses(? responder)	0x06006448	StatusView/<setupEventInformation>c__AnonStorey2C7::<>m__418	callvirt	client_caller	0x21F864
+common/getEventStatuses	0x060011EA	getEventStatuses(? responder)	0x060065CF	BoardBody/<reqWebActiveEvents>c__AnonStorey359::<>m__596	callvirt	client_caller	0x2255DA
+common/getLoginStampSheet	0x0600111A	getLoginStampSheet(? responder)	0x06006028	mypageLoginStampDialog/<processMenu>c__Iterator147::<>m__857	callvirt	client_caller	0x20E289
+common/getPlayerCogid	0x06001107	getPlayerCogid(? responder)	0x060060D2	Configs/<GetUserInfo>c__AnonStorey168::<>m__11	callvirt	client_caller	0x213B33
+common/getPlayerEntity	0x06001108	getPlayerEntry(? responder)	0x06001170	WebApiClient::debugCreateQuestEncount	call	webapi_internal	0x5AB6F
+common/getPlayerParams	0x0600110D	getPlayerParams(? responder)	0x06005D55	StatusView/<setupStatus>c__IteratorDF::<>m__41B	callvirt	client_caller	0x201B50
+common/getPlayerParams	0x0600110D	getPlayerParams(? responder)	0x06006446	StatusView/<resetStatus>c__AnonStorey2C4::<>m__415	callvirt	client_caller	0x21F833
+common/getRevisions	0x060010FE	getRevisions(? responder)	0x06005DD4	TableLoad/<_setup>c__IteratorF0::<>m__4C2	callvirt	client_caller	0x203C98
+common/getSelectCharacters	0x06001146	getSelectCharacters(? ids,? responder)	0x06005AC7	PlayerDeckCache/<process>c__Iterator7E::<>m__196	callvirt	client_caller	0x1F7546
+common/getSelectCharacters	0x06001146	getSelectCharacters(? ids,? responder)	0x06005C26	QuestDataCache/<process>c__IteratorB5::<>m__344	callvirt	client_caller	0x1FC582
+common/getSelectCharacters	0x06001146	getSelectCharacters(? ids,? responder)	0x0600646A	Strategy/<setupDeckCharacter>c__AnonStorey2D0::<>m__43D	callvirt	client_caller	0x21FF5D
+common/getSelectCharacters	0x06001146	getSelectCharacters(? ids,? responder)	0x06006823	PlayerDeck/<getCharacters>c__AnonStorey426::<>m__9AD	callvirt	client_caller	0x2318FA
+common/getServerTime	0x0600110B	getServerTime(? responder)	0x060060D4	Configs/<GetUserInfo>c__AnonStorey168/<GetUserInfo>c__AnonStorey167::<>m__12	callvirt	client_caller	0x213B89
+common/getServerTime	0x0600110B	getServerTime(? responder)	0x060060DD	SceneResources/<Awake>c__AnonStorey16A::<>m__20	callvirt	client_caller	0x213E38
+common/getServerTime	0x0600110B	getServerTime(? responder)	0x0600644F	StatusView/<resetStatus>c__AnonStorey2C4/<resetStatus>c__AnonStorey2C5::<>m__41F	callvirt	client_caller	0x21FAC5
+common/getShopsale	0x060012A3	getShopSale(? p_responder)	0x06002609	PoliticShopSaleManager::<AskGetShopSaleDataNow>m__31B	callvirt	client_caller	0xD22C8
+common/getShopsale	0x060012A3	getShopSale(? p_responder)	0x0600260A	PoliticShopSaleManager::<getShopSaleData>m__31C	callvirt	client_caller	0xD22F0
+common/getTactics	0x0600114A	getTactics(? responder)	0x06005119	PlayerDeck::<getTactics>m__9AE	callvirt	client_caller	0x1E4A1C
+common/getTactics	0x0600114A	getTactics(? responder)	0x06006649	DeckConflateCards_Tactics/<setup>c__AnonStorey386::<>m__641	callvirt	client_caller	0x228130
+common/getTactics	0x0600114A	getTactics(? responder)	0x06006838	vsSetting_Siege/<playerCharacterSet>c__AnonStorey42D::<>m__9E2	callvirt	client_caller	0x23216C
+common/increasePlayerLevel	0x0600110F	increasePlayerLevel(? responder)	0x06002DC5	StatusView::<sendlevelup>m__416	callvirt	client_caller	0xFD840
+common/periodicInquiry	0x06001110	periodicInquiry(? responder)	0x060062D3	PeriodicRounder/<refresh>c__AnonStorey239::<>m__194	callvirt	client_caller	0x219E1A
+common/recordChat	0x060011BE	recordChat(? room,? statement,? responder)	0x06005A80	Chat/<sendIRCMessage>c__Iterator73::<>m__7D	callvirt	client_caller	0x1F684D
+common/solvePlayerLevelCap	0x0600110E	solvePlayerLevelCap(? responder)	0x06006399	PoliticMissionManager/<solveLevelCap>c__AnonStorey286::<>m__2F0	callvirt	client_caller	0x21D310
+common/stampLoginSheet	0x06001119	stampLoginSheet(? responder)	0x06002194	PoliticFSMLogin::<login>m__2AD	callvirt	client_caller	0xB7E40
+community/bbs/closeBbs	0x060011D5	closeBBS(? session,? type,? responder)	0x06006155	HTMLBbsMediator/<closeBbs>c__AnonStorey19F::<>m__8C	callvirt	client_caller	0x2154F7
+community/bbs/closeThread	0x060011D4	closeBBSThread(? session,? type,? threadId,? responder)	0x0600616A	HTMLBbsMediator/<closeThread>c__AnonStorey1A6::<>m__93	callvirt	client_caller	0x215C84
+community/bbs/closeThread	0x060011D4	closeBBSThread(? session,? type,? threadId,? responder)	0x060065C0	BoardBody/<reqWebCloseThread>c__AnonStorey353::<>m__59C	callvirt	client_caller	0x2252E0
+community/bbs/createBbs	0x060011C8	createBBS(? session,? type,? name,? responder)	0x0600614F	HTMLBbsMediator/<createBbs>c__AnonStorey19D::<>m__8A	callvirt	client_caller	0x2153E8
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	0x0600615B	HTMLBbsMediator/<createThread>c__AnonStorey1A1::<>m__8E	callvirt	client_caller	0x21566E
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	0x060065B8	BoardBody/<reqWebCreateThread>c__AnonStorey350::<>m__59A	callvirt	client_caller	0x22515A
+community/bbs/deleteBbs	0x060011C9	deleteBBS(? session,? type,? responder)	0x06006152	HTMLBbsMediator/<deleteBbs>c__AnonStorey19E::<>m__8B	callvirt	client_caller	0x21546F
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	0x06006173	HTMLBbsMediator/<deleteComment>c__AnonStorey1A9::<>m__96	callvirt	client_caller	0x215EBE
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	0x060065C9	BoardBody/<reqWebDeleteComment>c__AnonStorey356::<>m__59F	callvirt	client_caller	0x2254DE
+community/bbs/deleteThread	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	0x0600615E	HTMLBbsMediator/<deleteThread>c__AnonStorey1A2::<>m__8F	callvirt	client_caller	0x21571D
+community/bbs/deleteThread	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	0x060065BB	BoardBody/<reqWebDeleteThread>c__AnonStorey351::<>m__59B	callvirt	client_caller	0x2251FF
+community/bbs/getBbsId	0x060011D3	getBBSId(? type,? responder)	0x0600617F	HTMLBbsMediator/<getBbsId>c__AnonStorey1AD::<>m__9A	callvirt	client_caller	0x2162EB
+community/bbs/getBbsList	0x060011D2	getBBSList(? responder)	0x0600617C	HTMLBbsMediator/<getBbsList>c__AnonStorey1AC::<>m__99	callvirt	client_caller	0x216272
+community/bbs/getBbsList	0x060011D2	getBBSList(? responder)	0x060065B3	BoardBody/<reqWebGetBbsList>c__AnonStorey34E::<>m__58B	callvirt	client_caller	0x225056
+community/bbs/infoComment	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	0x06006179	HTMLBbsMediator/<infoComment>c__AnonStorey1AB::<>m__98	callvirt	client_caller	0x2161B5
+community/bbs/infoComment	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	0x060065CD	BoardBody/<reqWebInfoComment>c__AnonStorey358::<>m__595	callvirt	client_caller	0x2255B2
+community/bbs/infoThread	0x060011CD	getBBSInfoThread(? type,? id,? numOfCommentType,? responder)	0x06006164	HTMLBbsMediator/<infoThread>c__AnonStorey1A4::<>m__91	callvirt	client_caller	0x2159AC
+community/bbs/infoThread	0x060011CD	getBBSInfoThread(? type,? id,? numOfCommentType,? responder)	0x060065BD	BoardBody/<reqWebInfoThread>c__AnonStorey352::<>m__58F	callvirt	client_caller	0x225255
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	0x06006176	HTMLBbsMediator/<listComment>c__AnonStorey1AA::<>m__97	callvirt	client_caller	0x215FC5
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	0x060065CB	BoardBody/<reqWebListComment>c__AnonStorey357::<>m__594	callvirt	client_caller	0x22555E
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	0x06006161	HTMLBbsMediator/<listThread>c__AnonStorey1A3::<>m__90	callvirt	client_caller	0x215816
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	0x060065B5	BoardBody/<reqWebListThread>c__AnonStorey34F::<>m__58C	callvirt	client_caller	0x2250BA
+community/bbs/openBbs	0x060011D6	openBBS(? session,? type,? responder)	0x06006158	HTMLBbsMediator/<openBbs>c__AnonStorey1A0::<>m__8D	callvirt	client_caller	0x21557F
+community/bbs/openThread	0x060011D7	openBBSThread(? session,? type,? threadId,? responder)	0x0600616D	HTMLBbsMediator/<openThread>c__AnonStorey1A7::<>m__94	callvirt	client_caller	0x215D20
+community/bbs/openThread	0x060011D7	openBBSThread(? session,? type,? threadId,? responder)	0x060065C3	BoardBody/<reqWebOpenThread>c__AnonStorey354::<>m__59D	callvirt	client_caller	0x22537C
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	0x06006170	HTMLBbsMediator/<postComment>c__AnonStorey1A8::<>m__95	callvirt	client_caller	0x215DFA
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	0x060065C6	BoardBody/<reqWebPostComment>c__AnonStorey355::<>m__59E	callvirt	client_caller	0x22542E
+community/libs/bbsSession	0x060011C7	getBBSSession(? responder)	0x0600614D	HTMLBbsMediator/<callBbsAPI>c__AnonStorey19B::<>m__89	callvirt	client_caller	0x215393
+community/libs/bbsSession	0x060011C7	getBBSSession(? responder)	0x060065B0	BoardBody/<reqWebBbsSession>c__AnonStorey34D::<>m__58A	callvirt	client_caller	0x224FD4
+dailymission/exchangeDailyMissionItem	0x0600129E	exchangeDailyMissionItem(? responder,? rewardIndex)	0x0600660A	DailyMissionScene/<delegateRewardBtn>c__AnonStorey370::<>m__5E0	callvirt	client_caller	0x2271BA
+dailymission/getDailyMission	0x0600129D	getDailyMission(? responder)	0x06006607	DailyMissionScene/<Start>c__AnonStorey36F::<>m__5DF	callvirt	client_caller	0x226ACC
+dailymission/getDailyMissionReward	0x0600129F	getDailyMissionReward(? responder,? rewardIndex)	0x0600660B	DailyMissionScene/<delegateRewardBtn>c__AnonStorey370::<>m__5E1	callvirt	client_caller	0x2271E8
+dailymission/getPoint	0x060012A0	getActivePt(? p_responder)	0x06003EDF	DailyMissionScene::<refreshActivePt>m__5E5	callvirt	client_caller	0x176998
+debug/addCollections	0x060011B1	addCollections(? collectionType,? seriesId,? ids,? responder)	0x06006758	mypage/<debugAddColections>c__AnonStorey3EB::<>m__821	callvirt	client_caller	0x22EB3C
+debug/addItems	0x060011C0	debug_addItems(? ids,? responder)	0x06006366	PoliticDebugMenu/<debug_ItemCategoryAdd>c__AnonStorey273::<>m__25B	callvirt	client_caller	0x21C323
+debug/addItems	0x060011C0	debug_addItems(? ids,? responder)	0x06006369	PoliticDebugMenu/<debug_ItemsAdd>c__AnonStorey274::<>m__25C	callvirt	client_caller	0x21C36F
+debug/addItems	0x060011C0	debug_addItems(? ids,? responder)	0x0600661A	DebugMakeCharacterMenu/<debug_ItemsAdd>c__AnonStorey375::<>m__5F8	callvirt	client_caller	0x2276D7
+debug/addItems	0x060011C0	debug_addItems(? ids,? responder)	0x0600661D	DebugMakeEquipMenu/<debug_ItemsAdd>c__AnonStorey376::<>m__5FE	callvirt	client_caller	0x227723
+debug/clearBuildings	0x06001134	debug_clearBuildings(? responder)	0x0600200A	PoliticDebugMenu::<requestClearBuilding>m__263	callvirt	client_caller	0xAD7D8
+debug/debugAccelerateProduceTask	0x060011C4	debug_AccelerateProduceTask(? responder)	0x06001FFA	PoliticDebugMenu::OnGUI	callvirt	client_caller	0xACF2E
+debug/debugAddBuildingExp	0x060011C3	debug_AddBuildingExp(? responder)	0x06001FFA	PoliticDebugMenu::OnGUI	callvirt	client_caller	0xACEF2
+debug/debugCreateCharacter	0x060011C1	debugCreateCharacter(? baseId,? status,? skills,? responder)	0x06005E4A	DebugMakeCharacterMenu/<addCharacter>c__Iterator103::<>m__5FA	callvirt	client_caller	0x205A2E
+debug/debugCreateCharacter	0x060011C1	debugCreateCharacter(? baseId,? status,? skills,? responder)	0x06005E4B	DebugMakeCharacterMenu/<addCharacter>c__Iterator103::<>m__5FB	callvirt	client_caller	0x205A66
+debug/debugCreateEquip	0x060011C2	debugCreateEquip(? baseId,? status,? skills,? responder)	0x06003F8C	DebugMakeEquipMenu::<OnGUI>m__5FF	callvirt	client_caller	0x17CFB5
+debug/debugCreateEquip	0x060011C2	debugCreateEquip(? baseId,? status,? skills,? responder)	0x06006620	DebugMakeEquipMenu/<OnGUI>c__AnonStorey377::<>m__600	callvirt	client_caller	0x22777E
+debug/debugCreateQuestEncount	0x0600613B	<>m__62(object result)	0x06001170	WebApiClient::debugCreateQuestEncount	ldftn	webapi_internal	0x5AB64
+debug/debugCreateQuestEncount	0x06001170	debugCreateQuestEncount(deferred callback; see emitter token)	0x06003692	BattleApiClient::debugCreateQuestEncount	callvirt	client_caller	0x133F1A
+debug/debugDeleteAllCharacter	0x06001161	debug_DelteAllCharacter(? responder)	0x06001FFA	PoliticDebugMenu::OnGUI	callvirt	client_caller	0xAD033
+debug/debugGetQuestCompleteFlags	0x0600118A	debug_getQuestCompleteFlags(? type,? responder)	0x060063CA	QuestDataCache/<cacheCompleteFlags>c__AnonStorey292/<cacheCompleteFlags>c__AnonStorey293::<>m__33D	callvirt	client_caller	0x21DDDA
+debug/debugGradeUpBuildings	0x060011C6	debug_GradeUpBuildings(? responder)	0x06001FFA	PoliticDebugMenu::OnGUI	callvirt	client_caller	0xACF6A
+debug/debugIncreasePlayerLevel	0x060011C5	debug_increasePlayerLevel(? responder)	0x06002008	PoliticDebugMenu::<OnGUI>m__261	callvirt	client_caller	0xAD778
+debug/debugLogin	0x06001103	debugLogin(? responder)	0x06006116	SessionKeeper/<debugLogin>c__AnonStorey185::<>m__46	callvirt	client_caller	0x2148D6
+debug/debugLoginCog	0x06001104	debugLoginCog(? loginId,? password,? responder)	0x06006119	SessionKeeper/<debugLoginCog>c__AnonStorey186::<>m__48	callvirt	client_caller	0x21497A
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	0x060063BB	QuestDataCache/<openQuest>c__AnonStorey291::<>m__336	callvirt	client_caller	0x21DB09
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	0x060063F1	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__39F	callvirt	client_caller	0x21E7C8
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	0x060063F2	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__3A0	callvirt	client_caller	0x21E7E8
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	0x060063F3	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__3A4	callvirt	client_caller	0x21E808
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	0x060063F4	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__3A5	callvirt	client_caller	0x21E828
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	0x060063F6	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__3A7	callvirt	client_caller	0x21E880
+debug/dedicate	0x06001116	debug_addDedicateScore(? score,? responder)	0x06004972	MightOfNationDialog::OnGUI	callvirt	client_caller	0x1B5CE0
+debug/dedicate	0x06001116	debug_addDedicateScore(? score,? responder)	0x06004972	MightOfNationDialog::OnGUI	callvirt	client_caller	0x1B5D10
+debug/dedicate	0x06001116	debug_addDedicateScore(? score,? responder)	0x06004972	MightOfNationDialog::OnGUI	callvirt	client_caller	0x1B5D40
+debug/dedicate	0x06001116	debug_addDedicateScore(? score,? responder)	0x06004972	MightOfNationDialog::OnGUI	callvirt	client_caller	0x1B5D70
+debug/devLogin	0x060010FF	devLogin(? userName,? responder)	0x06006113	SessionKeeper/<devLogin>c__AnonStorey184::<>m__44	callvirt	client_caller	0x21483C
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	0x0600294A	QuestStoryAreaSelector::OnGUI	callvirt	client_caller	0xE5B2C
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	0x06002960	QuestStorySelector::OnGUI	callvirt	client_caller	0xE64C2
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	0x06002984	QuestTypeSelector::OnGUI	callvirt	client_caller	0xE6E88
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	0x06002984	QuestTypeSelector::OnGUI	callvirt	client_caller	0xE6F0F
+debug/resetDedication	0x06001117	debug_resetDedicateScore(? responder)	0x06004972	MightOfNationDialog::OnGUI	callvirt	client_caller	0x1B5D9B
+debug/resetPlayer	0x06001185	resetPlayer(? responder)	0x0600200B	PoliticDebugMenu::<debugResetPlayer>m__264	callvirt	client_caller	0xAD811
+debug/resetQuest	0x0600118D	resetQuest(? responder)	0x06002984	QuestTypeSelector::OnGUI	callvirt	client_caller	0xE6E05
+debug/setQuestStep	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	0x060063B8	Quest/<OnGUI>c__AnonStorey290::<>m__334	callvirt	client_caller	0x21DAB7
+deck/enlargeCharacterLimit	0x0600115C	enlargeCharacterLimit(? enlargeId,? responder)	0x06006627	DeckAddMaxCharacter/<createAddCharacterWindow>c__AnonStorey37A/<createAddCharacterWindow>c__AnonStorey379::<>m__612	callvirt	client_caller	0x227879
+deck/extendCharacterStore	0x06001160	enlargeStorageLimit(? enlargeId,? responder)	0x06006627	DeckAddMaxCharacter/<createAddCharacterWindow>c__AnonStorey37A/<createAddCharacterWindow>c__AnonStorey379::<>m__612	callvirt	client_caller	0x227896
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x06001D88	Politic::<sendRequestGetMapData>m__1F7	callvirt	client_caller	0x9DF2D
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x06004A91	mypageAvatar::<init>m__823	callvirt	client_caller	0x1BDB49
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x06005C25	QuestDataCache/<process>c__IteratorB5::<>m__343	callvirt	client_caller	0x1FC555
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x06006167	HTMLBbsMediator/<getIconURL>c__AnonStorey1A5::<>m__92	callvirt	client_caller	0x215AB2
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x06006310	Politic/<resetMap>c__AnonStorey250::<>m__1F9	callvirt	client_caller	0x21A8DD
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x06006316	Politic/<resetMapRanking>c__AnonStorey255::<>m__1FB	callvirt	client_caller	0x21AA29
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x060065AB	BoardAvatar/<init>c__AnonStorey34B::<>m__587	callvirt	client_caller	0x224E2D
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	0x0600674E	MigrateEnv/<getMyBushoTexture>c__AnonStorey3E6::<>m__818	callvirt	client_caller	0x22E91E
+deck/getCharacterStoreInfo	0x0600115D	getCharacterStorageInfo(? responder)	0x060066CA	DeckScene/<getStorageInfo>c__AnonStorey3B5::<>m__6EE	callvirt	client_caller	0x22D13C
+deck/getCharactersInStore	0x0600115E	getStorageCharacters(? responder)	0x06006646	DeckConflateCards_StrageCharacter/<setup>c__AnonStorey385::<>m__63F	callvirt	client_caller	0x228088
+deck/getDeckBonus	0x06001148	getDeckBonus(? responder)	0x0600441B	DeckScene::<OnEnable>m__6EC	callvirt	client_caller	0x199BF8
+deck/getDeckBonus	0x06001148	getDeckBonus(? responder)	0x06005160	vsSetting::<Start>m__9BC	callvirt	client_caller	0x1E6C0C
+deck/getDeckBonus	0x06001148	getDeckBonus(? responder)	0x0600609A	vsSetting/<executeSkipBattle>c__Iterator158::<>m__9D0	callvirt	client_caller	0x210B3C
+deck/getDeckBonus	0x06001148	getDeckBonus(? responder)	0x06006592	BattleEventList_Intro/BonusIcon/<innerExecute>c__AnonStorey33F::<>m__578	callvirt	client_caller	0x224610
+deck/getDecks	0x06001147	getDecks(? responder)	0x06001C26	PluginRunner_DoBattleSiege::<Init>m__1B6	callvirt	client_caller	0x94A08
+deck/getDecks	0x06001147	getDecks(? responder)	0x0600441C	DeckScene::<OnEnable>m__6ED	callvirt	client_caller	0x199C20
+deck/getDecks	0x06001147	getDecks(? responder)	0x0600503D	siegeBriefMenu::<siegeDeck>m__989	callvirt	client_caller	0x1E0620
+deck/getDecks	0x06001147	getDecks(? responder)	0x06005062	StrategySelect::<setup>m__997	callvirt	client_caller	0x1E0F60
+deck/getDecks	0x06001147	getDecks(? responder)	0x0600511B	PlayerDeck::<getPlayerDeck>m__9B0	callvirt	client_caller	0x1E4A6C
+deck/getDecks	0x06001147	getDecks(? responder)	0x06005AC6	PlayerDeckCache/<process>c__Iterator7E::<>m__195	callvirt	client_caller	0x1F7518
+deck/getDecks	0x06001147	getDecks(? responder)	0x06005C24	QuestDataCache/<process>c__IteratorB5::<>m__342	callvirt	client_caller	0x1FC528
+deck/getDecks	0x06001147	getDecks(? responder)	0x06006467	Strategy/<setupDeck>c__AnonStorey2CF::<>m__43C	callvirt	client_caller	0x21FEE4
+deck/getProtectedCharacterIds	0x06001153	getProtectCharacters(? responder)	0x06004419	DeckScene::<OnEnable>m__6EA	callvirt	client_caller	0x199BA8
+deck/getProtectedEquipIds	0x06001155	getProtectEquips(? responder)	0x0600441A	DeckScene::<OnEnable>m__6EB	callvirt	client_caller	0x199BD0
+deck/gradeUpCharacter	0x0600114F	characterGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	0x0600665C	DeckConflate_Evo/<evolutionFablicConnection>c__AnonStorey38B::<>m__65B	callvirt	client_caller	0x22901F
+deck/gradeUpEquip	0x0600114D	equipGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	0x0600668A	DeckEquip_Evo/<evolutionFablicConnection>c__AnonStorey39A::<>m__692	callvirt	client_caller	0x22B05B
+deck/inheritCharacterSkill	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	0x06006668	DeckConflate_Skill/<skillAccessionConnection>c__AnonStorey390::<>m__667	callvirt	client_caller	0x2297F5
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	0x0600664F	DeckConflate_Conflate/<conflateFablicConnection>c__AnonStorey388::<>m__64B	callvirt	client_caller	0x228318
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	0x06006653	DeckConflate_Conflate/<debugRun>c__AnonStorey38A::<>m__64D	callvirt	client_caller	0x2285D9
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	0x06006672	DeckConflate_SkillRefresh/<debugRun>c__AnonStorey393::<>m__674	callvirt	client_caller	0x229E51
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	0x06006681	DeckEquip_Conflate/<debugRun>c__AnonStorey399::<>m__684	callvirt	client_caller	0x22A615
+deck/powerUpEquip	0x0600114C	equipPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	0x0600667D	DeckEquip_Conflate/<conflateFablicConnection>c__AnonStorey397::<>m__682	callvirt	client_caller	0x22A354
+deck/sellCharacters	0x06001158	sellCharacters(? characterIds,? responder)	0x060066AE	DeckSale_Character/<debugSale>c__AnonStorey3AA::<>m__6D1	callvirt	client_caller	0x22C062
+deck/sellCharacters	0x06001158	sellCharacters(? characterIds,? responder)	0x060066B3	DeckSale_Character/<sale>c__AnonStorey3A9/<sale>c__AnonStorey3A8::<>m__6D4	callvirt	client_caller	0x22C3C6
+deck/sellEquips	0x0600115A	sellEquips(? equipIds,? responder)	0x060066BB	DeckSale_Equip/<sale>c__AnonStorey3AF/<sale>c__AnonStorey3AD::<>m__6DD	callvirt	client_caller	0x22C796
+deck/sellTactics	0x06001159	sellTactics(? tacticsIds,? responder)	0x060066C7	DeckSale_Tactics/<sale>c__AnonStorey3B2/<sale>c__AnonStorey3B3::<>m__6E7	callvirt	client_caller	0x22CF1E
+deck/setCharacterProtect	0x06001154	setProtectCharacters(? responder,? isProtect,? ids)	0x06005E60	CharacterConflatePreview_Character/<protectOrRelease>c__Iterator106::<>m__608	callvirt	client_caller	0x205F0E
+deck/setCharacterVoice	0x06001152	setCharacterVoice(? characterId,? voiceId,? responder)	0x06006635	DeckChangeVoice/<changeVoice>c__AnonStorey37E::<>m__629	callvirt	client_caller	0x227CC6
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	0x06006692	DeckMake/<deckSave>c__AnonStorey39D::<>m__69D	callvirt	client_caller	0x22B6CB
+deck/setEquipProtect	0x06001156	setProtectEquips(? responder,? isProtect,? ids)	0x06005E68	CharacterConflatePreview_Equip/<protectOrRelease>c__Iterator107::<>m__60A	callvirt	client_caller	0x2062B2
+deck/setSkillSlot	0x060012A2	setSkillSlot(? characterId,? paymentId,? responder)	0x06006675	DeckConflate_SkillRefresh/<sendRefreshRequest>c__AnonStorey394::<>m__675	callvirt	client_caller	0x22A0D2
+deck/setSkillcoins	0x060012A1	setSkillcoins(? materialIds,? responder)	0x0600666E	DeckConflate_SkillRefresh/<conflateFablicConnection>c__AnonStorey392::<>m__672	callvirt	client_caller	0x229C05
+deck/transferStoreCharacters	0x0600115F	moveStorageCharacter(? toStoreIds,? toCharacterIds,? responder)	0x060066DD	DeckStorage/<endCall>c__AnonStorey3BC::<>m__743	callvirt	client_caller	0x22D4E2
+depletionmission/drawDepletionItem	0x060012AB	DrawDepletionMission(? p_responder)	0x06003F06	DrawLotter::<StartLotter>m__5F0	callvirt	client_caller	0x177724
+depletionmission/exchangeDepletionPoint	0x060012AC	ExchangeDepletionPoint(? missionId,? p_responder)	0x06006618	DrawSystem/<Exchange>c__AnonStorey374::<>m__5F1	callvirt	client_caller	0x22768F
+depletionmission/getDepletionMission	0x060012AA	getDepletionMission(? p_responder)	0x06003EEB	DailyMissionTab::<OnDrawSystemClick>m__5EF	callvirt	client_caller	0x176CC8
+friend/cancelFriendOffer	0x060011DB	cancelFriendOffer(? playerId,? responder)	0x06004596	FriendConfirmationWindow::<invokeStop>m__763	callvirt	client_caller	0x1A1B17
+friend/dissolutionFriend	0x060011DC	dissolutionFriend(? playerId,? responder)	0x06004597	FriendConfirmationWindow::<invokeRelease>m__764	callvirt	client_caller	0x1A1B4B
+friend/dissolutionFriend	0x060011DC	dissolutionFriend(? playerId,? responder)	0x06006187	HTMLBbsMediator/<dissolutionFriend>c__AnonStorey1B0::<>m__9D	callvirt	client_caller	0x2164ED
+friend/feedbackFriendOffer	0x060011DA	feedbackFriendOffer(? playerId,? reply,? responder)	0x06004594	FriendConfirmationWindow::<invokeAccept>m__761	callvirt	client_caller	0x1A1A7E
+friend/feedbackFriendOffer	0x060011DA	feedbackFriendOffer(? playerId,? reply,? responder)	0x06004595	FriendConfirmationWindow::<invokeReject>m__762	callvirt	client_caller	0x1A1AE6
+friend/findFriends	0x060011DE	findFriends(? type,? conditions,? responder)	0x060066F2	FriendListWindow/<getFindData>c__AnonStorey3C3::<>m__771	callvirt	client_caller	0x22D8D0
+friend/findFriendsAndSend	0x060011E6	getFindFriendsAndSend(? sendCount,? responder)	0x060045B6	FriendListMissionWindow::<getSendData>m__77C	callvirt	client_caller	0x1A22D1
+friend/getFriendMapData2	0x060011E2	getFriendMapData(? playerId,? mapId,? responder)	0x06006314	Politic/<resetFriendMap>c__AnonStorey251::<>m__1FA	callvirt	client_caller	0x21A9DC
+friend/getFriendProfile	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	0x060062BC	HTMLUtil/<getFriendProfile>c__AnonStorey230::<>m__170	callvirt	client_caller	0x2198B7
+friend/getFriendProfile	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	0x06006316	Politic/<resetMapRanking>c__AnonStorey255::<>m__1FB	callvirt	client_caller	0x21AA12
+friend/getFriendProfile	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	0x060066F5	FriendListFirstWindow/<createFriendList>c__AnonStorey3C4::<>m__779	callvirt	client_caller	0x22D970
+friend/getFriendProfile	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	0x060066FA	FriendSpcWindow/<createSpecObj>c__AnonStorey3C6::<>m__797	callvirt	client_caller	0x22DA24
+friend/getFriends	0x060011D8	getFriends(? option,? responder)	0x06005161	vsSetting::<Start>m__9BD	callvirt	client_caller	0x1E6C39
+friend/getFriends	0x060011D8	getFriends(? option,? responder)	0x060051C8	vsSetting_Siege::<Start>m__9E0	callvirt	client_caller	0x1E9029
+friend/getFriends	0x060011D8	getFriends(? option,? responder)	0x06006184	HTMLBbsMediator/<getFriends>c__AnonStorey1AF::<>m__9C	callvirt	client_caller	0x2163DD
+friend/getFriends	0x060011D8	getFriends(? option,? responder)	0x060066EF	FriendListWindow/<getFriendData>c__AnonStorey3C2::<>m__770	callvirt	client_caller	0x22D832
+friend/getVisitFriendLogs	0x060011E4	getVisitFriendLogs(? responder)	0x06004DEB	mypageRecord::<getVisitFriendLogs>m__92D	callvirt	client_caller	0x1D34BC
+friend/getVisitFriendLogs	0x060011E4	getVisitFriendLogs(? responder)	0x06004DED	mypageRecord::<getHelpLogs>m__92F	callvirt	client_caller	0x1D350C
+friend/sendFriendOffer	0x060011D9	sendFriendOffer(? playerId,? responder)	0x06004593	FriendConfirmationWindow::<invokeOrder>m__760	callvirt	client_caller	0x1A1A13
+friend/sendFriendOffer	0x060011D9	sendFriendOffer(? playerId,? responder)	0x0600618D	HTMLBbsMediator/<sendFriendOffer>c__AnonStorey1B2::<>m__9F	callvirt	client_caller	0x2165F1
+friend/setGuestMap	0x060011BB	setGuestMap(? mapId,? responder)	0x06004B1B	mypageCastleTownUpdate::<changeFriendMap>m__839	callvirt	client_caller	0x1C1176
+friend/task/accelerateFriendProduceTask	0x060011E9	accelerateFriendProduceTask(? playerId,? mapid,? id,? accelId,? responder)	0x06006329	PoliticBuilding/<accelerateProduceTask>c__AnonStorey259::<>m__20C	callvirt	client_caller	0x21AED4
+friend/task/completeFriendTasks	0x060011E8	completeFriendTask(? playerId,? mapid,? id,? responder)	0x06001ED5	PoliticBuildingState.StateAutoProduce::<checkInnerProductionFriendMap>m__242	callvirt	client_caller	0xA664B
+friend/updateFriendData	0x060011DD	updateFriendData(? responder)	0x06004592	FriendConfirmationWindow::<doInvoke>m__75F	callvirt	client_caller	0x1A19E0
+friend/updateFriendData	0x060011DD	updateFriendData(? responder)	0x0600618A	HTMLBbsMediator/<updateFriendData>c__AnonStorey1B1::<>m__9E	callvirt	client_caller	0x216564
+friend/updateFriendData	0x060011DD	updateFriendData(? responder)	0x06006701	FriendWindowControll/<startFriendWindow>c__AnonStorey3C9::<>m__79E	callvirt	client_caller	0x22DC30
+friend/visitFriendMap	0x060011E3	visitFriendMap(? playerId,? responder)	0x0600631E	Politic/<resetFriendMap>c__AnonStorey251/<resetFriendMap>c__AnonStorey252::<>m__204	callvirt	client_caller	0x21AC54
+giganticRaidBoss/entryGiganticRaidBoss	0x0600124C	entryGiganticRaidBoss(? responder)	0x06005F7C	giganticRaidBossScene/<Start>c__Iterator12F::<>m__7B8	callvirt	client_caller	0x20B7C8
+giganticRaidBoss/getGiganticRaidBossBattleResult	0x06001168	getGiganticRaidBossBattleResult(? responder)	0x06003697	BattleApiClient::getGiganticRaidBossBattleResult	callvirt	client_caller	0x13408F
+giganticRaidBoss/getGiganticRaidBossEventResult	0x0600116A	getGiganticRaidBossEventResultLog(? responder)	0x06006148	GiganticRaidBossResultRenderer/<load>c__AnonStorey19A::<>m__85	callvirt	client_caller	0x2152D4
+giganticRaidBoss/getGiganticRaidBossEventResult	0x06001169	getGiganticRaidBossEventResult(? responder)	0x06006149	GiganticRaidBossResultRenderer/<load>c__AnonStorey19A::<>m__86	callvirt	client_caller	0x2152FC
+giganticRaidBoss/getGiganticRaidBossInformation	0x0600124B	getGiganticRaidBossInfo(? responder)	0x060046BC	giganticRaidBossScene::<setup>m__7A7	callvirt	client_caller	0x1A76C8
+giganticRaidBoss/getGiganticRaidBossInformation	0x0600124B	getGiganticRaidBossInfo(? responder)	0x060046C5	giganticRaidBossScene::<requestInformationAPI>m__7B3	callvirt	client_caller	0x1A7768
+giganticRaidBoss/getGiganticRaidBossInformation	0x0600124B	getGiganticRaidBossInfo(? responder)	0x0600670A	giganticRaidBossScene/<gotoBattle>c__AnonStorey3CD::<>m__7A9	callvirt	client_caller	0x22DF7C
+inbox/getParcels	0x06001230	getParcels(? start,? end,? responder)	0x06001CA9	PluginRunner_DoReceiveMail::<Run>m__1DE	callvirt	client_caller	0x97B2A
+inbox/getParcels	0x06001230	getParcels(? start,? end,? responder)	0x0600670F	InboxReader/<reload>c__AnonStorey3CF::<>m__7BF	callvirt	client_caller	0x22E088
+inbox/resolveParcels	0x06001231	resolveParcels(? responses,? responder)	0x06005F92	InboxResolveWorker/<onResolve>c__Iterator132::<>m__7C3	callvirt	client_caller	0x20BDBA
+inbox/resolveParcels	0x06001231	resolveParcels(? responses,? responder)	0x06005F93	InboxResolveWorker/<onResolve>c__Iterator132::<>m__7C4	callvirt	client_caller	0x20BDE6
+inbox/resolveParcels	0x06001231	resolveParcels(? responses,? responder)	0x06006301	PluginRunner_DoReceiveMail/<onGetParcels>c__AnonStorey24A::<>m__1DF	callvirt	client_caller	0x21A6C3
+invitation/getMyCode	0x060011A5	getMyInvitationCode(? responder)	0x06004C18	mypageInvitation::<getInvitationCode>m__84B	callvirt	client_caller	0x1C6A2C
+invitation/getPlayer	0x060011A4	registerInvitationCode(? invitationCode,? responder)	0x0600671C	LoginEnvironment/<registerInvitationCode>c__AnonStorey3D5::<>m__7E6	callvirt	client_caller	0x22E24E
+mailbox/deleteMails	0x06001229	deleteMails(? status,? mailIds,? responder)	0x060061A2	HTMLMailCore/<deleteMails>c__AnonStorey1B9::<>m__BF	callvirt	client_caller	0x216AD0
+mailbox/getMailBody	0x06001228	getMailBody(? status,? mailId,? responder)	0x0600619F	HTMLMailCore/<getMailBody>c__AnonStorey1B8::<>m__BE	callvirt	client_caller	0x216A24
+mailbox/getMailHeaders	0x06001227	getMailHeaders(? status,? start,? end,? responder)	0x06001646	HTMLMailBoxMediator::<closeFrame>m__C5	callvirt	client_caller	0x72FD4
+mailbox/getMailHeaders	0x06001227	getMailHeaders(? status,? start,? end,? responder)	0x0600619C	HTMLMailCore/<getMailHeaders>c__AnonStorey1B7::<>m__BD	callvirt	client_caller	0x2168FA
+mailbox/getMailHeaders	0x06001227	getMailHeaders(? status,? start,? end,? responder)	0x060061A9	HTMLMailBox/<debugGetMailBody>c__AnonStorey1BC::<>m__C8	callvirt	client_caller	0x216BE6
+mailbox/sendMails	0x06001226	sendMails(? tos,? subject,? body,? responder)	0x06006190	HTMLBbsMediator/<sendMails>c__AnonStorey1B3::<>m__A0	callvirt	client_caller	0x216690
+mailbox/sendMails	0x06001226	sendMails(? tos,? subject,? body,? responder)	0x06006199	HTMLMailCore/<sendMails>c__AnonStorey1B6::<>m__BC	callvirt	client_caller	0x2167E6
+navigator/activateNavigator	0x0600119E	activateNavigator(? navigatorId,? colorIndex,? responder)	0x060067F9	NavigatorChangeSelect/<onSelect>c__AnonStorey415::<>m__963	callvirt	client_caller	0x231266
+navigator/getNavigatorDetails	0x060011A0	getNavigatorDetails(? navigatorId,? responder)	0x060067F4	NavigatorChangeSelect/<getNavigatorDetails>c__AnonStorey414::<>m__95C	callvirt	client_caller	0x2311C3
+navigator/getUsableNavigators	0x0600119F	getUsableNavigators(? responder)	0x060067F1	NavigatorChangeEnv/<getUsableNavigator>c__AnonStorey413::<>m__955	callvirt	client_caller	0x231168
+navigator/hireNavigator	0x060011A1	hireNavigator(? navigatorId,? colorIndex,? responder)	0x06006801	NavigatorChangeSelectRental/<onBuy>c__AnonStorey417::<>m__96A	callvirt	client_caller	0x231399
+netCafe/exchangeNpoint	0x06001273	exchangeNetCafeNpoint(? responder)	0x06004FC5	onikujiNetCafeExchangeDialog::<exchangeNPoint>m__97B	callvirt	client_caller	0x1DDC14
+plugin/addPluginLog	0x060012A8	addPluginLog(? logdata,? p_responder)	0x060062D5	PluginLogManager/<SendLog>c__AnonStorey23A::<>m__19C	callvirt	client_caller	0x219E43
+plugin/buyPluginTime	0x060012A9	buyPluginTime(? pluginId,? p_responder)	0x06001CEB	PluginTaskManager::<DoMyWindow>m__1EB	callvirt	client_caller	0x99AE2
+plugin/buyPluginTime	0x060012A9	buyPluginTime(? pluginId,? p_responder)	0x06006307	PluginTaskManager/<buyTime>c__AnonStorey24C::<>m__1EA	callvirt	client_caller	0x21A782
+plugin/getPluginData	0x060012A5	getPluginData(? p_responder)	0x06001CDF	PluginTaskManager::SendServerRequest	callvirt	client_caller	0x997EC
+plugin/getPluginData	0x060012A5	getPluginData(? p_responder)	0x06005B1C	PoliticButton/<attachPluginIcon>c__Iterator8B::<>m__254	callvirt	client_caller	0x1F8E50
+plugin/getPluginData	0x060012A5	getPluginData(? p_responder)	0x06005B8B	PoliticSFButtons/<attachPluginIcon>c__Iterator9D::<>m__30C	callvirt	client_caller	0x1FA078
+plugin/getPluginLog	0x060012A7	getPluginLog(? p_responder)	0x06001B9C	PluginLogManager::<requestLogData>m__19B	callvirt	client_caller	0x908E4
+plugin/setPluginData	0x060012A6	setPluginData(? pluginSetting,? p_responder)	0x06001CEA	PluginTaskManager::<SendPluginData>m__1E9	callvirt	client_caller	0x99AA3
+politic/boosterPack/buy	0x0600122D	buy(? boosterPackId,? count,? price,? responder)	0x060065FD	BoosterPack_Work/<excute>c__AnonStorey36A::<>m__5DB	callvirt	client_caller	0x226971
+politic/boosterPack/buyWithItem	0x0600122E	buyWithItem(? boosterPackId,? count,? useItemId,? responder)	0x060065FD	BoosterPack_Work/<excute>c__AnonStorey36A::<>m__5DB	callvirt	client_caller	0x226943
+politic/boosterPack/getRemains	0x0600122C	getRemains(? responder)	0x06003E73	BoosterPackScene::<Start>m__5CC	callvirt	client_caller	0x173268
+politic/building/conflateBuilding	0x0600113A	conflateBuilding(? firstId,? secondId,? responder)	0x060062C3	InventoryEvolutionList/<execute>c__AnonStorey233::<>m__174	callvirt	client_caller	0x219B3C
+politic/building/deployBuilding	0x06001123	deployMapBuilding(? id,? x,? y,? responder)	0x0600632D	PoliticBuilding/<deployInventory>c__AnonStorey260::<>m__20E	callvirt	client_caller	0x21B0AA
+politic/building/getBuildCounts	0x06001182	getBuildCounts(? responder)	0x06002464	PoliticMissionProgressList::<phaseInit>m__2F3	callvirt	client_caller	0xCA153
+politic/building/getDrafts	0x06001121	getMapDrafts(? responder)	0x06001FDA	PoliticDebugConstructionMenu::<setup>m__259	callvirt	client_caller	0xAC44C
+politic/building/getDrafts	0x06001121	getMapDrafts(? responder)	0x06002122	PoliticFSMConstructionMenu::<menuWait>m__292	callvirt	client_caller	0xB544C
+politic/building/getDrafts	0x06001121	getMapDrafts(? responder)	0x06002AF7	Shop::<OnShopButtonClicked>m__3D4	callvirt	client_caller	0xEDB7D
+politic/building/getDrafts	0x06001121	getMapDrafts(? responder)	0x0600638A	PoliticFSMShop/<menuWait>c__AnonStorey280::<>m__2CB	callvirt	client_caller	0x21CFF7
+politic/building/getProductsByBuilding	0x06001138	getProductsByBuilding(? id,? responder)	0x060021D9	PoliticFSMProduct::<menuFarm>m__2B7	callvirt	client_caller	0xBAEF9
+politic/building/getProductsByBuilding	0x06001138	getProductsByBuilding(? id,? responder)	0x060021DA	PoliticFSMProduct::<startSingleCrop>m__2B8	callvirt	client_caller	0xBAF35
+politic/building/levelUpBuilding	0x06001135	levelUpBuilding(? id,? responder)	0x06001E3F	PoliticBuilding::<levelUp>m__20F	callvirt	client_caller	0xA260F
+politic/building/levelUpBuildingCollectively	0x06001137	levelUpBuildingCollectively(? buildingIds,? levelUpTimes,? responder)	0x06006380	PoliticFSMProduct/<phaseCollectivelyLevelUp>c__AnonStorey27D::<>m__2BE	callvirt	client_caller	0x21CBE0
+politic/building/levelUpBuildings	0x06001136	levelUpBuildings(? BuildIds,? responder)	0x06006304	PluginRunner_LevelUp/<RequestLevelup>c__AnonStorey24B::<>m__1E4	callvirt	client_caller	0x21A722
+politic/building/levelUpBuildings	0x06001136	levelUpBuildings(? BuildIds,? responder)	0x06006373	PoliticFSMBatchUpgrade/<DoBatchUpgrade>c__AnonStorey278::<>m__279	callvirt	client_caller	0x21C522
+politic/building/putInBuildings	0x06001122	putMapBuildings(? ids,? responder)	0x06001E3E	PoliticBuilding::<putInInventory>m__20D	callvirt	client_caller	0xA25DD
+politic/building/putInBuildings	0x06001122	putMapBuildings(? ids,? responder)	0x06006335	PoliticBuilding/<SerialPutInInventory>c__AnonStorey266::<>m__215	callvirt	client_caller	0x21B1FE
+politic/building/raiseBuildingEventOfBattle	0x06001125	raiseBuildingEventOfBattle(? responder)	0x0600630C	Politic/<resetMap>c__AnonStorey24E::<>m__1F5	callvirt	client_caller	0x21A82C
+politic/building/resolveBuildingEvent	0x06001124	resolveBuilding(? id,? responder)	0x06005BEA	PoliticScriptCommand/<executeResolveBuilding>c__IteratorAC::<>m__317	callvirt	client_caller	0x1FB6AA
+politic/building/resolveBuildingEvent	0x06001124	resolveBuilding(? id,? responder)	0x060062F1	PluginRunner_DoPoliticBattle/<ProcessBattleEnd>c__AnonStorey244::<>m__1D0	callvirt	client_caller	0x21A457
+politic/edict/changeState	0x06001180	changeEdictMissionState(? missionList,? stateList,? responder)	0x0600246A	PoliticMissionProgressList::<makeUpdateEdictStatusList>m__2F9	callvirt	client_caller	0xCA25C
+politic/edict/changeState	0x06001180	changeEdictMissionState(? missionList,? stateList,? responder)	0x060062EA	PluginRunner_DoEdict/<DoEdict>c__AnonStorey242::<>m__1C2	callvirt	client_caller	0x21A1CE
+politic/edict/getMissionsInProgress	0x0600117F	getEdictMissionsInProgress(? responder)	0x06001BB5	PluginPoliticDataManager::<getPoliticMissionInfo>m__1A1	callvirt	client_caller	0x91300
+politic/edict/getMissionsInProgress	0x0600117F	getEdictMissionsInProgress(? responder)	0x060063A1	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__301	callvirt	client_caller	0x21D551
+politic/edict/raiseMission	0x0600117E	raiseEdictMission(? responder)	0x060062DB	PluginPoliticDataManager/<checkRaiseEdictMission>c__AnonStorey23C::<>m__1A2	callvirt	client_caller	0x219EEC
+politic/edict/raiseMission	0x0600117E	raiseEdictMission(? responder)	0x06006396	PoliticMissionManager/<checkRaiseEdictMission>c__AnonStorey285::<>m__2EF	callvirt	client_caller	0x21D274
+politic/errantry/call3	0x06001235	callErrantry(? mapId,? responder)	0x0600206F	PoliticErrantryEntryWindow::<callErrantry>m__272	callvirt	client_caller	0xB016A
+politic/errantry/getStatus3	0x06001236	getStatusAllErrantry(? responder)	0x06001BB4	PluginPoliticDataManager::<getTradeInfoAll>m__1A0	callvirt	client_caller	0x912D8
+politic/errantry/getStatus3	0x06001236	getStatusAllErrantry(? responder)	0x06002464	PoliticMissionProgressList::<phaseInit>m__2F3	callvirt	client_caller	0xCA181
+politic/errantry/receive3	0x06001234	recieveErrantry(? mapId,? responder)	0x06001CB6	PluginRunner_DoTrade::<recieveErrantry>m__1E2	callvirt	client_caller	0x98262
+politic/errantry/receive3	0x06001234	recieveErrantry(? mapId,? responder)	0x06002138	PoliticFSMErrantryReward::<recieveErrantry>m__297	callvirt	client_caller	0xB5AD9
+politic/errantry/send3	0x06001233	sendErrantry(? mapId,? buildingId,? errantryId,? responder)	0x06001CB5	PluginRunner_DoTrade::<RequestErrantry>m__1E1	callvirt	client_caller	0x98233
+politic/errantry/send3	0x06001233	sendErrantry(? mapId,? buildingId,? errantryId,? responder)	0x06006370	PoliticErrantryEntryWindow/<startErrantry>c__AnonStorey277::<>m__271	callvirt	client_caller	0x21C468
+politic/fixMapProduct	0x0600127E	fixMapProduct(? responder)	0x0600200C	PoliticDebugMenu::<debug_fixmap>m__265	callvirt	client_caller	0xAD849
+politic/kokugi/develop	0x06001237	develop(? kokugiId,? usePoint,? responder)	0x06005F9C	KokugiDedicateWindow/<doDedicate>c__Iterator133::<>m__7C7	callvirt	client_caller	0x20BFB7
+politic/kokugi/getStatus	0x06001238	getStatus(? responder)	0x06005FA4	KokugiScene/<listupInvokedIds>c__Iterator134::<>m__7CE	callvirt	client_caller	0x20C224
+politic/kokugi/getStatus	0x06001238	getStatus(? responder)	0x06005FAC	KokugiScene/<updatePageItems>c__Iterator135::<>m__7D0	callvirt	client_caller	0x20C4E8
+politic/lottery/getSouls	0x0600122A	getSouls(? responder)	0x06006815	onikujiWork/<loadSoul>c__AnonStorey420::<>m__97F	callvirt	client_caller	0x231628
+politic/lottery/lot	0x0600122B	lot(? lotteryId,? count,? log,? responder)	0x06006818	onikujiWork/<executeLot>c__AnonStorey421::<>m__980	callvirt	client_caller	0x2316A9
+politic/map/cleanup	0x06001274	cleanupUserData(? responder)	0x060032FA	TitleRestoreUserData::<setup>m__4C4	callvirt	client_caller	0x121A78
+politic/map/getBackgrounds	0x060011BC	getBackgrounds(? responder)	0x06004AFA	mypageBgSelectWindow::<makeBgList>m__833	callvirt	client_caller	0x1C0144
+politic/map/getMapData	0x0600111F	getMapData(? responder)	0x06001D87	Politic::<sendRequestGetMapData>m__1F6	callvirt	client_caller	0x9DF00
+politic/map/getMapData	0x0600111F	getMapData(? responder)	0x060062D8	PluginPoliticDataManager/<getMapData>c__AnonStorey23B::<>m__19F	callvirt	client_caller	0x219EA8
+politic/map/getMapData	0x0600111F	getMapData(? responder)	0x0600630F	Politic/<resetMap>c__AnonStorey250::<>m__1F8	callvirt	client_caller	0x21A8B0
+politic/map/relocateEnded	0x06001139	relocateBuildings(? table,? responder)	0x06006387	PoliticFSMRelocate/<checkChangeMode2>c__AnonStorey27F::<>m__2C7	callvirt	client_caller	0x21CFB3
+politic/map/setBackground	0x060011BD	setBackground(? mapId,? nearGround,? farGround,? responder)	0x06006764	mypageBgSelectWindow/<phaseBgItemdecide>c__AnonStorey3EF::<>m__834	callvirt	client_caller	0x22EE3E
+politic/map/setMapName2	0x0600111D	setMapName(? mapId,? name,? responder)	0x060064E1	UserStatus/<setMapName>c__AnonStorey2FE::<>m__4E7	callvirt	client_caller	0x221C50
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	0x06001CB4	PluginRunner_DoTrade::<RequestErrantry>m__1E0	callvirt	client_caller	0x981F3
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	0x06001CC8	PluginScene::<BackPolitic>m__1E7	callvirt	client_caller	0x9880B
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	0x060020F8	PoliticFSMChangeMap::<switchMap>m__282	callvirt	client_caller	0xB38A2
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	0x060062D7	PluginPoliticDataManager/<getMapData>c__AnonStorey23B::<>m__19E	callvirt	client_caller	0x219E7F
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	0x060062ED	PluginRunner_DoHarvest/<RequestHarvest>c__AnonStorey243::<>m__1C8	callvirt	client_caller	0x21A3C4
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	0x06006303	PluginRunner_LevelUp/<RequestLevelup>c__AnonStorey24B::<>m__1E3	callvirt	client_caller	0x21A6F4
+politic/mission/changeState	0x0600117C	changePoliticMissionState(? missionList,? stateList,? responder)	0x06002469	PoliticMissionProgressList::<makeUpdateStatusList>m__2F8	callvirt	client_caller	0xCA220
+politic/mission/getMissionsInProgress	0x0600117A	getPoliticMissionsInProgress(? responder)	0x060063A0	PoliticMissionProgressList/<phaseInit>c__AnonStorey287::<>m__2FE	callvirt	client_caller	0x21D4DD
+politic/mission/getStatesFromAllMissions	0x06001179	getStatesFromAllPoliticMissions(? responder)	0x06002464	PoliticMissionProgressList::<phaseInit>m__2F3	callvirt	client_caller	0xCA1AF
+politic/mission/getStatesFromAllMissions	0x06001179	getStatesFromAllPoliticMissions(? responder)	0x06005FBB	LessonMissionSimpleStatusManager/<setup>c__Iterator137::<>m__7D6	callvirt	client_caller	0x20C800
+politic/mission/setWorkingValue	0x0600117D	setPoliticMissionWorkingValue(? missionId,? indexes,? values,? responder)	0x060063A7	PoliticMissionProgressStatus/<sendUnlockOperation>c__AnonStorey289::<>m__305	callvirt	client_caller	0x21D68A
+politic/mypage/claimReward	0x0600129C	claimReward(? p_rewardId,? p_responder)	0x06006755	NineGridDataManager/<ClaimReward>c__AnonStorey3E9::<>m__820	callvirt	client_caller	0x22EACF
+politic/mypage/getArtifactSeries	0x060011AF	getArtifactSeries(? category,? page,? seriesMax,? responder)	0x06006767	mypageCollectionArtifact/<load>c__AnonStorey3F0::<>m__83C	callvirt	client_caller	0x22EE8E
+politic/mypage/getArtifactSeriesReward	0x060011B0	getArtifactSeriesReward(? seriesId,? responder)	0x0600676E	mypageCollectionWork/<execReward>c__AnonStorey3F2::<>m__842	callvirt	client_caller	0x22F046
+politic/mypage/getCharacterCollection	0x060011B6	getCharacterCollection(? responder)	0x06004C6E	mypageLibrary::<init>m__84D	callvirt	client_caller	0x1C9BA8
+politic/mypage/getCreditLogs	0x060011B7	getCreditLogs(? startIndex,? endIndex,? responder)	0x06004DEC	mypageRecord::<getKobanLogs>m__92E	callvirt	client_caller	0x1D34E6
+politic/mypage/getEventcodeLogs	0x060011BA	getEventcodeLogs(? start,? end,? responder)	0x06004E49	mypageSerialCode::<getSerialCodeRecordLogs>m__93A	callvirt	client_caller	0x1D5AA6
+politic/mypage/getJewelSeries	0x060011AD	getJewelSeries(? category,? page,? seriesMax,? responder)	0x0600676A	mypageCollectionJewel/<load>c__AnonStorey3F1::<>m__83E	callvirt	client_caller	0x22EF5A
+politic/mypage/getJewelSeriesReward	0x060011AE	getJewelSeriesReward(? seriesId,? responder)	0x0600676D	mypageCollectionWork/<execReward>c__AnonStorey3F2::<>m__841	callvirt	client_caller	0x22F01A
+politic/mypage/getLessonStates	0x06001284	getLessonStates(? responder)	0x06005FBA	LessonMissionSimpleStatusManager/<setup>c__Iterator137::<>m__7D5	callvirt	client_caller	0x20C7D8
+politic/mypage/getMigratePlanCountryStatus	0x06001280	getMigratePlanCountryStatus(? planId,? responder)	0x06006773	mypageEmigrateUpdate/<onEmigrate>c__AnonStorey3F3::<>m__849	callvirt	client_caller	0x22F1F6
+politic/mypage/getMigratePlansStatus	0x0600127F	getMigratePlanStatus(? responder)	0x06004C0B	mypageEmigrateUpdate::<setEmigrate>m__846	callvirt	client_caller	0x1C6560
+politic/mypage/getNineGridInfo	0x0600129A	getNineGridInfo(? p_responder)	0x06004A43	NineGridDataManager::<GetNineGridInfoFromServer>m__81E	callvirt	client_caller	0x1BBBB8
+politic/mypage/getPlayerProfile	0x060011AB	getPlayerProfile(? responder)	0x06004B1A	mypageCastleTownUpdate::<load>m__838	callvirt	client_caller	0x1C1148
+politic/mypage/getPlayerProfile	0x060011AB	getPlayerProfile(? responder)	0x06004CCB	mypageProfileUpdate::<load>m__85B	callvirt	client_caller	0x1CBB9C
+politic/mypage/getPlayerRecords	0x060011B2	getPlayerRecords(? responder)	0x06004E05	mypageRecordUpdate::<load>m__935	callvirt	client_caller	0x1D3E6C
+politic/mypage/migrate	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	0x0600674B	MigrateComfirmation/<onFinalDecide>c__AnonStorey3E5::<>m__816	callvirt	client_caller	0x22E89A
+politic/mypage/playNineGridGacha	0x0600129B	playGacha(? p_responder)	0x06004A44	NineGridDataManager::<PlayGacha>m__81F	callvirt	client_caller	0x1BBBFC
+politic/mypage/setSelfIntroduction	0x060011AC	setSelfIntroduction(? message,? habits,? responder)	0x060067DF	mypageSelfIntroduction/<confirmCallback>c__AnonStorey40D::<>m__937	callvirt	client_caller	0x230D15
+politic/mypage/takeLesson	0x06001285	takeLesson(? lessonId,? responder)	0x06005FC4	LessonScriptCommand/<getReward>c__Iterator138::<>m__7DA	callvirt	client_caller	0x20CA9F
+politic/mypage/useEventcode	0x060011B9	useEventcode(? eventcode,? responder)	0x060067E2	mypageSerialCodeWindow/<sendSerialCode>c__AnonStorey40E::<>m__93D	callvirt	client_caller	0x230E7A
+politic/shop/buyBackgroundItem	0x06001143	buyBackgroundItem(? shopBgItemId,? responder)	0x06004E86	mypageShopBgWindow::<phaseBuyItem>m__942	callvirt	client_caller	0x1D6D6E
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	0x06006415	ShopItemBuild/<saleWindowResult>c__AnonStorey2B1::<>m__3DF	callvirt	client_caller	0x21EF93
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	0x06006418	ShopItemSupport/<saleWindowResult>c__AnonStorey2B2::<>m__3E2	callvirt	client_caller	0x21F0AB
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	0x06006432	SimpleInventoryDialog/<onBuyItem>c__AnonStorey2BB::<>m__3F5	callvirt	client_caller	0x21F4EA
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	0x0600660F	DailyMissionScene/<onConfirmBuy>c__AnonStorey371::<>m__5E2	callvirt	client_caller	0x227408
+politic/shop/buyShopItemFromNationalPower	0x06001141	buyShopItemFromNationalPower(? shopItemId,? index,? quantity,? responder)	0x0600640C	ShopItemNationalPower/<saleWindowResult>c__AnonStorey2AE::<>m__3D6	callvirt	client_caller	0x21EC85
+politic/shop/getBackgroundItems	0x06001142	getBackgroundItems(? category,? responder)	0x06004E84	mypageShopBgWindow::<phaseInit>m__940	callvirt	client_caller	0x1D6D12
+politic/shop/getShopItems	0x0600113B	getShopItems(? category,? responder)	0x060021FF	PoliticFSMShop::<menuWait>m__2CA	callvirt	client_caller	0xBC710
+politic/shop/getShopItems	0x0600113B	getShopItems(? category,? responder)	0x0600640F	ShopUpdate/<load>c__AnonStorey2AF::<>m__3D9	callvirt	client_caller	0x21ED7A
+politic/shop/getShopItems	0x0600113B	getShopItems(? category,? responder)	0x06006429	SimpleInventoryDialog/<processShopItems>c__AnonStorey2B8::<>m__3F1	callvirt	client_caller	0x21F35E
+politic/shop/getShopItems	0x0600113B	getShopItems(? category,? responder)	0x06006612	DailyMissionScene/<processShopItems>c__AnonStorey372::<>m__5E3	callvirt	client_caller	0x2275AA
+politic/shop/getShopItemsFromNationalPower	0x06001140	getShopItemsFromNationalPower(? responder)	0x06006412	ShopUpdateNationalPower/<load>c__AnonStorey2B0::<>m__3DD	callvirt	client_caller	0x21EE6C
+politic/shop/sellBuildings	0x0600113F	sellBuildings(? ids,? responder)	0x060062CB	InventorySaleList/<sellBuilding>c__AnonStorey236::<>m__179	callvirt	client_caller	0x219D1E
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	0x06002311	PoliticItemInventory::<setup>m__2E0	callvirt	client_caller	0xC1E48
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	0x06003E9C	BoosterPack_Work::<Start>m__5D3	callvirt	client_caller	0x1749E4
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	0x06003EDE	DailyMissionScene::<processPotions>m__5E4	callvirt	client_caller	0x176970
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	0x060044FF	DeckUseItem::<startCall>m__74B	callvirt	client_caller	0x19DEEC
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	0x06005CC9	QuestScriptCommand/<checkQuestActionPoint>c__IteratorCC::<>m__376	callvirt	client_caller	0x1FFAA0
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	0x060063D6	QuestFullAutoSkipCaution/<updatePotionText>c__AnonStorey29B::<>m__353	callvirt	client_caller	0x21E0D8
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	0x06006424	SimpleInventoryDialog/<processPotions>c__AnonStorey2B6::<>m__3EF	callvirt	client_caller	0x21F2C0
+politic/support_item/useDopingItem	0x06001151	useDopingItemForCharacter(? potionId,? amount,? characterId,? responder)	0x0600452D	DeckUseItem_confimation::<callUseUpItem>m__752	callvirt	client_caller	0x19F087
+politic/support_item/useDopingRemoveItem	0x0600115B	useDopingRemoveItemForCharacter(? potionId,? characterId,? responder)	0x0600452C	DeckUseItem_confimation::<callReleaseItem>m__750	callvirt	client_caller	0x19F049
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x06005CCA	QuestScriptCommand/<checkQuestActionPoint>c__IteratorCC::<>m__377	callvirt	client_caller	0x1FFACF
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x060062F5	PluginRunner_DoPotionAll/<Run>c__AnonStorey246::<>m__1D2	callvirt	client_caller	0x21A4CF
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x060062F8	PluginRunner_DoPotionPolitic/<Run>c__AnonStorey247::<>m__1D4	callvirt	client_caller	0x21A54B
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x060062FB	PluginRunner_DoPotionQuest/<Run>c__AnonStorey248::<>m__1D6	callvirt	client_caller	0x21A5C7
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x060062FE	PluginRunner_DoPotionRaidboss/<Run>c__AnonStorey249::<>m__1D8	callvirt	client_caller	0x21A643
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x0600638F	PoliticItemInventory/<useItem>c__AnonStorey282::<>m__2DF	callvirt	client_caller	0x21D100
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x0600642F	SimpleInventoryDialog/<onUsePotion>c__AnonStorey2BA::<>m__3F4	callvirt	client_caller	0x21F427
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	0x06006615	DailyMissionScene/<useMallItem>c__AnonStorey373::<>m__5E6	callvirt	client_caller	0x227608
+politic/support_item/useSkillPotion	0x06001150	useDopingSkillItemForCharacter(? potionId,? amount,? skillIndex,? characterId,? responder)	0x060066E4	DeckUseItem_confimation/<callUseUpSkillItem>c__AnonStorey3BE::<>m__751	callvirt	client_caller	0x22D660
+politic/task/accelerateProduceTask	0x06001133	accelerateProduceTask(? id,? accelId,? accelCount,? responder)	0x06006328	PoliticBuilding/<accelerateProduceTask>c__AnonStorey259::<>m__20B	callvirt	client_caller	0x21AE7C
+politic/task/cancelTasks	0x06001129	cancelTask(? id,? responder)	0x06001E40	PoliticBuilding::<cancelTask>m__211	callvirt	client_caller	0xA2643
+politic/task/completeTasks	0x06001127	completeTask(? id,? responder)	0x06001EB2	PoliticBuildingState.StateBuilding::<waitCompleteCheck>m__23A	callvirt	client_caller	0xA5934
+politic/task/completeTasks	0x06001127	completeTask(? id,? responder)	0x06001ED4	PoliticBuildingState.StateAutoProduce::<checkInnerProduction>m__241	callvirt	client_caller	0xA65FE
+politic/task/completeTasks	0x06001128	completeTasks(? ary,? responder)	0x060020BC	PoliticFSMAutoHarvest::<requestCompleteTasks>m__276	callvirt	client_caller	0xB2232
+politic/task/completeTasks	0x06001128	completeTasks(? ary,? responder)	0x060062EE	PluginRunner_DoHarvest/<RequestHarvest>c__AnonStorey243::<>m__1C9	callvirt	client_caller	0x21A3F2
+politic/task/progressBuildTask	0x06001132	progressBuildTask(? id,? responder)	0x06001EB1	PoliticBuildingState.StateBuilding::<waitBuildingCheck>m__239	callvirt	client_caller	0xA58FC
+politic/task/submitBuildAndComplete	0x0600112C	submitBuildAndComplete(? id,? x,? y,? responder)	0x06006332	PoliticBuilding/<buildAndComplete>c__AnonStorey264::<>m__212	callvirt	client_caller	0x21B190
+politic/task/submitBuildTask	0x0600112B	sumbitBuildTask(? id,? x,? y,? responder)	0x0600632F	PoliticBuilding/<buildOnField>c__AnonStorey262::<>m__210	callvirt	client_caller	0x21B100
+politic/task/submitBulkBuildAndComplete	0x0600112F	submitBulkBuildAndComplete(? id,? coords,? responder)	0x06006378	PoliticFSMConstruction/<setSerialSelectBuilding>c__AnonStorey27A::<>m__28E	callvirt	client_caller	0x21C710
+politic/task/submitBulkProduceTasks	0x06001131	submitBulkProduceTasks(? buildingIds,? productIds,? responder)	0x06001C64	PluginRunner_DoManual::<Run>m__1CB	callvirt	client_caller	0x96264
+politic/task/submitBulkProduceTasks	0x06001131	submitBulkProduceTasks(? buildingIds,? productIds,? responder)	0x06002109	PoliticFSMCollectiveProduce::<selectProduceAll>m__286	callvirt	client_caller	0xB4010
+politic/task/submitBulkProduceTasks	0x06001131	submitBulkProduceTasks(? buildingIds,? productIds,? responder)	0x0600637D	PoliticFSMProduct/<phaseSelectProduceAll>c__AnonStorey27B::<>m__2BA	callvirt	client_caller	0x21CA58
+politic/task/submitProduceTask	0x06001130	sumbitProduceTask(? id,? action,? responder)	0x06001EE2	PoliticBuildingState.StateManualProduce::<waitProduce>m__24A	callvirt	client_caller	0xA6942
+politic/task/submitSerialBuildAndComplete	0x0600112E	submitSerialBuildAndComplete(? id,? coords,? responder)	0x06006338	PoliticBuilding/<SerialBuildAndComplete>c__AnonStorey268::<>m__216	callvirt	client_caller	0x21B318
+politic/waterborneTrade/call	0x0600123F	callWaterTrade(? mapId,? buildingId,? responder)	0x06002696	PoliticWaterTradeWindow::<callWaterTrade>m__32D	callvirt	client_caller	0xD613C
+politic/waterborneTrade/getFleet	0x0600123A	getFleetWaterTrade(? mapId,? buildingId,? responder)	0x0600223C	PoliticFSMWaterTradeEntry::<getFleetInfo>m__2D1	callvirt	client_caller	0xBE18D
+politic/waterborneTrade/getFriendTraders	0x0600123B	getFriendsWaterTrade(? responder)	0x0600223D	PoliticFSMWaterTradeEntry::<getFriendInfo>m__2D2	callvirt	client_caller	0xBE1B4
+politic/waterborneTrade/getStatus	0x06001240	getStatusAllWaterTrade(? responder)	0x06002464	PoliticMissionProgressList::<phaseInit>m__2F3	callvirt	client_caller	0xCA198
+politic/waterborneTrade/receive	0x0600123E	recieveWaterTrade(? mapId,? buildingId,? responder)	0x06002248	PoliticFSMWaterTradeReward::<recieveWaterTrade>m__2D6	callvirt	client_caller	0xBE5C4
+politic/waterborneTrade/send	0x0600123C	sendWaterTrade(? mapId,? buildingId,? tradeId,? responder)	0x060063B5	PoliticWaterTradeWindow/<startWaterTrade>c__AnonStorey28F::<>m__32C	callvirt	client_caller	0x21D9D0
+politic/waterborneTrade/sendWithFriends	0x0600123D	sendWaterTradeWithFriends(? mapId,? buildingId,? tradeId,? friends,? responder)	0x060063B2	PoliticWaterTradePlayerWindow/<decideWaterTrade>c__AnonStorey28E::<>m__328	callvirt	client_caller	0x21D8FB
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06001C3E	PluginRunner_DoDreamSpace::<onQuestExecute>m__1C1	callvirt	client_caller	0x95094
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06001C54	PluginRunner_DoEvent::<OnComplete>m__1C7	callvirt	client_caller	0x9596A
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06001C74	PluginRunner_DoOniQuest::<onQuestExecute>m__1CE	callvirt	client_caller	0x9699F
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06005C75	QuestScriptCommand/<processQuestResult>c__IteratorBF::<>m__370	callvirt	client_caller	0x1FE1E0
+quest/checkEmergencyQuest	0x06001199	getEmergencyQuestTimes(? responder)	0x0600271A	EmergencyQuestChecker::<sendRequest>m__331	callvirt	client_caller	0xD93D1
+quest/clearObstacle	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	0x06001BF3	PluginQuestStepHelper::<OnObstacle>m__1A9	callvirt	client_caller	0x9376C
+quest/clearObstacle	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	0x06005D1A	QuestScriptCommand/<clearObstacle>c__IteratorD7::<>m__385	callvirt	client_caller	0x200FC8
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06001C3D	PluginRunner_DoDreamSpace::<Run>m__1C0	callvirt	client_caller	0x95054
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06001C51	PluginRunner_DoEvent::<Run>m__1C4	callvirt	client_caller	0x958D6
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06001C73	PluginRunner_DoOniQuest::<Run>m__1CD	callvirt	client_caller	0x9695F
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	0x06005C6C	QuestScriptCommand/<stepNext>c__IteratorBE::<>m__36D	callvirt	client_caller	0x1FDE8B
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	0x06001C52	PluginRunner_DoEvent::<CheckQuestOpen>m__1C5	callvirt	client_caller	0x95909
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	0x06001C72	PluginRunner_DoOniQuest::<InitTarget>m__1CC	callvirt	client_caller	0x96921
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	0x06001C75	PluginRunner_DoOniQuest::<CheckNextStep>m__1CF	callvirt	client_caller	0x969D9
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	0x060063C4	QuestDataCache/<cacheChapterData>c__AnonStorey295::<>m__339	callvirt	client_caller	0x21DCC9
+quest/getQuestBossPunish	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	0x06005C62	QuestScriptCommand/<startQuest>c__IteratorBD::<>m__369	callvirt	client_caller	0x1FDB1B
+quest/getQuestCompleteFlags	0x06001189	getQuestCompleteFlags(? type,? responder)	0x06001BDF	PluginQuestDataManager::<GetQuestData>m__1A8	callvirt	client_caller	0x92B65
+quest/getQuestCompleteFlags	0x06001189	getQuestCompleteFlags(? type,? responder)	0x060063A4	PoliticMissionProgressList/<phaseInit>c__AnonStorey287/<phaseInit>c__AnonStorey288::<>m__303	callvirt	client_caller	0x21D5FB
+quest/getQuestCompleteFlags	0x06001189	getQuestCompleteFlags(? type,? responder)	0x060063CA	QuestDataCache/<cacheCompleteFlags>c__AnonStorey292/<cacheCompleteFlags>c__AnonStorey293::<>m__33D	callvirt	client_caller	0x21DE02
+quest/getQuestEncount	0x06001192	getQuestEncount(? responder)	0x06005C60	QuestScriptCommand/<startQuest>c__IteratorBD::<>m__367	callvirt	client_caller	0x1FDA80
+quest/getQuestEncountWorks	0x06001193	getQuestEncountWorks(? questType,? questId,? responder)	0x06005C61	QuestScriptCommand/<startQuest>c__IteratorBD::<>m__368	callvirt	client_caller	0x1FDABE
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	0x06001C3C	PluginRunner_DoDreamSpace::<getProgress>m__1BF	callvirt	client_caller	0x95014
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	0x06005C27	QuestDataCache/<process>c__IteratorB5::<>m__345	callvirt	client_caller	0x1FC5A8
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	0x06005D29	QuestTypeSelector/<waitIsValidButton>c__IteratorD9::<>m__3A1	callvirt	client_caller	0x201244
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	0x060063A3	PoliticMissionProgressList/<phaseInit>c__AnonStorey287/<phaseInit>c__AnonStorey288::<>m__302	callvirt	client_caller	0x21D5C0
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	0x060063F0	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__39E	callvirt	client_caller	0x21E7AA
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	0x060063F5	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__3A6	callvirt	client_caller	0x21E862
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	0x060063F7	QuestTypeSelector/<OnGUI>c__AnonStorey2A4::<>m__3A9	callvirt	client_caller	0x21E8BA
+quest/getQuestRewardOpenFlags	0x0600118B	getQuestRewardOpenFlags(? type,? questId,? responder)	0x060063C1	QuestDataCache/<cacheQuestRewardOpenFlags>c__AnonStorey294::<>m__338	callvirt	client_caller	0x21DC4B
+quest/getRandomQuestRanking	0x06001197	getRandomQuestRanking(? responder)	0x060063C7	QuestDataCache/<cacheRandomQuestInfo>c__AnonStorey296::<>m__33A	callvirt	client_caller	0x21DD28
+quest/openQuest	0x06001190	openQuest(? type,? responder)	0x06001BDE	PluginQuestDataManager::<GetEventData>m__1A7	callvirt	client_caller	0x92B21
+quest/openQuest	0x06001190	openQuest(? type,? responder)	0x06001BDE	PluginQuestDataManager::<GetEventData>m__1A7	callvirt	client_caller	0x92B38
+quest/openQuest	0x06001190	openQuest(? type,? responder)	0x06001C53	PluginRunner_DoEvent::<onQuestChapterData>m__1C6	callvirt	client_caller	0x95936
+quest/openQuest	0x06001190	openQuest(? type,? responder)	0x06005C83	QuestScriptCommand/<openQuest>c__IteratorC1::<>m__372	callvirt	client_caller	0x1FE6FE
+quest/openQuest	0x06001190	openQuest(? type,? responder)	0x060063BB	QuestDataCache/<openQuest>c__AnonStorey291::<>m__336	callvirt	client_caller	0x21DB2C
+quest/openTreasureBox	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	0x06005D0B	QuestScriptCommand/<openTreasureBox>c__IteratorD5::<>m__382	callvirt	client_caller	0x20078B
+quest/openTreasureBox	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	0x060062E0	PluginQuestStepHelper/<CallOpenTreasure>c__AnonStorey23E::<>m__1AB	callvirt	client_caller	0x219FE8
+quest/openTreasureBox	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	0x060062E1	PluginQuestStepHelper/<CallOpenTreasure>c__AnonStorey23E::<>m__1AC	callvirt	client_caller	0x21A022
+ranking/getBriefOfBattle	0x06001205	getBriefOfBattle(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x2189BF
+ranking/getBriefOfBattle	0x06001205	getBriefOfBattle(? responder)	0x06006783	mypageRankingWindow/<setupVsWeekly>c__AnonStorey3F8::<>m__881	callvirt	client_caller	0x22F660
+ranking/getBriefOfBattleDaily	0x06001206	getBriefOfBattleDaily(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x21897A
+ranking/getBriefOfBattleDaily	0x06001206	getBriefOfBattleDaily(? responder)	0x06006788	mypageRankingWindow/<setupVsDaily>c__AnonStorey3F9::<>m__888	callvirt	client_caller	0x22F764
+ranking/getBriefOfBrawn	0x06001219	getBriefOfBrawn(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218991
+ranking/getBriefOfBrawn	0x06001219	getBriefOfBrawn(? responder)	0x060067A8	mypageRankingWindow/<setupBrawn>c__AnonStorey400::<>m__8B6	callvirt	client_caller	0x22FE08
+ranking/getBriefOfCountriesInGiganticRaidBoss	0x06001200	getBriefOfCountriesInGiganticRaidBoss(? responder)	0x060067B7	mypageRankingWindow/<setupGiganticRaidBossPunishPoint>c__AnonStorey406::<>m__8E9	callvirt	client_caller	0x230278
+ranking/getBriefOfCountryBattle	0x06001202	getBriefOfCountryBattle(? responder)	0x0600677E	mypageRankingWindow/<setupVsAll>c__AnonStorey3F7::<>m__87A	callvirt	client_caller	0x22F548
+ranking/getBriefOfDedication	0x06001215	getBriefOfDedication(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x2189ED
+ranking/getBriefOfDedication	0x06001215	getBriefOfDedication(? responder)	0x0600679F	mypageRankingWindow/<setupDelivery>c__AnonStorey3FE::<>m__8A9	callvirt	client_caller	0x22FC28
+ranking/getBriefOfDedicationMonthly	0x06001216	getBriefOfDedicationMonthly(? responder)	0x0600169E	HTMLRankingMediator_Delivery::getRankersAroundMeInDeliveryMonthly	callvirt	client_caller	0x75555
+ranking/getBriefOfDedicationMonthly	0x06001216	getBriefOfDedicationMonthly(? responder)	0x060067A3	mypageRankingWindow/<setupDeliveryMonthly>c__AnonStorey3FF::<>m__8AF	callvirt	client_caller	0x22FD10
+ranking/getBriefOfGiganticRaidBoss	0x060011FD	getBriefOfGiganticRaidBoss(? responder)	0x060067BC	mypageRankingWindow/<setupGiganticRaidBossContribute>c__AnonStorey407::<>m__8F0	callvirt	client_caller	0x23037C
+ranking/getBriefOfKokudaka	0x06001207	getBriefOfKokudaka(? responder)	0x0600168D	HTMLRankingMediator_Kokudaka::getAroundRankersInKokudaka	callvirt	client_caller	0x74F7A
+ranking/getBriefOfKokudaka	0x06001207	getBriefOfKokudaka(? responder)	0x06006796	mypageRankingWindow/<setupKokudakaInternal>c__AnonStorey3FC::<>m__89C	callvirt	client_caller	0x22FA54
+ranking/getBriefOfMaxDamageInGiganticRaidBoss	0x060011FE	getBriefOfMaxDamageInGiganticRaidBoss(? responder)	0x060067C1	mypageRankingWindow/<setupGiganticRaidBossMaxDamage>c__AnonStorey408::<>m__8F7	callvirt	client_caller	0x230480
+ranking/getBriefOfNationalPower	0x06001213	getBriefOfNationalPower(? responder)	0x0600679A	mypageRankingWindow/<setupNationalPower>c__AnonStorey3FD::<>m__8A2	callvirt	client_caller	0x22FB30
+ranking/getBriefOfNationalRanking	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218B2B
+ranking/getBriefOfNationalRanking	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	0x0600627A	HTMLRewardMediatorWeekly/<requestCore>c__AnonStorey211::<>m__147	callvirt	client_caller	0x218EE2
+ranking/getBriefOfNationalRanking	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	0x060067CB	mypageRankingWindow/<setupNationalRanking>c__AnonStorey40A`1::<>m__905	callvirt	client_caller	0x2306B4
+ranking/getBriefOfNationalRanking	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	0x060067D0	mypageRankingWindow/<setupNationalRankingWeekly>c__AnonStorey40B`1::<>m__90C	callvirt	client_caller	0x2307E4
+ranking/getBriefOfRaidBoss	0x060011FB	getBriefOfRaidBoss(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x2189D6
+ranking/getBriefOfRaidBoss	0x060011FB	getBriefOfRaidBoss(? responder)	0x0600678D	mypageRankingWindow/<setupRasetsu>c__AnonStorey3FA::<>m__88F	callvirt	client_caller	0x22F868
+ranking/getBriefOfRaidBossDaily	0x060011FC	getBriefOfRaidBossDaily(? responder)	0x060016C5	HTMLRankingMediator_RaidBoss::getDailyAroundRankersInRaidBoss	callvirt	client_caller	0x76312
+ranking/getBriefOfRaidBossDaily	0x060011FC	getBriefOfRaidBossDaily(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218963
+ranking/getBriefOfRaidBossDaily	0x060011FC	getBriefOfRaidBossDaily(? responder)	0x06006792	mypageRankingWindow/<setupRasetsuDaily>c__AnonStorey3FB::<>m__896	callvirt	client_caller	0x22F96C
+ranking/getBriefOfRaidBossNational	0x06001203	getBriefOfRaidBossNational(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218AEA
+ranking/getBriefOfRaidBossNational	0x06001203	getBriefOfRaidBossNational(? responder)	0x060067C6	mypageRankingWindow/<setupRaidBossNational>c__AnonStorey409::<>m__8FE	callvirt	client_caller	0x230584
+ranking/getBriefOfRandomQuest	0x0600121B	getBriefOfRandomQuest(? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x2189A8
+ranking/getBriefOfRandomQuest	0x0600121B	getBriefOfRandomQuest(? responder)	0x060067AD	mypageRankingWindow/<setupGenmuStep>c__AnonStorey401::<>m__8BD	callvirt	client_caller	0x22FF0C
+ranking/getBriefOfSiege	0x0600121D	getBriefOfSiege(? role,? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218A09
+ranking/getBriefOfSiege	0x0600121D	getBriefOfSiege(? role,? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218A25
+ranking/getBriefOfSiege	0x0600121D	getBriefOfSiege(? role,? responder)	0x060067DC	mypageRankingWindow/<makeSetupSiege>c__AnonStorey404/<makeSetupSiege>c__AnonStorey405::<>m__922	callvirt	client_caller	0x230BC1
+ranking/getBriefOfTurfWar	0x06001223	getBriefOfTurfWar(? battlefield,? team,? responder)	0x060067D6	mypageRankingWindow/<makeTurfWarSetup>c__AnonStorey402/<makeTurfWarSetup>c__AnonStorey403::<>m__91B	ldftn	client_caller	0x2309B1
+ranking/getBriefOfTurfWarDaily	0x06001225	getBriefOfTurfWarDaily(? battlefield,? team,? responder)	0x060067D6	mypageRankingWindow/<makeTurfWarSetup>c__AnonStorey402/<makeTurfWarSetup>c__AnonStorey403::<>m__91B	ldftn	client_caller	0x2309A0
+ranking/getDailyRankersInBattle	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	0x060016DB	HTMLRankingMediator_Battle::getCurRank	ldftn	client_caller	0x76A14
+ranking/getDailyRankersInBattle	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	0x060016DD	HTMLRankingMediator_Battle::getDailyTopRankersInBattle	callvirt	client_caller	0x76B3A
+ranking/getDailyRankersInBattle	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	0x0600620C	HTMLRankingMediator_Battle/<getRankersAroundMeInBattleDaily>c__AnonStorey1E5::<>m__102	callvirt	client_caller	0x217CA1
+ranking/getDailyRankersInRaidBoss	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016C1	HTMLRankingMediator_RaidBoss::getCurRank	ldftn	client_caller	0x760CC
+ranking/getDailyRankersInRaidBoss	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016C3	HTMLRankingMediator_RaidBoss::getDailyTopRankersInRaidBoss	callvirt	client_caller	0x76222
+ranking/getDailyRankersInRaidBoss	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060061F2	HTMLRankingMediator_RaidBoss/<getDailyAroundRankersInRaidBoss>c__AnonStorey1DA::<>m__F3	callvirt	client_caller	0x217928
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	0x06001701	HTMLRankingMediator_Tenka::getCurRank	ldftn	client_caller	0x77D11
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	0x06001703	HTMLRankingMediator_Tenka::getDailyTopRankersInTenka	callvirt	client_caller	0x77E64
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	0x06006223	HTMLRankingMediator_Tenka/<getRankersAroundMeInTenkaDaily>c__AnonStorey1EF::<>m__10F	callvirt	client_caller	0x217FBA
+ranking/getMonthlyRankersInDedication	0x06001218	getMonthlyRankersInDedication(? term,? startIndex,? endIndex,? responder)	0x0600169D	HTMLRankingMediator_Delivery::getTopRankersInDeliveryMonthly	callvirt	client_caller	0x754F2
+ranking/getMonthlyRankersInDedication	0x06001218	getMonthlyRankersInDedication(? term,? startIndex,? endIndex,? responder)	0x060061CE	HTMLRankingMediator_Delivery/<getRankersAroundMeInDeliveryMonthly>c__AnonStorey1CC::<>m__DD	callvirt	client_caller	0x217384
+ranking/getRankersInBattle	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	0x060016DB	HTMLRankingMediator_Battle::getCurRank	ldftn	client_caller	0x76A21
+ranking/getRankersInBattle	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	0x060016DC	HTMLRankingMediator_Battle::getTopRankersInBattle	callvirt	client_caller	0x76ADE
+ranking/getRankersInBattle	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	0x06006209	HTMLRankingMediator_Battle/<getRankersAroundMeInBattle>c__AnonStorey1E4::<>m__101	callvirt	client_caller	0x217C09
+ranking/getRankersInBrawn	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	0x06001693	HTMLRankingMediator_Saga::getCurRank	callvirt	client_caller	0x750E7
+ranking/getRankersInBrawn	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	0x06001694	HTMLRankingMediator_Saga::getTopRankersInSaga	callvirt	client_caller	0x75146
+ranking/getRankersInBrawn	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	0x060061C2	HTMLRankingMediator_Saga/<getAroundRankersInSaga>c__AnonStorey1C7::<>m__D7	callvirt	client_caller	0x2171A5
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	0x0600169A	HTMLRankingMediator_Delivery::getCurRank	ldftn	client_caller	0x75330
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	0x0600169A	HTMLRankingMediator_Delivery::getCurRank	ldftn	client_caller	0x7533D
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	0x0600169B	HTMLRankingMediator_Delivery::getTopRankersInDelivery	callvirt	client_caller	0x75412
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	0x060061C9	HTMLRankingMediator_Delivery/<getRankersAroundMeInDelivery>c__AnonStorey1CA::<>m__DB	callvirt	client_caller	0x217291
+ranking/getRankersInGiganticRaidBoss	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016CB	HTMLRankingMediator_GiganticRaidBoss::getCurRank	ldftn	client_caller	0x764D6
+ranking/getRankersInGiganticRaidBoss	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016CC	HTMLRankingMediator_GiganticRaidBoss::getTopRankersInGiganticRaidBoss	callvirt	client_caller	0x7659E
+ranking/getRankersInGiganticRaidBoss	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060061F9	HTMLRankingMediator_GiganticRaidBoss/<getAroundRankersInGiganticRaidBoss>c__AnonStorey1DD::<>m__F8	callvirt	client_caller	0x217A15
+ranking/getRankersInKokudaka	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	0x0600168B	HTMLRankingMediator_Kokudaka::getCurRank	callvirt	client_caller	0x74E8F
+ranking/getRankersInKokudaka	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	0x0600168C	HTMLRankingMediator_Kokudaka::getTopRankersInKokudaka	callvirt	client_caller	0x74F06
+ranking/getRankersInKokudaka	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	0x060061BB	HTMLRankingMediator_Kokudaka/<getAroundRankersInKokudaka>c__AnonStorey1C4::<>m__D3	callvirt	client_caller	0x2170B8
+ranking/getRankersInNationalPower	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	0x060016F2	HTMLRankingMediator_NationalPower::getCurRank	callvirt	client_caller	0x77413
+ranking/getRankersInNationalPower	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	0x060016F3	HTMLRankingMediator_NationalPower::getRankingOfCountriesInNationalPower	callvirt	client_caller	0x7748A
+ranking/getRankersInNationalPower	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	0x06006217	HTMLRankingMediator_NationalPower/<getRankersAroundMeInNationalPower>c__AnonStorey1EA::<>m__109	callvirt	client_caller	0x217DD8
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	0x06001729	HTMLRankingMediator_NationalRanking::getCurRank	callvirt	client_caller	0x78B7D
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	0x0600172A	HTMLRankingMediator_NationalRanking::getTopRankersInNationalRanking	callvirt	client_caller	0x78BF8
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	0x06001739	HTMLRankingMediator_WeeklyNationalRanking::getCurRank	callvirt	client_caller	0x78F66
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	0x0600173A	HTMLRankingMediator_WeeklyNationalRanking::getTopRankersInNationalRanking	callvirt	client_caller	0x78FE1
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	0x06006239	HTMLRankingMediator_NationalRanking/<getAroundRankersInNationalRanking>c__AnonStorey1F9::<>m__11C	callvirt	client_caller	0x218244
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	0x06006240	HTMLRankingMediator_WeeklyNationalRanking/<getAroundRankersInNationalRanking>c__AnonStorey1FC::<>m__120	callvirt	client_caller	0x21833D
+ranking/getRankersInRaidBoss	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016C1	HTMLRankingMediator_RaidBoss::getCurRank	ldftn	client_caller	0x760D9
+ranking/getRankersInRaidBoss	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016C2	HTMLRankingMediator_RaidBoss::getTopRankersInRaidBoss	callvirt	client_caller	0x761AE
+ranking/getRankersInRaidBoss	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060061EF	HTMLRankingMediator_RaidBoss/<getAroundRankersInRaidBoss>c__AnonStorey1D9::<>m__F2	callvirt	client_caller	0x217851
+ranking/getRankersInRaidBossNational	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	0x06001721	HTMLRankingMediator_RaidBossNational::getCurRank	callvirt	client_caller	0x788FB
+ranking/getRankersInRaidBossNational	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	0x06001722	HTMLRankingMediator_RaidBossNational::getTopRankersInRaidBoss	callvirt	client_caller	0x78972
+ranking/getRankersInRaidBossNational	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	0x06006232	HTMLRankingMediator_RaidBossNational/<getAroundRankersInRaidBoss>c__AnonStorey1F6::<>m__118	callvirt	client_caller	0x21814D
+ranking/getRankersInRandomQuest	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	0x060016A3	HTMLRankingMediator_GenmuStep::getCurRank	callvirt	client_caller	0x75727
+ranking/getRankersInRandomQuest	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	0x060016A4	HTMLRankingMediator_GenmuStep::getTopRankersInGenmuStep	callvirt	client_caller	0x7579E
+ranking/getRankersInRandomQuest	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	0x060061D5	HTMLRankingMediator_GenmuStep/<getRankersAroundMeInGenmuStep>c__AnonStorey1CF::<>m__E2	callvirt	client_caller	0x217471
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	0x060016AD	HTMLRankingMediator_Siege::getCurRank	callvirt	client_caller	0x75A4B
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	0x060016AF	HTMLRankingMediator_Siege::getTopRankersInSiege	callvirt	client_caller	0x75ACA
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	0x060061DC	HTMLRankingMediator_Siege/<getAroundRankersInSiege>c__AnonStorey1D2::<>m__E6	callvirt	client_caller	0x217573
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	0x060016BA	HTMLRankingMediator_Strategy::getCurRank	callvirt	client_caller	0x75E06
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	0x060016BB	HTMLRankingMediator_Strategy::getTopRankersInStrategy	callvirt	client_caller	0x75EBD
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	0x060061E5	HTMLRankingMediator_Strategy/<getAroundRankersInStrategy>c__AnonStorey1D5::<>m__EC	callvirt	client_caller	0x2176F6
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218A5E
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218A97
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	0x060016BA	HTMLRankingMediator_Strategy::getCurRank	callvirt	client_caller	0x75E2B
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	0x060016BB	HTMLRankingMediator_Strategy::getTopRankersInStrategy	callvirt	client_caller	0x75EE2
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	0x06005DCA	StrategyRankingPicker/<reloadToCache>c__IteratorEF::<>m__4B1	callvirt	client_caller	0x203995
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	0x06005DCB	StrategyRankingPicker/<reloadToCache>c__IteratorEF::<>m__4B2	callvirt	client_caller	0x2039E5
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	0x060061E5	HTMLRankingMediator_Strategy/<getAroundRankersInStrategy>c__AnonStorey1D5::<>m__EC	callvirt	client_caller	0x217734
+ranking/getRankersInStrategyPie	0x060011F7	getRankersInStrategyPie(? term,? startIndex,? endIndex,? responder)	0x0600170C	HTMLRankingMediator_StrategyRate::getCurRank	callvirt	client_caller	0x78120
+ranking/getRankersInStrategyPie	0x060011F7	getRankersInStrategyPie(? term,? startIndex,? endIndex,? responder)	0x0600170D	HTMLRankingMediator_StrategyRate::getRankingOfStrategyRateInBattle	callvirt	client_caller	0x7817C
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	0x06001701	HTMLRankingMediator_Tenka::getCurRank	ldftn	client_caller	0x77D04
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	0x06001702	HTMLRankingMediator_Tenka::getTopRankersInTenka	callvirt	client_caller	0x77DF4
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	0x06006220	HTMLRankingMediator_Tenka/<getRankersAroundMeInTenka>c__AnonStorey1EE::<>m__10E	callvirt	client_caller	0x217F02
+ranking/getRankersOfCountriesInGiganticRaidBoss	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x06001717	HTMLRankingMediator_GiganticPoint::getCurRank	callvirt	client_caller	0x784E0
+ranking/getRankersOfCountriesInGiganticRaidBoss	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x06001718	HTMLRankingMediator_GiganticPoint::getRankingOfGiganticPoint	callvirt	client_caller	0x7853C
+ranking/getRankersOfCountriesInGiganticRaidBoss	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218AB5
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016D4	HTMLRankingMediator_GiganticMaxDamage::getCurRank	ldftn	client_caller	0x76762
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x060016D5	HTMLRankingMediator_GiganticMaxDamage::getTopRankersOfMaxDamageInGiganticRaidBoss	callvirt	client_caller	0x7682A
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x06005F71	giganticRaidBossRankingPicker/<reloadToCache>c__Iterator12E::<>m__7A3	callvirt	client_caller	0x20B5B9
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x06005F72	giganticRaidBossRankingPicker/<reloadToCache>c__Iterator12E::<>m__7A4	callvirt	client_caller	0x20B609
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x06006200	HTMLRankingMediator_GiganticMaxDamage/<getAroundRankersInMaxDamageGiganticRaidBoss>c__AnonStorey1E0::<>m__FC	callvirt	client_caller	0x217B01
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	0x06006269	HTMLRewardMediator/<requestCore>c__AnonStorey210::<>m__135	callvirt	client_caller	0x218AD3
+ranking/getRankingOfCountriesInBattle	0x060011F6	getRankingOfCountriesInBattle(? term,? responder)	0x060016E6	HTMLRankingMediator_Country::getCurRank	callvirt	client_caller	0x76DF1
+ranking/getRankingOfCountriesInBattle	0x060011F6	getRankingOfCountriesInBattle(? term,? responder)	0x060016E7	HTMLRankingMediator_Country::getRankingOfCountriesInBattle	callvirt	client_caller	0x76E49
+ranking/getRecordOfCountryInBattle	0x060011F4	getRecordOfCountryInBattle(? responder)	0x06006061	CountryRanking/<setup>c__Iterator150::<>m__9A5	callvirt	client_caller	0x20ED44
+ranking/getRecordOfCountryInBattle	0x060011F4	getRecordOfCountryInBattle(? responder)	0x0600606B	CountryRanking/<setupForSkipBattle>c__Iterator151::<>m__9A9	callvirt	client_caller	0x20F2E0
+ranking/getTopRankersInTurfWar	0x060011F3	getTurfWarTopRankers(? battlefield,? team,? index,? responder)	0x060064CE	TurfWarBriefCache/<getRanking>c__AnonStorey2F8::<>m__4D0	callvirt	client_caller	0x22195D
+siege/discharge	0x06001279	siegeDischarge(? responder)	0x06001C29	PluginRunner_DoBattleSiege::<CheckBattle>m__1BA	callvirt	client_caller	0x94A80
+siege/discharge	0x06001279	siegeDischarge(? responder)	0x060051CC	vsSetting_Siege::<attack>m__9E7	callvirt	client_caller	0x1E9090
+siege/enter	0x06001276	siegeEnter(? responder)	0x06001C27	PluginRunner_DoBattleSiege::<ProcessSiegeBattle>m__1B7	callvirt	client_caller	0x94A30
+siege/enter	0x06001276	siegeEnter(? responder)	0x0600503E	siegeBriefMenu::<siegeEnter>m__98A	callvirt	client_caller	0x1E0648
+siege/getBrief	0x06001275	siegeBrief(? responder)	0x0600503C	siegeBriefMenu::<init>m__988	callvirt	client_caller	0x1E05F8
+siege/getPairings	0x0600127C	siegeGetPairings(? responder)	0x06006295	HTMLSiegeMediator/<request>c__AnonStorey21E::<>m__155	callvirt	client_caller	0x219288
+siege/getSiegeResultLog	0x0600127B	getSiegeResultLog(? responder)	0x0600641B	SiegeResultRenderer/<load>c__AnonStorey2B3::<>m__3E9	callvirt	client_caller	0x21F1E8
+siege/getSiegeStatus	0x06001277	getSiegeStatus(? responder)	0x06001C28	PluginRunner_DoBattleSiege::<ProcessEnterBattle>m__1B8	callvirt	client_caller	0x94A58
+siege/getSiegeStatus	0x06001277	getSiegeStatus(? responder)	0x060051C9	vsSetting_Siege::<getSiegeSituation>m__9E1	callvirt	client_caller	0x1E9050
+siege/lookSiegeResult	0x0600127A	lookSiegeResult(? responder)	0x0600641C	SiegeResultRenderer/<load>c__AnonStorey2B3::<>m__3EA	callvirt	client_caller	0x21F210
+siege/openingBet	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	0x060062E7	PluginRunner_DoBattleSiege/<CheckOpenBet>c__AnonStorey241::<>m__1B9	callvirt	client_caller	0x21A0FB
+siege/openingBet	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	0x0600683D	vsSetting_Siege/<setExchangeResource>c__AnonStorey42E::<>m__9E6	callvirt	client_caller	0x232381
+strategy/command/attack	0x06001265	sendStrategyCommandIntercept(? command,? responder)	0x06006473	StrategyCommandSelector/<battle>c__AnonStorey2D3::<>m__466	callvirt	client_caller	0x220935
+strategy/command/attack	0x06001265	sendStrategyCommandIntercept(? command,? responder)	0x06006476	StrategyCommandSelector/<assault>c__AnonStorey2D4::<>m__467	callvirt	client_caller	0x220981
+strategy/command/attack	0x06001265	sendStrategyCommandIntercept(? command,? responder)	0x06006479	StrategyCommandSelector/<siege>c__AnonStorey2D5::<>m__468	callvirt	client_caller	0x2209CD
+strategy/command/attack	0x06001265	sendStrategyCommandIntercept(? command,? responder)	0x0600647C	StrategyCommandSelector/<refuge>c__AnonStorey2D6::<>m__469	callvirt	client_caller	0x220A19
+strategy/command/buildCastle	0x0600126B	sendStrategyCommandBuildCastle(? responder)	0x0600648B	StrategyCommandSelector/<building>c__AnonStorey2DB::<>m__46E	callvirt	client_caller	0x220B80
+strategy/command/cancelMarch	0x0600125B	sendStrategyCommandCencelRouteMarch(? responder)	0x06006496	StrategyHUDController/<sendMarchCancel>c__AnonStorey2E0::<>m__486	callvirt	client_caller	0x220C50
+strategy/command/changeBase	0x0600126A	sendStrategyCommandChangeBase(? responder)	0x06006488	StrategyCommandSelector/<changeBase>c__AnonStorey2DA::<>m__46D	callvirt	client_caller	0x220B38
+strategy/command/conscript	0x06001267	sendStrategyCommandConscript(? responder)	0x06006482	StrategyCommandSelector/<recruit>c__AnonStorey2D8::<>m__46B	callvirt	client_caller	0x220AA8
+strategy/command/march2	0x0600125A	sendStrategyCommandRouteMarch(? seqId,? responder)	0x0600649D	StrategyMoveableRegionSelector/<executeCommand>c__AnonStorey2E6::<>m__4A8	callvirt	client_caller	0x220E9A
+strategy/command/returnBase	0x06001269	sendStrategyCommandReturnBase(? responder)	0x06003023	StrategyCommandSelector::<onDeadDialog>m__465	callvirt	client_caller	0x113034
+strategy/command/revenge	0x0600126D	sendStrategyCommandRevenge(? x,? y,? responder)	0x060064B3	StrategyStrategizeRegionSelector/<executeCommandRevenge>c__AnonStorey2F0::<>m__4B9	callvirt	client_caller	0x221480
+strategy/command/strategize	0x0600126C	sendStrategyCommandStrategize(? x,? y,? responder)	0x060064B0	StrategyStrategizeRegionSelector/<executeCommandStrategize>c__AnonStorey2EE::<>m__4B8	callvirt	client_caller	0x221404
+strategy/command/supply	0x06001268	sendStrategyCommandSupply(? responder)	0x06006485	StrategyCommandSelector/<resupply>c__AnonStorey2D9::<>m__46C	callvirt	client_caller	0x220AF0
+strategy/command/traceroute	0x06001259	getStrategyCommandTraceRoute(? x,? y,? responder)	0x06006499	StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1::<>m__4A6	callvirt	client_caller	0x220D3B
+strategy/command/training	0x06001266	sendStrategyCommandTraining(? responder)	0x0600647F	StrategyCommandSelector/<training>c__AnonStorey2D7::<>m__46A	callvirt	client_caller	0x220A60
+strategy/entryStrategy	0x06001255	entryStrategy(? fieldName,? soldierEmployAmount,? responder)	0x06002F49	Strategy::<entryDebug>m__43A	callvirt	client_caller	0x10E10A
+strategy/entryStrategy	0x06001256	entryStrategy(? soldierEmployAmount,? responder)	0x06005069	StrategySelect::<entryStrategy>m__99E	callvirt	client_caller	0x1E1147
+strategy/getMercenaryEmployInfo	0x06001254	getMercenaryEmployInfo(? responder)	0x0600507E	StrategySelect_army::<Start>m__9A1	callvirt	client_caller	0x1E169C
+strategy/getStrategyActionLogs2	0x06001263	getStrategyActionLogs2(? responder)	0x06006457	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__42C	callvirt	client_caller	0x21FC50
+strategy/getStrategyBattleLogs	0x06001264	getStrategyBattleLogs(? responder)	0x06006457	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__42C	callvirt	client_caller	0x21FC78
+strategy/getStrategyBrief	0x06001253	getStrategyBrief(? responder)	0x060030AC	StrategyHUDController::<Start>m__488	callvirt	client_caller	0x1167E1
+strategy/getStrategyBrief	0x06001253	getStrategyBrief(? responder)	0x06005063	StrategySelect::<setup>m__998	callvirt	client_caller	0x1E0F88
+strategy/getStrategyCellLogs	0x0600125F	getStrategyCellLogs(? position,? responder)	0x06006457	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__42C	callvirt	client_caller	0x21FBFA
+strategy/getStrategyCommandInfo	0x0600126F	getStrategyCommandInfo(? command,? responder)	0x0600646D	StrategyCommandSelector/<createConfirmDialog>c__AnonStorey2D1::<>m__454	callvirt	client_caller	0x21FFD6
+strategy/getStrategyCommandInfo	0x0600126F	getStrategyCommandInfo(? command,? responder)	0x060064A0	StrategyMoveableRegionSelector/<createConfirmDialog>c__AnonStorey2E1/<createConfirmDialog>c__AnonStorey2E2::<>m__4A9	callvirt	client_caller	0x220F2B
+strategy/getStrategyCommandInfo	0x0600126F	getStrategyCommandInfo(? command,? responder)	0x060064AC	StrategyStrategizeRegionSelector/<createConfirmDialog>c__AnonStorey2EA::<>m__4B6	callvirt	client_caller	0x2212A6
+strategy/getStrategyLogs	0x0600125D	getStrategyLogs(? battlefield,? position,? responder)	0x0600645F	StrategyLogManager/<getLogHash>c__AnonStorey2CC::<>m__435	callvirt	client_caller	0x21FDFC
+strategy/getStrategyNormRewardInfo	0x06001272	getStrategyNormRewardInfo(? responder)	0x06001B25	NormRewardScene::<setup>m__182	callvirt	client_caller	0x8E050
+strategy/getStrategyPairings	0x06001258	getStrategyPairings(? responder)	0x060062AA	HTMLStrategyMatchMediator/<request>c__AnonStorey228::<>m__165	callvirt	client_caller	0x2196AC
+strategy/getStrategyPersonalLogs	0x06001261	getStrategyPlayerLogs(? battlefield,? responder)	0x06006457	StrategyLogAnalizer/<analize>c__AnonStorey2CA::<>m__42C	callvirt	client_caller	0x21FC28
+strategy/getStrategyPromptReport	0x0600125E	getStrategyPromptReport(? position,? responder)	0x06006462	StrategyResultWindow2/<setup>c__AnonStorey2CD::<>m__437	callvirt	client_caller	0x21FE68
+strategy/getStrategyStatus	0x06001257	getStrategyStatus(? responder)	0x06005D71	Strategy/<onPreSetup>c__IteratorE2::<>m__448	callvirt	client_caller	0x2021CC
+strategy/getStrategyStatus	0x06001257	getStrategyStatus(? responder)	0x060065D3	BoardBody/<reqWebStrategyStatus>c__AnonStorey35B::<>m__598	callvirt	client_caller	0x22562A
+strategy/getStrategyWinLossRecords	0x06001271	getStrategyWinLossRecords(? responder)	0x060062AD	HTMLStrategyMatchMediator_History/<request>c__AnonStorey229::<>m__167	callvirt	client_caller	0x2196F0
+strategy/isAlive	0x0600126E	getStrategyIsAlive(? responder)	0x06005D97	StrategyHUDController/<transitionLogWindowUpdate>c__IteratorE7::<>m__4A3	callvirt	client_caller	0x202CB8
+strategy/lookStrategyResult	0x06001270	getStrategyReward(? responder)	0x06001F62	PoliticButton::<goStrategySelect>m__24F	callvirt	client_caller	0xA9320
+trophy/completeTrophy	0x06001242	receiveEventsTrophy(? access,? id,? responder)	0x06001B42	NormRewardWindow::<recieve>m__187	callvirt	client_caller	0x8EC6E
+trophy/completeTrophy	0x0600124A	receiveTrophyRaidBoss(? id,? responder)	0x060029CE	RaidBossNorm::<receiveNorm>m__3B6	callvirt	client_caller	0xE8C25
+trophy/completeTrophy	0x060011B4	completeTrophy(? category,? responder)	0x060067E7	mypageTrophyReward/<load>c__AnonStorey410::<>m__947	callvirt	client_caller	0x230F56
+trophy/getTrophyProgress	0x06001241	getEventsTrophyProgress(? access,? responder)	0x06001B41	NormRewardWindow::<setup>m__186	callvirt	client_caller	0x8EC0A
+trophy/getTrophyProgress	0x06001249	getTrophyRaidBoss(? responder)	0x060029CD	RaidBossNorm::<setUp>m__3B5	callvirt	client_caller	0xE8BF8
+trophy/getTrophyProgress	0x060011B3	getTrophyProgress(? responder)	0x06004EC4	mypageTrophyUpdate::<load>m__949	callvirt	client_caller	0x1D831C
+trophy/getTrophyProgress	0x060011B3	getTrophyProgress(? responder)	0x060064C0	TrophyWindow/<load>c__AnonStorey2F3::<>m__4C8	callvirt	client_caller	0x2216E4
+trophy/messageWindowTrophy	0x060011B5	message_window_trophy(? category,? responder)	0x060064C3	TrophyWindow/<saveWindowState>c__AnonStorey2F4::<>m__4C9	callvirt	client_caller	0x22174A
+turfWar/entryBattlefield	0x060011ED	entryTurfWarBattlefield(? battlefield,? responder)	0x060064D8	TurfWarWorldMap/<onEntryBattlefield>c__AnonStorey2FC::<>m__4DE	callvirt	client_caller	0x221B36
+turfWar/entryWar	0x060011EB	entryTurfWar(? responder)	0x060064C9	TurfWarBriefCache/<entryWar>c__AnonStorey2F6::<>m__4CE	callvirt	client_caller	0x2218A4
+turfWar/getTurfWarResultLog	0x060011F2	getTurfWarResultLog(? responder)	0x060064DC	TurfWarResultRenderer/<load>c__AnonStorey2FD::<>m__4E2	callvirt	client_caller	0x221B9C
+turfWar/getWarSituation	0x060011EC	getTurfWarSituation(? responder)	0x060064C6	TurfWarBriefCache/<setup>c__AnonStorey2F5::<>m__4CD	callvirt	client_caller	0x221794
+turfWar/getWarSituation	0x060011EC	getTurfWarSituation(? responder)	0x060065D1	BoardBody/<reqWebTurfWarSituation>c__AnonStorey35A::<>m__597	callvirt	client_caller	0x225602
+turfWar/moveBattlefield	0x060011EE	moveTurfWarBattlefield(? battlefield,? responder)	0x060064D7	TurfWarWorldMap/<onEntryBattlefield>c__AnonStorey2FC::<>m__4DD	callvirt	client_caller	0x221B0A
+turfWar/receiveTurfWarReward	0x060011F1	getTurnfWarRceiveTurfWarReward(? responder)	0x060064DD	TurfWarResultRenderer/<load>c__AnonStorey2FD::<>m__4E3	callvirt	client_caller	0x221BC4

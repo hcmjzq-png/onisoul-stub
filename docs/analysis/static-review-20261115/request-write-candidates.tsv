@@ -1,0 +1,1087 @@
+endpoint	wrapper_token	wrapper	key_candidate	value_origin_candidate	argument_clr_type	dll_offset	branched_wrapper
+debug/devLogin	0x060010FF	devLogin(? userName,? responder)	username	arg:userName		0x588E9	0
+debug/devLogin	0x060010FF	devLogin(? userName,? responder)	platform	result:System.String		0x588F9	0
+auth/refreshToken	0x06001100	refreshToken(? responder)	token	field:WebApiClient::token_		0x5894E	0
+auth/login	0x06001101	pubLogin(? sessionKey,? responder)	sessionKey	arg:sessionKey		0x5899D	0
+auth/gameLogin	0x06001102	gameLogin(? token,? responder)	token	arg:token		0x589ED	0
+debug/debugLogin	0x06001103	debugLogin(? responder)	username	string:debug	string	0x58A41	0
+debug/debugLoginCog	0x06001104	debugLoginCog(? loginId,? password,? responder)	loginId	arg:loginId		0x58A91	0
+debug/debugLoginCog	0x06001104	debugLoginCog(? loginId,? password,? responder)	password	arg:password		0x58A9D	0
+auth/guestLogin	0x06001105	guestLogin(? loginHash,? responder)	loginHash	arg:loginHash		0x58AED	0
+auth/guestLogin	0x06001105	guestLogin(? loginHash,? responder)	platform	result:System.String		0x58AFD	0
+auth/keepAliveContainer	0x06001106	refreshKeepAliveContainer(? responder)	token	field:WebApiClient::token_		0x58B3E	0
+common/getPlayerCogid	0x06001107	getPlayerCogid(? responder)	token	field:WebApiClient::token_		0x58B72	0
+common/getPlayerEntity	0x06001108	getPlayerEntry(? responder)	token	field:WebApiClient::token_		0x58BA6	0
+common/getActionPoints	0x06001109	getActionPoints(? responder)	token	field:WebApiClient::token_		0x58BDA	0
+common/getResources	0x0600110A	getResources(? responder)	token	field:WebApiClient::token_		0x58C0E	0
+common/getServerTime	0x0600110B	getServerTime(? responder)	token	field:WebApiClient::token_		0x58C42	0
+common/getAnnouncement	0x0600110C	getAnnouncement(? responder)	token	field:WebApiClient::token_		0x58C76	0
+common/getPlayerParams	0x0600110D	getPlayerParams(? responder)	token	field:WebApiClient::token_		0x58CAA	0
+common/solvePlayerLevelCap	0x0600110E	solvePlayerLevelCap(? responder)	token	field:WebApiClient::token_		0x58CDE	0
+common/increasePlayerLevel	0x0600110F	increasePlayerLevel(? responder)	token	field:WebApiClient::token_		0x58D12	0
+common/periodicInquiry	0x06001110	periodicInquiry(? responder)	token	field:WebApiClient::token_		0x58D5A	0
+common/dedicate	0x06001111	dedicateCharacter(? ids,? responder)	token	field:WebApiClient::token_		0x58DAA	0
+common/dedicate	0x06001111	dedicateCharacter(? ids,? responder)	category	string:character	string	0x58DBA	0
+common/dedicate	0x06001111	dedicateCharacter(? ids,? responder)	article	arg:ids		0x58DC6	0
+common/dedicate	0x06001112	dedicateBuilding(? ids,? responder)	token	field:WebApiClient::token_		0x58DFA	0
+common/dedicate	0x06001112	dedicateBuilding(? ids,? responder)	category	string:building	string	0x58E0A	0
+common/dedicate	0x06001112	dedicateBuilding(? ids,? responder)	article	arg:ids		0x58E16	0
+common/dedicate	0x06001113	dedicateTactics(? ids,? responder)	token	field:WebApiClient::token_		0x58E4A	0
+common/dedicate	0x06001113	dedicateTactics(? ids,? responder)	category	string:tactics	string	0x58E5A	0
+common/dedicate	0x06001113	dedicateTactics(? ids,? responder)	article	arg:ids		0x58E66	0
+common/dedicate	0x06001114	dedicateEquip(? ids,? responder)	token	field:WebApiClient::token_		0x58E9A	0
+common/dedicate	0x06001114	dedicateEquip(? ids,? responder)	category	string:equip	string	0x58EAA	0
+common/dedicate	0x06001114	dedicateEquip(? ids,? responder)	article	arg:ids		0x58EB6	0
+common/dedicate	0x06001115	dedicateGold(? count,? responder)	token	field:WebApiClient::token_		0x58EEA	0
+common/dedicate	0x06001115	dedicateGold(? count,? responder)	category	string:gold	string	0x58EFA	0
+common/dedicate	0x06001115	dedicateGold(? count,? responder)	item11_0000101	arg:count		0x58F17	0
+common/dedicate	0x06001115	dedicateGold(? count,? responder)	article	object:System.Collections.Hashtable		0x58F1D	0
+debug/dedicate	0x06001116	debug_addDedicateScore(? score,? responder)	token	field:WebApiClient::token_		0x58F52	0
+debug/dedicate	0x06001116	debug_addDedicateScore(? score,? responder)	score	arg:score		0x58F63	0
+debug/resetDedication	0x06001117	debug_resetDedicateScore(? responder)	token	field:WebApiClient::token_		0x58F9A	0
+common/getBriefOfNationalPower	0x06001118	getBriefOfNationalPowerSetting(? responder)	token	field:WebApiClient::token_		0x58FCE	0
+common/stampLoginSheet	0x06001119	stampLoginSheet(? responder)	token	field:WebApiClient::token_		0x59002	0
+common/getLoginStampSheet	0x0600111A	getLoginStampSheet(? responder)	token	field:WebApiClient::token_		0x59036	0
+politic/map/getMap	0x0600111B	getMap(? responder)	token	field:WebApiClient::token_		0x5906A	0
+politic/map/setMapName	0x0600111C	setMapName(? name,? responder)	token	field:WebApiClient::token_		0x5909E	0
+politic/map/setMapName	0x0600111C	setMapName(? name,? responder)	mapName	arg:name		0x590AA	0
+politic/map/setMapName2	0x0600111D	setMapName(? mapId,? name,? responder)	token	field:WebApiClient::token_		0x590DE	0
+politic/map/setMapName2	0x0600111D	setMapName(? mapId,? name,? responder)	mapId	arg:mapId		0x590EF	0
+politic/map/setMapName2	0x0600111D	setMapName(? mapId,? name,? responder)	mapName	arg:name		0x590FB	0
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	token	field:WebApiClient::token_		0x59132	0
+politic/map/switchMap	0x0600111E	switchMap(? mapId,? responder)	mapId	arg:mapId		0x59143	0
+politic/map/getMapData	0x0600111F	getMapData(? responder)	token	field:WebApiClient::token_		0x5917A	0
+politic/map/getMapData	0x0600111F	getMapData(? responder)	assets	string:map0	string	0x5918A	0
+politic/building/getBuildings	0x06001120	getMapBuildings(? responder)	token	field:WebApiClient::token_		0x591BE	0
+politic/building/getDrafts	0x06001121	getMapDrafts(? responder)	token	field:WebApiClient::token_		0x591F2	0
+politic/building/putInBuildings	0x06001122	putMapBuildings(? ids,? responder)	token	field:WebApiClient::token_		0x59226	0
+politic/building/putInBuildings	0x06001122	putMapBuildings(? ids,? responder)	buildingIds	arg:ids		0x59232	0
+politic/building/deployBuilding	0x06001123	deployMapBuilding(? id,? x,? y,? responder)	token	field:WebApiClient::token_		0x59288	0
+politic/building/deployBuilding	0x06001123	deployMapBuilding(? id,? x,? y,? responder)	buildingId	result:System.Int32		0x5929E	0
+politic/building/deployBuilding	0x06001123	deployMapBuilding(? id,? x,? y,? responder)	originCoord	object:System.Collections.ArrayList		0x592AA	0
+politic/building/resolveBuildingEvent	0x06001124	resolveBuilding(? id,? responder)	token	field:WebApiClient::token_		0x592E2	0
+politic/building/resolveBuildingEvent	0x06001124	resolveBuilding(? id,? responder)	buildingId	arg:id		0x592EE	0
+politic/building/raiseBuildingEventOfBattle	0x06001125	raiseBuildingEventOfBattle(? responder)	token	field:WebApiClient::token_		0x59322	0
+politic/task/getTasksInCurrentMap	0x06001126	getMapTasks(? responder)	token	field:WebApiClient::token_		0x59356	0
+politic/task/completeTasks	0x06001127	completeTask(? id,? responder)	token	field:WebApiClient::token_		0x59398	0
+politic/task/completeTasks	0x06001127	completeTask(? id,? responder)	buildingIds	object:System.Collections.ArrayList		0x593A4	0
+politic/task/completeTasks	0x06001128	completeTasks(? ary,? responder)	token	field:WebApiClient::token_		0x593DA	0
+politic/task/completeTasks	0x06001128	completeTasks(? ary,? responder)	buildingIds	arg:ary		0x593E6	0
+politic/task/cancelTasks	0x06001129	cancelTask(? id,? responder)	token	field:WebApiClient::token_		0x59428	0
+politic/task/cancelTasks	0x06001129	cancelTask(? id,? responder)	buildingIds	object:System.Collections.ArrayList		0x59434	0
+politic/task/cancelTasks	0x0600112A	cancelTasks(? ary,? responder)	token	field:WebApiClient::token_		0x5946A	0
+politic/task/cancelTasks	0x0600112A	cancelTasks(? ary,? responder)	buildingIds	arg:ary		0x59476	0
+politic/task/submitBuildTask	0x0600112B	sumbitBuildTask(? id,? x,? y,? responder)	token	field:WebApiClient::token_		0x594D0	0
+politic/task/submitBuildTask	0x0600112B	sumbitBuildTask(? id,? x,? y,? responder)	draftId	arg:id		0x594DC	0
+politic/task/submitBuildTask	0x0600112B	sumbitBuildTask(? id,? x,? y,? responder)	originCoord	object:System.Collections.ArrayList		0x594E8	0
+politic/task/submitBuildAndComplete	0x0600112C	submitBuildAndComplete(? id,? x,? y,? responder)	token	field:WebApiClient::token_		0x59544	0
+politic/task/submitBuildAndComplete	0x0600112C	submitBuildAndComplete(? id,? x,? y,? responder)	draftId	arg:id		0x59550	0
+politic/task/submitBuildAndComplete	0x0600112C	submitBuildAndComplete(? id,? x,? y,? responder)	originCoord	object:System.Collections.ArrayList		0x5955C	0
+politic/task/submitSerialBuildTask	0x0600112D	sumbitSerialBuildTask(? id,? coords,? responder)	token	field:WebApiClient::token_		0x59598	0
+politic/task/submitSerialBuildTask	0x0600112D	sumbitSerialBuildTask(? id,? coords,? responder)	draftId	arg:id		0x595A4	0
+politic/task/submitSerialBuildTask	0x0600112D	sumbitSerialBuildTask(? id,? coords,? responder)	originCoords	arg:coords		0x595B0	0
+politic/task/submitSerialBuildAndComplete	0x0600112E	submitSerialBuildAndComplete(? id,? coords,? responder)	token	field:WebApiClient::token_		0x595EC	0
+politic/task/submitSerialBuildAndComplete	0x0600112E	submitSerialBuildAndComplete(? id,? coords,? responder)	draftId	arg:id		0x595F8	0
+politic/task/submitSerialBuildAndComplete	0x0600112E	submitSerialBuildAndComplete(? id,? coords,? responder)	originCoords	arg:coords		0x59604	0
+politic/task/submitBulkBuildAndComplete	0x0600112F	submitBulkBuildAndComplete(? id,? coords,? responder)	token	field:WebApiClient::token_		0x59640	0
+politic/task/submitBulkBuildAndComplete	0x0600112F	submitBulkBuildAndComplete(? id,? coords,? responder)	draftId	arg:id		0x5964C	0
+politic/task/submitBulkBuildAndComplete	0x0600112F	submitBulkBuildAndComplete(? id,? coords,? responder)	originCoords	arg:coords		0x59658	0
+politic/task/submitProduceTask	0x06001130	sumbitProduceTask(? id,? action,? responder)	token	field:WebApiClient::token_		0x5968E	0
+politic/task/submitProduceTask	0x06001130	sumbitProduceTask(? id,? action,? responder)	buildingId	result:System.Int32		0x596A4	0
+politic/task/submitProduceTask	0x06001130	sumbitProduceTask(? id,? action,? responder)	productId	arg:action		0x596B0	0
+politic/task/submitBulkProduceTasks	0x06001131	submitBulkProduceTasks(? buildingIds,? productIds,? responder)	token	field:WebApiClient::token_		0x596E6	0
+politic/task/submitBulkProduceTasks	0x06001131	submitBulkProduceTasks(? buildingIds,? productIds,? responder)	buildingIds	arg:buildingIds		0x596F2	0
+politic/task/submitBulkProduceTasks	0x06001131	submitBulkProduceTasks(? buildingIds,? productIds,? responder)	productIds	arg:productIds		0x596FE	0
+politic/task/progressBuildTask	0x06001132	progressBuildTask(? id,? responder)	token	field:WebApiClient::token_		0x59732	0
+politic/task/progressBuildTask	0x06001132	progressBuildTask(? id,? responder)	buildingId	result:System.Int32		0x59748	0
+politic/task/accelerateProduceTask	0x06001133	accelerateProduceTask(? id,? accelId,? accelCount,? responder)	token	field:WebApiClient::token_		0x5977E	0
+politic/task/accelerateProduceTask	0x06001133	accelerateProduceTask(? id,? accelId,? accelCount,? responder)	buildingId	result:System.Int32		0x59794	0
+politic/task/accelerateProduceTask	0x06001133	accelerateProduceTask(? id,? accelId,? accelCount,? responder)	id	arg:accelId		0x597A0	0
+politic/task/accelerateProduceTask	0x06001133	accelerateProduceTask(? id,? accelId,? accelCount,? responder)	count	result:System.String		0x597B2	0
+debug/clearBuildings	0x06001134	debug_clearBuildings(? responder)	token	field:WebApiClient::token_		0x597EA	0
+politic/building/levelUpBuilding	0x06001135	levelUpBuilding(? id,? responder)	token	field:WebApiClient::token_		0x5981E	0
+politic/building/levelUpBuilding	0x06001135	levelUpBuilding(? id,? responder)	buildingId	result:System.Int32		0x59834	0
+politic/building/levelUpBuildings	0x06001136	levelUpBuildings(? BuildIds,? responder)	token	field:WebApiClient::token_		0x5986A	0
+politic/building/levelUpBuildings	0x06001136	levelUpBuildings(? BuildIds,? responder)	buildingIds	arg:BuildIds		0x59876	0
+politic/building/levelUpBuildingCollectively	0x06001137	levelUpBuildingCollectively(? buildingIds,? levelUpTimes,? responder)	token	field:WebApiClient::token_		0x598AA	0
+politic/building/levelUpBuildingCollectively	0x06001137	levelUpBuildingCollectively(? buildingIds,? levelUpTimes,? responder)	buildingIds	arg:buildingIds		0x598B6	0
+politic/building/levelUpBuildingCollectively	0x06001137	levelUpBuildingCollectively(? buildingIds,? levelUpTimes,? responder)	levelUpTimes	arg:levelUpTimes		0x598C2	0
+politic/building/getProductsByBuilding	0x06001138	getProductsByBuilding(? id,? responder)	token	field:WebApiClient::token_		0x598F6	0
+politic/building/getProductsByBuilding	0x06001138	getProductsByBuilding(? id,? responder)	buildingId	result:System.Int32		0x5990C	0
+politic/map/relocateEnded	0x06001139	relocateBuildings(? table,? responder)	token	field:WebApiClient::token_		0x59942	0
+politic/map/relocateEnded	0x06001139	relocateBuildings(? table,? responder)	relocatedGrids	arg:table		0x5994E	0
+politic/building/conflateBuilding	0x0600113A	conflateBuilding(? firstId,? secondId,? responder)	token	field:WebApiClient::token_		0x59982	0
+politic/building/conflateBuilding	0x0600113A	conflateBuilding(? firstId,? secondId,? responder)	first	result:System.Int32		0x59998	0
+politic/building/conflateBuilding	0x0600113A	conflateBuilding(? firstId,? secondId,? responder)	second	result:System.Int32		0x599AE	0
+politic/shop/getShopItems	0x0600113B	getShopItems(? category,? responder)	token	field:WebApiClient::token_		0x599E2	0
+politic/shop/getShopItems	0x0600113B	getShopItems(? category,? responder)	category	arg:category		0x599EE	0
+politic/shop/getShopItemsCredit	0x0600113C	getShopItemsCredit(? category,? responder)	token	field:WebApiClient::token_		0x59A22	0
+politic/shop/getShopItemsCredit	0x0600113C	getShopItemsCredit(? category,? responder)	category	arg:category		0x59A2E	0
+politic/shop/buyShopItemCredit	0x0600113D	buyShopItemCredit(? shopItemId,? index,? quantity,? tablename,? responder)	token	field:WebApiClient::token_		0x59A62	0
+politic/shop/buyShopItemCredit	0x0600113D	buyShopItemCredit(? shopItemId,? index,? quantity,? tablename,? responder)	shopItemId	arg:shopItemId		0x59A6E	0
+politic/shop/buyShopItemCredit	0x0600113D	buyShopItemCredit(? shopItemId,? index,? quantity,? tablename,? responder)	index	arg:index		0x59A7F	0
+politic/shop/buyShopItemCredit	0x0600113D	buyShopItemCredit(? shopItemId,? index,? quantity,? tablename,? responder)	quantity	arg:quantity		0x59A90	0
+politic/shop/buyShopItemCredit	0x0600113D	buyShopItemCredit(? shopItemId,? index,? quantity,? tablename,? responder)	storetable	arg:tablename		0x59A9D	0
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	token	field:WebApiClient::token_		0x59AD2	0
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	shopItemId	arg:shopItemId		0x59ADE	0
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	index	arg:index		0x59AEF	0
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	quantity	arg:quantity		0x59B00	0
+politic/shop/buyShopItem	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	storetable	arg:tablename		0x59B0D	0
+politic/shop/sellBuildings	0x0600113F	sellBuildings(? ids,? responder)	token	field:WebApiClient::token_		0x59B42	0
+politic/shop/sellBuildings	0x0600113F	sellBuildings(? ids,? responder)	buildingIds	arg:ids		0x59B4E	0
+politic/shop/getShopItemsFromNationalPower	0x06001140	getShopItemsFromNationalPower(? responder)	token	field:WebApiClient::token_		0x59B82	0
+politic/shop/buyShopItemFromNationalPower	0x06001141	buyShopItemFromNationalPower(? shopItemId,? index,? quantity,? responder)	token	field:WebApiClient::token_		0x59BB6	0
+politic/shop/buyShopItemFromNationalPower	0x06001141	buyShopItemFromNationalPower(? shopItemId,? index,? quantity,? responder)	shopItemId	arg:shopItemId		0x59BC2	0
+politic/shop/buyShopItemFromNationalPower	0x06001141	buyShopItemFromNationalPower(? shopItemId,? index,? quantity,? responder)	index	arg:index		0x59BD3	0
+politic/shop/buyShopItemFromNationalPower	0x06001141	buyShopItemFromNationalPower(? shopItemId,? index,? quantity,? responder)	quantity	arg:quantity		0x59BE4	0
+politic/shop/getBackgroundItems	0x06001142	getBackgroundItems(? category,? responder)	token	field:WebApiClient::token_		0x59C1A	0
+politic/shop/getBackgroundItems	0x06001142	getBackgroundItems(? category,? responder)	category	arg:category		0x59C26	0
+politic/shop/buyBackgroundItem	0x06001143	buyBackgroundItem(? shopBgItemId,? responder)	token	field:WebApiClient::token_		0x59C5A	0
+politic/shop/buyBackgroundItem	0x06001143	buyBackgroundItem(? shopBgItemId,? responder)	shopItemId	arg:shopBgItemId		0x59C66	0
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	token	field:WebApiClient::token_		0x59C9A	0
+deck/getAvatarCharacters	0x06001144	getAvatarCharacters(? ids,? responder)	playerIds	arg:ids		0x59CA6	0
+common/getCharacters	0x06001145	getCharacters(? responder)	token	field:WebApiClient::token_		0x59CDA	0
+common/getSelectCharacters	0x06001146	getSelectCharacters(? ids,? responder)	token	field:WebApiClient::token_		0x59D0E	0
+common/getSelectCharacters	0x06001146	getSelectCharacters(? ids,? responder)	ids	arg:ids		0x59D1A	0
+deck/getDecks	0x06001147	getDecks(? responder)	token	field:WebApiClient::token_		0x59D4E	0
+deck/getDeckBonus	0x06001148	getDeckBonus(? responder)	token	field:WebApiClient::token_		0x59D82	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	id	arg:avator		0x59DC2	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	grade	arg:avatorGrade		0x59DD3	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	<computed>	object:System.Collections.Hashtable		0x59DD9	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	<computed>	arg:atkDeck		0x59DE5	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	<computed>	arg:defDeck		0x59DF2	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	<computed>	arg:polDeck		0x59DFF	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	<computed>	arg:questDeck		0x59E0C	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	<computed>	arg:strategyDeck		0x59E19	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	<computed>	arg:siegeDeck		0x59E26	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	token	field:WebApiClient::token_		0x59E3D	0
+deck/setDecks	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	decks	object:System.Collections.Hashtable		0x59E49	0
+common/getTactics	0x0600114A	getTactics(? responder)	token	field:WebApiClient::token_		0x59E7E	0
+common/getEquips	0x0600114B	getEquips(? responder)	token	field:WebApiClient::token_		0x59EB2	0
+deck/powerUpEquip	0x0600114C	equipPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	token	field:WebApiClient::token_		0x59EE6	0
+deck/powerUpEquip	0x0600114C	equipPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	baseId	arg:baseCharacterId		0x59EF7	0
+deck/powerUpEquip	0x0600114C	equipPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	materialIds	arg:materialIds		0x59F03	0
+deck/powerUpEquip	0x0600114C	equipPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	itemId	arg:itemId		0x59F0F	0
+deck/gradeUpEquip	0x0600114D	equipGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	token	field:WebApiClient::token_		0x59F46	0
+deck/gradeUpEquip	0x0600114D	equipGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	baseId	arg:baseCharacterId		0x59F57	0
+deck/gradeUpEquip	0x0600114D	equipGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	materialId	arg:materialId		0x59F68	0
+deck/gradeUpEquip	0x0600114D	equipGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	itemId	arg:itemId		0x59F74	0
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	token	field:WebApiClient::token_		0x59FAA	0
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	baseId	arg:baseCharacterId		0x59FBB	0
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	materialIds	arg:materialIds		0x59FC7	0
+deck/powerUpCharacter	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	itemId	arg:itemId		0x59FD3	0
+deck/gradeUpCharacter	0x0600114F	characterGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	token	field:WebApiClient::token_		0x5A00A	0
+deck/gradeUpCharacter	0x0600114F	characterGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	baseId	arg:baseCharacterId		0x5A01B	0
+deck/gradeUpCharacter	0x0600114F	characterGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	materialId	arg:materialId		0x5A02C	0
+deck/gradeUpCharacter	0x0600114F	characterGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	itemId	arg:itemId		0x5A038	0
+politic/support_item/useSkillPotion	0x06001150	useDopingSkillItemForCharacter(? potionId,? amount,? skillIndex,? characterId,? responder)	token	field:WebApiClient::token_		0x5A06E	0
+politic/support_item/useSkillPotion	0x06001150	useDopingSkillItemForCharacter(? potionId,? amount,? skillIndex,? characterId,? responder)	potionId	arg:potionId		0x5A07A	0
+politic/support_item/useSkillPotion	0x06001150	useDopingSkillItemForCharacter(? potionId,? amount,? skillIndex,? characterId,? responder)	slot	arg:skillIndex		0x5A086	0
+politic/support_item/useSkillPotion	0x06001150	useDopingSkillItemForCharacter(? potionId,? amount,? skillIndex,? characterId,? responder)	characterId	arg:characterId		0x5A093	0
+politic/support_item/useSkillPotion	0x06001150	useDopingSkillItemForCharacter(? potionId,? amount,? skillIndex,? characterId,? responder)	count	arg:amount		0x5A0A4	0
+politic/support_item/useDopingItem	0x06001151	useDopingItemForCharacter(? potionId,? amount,? characterId,? responder)	token	field:WebApiClient::token_		0x5A0DA	0
+politic/support_item/useDopingItem	0x06001151	useDopingItemForCharacter(? potionId,? amount,? characterId,? responder)	potionId	arg:potionId		0x5A0E6	0
+politic/support_item/useDopingItem	0x06001151	useDopingItemForCharacter(? potionId,? amount,? characterId,? responder)	characterId	arg:characterId		0x5A0F2	0
+politic/support_item/useDopingItem	0x06001151	useDopingItemForCharacter(? potionId,? amount,? characterId,? responder)	count	arg:amount		0x5A103	0
+deck/setCharacterVoice	0x06001152	setCharacterVoice(? characterId,? voiceId,? responder)	token	field:WebApiClient::token_		0x5A13A	0
+deck/setCharacterVoice	0x06001152	setCharacterVoice(? characterId,? voiceId,? responder)	characterId	arg:characterId		0x5A146	0
+deck/setCharacterVoice	0x06001152	setCharacterVoice(? characterId,? voiceId,? responder)	voiceId	arg:voiceId		0x5A152	0
+deck/getProtectedCharacterIds	0x06001153	getProtectCharacters(? responder)	token	field:WebApiClient::token_		0x5A186	0
+deck/setCharacterProtect	0x06001154	setProtectCharacters(? responder,? isProtect,? ids)	token	field:WebApiClient::token_		0x5A1C1	0
+deck/setCharacterProtect	0x06001154	setProtectCharacters(? responder,? isProtect,? ids)	characterIds	object:System.Collections.ArrayList		0x5A1CD	0
+deck/setCharacterProtect	0x06001154	setProtectCharacters(? responder,? isProtect,? ids)	enable	arg:isProtect		0x5A1DE	0
+deck/getProtectedEquipIds	0x06001155	getProtectEquips(? responder)	token	field:WebApiClient::token_		0x5A212	0
+deck/setEquipProtect	0x06001156	setProtectEquips(? responder,? isProtect,? ids)	token	field:WebApiClient::token_		0x5A24D	0
+deck/setEquipProtect	0x06001156	setProtectEquips(? responder,? isProtect,? ids)	equipIds	object:System.Collections.ArrayList		0x5A259	0
+deck/setEquipProtect	0x06001156	setProtectEquips(? responder,? isProtect,? ids)	enable	arg:isProtect		0x5A26A	0
+deck/inheritCharacterSkill	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	token	field:WebApiClient::token_		0x5A29E	0
+deck/inheritCharacterSkill	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	destCharacterId	arg:destCharacterId		0x5A2AF	0
+deck/inheritCharacterSkill	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	destSkillSlot	arg:destSlotIndex		0x5A2C0	0
+deck/inheritCharacterSkill	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	srcCharacterId	arg:srcCharacterId		0x5A2D1	0
+deck/inheritCharacterSkill	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	srcSkillSlot	arg:srcSlotIndex		0x5A2E3	0
+deck/inheritCharacterSkill	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	potionId	arg:potionId		0x5A2F0	0
+deck/sellCharacters	0x06001158	sellCharacters(? characterIds,? responder)	token	field:WebApiClient::token_		0x5A326	0
+deck/sellCharacters	0x06001158	sellCharacters(? characterIds,? responder)	characterIds	arg:characterIds		0x5A332	0
+deck/sellTactics	0x06001159	sellTactics(? tacticsIds,? responder)	token	field:WebApiClient::token_		0x5A366	0
+deck/sellTactics	0x06001159	sellTactics(? tacticsIds,? responder)	tactics	arg:tacticsIds		0x5A372	0
+deck/sellEquips	0x0600115A	sellEquips(? equipIds,? responder)	token	field:WebApiClient::token_		0x5A3A6	0
+deck/sellEquips	0x0600115A	sellEquips(? equipIds,? responder)	equipIds	arg:equipIds		0x5A3B2	0
+politic/support_item/useDopingRemoveItem	0x0600115B	useDopingRemoveItemForCharacter(? potionId,? characterId,? responder)	token	field:WebApiClient::token_		0x5A3E6	0
+politic/support_item/useDopingRemoveItem	0x0600115B	useDopingRemoveItemForCharacter(? potionId,? characterId,? responder)	potionId	arg:potionId		0x5A3F2	0
+politic/support_item/useDopingRemoveItem	0x0600115B	useDopingRemoveItemForCharacter(? potionId,? characterId,? responder)	characterId	arg:characterId		0x5A3FE	0
+deck/enlargeCharacterLimit	0x0600115C	enlargeCharacterLimit(? enlargeId,? responder)	token	field:WebApiClient::token_		0x5A432	0
+deck/enlargeCharacterLimit	0x0600115C	enlargeCharacterLimit(? enlargeId,? responder)	enlargeId	arg:enlargeId		0x5A43E	0
+deck/getCharacterStoreInfo	0x0600115D	getCharacterStorageInfo(? responder)	token	field:WebApiClient::token_		0x5A472	0
+deck/getCharactersInStore	0x0600115E	getStorageCharacters(? responder)	token	field:WebApiClient::token_		0x5A4A6	0
+deck/transferStoreCharacters	0x0600115F	moveStorageCharacter(? toStoreIds,? toCharacterIds,? responder)	token	field:WebApiClient::token_		0x5A4DA	0
+deck/transferStoreCharacters	0x0600115F	moveStorageCharacter(? toStoreIds,? toCharacterIds,? responder)	<computed>	object:System.Collections.ArrayList		0x5A4EB	0
+deck/transferStoreCharacters	0x0600115F	moveStorageCharacter(? toStoreIds,? toCharacterIds,? responder)	<computed>	object:System.Collections.ArrayList		0x5A4FC	0
+deck/extendCharacterStore	0x06001160	enlargeStorageLimit(? enlargeId,? responder)	token	field:WebApiClient::token_		0x5A532	0
+deck/extendCharacterStore	0x06001160	enlargeStorageLimit(? enlargeId,? responder)	enlargeId	arg:enlargeId		0x5A53E	0
+debug/debugDeleteAllCharacter	0x06001161	debug_DelteAllCharacter(? responder)	token	field:WebApiClient::token_		0x5A572	0
+debug/debugDeleteAllEquip	0x06001162	debug_DelteAllEquip(? responder)	token	field:WebApiClient::token_		0x5A5A6	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	battleType	string:VS_BATTLE	string	0x5A5D9	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	rivalId	arg:rivalId		0x5A5E5	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	itemId	arg:itemId		0x5A5F1	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	isTurfWar	arg:isTurfWar		0x5A603	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	isBot	arg:isBot		0x5A615	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	deckIndex	arg:deckIndex		0x5A621	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	token	field:WebApiClient::token_		0x5A63A	0
+battle/executeBattle	0x06001163	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)	battleInformation	object:System.Collections.Hashtable		0x5A646	0
+battle/executeBattle	0x06001164	executeBattleSiege(? rivalId,? responder)	battleType	string:SIEGE_BATTLE	string	0x5A67D	0
+battle/executeBattle	0x06001164	executeBattleSiege(? rivalId,? responder)	rivalId	arg:rivalId		0x5A689	0
+battle/executeBattle	0x06001164	executeBattleSiege(? rivalId,? responder)	token	field:WebApiClient::token_		0x5A6A2	0
+battle/executeBattle	0x06001164	executeBattleSiege(? rivalId,? responder)	battleInformation	object:System.Collections.Hashtable		0x5A6AE	0
+battle/executeBattle	0x06001165	executeBattleStrategy(? rivalId,? command,? responder)	battleType	string:STRATEGY_BATTLE	string	0x5A6E1	0
+battle/executeBattle	0x06001165	executeBattleStrategy(? rivalId,? command,? responder)	rivalId	arg:rivalId		0x5A6ED	0
+battle/executeBattle	0x06001165	executeBattleStrategy(? rivalId,? command,? responder)	command	arg:command		0x5A6F9	0
+battle/executeBattle	0x06001165	executeBattleStrategy(? rivalId,? command,? responder)	token	field:WebApiClient::token_		0x5A712	0
+battle/executeBattle	0x06001165	executeBattleStrategy(? rivalId,? command,? responder)	battleInformation	object:System.Collections.Hashtable		0x5A71E	0
+battle/executeBattle	0x06001166	executeBattleRaidBoss(? deckIndex,? entryId,? responder)	battleType	string:RAIDBOSS_BATTLE	string	0x5A751	0
+battle/executeBattle	0x06001166	executeBattleRaidBoss(? deckIndex,? entryId,? responder)	entry	arg:entryId		0x5A75D	0
+battle/executeBattle	0x06001166	executeBattleRaidBoss(? deckIndex,? entryId,? responder)	deckIndex	arg:deckIndex		0x5A769	0
+battle/executeBattle	0x06001166	executeBattleRaidBoss(? deckIndex,? entryId,? responder)	token	field:WebApiClient::token_		0x5A782	0
+battle/executeBattle	0x06001166	executeBattleRaidBoss(? deckIndex,? entryId,? responder)	battleInformation	object:System.Collections.Hashtable		0x5A78E	0
+battle/executeBattle	0x06001167	executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)	battleType	string:GIGANTIC_RAIDBOSS_BATTLE	string	0x5A7C1	0
+battle/executeBattle	0x06001167	executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)	requestPhase	arg:requestPhase		0x5A7D2	0
+battle/executeBattle	0x06001167	executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)	buildingId	arg:buildingId		0x5A7DE	0
+battle/executeBattle	0x06001167	executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)	difficulty	field:WebApiClient::difficulty_		0x5A7F4	0
+battle/executeBattle	0x06001167	executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)	token	field:WebApiClient::token_		0x5A80D	0
+battle/executeBattle	0x06001167	executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)	battleInformation	object:System.Collections.Hashtable		0x5A819	0
+giganticRaidBoss/getGiganticRaidBossBattleResult	0x06001168	getGiganticRaidBossBattleResult(? responder)	token	field:WebApiClient::token_		0x5A84E	0
+giganticRaidBoss/getGiganticRaidBossEventResult	0x06001169	getGiganticRaidBossEventResult(? responder)	token	field:WebApiClient::token_		0x5A882	0
+giganticRaidBoss/getGiganticRaidBossEventResult	0x06001169	getGiganticRaidBossEventResult(? responder)	term	string:current	string	0x5A892	0
+giganticRaidBoss/getGiganticRaidBossEventResult	0x0600116A	getGiganticRaidBossEventResultLog(? responder)	token	field:WebApiClient::token_		0x5A8C6	0
+giganticRaidBoss/getGiganticRaidBossEventResult	0x0600116A	getGiganticRaidBossEventResultLog(? responder)	term	string:last	string	0x5A8D6	0
+battle/executeBattle	0x0600116B	executeBattleNPC(? responder)	battleType	string:NPC_BATTLE	string	0x5A909	0
+battle/executeBattle	0x0600116B	executeBattleNPC(? responder)	npcId	string:Npc0001_01	string	0x5A919	0
+battle/executeBattle	0x0600116B	executeBattleNPC(? responder)	token	field:WebApiClient::token_		0x5A932	0
+battle/executeBattle	0x0600116B	executeBattleNPC(? responder)	battleInformation	object:System.Collections.Hashtable		0x5A93E	0
+battle/executeBattle	0x0600116C	executeBattlePlayer(? deckIndex,? rivalId,? queestPoint,? responder)	battleType	string:PLAYER_BATTLE	string	0x5A971	0
+battle/executeBattle	0x0600116C	executeBattlePlayer(? deckIndex,? rivalId,? queestPoint,? responder)	rivalId	arg:rivalId		0x5A97D	0
+battle/executeBattle	0x0600116C	executeBattlePlayer(? deckIndex,? rivalId,? queestPoint,? responder)	deckIndex	arg:deckIndex		0x5A989	0
+battle/executeBattle	0x0600116C	executeBattlePlayer(? deckIndex,? rivalId,? queestPoint,? responder)	token	field:WebApiClient::token_		0x5A9A2	0
+battle/executeBattle	0x0600116C	executeBattlePlayer(? deckIndex,? rivalId,? queestPoint,? responder)	battleInformation	object:System.Collections.Hashtable		0x5A9AE	0
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	battleType	string:QUEST_BATTLE	string	0x5A9E5	0
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	questType	arg:questType		0x5A9F1	0
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	encountId	arg:encountId		0x5AA02	0
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	deckIndex	arg:deckIndex		0x5AA0E	0
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	token	field:WebApiClient::token_		0x5AA27	0
+battle/executeBattle	0x0600116D	executeBattleQuest(? deckIndex,? questType,? encountId,? responder)	battleInformation	object:System.Collections.Hashtable		0x5AA33	0
+battle/executeBattle	0x0600116E	executeBattleMonster(? deckIndex,? responder)	battleType	string:BOSS_BATTLE	string	0x5AA69	0
+battle/executeBattle	0x0600116E	executeBattleMonster(? deckIndex,? responder)	monsterId	string:monster2_00001_01	string	0x5AA79	0
+battle/executeBattle	0x0600116E	executeBattleMonster(? deckIndex,? responder)	deckIndex	arg:deckIndex		0x5AA85	0
+battle/executeBattle	0x0600116E	executeBattleMonster(? deckIndex,? responder)	token	field:WebApiClient::token_		0x5AA9E	0
+battle/executeBattle	0x0600116E	executeBattleMonster(? deckIndex,? responder)	battleInformation	object:System.Collections.Hashtable		0x5AAAA	0
+battle/executeBattle	0x0600116F	executeBattleOutBreak(? deckIndex,? buildingId,? responder)	battleType	string:ATTEMPT_BATTLE	string	0x5AADD	0
+battle/executeBattle	0x0600116F	executeBattleOutBreak(? deckIndex,? buildingId,? responder)	buildingId	arg:buildingId		0x5AAE9	0
+battle/executeBattle	0x0600116F	executeBattleOutBreak(? deckIndex,? buildingId,? responder)	deckIndex	arg:deckIndex		0x5AAF5	0
+battle/executeBattle	0x0600116F	executeBattleOutBreak(? deckIndex,? buildingId,? responder)	token	field:WebApiClient::token_		0x5AB0E	0
+battle/executeBattle	0x0600116F	executeBattleOutBreak(? deckIndex,? buildingId,? responder)	battleInformation	object:System.Collections.Hashtable		0x5AB1A	0
+battle/getVsCountryRecords	0x06001171	getVsCountryRecords(? countryId,? responder)	token	field:WebApiClient::token_		0x5AB96	0
+battle/getVsCountryRecords	0x06001171	getVsCountryRecords(? countryId,? responder)	countryId	arg:countryId		0x5ABA2	0
+battle/getVsBattleLogs	0x06001172	getVsBattleLogs(? force,? responder)	token	field:WebApiClient::token_		0x5ABD6	0
+battle/getVsBattleLogs	0x06001172	getVsBattleLogs(? force,? responder)	type	string:vs	string	0x5ABE6	0
+battle/getVsBattleLogs	0x06001172	getVsBattleLogs(? force,? responder)	force	arg:force		0x5ABF2	0
+battle/getVsBattleLogs	0x06001173	getTurfWarLogs(? force,? responder)	token	field:WebApiClient::token_		0x5AC26	0
+battle/getVsBattleLogs	0x06001173	getTurfWarLogs(? force,? responder)	type	string:turfWar	string	0x5AC36	0
+battle/getVsBattleLogs	0x06001173	getTurfWarLogs(? force,? responder)	force	arg:force		0x5AC42	0
+battle/getVsReplayData	0x06001174	getVsReplayData(? id,? type,? responder)	token	field:WebApiClient::token_		0x5AC76	0
+battle/getVsReplayData	0x06001174	getVsReplayData(? id,? type,? responder)	type	arg:type		0x5AC82	0
+battle/getVsReplayData	0x06001174	getVsReplayData(? id,? type,? responder)	battleId	arg:id		0x5AC93	0
+battle/getTurfWarReplayData	0x06001175	getTurfWarReplayData(? id,? responder)	token	field:WebApiClient::token_		0x5ACCA	0
+battle/getTurfWarReplayData	0x06001175	getTurfWarReplayData(? id,? responder)	type	string:turfWar	string	0x5ACDA	0
+battle/getTurfWarReplayData	0x06001175	getTurfWarReplayData(? id,? responder)	battleId	arg:id		0x5ACEB	0
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	token	field:WebApiClient::token_		0x5AD22	0
+battle/getSelfRecord	0x06001176	getSelfRecord(? matchingType,? responder)	matchingType	arg:matchingType		0x5AD2E	0
+turfWar/receiveTurfWarReward	0x06001177	getTurfWarResult(? responder)	token	field:WebApiClient::token_		0x5AD62	0
+battle/captchaVsBattle	0x06001178	captchaVsBattle(? verificationCode,? responder)	token	field:WebApiClient::token_		0x5AD96	0
+battle/captchaVsBattle	0x06001178	captchaVsBattle(? verificationCode,? responder)	verificationCode	arg:verificationCode		0x5ADA2	0
+politic/mission/getStatesFromAllMissions	0x06001179	getStatesFromAllPoliticMissions(? responder)	token	field:WebApiClient::token_		0x5ADD6	0
+politic/mission/getMissionsInProgress	0x0600117A	getPoliticMissionsInProgress(? responder)	token	field:WebApiClient::token_		0x5AE0A	0
+politic/mission/changeState	0x0600117B	changePoliticMissionState(? missionId,? state,? responder)	token	field:WebApiClient::token_		0x5AE3E	0
+politic/mission/changeState	0x0600117B	changePoliticMissionState(? missionId,? state,? responder)	missionId	arg:missionId		0x5AE4A	0
+politic/mission/changeState	0x0600117B	changePoliticMissionState(? missionId,? state,? responder)	state	arg:state		0x5AE56	0
+politic/mission/changeState	0x0600117C	changePoliticMissionState(? missionList,? stateList,? responder)	token	field:WebApiClient::token_		0x5AE8A	0
+politic/mission/changeState	0x0600117C	changePoliticMissionState(? missionList,? stateList,? responder)	missionIds	arg:missionList		0x5AE96	0
+politic/mission/changeState	0x0600117C	changePoliticMissionState(? missionList,? stateList,? responder)	states	arg:stateList		0x5AEA2	0
+politic/mission/setWorkingValue	0x0600117D	setPoliticMissionWorkingValue(? missionId,? indexes,? values,? responder)	token	field:WebApiClient::token_		0x5AED6	0
+politic/mission/setWorkingValue	0x0600117D	setPoliticMissionWorkingValue(? missionId,? indexes,? values,? responder)	missionId	arg:missionId		0x5AEE2	0
+politic/mission/setWorkingValue	0x0600117D	setPoliticMissionWorkingValue(? missionId,? indexes,? values,? responder)	indexes	arg:indexes		0x5AEEE	0
+politic/mission/setWorkingValue	0x0600117D	setPoliticMissionWorkingValue(? missionId,? indexes,? values,? responder)	values	arg:values		0x5AEFA	0
+politic/edict/raiseMission	0x0600117E	raiseEdictMission(? responder)	token	field:WebApiClient::token_		0x5AF32	0
+politic/edict/getMissionsInProgress	0x0600117F	getEdictMissionsInProgress(? responder)	token	field:WebApiClient::token_		0x5AF66	0
+politic/edict/changeState	0x06001180	changeEdictMissionState(? missionList,? stateList,? responder)	token	field:WebApiClient::token_		0x5AF9A	0
+politic/edict/changeState	0x06001180	changeEdictMissionState(? missionList,? stateList,? responder)	missionIds	arg:missionList		0x5AFA6	0
+politic/edict/changeState	0x06001180	changeEdictMissionState(? missionList,? stateList,? responder)	states	arg:stateList		0x5AFB2	0
+politic/edict/setWorkingValue	0x06001181	setEdictMissionWorkingValue(? missionId,? indexes,? values,? responder)	token	field:WebApiClient::token_		0x5AFE6	0
+politic/edict/setWorkingValue	0x06001181	setEdictMissionWorkingValue(? missionId,? indexes,? values,? responder)	missionId	arg:missionId		0x5AFF2	0
+politic/edict/setWorkingValue	0x06001181	setEdictMissionWorkingValue(? missionId,? indexes,? values,? responder)	indexes	arg:indexes		0x5AFFE	0
+politic/edict/setWorkingValue	0x06001181	setEdictMissionWorkingValue(? missionId,? indexes,? values,? responder)	values	arg:values		0x5B00A	0
+politic/building/getBuildCounts	0x06001182	getBuildCounts(? responder)	token	field:WebApiClient::token_		0x5B042	0
+politic/building/getBuildingLevels	0x06001183	getBuildingLevels(? buildingList,? responder)	token	field:WebApiClient::token_		0x5B076	0
+politic/building/getBuildingLevels	0x06001183	getBuildingLevels(? buildingList,? responder)	buildingId	arg:buildingList		0x5B082	0
+politic/building/getHarvestCounts	0x06001184	getHarvestCounts(? responder)	token	field:WebApiClient::token_		0x5B0B6	0
+debug/resetPlayer	0x06001185	resetPlayer(? responder)	token	field:WebApiClient::token_		0x5B0EA	0
+debug/resetPlayer	0x06001185	resetPlayer(? responder)	isCreatePlayer	numeric_constant_requires_IL_review	numeric	0x5B0FB	0
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	token	field:WebApiClient::token_		0x5B132	0
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	questType	arg:type		0x5B13E	0
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	questId	arg:questId		0x5B14F	0
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	chapterId	arg:chapterId		0x5B160	0
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	areaId	arg:areaId		0x5B172	0
+quest/executeQuestEx	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	assets	string:map0	string	0x5B182	0
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	token	field:WebApiClient::token_		0x5B1BA	0
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	questType	arg:type		0x5B1C6	0
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	questId	arg:questId		0x5B1D7	0
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	chapterId	arg:chapterId		0x5B1E8	0
+quest/checkCompleteQuestEx	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	areaId	arg:areaId		0x5B1FA	0
+quest/getQuestProgress	0x06001188	getQuestProgress(? responder)	token	field:WebApiClient::token_		0x5B232	0
+quest/getQuestCompleteFlags	0x06001189	getQuestCompleteFlags(? type,? responder)	token	field:WebApiClient::token_		0x5B266	0
+quest/getQuestCompleteFlags	0x06001189	getQuestCompleteFlags(? type,? responder)	questType	arg:type		0x5B272	0
+debug/debugGetQuestCompleteFlags	0x0600118A	debug_getQuestCompleteFlags(? type,? responder)	token	field:WebApiClient::token_		0x5B2A6	0
+debug/debugGetQuestCompleteFlags	0x0600118A	debug_getQuestCompleteFlags(? type,? responder)	questType	arg:type		0x5B2B2	0
+quest/getQuestRewardOpenFlags	0x0600118B	getQuestRewardOpenFlags(? type,? questId,? responder)	token	field:WebApiClient::token_		0x5B2E6	0
+quest/getQuestRewardOpenFlags	0x0600118B	getQuestRewardOpenFlags(? type,? questId,? responder)	questType	arg:type		0x5B2F2	0
+quest/getQuestRewardOpenFlags	0x0600118B	getQuestRewardOpenFlags(? type,? questId,? responder)	questId	arg:questId		0x5B303	0
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	token	field:WebApiClient::token_		0x5B33A	0
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	questType	arg:type		0x5B346	0
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	questId	arg:questId		0x5B357	0
+quest/getChapterData	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	chapterId	arg:chapterId		0x5B368	0
+debug/resetQuest	0x0600118D	resetQuest(? responder)	token	field:WebApiClient::token_		0x5B39E	0
+debug/forceCompleteQuest	0x0600118E	forceCompleteQuest(? type,? questId,? responder)	token	field:WebApiClient::token_		0x5B3D2	0
+debug/forceCompleteQuest	0x0600118E	forceCompleteQuest(? type,? questId,? responder)	questType	arg:type		0x5B3DE	0
+debug/forceCompleteQuest	0x0600118E	forceCompleteQuest(? type,? questId,? responder)	questId	arg:questId		0x5B3EF	0
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	token	field:WebApiClient::token_		0x5B426	0
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	questType	arg:type		0x5B432	0
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	questId	arg:questId		0x5B443	0
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	chapter	arg:chapter		0x5B454	0
+debug/forceProgressQuest	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	area	arg:area		0x5B466	0
+quest/openQuest	0x06001190	openQuest(? type,? responder)	token	field:WebApiClient::token_		0x5B49E	0
+quest/openQuest	0x06001190	openQuest(? type,? responder)	questType	arg:type		0x5B4AA	0
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	token	field:WebApiClient::token_		0x5B4DE	0
+debug/debugOpenQuest	0x06001191	debug_openQuest(? type,? responder)	questType	arg:type		0x5B4EA	0
+quest/getQuestEncount	0x06001192	getQuestEncount(? responder)	token	field:WebApiClient::token_		0x5B51E	0
+quest/getQuestEncountWorks	0x06001193	getQuestEncountWorks(? questType,? questId,? responder)	token	field:WebApiClient::token_		0x5B552	0
+quest/getQuestEncountWorks	0x06001193	getQuestEncountWorks(? questType,? questId,? responder)	questType	arg:questType		0x5B55E	0
+quest/getQuestEncountWorks	0x06001193	getQuestEncountWorks(? questType,? questId,? responder)	questId	arg:questId		0x5B56F	0
+quest/openTreasureBox	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	<computed>	arg:useCount		0x5B5A9	1
+quest/openTreasureBox	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	token	field:WebApiClient::token_		0x5B5CC	1
+quest/openTreasureBox	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	treasureId	arg:treasureId		0x5B5DD	1
+quest/openTreasureBox	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	useItem	object:System.Collections.Hashtable		0x5B5E9	1
+debug/setQuestStep	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	token	field:WebApiClient::token_		0x5B61E	0
+debug/setQuestStep	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	questType	arg:questType		0x5B62A	0
+debug/setQuestStep	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	questId	arg:questId		0x5B63B	0
+debug/setQuestStep	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	chapterId	arg:chapterId		0x5B64C	0
+debug/setQuestStep	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	areaId	arg:areaId		0x5B65E	0
+debug/setQuestStep	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	step	arg:step		0x5B670	0
+quest/getQuestBossPunish	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	token	field:WebApiClient::token_		0x5B6A6	0
+quest/getQuestBossPunish	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	questType	arg:questType		0x5B6B2	0
+quest/getQuestBossPunish	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	questId	arg:questId		0x5B6C3	0
+quest/getQuestBossPunish	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	chapterId	arg:chapterId		0x5B6D4	0
+quest/getQuestBossPunish	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	areaId	arg:areaId		0x5B6E6	0
+quest/getQuestBossPunish	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	step	arg:step		0x5B6F8	0
+quest/getRandomQuestRanking	0x06001197	getRandomQuestRanking(? responder)	token	field:WebApiClient::token_		0x5B72E	0
+quest/clearObstacle	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	token	field:WebApiClient::token_		0x5B762	0
+quest/clearObstacle	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	questType	arg:questType		0x5B76E	0
+quest/clearObstacle	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	questId	arg:questId		0x5B77F	0
+quest/clearObstacle	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	chapterId	arg:chapterId		0x5B790	0
+quest/clearObstacle	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	areaId	arg:areaId		0x5B7A2	0
+quest/checkEmergencyQuest	0x06001199	getEmergencyQuestTimes(? responder)	token	field:WebApiClient::token_		0x5B7DA	0
+quest/checkEmergencyQuest	0x06001199	getEmergencyQuestTimes(? responder)	questType	string:event3	string	0x5B7EA	0
+quest/useSoulToStep	0x0600119A	getOnikujiGoStep(? lotteryId,? questType,? responder)	token	field:WebApiClient::token_		0x5B81E	0
+quest/useSoulToStep	0x0600119A	getOnikujiGoStep(? lotteryId,? questType,? responder)	lotteryId	arg:lotteryId		0x5B82A	0
+quest/useSoulToStep	0x0600119A	getOnikujiGoStep(? lotteryId,? questType,? responder)	questType	arg:questType		0x5B836	0
+quest/executeQuestEx2	0x0600119B	executeQuestEx2(? type,? questId,? chapterId,? areaId,? responder)	token	field:WebApiClient::token_		0x5B86A	0
+quest/executeQuestEx2	0x0600119B	executeQuestEx2(? type,? questId,? chapterId,? areaId,? responder)	questType	arg:type		0x5B876	0
+quest/executeQuestEx2	0x0600119B	executeQuestEx2(? type,? questId,? chapterId,? areaId,? responder)	questId	arg:questId		0x5B887	0
+quest/executeQuestEx2	0x0600119B	executeQuestEx2(? type,? questId,? chapterId,? areaId,? responder)	chapterId	arg:chapterId		0x5B898	0
+quest/executeQuestEx2	0x0600119B	executeQuestEx2(? type,? questId,? chapterId,? areaId,? responder)	areaId	arg:areaId		0x5B8AA	0
+quest/executeQuestEx2	0x0600119B	executeQuestEx2(? type,? questId,? chapterId,? areaId,? responder)	assets	string:map0	string	0x5B8BA	0
+quest/getAutoStep	0x0600119C	getAutoStep(? responder)	token	field:WebApiClient::token_		0x5B8F2	0
+navigator/getNavigators	0x0600119D	getNavigators(? responder)	token	field:WebApiClient::token_		0x5B926	0
+navigator/activateNavigator	0x0600119E	activateNavigator(? navigatorId,? colorIndex,? responder)	token	field:WebApiClient::token_		0x5B95A	0
+navigator/activateNavigator	0x0600119E	activateNavigator(? navigatorId,? colorIndex,? responder)	navigatorId	arg:navigatorId		0x5B966	0
+navigator/activateNavigator	0x0600119E	activateNavigator(? navigatorId,? colorIndex,? responder)	colorIndex	arg:colorIndex		0x5B972	0
+navigator/getUsableNavigators	0x0600119F	getUsableNavigators(? responder)	token	field:WebApiClient::token_		0x5B9A6	0
+navigator/getNavigatorDetails	0x060011A0	getNavigatorDetails(? navigatorId,? responder)	token	field:WebApiClient::token_		0x5B9DA	0
+navigator/getNavigatorDetails	0x060011A0	getNavigatorDetails(? navigatorId,? responder)	navigatorId	arg:navigatorId		0x5B9E6	0
+navigator/hireNavigator	0x060011A1	hireNavigator(? navigatorId,? colorIndex,? responder)	token	field:WebApiClient::token_		0x5BA1A	0
+navigator/hireNavigator	0x060011A1	hireNavigator(? navigatorId,? colorIndex,? responder)	navigatorId	arg:navigatorId		0x5BA26	0
+navigator/hireNavigator	0x060011A1	hireNavigator(? navigatorId,? colorIndex,? responder)	colorIndex	arg:colorIndex		0x5BA32	0
+debug/debugRentalNavigatorBarelyExpiration	0x060011A2	debug_setRentalNavigatorBarelyExpiration(? responder)	token	field:WebApiClient::token_		0x5BA66	0
+auth/registerName	0x060011A3	registerName(? username,? responder)	token	field:WebApiClient::token_		0x5BA9A	0
+auth/registerName	0x060011A3	registerName(? username,? responder)	username	arg:username		0x5BAA6	0
+invitation/getPlayer	0x060011A4	registerInvitationCode(? invitationCode,? responder)	token	field:WebApiClient::token_		0x5BADA	0
+invitation/getPlayer	0x060011A4	registerInvitationCode(? invitationCode,? responder)	code	arg:invitationCode		0x5BAE6	0
+invitation/getMyCode	0x060011A5	getMyInvitationCode(? responder)	token	field:WebApiClient::token_		0x5BB1A	0
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	token	field:WebApiClient::token_		0x5BB4E	0
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	username	arg:username		0x5BB5A	0
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	countryId	arg:countryId		0x5BB66	0
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	navigatorId	arg:navigatorId		0x5BB72	0
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	colorIndex	arg:colorIndex		0x5BB7F	0
+auth/createPlayer	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	invitationCode	arg:invitationCode		0x5BB8C	0
+debug/devLogin	0x060011A7	devLogin(? responder)	username	result:System.String		0x5BBD5	0
+politic/support_item/getPotions	0x060011A8	getPotions(? responder)	token	field:WebApiClient::token_		0x5BC0A	0
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	token	field:WebApiClient::token_		0x5BC3E	0
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	potionId	arg:potionId		0x5BC4A	0
+politic/support_item/usePotions	0x060011A9	usePotion(? potionId,? quantity,? responder)	quantity	arg:quantity		0x5BC5B	0
+politic/building/getBuildingFabrics	0x060011AA	getBuildingFabrics(? responder)	token	field:WebApiClient::token_		0x5BC92	0
+politic/mypage/getPlayerProfile	0x060011AB	getPlayerProfile(? responder)	token	field:WebApiClient::token_		0x5BCC6	0
+politic/mypage/setSelfIntroduction	0x060011AC	setSelfIntroduction(? message,? habits,? responder)	token	field:WebApiClient::token_		0x5BCFA	0
+politic/mypage/setSelfIntroduction	0x060011AC	setSelfIntroduction(? message,? habits,? responder)	message	arg:message		0x5BD06	0
+politic/mypage/setSelfIntroduction	0x060011AC	setSelfIntroduction(? message,? habits,? responder)	habits	arg:habits		0x5BD12	0
+politic/mypage/getJewelSeries	0x060011AD	getJewelSeries(? category,? page,? seriesMax,? responder)	token	field:WebApiClient::token_		0x5BD46	0
+politic/mypage/getJewelSeries	0x060011AD	getJewelSeries(? category,? page,? seriesMax,? responder)	category	arg:category		0x5BD57	0
+politic/mypage/getJewelSeries	0x060011AD	getJewelSeries(? category,? page,? seriesMax,? responder)	page	arg:page		0x5BD68	0
+politic/mypage/getJewelSeries	0x060011AD	getJewelSeries(? category,? page,? seriesMax,? responder)	seriesMax	arg:seriesMax		0x5BD79	0
+politic/mypage/getJewelSeriesReward	0x060011AE	getJewelSeriesReward(? seriesId,? responder)	token	field:WebApiClient::token_		0x5BDAE	0
+politic/mypage/getJewelSeriesReward	0x060011AE	getJewelSeriesReward(? seriesId,? responder)	seriesId	arg:seriesId		0x5BDBA	0
+politic/mypage/getArtifactSeries	0x060011AF	getArtifactSeries(? category,? page,? seriesMax,? responder)	token	field:WebApiClient::token_		0x5BDEE	0
+politic/mypage/getArtifactSeries	0x060011AF	getArtifactSeries(? category,? page,? seriesMax,? responder)	category	arg:category		0x5BDFF	0
+politic/mypage/getArtifactSeries	0x060011AF	getArtifactSeries(? category,? page,? seriesMax,? responder)	page	arg:page		0x5BE10	0
+politic/mypage/getArtifactSeries	0x060011AF	getArtifactSeries(? category,? page,? seriesMax,? responder)	seriesMax	arg:seriesMax		0x5BE21	0
+politic/mypage/getArtifactSeriesReward	0x060011B0	getArtifactSeriesReward(? seriesId,? responder)	token	field:WebApiClient::token_		0x5BE56	0
+politic/mypage/getArtifactSeriesReward	0x060011B0	getArtifactSeriesReward(? seriesId,? responder)	seriesId	arg:seriesId		0x5BE62	0
+debug/addCollections	0x060011B1	addCollections(? collectionType,? seriesId,? ids,? responder)	token	field:WebApiClient::token_		0x5BE96	0
+debug/addCollections	0x060011B1	addCollections(? collectionType,? seriesId,? ids,? responder)	type	arg:collectionType		0x5BEA2	0
+debug/addCollections	0x060011B1	addCollections(? collectionType,? seriesId,? ids,? responder)	seriesId	arg:seriesId		0x5BEAE	0
+debug/addCollections	0x060011B1	addCollections(? collectionType,? seriesId,? ids,? responder)	ids	arg:ids		0x5BEBA	0
+politic/mypage/getPlayerRecords	0x060011B2	getPlayerRecords(? responder)	token	field:WebApiClient::token_		0x5BEF2	0
+trophy/getTrophyProgress	0x060011B3	getTrophyProgress(? responder)	token	field:WebApiClient::token_		0x5BF26	0
+trophy/getTrophyProgress	0x060011B3	getTrophyProgress(? responder)	access	string:mypage	string	0x5BF36	0
+trophy/completeTrophy	0x060011B4	completeTrophy(? category,? responder)	token	field:WebApiClient::token_		0x5BF6A	0
+trophy/completeTrophy	0x060011B4	completeTrophy(? category,? responder)	access	string:mypage	string	0x5BF7A	0
+trophy/completeTrophy	0x060011B4	completeTrophy(? category,? responder)	category	arg:category		0x5BF86	0
+trophy/messageWindowTrophy	0x060011B5	message_window_trophy(? category,? responder)	token	field:WebApiClient::token_		0x5BFBA	0
+trophy/messageWindowTrophy	0x060011B5	message_window_trophy(? category,? responder)	access	string:mypage	string	0x5BFCA	0
+trophy/messageWindowTrophy	0x060011B5	message_window_trophy(? category,? responder)	category	arg:category		0x5BFD6	0
+politic/mypage/getCharacterCollection	0x060011B6	getCharacterCollection(? responder)	token	field:WebApiClient::token_		0x5C00A	0
+politic/mypage/getCreditLogs	0x060011B7	getCreditLogs(? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5C03E	0
+politic/mypage/getCreditLogs	0x060011B7	getCreditLogs(? startIndex,? endIndex,? responder)	start	arg:startIndex		0x5C04F	0
+politic/mypage/getCreditLogs	0x060011B7	getCreditLogs(? startIndex,? endIndex,? responder)	end	arg:endIndex		0x5C060	0
+politic/mypage/getCredit2Logs	0x060011B8	getCredit2Logs(? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5C096	0
+politic/mypage/getCredit2Logs	0x060011B8	getCredit2Logs(? startIndex,? endIndex,? responder)	start	arg:startIndex		0x5C0A7	0
+politic/mypage/getCredit2Logs	0x060011B8	getCredit2Logs(? startIndex,? endIndex,? responder)	end	arg:endIndex		0x5C0B8	0
+politic/mypage/useEventcode	0x060011B9	useEventcode(? eventcode,? responder)	token	field:WebApiClient::token_		0x5C0EE	0
+politic/mypage/useEventcode	0x060011B9	useEventcode(? eventcode,? responder)	eventcode	arg:eventcode		0x5C0FA	0
+politic/mypage/getEventcodeLogs	0x060011BA	getEventcodeLogs(? start,? end,? responder)	token	field:WebApiClient::token_		0x5C12E	0
+politic/mypage/getEventcodeLogs	0x060011BA	getEventcodeLogs(? start,? end,? responder)	start	arg:start		0x5C13F	0
+politic/mypage/getEventcodeLogs	0x060011BA	getEventcodeLogs(? start,? end,? responder)	end	arg:end		0x5C150	0
+friend/setGuestMap	0x060011BB	setGuestMap(? mapId,? responder)	token	field:WebApiClient::token_		0x5C186	0
+friend/setGuestMap	0x060011BB	setGuestMap(? mapId,? responder)	mapId	arg:mapId		0x5C197	0
+politic/map/getBackgrounds	0x060011BC	getBackgrounds(? responder)	token	field:WebApiClient::token_		0x5C1CE	0
+politic/map/setBackground	0x060011BD	setBackground(? mapId,? nearGround,? farGround,? responder)	token	field:WebApiClient::token_		0x5C202	0
+politic/map/setBackground	0x060011BD	setBackground(? mapId,? nearGround,? farGround,? responder)	mapId	arg:mapId		0x5C213	0
+politic/map/setBackground	0x060011BD	setBackground(? mapId,? nearGround,? farGround,? responder)	nearGround	arg:nearGround		0x5C21F	0
+politic/map/setBackground	0x060011BD	setBackground(? mapId,? nearGround,? farGround,? responder)	farGround	arg:farGround		0x5C22B	0
+common/recordChat	0x060011BE	recordChat(? room,? statement,? responder)	token	field:WebApiClient::token_		0x5C262	0
+common/recordChat	0x060011BE	recordChat(? room,? statement,? responder)	roomName	arg:room		0x5C26E	0
+common/recordChat	0x060011BE	recordChat(? room,? statement,? responder)	content	arg:statement		0x5C27A	0
+battle/getRivals2	0x060011BF	getRivals(? mode,? responder)	token	field:WebApiClient::token_		0x5C2AE	0
+battle/getRivals2	0x060011BF	getRivals(? mode,? responder)	matchingType	arg:mode		0x5C2BA	0
+debug/addItems	0x060011C0	debug_addItems(? ids,? responder)	token	field:WebApiClient::token_		0x5C2EE	0
+debug/addItems	0x060011C0	debug_addItems(? ids,? responder)	ids	arg:ids		0x5C2FA	0
+debug/debugCreateCharacter	0x060011C1	debugCreateCharacter(? baseId,? status,? skills,? responder)	token	field:WebApiClient::token_		0x5C32E	0
+debug/debugCreateCharacter	0x060011C1	debugCreateCharacter(? baseId,? status,? skills,? responder)	baseId	arg:baseId		0x5C33A	0
+debug/debugCreateCharacter	0x060011C1	debugCreateCharacter(? baseId,? status,? skills,? responder)	status	arg:status		0x5C346	0
+debug/debugCreateCharacter	0x060011C1	debugCreateCharacter(? baseId,? status,? skills,? responder)	skills	arg:skills		0x5C352	0
+debug/debugCreateEquip	0x060011C2	debugCreateEquip(? baseId,? status,? skills,? responder)	token	field:WebApiClient::token_		0x5C38A	0
+debug/debugCreateEquip	0x060011C2	debugCreateEquip(? baseId,? status,? skills,? responder)	baseId	arg:baseId		0x5C396	0
+debug/debugCreateEquip	0x060011C2	debugCreateEquip(? baseId,? status,? skills,? responder)	status	arg:status		0x5C3A2	0
+debug/debugCreateEquip	0x060011C2	debugCreateEquip(? baseId,? status,? skills,? responder)	skills	arg:skills		0x5C3AE	0
+debug/debugAddBuildingExp	0x060011C3	debug_AddBuildingExp(? responder)	token	field:WebApiClient::token_		0x5C3E6	0
+debug/debugAddBuildingExp	0x060011C3	debug_AddBuildingExp(? responder)	buildingExp	numeric_constant_requires_IL_review	numeric	0x5C3FB	0
+debug/debugAccelerateProduceTask	0x060011C4	debug_AccelerateProduceTask(? responder)	token	field:WebApiClient::token_		0x5C432	0
+debug/debugIncreasePlayerLevel	0x060011C5	debug_increasePlayerLevel(? responder)	token	field:WebApiClient::token_		0x5C466	0
+debug/debugGradeUpBuildings	0x060011C6	debug_GradeUpBuildings(? responder)	token	field:WebApiClient::token_		0x5C49A	0
+community/libs/bbsSession	0x060011C7	getBBSSession(? responder)	token	field:WebApiClient::token_		0x5C4CE	0
+community/bbs/createBbs	0x060011C8	createBBS(? session,? type,? name,? responder)	token	field:WebApiClient::token_		0x5C502	0
+community/bbs/createBbs	0x060011C8	createBBS(? session,? type,? name,? responder)	sess_key	arg:session		0x5C50E	0
+community/bbs/createBbs	0x060011C8	createBBS(? session,? type,? name,? responder)	type	arg:type		0x5C51F	0
+community/bbs/createBbs	0x060011C8	createBBS(? session,? type,? name,? responder)	name	arg:name		0x5C52B	0
+community/bbs/deleteBbs	0x060011C9	deleteBBS(? session,? type,? responder)	token	field:WebApiClient::token_		0x5C562	0
+community/bbs/deleteBbs	0x060011C9	deleteBBS(? session,? type,? responder)	sess_key	arg:session		0x5C56E	0
+community/bbs/deleteBbs	0x060011C9	deleteBBS(? session,? type,? responder)	type	arg:type		0x5C57F	0
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	token	field:WebApiClient::token_		0x5C5B6	0
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	sess_key	arg:session		0x5C5C2	0
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	type	arg:type		0x5C5D3	0
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	name	arg:name		0x5C5DF	0
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	description	arg:desc		0x5C5EC	0
+community/bbs/createThread	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	commit	arg:isCommit		0x5C5FE	0
+community/bbs/deleteThread	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	token	field:WebApiClient::token_		0x5C636	0
+community/bbs/deleteThread	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	sess_key	arg:session		0x5C642	0
+community/bbs/deleteThread	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	type	arg:type		0x5C653	0
+community/bbs/deleteThread	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	thread_id	arg:id		0x5C664	0
+community/bbs/deleteThread	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	commit	arg:isCommit		0x5C676	0
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	token	field:WebApiClient::token_		0x5C6AE	1
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	type	arg:type		0x5C6BF	1
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	page	arg:page		0x5C6D0	1
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	order	arg:order		0x5C6DC	1
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	order_key	arg:orderKey		0x5C6E9	1
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	item_per_page	arg:itemParPage		0x5C6FB	1
+community/bbs/listThread	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	valid	string:all	string	0x5C726	1
+community/bbs/infoThread	0x060011CD	getBBSInfoThread(? type,? id,? numOfCommentType,? responder)	token	field:WebApiClient::token_		0x5C76E	1
+community/bbs/infoThread	0x060011CD	getBBSInfoThread(? type,? id,? numOfCommentType,? responder)	type	arg:type		0x5C77F	1
+community/bbs/infoThread	0x060011CD	getBBSInfoThread(? type,? id,? numOfCommentType,? responder)	thread_id	arg:id		0x5C790	1
+community/bbs/infoThread	0x060011CD	getBBSInfoThread(? type,? id,? numOfCommentType,? responder)	valid	string:all	string	0x5C7BA	1
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	token	field:WebApiClient::token_		0x5C7F2	0
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	sess_key	arg:session		0x5C7FE	0
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	type	arg:type		0x5C80F	0
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	thread_id	arg:id		0x5C820	0
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	comment	arg:comment		0x5C82D	0
+community/bbs/postComment	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	commit	arg:isCommit		0x5C83F	0
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	token	field:WebApiClient::token_		0x5C876	0
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	sess_key	arg:session		0x5C882	0
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	type	arg:type		0x5C893	0
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	thread_id	arg:id		0x5C8A4	0
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	comment_id	arg:commentId		0x5C8B6	0
+community/bbs/deleteComment	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	commit	arg:isCommit		0x5C8C8	0
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	token	field:WebApiClient::token_		0x5C8FE	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	type	arg:type		0x5C90F	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	thread_id	arg:threadId		0x5C920	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	page	arg:page		0x5C931	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	order	arg:order		0x5C93E	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	order_key	arg:orderKey		0x5C94B	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	item_per_page	arg:itemParPage		0x5C95D	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	valid	string:all	string	0x5C988	1
+community/bbs/listComment	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	short_comment	arg:shortComment		0x5C99A	1
+community/bbs/infoComment	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	token	field:WebApiClient::token_		0x5C9D2	0
+community/bbs/infoComment	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	type	arg:type		0x5C9E3	0
+community/bbs/infoComment	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	thread_id	arg:id		0x5C9F4	0
+community/bbs/infoComment	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	comment_id	arg:commentId		0x5CA05	0
+community/bbs/infoComment	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	adjust	arg:adjust		0x5CA12	0
+community/bbs/getBbsList	0x060011D2	getBBSList(? responder)	token	field:WebApiClient::token_		0x5CA4A	0
+community/bbs/getBbsId	0x060011D3	getBBSId(? type,? responder)	token	field:WebApiClient::token_		0x5CA7E	0
+community/bbs/getBbsId	0x060011D3	getBBSId(? type,? responder)	type	arg:type		0x5CA8F	0
+community/bbs/closeThread	0x060011D4	closeBBSThread(? session,? type,? threadId,? responder)	token	field:WebApiClient::token_		0x5CAC6	0
+community/bbs/closeThread	0x060011D4	closeBBSThread(? session,? type,? threadId,? responder)	sess_key	arg:session		0x5CAD2	0
+community/bbs/closeThread	0x060011D4	closeBBSThread(? session,? type,? threadId,? responder)	type	arg:type		0x5CAE3	0
+community/bbs/closeThread	0x060011D4	closeBBSThread(? session,? type,? threadId,? responder)	thread_id	arg:threadId		0x5CAF4	0
+community/bbs/closeBbs	0x060011D5	closeBBS(? session,? type,? responder)	token	field:WebApiClient::token_		0x5CB2A	0
+community/bbs/closeBbs	0x060011D5	closeBBS(? session,? type,? responder)	sess_key	arg:session		0x5CB36	0
+community/bbs/closeBbs	0x060011D5	closeBBS(? session,? type,? responder)	type	arg:type		0x5CB47	0
+community/bbs/openBbs	0x060011D6	openBBS(? session,? type,? responder)	token	field:WebApiClient::token_		0x5CB7E	0
+community/bbs/openBbs	0x060011D6	openBBS(? session,? type,? responder)	sess_key	arg:session		0x5CB8A	0
+community/bbs/openBbs	0x060011D6	openBBS(? session,? type,? responder)	type	arg:type		0x5CB9B	0
+community/bbs/openThread	0x060011D7	openBBSThread(? session,? type,? threadId,? responder)	token	field:WebApiClient::token_		0x5CBD2	0
+community/bbs/openThread	0x060011D7	openBBSThread(? session,? type,? threadId,? responder)	sess_key	arg:session		0x5CBDE	0
+community/bbs/openThread	0x060011D7	openBBSThread(? session,? type,? threadId,? responder)	type	arg:type		0x5CBEF	0
+community/bbs/openThread	0x060011D7	openBBSThread(? session,? type,? threadId,? responder)	thread_id	arg:threadId		0x5CC00	0
+friend/getFriends	0x060011D8	getFriends(? option,? responder)	token	field:WebApiClient::token_		0x5CC36	0
+friend/getFriends	0x060011D8	getFriends(? option,? responder)	option	arg:option		0x5CC42	0
+friend/sendFriendOffer	0x060011D9	sendFriendOffer(? playerId,? responder)	token	field:WebApiClient::token_		0x5CC76	0
+friend/sendFriendOffer	0x060011D9	sendFriendOffer(? playerId,? responder)	friendPlayerId	arg:playerId		0x5CC82	0
+friend/feedbackFriendOffer	0x060011DA	feedbackFriendOffer(? playerId,? reply,? responder)	token	field:WebApiClient::token_		0x5CCB6	0
+friend/feedbackFriendOffer	0x060011DA	feedbackFriendOffer(? playerId,? reply,? responder)	friendPlayerId	arg:playerId		0x5CCC2	0
+friend/feedbackFriendOffer	0x060011DA	feedbackFriendOffer(? playerId,? reply,? responder)	reply	arg:reply		0x5CCCE	0
+friend/cancelFriendOffer	0x060011DB	cancelFriendOffer(? playerId,? responder)	token	field:WebApiClient::token_		0x5CD02	0
+friend/cancelFriendOffer	0x060011DB	cancelFriendOffer(? playerId,? responder)	friendPlayerId	arg:playerId		0x5CD0E	0
+friend/dissolutionFriend	0x060011DC	dissolutionFriend(? playerId,? responder)	token	field:WebApiClient::token_		0x5CD42	0
+friend/dissolutionFriend	0x060011DC	dissolutionFriend(? playerId,? responder)	friendPlayerId	arg:playerId		0x5CD4E	0
+friend/updateFriendData	0x060011DD	updateFriendData(? responder)	token	field:WebApiClient::token_		0x5CD82	0
+friend/findFriends	0x060011DE	findFriends(? type,? conditions,? responder)	token	field:WebApiClient::token_		0x5CDB6	0
+friend/findFriends	0x060011DE	findFriends(? type,? conditions,? responder)	type	arg:type		0x5CDC2	0
+friend/findFriends	0x060011DE	findFriends(? type,? conditions,? responder)	conditions	arg:conditions		0x5CDCE	0
+debug/forceFeedbackFriendOffer	0x060011DF	debug_forceFeedbackFriendOffer(? receivePlayerId,? sendPlayerId,? reply,? responder)	token	field:WebApiClient::token_		0x5CE02	0
+debug/forceFeedbackFriendOffer	0x060011DF	debug_forceFeedbackFriendOffer(? receivePlayerId,? sendPlayerId,? reply,? responder)	receivePlayerId	arg:receivePlayerId		0x5CE0E	0
+debug/forceFeedbackFriendOffer	0x060011DF	debug_forceFeedbackFriendOffer(? receivePlayerId,? sendPlayerId,? reply,? responder)	sendPlayerId	arg:sendPlayerId		0x5CE1A	0
+debug/forceFeedbackFriendOffer	0x060011DF	debug_forceFeedbackFriendOffer(? receivePlayerId,? sendPlayerId,? reply,? responder)	reply	arg:reply		0x5CE26	0
+friend/getFriendMap	0x060011E0	getFriendMap(? playerId,? responder)	token	field:WebApiClient::token_		0x5CE5E	0
+friend/getFriendMap	0x060011E0	getFriendMap(? playerId,? responder)	friendPlayerId	arg:playerId		0x5CE6A	0
+friend/getFriendMapData	0x060011E1	getFriendMapData(? playerId,? responder)	token	field:WebApiClient::token_		0x5CE9E	0
+friend/getFriendMapData	0x060011E1	getFriendMapData(? playerId,? responder)	friendPlayerId	arg:playerId		0x5CEAA	0
+friend/getFriendMapData2	0x060011E2	getFriendMapData(? playerId,? mapId,? responder)	token	field:WebApiClient::token_		0x5CEDE	0
+friend/getFriendMapData2	0x060011E2	getFriendMapData(? playerId,? mapId,? responder)	friendPlayerId	arg:playerId		0x5CEEA	0
+friend/getFriendMapData2	0x060011E2	getFriendMapData(? playerId,? mapId,? responder)	mapId	arg:mapId		0x5CEFB	0
+friend/visitFriendMap	0x060011E3	visitFriendMap(? playerId,? responder)	token	field:WebApiClient::token_		0x5CF32	0
+friend/visitFriendMap	0x060011E3	visitFriendMap(? playerId,? responder)	friendPlayerId	arg:playerId		0x5CF3E	0
+friend/getVisitFriendLogs	0x060011E4	getVisitFriendLogs(? responder)	token	field:WebApiClient::token_		0x5CF72	0
+friend/getFriendProfile	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	token	field:WebApiClient::token_		0x5CFA6	0
+friend/getFriendProfile	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	friendPlayerId	arg:playerId		0x5CFB2	0
+friend/getFriendProfile	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	forHTML	arg:forHTML		0x5CFC3	0
+friend/findFriendsAndSend	0x060011E6	getFindFriendsAndSend(? sendCount,? responder)	token	field:WebApiClient::token_		0x5CFFA	0
+friend/findFriendsAndSend	0x060011E6	getFindFriendsAndSend(? sendCount,? responder)	friendMax	arg:sendCount		0x5D00B	0
+friend/building/getFriendProductsByBuilding	0x060011E7	getFriendProductsByBuilding(? playerId,? id,? responder)	token	field:WebApiClient::token_		0x5D042	0
+friend/building/getFriendProductsByBuilding	0x060011E7	getFriendProductsByBuilding(? playerId,? id,? responder)	friendPlayerId	arg:playerId		0x5D04E	0
+friend/building/getFriendProductsByBuilding	0x060011E7	getFriendProductsByBuilding(? playerId,? id,? responder)	buildingId	result:System.Int32		0x5D064	0
+friend/task/completeFriendTasks	0x060011E8	completeFriendTask(? playerId,? mapid,? id,? responder)	token	field:WebApiClient::token_		0x5D09A	0
+friend/task/completeFriendTasks	0x060011E8	completeFriendTask(? playerId,? mapid,? id,? responder)	friendPlayerId	arg:playerId		0x5D0A6	0
+friend/task/completeFriendTasks	0x060011E8	completeFriendTask(? playerId,? mapid,? id,? responder)	mapId	arg:mapid		0x5D0B7	0
+friend/task/completeFriendTasks	0x060011E8	completeFriendTask(? playerId,? mapid,? id,? responder)	buildingId	arg:id		0x5D0C3	0
+friend/task/accelerateFriendProduceTask	0x060011E9	accelerateFriendProduceTask(? playerId,? mapid,? id,? accelId,? responder)	token	field:WebApiClient::token_		0x5D0FA	0
+friend/task/accelerateFriendProduceTask	0x060011E9	accelerateFriendProduceTask(? playerId,? mapid,? id,? accelId,? responder)	friendPlayerId	arg:playerId		0x5D106	0
+friend/task/accelerateFriendProduceTask	0x060011E9	accelerateFriendProduceTask(? playerId,? mapid,? id,? accelId,? responder)	mapId	arg:mapid		0x5D117	0
+friend/task/accelerateFriendProduceTask	0x060011E9	accelerateFriendProduceTask(? playerId,? mapid,? id,? accelId,? responder)	buildingId	result:System.Int32		0x5D12D	0
+friend/task/accelerateFriendProduceTask	0x060011E9	accelerateFriendProduceTask(? playerId,? mapid,? id,? accelId,? responder)	id	arg:accelId		0x5D13A	0
+common/getEventStatuses	0x060011EA	getEventStatuses(? responder)	token	field:WebApiClient::token_		0x5D172	0
+turfWar/entryWar	0x060011EB	entryTurfWar(? responder)	token	field:WebApiClient::token_		0x5D1A6	0
+turfWar/getWarSituation	0x060011EC	getTurfWarSituation(? responder)	token	field:WebApiClient::token_		0x5D1DA	0
+turfWar/entryBattlefield	0x060011ED	entryTurfWarBattlefield(? battlefield,? responder)	token	field:WebApiClient::token_		0x5D20E	0
+turfWar/entryBattlefield	0x060011ED	entryTurfWarBattlefield(? battlefield,? responder)	battlefield	arg:battlefield		0x5D21A	0
+turfWar/moveBattlefield	0x060011EE	moveTurfWarBattlefield(? battlefield,? responder)	token	field:WebApiClient::token_		0x5D24E	0
+turfWar/moveBattlefield	0x060011EE	moveTurfWarBattlefield(? battlefield,? responder)	battlefield	arg:battlefield		0x5D25A	0
+turfWar/getSelfSituation	0x060011EF	getTurfWarSelfSituation(? battlefield,? responder)	token	field:WebApiClient::token_		0x5D28E	0
+turfWar/getSelfRecord	0x060011F0	getTurnfWarSelfRecord(? responder)	token	field:WebApiClient::token_		0x5D2C2	0
+turfWar/receiveTurfWarReward	0x060011F1	getTurnfWarRceiveTurfWarReward(? responder)	token	field:WebApiClient::token_		0x5D2F6	0
+turfWar/getTurfWarResultLog	0x060011F2	getTurfWarResultLog(? responder)	token	field:WebApiClient::token_		0x5D32A	0
+ranking/getTopRankersInTurfWar	0x060011F3	getTurfWarTopRankers(? battlefield,? team,? index,? responder)	token	field:WebApiClient::token_		0x5D35E	0
+ranking/getTopRankersInTurfWar	0x060011F3	getTurfWarTopRankers(? battlefield,? team,? index,? responder)	battlefield	arg:battlefield		0x5D36A	0
+ranking/getTopRankersInTurfWar	0x060011F3	getTurfWarTopRankers(? battlefield,? team,? index,? responder)	team	arg:team		0x5D376	0
+ranking/getRecordOfCountryInBattle	0x060011F4	getRecordOfCountryInBattle(? responder)	token	field:WebApiClient::token_		0x5D3AE	0
+debug/withdrawTurfWar	0x060011F5	debug_withdrawTurfWar(? responder)	token	field:WebApiClient::token_		0x5D3E2	0
+ranking/getRankingOfCountriesInBattle	0x060011F6	getRankingOfCountriesInBattle(? term,? responder)	token	field:WebApiClient::token_		0x5D416	0
+ranking/getRankingOfCountriesInBattle	0x060011F6	getRankingOfCountriesInBattle(? term,? responder)	term	arg:term		0x5D422	0
+ranking/getRankersInStrategyPie	0x060011F7	getRankersInStrategyPie(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5D456	0
+ranking/getRankersInStrategyPie	0x060011F7	getRankersInStrategyPie(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5D462	0
+ranking/getRankersInStrategyPie	0x060011F7	getRankersInStrategyPie(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5D473	0
+ranking/getRankersInStrategyPie	0x060011F7	getRankersInStrategyPie(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5D484	0
+ranking/getRankersAroundMeInTurfWar	0x060011F8	getRankersAroundMeInTurfWar(? battlefieldId,? responder)	token	field:WebApiClient::token_		0x5D4BA	0
+ranking/getRankersAroundMeInTurfWar	0x060011F8	getRankersAroundMeInTurfWar(? battlefieldId,? responder)	battlefield	arg:battlefieldId		0x5D4C6	0
+ranking/getDailyTopRankersInTurfWar	0x060011F9	getDailyTopRankersInTurfWar(? battlefieldId,? team,? responder)	token	field:WebApiClient::token_		0x5D4FA	0
+ranking/getDailyTopRankersInTurfWar	0x060011F9	getDailyTopRankersInTurfWar(? battlefieldId,? team,? responder)	battlefield	arg:battlefieldId		0x5D506	0
+ranking/getDailyTopRankersInTurfWar	0x060011F9	getDailyTopRankersInTurfWar(? battlefieldId,? team,? responder)	team	arg:team		0x5D512	0
+ranking/getDailyRankersAroundMeInTurfWar	0x060011FA	getDailyRankersAroundMeInTurfWar(? team,? responder)	token	field:WebApiClient::token_		0x5D546	0
+ranking/getBriefOfRaidBoss	0x060011FB	getBriefOfRaidBoss(? responder)	token	field:WebApiClient::token_		0x5D57A	0
+ranking/getBriefOfRaidBossDaily	0x060011FC	getBriefOfRaidBossDaily(? responder)	token	field:WebApiClient::token_		0x5D5AE	0
+ranking/getBriefOfGiganticRaidBoss	0x060011FD	getBriefOfGiganticRaidBoss(? responder)	token	field:WebApiClient::token_		0x5D5E2	0
+ranking/getBriefOfMaxDamageInGiganticRaidBoss	0x060011FE	getBriefOfMaxDamageInGiganticRaidBoss(? responder)	token	field:WebApiClient::token_		0x5D616	0
+ranking/getBriefOfGiganticRaidBossDaily	0x060011FF	getBriefOfGiganticRaidBossDaily(? responder)	token	field:WebApiClient::token_		0x5D64A	0
+ranking/getBriefOfCountriesInGiganticRaidBoss	0x06001200	getBriefOfCountriesInGiganticRaidBoss(? responder)	token	field:WebApiClient::token_		0x5D67E	0
+ranking/getMyRankInTurfWar	0x06001201	getMyRankInTurfWar(? responder)	token	field:WebApiClient::token_		0x5D6B2	0
+ranking/getBriefOfCountryBattle	0x06001202	getBriefOfCountryBattle(? responder)	token	field:WebApiClient::token_		0x5D6E6	0
+ranking/getBriefOfRaidBossNational	0x06001203	getBriefOfRaidBossNational(? responder)	token	field:WebApiClient::token_		0x5D71A	0
+ranking/getBriefOfNationalRanking	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	token	field:WebApiClient::token_		0x5D74E	0
+ranking/getBriefOfNationalRanking	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	rankingGroup	arg:rankingGroup		0x5D75A	0
+ranking/getBriefOfNationalRanking	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	rankingPeriod	arg:rankingPeriod		0x5D766	0
+ranking/getBriefOfBattle	0x06001205	getBriefOfBattle(? responder)	token	field:WebApiClient::token_		0x5D79A	0
+ranking/getBriefOfBattleDaily	0x06001206	getBriefOfBattleDaily(? responder)	token	field:WebApiClient::token_		0x5D7CE	0
+ranking/getBriefOfKokudaka	0x06001207	getBriefOfKokudaka(? responder)	token	field:WebApiClient::token_		0x5D802	0
+ranking/getRankersInBattle	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5D836	0
+ranking/getRankersInBattle	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5D842	0
+ranking/getRankersInBattle	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5D853	0
+ranking/getRankersInBattle	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5D864	0
+ranking/getDailyRankersInBattle	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5D89A	0
+ranking/getDailyRankersInBattle	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5D8A6	0
+ranking/getDailyRankersInBattle	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5D8B7	0
+ranking/getDailyRankersInBattle	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5D8C8	0
+ranking/getRankersInKokudaka	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5D8FE	0
+ranking/getRankersInKokudaka	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5D90A	0
+ranking/getRankersInKokudaka	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5D91B	0
+ranking/getRankersInKokudaka	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5D92C	0
+ranking/getRankersInRaidBoss	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5D962	0
+ranking/getRankersInRaidBoss	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5D96E	0
+ranking/getRankersInRaidBoss	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5D97F	0
+ranking/getRankersInRaidBoss	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5D990	0
+ranking/getDailyRankersInRaidBoss	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5D9C6	0
+ranking/getDailyRankersInRaidBoss	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5D9D2	0
+ranking/getDailyRankersInRaidBoss	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5D9E3	0
+ranking/getDailyRankersInRaidBoss	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5D9F4	0
+ranking/getRankersInRaidBossNational	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	token	field:WebApiClient::token_		0x5DA2A	0
+ranking/getRankersInRaidBossNational	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	term	arg:term		0x5DA36	0
+ranking/getRankersInRaidBossNational	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	startIndex	arg:startIndex		0x5DA47	0
+ranking/getRankersInRaidBossNational	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	stopIndex	arg:stopIndex		0x5DA58	0
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	token	field:WebApiClient::token_		0x5DA8E	0
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	rankingGroup	arg:rankingGroup		0x5DA9A	0
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	term	arg:term		0x5DAA6	0
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	startIndex	arg:startIndex		0x5DAB7	0
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	stopIndex	arg:stopIndex		0x5DAC9	0
+ranking/getRankersInNationalRanking	0x0600120E	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)	rankingPeriod	string:all	string	0x5DAD9	0
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	token	field:WebApiClient::token_		0x5DB0E	0
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	rankingGroup	arg:rankingGroup		0x5DB1A	0
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	term	arg:term		0x5DB26	0
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	startIndex	arg:startIndex		0x5DB38	0
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	stopIndex	arg:stopIndex		0x5DB4A	0
+ranking/getRankersInNationalRanking	0x0600120F	getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	rankingPeriod	string:weekly	string	0x5DB5A	0
+ranking/getRankersInGiganticRaidBoss	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DB92	0
+ranking/getRankersInGiganticRaidBoss	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DB9E	0
+ranking/getRankersInGiganticRaidBoss	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DBAF	0
+ranking/getRankersInGiganticRaidBoss	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DBC0	0
+ranking/getRankersOfCountriesInGiganticRaidBoss	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DBF6	0
+ranking/getRankersOfCountriesInGiganticRaidBoss	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DC02	0
+ranking/getRankersOfCountriesInGiganticRaidBoss	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DC13	0
+ranking/getRankersOfCountriesInGiganticRaidBoss	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DC24	0
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DC5A	0
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DC66	0
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DC77	0
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DC88	0
+ranking/getBriefOfNationalPower	0x06001213	getBriefOfNationalPower(? responder)	token	field:WebApiClient::token_		0x5DCBE	0
+ranking/getRankersInNationalPower	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DCF2	0
+ranking/getRankersInNationalPower	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DCFE	0
+ranking/getRankersInNationalPower	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DD0F	0
+ranking/getRankersInNationalPower	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DD20	0
+ranking/getBriefOfDedication	0x06001215	getBriefOfDedication(? responder)	token	field:WebApiClient::token_		0x5DD56	0
+ranking/getBriefOfDedicationMonthly	0x06001216	getBriefOfDedicationMonthly(? responder)	token	field:WebApiClient::token_		0x5DD8A	0
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DDBE	0
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DDCA	0
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DDDB	0
+ranking/getRankersInDedication	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DDEC	0
+ranking/getMonthlyRankersInDedication	0x06001218	getMonthlyRankersInDedication(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DE22	0
+ranking/getMonthlyRankersInDedication	0x06001218	getMonthlyRankersInDedication(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DE2E	0
+ranking/getMonthlyRankersInDedication	0x06001218	getMonthlyRankersInDedication(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DE3F	0
+ranking/getMonthlyRankersInDedication	0x06001218	getMonthlyRankersInDedication(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DE50	0
+ranking/getBriefOfBrawn	0x06001219	getBriefOfBrawn(? responder)	token	field:WebApiClient::token_		0x5DE86	0
+ranking/getRankersInBrawn	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DEBA	0
+ranking/getRankersInBrawn	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DEC6	0
+ranking/getRankersInBrawn	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DED7	0
+ranking/getRankersInBrawn	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DEE8	0
+ranking/getBriefOfRandomQuest	0x0600121B	getBriefOfRandomQuest(? responder)	token	field:WebApiClient::token_		0x5DF1E	0
+ranking/getRankersInRandomQuest	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DF52	0
+ranking/getRankersInRandomQuest	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	term	arg:term		0x5DF5E	0
+ranking/getRankersInRandomQuest	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5DF6F	0
+ranking/getRankersInRandomQuest	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5DF80	0
+ranking/getBriefOfSiege	0x0600121D	getBriefOfSiege(? role,? responder)	token	field:WebApiClient::token_		0x5DFB6	0
+ranking/getBriefOfSiege	0x0600121D	getBriefOfSiege(? role,? responder)	role	arg:role		0x5DFC2	0
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5DFF6	0
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	role	arg:role		0x5E002	0
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	term	arg:term		0x5E00E	0
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5E01F	0
+ranking/getRankersInSiege	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5E031	0
+ranking/getBriefOfStrategy	0x0600121F	getBriefOfStrategy(? battlefield,? team,? action,? responder)	token	field:WebApiClient::token_		0x5E066	0
+ranking/getBriefOfStrategy	0x0600121F	getBriefOfStrategy(? battlefield,? team,? action,? responder)	battlefield	arg:battlefield		0x5E072	0
+ranking/getBriefOfStrategy	0x0600121F	getBriefOfStrategy(? battlefield,? team,? action,? responder)	team	arg:team		0x5E07E	0
+ranking/getBriefOfStrategy	0x0600121F	getBriefOfStrategy(? battlefield,? team,? action,? responder)	action	arg:action		0x5E08A	0
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5E0C2	0
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	term	arg:term		0x5E0CE	0
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	battlefield	arg:battlefield		0x5E0DA	0
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	team	arg:teamcode		0x5E0E6	0
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	action	arg:action		0x5E0F3	0
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5E105	0
+ranking/getRankersInStrategy	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5E117	0
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5E14E	0
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	action	arg:action		0x5E15A	0
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5E16B	0
+ranking/getRankersInStrategyForMypage	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5E17C	0
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5E1B2	0
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	term	arg:term		0x5E1BE	0
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	battlefield	arg:battlefield		0x5E1CA	0
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	team	arg:team		0x5E1D6	0
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5E1E8	0
+ranking/getRankersInTurfWar	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5E1FA	0
+ranking/getBriefOfTurfWar	0x06001223	getBriefOfTurfWar(? battlefield,? team,? responder)	token	field:WebApiClient::token_		0x5E232	0
+ranking/getBriefOfTurfWar	0x06001223	getBriefOfTurfWar(? battlefield,? team,? responder)	battlefield	arg:battlefield		0x5E23E	0
+ranking/getBriefOfTurfWar	0x06001223	getBriefOfTurfWar(? battlefield,? team,? responder)	team	arg:team		0x5E24A	0
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	token	field:WebApiClient::token_		0x5E27E	0
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	term	arg:term		0x5E28A	0
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	battlefield	arg:battlefield		0x5E296	0
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	team	arg:team		0x5E2A2	0
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	startIndex	arg:startIndex		0x5E2B4	0
+ranking/getDailyRankersInTurfWar	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	endIndex	arg:endIndex		0x5E2C6	0
+ranking/getBriefOfTurfWarDaily	0x06001225	getBriefOfTurfWarDaily(? battlefield,? team,? responder)	token	field:WebApiClient::token_		0x5E2FE	0
+ranking/getBriefOfTurfWarDaily	0x06001225	getBriefOfTurfWarDaily(? battlefield,? team,? responder)	battlefield	arg:battlefield		0x5E30A	0
+ranking/getBriefOfTurfWarDaily	0x06001225	getBriefOfTurfWarDaily(? battlefield,? team,? responder)	team	arg:team		0x5E316	0
+mailbox/sendMails	0x06001226	sendMails(? tos,? subject,? body,? responder)	token	field:WebApiClient::token_		0x5E34A	0
+mailbox/sendMails	0x06001226	sendMails(? tos,? subject,? body,? responder)	to	arg:tos		0x5E356	0
+mailbox/sendMails	0x06001226	sendMails(? tos,? subject,? body,? responder)	subject	arg:subject		0x5E362	0
+mailbox/sendMails	0x06001226	sendMails(? tos,? subject,? body,? responder)	body	arg:body		0x5E36E	0
+mailbox/getMailHeaders	0x06001227	getMailHeaders(? status,? start,? end,? responder)	token	field:WebApiClient::token_		0x5E3A6	0
+mailbox/getMailHeaders	0x06001227	getMailHeaders(? status,? start,? end,? responder)	status	arg:status		0x5E3B2	0
+mailbox/getMailHeaders	0x06001227	getMailHeaders(? status,? start,? end,? responder)	start	arg:start		0x5E3C3	0
+mailbox/getMailHeaders	0x06001227	getMailHeaders(? status,? start,? end,? responder)	end	arg:end		0x5E3D4	0
+mailbox/getMailBody	0x06001228	getMailBody(? status,? mailId,? responder)	token	field:WebApiClient::token_		0x5E40A	0
+mailbox/getMailBody	0x06001228	getMailBody(? status,? mailId,? responder)	status	arg:status		0x5E416	0
+mailbox/getMailBody	0x06001228	getMailBody(? status,? mailId,? responder)	mailId	arg:mailId		0x5E422	0
+mailbox/deleteMails	0x06001229	deleteMails(? status,? mailIds,? responder)	token	field:WebApiClient::token_		0x5E456	0
+mailbox/deleteMails	0x06001229	deleteMails(? status,? mailIds,? responder)	status	arg:status		0x5E462	0
+mailbox/deleteMails	0x06001229	deleteMails(? status,? mailIds,? responder)	mailIds	arg:mailIds		0x5E46E	0
+politic/lottery/getSouls	0x0600122A	getSouls(? responder)	token	field:WebApiClient::token_		0x5E4A2	0
+politic/lottery/lot	0x0600122B	lot(? lotteryId,? count,? log,? responder)	token	field:WebApiClient::token_		0x5E4D6	0
+politic/lottery/lot	0x0600122B	lot(? lotteryId,? count,? log,? responder)	lotteryId	arg:lotteryId		0x5E4E2	0
+politic/lottery/lot	0x0600122B	lot(? lotteryId,? count,? log,? responder)	times	arg:count		0x5E4F3	0
+politic/lottery/lot	0x0600122B	lot(? lotteryId,? count,? log,? responder)	enableLog	arg:log		0x5E504	0
+politic/boosterPack/getRemains	0x0600122C	getRemains(? responder)	token	field:WebApiClient::token_		0x5E53A	0
+politic/boosterPack/buy	0x0600122D	buy(? boosterPackId,? count,? price,? responder)	token	field:WebApiClient::token_		0x5E56E	0
+politic/boosterPack/buy	0x0600122D	buy(? boosterPackId,? count,? price,? responder)	boosterPackId	arg:boosterPackId		0x5E57A	0
+politic/boosterPack/buy	0x0600122D	buy(? boosterPackId,? count,? price,? responder)	quantity	arg:count		0x5E58B	0
+politic/boosterPack/buy	0x0600122D	buy(? boosterPackId,? count,? price,? responder)	cost	arg:price		0x5E59C	0
+politic/boosterPack/buyWithItem	0x0600122E	buyWithItem(? boosterPackId,? count,? useItemId,? responder)	token	field:WebApiClient::token_		0x5E5D2	0
+politic/boosterPack/buyWithItem	0x0600122E	buyWithItem(? boosterPackId,? count,? useItemId,? responder)	boosterPackId	arg:boosterPackId		0x5E5DE	0
+politic/boosterPack/buyWithItem	0x0600122E	buyWithItem(? boosterPackId,? count,? useItemId,? responder)	quantity	arg:count		0x5E5EF	0
+politic/boosterPack/buyWithItem	0x0600122E	buyWithItem(? boosterPackId,? count,? useItemId,? responder)	useItemId	arg:useItemId		0x5E5FB	0
+debug/debugResetCreditStepCount	0x0600122F	debugResetBpStepCount(? responder)	token	field:WebApiClient::token_		0x5E632	0
+inbox/getParcels	0x06001230	getParcels(? start,? end,? responder)	token	field:WebApiClient::token_		0x5E666	0
+inbox/getParcels	0x06001230	getParcels(? start,? end,? responder)	start	arg:start		0x5E677	0
+inbox/getParcels	0x06001230	getParcels(? start,? end,? responder)	end	arg:end		0x5E688	0
+inbox/resolveParcels	0x06001231	resolveParcels(? responses,? responder)	token	field:WebApiClient::token_		0x5E6BE	0
+inbox/resolveParcels	0x06001231	resolveParcels(? responses,? responder)	responses	arg:responses		0x5E6CA	0
+admin/inbox/present	0x06001232	forcePresents(? playerIds,? text,? items,? responder)	playerIds	arg:playerIds		0x5E6F9	0
+admin/inbox/present	0x06001232	forcePresents(? playerIds,? text,? items,? responder)	text	arg:text		0x5E705	0
+admin/inbox/present	0x06001232	forcePresents(? playerIds,? text,? items,? responder)	rewards	arg:items		0x5E711	0
+politic/errantry/send3	0x06001233	sendErrantry(? mapId,? buildingId,? errantryId,? responder)	token	field:WebApiClient::token_		0x5E746	0
+politic/errantry/send3	0x06001233	sendErrantry(? mapId,? buildingId,? errantryId,? responder)	mapId	arg:mapId		0x5E757	0
+politic/errantry/send3	0x06001233	sendErrantry(? mapId,? buildingId,? errantryId,? responder)	buildingId	arg:buildingId		0x5E763	0
+politic/errantry/send3	0x06001233	sendErrantry(? mapId,? buildingId,? errantryId,? responder)	errantryId	arg:errantryId		0x5E76F	0
+politic/errantry/receive3	0x06001234	recieveErrantry(? mapId,? responder)	token	field:WebApiClient::token_		0x5E7A6	0
+politic/errantry/receive3	0x06001234	recieveErrantry(? mapId,? responder)	mapId	arg:mapId		0x5E7B7	0
+politic/errantry/call3	0x06001235	callErrantry(? mapId,? responder)	token	field:WebApiClient::token_		0x5E7EE	0
+politic/errantry/call3	0x06001235	callErrantry(? mapId,? responder)	mapId	arg:mapId		0x5E7FF	0
+politic/errantry/getStatus3	0x06001236	getStatusAllErrantry(? responder)	token	field:WebApiClient::token_		0x5E836	0
+politic/kokugi/develop	0x06001237	develop(? kokugiId,? usePoint,? responder)	token	field:WebApiClient::token_		0x5E86A	0
+politic/kokugi/develop	0x06001237	develop(? kokugiId,? usePoint,? responder)	kokugiId	arg:kokugiId		0x5E876	0
+politic/kokugi/develop	0x06001237	develop(? kokugiId,? usePoint,? responder)	usePoint	arg:usePoint		0x5E887	0
+politic/kokugi/getStatus	0x06001238	getStatus(? responder)	token	field:WebApiClient::token_		0x5E8BE	0
+politic/kokugi/addPoint	0x06001239	addKokugiPoint(? addPoint,? responder)	token	field:WebApiClient::token_		0x5E8F2	0
+politic/kokugi/addPoint	0x06001239	addKokugiPoint(? addPoint,? responder)	addPoint	arg:addPoint		0x5E903	0
+politic/waterborneTrade/getFleet	0x0600123A	getFleetWaterTrade(? mapId,? buildingId,? responder)	token	field:WebApiClient::token_		0x5E93A	0
+politic/waterborneTrade/getFleet	0x0600123A	getFleetWaterTrade(? mapId,? buildingId,? responder)	mapId	arg:mapId		0x5E94B	0
+politic/waterborneTrade/getFleet	0x0600123A	getFleetWaterTrade(? mapId,? buildingId,? responder)	buildingId	result:System.Int32		0x5E961	0
+politic/waterborneTrade/getFriendTraders	0x0600123B	getFriendsWaterTrade(? responder)	token	field:WebApiClient::token_		0x5E996	0
+politic/waterborneTrade/send	0x0600123C	sendWaterTrade(? mapId,? buildingId,? tradeId,? responder)	token	field:WebApiClient::token_		0x5E9CA	0
+politic/waterborneTrade/send	0x0600123C	sendWaterTrade(? mapId,? buildingId,? tradeId,? responder)	mapId	arg:mapId		0x5E9DB	0
+politic/waterborneTrade/send	0x0600123C	sendWaterTrade(? mapId,? buildingId,? tradeId,? responder)	buildingId	result:System.Int32		0x5E9F1	0
+politic/waterborneTrade/send	0x0600123C	sendWaterTrade(? mapId,? buildingId,? tradeId,? responder)	tradeId	arg:tradeId		0x5E9FD	0
+politic/waterborneTrade/sendWithFriends	0x0600123D	sendWaterTradeWithFriends(? mapId,? buildingId,? tradeId,? friends,? responder)	token	field:WebApiClient::token_		0x5EA32	0
+politic/waterborneTrade/sendWithFriends	0x0600123D	sendWaterTradeWithFriends(? mapId,? buildingId,? tradeId,? friends,? responder)	mapId	arg:mapId		0x5EA43	0
+politic/waterborneTrade/sendWithFriends	0x0600123D	sendWaterTradeWithFriends(? mapId,? buildingId,? tradeId,? friends,? responder)	buildingId	result:System.Int32		0x5EA59	0
+politic/waterborneTrade/sendWithFriends	0x0600123D	sendWaterTradeWithFriends(? mapId,? buildingId,? tradeId,? friends,? responder)	tradeId	arg:tradeId		0x5EA65	0
+politic/waterborneTrade/sendWithFriends	0x0600123D	sendWaterTradeWithFriends(? mapId,? buildingId,? tradeId,? friends,? responder)	friendIds	arg:friends		0x5EA72	0
+politic/waterborneTrade/receive	0x0600123E	recieveWaterTrade(? mapId,? buildingId,? responder)	token	field:WebApiClient::token_		0x5EAAA	0
+politic/waterborneTrade/receive	0x0600123E	recieveWaterTrade(? mapId,? buildingId,? responder)	mapId	arg:mapId		0x5EABB	0
+politic/waterborneTrade/receive	0x0600123E	recieveWaterTrade(? mapId,? buildingId,? responder)	buildingId	result:System.Int32		0x5EAD1	0
+politic/waterborneTrade/call	0x0600123F	callWaterTrade(? mapId,? buildingId,? responder)	token	field:WebApiClient::token_		0x5EB06	0
+politic/waterborneTrade/call	0x0600123F	callWaterTrade(? mapId,? buildingId,? responder)	mapId	arg:mapId		0x5EB17	0
+politic/waterborneTrade/call	0x0600123F	callWaterTrade(? mapId,? buildingId,? responder)	buildingId	result:System.Int32		0x5EB2D	0
+politic/waterborneTrade/getStatus	0x06001240	getStatusAllWaterTrade(? responder)	token	field:WebApiClient::token_		0x5EB62	0
+trophy/getTrophyProgress	0x06001241	getEventsTrophyProgress(? access,? responder)	token	field:WebApiClient::token_		0x5EB96	0
+trophy/getTrophyProgress	0x06001241	getEventsTrophyProgress(? access,? responder)	access	arg:access		0x5EBA2	0
+trophy/completeTrophy	0x06001242	receiveEventsTrophy(? access,? id,? responder)	token	field:WebApiClient::token_		0x5EBD6	0
+trophy/completeTrophy	0x06001242	receiveEventsTrophy(? access,? id,? responder)	access	arg:access		0x5EBE2	0
+trophy/completeTrophy	0x06001242	receiveEventsTrophy(? access,? id,? responder)	category	arg:id		0x5EBEE	0
+battle/getRaidBossEntries	0x06001243	getRaidBossEntries(? responder)	token	field:WebApiClient::token_		0x5EC22	0
+battle/getRaidBossLogs	0x06001244	getRaidBossLogs(? responder)	token	field:WebApiClient::token_		0x5EC56	0
+debug/debugCreateRaidBossWork	0x06001245	debugCreateRaidBoss(? raidBossId,? responder)	token	field:WebApiClient::token_		0x5EC8A	0
+debug/debugCreateRaidBossWork	0x06001245	debugCreateRaidBoss(? raidBossId,? responder)	monsterId	arg:raidBossId		0x5EC96	0
+debug/debugCreateRaidBossWork	0x06001245	debugCreateRaidBoss(? raidBossId,? responder)	rescue	numeric_constant_requires_IL_review	numeric	0x5ECB3	0
+debug/debugCreateRaidBossWork	0x06001245	debugCreateRaidBoss(? raidBossId,? responder)	options	object:System.Collections.Hashtable		0x5ECB9	0
+battle/sendRescueRequest	0x06001246	sendRescueRequest(? responder)	token	field:WebApiClient::token_		0x5ECEE	0
+battle/getRaidBossDetail	0x06001247	getRaidBossDetail(? bossHash,? responder)	token	field:WebApiClient::token_		0x5ED22	0
+battle/getRaidBossDetail	0x06001247	getRaidBossDetail(? bossHash,? responder)	entry	arg:bossHash		0x5ED2E	0
+battle/removeRaidBossWork	0x06001248	removeRaidBossWork(? entry,? responder)	token	field:WebApiClient::token_		0x5ED62	0
+battle/removeRaidBossWork	0x06001248	removeRaidBossWork(? entry,? responder)	ownerId	result:System.String		0x5ED7D	0
+battle/removeRaidBossWork	0x06001248	removeRaidBossWork(? entry,? responder)	index	result:System.Object		0x5ED9E	0
+trophy/getTrophyProgress	0x06001249	getTrophyRaidBoss(? responder)	token	field:WebApiClient::token_		0x5EDD2	0
+trophy/getTrophyProgress	0x06001249	getTrophyRaidBoss(? responder)	access	string:raidBoss	string	0x5EDE2	0
+trophy/completeTrophy	0x0600124A	receiveTrophyRaidBoss(? id,? responder)	token	field:WebApiClient::token_		0x5EE16	0
+trophy/completeTrophy	0x0600124A	receiveTrophyRaidBoss(? id,? responder)	access	string:raidBoss	string	0x5EE26	0
+trophy/completeTrophy	0x0600124A	receiveTrophyRaidBoss(? id,? responder)	category	arg:id		0x5EE32	0
+giganticRaidBoss/getGiganticRaidBossInformation	0x0600124B	getGiganticRaidBossInfo(? responder)	token	field:WebApiClient::token_		0x5EE66	0
+giganticRaidBoss/getGiganticRaidBossInformation	0x0600124B	getGiganticRaidBossInfo(? responder)	difficulty	field:WebApiClient::difficulty_		0x5EE7C	0
+giganticRaidBoss/getGiganticRaidBossInformation	0x0600124B	getGiganticRaidBossInfo(? responder)	buildingTypeId	field:WebApiClient::buildingTypeId_		0x5EE8D	0
+giganticRaidBoss/entryGiganticRaidBoss	0x0600124C	entryGiganticRaidBoss(? responder)	token	field:WebApiClient::token_		0x5EEC2	0
+trophy/getTrophyProgress	0x0600124D	getTrophyGiganticRaidBoss(? responder)	token	field:WebApiClient::token_		0x5EEF6	0
+trophy/getTrophyProgress	0x0600124D	getTrophyGiganticRaidBoss(? responder)	access	string:giganticRaidBoss	string	0x5EF06	0
+trophy/completeTrophy	0x0600124E	receiveTrophyGiganticRaidBoss(? id,? responder)	token	field:WebApiClient::token_		0x5EF3A	0
+trophy/completeTrophy	0x0600124E	receiveTrophyGiganticRaidBoss(? id,? responder)	access	string:giganticRaidBoss	string	0x5EF4A	0
+trophy/completeTrophy	0x0600124E	receiveTrophyGiganticRaidBoss(? id,? responder)	category	arg:id		0x5EF56	0
+debug/forceProgressGiganticPhase	0x0600124F	debug_ForceProgressGiganticPhase(? responder)	token	field:WebApiClient::token_		0x5EF8A	0
+debug/forceProgressGiganticChain	0x06001250	debug_ForceProgressGiganticChain(? responder)	token	field:WebApiClient::token_		0x5EFBE	0
+strategy/getStrategyOverview	0x06001251	getStrategyOverview(? responder)	token	field:WebApiClient::token_		0x5EFF2	0
+strategy/getStrategyPairingsChat	0x06001252	getStrategyPairingsChat(? responder)	token	field:WebApiClient::token_		0x5F026	0
+strategy/getStrategyBrief	0x06001253	getStrategyBrief(? responder)	token	field:WebApiClient::token_		0x5F05A	0
+strategy/getMercenaryEmployInfo	0x06001254	getMercenaryEmployInfo(? responder)	token	field:WebApiClient::token_		0x5F08E	0
+strategy/entryStrategy	0x06001255	entryStrategy(? fieldName,? soldierEmployAmount,? responder)	token	field:WebApiClient::token_		0x5F0C2	0
+strategy/entryStrategy	0x06001255	entryStrategy(? fieldName,? soldierEmployAmount,? responder)	mercenaryCount	arg:soldierEmployAmount		0x5F0D3	0
+strategy/entryStrategy	0x06001256	entryStrategy(? soldierEmployAmount,? responder)	token	field:WebApiClient::token_		0x5F10A	0
+strategy/entryStrategy	0x06001256	entryStrategy(? soldierEmployAmount,? responder)	mercenaryCount	arg:soldierEmployAmount		0x5F11B	0
+strategy/getStrategyStatus	0x06001257	getStrategyStatus(? responder)	token	field:WebApiClient::token_		0x5F152	0
+strategy/getStrategyPairings	0x06001258	getStrategyPairings(? responder)	token	field:WebApiClient::token_		0x5F186	0
+strategy/command/traceroute	0x06001259	getStrategyCommandTraceRoute(? x,? y,? responder)	token	field:WebApiClient::token_		0x5F1DC	0
+strategy/command/traceroute	0x06001259	getStrategyCommandTraceRoute(? x,? y,? responder)	position	object:System.Collections.ArrayList		0x5F1E8	0
+strategy/command/march2	0x0600125A	sendStrategyCommandRouteMarch(? seqId,? responder)	token	field:WebApiClient::token_		0x5F21E	0
+strategy/command/march2	0x0600125A	sendStrategyCommandRouteMarch(? seqId,? responder)	seqId	arg:seqId		0x5F22F	0
+strategy/command/cancelMarch	0x0600125B	sendStrategyCommandCencelRouteMarch(? responder)	token	field:WebApiClient::token_		0x5F266	0
+strategy/command/march	0x0600125C	sendStrategyCommandMarch(? x,? y,? responder)	token	field:WebApiClient::token_		0x5F2BC	0
+strategy/command/march	0x0600125C	sendStrategyCommandMarch(? x,? y,? responder)	position	object:System.Collections.ArrayList		0x5F2C8	0
+strategy/getStrategyLogs	0x0600125D	getStrategyLogs(? battlefield,? position,? responder)	token	field:WebApiClient::token_		0x5F2FE	0
+strategy/getStrategyLogs	0x0600125D	getStrategyLogs(? battlefield,? position,? responder)	battlefield	arg:battlefield		0x5F30A	0
+strategy/getStrategyLogs	0x0600125D	getStrategyLogs(? battlefield,? position,? responder)	cell	arg:position		0x5F316	0
+strategy/getStrategyPromptReport	0x0600125E	getStrategyPromptReport(? position,? responder)	token	field:WebApiClient::token_		0x5F34A	0
+strategy/getStrategyPromptReport	0x0600125E	getStrategyPromptReport(? position,? responder)	position	arg:position		0x5F356	0
+strategy/getStrategyCellLogs	0x0600125F	getStrategyCellLogs(? position,? responder)	token	field:WebApiClient::token_		0x5F38A	0
+strategy/getStrategyCellLogs	0x0600125F	getStrategyCellLogs(? position,? responder)	position	arg:position		0x5F396	0
+battle/getVsBattleLogs	0x06001260	getStrategyBattleLogs(? force,? responder)	token	field:WebApiClient::token_		0x5F3CA	0
+battle/getVsBattleLogs	0x06001260	getStrategyBattleLogs(? force,? responder)	type	string:strategy	string	0x5F3DA	0
+battle/getVsBattleLogs	0x06001260	getStrategyBattleLogs(? force,? responder)	force	arg:force		0x5F3E6	0
+strategy/getStrategyPersonalLogs	0x06001261	getStrategyPlayerLogs(? battlefield,? responder)	token	field:WebApiClient::token_		0x5F41A	0
+strategy/getStrategyActionLogs	0x06001262	getStrategyActionLogs(? responder)	token	field:WebApiClient::token_		0x5F44E	0
+strategy/getStrategyActionLogs2	0x06001263	getStrategyActionLogs2(? responder)	token	field:WebApiClient::token_		0x5F482	0
+strategy/getStrategyBattleLogs	0x06001264	getStrategyBattleLogs(? responder)	token	field:WebApiClient::token_		0x5F4B6	0
+strategy/command/attack	0x06001265	sendStrategyCommandIntercept(? command,? responder)	token	field:WebApiClient::token_		0x5F4EA	0
+strategy/command/attack	0x06001265	sendStrategyCommandIntercept(? command,? responder)	command	arg:command		0x5F4F6	0
+strategy/command/training	0x06001266	sendStrategyCommandTraining(? responder)	token	field:WebApiClient::token_		0x5F52A	0
+strategy/command/conscript	0x06001267	sendStrategyCommandConscript(? responder)	token	field:WebApiClient::token_		0x5F55E	0
+strategy/command/supply	0x06001268	sendStrategyCommandSupply(? responder)	token	field:WebApiClient::token_		0x5F592	0
+strategy/command/returnBase	0x06001269	sendStrategyCommandReturnBase(? responder)	token	field:WebApiClient::token_		0x5F5C6	0
+strategy/command/changeBase	0x0600126A	sendStrategyCommandChangeBase(? responder)	token	field:WebApiClient::token_		0x5F5FA	0
+strategy/command/buildCastle	0x0600126B	sendStrategyCommandBuildCastle(? responder)	token	field:WebApiClient::token_		0x5F62E	0
+strategy/command/strategize	0x0600126C	sendStrategyCommandStrategize(? x,? y,? responder)	token	field:WebApiClient::token_		0x5F684	0
+strategy/command/strategize	0x0600126C	sendStrategyCommandStrategize(? x,? y,? responder)	position	object:System.Collections.ArrayList		0x5F690	0
+strategy/command/revenge	0x0600126D	sendStrategyCommandRevenge(? x,? y,? responder)	token	field:WebApiClient::token_		0x5F6E8	0
+strategy/command/revenge	0x0600126D	sendStrategyCommandRevenge(? x,? y,? responder)	position	object:System.Collections.ArrayList		0x5F6F4	0
+strategy/isAlive	0x0600126E	getStrategyIsAlive(? responder)	token	field:WebApiClient::token_		0x5F72A	0
+strategy/getStrategyCommandInfo	0x0600126F	getStrategyCommandInfo(? command,? responder)	token	field:WebApiClient::token_		0x5F75E	0
+strategy/getStrategyCommandInfo	0x0600126F	getStrategyCommandInfo(? command,? responder)	command	arg:command		0x5F76A	0
+strategy/lookStrategyResult	0x06001270	getStrategyReward(? responder)	token	field:WebApiClient::token_		0x5F79E	0
+strategy/getStrategyWinLossRecords	0x06001271	getStrategyWinLossRecords(? responder)	token	field:WebApiClient::token_		0x5F7D2	0
+strategy/getStrategyNormRewardInfo	0x06001272	getStrategyNormRewardInfo(? responder)	token	field:WebApiClient::token_		0x5F806	0
+netCafe/exchangeNpoint	0x06001273	exchangeNetCafeNpoint(? responder)	token	field:WebApiClient::token_		0x5F83A	0
+politic/map/cleanup	0x06001274	cleanupUserData(? responder)	token	field:WebApiClient::token_		0x5F86E	0
+siege/getBrief	0x06001275	siegeBrief(? responder)	token	field:WebApiClient::token_		0x5F8A2	0
+siege/enter	0x06001276	siegeEnter(? responder)	token	field:WebApiClient::token_		0x5F8D6	0
+siege/getSiegeStatus	0x06001277	getSiegeStatus(? responder)	token	field:WebApiClient::token_		0x5F90A	0
+siege/openingBet	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	token	field:WebApiClient::token_		0x5F93E	0
+siege/openingBet	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	spot	arg:spot		0x5F94F	0
+siege/openingBet	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	food	arg:food		0x5F960	0
+siege/openingBet	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	wood	arg:wood		0x5F971	0
+siege/openingBet	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	iron	arg:iron		0x5F983	0
+siege/discharge	0x06001279	siegeDischarge(? responder)	token	field:WebApiClient::token_		0x5F9BA	0
+siege/lookSiegeResult	0x0600127A	lookSiegeResult(? responder)	token	field:WebApiClient::token_		0x5F9EE	0
+siege/getSiegeResultLog	0x0600127B	getSiegeResultLog(? responder)	token	field:WebApiClient::token_		0x5FA22	0
+siege/getPairings	0x0600127C	siegeGetPairings(? responder)	token	field:WebApiClient::token_		0x5FA56	0
+battle/getVcode	0x0600127D	getVcode(? responder)	token	field:WebApiClient::token_		0x5FA8A	0
+politic/fixMapProduct	0x0600127E	fixMapProduct(? responder)	token	field:WebApiClient::token_		0x5FABE	0
+politic/mypage/getMigratePlansStatus	0x0600127F	getMigratePlanStatus(? responder)	token	field:WebApiClient::token_		0x5FAF2	0
+politic/mypage/getMigratePlanCountryStatus	0x06001280	getMigratePlanCountryStatus(? planId,? responder)	token	field:WebApiClient::token_		0x5FB26	0
+politic/mypage/getMigratePlanCountryStatus	0x06001280	getMigratePlanCountryStatus(? planId,? responder)	migratePlan	arg:planId		0x5FB32	0
+politic/mypage/migrate	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	token	field:WebApiClient::token_		0x5FB76	0
+politic/mypage/migrate	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	countryId	arg:countryId		0x5FB82	0
+politic/mypage/migrate	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	navigatorId	arg:navigatorId		0x5FB8E	0
+politic/mypage/migrate	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	colorIndex	arg:colorIndex		0x5FB9A	0
+politic/mypage/migrate	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	migratePlan	arg:planId		0x5FBA7	0
+politic/mypage/migrate	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	migrateKey	result:System.String		0x5FBB3	0
+debug/clearLastMigrateTime	0x06001282	devClearMigrateTime(? responder)	token	field:WebApiClient::token_		0x5FBEA	0
+debug/debugRankingNationalPowerAddScoreWithSwitch	0x06001283	devRankingScoreSwitch(? responder)	token	field:WebApiClient::token_		0x5FC1E	0
+politic/mypage/getLessonStates	0x06001284	getLessonStates(? responder)	token	field:WebApiClient::token_		0x5FC52	0
+politic/mypage/takeLesson	0x06001285	takeLesson(? lessonId,? responder)	token	field:WebApiClient::token_		0x5FC86	0
+politic/mypage/takeLesson	0x06001285	takeLesson(? lessonId,? responder)	lessonId	arg:lessonId		0x5FC92	0
+auction/auctionStatus	0x06001286	auctionStatus(? p_responder)	token	field:WebApiClient::token_		0x5FCD0	0
+auction/auctionCardBrowse	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x5FD06	0
+auction/auctionCardBrowse	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x5FD12	0
+auction/auctionCardBrowse	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x5FD1F	0
+auction/auctionCardBrowse	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x5FD31	0
+auction/auctionCardBrowse	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x5FD43	0
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x5FD84	1
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	<computed>	result:!0		0x5FDBE	1
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x5FDFC	1
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x5FE09	1
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x5FE1B	1
+auction/auctionCardSearchName	0x06001288	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x5FE2D	1
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x5FE8E	0
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	name	arg:p_name		0x5FE9A	0
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x5FEA7	0
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x5FEB4	0
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x5FEC6	0
+auction/auctionCardSearchName	0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x5FED8	0
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x5FF18	1
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	<computed>	result:!0		0x5FF46	1
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x5FF84	1
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x5FF91	1
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x5FFA3	1
+auction/auctionCardSearchSkill	0x0600128A	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x5FFB5	1
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x60016	0
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	skill	arg:p_skillName		0x60022	0
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x6002F	0
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x6003C	0
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x6004E	0
+auction/auctionCardSearchSkill	0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x60060	0
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x600AB	0
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	grade	result:System.String		0x600BD	0
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x600CA	0
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x600D7	0
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x600E9	0
+auction/auctionCardSearchGrade	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x600FB	0
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x60142	0
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	army	arg:p_troop		0x6014E	0
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x6015B	0
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x60168	0
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x6017A	0
+auction/auctionCardSearchArmy	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x6018C	0
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x601D7	0
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	gender	arg:p_sex		0x601E3	0
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x601F0	0
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x601FD	0
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	page_index	result:System.String		0x6020F	0
+auction/auctionCardSearchGender	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	item_per_page	result:System.String		0x60221	0
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	token	field:WebApiClient::token_		0x6026B	0
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	faction	arg:p_attribute		0x60277	0
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	sortby	arg:p_sortBy		0x60284	0
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	order	arg:p_order		0x60291	0
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	page_index	arg:p_pageIndex		0x602A2	0
+auction/auctionCardSearchFaction	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	item_per_page	arg:p_perPage		0x602B3	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	token	field:WebApiClient::token_		0x60333	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	price	result:System.String		0x60345	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	period	result:System.String		0x60357	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	characters_id	result:System.String		0x60368	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	name	arg:p_name		0x60375	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	skill_1	arg:p_skill1		0x60382	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	skill_2	arg:p_skill2		0x6038F	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	skill_3	arg:p_skill3		0x6039C	0
+auction/auctionCardOnShelf	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	slot_id	result:System.String		0x603AE	0
+auction/auctionCardOffShelf	0x06001291	removeAuctionCard(? p_itemSn,? p_responder)	token	field:WebApiClient::token_		0x603E6	0
+auction/auctionCardOffShelf	0x06001291	removeAuctionCard(? p_itemSn,? p_responder)	item_sn	result:System.String		0x603F8	0
+auction/auctionCardBuy	0x06001292	buyAuctionCard(? p_cardId,? p_responder)	token	field:WebApiClient::token_		0x6043E	0
+auction/auctionCardBuy	0x06001292	buyAuctionCard(? p_cardId,? p_responder)	item_sn	result:System.String		0x6044F	0
+auction/auctionCardSale	0x06001293	getMySellingCards(? p_responder)	token	field:WebApiClient::token_		0x60490	0
+auction/auctionResourceBuy	0x06001294	buyResourceFromAuction(? p_itemSn,? p_responder)	token	field:WebApiClient::token_		0x604D0	0
+auction/auctionResourceBuy	0x06001294	buyResourceFromAuction(? p_itemSn,? p_responder)	item_sn	arg:p_itemSn		0x604DC	0
+auction/auctionResourceBrowse	0x06001295	searchAllResourceFromAuction(? p_responder,? p_sortBy,? p_order,? p_pageIndex,? p_perPage)	token	field:WebApiClient::token_		0x60543	0
+auction/auctionResourceBrowse	0x06001295	searchAllResourceFromAuction(? p_responder,? p_sortBy,? p_order,? p_pageIndex,? p_perPage)	sortby	arg:p_sortBy		0x6054F	0
+auction/auctionResourceBrowse	0x06001295	searchAllResourceFromAuction(? p_responder,? p_sortBy,? p_order,? p_pageIndex,? p_perPage)	order	arg:p_order		0x6055B	0
+auction/auctionResourceBrowse	0x06001295	searchAllResourceFromAuction(? p_responder,? p_sortBy,? p_order,? p_pageIndex,? p_perPage)	page_index	result:System.String		0x6056D	0
+auction/auctionResourceBrowse	0x06001295	searchAllResourceFromAuction(? p_responder,? p_sortBy,? p_order,? p_pageIndex,? p_perPage)	item_per_page	result:System.String		0x6057F	0
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	token	field:WebApiClient::token_		0x60627	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	sortby	arg:p_sortBy		0x60633	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	order	arg:p_order		0x6063F	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	price_min	arg:p_priceMin		0x6064B	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	price_max	arg:p_priceMax		0x60658	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	amount_min	arg:p_amountMin		0x60665	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	amount_max	arg:p_amountMax		0x60672	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	resource_type	string:all	string	0x6067E	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	page_index	result:System.String		0x60690	1
+auction/auctionResourceSearch	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	item_per_page	result:System.String		0x606A2	1
+auction/auctionResourceSale	0x06001297	getMySellingResource(? p_responder)	token	field:WebApiClient::token_		0x606E4	0
+auction/auctionResourceOnShelf	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	token	field:WebApiClient::token_		0x60768	0
+auction/auctionResourceOnShelf	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	price	result:System.String		0x6077A	0
+auction/auctionResourceOnShelf	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	num	result:System.String		0x6078C	0
+auction/auctionResourceOnShelf	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	period	result:System.String		0x6079E	0
+auction/auctionResourceOnShelf	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	resource_type	result:System.String		0x607BA	0
+auction/auctionResourceOnShelf	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	slot_id	result:System.String		0x607CC	0
+auction/auctionResourceOffShelf	0x06001299	removeAuctionResource(? p_itemSn,? p_responder)	token	field:WebApiClient::token_		0x60812	0
+auction/auctionResourceOffShelf	0x06001299	removeAuctionResource(? p_itemSn,? p_responder)	item_sn	arg:p_itemSn		0x6081E	0
+politic/mypage/getNineGridInfo	0x0600129A	getNineGridInfo(? p_responder)	token	field:WebApiClient::token_		0x6085C	0
+politic/mypage/playNineGridGacha	0x0600129B	playGacha(? p_responder)	token	field:WebApiClient::token_		0x6089C	0
+politic/mypage/claimReward	0x0600129C	claimReward(? p_rewardId,? p_responder)	token	field:WebApiClient::token_		0x608E7	0
+politic/mypage/claimReward	0x0600129C	claimReward(? p_rewardId,? p_responder)	reward	result:System.String		0x608F9	0
+dailymission/getDailyMission	0x0600129D	getDailyMission(? responder)	token	field:WebApiClient::token_		0x6092E	0
+dailymission/exchangeDailyMissionItem	0x0600129E	exchangeDailyMissionItem(? responder,? rewardIndex)	token	field:WebApiClient::token_		0x60962	0
+dailymission/exchangeDailyMissionItem	0x0600129E	exchangeDailyMissionItem(? responder,? rewardIndex)	rewardIndex	arg:rewardIndex		0x60973	0
+dailymission/getDailyMissionReward	0x0600129F	getDailyMissionReward(? responder,? rewardIndex)	token	field:WebApiClient::token_		0x609AA	0
+dailymission/getDailyMissionReward	0x0600129F	getDailyMissionReward(? responder,? rewardIndex)	rewardIndex	arg:rewardIndex		0x609BB	0
+dailymission/getPoint	0x060012A0	getActivePt(? p_responder)	token	field:WebApiClient::token_		0x609F2	0
+deck/setSkillcoins	0x060012A1	setSkillcoins(? materialIds,? responder)	token	field:WebApiClient::token_		0x60A26	0
+deck/setSkillcoins	0x060012A1	setSkillcoins(? materialIds,? responder)	characterIds	arg:materialIds		0x60A32	0
+deck/setSkillSlot	0x060012A2	setSkillSlot(? characterId,? paymentId,? responder)	token	field:WebApiClient::token_		0x60A66	0
+deck/setSkillSlot	0x060012A2	setSkillSlot(? characterId,? paymentId,? responder)	baseId	arg:characterId		0x60A77	0
+deck/setSkillSlot	0x060012A2	setSkillSlot(? characterId,? paymentId,? responder)	paymentId	arg:paymentId		0x60A83	0
+common/getShopsale	0x060012A3	getShopSale(? p_responder)	token	field:WebApiClient::token_		0x60ABA	0
+common/getShopcredit2	0x060012A4	getShopCedit2(? p_responder)	token	field:WebApiClient::token_		0x60AEE	0
+plugin/getPluginData	0x060012A5	getPluginData(? p_responder)	token	field:WebApiClient::token_		0x60B22	1
+plugin/setPluginData	0x060012A6	setPluginData(? pluginSetting,? p_responder)	token	field:WebApiClient::token_		0x60B6E	1
+plugin/setPluginData	0x060012A6	setPluginData(? pluginSetting,? p_responder)	pluginSetting	arg:pluginSetting		0x60B7A	1
+plugin/getPluginLog	0x060012A7	getPluginLog(? p_responder)	token	field:WebApiClient::token_		0x60BBA	1
+plugin/addPluginLog	0x060012A8	addPluginLog(? logdata,? p_responder)	token	field:WebApiClient::token_		0x60BFA	1
+plugin/addPluginLog	0x060012A8	addPluginLog(? logdata,? p_responder)	logdata	arg:logdata		0x60C06	1
+plugin/buyPluginTime	0x060012A9	buyPluginTime(? pluginId,? p_responder)	pluginId	arg:pluginId		0x60C41	1
+plugin/buyPluginTime	0x060012A9	buyPluginTime(? pluginId,? p_responder)	token	field:WebApiClient::token_		0x60C52	1
+depletionmission/getDepletionMission	0x060012AA	getDepletionMission(? p_responder)	token	field:WebApiClient::token_		0x60C92	0
+depletionmission/drawDepletionItem	0x060012AB	DrawDepletionMission(? p_responder)	token	field:WebApiClient::token_		0x60CC6	0
+depletionmission/exchangeDepletionPoint	0x060012AC	ExchangeDepletionPoint(? missionId,? p_responder)	missionId	arg:missionId		0x60CF5	0
+depletionmission/exchangeDepletionPoint	0x060012AC	ExchangeDepletionPoint(? missionId,? p_responder)	token	field:WebApiClient::token_		0x60D06	0
+deck/getFormation	0x060012AD	getFormation(? atkOrdef,? responder)	token	field:WebApiClient::token_		0x60D3A	0
+deck/getFormation	0x060012AD	getFormation(? atkOrdef,? responder)	atkOrdef	arg:atkOrdef		0x60D46	0
+deck/setFormation	0x060012AE	setFormation(? formation,? atkOrDef,? responder)	token	field:WebApiClient::token_		0x60D7A	0
+deck/setFormation	0x060012AE	setFormation(? formation,? atkOrDef,? responder)	formation	arg:formation		0x60D86	0
+deck/setFormation	0x060012AE	setFormation(? formation,? atkOrDef,? responder)	atkOrDef	arg:atkOrDef		0x60D92	0
+debug/debugCreateQuestEncount	0x0600613B	<>m__62(object result)	token	field:WebApiClient::token_		0x21513C	0
+debug/debugCreateQuestEncount	0x0600613B	<>m__62(object result)	playerId	field:WebApiClient/<debugCreateQuestEncount>c__AnonStorey195::playerId		0x21514D	0
+debug/debugCreateQuestEncount	0x0600613B	<>m__62(object result)	questType	string:story	string	0x21515D	0
+debug/debugCreateQuestEncount	0x0600613B	<>m__62(object result)	info	field:WebApiClient/<debugCreateQuestEncount>c__AnonStorey195::info		0x21516E	0

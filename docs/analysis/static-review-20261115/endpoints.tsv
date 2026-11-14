@@ -1,0 +1,403 @@
+endpoint	handler_kind	http_methods	wrapper_tokens	wrapper_signatures	direct_il_refs	prior_request_keys	wrapper_literal_key_candidates	prior_keys_without_literal_write	new_literal_candidates	has_computed_key_candidate	branched_wrapper	prior_typed_response_keys	prior_untyped_response_keys	analysis_scope
+admin/inbox/present	contract_default	POST	0x06001232	forcePresents(? playerIds,? text,? items,? responder)	0	playerIds,rewards,text	playerIds,rewards,text			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+auction/auctionCardBrowse	contract_default	POST	0x06001287	getAuctionCards(? p_pageIndex,? p_perPage,? p_sortBy,? p_order,? p_responder)	2	item_per_page,order,page_index,sortby,token	item_per_page,order,page_index,sortby,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardBuy	contract_default	POST	0x06001292	buyAuctionCard(? p_cardId,? p_responder)	1	item_sn,token	item_sn,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardOffShelf	contract_default	POST	0x06001291	removeAuctionCard(? p_itemSn,? p_responder)	1	item_sn,token	item_sn,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardOnShelf	contract_default	POST	0x06001290	postAuctionCard(? p_cardId,? p_price,? p_sellTime,? p_name,? p_skill1,? p_skill2,? p_skill3,? p_slotId,? p_responder)	1	characters_id,name,period,price,skill_1,skill_2,skill_3,slot_id,token	characters_id,name,period,price,skill_1,skill_2,skill_3,slot_id,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardSale	contract_default	POST	0x06001293	getMySellingCards(? p_responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+auction/auctionCardSearchArmy	contract_default	POST	0x0600128D	searchAuctionCardByTroop(? p_pageIndex,? p_perPage,? p_troop,? p_sortBy,? p_order,? p_responder)	2	army,item_per_page,order,page_index,sortby,token	army,item_per_page,order,page_index,sortby,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardSearchFaction	contract_default	POST	0x0600128F	searchAuctionCardByAttribute(? p_pageIndex,? p_perPage,? p_attribute,? p_sortBy,? p_order,? p_responder)	2	faction,item_per_page,order,page_index,sortby,token	faction,item_per_page,order,page_index,sortby,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardSearchGender	contract_default	POST	0x0600128E	searchAuctionCardBySex(? p_pageIndex,? p_perPage,? p_sex,? p_sortBy,? p_order,? p_responder)	2	gender,item_per_page,order,page_index,sortby,token	gender,item_per_page,order,page_index,sortby,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardSearchGrade	contract_default	POST	0x0600128C	searchAuctionCardByGrade(? p_pageIndex,? p_perPage,? p_grade,? p_sortBy,? p_order,? p_responder)	2	grade,item_per_page,order,page_index,sortby,token	grade,item_per_page,order,page_index,sortby,token			0	0	0	1	direct_IL_refs_only
+auction/auctionCardSearchName	contract_default	POST	0x06001288|0x06001289	searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_charaIds,? p_sortBy,? p_order,? p_responder)|searchAuctionCardByName(? p_pageIndex,? p_perPage,? p_name,? p_sortBy,? p_order,? p_responder)	4	item_per_page,name,order,page_index,sortby,token	item_per_page,name,order,page_index,sortby,token			1	1	0	1	direct_IL_refs_only
+auction/auctionCardSearchSkill	contract_default	POST	0x0600128A|0x0600128B	searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skills,? p_sortBy,? p_order,? p_responder)|searchAuctionCardBySkillName(? p_pageIndex,? p_perPage,? p_skillName,? p_sortBy,? p_order,? p_responder)	4	item_per_page,order,page_index,skill,sortby,token	item_per_page,order,page_index,skill,sortby,token			1	1	0	1	direct_IL_refs_only
+auction/auctionResourceBrowse	contract_default	POST	0x06001295	searchAllResourceFromAuction(? p_responder,? p_sortBy,? p_order,? p_pageIndex,? p_perPage)	1	item_per_page,order,page_index,sortby,token	item_per_page,order,page_index,sortby,token			0	0	0	1	direct_IL_refs_only
+auction/auctionResourceBuy	contract_default	POST	0x06001294	buyResourceFromAuction(? p_itemSn,? p_responder)	1	item_sn,token	item_sn,token			0	0	0	1	direct_IL_refs_only
+auction/auctionResourceOffShelf	contract_default	POST	0x06001299	removeAuctionResource(? p_itemSn,? p_responder)	1	item_sn,token	item_sn,token			0	0	0	1	direct_IL_refs_only
+auction/auctionResourceOnShelf	contract_default	POST	0x06001298	postAuctionResource(? p_price,? p_time,? p_amount,? p_resourceType,? p_slotId,? p_responder)	1	num,period,price,resource_type,slot_id,token	num,period,price,resource_type,slot_id,token			0	0	0	1	direct_IL_refs_only
+auction/auctionResourceSale	contract_default	POST	0x06001297	getMySellingResource(? p_responder)	1	token	token			0	0	0	1	direct_IL_refs_only
+auction/auctionResourceSearch	contract_default	POST	0x06001296	searchResourceFromAuction(? p_sortBy,? p_order,? p_priceMin,? p_priceMax,? p_amountMin,? p_amountMax,? p_resType,? p_responder,? p_pageIndex,? p_perPage)	1	amount_max,amount_min,item_per_page,order,page_index,price_max,price_min,resource_type,sortby,token	amount_max,amount_min,item_per_page,order,page_index,price_max,price_min,resource_type,sortby,token			0	1	0	1	direct_IL_refs_only
+auction/auctionStatus	contract_default	POST	0x06001286	auctionStatus(? p_responder)	1	token	token			0	0	0	1	direct_IL_refs_only
+auth/createPlayer	dedicated_handler	POST	0x060011A6	createPlayer(? username,? countryId,? navigatorId,? colorIndex,? invitationCode,? responder)	2	colorIndex,countryId,invitationCode,navigatorId,token,username	colorIndex,countryId,invitationCode,navigatorId,token,username			0	0	0	0	direct_IL_refs_only
+auth/gameLogin	dedicated_handler	POST	0x06001102	gameLogin(? token,? responder)	1	token	token			0	0	3	0	direct_IL_refs_only
+auth/guestLogin	dedicated_handler	POST	0x06001105	guestLogin(? loginHash,? responder)	1	loginHash,platform	loginHash,platform			0	0	2	0	direct_IL_refs_only
+auth/keepAliveContainer	contract_default	POST	0x06001106	refreshKeepAliveContainer(? responder)	1	token	token			0	0	2	0	direct_IL_refs_only
+auth/login	dedicated_handler	POST	0x06001101	pubLogin(? sessionKey,? responder)	1	sessionKey	sessionKey			0	0	1	0	direct_IL_refs_only
+auth/refreshToken	dedicated_handler	POST	0x06001100	refreshToken(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+auth/registerName	dedicated_handler	POST	0x060011A3	registerName(? username,? responder)	2	token,username	token,username			0	0	1	0	direct_IL_refs_only
+battle/captchaVsBattle	contract_default	POST	0x06001178	captchaVsBattle(? verificationCode,? responder)	1	token,verificationCode	token,verificationCode			0	0	1	0	direct_IL_refs_only
+battle/executeBattle	contract_default	POST	0x06001163|0x06001164|0x06001165|0x06001166|0x06001167|0x0600116B|0x0600116C|0x0600116D|0x0600116E|0x0600116F	executeBattle(? deckIndex,? rivalId,? itemId,? isTurfWar,? isBot,? responder)|executeBattleSiege(? rivalId,? responder)|executeBattleStrategy(? rivalId,? command,? responder)|executeBattleRaidBoss(? deckIndex,? entryId,? responder)|executeBattleGiganticRaidBoss(? requestPhase,? buildingId,? responder)|executeBattleNPC(? responder)|executeBattlePlayer(? deckIndex,? rivalId,? queestPoint,? responder)|executeBattleQuest(? deckIndex,? questType,? encountId,? responder)|executeBattleMonster(? deckIndex,? responder)|executeBattleOutBreak(? deckIndex,? buildingId,? responder)	13	battleInformation,battleType,buildingId,command,deckIndex,difficulty,encountId,entry,isBot,isTurfWar,itemId,monsterId,npcId,questType,requestPhase,rivalId,token	battleInformation,battleType,buildingId,command,deckIndex,difficulty,encountId,entry,isBot,isTurfWar,itemId,monsterId,npcId,questType,requestPhase,rivalId,token			0	0	30	3	direct_IL_refs_only
+battle/getRaidBossDetail	contract_default	POST	0x06001247	getRaidBossDetail(? bossHash,? responder)	1	entry,token	entry,token			0	0	0	3	direct_IL_refs_only
+battle/getRaidBossEntries	contract_default	POST	0x06001243	getRaidBossEntries(? responder)	4	token	token			0	0	7	0	direct_IL_refs_only
+battle/getRaidBossLogs	contract_default	POST	0x06001244	getRaidBossLogs(? responder)	1	token	token			0	0	0	1	direct_IL_refs_only
+battle/getRivals2	contract_default	POST	0x060011BF	getRivals(? mode,? responder)	3	matchingType,token	matchingType,token			0	0	3	0	direct_IL_refs_only
+battle/getSelfRecord	contract_default	POST	0x06001176	getSelfRecord(? matchingType,? responder)	6	matchingType,token	matchingType,token			0	0	4	0	direct_IL_refs_only
+battle/getTurfWarReplayData	contract_default	POST	0x06001175	getTurfWarReplayData(? id,? responder)	0	battleId,token,type	battleId,token,type			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+battle/getVcode	contract_default	POST	0x0600127D	getVcode(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+battle/getVsBattleLogs	contract_default	POST	0x06001172|0x06001173|0x06001260	getVsBattleLogs(? force,? responder)|getTurfWarLogs(? force,? responder)|getStrategyBattleLogs(? force,? responder)	3	force,token,type	force,token,type			0	0	2	0	direct_IL_refs_only
+battle/getVsCountryRecords	contract_default	POST	0x06001171	getVsCountryRecords(? countryId,? responder)	0	countryId,token	countryId,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+battle/getVsReplayData	contract_default	POST	0x06001174	getVsReplayData(? id,? type,? responder)	1	battleId,token,type	battleId,token,type			0	0	0	3	direct_IL_refs_only
+battle/removeRaidBossWork	contract_default	POST	0x06001248	removeRaidBossWork(? entry,? responder)	2	index,ownerId,token	index,ownerId,token			0	0	0	0	direct_IL_refs_only
+battle/sendRescueRequest	contract_default	POST	0x06001246	sendRescueRequest(? responder)	1	token	token			0	0	0	2	direct_IL_refs_only
+common/dedicate	contract_default	POST	0x06001111|0x06001112|0x06001113|0x06001114|0x06001115	dedicateCharacter(? ids,? responder)|dedicateBuilding(? ids,? responder)|dedicateTactics(? ids,? responder)|dedicateEquip(? ids,? responder)|dedicateGold(? count,? responder)	5	article,category,token	article,category,item11_0000101,token		item11_0000101	0	0	4	0	direct_IL_refs_only
+common/getActionPoints	contract_default	POST	0x06001109	getActionPoints(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+common/getAnnouncement	contract_default	POST	0x0600110C	getAnnouncement(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+common/getBriefOfNationalPower	contract_default	POST	0x06001118	getBriefOfNationalPowerSetting(? responder)	2	token	token			0	0	1	0	direct_IL_refs_only
+common/getCharacters	contract_default	POST	0x06001145	getCharacters(? responder)	2	token	token			0	0	0	0	direct_IL_refs_only
+common/getEquips	contract_default	POST	0x0600114B	getEquips(? responder)	3	token	token			0	0	2	0	direct_IL_refs_only
+common/getEventStatuses	contract_default	POST	0x060011EA	getEventStatuses(? responder)	6	token	token			0	0	25	0	direct_IL_refs_only
+common/getLoginStampSheet	contract_default	POST	0x0600111A	getLoginStampSheet(? responder)	1	token	token			0	0	3	0	direct_IL_refs_only
+common/getPlayerCogid	contract_default	POST	0x06001107	getPlayerCogid(? responder)	1	token	token			0	0	1	1	direct_IL_refs_only
+common/getPlayerEntity	contract_default	POST	0x06001108	getPlayerEntry(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+common/getPlayerParams	dedicated_handler	POST	0x0600110D	getPlayerParams(? responder)	2	token	token			0	0	12	0	direct_IL_refs_only
+common/getResources	contract_default	POST	0x0600110A	getResources(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+common/getRevisions	contract_default	GET	0x060010FE	getRevisions(? responder)	1					0	0	4	0	direct_IL_refs_only
+common/getSelectCharacters	contract_default	POST	0x06001146	getSelectCharacters(? ids,? responder)	4	ids,token	ids,token			0	0	2	0	direct_IL_refs_only
+common/getServerTime	contract_default	POST	0x0600110B	getServerTime(? responder)	3	token	token			0	0	1	0	direct_IL_refs_only
+common/getShopcredit2	contract_default	POST	0x060012A4	getShopCedit2(? p_responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+common/getShopsale	contract_default	POST	0x060012A3	getShopSale(? p_responder)	2	token	token			0	0	3	0	direct_IL_refs_only
+common/getTactics	contract_default	POST	0x0600114A	getTactics(? responder)	3	token	token			0	0	2	0	direct_IL_refs_only
+common/increasePlayerLevel	contract_default	POST	0x0600110F	increasePlayerLevel(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+common/periodicInquiry	dedicated_handler	POST	0x06001110	periodicInquiry(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+common/recordChat	contract_default	POST	0x060011BE	recordChat(? room,? statement,? responder)	1	content,roomName,token	content,roomName,token			0	0	1	0	direct_IL_refs_only
+common/solvePlayerLevelCap	contract_default	POST	0x0600110E	solvePlayerLevelCap(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+common/stampLoginSheet	contract_default	POST	0x06001119	stampLoginSheet(? responder)	1	token	token			0	0	3	0	direct_IL_refs_only
+community/bbs/closeBbs	contract_default	POST	0x060011D5	closeBBS(? session,? type,? responder)	1	sess_key,token,type	sess_key,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/closeThread	contract_default	POST	0x060011D4	closeBBSThread(? session,? type,? threadId,? responder)	2	sess_key,thread_id,token,type	sess_key,thread_id,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/createBbs	contract_default	POST	0x060011C8	createBBS(? session,? type,? name,? responder)	1	name,sess_key,token,type	name,sess_key,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/createThread	contract_default	POST	0x060011CA	createBBSThread(? session,? type,? name,? desc,? isCommit,? responder)	2	commit,description,name,sess_key,token,type	commit,description,name,sess_key,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/deleteBbs	contract_default	POST	0x060011C9	deleteBBS(? session,? type,? responder)	1	sess_key,token,type	sess_key,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/deleteComment	contract_default	POST	0x060011CF	deleteBBSThreadComment(? session,? type,? id,? commentId,? isCommit,? responder)	2	comment_id,commit,sess_key,thread_id,token,type	comment_id,commit,sess_key,thread_id,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/deleteThread	contract_default	POST	0x060011CB	deleteBBSThread(? session,? type,? id,? isCommit,? responder)	2	commit,sess_key,thread_id,token,type	commit,sess_key,thread_id,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/getBbsId	contract_default	POST	0x060011D3	getBBSId(? type,? responder)	1	token,type	token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/getBbsList	contract_default	POST	0x060011D2	getBBSList(? responder)	2	token	token			0	0	0	1	direct_IL_refs_only
+community/bbs/infoComment	contract_default	POST	0x060011D1	getBBSInfoThreadComment(? type,? id,? commentId,? adjust,? responder)	2	adjust,comment_id,thread_id,token,type	adjust,comment_id,thread_id,token,type			0	0	0	3	direct_IL_refs_only
+community/bbs/infoThread	contract_default	POST	0x060011CD	getBBSInfoThread(? type,? id,? numOfCommentType,? responder)	2	num_of_comment_type,thread_id,token,type	thread_id,token,type,valid	num_of_comment_type	valid	0	1	0	4	direct_IL_refs_only
+community/bbs/listComment	contract_default	POST	0x060011D0	getBBSThreadCommentList(? type,? threadId,? page,? order,? orderKey,? itemParPage,? shortComment,? selectTarget,? responder)	2	item_per_page,order,order_key,page,select_target,short_comment,thread_id,token,type	item_per_page,order,order_key,page,short_comment,thread_id,token,type,valid	select_target	valid	0	1	0	5	direct_IL_refs_only
+community/bbs/listThread	contract_default	POST	0x060011CC	getBBSThreadList(? type,? page,? order,? orderKey,? itemParPage,? numOfCommentType,? responder)	2	item_per_page,num_of_comment_type,order,order_key,page,token,type	item_per_page,order,order_key,page,token,type,valid	num_of_comment_type	valid	0	1	0	4	direct_IL_refs_only
+community/bbs/openBbs	contract_default	POST	0x060011D6	openBBS(? session,? type,? responder)	1	sess_key,token,type	sess_key,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/openThread	contract_default	POST	0x060011D7	openBBSThread(? session,? type,? threadId,? responder)	2	sess_key,thread_id,token,type	sess_key,thread_id,token,type			0	0	0	1	direct_IL_refs_only
+community/bbs/postComment	contract_default	POST	0x060011CE	postBBSThreadComment(? session,? type,? id,? comment,? isCommit,? responder)	2	comment,commit,sess_key,thread_id,token,type	comment,commit,sess_key,thread_id,token,type			0	0	0	1	direct_IL_refs_only
+community/libs/bbsSession	contract_default	POST	0x060011C7	getBBSSession(? responder)	2	token	token			0	0	1	0	direct_IL_refs_only
+dailymission/exchangeDailyMissionItem	contract_default	POST	0x0600129E	exchangeDailyMissionItem(? responder,? rewardIndex)	1	rewardIndex,token	rewardIndex,token			0	0	1	0	direct_IL_refs_only
+dailymission/getDailyMission	contract_default	POST	0x0600129D	getDailyMission(? responder)	1	token	token			0	0	3	4	direct_IL_refs_only
+dailymission/getDailyMissionReward	contract_default	POST	0x0600129F	getDailyMissionReward(? responder,? rewardIndex)	1	rewardIndex,token	rewardIndex,token			0	0	1	0	direct_IL_refs_only
+dailymission/getPoint	contract_default	POST	0x060012A0	getActivePt(? p_responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+debug/addCollections	contract_default	POST	0x060011B1	addCollections(? collectionType,? seriesId,? ids,? responder)	1	ids,seriesId,token,type	ids,seriesId,token,type			0	0	0	0	direct_IL_refs_only
+debug/addItems	contract_default	POST	0x060011C0	debug_addItems(? ids,? responder)	4	ids,token	ids,token			0	0	0	0	direct_IL_refs_only
+debug/clearBuildings	contract_default	POST	0x06001134	debug_clearBuildings(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+debug/clearLastMigrateTime	contract_default	POST	0x06001282	devClearMigrateTime(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/debugAccelerateProduceTask	contract_default	POST	0x060011C4	debug_AccelerateProduceTask(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+debug/debugAddBuildingExp	contract_default	POST	0x060011C3	debug_AddBuildingExp(? responder)	1	buildingExp,token	buildingExp,token			0	0	0	0	direct_IL_refs_only
+debug/debugCreateCharacter	contract_default	POST	0x060011C1	debugCreateCharacter(? baseId,? status,? skills,? responder)	2	baseId,skills,status,token	baseId,skills,status,token			0	0	0	0	direct_IL_refs_only
+debug/debugCreateEquip	contract_default	POST	0x060011C2	debugCreateEquip(? baseId,? status,? skills,? responder)	2	baseId,skills,status,token	baseId,skills,status,token			0	0	0	0	direct_IL_refs_only
+debug/debugCreateQuestEncount	contract_default	POST	0x0600613B|0x06001170	<>m__62(object result)|debugCreateQuestEncount(deferred callback; see emitter token)	2		info,playerId,questType,token		info,playerId,questType,token	0	0	0	1	direct_IL_refs_only
+debug/debugCreateRaidBossWork	contract_default	POST	0x06001245	debugCreateRaidBoss(? raidBossId,? responder)	0	monsterId,options,token	monsterId,options,rescue,token		rescue	0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/debugDeleteAllCharacter	contract_default	POST	0x06001161	debug_DelteAllCharacter(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+debug/debugDeleteAllEquip	contract_default	POST	0x06001162	debug_DelteAllEquip(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/debugGetQuestCompleteFlags	contract_default	POST	0x0600118A	debug_getQuestCompleteFlags(? type,? responder)	1	questType,token	questType,token			0	0	0	0	direct_IL_refs_only
+debug/debugGradeUpBuildings	contract_default	POST	0x060011C6	debug_GradeUpBuildings(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+debug/debugIncreasePlayerLevel	contract_default	POST	0x060011C5	debug_increasePlayerLevel(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+debug/debugLogin	dedicated_handler	POST	0x06001103	debugLogin(? responder)	1	username	username			0	0	1	0	direct_IL_refs_only
+debug/debugLoginCog	contract_default	POST	0x06001104	debugLoginCog(? loginId,? password,? responder)	1	loginId,password	loginId,password			0	0	1	0	direct_IL_refs_only
+debug/debugOpenQuest	contract_default	POST	0x06001191	debug_openQuest(? type,? responder)	6	questType,token	questType,token			0	0	1	0	direct_IL_refs_only
+debug/debugRankingNationalPowerAddScoreWithSwitch	contract_default	POST	0x06001283	devRankingScoreSwitch(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/debugRentalNavigatorBarelyExpiration	contract_default	POST	0x060011A2	debug_setRentalNavigatorBarelyExpiration(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/debugResetCreditStepCount	contract_default	POST	0x0600122F	debugResetBpStepCount(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/dedicate	contract_default	POST	0x06001116	debug_addDedicateScore(? score,? responder)	4	score,token	score,token			0	0	1	0	direct_IL_refs_only
+debug/devLogin	dedicated_handler	POST	0x060010FF|0x060011A7	devLogin(? userName,? responder)|devLogin(? responder)	1	platform,username	platform,username			0	0	1	1	direct_IL_refs_only
+debug/forceCompleteQuest	contract_default	POST	0x0600118E	forceCompleteQuest(? type,? questId,? responder)	0	questId,questType,token	questId,questType,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/forceFeedbackFriendOffer	contract_default	POST	0x060011DF	debug_forceFeedbackFriendOffer(? receivePlayerId,? sendPlayerId,? reply,? responder)	0	receivePlayerId,reply,sendPlayerId,token	receivePlayerId,reply,sendPlayerId,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/forceProgressGiganticChain	contract_default	POST	0x06001250	debug_ForceProgressGiganticChain(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/forceProgressGiganticPhase	contract_default	POST	0x0600124F	debug_ForceProgressGiganticPhase(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+debug/forceProgressQuest	contract_default	POST	0x0600118F	forceProgressQuest(? type,? questId,? chapter,? area,? responder)	4	area,chapter,questId,questType,token	area,chapter,questId,questType,token			0	0	0	0	direct_IL_refs_only
+debug/resetDedication	contract_default	POST	0x06001117	debug_resetDedicateScore(? responder)	1	token	token			0	0	2	0	direct_IL_refs_only
+debug/resetPlayer	contract_default	POST	0x06001185	resetPlayer(? responder)	1	isCreatePlayer,token	isCreatePlayer,token			0	0	0	0	direct_IL_refs_only
+debug/resetQuest	contract_default	POST	0x0600118D	resetQuest(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+debug/setQuestStep	contract_default	POST	0x06001195	setQuestStep(? questType,? questId,? chapterId,? areaId,? step,? responder)	1	areaId,chapterId,questId,questType,step,token	areaId,chapterId,questId,questType,step,token			0	0	0	0	direct_IL_refs_only
+debug/withdrawTurfWar	contract_default	POST	0x060011F5	debug_withdrawTurfWar(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+deck/enlargeCharacterLimit	contract_default	POST	0x0600115C	enlargeCharacterLimit(? enlargeId,? responder)	1	enlargeId,token	enlargeId,token			0	0	2	0	direct_IL_refs_only
+deck/extendCharacterStore	contract_default	POST	0x06001160	enlargeStorageLimit(? enlargeId,? responder)	1	enlargeId,token	enlargeId,token			0	0	2	4	direct_IL_refs_only
+deck/getAvatarCharacters	dedicated_handler	POST	0x06001144	getAvatarCharacters(? ids,? responder)	8	playerIds,token	playerIds,token			0	0	2	1	direct_IL_refs_only
+deck/getCharacterStoreInfo	contract_default	POST	0x0600115D	getCharacterStorageInfo(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+deck/getCharactersInStore	contract_default	POST	0x0600115E	getStorageCharacters(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+deck/getDeckBonus	contract_default	POST	0x06001148	getDeckBonus(? responder)	4	token	token			0	0	2	0	direct_IL_refs_only
+deck/getDecks	contract_default	POST	0x06001147	getDecks(? responder)	8	token	token			0	0	10	1	direct_IL_refs_only
+deck/getFormation	contract_default	POST	0x060012AD	getFormation(? atkOrdef,? responder)	0	atkOrdef,token	atkOrdef,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+deck/getProtectedCharacterIds	contract_default	POST	0x06001153	getProtectCharacters(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+deck/getProtectedEquipIds	contract_default	POST	0x06001155	getProtectEquips(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+deck/gradeUpCharacter	contract_default	POST	0x0600114F	characterGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	1	baseId,itemId,materialId,token	baseId,itemId,materialId,token			0	0	1	1	direct_IL_refs_only
+deck/gradeUpEquip	contract_default	POST	0x0600114D	equipGradeUp(? baseCharacterId,? materialId,? itemId,? responder)	1	baseId,itemId,materialId,token	baseId,itemId,materialId,token			0	0	1	1	direct_IL_refs_only
+deck/inheritCharacterSkill	contract_default	POST	0x06001157	skillAccessionCharacters(? destCharacterId,? destSlotIndex,? srcCharacterId,? srcSlotIndex,? potionId,? responder)	1	destCharacterId,destSkillSlot,potionId,srcCharacterId,srcSkillSlot,token	destCharacterId,destSkillSlot,potionId,srcCharacterId,srcSkillSlot,token			0	0	3	1	direct_IL_refs_only
+deck/powerUpCharacter	contract_default	POST	0x0600114E	characterPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	4	baseId,itemId,materialIds,token	baseId,itemId,materialIds,token			0	0	3	0	direct_IL_refs_only
+deck/powerUpEquip	contract_default	POST	0x0600114C	equipPowerUp(? baseCharacterId,? materialIds,? itemId,? responder)	1	baseId,itemId,materialIds,token	baseId,itemId,materialIds,token			0	0	3	0	direct_IL_refs_only
+deck/sellCharacters	contract_default	POST	0x06001158	sellCharacters(? characterIds,? responder)	2	characterIds,token	characterIds,token			0	0	1	0	direct_IL_refs_only
+deck/sellEquips	contract_default	POST	0x0600115A	sellEquips(? equipIds,? responder)	1	equipIds,token	equipIds,token			0	0	1	0	direct_IL_refs_only
+deck/sellTactics	contract_default	POST	0x06001159	sellTactics(? tacticsIds,? responder)	1	tactics,token	tactics,token			0	0	1	0	direct_IL_refs_only
+deck/setCharacterProtect	contract_default	POST	0x06001154	setProtectCharacters(? responder,? isProtect,? ids)	1	characterIds,enable,token	characterIds,enable,token			0	0	0	0	direct_IL_refs_only
+deck/setCharacterVoice	contract_default	POST	0x06001152	setCharacterVoice(? characterId,? voiceId,? responder)	1	characterId,token,voiceId	characterId,token,voiceId			0	0	1	0	direct_IL_refs_only
+deck/setDecks	contract_default	POST	0x06001149	setDecks(? avator,? avatorGrade,? atkDeck,? defDeck,? polDeck,? questDeck,? strategyDeck,? siegeDeck,? responder)	1	decks,token	decks,grade,id,token		grade,id	1	0	0	1	direct_IL_refs_only
+deck/setEquipProtect	contract_default	POST	0x06001156	setProtectEquips(? responder,? isProtect,? ids)	1	enable,equipIds,token	enable,equipIds,token			0	0	0	0	direct_IL_refs_only
+deck/setFormation	contract_default	POST	0x060012AE	setFormation(? formation,? atkOrDef,? responder)	0	atkOrDef,formation,token	atkOrDef,formation,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+deck/setSkillSlot	contract_default	POST	0x060012A2	setSkillSlot(? characterId,? paymentId,? responder)	1	baseId,paymentId,token	baseId,paymentId,token			0	0	3	1	direct_IL_refs_only
+deck/setSkillcoins	contract_default	POST	0x060012A1	setSkillcoins(? materialIds,? responder)	1	characterIds,token	characterIds,token			0	0	1	0	direct_IL_refs_only
+deck/transferStoreCharacters	contract_default	POST	0x0600115F	moveStorageCharacter(? toStoreIds,? toCharacterIds,? responder)	1	toCharacterIds,toStoreIds,token	token	toCharacterIds,toStoreIds		1	0	2	0	direct_IL_refs_only
+depletionmission/drawDepletionItem	contract_default	POST	0x060012AB	DrawDepletionMission(? p_responder)	1	token	token			0	0	0	1	direct_IL_refs_only
+depletionmission/exchangeDepletionPoint	contract_default	POST	0x060012AC	ExchangeDepletionPoint(? missionId,? p_responder)	1	missionId,token	missionId,token			0	0	0	0	direct_IL_refs_only
+depletionmission/getDepletionMission	contract_default	POST	0x060012AA	getDepletionMission(? p_responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+friend/building/getFriendProductsByBuilding	contract_default	POST	0x060011E7	getFriendProductsByBuilding(? playerId,? id,? responder)	0	buildingId,friendPlayerId,token	buildingId,friendPlayerId,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+friend/cancelFriendOffer	contract_default	POST	0x060011DB	cancelFriendOffer(? playerId,? responder)	1	friendPlayerId,token	friendPlayerId,token			0	0	0	1	direct_IL_refs_only
+friend/dissolutionFriend	contract_default	POST	0x060011DC	dissolutionFriend(? playerId,? responder)	2	friendPlayerId,token	friendPlayerId,token			0	0	0	2	direct_IL_refs_only
+friend/feedbackFriendOffer	contract_default	POST	0x060011DA	feedbackFriendOffer(? playerId,? reply,? responder)	2	friendPlayerId,reply,token	friendPlayerId,reply,token			0	0	1	1	direct_IL_refs_only
+friend/findFriends	contract_default	POST	0x060011DE	findFriends(? type,? conditions,? responder)	1	conditions,token,type	conditions,token,type			0	0	0	0	direct_IL_refs_only
+friend/findFriendsAndSend	contract_default	POST	0x060011E6	getFindFriendsAndSend(? sendCount,? responder)	1	friendMax,token	friendMax,token			0	0	0	1	direct_IL_refs_only
+friend/getFriendMap	contract_default	POST	0x060011E0	getFriendMap(? playerId,? responder)	0	friendPlayerId,token	friendPlayerId,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+friend/getFriendMapData	contract_default	POST	0x060011E1	getFriendMapData(? playerId,? responder)	0	friendPlayerId,token	friendPlayerId,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+friend/getFriendMapData2	contract_default	POST	0x060011E2	getFriendMapData(? playerId,? mapId,? responder)	1	friendPlayerId,mapId,token	friendPlayerId,mapId,token			0	0	16	0	direct_IL_refs_only
+friend/getFriendProfile	contract_default	POST	0x060011E5	getFriendProfile(? playerId,? forHTML,? responder)	4	forHTML,friendPlayerId,token	forHTML,friendPlayerId,token			0	0	5	6	direct_IL_refs_only
+friend/getFriends	contract_default	POST	0x060011D8	getFriends(? option,? responder)	4	option,token	option,token			0	0	0	2	direct_IL_refs_only
+friend/getVisitFriendLogs	contract_default	POST	0x060011E4	getVisitFriendLogs(? responder)	2	token	token			0	0	0	0	direct_IL_refs_only
+friend/sendFriendOffer	contract_default	POST	0x060011D9	sendFriendOffer(? playerId,? responder)	2	friendPlayerId,token	friendPlayerId,token			0	0	0	2	direct_IL_refs_only
+friend/setGuestMap	contract_default	POST	0x060011BB	setGuestMap(? mapId,? responder)	1	mapId,token	mapId,token			0	0	0	0	direct_IL_refs_only
+friend/task/accelerateFriendProduceTask	contract_default	POST	0x060011E9	accelerateFriendProduceTask(? playerId,? mapid,? id,? accelId,? responder)	1	buildingId,friendPlayerId,id,mapId,token	buildingId,friendPlayerId,id,mapId,token			0	0	4	0	direct_IL_refs_only
+friend/task/completeFriendTasks	contract_default	POST	0x060011E8	completeFriendTask(? playerId,? mapid,? id,? responder)	1	buildingId,friendPlayerId,mapId,token	buildingId,friendPlayerId,mapId,token			0	0	4	0	direct_IL_refs_only
+friend/updateFriendData	contract_default	POST	0x060011DD	updateFriendData(? responder)	3	token	token			0	0	0	1	direct_IL_refs_only
+friend/visitFriendMap	contract_default	POST	0x060011E3	visitFriendMap(? playerId,? responder)	1	friendPlayerId,token	friendPlayerId,token			0	0	12	0	direct_IL_refs_only
+giganticRaidBoss/entryGiganticRaidBoss	contract_default	POST	0x0600124C	entryGiganticRaidBoss(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+giganticRaidBoss/getGiganticRaidBossBattleResult	contract_default	POST	0x06001168	getGiganticRaidBossBattleResult(? responder)	1	token	token			0	0	0	1	direct_IL_refs_only
+giganticRaidBoss/getGiganticRaidBossEventResult	contract_default	POST	0x06001169|0x0600116A	getGiganticRaidBossEventResult(? responder)|getGiganticRaidBossEventResultLog(? responder)	2	term,token	term,token			0	0	31	0	direct_IL_refs_only
+giganticRaidBoss/getGiganticRaidBossInformation	contract_default	POST	0x0600124B	getGiganticRaidBossInfo(? responder)	3	buildingTypeId,difficulty,token	buildingTypeId,difficulty,token			0	0	14	0	direct_IL_refs_only
+inbox/getParcels	contract_default	POST	0x06001230	getParcels(? start,? end,? responder)	2	end,start,token	end,start,token			0	0	4	0	direct_IL_refs_only
+inbox/resolveParcels	contract_default	POST	0x06001231	resolveParcels(? responses,? responder)	3	responses,token	responses,token			0	0	3	0	direct_IL_refs_only
+invitation/getMyCode	contract_default	POST	0x060011A5	getMyInvitationCode(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+invitation/getPlayer	contract_default	POST	0x060011A4	registerInvitationCode(? invitationCode,? responder)	1	code,token	code,token			0	0	1	0	direct_IL_refs_only
+mailbox/deleteMails	contract_default	POST	0x06001229	deleteMails(? status,? mailIds,? responder)	1	mailIds,status,token	mailIds,status,token			0	0	0	0	direct_IL_refs_only
+mailbox/getMailBody	contract_default	POST	0x06001228	getMailBody(? status,? mailId,? responder)	1	mailId,status,token	mailId,status,token			0	0	0	2	direct_IL_refs_only
+mailbox/getMailHeaders	contract_default	POST	0x06001227	getMailHeaders(? status,? start,? end,? responder)	3	end,start,status,token	end,start,status,token			0	0	0	3	direct_IL_refs_only
+mailbox/sendMails	contract_default	POST	0x06001226	sendMails(? tos,? subject,? body,? responder)	2	body,subject,to,token	body,subject,to,token			0	0	0	7	direct_IL_refs_only
+navigator/activateNavigator	contract_default	POST	0x0600119E	activateNavigator(? navigatorId,? colorIndex,? responder)	1	colorIndex,navigatorId,token	colorIndex,navigatorId,token			0	0	0	0	direct_IL_refs_only
+navigator/getNavigatorDetails	contract_default	POST	0x060011A0	getNavigatorDetails(? navigatorId,? responder)	1	navigatorId,token	navigatorId,token			0	0	0	0	direct_IL_refs_only
+navigator/getNavigators	contract_default	POST	0x0600119D	getNavigators(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+navigator/getUsableNavigators	contract_default	POST	0x0600119F	getUsableNavigators(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+navigator/hireNavigator	contract_default	POST	0x060011A1	hireNavigator(? navigatorId,? colorIndex,? responder)	1	colorIndex,navigatorId,token	colorIndex,navigatorId,token			0	0	0	1	direct_IL_refs_only
+netCafe/exchangeNpoint	contract_default	POST	0x06001273	exchangeNetCafeNpoint(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+plugin/addPluginLog	contract_default	POST	0x060012A8	addPluginLog(? logdata,? p_responder)	1	logdata,token	logdata,token			0	1	0	0	direct_IL_refs_only
+plugin/buyPluginTime	contract_default	POST	0x060012A9	buyPluginTime(? pluginId,? p_responder)	2	pluginId,token	pluginId,token			0	1	2	0	direct_IL_refs_only
+plugin/getPluginData	contract_default	POST	0x060012A5	getPluginData(? p_responder)	3	token	token			0	1	2	0	direct_IL_refs_only
+plugin/getPluginLog	contract_default	POST	0x060012A7	getPluginLog(? p_responder)	1	token	token			0	1	4	0	direct_IL_refs_only
+plugin/setPluginData	contract_default	POST	0x060012A6	setPluginData(? pluginSetting,? p_responder)	1	pluginSetting,token	pluginSetting,token			0	1	0	0	direct_IL_refs_only
+politic/boosterPack/buy	contract_default	POST	0x0600122D	buy(? boosterPackId,? count,? price,? responder)	1	boosterPackId,cost,quantity,token	boosterPackId,cost,quantity,token			0	0	0	1	direct_IL_refs_only
+politic/boosterPack/buyWithItem	contract_default	POST	0x0600122E	buyWithItem(? boosterPackId,? count,? useItemId,? responder)	1	boosterPackId,quantity,token,useItemId	boosterPackId,quantity,token,useItemId			0	0	0	1	direct_IL_refs_only
+politic/boosterPack/getRemains	contract_default	POST	0x0600122C	getRemains(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+politic/building/conflateBuilding	contract_default	POST	0x0600113A	conflateBuilding(? firstId,? secondId,? responder)	1	first,second,token	first,second,token			0	0	2	0	direct_IL_refs_only
+politic/building/deployBuilding	contract_default	POST	0x06001123	deployMapBuilding(? id,? x,? y,? responder)	1	buildingId,originCoord,token	buildingId,originCoord,token			0	0	4	0	direct_IL_refs_only
+politic/building/getBuildCounts	dedicated_handler	POST	0x06001182	getBuildCounts(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+politic/building/getBuildingFabrics	contract_default	POST	0x060011AA	getBuildingFabrics(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/building/getBuildingLevels	contract_default	POST	0x06001183	getBuildingLevels(? buildingList,? responder)	0	buildingId,token	buildingId,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/building/getBuildings	contract_default	POST	0x06001120	getMapBuildings(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/building/getDrafts	dedicated_handler	POST	0x06001121	getMapDrafts(? responder)	4	token	token			0	0	0	0	direct_IL_refs_only
+politic/building/getHarvestCounts	contract_default	POST	0x06001184	getHarvestCounts(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/building/getProductsByBuilding	contract_default	POST	0x06001138	getProductsByBuilding(? id,? responder)	2	buildingId,token	buildingId,token			0	0	1	0	direct_IL_refs_only
+politic/building/levelUpBuilding	contract_default	POST	0x06001135	levelUpBuilding(? id,? responder)	1	buildingId,token	buildingId,token			0	0	3	0	direct_IL_refs_only
+politic/building/levelUpBuildingCollectively	contract_default	POST	0x06001137	levelUpBuildingCollectively(? buildingIds,? levelUpTimes,? responder)	1	buildingIds,levelUpTimes,token	buildingIds,levelUpTimes,token			0	0	5	0	direct_IL_refs_only
+politic/building/levelUpBuildings	contract_default	POST	0x06001136	levelUpBuildings(? BuildIds,? responder)	2	buildingIds,token	buildingIds,token			0	0	2	1	direct_IL_refs_only
+politic/building/putInBuildings	contract_default	POST	0x06001122	putMapBuildings(? ids,? responder)	2	buildingIds,token	buildingIds,token			0	0	1	0	direct_IL_refs_only
+politic/building/raiseBuildingEventOfBattle	contract_default	POST	0x06001125	raiseBuildingEventOfBattle(? responder)	1	token	token			0	0	12	0	direct_IL_refs_only
+politic/building/resolveBuildingEvent	contract_default	POST	0x06001124	resolveBuilding(? id,? responder)	2	buildingId,token	buildingId,token			0	0	1	0	direct_IL_refs_only
+politic/edict/changeState	contract_default	POST	0x06001180	changeEdictMissionState(? missionList,? stateList,? responder)	2	missionIds,states,token	missionIds,states,token			0	0	3	0	direct_IL_refs_only
+politic/edict/getMissionsInProgress	contract_default	POST	0x0600117F	getEdictMissionsInProgress(? responder)	2	token	token			0	0	1	0	direct_IL_refs_only
+politic/edict/raiseMission	contract_default	POST	0x0600117E	raiseEdictMission(? responder)	2	token	token			0	0	3	0	direct_IL_refs_only
+politic/edict/setWorkingValue	contract_default	POST	0x06001181	setEdictMissionWorkingValue(? missionId,? indexes,? values,? responder)	0	indexes,missionId,token,values	indexes,missionId,token,values			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/errantry/call3	contract_default	POST	0x06001235	callErrantry(? mapId,? responder)	1	mapId,token	mapId,token			0	0	0	0	direct_IL_refs_only
+politic/errantry/getStatus3	contract_default	POST	0x06001236	getStatusAllErrantry(? responder)	2	token	token			0	0	3	0	direct_IL_refs_only
+politic/errantry/receive3	contract_default	POST	0x06001234	recieveErrantry(? mapId,? responder)	2	mapId,token	mapId,token			0	0	3	0	direct_IL_refs_only
+politic/errantry/send3	contract_default	POST	0x06001233	sendErrantry(? mapId,? buildingId,? errantryId,? responder)	2	buildingId,errantryId,mapId,token	buildingId,errantryId,mapId,token			0	0	0	0	direct_IL_refs_only
+politic/fixMapProduct	contract_default	POST	0x0600127E	fixMapProduct(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+politic/kokugi/addPoint	contract_default	POST	0x06001239	addKokugiPoint(? addPoint,? responder)	0	addPoint,token	addPoint,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/kokugi/develop	contract_default	POST	0x06001237	develop(? kokugiId,? usePoint,? responder)	1	kokugiId,token,usePoint	kokugiId,token,usePoint			0	0	0	2	direct_IL_refs_only
+politic/kokugi/getStatus	contract_default	POST	0x06001238	getStatus(? responder)	2	token	token			0	0	0	3	direct_IL_refs_only
+politic/lottery/getSouls	contract_default	POST	0x0600122A	getSouls(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+politic/lottery/lot	contract_default	POST	0x0600122B	lot(? lotteryId,? count,? log,? responder)	1	enableLog,lotteryId,times,token	enableLog,lotteryId,times,token			0	0	5	0	direct_IL_refs_only
+politic/map/cleanup	contract_default	POST	0x06001274	cleanupUserData(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+politic/map/getBackgrounds	contract_default	POST	0x060011BC	getBackgrounds(? responder)	1	token	token			0	0	2	0	direct_IL_refs_only
+politic/map/getMap	contract_default	POST	0x0600111B	getMap(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/map/getMapData	dedicated_handler	POST	0x0600111F	getMapData(? responder)	3	assets,token	assets,token			0	0	7	0	direct_IL_refs_only
+politic/map/relocateEnded	contract_default	POST	0x06001139	relocateBuildings(? table,? responder)	1	relocatedGrids,token	relocatedGrids,token			0	0	0	0	direct_IL_refs_only
+politic/map/setBackground	contract_default	POST	0x060011BD	setBackground(? mapId,? nearGround,? farGround,? responder)	1	farGround,mapId,nearGround,token	farGround,mapId,nearGround,token			0	0	0	0	direct_IL_refs_only
+politic/map/setMapName	contract_default	POST	0x0600111C	setMapName(? name,? responder)	0	mapName,token	mapName,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/map/setMapName2	contract_default	POST	0x0600111D	setMapName(? mapId,? name,? responder)	1	mapId,mapName,token	mapId,mapName,token			0	0	1	0	direct_IL_refs_only
+politic/map/switchMap	contract_default	POST	0x0600111E	switchMap(? mapId,? responder)	6	mapId,token	mapId,token			0	0	0	0	direct_IL_refs_only
+politic/mission/changeState	dedicated_handler	POST	0x0600117B|0x0600117C	changePoliticMissionState(? missionId,? state,? responder)|changePoliticMissionState(? missionList,? stateList,? responder)	1	missionId,missionIds,state,states,token	missionId,missionIds,state,states,token			0	0	3	0	direct_IL_refs_only
+politic/mission/getMissionsInProgress	dedicated_handler	POST	0x0600117A	getPoliticMissionsInProgress(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+politic/mission/getStatesFromAllMissions	dedicated_handler	POST	0x06001179	getStatesFromAllPoliticMissions(? responder)	2	token	token			0	0	2	0	direct_IL_refs_only
+politic/mission/setWorkingValue	dedicated_handler	POST	0x0600117D	setPoliticMissionWorkingValue(? missionId,? indexes,? values,? responder)	1	indexes,missionId,token,values	indexes,missionId,token,values			0	0	0	0	direct_IL_refs_only
+politic/mypage/claimReward	contract_default	POST	0x0600129C	claimReward(? p_rewardId,? p_responder)	1	reward,token	reward,token			0	0	0	0	direct_IL_refs_only
+politic/mypage/getArtifactSeries	contract_default	POST	0x060011AF	getArtifactSeries(? category,? page,? seriesMax,? responder)	1	category,page,seriesMax,token	category,page,seriesMax,token			0	0	1	1	direct_IL_refs_only
+politic/mypage/getArtifactSeriesReward	contract_default	POST	0x060011B0	getArtifactSeriesReward(? seriesId,? responder)	1	seriesId,token	seriesId,token			0	0	3	0	direct_IL_refs_only
+politic/mypage/getCharacterCollection	contract_default	POST	0x060011B6	getCharacterCollection(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+politic/mypage/getCredit2Logs	contract_default	POST	0x060011B8	getCredit2Logs(? startIndex,? endIndex,? responder)	0	end,start,token	end,start,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/mypage/getCreditLogs	contract_default	POST	0x060011B7	getCreditLogs(? startIndex,? endIndex,? responder)	1	end,start,token	end,start,token			0	0	1	0	direct_IL_refs_only
+politic/mypage/getEventcodeLogs	contract_default	POST	0x060011BA	getEventcodeLogs(? start,? end,? responder)	1	end,start,token	end,start,token			0	0	1	0	direct_IL_refs_only
+politic/mypage/getJewelSeries	contract_default	POST	0x060011AD	getJewelSeries(? category,? page,? seriesMax,? responder)	1	category,page,seriesMax,token	category,page,seriesMax,token			0	0	1	1	direct_IL_refs_only
+politic/mypage/getJewelSeriesReward	contract_default	POST	0x060011AE	getJewelSeriesReward(? seriesId,? responder)	1	seriesId,token	seriesId,token			0	0	3	0	direct_IL_refs_only
+politic/mypage/getLessonStates	contract_default	POST	0x06001284	getLessonStates(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+politic/mypage/getMigratePlanCountryStatus	contract_default	POST	0x06001280	getMigratePlanCountryStatus(? planId,? responder)	1	migratePlan,token	migratePlan,token			0	0	1	1	direct_IL_refs_only
+politic/mypage/getMigratePlansStatus	contract_default	POST	0x0600127F	getMigratePlanStatus(? responder)	1	token	token			0	0	2	0	direct_IL_refs_only
+politic/mypage/getNineGridInfo	contract_default	POST	0x0600129A	getNineGridInfo(? p_responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+politic/mypage/getPlayerProfile	contract_default	POST	0x060011AB	getPlayerProfile(? responder)	2	token	token			0	0	14	0	direct_IL_refs_only
+politic/mypage/getPlayerRecords	contract_default	POST	0x060011B2	getPlayerRecords(? responder)	1	token	token			0	0	5	0	direct_IL_refs_only
+politic/mypage/migrate	contract_default	POST	0x06001281	migrate(? countryId,? navigatorId,? colorIndex,? planId,? responder)	1	colorIndex,countryId,migrateKey,migratePlan,navigatorId,token	colorIndex,countryId,migrateKey,migratePlan,navigatorId,token			0	0	0	0	direct_IL_refs_only
+politic/mypage/playNineGridGacha	contract_default	POST	0x0600129B	playGacha(? p_responder)	1	token	token			0	0	0	1	direct_IL_refs_only
+politic/mypage/setSelfIntroduction	contract_default	POST	0x060011AC	setSelfIntroduction(? message,? habits,? responder)	1	habits,message,token	habits,message,token			0	0	1	0	direct_IL_refs_only
+politic/mypage/takeLesson	contract_default	POST	0x06001285	takeLesson(? lessonId,? responder)	1	lessonId,token	lessonId,token			0	0	2	0	direct_IL_refs_only
+politic/mypage/useEventcode	contract_default	POST	0x060011B9	useEventcode(? eventcode,? responder)	1	eventcode,token	eventcode,token			0	0	1	0	direct_IL_refs_only
+politic/shop/buyBackgroundItem	contract_default	POST	0x06001143	buyBackgroundItem(? shopBgItemId,? responder)	1	shopItemId,token	shopItemId,token			0	0	1	0	direct_IL_refs_only
+politic/shop/buyShopItem	contract_default	POST	0x0600113E	buyShopItem(? shopItemId,? index,? quantity,? tablename,? responder)	4	index,quantity,shopItemId,storetable,token	index,quantity,shopItemId,storetable,token			0	0	2	3	direct_IL_refs_only
+politic/shop/buyShopItemCredit	contract_default	POST	0x0600113D	buyShopItemCredit(? shopItemId,? index,? quantity,? tablename,? responder)	0	index,quantity,shopItemId,storetable,token	index,quantity,shopItemId,storetable,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/shop/buyShopItemFromNationalPower	contract_default	POST	0x06001141	buyShopItemFromNationalPower(? shopItemId,? index,? quantity,? responder)	1	index,quantity,shopItemId,token	index,quantity,shopItemId,token			0	0	1	3	direct_IL_refs_only
+politic/shop/getBackgroundItems	contract_default	POST	0x06001142	getBackgroundItems(? category,? responder)	1	category,token	category,token			0	0	1	0	direct_IL_refs_only
+politic/shop/getShopItems	contract_default	POST	0x0600113B	getShopItems(? category,? responder)	4	category,token	category,token			0	0	1	1	direct_IL_refs_only
+politic/shop/getShopItemsCredit	contract_default	POST	0x0600113C	getShopItemsCredit(? category,? responder)	0	category,token	category,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/shop/getShopItemsFromNationalPower	contract_default	POST	0x06001140	getShopItemsFromNationalPower(? responder)	1	token	token			0	0	1	1	direct_IL_refs_only
+politic/shop/sellBuildings	contract_default	POST	0x0600113F	sellBuildings(? ids,? responder)	1	buildingIds,token	buildingIds,token			0	0	1	1	direct_IL_refs_only
+politic/support_item/getPotions	contract_default	POST	0x060011A8	getPotions(? responder)	7	token	token			0	0	8	0	direct_IL_refs_only
+politic/support_item/useDopingItem	contract_default	POST	0x06001151	useDopingItemForCharacter(? potionId,? amount,? characterId,? responder)	1	characterId,count,potionId,token	characterId,count,potionId,token			0	0	1	0	direct_IL_refs_only
+politic/support_item/useDopingRemoveItem	contract_default	POST	0x0600115B	useDopingRemoveItemForCharacter(? potionId,? characterId,? responder)	1	characterId,potionId,token	characterId,potionId,token			0	0	1	2	direct_IL_refs_only
+politic/support_item/usePotions	contract_default	POST	0x060011A9	usePotion(? potionId,? quantity,? responder)	8	potionId,quantity,token	potionId,quantity,token			0	0	2	0	direct_IL_refs_only
+politic/support_item/useSkillPotion	contract_default	POST	0x06001150	useDopingSkillItemForCharacter(? potionId,? amount,? skillIndex,? characterId,? responder)	1	characterId,count,potionId,slot,token	characterId,count,potionId,slot,token			0	0	1	0	direct_IL_refs_only
+politic/task/accelerateProduceTask	contract_default	POST	0x06001133	accelerateProduceTask(? id,? accelId,? accelCount,? responder)	1	buildingId,count,id,token	buildingId,count,id,token			0	0	1	1	direct_IL_refs_only
+politic/task/cancelTasks	contract_default	POST	0x06001129|0x0600112A	cancelTask(? id,? responder)|cancelTasks(? ary,? responder)	1	buildingIds,token	buildingIds,token			0	0	0	0	direct_IL_refs_only
+politic/task/completeTasks	dedicated_handler	POST	0x06001127|0x06001128	completeTask(? id,? responder)|completeTasks(? ary,? responder)	4	buildingIds,token	buildingIds,token			0	0	4	0	direct_IL_refs_only
+politic/task/getTasksInCurrentMap	contract_default	POST	0x06001126	getMapTasks(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/task/progressBuildTask	dedicated_handler	POST	0x06001132	progressBuildTask(? id,? responder)	1	buildingId,token	buildingId,token			0	0	0	0	direct_IL_refs_only
+politic/task/submitBuildAndComplete	dedicated_handler	POST	0x0600112C	submitBuildAndComplete(? id,? x,? y,? responder)	1	draftId,originCoord,token	draftId,originCoord,token			0	0	4	1	direct_IL_refs_only
+politic/task/submitBuildTask	dedicated_handler	POST	0x0600112B	sumbitBuildTask(? id,? x,? y,? responder)	1	draftId,originCoord,token	draftId,originCoord,token			0	0	3	1	direct_IL_refs_only
+politic/task/submitBulkBuildAndComplete	contract_default	POST	0x0600112F	submitBulkBuildAndComplete(? id,? coords,? responder)	1	draftId,originCoords,token	draftId,originCoords,token			0	0	6	0	direct_IL_refs_only
+politic/task/submitBulkProduceTasks	contract_default	POST	0x06001131	submitBulkProduceTasks(? buildingIds,? productIds,? responder)	3	buildingIds,productIds,token	buildingIds,productIds,token			0	0	1	0	direct_IL_refs_only
+politic/task/submitProduceTask	contract_default	POST	0x06001130	sumbitProduceTask(? id,? action,? responder)	1	buildingId,productId,token	buildingId,productId,token			0	0	0	0	direct_IL_refs_only
+politic/task/submitSerialBuildAndComplete	contract_default	POST	0x0600112E	submitSerialBuildAndComplete(? id,? coords,? responder)	1	draftId,originCoords,token	draftId,originCoords,token			0	0	4	3	direct_IL_refs_only
+politic/task/submitSerialBuildTask	contract_default	POST	0x0600112D	sumbitSerialBuildTask(? id,? coords,? responder)	0	draftId,originCoords,token	draftId,originCoords,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+politic/waterborneTrade/call	contract_default	POST	0x0600123F	callWaterTrade(? mapId,? buildingId,? responder)	1	buildingId,mapId,token	buildingId,mapId,token			0	0	0	0	direct_IL_refs_only
+politic/waterborneTrade/getFleet	contract_default	POST	0x0600123A	getFleetWaterTrade(? mapId,? buildingId,? responder)	1	buildingId,mapId,token	buildingId,mapId,token			0	0	0	0	direct_IL_refs_only
+politic/waterborneTrade/getFriendTraders	contract_default	POST	0x0600123B	getFriendsWaterTrade(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+politic/waterborneTrade/getStatus	contract_default	POST	0x06001240	getStatusAllWaterTrade(? responder)	1	token	token			0	0	3	0	direct_IL_refs_only
+politic/waterborneTrade/receive	contract_default	POST	0x0600123E	recieveWaterTrade(? mapId,? buildingId,? responder)	1	buildingId,mapId,token	buildingId,mapId,token			0	0	4	0	direct_IL_refs_only
+politic/waterborneTrade/send	contract_default	POST	0x0600123C	sendWaterTrade(? mapId,? buildingId,? tradeId,? responder)	1	buildingId,mapId,token,tradeId	buildingId,mapId,token,tradeId			0	0	0	0	direct_IL_refs_only
+politic/waterborneTrade/sendWithFriends	contract_default	POST	0x0600123D	sendWaterTradeWithFriends(? mapId,? buildingId,? tradeId,? friends,? responder)	1	buildingId,friendIds,mapId,token,tradeId	buildingId,friendIds,mapId,token,tradeId			0	0	0	0	direct_IL_refs_only
+quest/checkCompleteQuestEx	contract_default	POST	0x06001187	checkCompleteQuest(? type,? questId,? chapterId,? areaId,? responder)	4	areaId,chapterId,questId,questType,token	areaId,chapterId,questId,questType,token			0	0	5	0	direct_IL_refs_only
+quest/checkEmergencyQuest	contract_default	POST	0x06001199	getEmergencyQuestTimes(? responder)	1	questType,token	questType,token			0	0	0	0	direct_IL_refs_only
+quest/clearObstacle	contract_default	POST	0x06001198	clearObstacle(? questType,? questId,? chapterId,? areaId,? responder)	2	areaId,chapterId,questId,questType,token	areaId,chapterId,questId,questType,token			0	0	3	0	direct_IL_refs_only
+quest/executeQuestEx	contract_default	POST	0x06001186	executeQuest(? type,? questId,? chapterId,? areaId,? responder)	4	areaId,assets,chapterId,questId,questType,token	areaId,assets,chapterId,questId,questType,token			0	0	2	0	direct_IL_refs_only
+quest/executeQuestEx2	contract_default	POST	0x0600119B	executeQuestEx2(? type,? questId,? chapterId,? areaId,? responder)	0	areaId,assets,chapterId,questId,questType,token	areaId,assets,chapterId,questId,questType,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+quest/getAutoStep	contract_default	POST	0x0600119C	getAutoStep(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+quest/getChapterData	contract_default	POST	0x0600118C	getQuestChapterData(? type,? questId,? chapterId,? responder)	4	chapterId,questId,questType,token	chapterId,questId,questType,token			0	0	4	0	direct_IL_refs_only
+quest/getQuestBossPunish	contract_default	POST	0x06001196	getQuestBossPunish(? questType,? questId,? chapterId,? areaId,? step,? responder)	1	areaId,chapterId,questId,questType,step,token	areaId,chapterId,questId,questType,step,token			0	0	1	0	direct_IL_refs_only
+quest/getQuestCompleteFlags	contract_default	POST	0x06001189	getQuestCompleteFlags(? type,? responder)	3	questType,token	questType,token			0	0	5	0	direct_IL_refs_only
+quest/getQuestEncount	contract_default	POST	0x06001192	getQuestEncount(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+quest/getQuestEncountWorks	contract_default	POST	0x06001193	getQuestEncountWorks(? questType,? questId,? responder)	1	questId,questType,token	questId,questType,token			0	0	1	0	direct_IL_refs_only
+quest/getQuestProgress	contract_default	POST	0x06001188	getQuestProgress(? responder)	7	token	token			0	0	7	0	direct_IL_refs_only
+quest/getQuestRewardOpenFlags	contract_default	POST	0x0600118B	getQuestRewardOpenFlags(? type,? questId,? responder)	1	questId,questType,token	questId,questType,token			0	0	0	0	direct_IL_refs_only
+quest/getRandomQuestRanking	contract_default	POST	0x06001197	getRandomQuestRanking(? responder)	1	token	token			0	0	2	0	direct_IL_refs_only
+quest/openQuest	contract_default	POST	0x06001190	openQuest(? type,? responder)	5	questType,token	questType,token			0	0	3	0	direct_IL_refs_only
+quest/openTreasureBox	contract_default	POST	0x06001194	openTreasureBox(? isUseKey,? treasureId,? keyItemId,? useCount,? responder)	3	token,treasureId,useItem	token,treasureId,useItem			1	1	3	0	direct_IL_refs_only
+quest/useSoulToStep	contract_default	POST	0x0600119A	getOnikujiGoStep(? lotteryId,? questType,? responder)	0	lotteryId,questType,token	lotteryId,questType,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+ranking/getBriefOfBattle	contract_default	POST	0x06001205	getBriefOfBattle(? responder)	2	token	token			0	0	2	3	direct_IL_refs_only
+ranking/getBriefOfBattleDaily	contract_default	POST	0x06001206	getBriefOfBattleDaily(? responder)	2	token	token			0	0	2	3	direct_IL_refs_only
+ranking/getBriefOfBrawn	contract_default	POST	0x06001219	getBriefOfBrawn(? responder)	2	token	token			0	0	2	3	direct_IL_refs_only
+ranking/getBriefOfCountriesInGiganticRaidBoss	contract_default	POST	0x06001200	getBriefOfCountriesInGiganticRaidBoss(? responder)	1	token	token			0	0	1	1	direct_IL_refs_only
+ranking/getBriefOfCountryBattle	contract_default	POST	0x06001202	getBriefOfCountryBattle(? responder)	1	token	token			0	0	2	1	direct_IL_refs_only
+ranking/getBriefOfDedication	contract_default	POST	0x06001215	getBriefOfDedication(? responder)	2	token	token			0	0	2	3	direct_IL_refs_only
+ranking/getBriefOfDedicationMonthly	contract_default	POST	0x06001216	getBriefOfDedicationMonthly(? responder)	2	token	token			0	0	1	2	direct_IL_refs_only
+ranking/getBriefOfGiganticRaidBoss	contract_default	POST	0x060011FD	getBriefOfGiganticRaidBoss(? responder)	1	token	token			0	0	1	1	direct_IL_refs_only
+ranking/getBriefOfGiganticRaidBossDaily	contract_default	POST	0x060011FF	getBriefOfGiganticRaidBossDaily(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+ranking/getBriefOfKokudaka	contract_default	POST	0x06001207	getBriefOfKokudaka(? responder)	2	token	token			0	0	1	2	direct_IL_refs_only
+ranking/getBriefOfMaxDamageInGiganticRaidBoss	contract_default	POST	0x060011FE	getBriefOfMaxDamageInGiganticRaidBoss(? responder)	1	token	token			0	0	1	1	direct_IL_refs_only
+ranking/getBriefOfNationalPower	contract_default	POST	0x06001213	getBriefOfNationalPower(? responder)	1	token	token			0	0	1	1	direct_IL_refs_only
+ranking/getBriefOfNationalRanking	contract_default	POST	0x06001204	getBriefOfNationalRanking(? rankingGroup,? rankingPeriod,? responder)	4	rankingGroup,rankingPeriod,token	rankingGroup,rankingPeriod,token			0	0	1	3	direct_IL_refs_only
+ranking/getBriefOfRaidBoss	contract_default	POST	0x060011FB	getBriefOfRaidBoss(? responder)	2	token	token			0	0	2	3	direct_IL_refs_only
+ranking/getBriefOfRaidBossDaily	contract_default	POST	0x060011FC	getBriefOfRaidBossDaily(? responder)	3	token	token			0	0	2	4	direct_IL_refs_only
+ranking/getBriefOfRaidBossNational	contract_default	POST	0x06001203	getBriefOfRaidBossNational(? responder)	2	token	token			0	0	1	3	direct_IL_refs_only
+ranking/getBriefOfRandomQuest	contract_default	POST	0x0600121B	getBriefOfRandomQuest(? responder)	2	token	token			0	0	2	3	direct_IL_refs_only
+ranking/getBriefOfSiege	contract_default	POST	0x0600121D	getBriefOfSiege(? role,? responder)	3	role,token	role,token			0	0	2	3	direct_IL_refs_only
+ranking/getBriefOfStrategy	contract_default	POST	0x0600121F	getBriefOfStrategy(? battlefield,? team,? action,? responder)	0	action,battlefield,team,token	action,battlefield,team,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+ranking/getBriefOfTurfWar	contract_default	POST	0x06001223	getBriefOfTurfWar(? battlefield,? team,? responder)	1	battlefield,team,token	battlefield,team,token			0	0	0	0	direct_IL_refs_only
+ranking/getBriefOfTurfWarDaily	contract_default	POST	0x06001225	getBriefOfTurfWarDaily(? battlefield,? team,? responder)	1	battlefield,team,token	battlefield,team,token			0	0	0	0	direct_IL_refs_only
+ranking/getDailyRankersAroundMeInTurfWar	contract_default	POST	0x060011FA	getDailyRankersAroundMeInTurfWar(? team,? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+ranking/getDailyRankersInBattle	contract_default	POST	0x06001209	getDailyRankersInBattle(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getDailyRankersInRaidBoss	contract_default	POST	0x0600120C	getDailyRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getDailyRankersInTurfWar	contract_default	POST	0x06001224	getDailyRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	3	battlefield,endIndex,startIndex,team,term,token	battlefield,endIndex,startIndex,team,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getDailyTopRankersInTurfWar	contract_default	POST	0x060011F9	getDailyTopRankersInTurfWar(? battlefieldId,? team,? responder)	0	battlefield,team,token	battlefield,team,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+ranking/getMonthlyRankersInDedication	contract_default	POST	0x06001218	getMonthlyRankersInDedication(? term,? startIndex,? endIndex,? responder)	2	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	0	direct_IL_refs_only
+ranking/getMyRankInTurfWar	contract_default	POST	0x06001201	getMyRankInTurfWar(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+ranking/getRankersAroundMeInTurfWar	contract_default	POST	0x060011F8	getRankersAroundMeInTurfWar(? battlefieldId,? responder)	0	battlefield,token	battlefield,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+ranking/getRankersInBattle	contract_default	POST	0x06001208	getRankersInBattle(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInBrawn	contract_default	POST	0x0600121A	getRankersInBrawn(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInDedication	contract_default	POST	0x06001217	getRankersInDedication(? term,? startIndex,? endIndex,? responder)	4	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInGiganticRaidBoss	contract_default	POST	0x06001210	getRankersInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInKokudaka	contract_default	POST	0x0600120A	getRankersInKokudaka(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInNationalPower	contract_default	POST	0x06001214	getRankersInNationalPower(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	2	7	direct_IL_refs_only
+ranking/getRankersInNationalRanking	contract_default	POST	0x0600120E|0x0600120F	getRankersInNationalRanking(? rankingGroup,? term,? startIndex,? stopIndex,? responder)|getWeeklyRankersInNationalRanking(? rankingGroup,? term,? week,? startIndex,? stopIndex,? responder)	6	rankingGroup,rankingPeriod,startIndex,stopIndex,term,token	rankingGroup,rankingPeriod,startIndex,stopIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInRaidBoss	contract_default	POST	0x0600120B	getRankersInRaidBoss(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInRaidBossNational	contract_default	POST	0x0600120D	getRankersInRaidBossNational(? term,? startIndex,? stopIndex,? responder)	3	startIndex,stopIndex,term,token	startIndex,stopIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInRandomQuest	contract_default	POST	0x0600121C	getRankersInRandomQuest(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInSiege	contract_default	POST	0x0600121E	getRankersInSiege(? term,? role,? startIndex,? endIndex,? responder)	3	endIndex,role,startIndex,term,token	endIndex,role,startIndex,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInStrategy	contract_default	POST	0x06001220	getRankersInStrategy(? term,? battlefield,? teamcode,? action,? startIndex,? endIndex,? responder)	5	action,battlefield,endIndex,startIndex,team,term,token	action,battlefield,endIndex,startIndex,team,term,token			0	0	2	4	direct_IL_refs_only
+ranking/getRankersInStrategyForMypage	contract_default	POST	0x06001221	getRankersInStrategyForMypage(? action,? startIndex,? endIndex,? responder)	5	action,endIndex,startIndex,token	action,endIndex,startIndex,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersInStrategyPie	contract_default	POST	0x060011F7	getRankersInStrategyPie(? term,? startIndex,? endIndex,? responder)	2	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	2	10	direct_IL_refs_only
+ranking/getRankersInTurfWar	contract_default	POST	0x06001222	getRankersInTurfWar(? term,? battlefield,? team,? startIndex,? endIndex,? responder)	3	battlefield,endIndex,startIndex,team,term,token	battlefield,endIndex,startIndex,team,term,token			0	0	0	1	direct_IL_refs_only
+ranking/getRankersOfCountriesInGiganticRaidBoss	contract_default	POST	0x06001211	getRankersOfCountriesInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	3	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	3	12	direct_IL_refs_only
+ranking/getRankersOfMaxDamageInGiganticRaidBoss	contract_default	POST	0x06001212	getRankersOfMaxDamageInGiganticRaidBoss(? term,? startIndex,? endIndex,? responder)	6	endIndex,startIndex,term,token	endIndex,startIndex,term,token			0	0	2	4	direct_IL_refs_only
+ranking/getRankingOfCountriesInBattle	contract_default	POST	0x060011F6	getRankingOfCountriesInBattle(? term,? responder)	2	term,token	term,token			0	0	2	8	direct_IL_refs_only
+ranking/getRecordOfCountryInBattle	contract_default	POST	0x060011F4	getRecordOfCountryInBattle(? responder)	2	token	token			0	0	2	0	direct_IL_refs_only
+ranking/getTopRankersInTurfWar	contract_default	POST	0x060011F3	getTurfWarTopRankers(? battlefield,? team,? index,? responder)	1	battlefield,team,token	battlefield,team,token			0	0	2	1	direct_IL_refs_only
+siege/discharge	contract_default	POST	0x06001279	siegeDischarge(? responder)	2	token	token			0	0	13	0	direct_IL_refs_only
+siege/enter	contract_default	POST	0x06001276	siegeEnter(? responder)	2	token	token			0	0	0	0	direct_IL_refs_only
+siege/getBrief	contract_default	POST	0x06001275	siegeBrief(? responder)	1	token	token			0	0	7	0	direct_IL_refs_only
+siege/getPairings	contract_default	POST	0x0600127C	siegeGetPairings(? responder)	1	token	token			0	0	1	4	direct_IL_refs_only
+siege/getSiegeResultLog	contract_default	POST	0x0600127B	getSiegeResultLog(? responder)	1	token	token			0	0	15	1	direct_IL_refs_only
+siege/getSiegeStatus	contract_default	POST	0x06001277	getSiegeStatus(? responder)	2	token	token			0	0	18	0	direct_IL_refs_only
+siege/lookSiegeResult	contract_default	POST	0x0600127A	lookSiegeResult(? responder)	1	token	token			0	0	15	1	direct_IL_refs_only
+siege/openingBet	contract_default	POST	0x06001278	siegeOpeningBet(? spot,? food,? wood,? iron,? responder)	2	food,iron,spot,token,wood	food,iron,spot,token,wood			0	0	2	0	direct_IL_refs_only
+strategy/command/attack	contract_default	POST	0x06001265	sendStrategyCommandIntercept(? command,? responder)	4	command,token	command,token			0	0	5	5	direct_IL_refs_only
+strategy/command/buildCastle	contract_default	POST	0x0600126B	sendStrategyCommandBuildCastle(? responder)	1	token	token			0	0	5	5	direct_IL_refs_only
+strategy/command/cancelMarch	contract_default	POST	0x0600125B	sendStrategyCommandCencelRouteMarch(? responder)	1	token	token			0	0	1	3	direct_IL_refs_only
+strategy/command/changeBase	contract_default	POST	0x0600126A	sendStrategyCommandChangeBase(? responder)	1	token	token			0	0	5	5	direct_IL_refs_only
+strategy/command/conscript	contract_default	POST	0x06001267	sendStrategyCommandConscript(? responder)	1	token	token			0	0	5	5	direct_IL_refs_only
+strategy/command/march	contract_default	POST	0x0600125C	sendStrategyCommandMarch(? x,? y,? responder)	0	position,token	position,token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+strategy/command/march2	contract_default	POST	0x0600125A	sendStrategyCommandRouteMarch(? seqId,? responder)	1	seqId,token	seqId,token			0	0	6	5	direct_IL_refs_only
+strategy/command/returnBase	contract_default	POST	0x06001269	sendStrategyCommandReturnBase(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+strategy/command/revenge	contract_default	POST	0x0600126D	sendStrategyCommandRevenge(? x,? y,? responder)	1	position,token	position,token			0	0	5	5	direct_IL_refs_only
+strategy/command/strategize	contract_default	POST	0x0600126C	sendStrategyCommandStrategize(? x,? y,? responder)	1	position,token	position,token			0	0	5	5	direct_IL_refs_only
+strategy/command/supply	contract_default	POST	0x06001268	sendStrategyCommandSupply(? responder)	1	token	token			0	0	5	5	direct_IL_refs_only
+strategy/command/traceroute	contract_default	POST	0x06001259	getStrategyCommandTraceRoute(? x,? y,? responder)	1	position,token	position,token			0	0	7	0	direct_IL_refs_only
+strategy/command/training	contract_default	POST	0x06001266	sendStrategyCommandTraining(? responder)	1	token	token			0	0	5	5	direct_IL_refs_only
+strategy/entryStrategy	contract_default	POST	0x06001255|0x06001256	entryStrategy(? fieldName,? soldierEmployAmount,? responder)|entryStrategy(? soldierEmployAmount,? responder)	2	mercenaryCount,token	mercenaryCount,token			0	0	0	0	direct_IL_refs_only
+strategy/getMercenaryEmployInfo	contract_default	POST	0x06001254	getMercenaryEmployInfo(? responder)	1	token	token			0	0	1	2	direct_IL_refs_only
+strategy/getStrategyActionLogs	contract_default	POST	0x06001262	getStrategyActionLogs(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+strategy/getStrategyActionLogs2	contract_default	POST	0x06001263	getStrategyActionLogs2(? responder)	1	token	token			0	0	0	3	direct_IL_refs_only
+strategy/getStrategyBattleLogs	contract_default	POST	0x06001264	getStrategyBattleLogs(? responder)	1	token	token			0	0	6	26	direct_IL_refs_only
+strategy/getStrategyBrief	contract_default	POST	0x06001253	getStrategyBrief(? responder)	2	token	token			0	0	4	0	direct_IL_refs_only
+strategy/getStrategyCellLogs	contract_default	POST	0x0600125F	getStrategyCellLogs(? position,? responder)	1	position,token	position,token			0	0	0	3	direct_IL_refs_only
+strategy/getStrategyCommandInfo	contract_default	POST	0x0600126F	getStrategyCommandInfo(? command,? responder)	3	command,token	command,token			0	0	18	4	direct_IL_refs_only
+strategy/getStrategyLogs	contract_default	POST	0x0600125D	getStrategyLogs(? battlefield,? position,? responder)	1	battlefield,cell,token	battlefield,cell,token			0	0	0	0	direct_IL_refs_only
+strategy/getStrategyNormRewardInfo	contract_default	POST	0x06001272	getStrategyNormRewardInfo(? responder)	1	token	token			0	0	2	0	direct_IL_refs_only
+strategy/getStrategyOverview	contract_default	POST	0x06001251	getStrategyOverview(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+strategy/getStrategyPairings	contract_default	POST	0x06001258	getStrategyPairings(? responder)	1	token	token			0	0	5	7	direct_IL_refs_only
+strategy/getStrategyPairingsChat	contract_default	POST	0x06001252	getStrategyPairingsChat(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+strategy/getStrategyPersonalLogs	contract_default	POST	0x06001261	getStrategyPlayerLogs(? battlefield,? responder)	1	token	token			0	0	0	3	direct_IL_refs_only
+strategy/getStrategyPromptReport	contract_default	POST	0x0600125E	getStrategyPromptReport(? position,? responder)	1	position,token	position,token			0	0	0	1	direct_IL_refs_only
+strategy/getStrategyStatus	contract_default	POST	0x06001257	getStrategyStatus(? responder)	2	token	token			0	0	21	0	direct_IL_refs_only
+strategy/getStrategyWinLossRecords	contract_default	POST	0x06001271	getStrategyWinLossRecords(? responder)	1	token	token			0	0	2	10	direct_IL_refs_only
+strategy/isAlive	contract_default	POST	0x0600126E	getStrategyIsAlive(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+strategy/lookStrategyResult	contract_default	POST	0x06001270	getStrategyReward(? responder)	1	token	token			0	0	0	0	direct_IL_refs_only
+trophy/completeTrophy	contract_default	POST	0x060011B4|0x06001242|0x0600124A|0x0600124E	completeTrophy(? category,? responder)|receiveEventsTrophy(? access,? id,? responder)|receiveTrophyRaidBoss(? id,? responder)|receiveTrophyGiganticRaidBoss(? id,? responder)	3	access,category,token	access,category,token			0	0	5	0	direct_IL_refs_only
+trophy/getTrophyProgress	contract_default	POST	0x060011B3|0x06001241|0x06001249|0x0600124D	getTrophyProgress(? responder)|getEventsTrophyProgress(? access,? responder)|getTrophyRaidBoss(? responder)|getTrophyGiganticRaidBoss(? responder)	4	access,token	access,token			0	0	1	1	direct_IL_refs_only
+trophy/messageWindowTrophy	contract_default	POST	0x060011B5	message_window_trophy(? category,? responder)	1	access,category,token	access,category,token			0	0	0	0	direct_IL_refs_only
+turfWar/entryBattlefield	contract_default	POST	0x060011ED	entryTurfWarBattlefield(? battlefield,? responder)	1	battlefield,token	battlefield,token			0	0	0	0	direct_IL_refs_only
+turfWar/entryWar	contract_default	POST	0x060011EB	entryTurfWar(? responder)	1	token	token			0	0	1	0	direct_IL_refs_only
+turfWar/getSelfRecord	contract_default	POST	0x060011F0	getTurnfWarSelfRecord(? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+turfWar/getSelfSituation	contract_default	POST	0x060011EF	getTurfWarSelfSituation(? battlefield,? responder)	0	token	token			0	0	0	0	no_direct_ref_not_proof_of_unreachable
+turfWar/getTurfWarResultLog	contract_default	POST	0x060011F2	getTurfWarResultLog(? responder)	1	token	token			0	0	14	1	direct_IL_refs_only
+turfWar/getWarSituation	dedicated_handler	POST	0x060011EC	getTurfWarSituation(? responder)	2	token	token			0	0	21	0	direct_IL_refs_only
+turfWar/moveBattlefield	contract_default	POST	0x060011EE	moveTurfWarBattlefield(? battlefield,? responder)	1	battlefield,token	battlefield,token			0	0	0	0	direct_IL_refs_only
+turfWar/receiveTurfWarReward	contract_default	POST	0x06001177|0x060011F1	getTurfWarResult(? responder)|getTurnfWarRceiveTurfWarReward(? responder)	1	token	token			0	0	17	0	direct_IL_refs_only
