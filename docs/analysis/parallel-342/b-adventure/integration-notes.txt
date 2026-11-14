@@ -1,0 +1,52 @@
+B 组交付：4 个限定只读查询，35 个入口复核，未生产挂载，未部署。
+
+1. 挂载位置（仅建议，由总集成实施）
+app/business/gameplay.py:GameplayService.register 内，在现有专用处理器之后、register_contract_defaults 前，
+导入 app.business.adventure_services.AdventureServices，执行 AdventureServices(self).register(registry)。
+注册仅覆盖 quest/getQuestProgress、getChapterData、getQuestCompleteFlags、getQuestRewardOpenFlags。
+保留其余所有现有处理器，包括 completeTasks 建造行为；本组没有修改或注册其他 31 个入口。
+缺乏可信 adventureV1 存档时查询失败；不能直接挂载后宣称新角色物语已通。
+
+2. 共享状态与迁移
+adventureV1 是服务内部版本化建议，不是原服结构；字段见 README 与测试 snapshot()。
+由受信任状态机/经审核迁移写入；不能开放客户端任意上传进度。
+进度/完成标记/领奖标记/区域状态应在单玩家锁内同一次 revision 保存，禁止多次分开保存。
+未决：原始新角色定位、重打章节语义、进度前沿、随机/活动启用、首次/重复奖励资格。
+未获取这些证据前不能把测试的 step=4 或 clearCount=2 当初始化值。
+现有 _prepare_state 保留未知扩展键，内存重登测试已证；正式数据库迁移仍需集成方测试。
+本模块继承 PlayerServices.call：dirty 基线标准化可能落盘；失败 action 不保存。
+跨玩家首领/救援/活动阶段更新不能依赖单玩家锁；总集成需提供数据库事务、revision/CAS
+或事件/outbox去重方案，统一事件ID、结算ID与奖励账本；本组不假装已经提供事务实现。
+
+3. 共享响应形态问题（未编辑 response_shapes.py / placeholders.py）
+battle/getRaidBossLogs：mypageRasetsu.cs:142-150 遍历根键，转数值索引/Hashtable；
+建议 response_shapes.BARE_MAP_EVIDENCE 加入该入口并补共享回归，不能带 succeeded/now。
+battle/sendRescueRequest：RaidBossScene.cs:301-306 用根Count展示救援人数；建议裸名单，
+具体名单值结构尚未证，不能先生成伪列表。此建议不代表救援业务已完成。
+quest/getQuestBossPunish：QuestScriptCommand.cs:465-467 先 Count>0 再读取 script；
+无惩罚应为真正空根的证据强于通用信封，需核对其他消费者后由总集成修形态。
+giganticRaidBoss/getGiganticRaidBossBattleResult：BattleLogManager.cs:5341-5344 把整个根
+当 additionalResult；检查通用信封对结果解析的影响后再挂载。
+docs/api_schema.md 应补四项查询层级及 adventureV1兼容决策；api_*.tsv/全局计数本组未改。
+
+4. 组间契约
+F：battle/getTurfWarReplayData、getVsCountryRecords 路由仍归B，当前仅包装器；请提供
+战场记录主键/参与者访问权限/国家统计契约，不能类推成普通回放。
+已证 getVsReplayData 经 BattleLogManager.setParametersFromHash 读取
+log/information/process/result，条件 additionalResult/commandResult/giganticResult。
+G：getSelfRecord 的 record 含 won/lost/average、dailyAttackPoint/dailyDefensePoint/
+totalAttackPoint/totalDefensePoint（decisiveBattleSituation.cs:125-127）；
+getRandomQuestRanking 读 score/rank。排名应取真实战绩聚合，统计窗口和并列规则待证。
+C：推进/结算/开箱的 reward 与 toInbox 需要共用卡牌/道具发放、容量与幂等契约；
+本组没有自行复制公共库存或奖励函数。尚未得到C/F/G实现交付，不声称已完成互联。
+
+5. 最小动态验证（由总集成安排一次独占客户端；本组未执行）
+保留原始玩家存档备份，采集新账号第一次物语入口的四查询及 openQuest 原始回包；
+比较进入前/后、重登后的 last/current/五章标记，确认初始位置和空集合语义。
+在新手第5节/第10节分别记录推进->遭遇->战斗->完成->重登；必须保存事件ID与前后MP/库存。
+分别成功/失败/重复提交/中断重登，确认事件与奖励账本的原子性，不能用stub自产数值作原版证据。
+若有合法原服历史回包或客户端缓存，优先只读采样；当前无法访问原服务时明确记录缺证。
+活动接口需原始活动期/非活动期样本；不猜2026活动日期，不为取证开启虚构活动。
+错误仍按 客户端→hosts→proxy80→stub 定位；本组未改 hosts/proxy80/config.ini。
+stub has no assets仅指缺失/不可加载表资源；原表缺行是引用/ID问题；未知业务是no stub response。
+不改变游戏原始尺寸；如总集成调试UI，监控面板与游戏等大对齐。
