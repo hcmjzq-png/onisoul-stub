@@ -1,0 +1,39 @@
+{
+  "quest_3_index": {
+    "23_1": {
+      "id": "23_1",
+      "enable": false,
+      "questNo": 23,
+      "questTitle": "QUEST_3_MSG_23_NAME",
+      "questDetail": "QUEST_3_MSG_23_DESC",
+      "startPeriod": "1999/1/1 0:00",
+      "endPeriod": "1999/1/1 0:00",
+      "questRank": 1,
+      "banner": "eventBanner0023",
+      "notice": false,
+      "sortNo": 1023,
+      "questReward": "",
+      "roundLimit": 0,
+      "chapterNo": 1,
+      "nextId": "none",
+      "chapterTitle": "QUEST_3_MSG_23_NAME",
+      "chapterDetail": "QUEST_3_MSG_23_DESC",
+      "chapterReward": "",
+      "raidBossEncountId": "raidBossEncount_9_0010",
+      "areaCount": 1,
+      "areaStep1": -1,
+      "areaStep2": 0,
+      "areaStep3": 0,
+      "areaStep4": 0,
+      "areaStep5": 0,
+      "areaStep6": 0,
+      "areaStep7": 0,
+      "areaStep8": 0,
+      "areaStep9": 0,
+      "areaStep10": 0,
+      "periods": [
+        "1999/1/1 0:00-1999/1/1 0:00"
+      ]
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "quest_3_0023": {
+    "1_1_1": {
+      "id": "1_1_1",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 1,
+      "nextId": "1_1_2",
+      "preAtk": 1,
+      "preDef": 1,
+      "preInt": 1,
+      "firstClearReward": "none",
+      "clearReward": "none",
+      "startScriptId": "none",
+      "endScriptId": "stq0_600000_99",
+      "cost": 2,
+      "item1": "none",
+      "item2": "none",
+      "item3": "none",
+      "item4": "none",
+      "itemComplete": "none",
+      "battleRule": "none",
+      "stepCount": 10,
+      "inBGM": "none",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0019_06",
+      "fieldAttribute": "none",
+      "changeScriptId": "script00001",
+      "event1": [
+        60,
+        0,
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        30,
+        6,
+        "stq0_600001_01",
+        "event_0023_monster_001",
+        "quest_3_0023_06_001",
+        "none",
+        "quest_3_0023_06_101"
+      ],
+      "event3": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "gold",
+        1000
+      ],
+      "event4": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "gold",
+        5000
+      ],
+      "event5": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "food",
+        1000
+      ],
+      "event6": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "food",
+        5000
+      ],
+      "event7": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "wood",
+        1000
+      ],
+      "event8": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "wood",
+        5000
+      ],
+      "event9": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "iron",
+        1000
+      ],
+      "event10": [
+        1.25,
+        10,
+        "none",
+        "none",
+        "resource",
+        "iron",
+        5000
+      ]
+    }
+  }
+}

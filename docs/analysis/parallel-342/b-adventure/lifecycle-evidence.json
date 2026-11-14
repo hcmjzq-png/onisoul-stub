@@ -1,0 +1,1516 @@
+{
+  "source_root": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115",
+  "original_protocol_sources": {
+    "WebApiClient.cs": {
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "line_ranges": [
+        [
+          190,
+          216
+        ],
+        [
+          247,
+          276
+        ],
+        [
+          1519,
+          1531
+        ],
+        [
+          1773,
+          1795
+        ],
+        [
+          1968,
+          1977
+        ]
+      ]
+    },
+    "QuestAreaTableAccessor.cs": {
+      "sha256": "2cc0bae23604905b438fd1d7deedd41675c0521b4de75dabeaf5eac035548788",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestAreaTableAccessor.cs",
+      "line_ranges": [
+        [
+          36,
+          49
+        ],
+        [
+          178,
+          203
+        ],
+        [
+          282,
+          307
+        ]
+      ]
+    },
+    "QuestStoryAreaConfirm.cs": {
+      "sha256": "ae5212644ed30b04cf6a5d33f9b03ba7995324500f06f306ecce6d8a49430611",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestStoryAreaConfirm.cs",
+      "line_ranges": [
+        [
+          331,
+          354
+        ]
+      ]
+    },
+    "QuestScriptCommand.cs": {
+      "sha256": "39c8a0a662ad34428c23d1dbb9544817836292154af28ab66adda5c91eb11466",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestScriptCommand.cs",
+      "line_ranges": [
+        [
+          299,
+          367
+        ],
+        [
+          490,
+          540
+        ],
+        [
+          613,
+          624
+        ],
+        [
+          724,
+          741
+        ],
+        [
+          762,
+          785
+        ],
+        [
+          993,
+          1040
+        ],
+        [
+          1718,
+          1723
+        ],
+        [
+          1769,
+          1794
+        ],
+        [
+          2172,
+          2291
+        ]
+      ]
+    },
+    "PluginQuestStepHelper.cs": {
+      "sha256": "834eea53e709fbce558112adc0f00ec2d2a076efbbd8cb848a0fc66a061dacc1",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginQuestStepHelper.cs",
+      "line_ranges": [
+        [
+          186,
+          245
+        ],
+        [
+          271,
+          309
+        ],
+        [
+          340,
+          345
+        ]
+      ]
+    },
+    "BattleLogManager.cs": {
+      "sha256": "bf3ada868c109d0d2cc74fa46e9a626ceb9b2e1b619f8b10782fbfcfacf20d89",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BattleLogManager.cs",
+      "line_ranges": [
+        [
+          3249,
+          3312
+        ],
+        [
+          4539,
+          4567
+        ],
+        [
+          5563,
+          5582
+        ]
+      ]
+    },
+    "BattleQuestResult.cs": {
+      "sha256": "343605eb23d0b59d01ca362e364e62b04657de92d1a4d262b8cad832ecaf2463",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BattleQuestResult.cs",
+      "line_ranges": [
+        [
+          1,
+          14
+        ]
+      ]
+    },
+    "BattleEventIP_Initialize.cs": {
+      "sha256": "51b51bb59b0196e0866716e39dd164ccea662c8d6b1228c79490cdd83db0327f",
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BattleEventIP_Initialize.cs",
+      "line_ranges": [
+        [
+          1,
+          15
+        ]
+      ]
+    }
+  },
+  "table_scan": {
+    "obstacle_slot_count": 185,
+    "enabled_slot_count": 0,
+    "categories": {
+      "potion": 37,
+      "resource": 144,
+      "soul": 4
+    },
+    "source_tables": {
+      "quest_3_0016.json": {
+        "sha256": "96ed391c4afdc6f555153d4ec500942e17a696abc57e31eddd6d52b9ccc5af03",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0016.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_index.json": {
+        "sha256": "efe320129f68449717703f138f8112f0529bf8e269cfa3bb55e6f4a661d60b98",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_index.json"
+      },
+      "quest_3_0017.json": {
+        "sha256": "3860cfdb41cfb3762d9240f1c90f69e05393e378e62db0174ffabf851ed9e55d",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0017.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0018.json": {
+        "sha256": "43a0b0a9602f4795b8e6bd71021878984bea09e37035a9b8a19ef176b32e743b",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0018.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0019.json": {
+        "sha256": "7d770b8512d2a9d8af196ca9b3fa8ef1132709d00c54f96a68762bc947353277",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0019.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0020.json": {
+        "sha256": "deaa55679996aad188833cc4a7007c8f54f307ef11ff020b5a108683c459b6e2",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0020.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0021.json": {
+        "sha256": "9d2445adeb02ad976fec656d32fff8638f236e48d03baf2af056eafb711211d9",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0021.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0022.json": {
+        "sha256": "e3f0f4e320ea89200e1b29688fcf2cafa3e55ad87f01ed542474aae7b4ca474a",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0022.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_11",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_13",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_15",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_17",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_19",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_21",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_23",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_25",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_27",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_29",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0023.json": {
+        "sha256": "f2b4e9d2af471ac763be495116c9a2fa8a014c7cad2d81bde1959ab41678945d",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0023.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_1",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_1",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_1",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_1",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_1",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_1",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_1",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_2",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_3",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_5",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_6",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_8",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event4",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event5",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event6",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event7",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event8",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event9",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_9",
+            "slot": "event10",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0043.json": {
+        "sha256": "3b3157b758b0285aa13f438c15fd102f9c5961f979a94ebb43d8d6d401b94b20",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0043.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0044.json": {
+        "sha256": "8a99b4c6565976267d1df8ffe799cee665f7426ceb01df8ba914c150a82140d3",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0044.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0045.json": {
+        "sha256": "68150aac3d1405ab314bca1f3aaade938681dbecf8f5a44777584d0462cb0388",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0045.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0096.json": {
+        "sha256": "e26cb93b8b213af73b00ffdba26b2ccb5bb016786be46f03cdb1ba4abb81bafd",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0096.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0101.json": {
+        "sha256": "dbcdbde498d946f326a513c41bc0dff93df94a3adaa774865499ef356273a349",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0101.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0102.json": {
+        "sha256": "7e3b535e587e508e21fda8ca7b56ac78aacd8ed6a274bf34d18299a228a6e939",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0102.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0107.json": {
+        "sha256": "4687c2b1d08e582d89b2af66edf3697f7a850532cbfec474f98dbb87c287d175",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0107.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0109.json": {
+        "sha256": "a05f028b5a65d55be2168aec170e9dc0b97a016a5b85c7f5869dcfb4579430e1",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0109.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0117.json": {
+        "sha256": "38bc9199d128a47b74f66686f66ef3f450cab845d16e0020341041d3abd00e21",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0117.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "soul",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0120.json": {
+        "sha256": "6816c4eacc9cb5bd4fe76659091f12841eb651cd67d83004a26dd053fb2ec473",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0120.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_10",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_10",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_10",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_20",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_20",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_20",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_30",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_30",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_30",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_40",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_40",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_40",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_50",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_50",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_50",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_60",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_60",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_60",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_70",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_70",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_70",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_80",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_80",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_80",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_90",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_90",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_90",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_100",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_100",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_100",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_110",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_110",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_110",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_120",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_120",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_120",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_130",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_130",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_130",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_140",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_140",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_140",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_150",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_150",
+            "slot": "event2",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_150",
+            "slot": "event3",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0121.json": {
+        "sha256": "82cbe3b3323e27473a434f0089742c008f73a4c80ba2174f0bd95ad3d9e5f8ad",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0121.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0122.json": {
+        "sha256": "c346df8cfafd337c9873ef43a55a609725ab7d9dae9dfc858e132623f43593b8",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0122.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0123.json": {
+        "sha256": "8e2a525dc8c61c32642b0218375a2d2045303d8e4009b4e7790b4770ed393187",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0123.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0124.json": {
+        "sha256": "09b604550321986428d70a8f6919df199376e0c6488808109c809f3acb1db8bf",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0124.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0126.json": {
+        "sha256": "a4320956edb146b13c4a1a27d7b27cce7d68d578b40508dca5021f1626235702",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0126.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0139.json": {
+        "sha256": "4d439202ba30d5c1814578267e0b4a3fabd853868921b293da4ac15df763ded6",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0139.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0140.json": {
+        "sha256": "9199cf67d4a96a164eef14015930cf4d17a0c3dec0ebf6c4901a36b215f834a0",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0140.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0187.json": {
+        "sha256": "88d1a292a113a6b385708e935c006e0ad0572d746939e091618e691629d08469",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0187.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0192.json": {
+        "sha256": "ab82278c79a4108fa76488e3902eb135ac13caad629400456fcbd9139e46295b",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0192.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "soul",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0272.json": {
+        "sha256": "e117e26651570c02e008e29fe4276f20eabfbe3d13a846fe2c00d08e5eb5dcae",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0272.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0273.json": {
+        "sha256": "136e2ebe237181119d29b22fbcc4f7da5df17ba7162416f7dfb3b1fd0c55f77e",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0273.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0274.json": {
+        "sha256": "1891f0a795d524717cc9e1d33f2ae95ee4e3ca815379cef254063cfd5140c074",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0274.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_3_0275.json": {
+        "sha256": "d0a519ddf232826c81a9f568317151325400353e7ebfafbd08cd43e85373979b",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_3_0275.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "potion",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_6_0001.json": {
+        "sha256": "cb5e342a4777d638410c4fa9d081f17390093556dabbf5148da949bfd03252de",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_0001.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_6_index.json": {
+        "sha256": "09e213cde7f2ee2c7db3eba5993f1f07ed4798ab3f5eb1f86730cf0f104e970d",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_index.json"
+      },
+      "quest_6_0002.json": {
+        "sha256": "a9b0822b9b8cbfd2fcc7af056547c84f3e424fc6918d269831e7ba880e547edf",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_0002.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_6_0003.json": {
+        "sha256": "ed00cf3e84b16faf01b5cf50e29b5005bb5440b63d0be5d59aacfeed91b60da7",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_0003.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_6_0012.json": {
+        "sha256": "a5d7e4b1088a9256aeb36864112e00b87cf98e9a4b73a2b01f0e34553a8f56fb",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_0012.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "soul",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_6_0014.json": {
+        "sha256": "fd04eddefecc607aa8be96f44895c962c6a4e8a0d58105e2325bb35d6e2fa354",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_0014.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_4",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_7",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_10",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_13",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_16",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_19",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_22",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_25",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_28",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_31",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_34",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_37",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_40",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_43",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_46",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_49",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_52",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_55",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          },
+          {
+            "row": "1_1_58",
+            "slot": "event1",
+            "category": "resource",
+            "index_enabled": false
+          }
+        ]
+      },
+      "quest_6_0024.json": {
+        "sha256": "af4c5848896035af370311947e5299d06a301978069aed7e43a0ea5d60091b40",
+        "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\quest_6_0024.json",
+        "obstacle_slots": [
+          {
+            "row": "1_1_1",
+            "slot": "event1",
+            "category": "soul",
+            "index_enabled": false
+          }
+        ]
+      }
+    }
+  },
+  "internal_compatibility_decisions": [
+    "No default authorizer or event producer; all original obstacle indices disabled",
+    "Resource-only obstacle with explicit empty reward/toInbox disposition from trusted producer",
+    "Once per type/quest/chapter/area, retain immutable settlement digest; replacement rejected because original request lacks encounter ID",
+    "Balance >= cost accepted: ordinary <= key check and auto plugin strict > differ; original server equality policy unproven",
+    "Original event tuple compared with trusted description as consistency inference; not an authoritative cost generator",
+    "One player save is required atomic; multi-player transactions not implemented"
+  ]
+}

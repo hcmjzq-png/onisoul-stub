@@ -1,0 +1,644 @@
+{
+  "quest_1_0000": {
+    "1_1_1": {
+      "id": "1_1_1",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 1,
+      "nextId": "1_1_2",
+      "preAtk": 800,
+      "preDef": 800,
+      "preInt": 800,
+      "firstClearReward": "quest_1_0001_09_001",
+      "clearReward": "quest_1_0001_09_101",
+      "startScriptId": "stq0_100010_00",
+      "endScriptId": "stq0_100010_99",
+      "cost": 1,
+      "item1": "item08_0102701",
+      "item2": "item01_0032401",
+      "item3": "item01_0094201",
+      "item4": "item01_0076701",
+      "itemComplete": "quest_1_0001_04_001",
+      "battleRule": "none",
+      "stepCount": 1,
+      "inBGM": "none",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0018_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        1,
+        "stq0_100010_01",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_2": {
+      "id": "1_1_2",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 2,
+      "nextId": "1_1_3",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0018_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        1,
+        "stq0_100010_02",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_3": {
+      "id": "1_1_3",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 3,
+      "nextId": "1_1_4",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0019_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        3,
+        "stq0_100010_03",
+        "quest_1_0000_03_002",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_4": {
+      "id": "1_1_4",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 4,
+      "nextId": "1_1_5",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0019_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        2,
+        "stq0_100010_04",
+        "quest_1_0000_03_003",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_5": {
+      "id": "1_1_5",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 5,
+      "nextId": "1_1_6",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0019_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        6,
+        "stq0_100010_05",
+        "q_mons_0000_01",
+        "quest_1_0000_06_0001",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_6": {
+      "id": "1_1_6",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 6,
+      "nextId": "1_1_7",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0017_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        3,
+        "stq0_300001_01",
+        "quest_1_0000_03_004",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_7": {
+      "id": "1_1_7",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 7,
+      "nextId": "1_1_8",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0017_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        1,
+        "stq0_100010_06",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_8": {
+      "id": "1_1_8",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 8,
+      "nextId": "1_1_9",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0017_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        3,
+        "stq0_100010_07",
+        "quest_1_0000_03_001",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_9": {
+      "id": "1_1_9",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 9,
+      "nextId": "1_1_10",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": 1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0017_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        1,
+        "stq0_100010_08",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    },
+    "1_1_10": {
+      "id": "1_1_10",
+      "chapterNo": 1,
+      "areaNo": 1,
+      "sectionNo": 10,
+      "nextId": "none",
+      "preAtk": "",
+      "preDef": "",
+      "preInt": "",
+      "firstClearReward": "",
+      "clearReward": "",
+      "startScriptId": "",
+      "endScriptId": "",
+      "cost": "",
+      "item1": "",
+      "item2": "",
+      "item3": "",
+      "item4": "",
+      "itemComplete": "",
+      "battleRule": "",
+      "stepCount": -1,
+      "inBGM": "",
+      "bgm": "music_grass",
+      "groundMaterial": 1,
+      "bgImage": "qbg3_0017_01",
+      "fieldAttribute": "none",
+      "transitionType": "script00001",
+      "event1": [
+        100,
+        7,
+        "stq0_100010_98",
+        "q_mons_0000_02",
+        "quest_1_0000_06_0002",
+        "none",
+        "none"
+      ],
+      "event2": [
+        0
+      ],
+      "event3": [
+        0
+      ],
+      "event4": [
+        0
+      ],
+      "event5": [
+        0
+      ],
+      "event6": [
+        0
+      ],
+      "event7": [
+        0
+      ],
+      "event8": [
+        0
+      ],
+      "event9": [
+        0
+      ],
+      "event10": [
+        0
+      ]
+    }
+  }
+}
