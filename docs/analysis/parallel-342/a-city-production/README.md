@@ -4,6 +4,11 @@
 `reviewed-endpoints.tsv`，原路径、SHA-256、方法/行号、包装器调用点见 `evidence.json`。
 只用原反编译及原表；没有使用旧 E 盘实现，没有启动客户端、改配置或部署服务器。
 
+后续生产收获深入复核见 [harvest-review.md](harvest-review.md)：新增 5 个纯规则函数，
+9 项测试，最新全量 247 项通过（harvest-regression.txt）。确认无限耐久标记、玩家/建筑/
+协作者经验的区别及生产费用 float32 的 1 点差异；仍未启用任何生产写接口。
+原始新证据与离线可复现审计见 harvest-evidence.json、city_production_audit.py。
+
 ## 可集成代码的实际范围
 
 `app/business/city_production_services.py` 新增三个入口，**均未挂载到 GameplayService**。
@@ -78,7 +83,7 @@ python -m unittest tests.test_city_production_services -v
 python -m unittest discover -s tests -v
 ```
 
-新增 12 项、全量 238 项通过，0 skipped；日志见 regression.txt。小样本逐行等于原表，
+首轮新增 12 项、全量 238 项通过，0 skipped；日志见 regression.txt。小样本逐行等于原表，
 并记录原表与样本散列。测试覆盖认证、跨账号、批量原子拒绝、资源溢出、重复请求、
 并发入账一次、保存 revision 冲突、重登、背景成对写入和缺表/缺行不同诊断。
 这是内存状态验证，未进行真实数据库故障注入、Unity 回调或服务器部署验收。

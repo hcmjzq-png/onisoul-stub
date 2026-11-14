@@ -56,3 +56,22 @@ A 组集成交付（未挂载、未部署）
 
 9. 不修改 hosts/proxy80/config.ini、共享客户端、主目录暂存文件或服务器。
    不计全局占位减少，用户是唯一审批/合并人，PR 必须保持 draft。
+
+10. 后续生产复核（harvest-review.md）：新增 city_production_rules.py，仅纯函数，不注册入口。
+    production_costs 必须使用逐步 float32 乘法后截断，不复用 city_services.level_cost；
+    原 3800 * 1.015 的正确客户端结果 3857，Python float64 int 是 3856。
+    preview_amount 仅供普通预览，item15 排除；reward_slot 仅解码，ratio/group 不当抽奖规则。
+    durability_kind 用 defines 的 10001 相等比较，不把 >=10001 都当无限，不补旧存档默认。
+    harvest_display_point_cost 是自动收获成功显示规则：1栋=1 PP，多栋=10 PP；未接扣点事务。
+    这些 helper 不足以开启生产四入口，也不能代表 completeTasks 生产已实现。
+
+11. 有限建筑最后收获要求回包仍含 building.durability=0 供 processDead 清理画面；
+    保存状态需要奖励/经验/协作者经验/删建筑/清占格/任务移除/计数一起提交。
+    无限标记不得递减；有限扣次是在开工/到时/收获哪个时点，以及取消行为仍须取证。
+    回包 item11_0000501 是玩家经验；building.exp 与 collaborator.<id>.exp 是绝对值。
+    product.buildingExp=10 的田地实例是表事实，尚未证明最终加值/加成，不能直接 +=10。
+
+12. 道路八方向连接函数只证贴图和行人路径，不证生产邻接。
+    新定位技能 11058/11064 同时影响道路及额外兵法书，动态比较要控制编队和额外奖励。
+    原 getGain/getGainRatio/getIntervalRatio 缺字段或大小写不符且无外部文本调用，
+    不要把它们的存在当作公式；审计是缺引用行与接口规则未完成，不是新增缺资源。
