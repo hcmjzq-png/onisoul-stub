@@ -11,7 +11,7 @@
 | 注册账号 → 原版 `the37.alert` 弹层提示 | 可以（提示文案走缓存里的 `alertPlugin.js`） |
 | 开战 → 302 → `/client/app.html` → 原版 app 页 | 可以（页面与脚本都是原件） |
 | 开战之后 Unity 客户端真的启动并登录 | **可以**（实测 `/api/auth/gameLogin` 200，随后 `periodicInquiry`/`getServerTime`/`politic/map/cleanup`/`quest/checkEmergencyQuest` 全 200） |
-| 起角色名 → 进主城 | **不行**。`/api/auth/registerName` 返回 `500 / MissingTableError`，客户端重试 10 次后停在「讀取中」。原因是服务端没有导入 108 张表 JSON（`assets/pc/tables/` 为空） |
+| 起角色名 → 确认设定 → 建号 | **服务端已通，真机待复验**。原先 `registerName` 500 `MissingTableError`、`createPlayer` 判 `invalid countryId`、随后又报 `state changed concurrently`，三处均为服务端缺表/版本号实现缺陷，已修（见第八节）。服务端直接调用验证：`registerName → succeeded:true`、`createPlayer → succeeded:True`；真机上尚未复验到主城 |
 
 > 2026-11-14 18:04、18:05 两次真机实测的请求序列（`logs/capture-*.jsonl`）：
 > `POST /index.php/gwz/client/login/` 302 → `GET /client/app.html` 200 → `GET /client/js/revision.js` 200
@@ -138,7 +138,7 @@ curl.exe -s -o NUL -w "%{http_code} %{size_download}`n" "http://game-onisoul.86j
 4. **`wrap_bg_sub.jpg` 是修补件**：原 `wrap_bg.jpg` 里 y=83~113 那 31 行把「游戏公告」四个字烘进像素。子页要显示各自标题，只能用镜像填充把那 31 行抹掉，再叠一条自绘的暗底金字标签。接缝处有一道很淡的水平痕迹，那块也没有原始卷轴饰带可用。
 5. **注册不落库**：`register_submit` 只校验（账号非空 ≤32、密码 ≥3）并写日志，不写 users 表；登录校验同样不查库，任意账号密码 ≥3 位都能拿到 302。页面底部那行「stub 不落库，注册仅演示流程」就是这事。
 6. **`app.unity3d` 不需要下发**：容器自带 Unity WebPlayer，客户端也自带 `app.unity3d`，真机从头到尾**没有请求过** `/client/app.unity3d`（capture 日志 0 条）。所以这个 4.0MB 包不入库不影响开战。
-7. **卡点在起名，不在页面**：`/api/auth/registerName` 直接 `500 MissingTableError`，因为没有 `assets/pc/tables/` 那 108 张表 JSON（表数据不入库，需用 `tools/import_tables.py` 从客户端 bundle 导一次）。客户端会重试 10 次，屏幕停在「讀取中」。
+7. **起名卡点已定性为服务端缺陷，不是缺数据**：三处调用把「表里有内容」当成前提（`mission_chain.rows()` 缺表未容错、`create_player` 用 `beginning_equipment` 判国家、`_create_player` 重建默认态丢 `_revision`）。客户端只是如实把 `succeeded:false` 显示成「联机中断」。修复见第八节；`assets/pc/tables/` 仍为空，表内容缺失只影响数值与初始武将，不再打断请求。
 8. **`/api/` 已通**：以前记录里「`/api/` 请求 0 条」的说法作废；现在 `gameLogin`、`periodicInquiry`、`getServerTime`、`politic/map/cleanup`、`quest/checkEmergencyQuest` 都是真实客户端发来的 200。
 
 ## 六、出问题怎么查
@@ -149,12 +149,40 @@ curl.exe -s -o NUL -w "%{http_code} %{size_download}`n" "http://game-onisoul.86j
 | 页面出来但样式全乱 | `/client/login/wrap_bg.jpg`、`spt-index.png`、`start.png` 是否 200 |
 | 点入口没反应 | 页面里入口是不是被改回 `<a href>` 了（见第五节第 3 条） |
 | 开战 404 | `assets/pc/web/client/app.html` 是否落位；`app/paths.py` 的 `ONI_PC_WEB_DIR` 是否指对 |
-| 停在「讀取中」 | 看 capture 日志：`/api/auth/gameLogin` 是否 200；`/api/auth/registerName` 是否 500 `MissingTableError`（缺表就按第五节第 7 条导表） |
+| 停在「讀取中」 | 看 capture 日志：`/api/auth/gameLogin` 是否 200；`/api/auth/registerName` 是否是 500（若是，先按第八节确认三处容错补丁还在） |
+| 弹「联机中断(1)」 | 看 `POST /api/auth/createPlayer` 的 `resp_body`：`errorReason` 是 `invalid countryId` 或 `state changed concurrently; retry`，都属第八节那类缺陷 |
 | 端口占用 | `netstat -ano | findstr ":80"` |
 
 ## 七、没做、也不打算在这版做的
 
-- 108 张表 JSON 的导入（`assets/pc/tables/`，需要 `tools/import_tables.py` 对着客户端 bundle 导一次）；不导就卡在起名
+- 108 张表 JSON 的导入（`assets/pc/tables/`）。缺表不再打断流程（第八节已容错），但初始武将、任务链、建筑等数值会是空的
 - 游戏资源 bundle（`assets/pc/jp/assets/**` 数百个 `.unity3d`）；注意 `app.unity3d` 本身**不需要**，客户端自带
 - 真实账号体系（登录/注册落库、token 校验）
 - 子页版式与原版注册/找回页对照（原件不存在，当前统一用金色面板版式）
+
+## 八、2026-11-14 追加：起名→建号链路上的三处服务端缺陷（已修）
+
+三处是同一类写法：**把「服务端手里有那份客户端表」当成前提**。客户端本身从不向服务端要表（capture 日志 1185 条里 `.json` 仅 15 条，全是外部扫描器探测，游戏表请求 0 条），所以缺表时应当降级，而不是把请求打成失败。
+
+| # | 位置 | 修复前行为 | 修复 |
+|---|---|---|---|
+| 1 | `app/business/mission_chain.py` 的 `rows()` | 直接 `catalog.load("politicMission")`，缺表抛 `MissingTableError` → `registerName` 500 | 与 `GameplayService._table()` 同策略：`except TableError: return {}` |
+| 2 | `app/business/gameplay.py` 的 `create_player()` 国家校验 | `if country not in self._table("beginning_equipment")`，表空则任何 `countryId` 都判非法 → 客户端弹「联机中断(1)」 | 改为表非空时才校验 |
+| 3 | `app/business/gameplay.py` 的 `create_player()` 保存 | `_create_player()` 用 `_default_state` 重建，丢 `_revision`；保存时期望 0、库里 1 → `StateConflictError` | 重建前取 `revision`，重建后写回 |
+
+对应的日志原件（`logs/capture-20261114.jsonl`）：
+
+```
+19:10:20 POST /api/auth/registerName  500 {"error":"INTERNAL","message":"MissingTableError"} ×10
+19:10:32 POST /api/auth/createPlayer  200 {"succeeded": false, "errorReason": "invalid countryId"}
+19:13:59 POST /api/auth/createPlayer  200 {"succeeded": false, "errorReason": "state changed concurrently; retry"}
+```
+
+服务端直接调用回归（新号 `repro-0003`，先起名再建号）：
+
+```
+registerName: True
+createPlayer: True
+```
+
+说明：本节只验证到「服务端不再拒绝该请求」，真机上从「最终决定」到主城是否走通，尚未复验。
