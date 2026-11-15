@@ -1,0 +1,22 @@
+[
+  {
+    "table": "building",
+    "rowIds": [
+      "building200_041_01_01_1_1",
+      "building200_002_01_01_1_1",
+      "building200_051_01_01_1_1"
+    ],
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building.json",
+    "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+    "fixtureSha256": "0a35075961c8795a76f193b07d07c0b004c76b2bea597e475a75f73295b62e9b"
+  },
+  {
+    "table": "defines",
+    "rowIds": [
+      "scale_kokudaka_for_dedication"
+    ],
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\defines.json",
+    "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+    "fixtureSha256": "dc8c844838f4cb691bfb489a340f0ddd69ebc8bef77a8a2f8ace23c9db7d8f19"
+  }
+]

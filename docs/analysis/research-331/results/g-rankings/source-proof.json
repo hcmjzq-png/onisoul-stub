@@ -1,0 +1,79 @@
+{
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "access_date": "2026-11-15",
+  "original_sources": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BuildingsTableAccessor.cs",
+      "sha256": "ee603805c74613e5e0c3a8d2b5a7453a15a44fe19dedad3d23adaa5dedf20bfb",
+      "lines": "617-642 (helper has no direct call found by rg; global sum is policy)"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DefinesTableAccessor.cs",
+      "sha256": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4",
+      "lines": "225-232"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+      "lines": "458-495,795-802,1820-1830"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\MightOfNationDialog.cs",
+      "sha256": "2baa31b417d244242d0553776678412b4bfa331f68f5e720727173e43801b619",
+      "lines": "128-219,235-271,324-355"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DedicateOfMaterialsDialog.cs",
+      "sha256": "afe537b1fb9d690d2b81c341ed5b23550fe2e67e422154cc8c066e0200d0b320",
+      "lines": "145-155,174-205"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "lines": "596-643,3021-3061,3154-3210"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator.cs",
+      "sha256": "93ee8fe49678acb52b9906f274acfd63102601ea07e04426b0e4c4ae513e0659",
+      "lines": "247-345,calcRankRange,convToTurnStr"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Delivery.cs",
+      "sha256": "ac252f3c810defe586e6cda48978ee4958715dcac608a1e9ebed27a5552cc6b1",
+      "lines": "29-44,82-116"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_NationalPower.cs",
+      "sha256": "e4012de27c799918313e32069eb03a3750937615490e26f5f2165e9e819f3034",
+      "lines": "145-196"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageRankingWindow.cs",
+      "sha256": "33f15cbe8a805b1a1bb462baa4d8bc65ab7b3da5927f66438fb020e49dbc5a61",
+      "lines": "496-680,787-797"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessFuncs.cs",
+      "sha256": "517f91fc078044b7461ff9ea14d92d9dfe57c8bebe218c40c5af995ae85ad15c",
+      "lines": "94-118"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CountryRanking.cs",
+      "sha256": "d9090ead2054b9391401ded6f94a4fd6265a0d257df26c7be520295220934216",
+      "lines": "105-148"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLRankingMediator_Country.cs",
+      "sha256": "af302ac53f671e104525b7ebce92366a33221b8682c836dd059d2183741288cb",
+      "lines": "94-127"
+    }
+  ],
+  "table_samples": "tests/fixtures/research331/g-rankings/source-proof.json",
+  "prior_51_protocols": "docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv",
+  "float32_scan": {
+    "building_rows": 1343,
+    "method": "all row grades 1..10, levels 1..grade*10 compared against ordinary double interpolation",
+    "differences": 0,
+    "meaning": "original table scan does not remove requirement to emulate source float32 operations"
+  }
+}
