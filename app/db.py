@@ -13,6 +13,16 @@ from app import config, paths
 _active_connection: ContextVar[bool] = ContextVar("oni_database_transaction", default=False)
 
 
+def duplicate_player_name(exc: BaseException) -> bool:
+    """Recognize only the dedicated name index, not unrelated SQL failures."""
+    try:
+        from pymysql.err import IntegrityError
+    except ImportError:
+        return False
+    return (isinstance(exc, IntegrityError) and exc.args[0] == 1062
+            and "uk_players_username" in str(exc.args[1]))
+
+
 def retryable_transaction_error(exc: BaseException) -> bool:
     """Only a known InnoDB rollback/lock timeout is safe to retry as a whole.
 

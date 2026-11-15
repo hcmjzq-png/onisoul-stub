@@ -12,7 +12,7 @@ import time
 from collections.abc import Callable
 from typing import Any
 
-from app import sessions, state
+from app import db, sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import (
     DEFAULT_BUTTON_BITS, SCREENSHOT_BIT, WIRE_BUTTON_MASK, MissionChain, SYSTEM_MISSION,
@@ -610,7 +610,12 @@ class GameplayService:
                 color_index=color_index,
             )
             player["_revision"] = revision
-        self._save(player, player_id)
+        try:
+            self._save(player, player_id)
+        except Exception as exc:
+            if db.duplicate_player_name(exc):
+                return self._failure("auth/createPlayer", "player name is already in use")
+            raise
         return self._success("auth/createPlayer", {"playerId": player_id})
 
     def register_name(
@@ -624,7 +629,12 @@ class GameplayService:
             return self._failure("auth/registerName", "username is required")
         player, _dirty = self._load(player_id)
         player["entity"]["username"] = username
-        self._save(player, player_id)
+        try:
+            self._save(player, player_id)
+        except Exception as exc:
+            if db.duplicate_player_name(exc):
+                return self._failure("auth/registerName", "player name is already in use")
+            raise
         return self._success("auth/registerName", {"succeeded": True})
 
     def _session_player(

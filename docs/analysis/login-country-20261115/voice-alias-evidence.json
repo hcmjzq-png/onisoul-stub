@@ -1,0 +1,23 @@
+{
+  "audio_sha256_all_three": "5879446edf4f4e9a921afaa3e16d84de21c4eb5590cfeba5eaa7998190bdde46",
+  "candidates": [
+    {
+      "clip": "vse008_1_050801_12_01",
+      "file": "vse__c7e2dee48aa62588e993bd83c992cc67.unity3d",
+      "file_sha256": "5479e0184a866b5b7322e11761d4009ea15d2d57d66b1748563cc402fecac449",
+      "entire_serialized_content_equal_after_name_normalization": true
+    },
+    {
+      "clip": "vse008_1_050801_12_02",
+      "file": "vse__4f462f4ef901ec77cdc48f0c54edb903.unity3d",
+      "file_sha256": "805957f52c37d228d4e1425e76c6fbf0daa3454723b29098c382a740bfd93523",
+      "entire_serialized_content_equal_after_name_normalization": true
+    },
+    {
+      "clip": "vse008_1_050801_12_03",
+      "file": "vse__f9c0557078d03607e495d1f021c93dc5.unity3d",
+      "file_sha256": "e33c5a956a701786dd1e5ff67d46da308558bd2eaf3f930891dd6ed44be4cc61",
+      "entire_serialized_content_equal_after_name_normalization": true
+    }
+  ]
+}

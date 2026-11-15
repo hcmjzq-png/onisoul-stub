@@ -123,41 +123,44 @@ function go(p){ if(p==="login"){ location.href="{action}"; return; } location.hr
   i.src="{action}?page=vp&w="+window.innerWidth+"&h="+window.innerHeight
        +"&sw="+screen.width+"&sh="+screen.height;
 })();
-/* 记住账号密码：勾选框可点，勾上时把账号密码写进本地 cookie，下次打开自动回填。
-   容器是 QtWebKit（无 localStorage 保障），所以走 document.cookie；仅本地 stub 用。 */
+/* The original Qt launcher does not persist its cookie jar across processes.
+   Store credentials only in the user's local DPAPI helper, never an HTTP cookie. */
 (function(){
-  var CK="oni_login";
-  function getCookie(n){
-    var m=document.cookie.match(new RegExp("(^| )"+n+"=([^;]*)(;|$)"));
-    return m?m[2]:"";
-  }
-  function setCookie(n,v,days){
-    var d=new Date(); d.setTime(d.getTime()+(days*24*60*60*1000));
-    document.cookie=n+"="+v+";expires="+d.toUTCString()+";path=/";
-  }
-  var box=document.getElementById("remember");
-  var form=document.querySelector("form");
+  var box=document.getElementById("remember"), form=document.querySelector("form");
   if(!box||!form){ return; }
-  var acc=form.querySelector('input[name="account"]');
-  var pwd=form.querySelector('input[name="password"]');
-  function isChecked(){ return box.className.indexOf("checked")>=0; }
-  var saved=getCookie(CK);
-  if(saved){
+  var acc=form.querySelector('input[name="account"]'), pwd=form.querySelector('input[name="password"]');
+  function checked(){ return box.className.indexOf("checked")>=0; }
+  function call(method,value,done){
+    var ended=false, x=new XMLHttpRequest();
+    function finish(ok,data){ if(ended){return;} ended=true;done(ok,data); }
+    var timer=setTimeout(function(){x.abort();finish(false,{});},2000);
+    x.onreadystatechange=function(){
+      if(x.readyState!==4){return;}
+      clearTimeout(timer);
+      var data={};try{data=JSON.parse(x.responseText);}catch(e){}
+      finish(x.status===200,data);
+    };
     try{
-      var o=JSON.parse(decodeURIComponent(saved));
-      if(o&&o.a){ acc.value=o.a; pwd.value=o.p||""; box.className="ui-radio checked"; }
-      else{ box.className="ui-radio"; }
-    }catch(e){ box.className="ui-radio"; }
+      x.open(method,"http://127.0.0.1:19765/credentials",true);
+      x.setRequestHeader("X-Oni-Login","1");
+      if(method==="POST"){x.setRequestHeader("Content-Type","application/json");}
+      x.send(method==="POST"?JSON.stringify(value):null);
+    }catch(e){clearTimeout(timer);finish(false,{});}
   }
+  document.cookie="oni_login=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+  call("GET",null,function(ok,o){
+    if(ok&&o.a&&!acc.value&&!pwd.value){acc.value=o.a;pwd.value=o.p||"";box.className="ui-radio checked";}
+    box.title=ok?"保存账号密码（本机加密）":"保存功能尚未启动，仍可正常登录";
+  });
   box.onclick=function(){
-    box.className = isChecked() ? "ui-radio" : "ui-radio checked";
+    box.className=checked()?"ui-radio":"ui-radio checked";
+    if(!checked()){call("POST",{},function(){});}
   };
+  var submitting=false;
   form.onsubmit=function(){
-    if(isChecked()&&acc.value){
-      setCookie(CK, encodeURIComponent(JSON.stringify({a:acc.value,p:pwd.value})), 180);
-    }else{
-      setCookie(CK,"",-1);
-    }
+    if(submitting){return false;}submitting=true;
+    call("POST",checked()&&acc.value?{a:acc.value,p:pwd.value}:{},function(){form.submit();});
+    return false;
   };
 })();
 </script>
@@ -204,7 +207,7 @@ _LOGIN_BODY = """<div class="wrap">
       <div class="l_list">
         <span class="ui-label label-user"></span>
         <span class="ui-input-wrap"><input class="ui-input" type="text" name="account" value="{account}" maxlength="32"></span>
-        <span class="ui-radio checked" id="remember"></span>
+        <span class="ui-radio checked" id="remember" title="保存账号密码"></span>
       </div>
       <div class="l_list">
         <span class="ui-label label-pwd"></span>
