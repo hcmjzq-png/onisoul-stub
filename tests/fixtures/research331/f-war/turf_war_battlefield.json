@@ -1,0 +1,181 @@
+{
+  "turf_war_battlefield": {
+    "battlefield01": {
+      "id": "battlefield01",
+      "catalogId": "battlefield_0000101",
+      "day0": "none",
+      "rewards0": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "bonusRewards0": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "day1": "none",
+      "rewards1": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "bonusRewards1": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "day2": "none",
+      "rewards2": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "bonusRewards2": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "day3": "none",
+      "rewards3": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "bonusRewards3": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "day4": "none",
+      "rewards4": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ],
+      "bonusRewards4": [
+        "reward02_05_01000",
+        "reward02_05_01001",
+        "reward02_05_01002"
+      ]
+    },
+    "battlefield02": {
+      "id": "battlefield02",
+      "catalogId": "battlefield_0000201",
+      "day0": "none",
+      "rewards0": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "bonusRewards0": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "day1": "none",
+      "rewards1": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "bonusRewards1": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "day2": "none",
+      "rewards2": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "bonusRewards2": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "day3": "none",
+      "rewards3": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "bonusRewards3": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "day4": "none",
+      "rewards4": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ],
+      "bonusRewards4": [
+        "reward02_05_02000",
+        "reward02_05_02001",
+        "reward02_05_02002"
+      ]
+    },
+    "battlefield03": {
+      "id": "battlefield03",
+      "catalogId": "battlefield_0000301",
+      "day0": "none",
+      "rewards0": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "bonusRewards0": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "day1": "none",
+      "rewards1": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "bonusRewards1": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "day2": "none",
+      "rewards2": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "bonusRewards2": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "day3": "none",
+      "rewards3": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "bonusRewards3": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "day4": "none",
+      "rewards4": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ],
+      "bonusRewards4": [
+        "reward02_05_03000",
+        "reward02_05_03001",
+        "reward02_05_03002"
+      ]
+    }
+  }
+}

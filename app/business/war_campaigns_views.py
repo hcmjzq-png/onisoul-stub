@@ -11,6 +11,25 @@ from typing import Any
 from app.business.player_services import integer
 
 
+def turf_enrollment(event: dict, player_id: str, now: float) -> dict:
+    """Self-only FRAGMENT for getWarSituation; never a whole war-status response.
+
+    Source: TurfWarBriefCache.cs:362-370,235. It must be combined with genuine
+    global battle state by the shared route owner. No scores/bonus/rank invented.
+    No HTTP getSelfSituation/getSelfRecord mapping: their consumers are unknown.
+    """
+    from app.business.war_campaigns_events import replay_turf_war, turf_war_phase
+
+    turf_war_phase(event, now)  # validate freshness, including clock rollback
+    if not isinstance(player_id, str) or not player_id:
+        raise ValueError("no stub response: authenticated player required")
+    member = replay_turf_war(event)[0].get(player_id)
+    return {"selfBelong": {
+        "team": member["team"] if member else "none",
+        "battlefield": member["battlefield"] if member else "none",
+    }, "isMovable": False}
+
+
 def _map(value: Any) -> dict:
     if not isinstance(value, dict):
         raise ValueError("campaign record must be an object")

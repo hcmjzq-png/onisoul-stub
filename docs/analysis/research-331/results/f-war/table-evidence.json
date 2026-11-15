@@ -1,0 +1,37 @@
+[
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\country_setting.json",
+    "sha256": "a1efe4e7c13ea533439808599786bffc55454f62674e6e70155b8a707f6c8a83",
+    "root": "country_setting",
+    "row_ids": [
+      "country01",
+      "country02"
+    ],
+    "fixture": "tests/fixtures/research331/f-war/country_setting.json",
+    "fixture_sha256": "e61ba6193a66500c2818126fe805d3f62fc51b376c173745d90684c52c939c04"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\turf_war_battlefield.json",
+    "sha256": "8fcb6996a0d086e026449d6ff39a7d64c344ddcb2226fbfa2e03da720b7b45e1",
+    "root": "turf_war_battlefield",
+    "row_ids": [
+      "battlefield01",
+      "battlefield02",
+      "battlefield03"
+    ],
+    "fixture": "tests/fixtures/research331/f-war/turf_war_battlefield.json",
+    "fixture_sha256": "6e07d4d187c047906028101168f3bab0cd2d94bb0ff180bdd0330855cc4d4031"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\turf_war_battlefield_catalog.json",
+    "sha256": "7fd669e839d14b63a56c1490b3fb68be0ad4abc8433424777d51f90b187ced6c",
+    "root": "turf_war_battlefield_catalog",
+    "row_ids": [
+      "battlefield_0000101",
+      "battlefield_0000201",
+      "battlefield_0000301"
+    ],
+    "fixture": "tests/fixtures/research331/f-war/turf_war_battlefield_catalog.json",
+    "fixture_sha256": "a9905e727c3de431c1de08d9434f94b74b0200a84190a91ca00288760828644b"
+  }
+]
