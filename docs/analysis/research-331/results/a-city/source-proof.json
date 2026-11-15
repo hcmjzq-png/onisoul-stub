@@ -1,0 +1,304 @@
+{
+  "table_sources": [
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/building.json",
+      "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+      "table": "building",
+      "rows": [
+        "building200_041_01_01_1_1",
+        "building200_051_01_01_1_1"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/product.json",
+      "sha256": "36f9de13973ed4c6f57c8dcbfba09a7fe9c69e13d2435ad8534b8e33ff8478c7",
+      "table": "product",
+      "rows": [
+        "product060_023_01_01_1_1",
+        "product060_001_01_01_1_1"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/building_level.json",
+      "sha256": "b4c2466cc4ad68de233e808afa72170c0b8d285352f51e6e9057ac8349da9813",
+      "table": "building_level",
+      "rows": [
+        "product_early1001",
+        "product_early1002",
+        "product_early1003",
+        "product_early1004",
+        "product_early1005",
+        "product_early1006",
+        "product_early1007",
+        "product_early1008",
+        "product_early1009",
+        "product_early1010"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/politicMission.json",
+      "sha256": "1f8b764ee8d9f078d4fb4250f91d22ec055570162239b4be8613aa3c9e75863b",
+      "table": "politicMission",
+      "rows": [
+        "po_mission_00281",
+        "po_mission_00458"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/shop_item_bg.json",
+      "sha256": "1779a2d3f40de582ffd7f3e0fb2188ebb3f3a988ece8af201ebaecf2689e13be",
+      "table": "shop_item_bg",
+      "rows": [
+        "bgstore_01_0001_0001",
+        "bgstore_01_0001_0002",
+        "bgstore_11_0001_0001",
+        "bgstore_11_0001_0002"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/item13.json",
+      "sha256": "5195d97a0501e4e37e97db4ace2c20b9ec43ff50e5fa18485e2944d31b7f620c",
+      "table": "item13",
+      "rows": [
+        "item13_0000004",
+        "item13_0000005"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/item14.json",
+      "sha256": "1047b9455e27ffb51ac4cbd455446ca3aee18fccb546e61a5efa08a57de70ee5",
+      "table": "item14",
+      "rows": [
+        "item14_1000048",
+        "item14_1000049"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/skill.json",
+      "sha256": "f1fa45ed69abb41a758b30445c038c39a2d17f92e78a410fa678df82ac9d5cd3",
+      "table": "skill",
+      "rows": [
+        "skill1_10041_01",
+        "skill1_10042_01"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/quest_1_index.json",
+      "sha256": "8941d1b097a1a776ee2148d8c34a4136878e863fd24afcce30ce1cc521d9443e",
+      "table": "quest_1_index",
+      "rows": [
+        "2_5"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/reward01_politic.json",
+      "sha256": "ba1c4d8ff335af146b020924bf7b9c6e51436ccd90496dc1e30afc9e28cfc525",
+      "table": "reward01_politic",
+      "rows": [
+        "reward01_01_00001_01",
+        "reward01_01_00014_01"
+      ]
+    },
+    {
+      "path": "D:/onisoul/work/verified-trophies-20261115/runtime-tables/defines.json",
+      "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+      "table": "defines",
+      "rows": [
+        "infinite_building_durability",
+        "politic_auto_harvest_point"
+      ]
+    }
+  ],
+  "fixture": {
+    "path": "tests/fixtures/research331/a-city/original-tables.json",
+    "sha256": "d4f35751d7c43880cd4769a5c5e07db676922adfa918276081cdceea14c5bb78",
+    "normalization": "CRLF to LF for Git checkout portability; original sources remain raw-byte SHA-256"
+  },
+  "source_files": [
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/PoliticBuilding.cs",
+      "sha256": "12ce58588bea07a4eb39f70c86d54b7cabb00380846dcef449c104b227fd5a9a",
+      "lines": [
+        [
+          1090,
+          1134
+        ],
+        [
+          1850,
+          1905
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/PoliticFSMCollectiveProduce.cs",
+      "sha256": "b57fc3fe5e93c1354a7ef7fd9a5b939638776e75480d6b80ac9b3b01ca8f51c0",
+      "lines": [
+        [
+          95,
+          127
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/PoliticBuildingParameter.cs",
+      "sha256": "ff7f635f305109926a5ad774eada7365352b7fdfed88e534d697df1d4e2e2996",
+      "lines": [
+        [
+          158,
+          199
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/PoliticBuildingState/StateAutoProduce.cs",
+      "sha256": "7d82b4c4220823af6de97a6f2011745c26a7c965495469778aed5d0cd03933b2",
+      "lines": [
+        [
+          401,
+          430
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/PoliticBuildingState/StateManualProduce.cs",
+      "sha256": "3570c727533ada094e5c25ff5602b5f695703a285c6ee17fd1eab34027d660cf",
+      "lines": [
+        [
+          21,
+          36
+        ],
+        [
+          51,
+          66
+        ],
+        [
+          80,
+          89
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/PoliticMissionConditionOne.cs",
+      "sha256": "d2cedf3cc4238b31f62de974a419580fb727dea30eb1cd9818d47c90e3ef18b0",
+      "lines": [
+        [
+          268,
+          280
+        ],
+        [
+          325,
+          333
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/mypageCastleTownItem.cs",
+      "sha256": "295a6a1e2763cf9cca91dea8f0b4dbc98416ae5f76855c1b3b64897d4b99fc73",
+      "lines": [
+        [
+          101,
+          148
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+      "lines": [
+        [
+          1302,
+          1367
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "lines": [
+        [
+          324,
+          339
+        ],
+        [
+          897,
+          915
+        ],
+        [
+          1071,
+          1086
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/GameRestarter.cs",
+      "sha256": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea",
+      "lines": [
+        [
+          61,
+          90
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/PoliticMap.cs",
+      "sha256": "d1a5da4154088f6fbeacf24be5b5215267de11d80286ca44ce9c37ccbf4415d5",
+      "lines": [
+        [
+          216,
+          287
+        ]
+      ]
+    },
+    {
+      "path": "C:/Users/74378/AppData/Local/Temp/onisoul-static-original-20261115/mypageBgSelectWindow.cs",
+      "sha256": "2a6566b2fe2bf68e3df2e979c268369f12853b04fb419affeed8180a09691676",
+      "lines": [
+        [
+          133,
+          150
+        ]
+      ]
+    }
+  ],
+  "container": {
+    "path": "D:/onisoul/work/quest-contract-20261115/tableAssets.bin",
+    "sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7"
+  },
+  "embedded_text": [
+    {
+      "id": "POM_MES_000281_01_003",
+      "offset": 806506,
+      "length": 219,
+      "sha256": "6f457d9f11cc97d4333ac04c6b7719e1efd5bf131642ba5c7080bb531a068afd",
+      "text": "「那么领主大人，请完成『鬼物语』的『京都美妃篇』的『第五话』，\n　将『石高』提升至『７５００』以上，取得支城吧。」@"
+    },
+    {
+      "id": "POM_MES_000281_03_004",
+      "offset": 807760,
+      "length": 161,
+      "sha256": "a5dd8a7f9cbd39f9d204ec6dd5e56e907b6d2f389d577f482ad08e7dc79c6475",
+      "text": "「支城的大小为４０×４０格。\n　还有许多尚未开拓的土地，请努力进行开拓吧。」@"
+    },
+    {
+      "id": "POM_MES_000281_03_005",
+      "offset": 807953,
+      "length": 253,
+      "sha256": "1adb35ca1f1300a5b88f1f0d5efd448ea560c5e77dd98d3545785144b16b7e84",
+      "text": "「一旦取得支城，\n　画面左上方显示的石高就会变成『本城＋支城』的合计数值。\n　国政内能够献纳的数值也会变为『本城＋支城的最大石高×１０』」@"
+    },
+    {
+      "id": "SKILL_MSG_1_10041_01_DESC",
+      "offset": 4237944,
+      "length": 194,
+      "sha256": "a40ec5394555ce2238f35ae0e84625dd9eae5955baaa8335a1a4eb7285110299",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升5%。"
+    },
+    {
+      "id": "SKILL_MSG_1_10042_01_DESC",
+      "offset": 4238174,
+      "length": 195,
+      "sha256": "6c24fc38ac859f76af8685372d058797ef63401818f876160051f0267f7bb960",
+      "text": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升10%。"
+    }
+  ]
+}
