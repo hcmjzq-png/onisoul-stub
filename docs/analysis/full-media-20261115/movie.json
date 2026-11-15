@@ -1,0 +1,15 @@
+{
+  "source": "C:\\RPCS3\\dev_hdd0\\game\\NPJB00304\\USRDIR\\Media\\Raw\\Movies\\movie.pam",
+  "source_sha256": "a9c24c90ca55a96e12504d5405e9d4ac6264eacc4a793ef68c40fe5524934885",
+  "source_container": "PAMF0041",
+  "stream_offset": 2048,
+  "output": "D:\\onisoul-worktrees\\full-media-port-20261115\\work\\full-media\\final-movie.mpg",
+  "output_bytes": 153516032,
+  "output_sha256": "692fb38319347669b43dfd133f3d876e10a59647b0f0848cfbe736f4c1cb2ef3",
+  "codec": "MPEG-2 video",
+  "operation": "stream copy",
+  "frames": 3707,
+  "decoded_frames_and_timestamps_identical": true,
+  "decoded_frame_index_sha256": "b37571496e794b593134934ccaa2e2e85647de648cd2fe1e9427a973dac1a852",
+  "unity_movie_texture_verified": false
+}

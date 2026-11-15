@@ -31,21 +31,42 @@ const destroy=method('Object','Destroy',1),play=method('AudioSource','Play',0),s
 // verified separately via mono_class_get_methods/signature parameter names.
 const addcomponent=method('GameObject','AddComponent',1),ctor=method('GameObject','.ctor',1);
 const yes=Memory.alloc(4);yes.writeU32(1);const zero=Memory.alloc(4);zero.writeFloat(0);
-let queue=[],current=null,guard=false,steps=0,cancelled=false;
+let queue=[],current=null,active=[],guard=false,steps=0,cancelled=false;
 function cleanup(){if(!current)return;const c=current;try{if(c.source){call(stop,c.source);call(destroy,null,[c.go]);}if(c.bundle)call(unload,c.bundle,[yes]);}finally{for(const h of c.handles)free(h);current=null;}}
-function step(){steps++;if(cancelled){cleanup();return;}if(!current){if(!queue.length)return;current=queue.shift();current.handles=[];current.started=Date.now();const bytes=new Uint8Array(current.bytes);delete current.bytes;const arr=arraynew(domain,byteclass,bytes.length);arr.add(16).writeByteArray(bytes);current.handles.push(keep(arr,1));current.request=call(create,null,[arr]);if(current.request.isNull())throw new Error('null bundle request');current.handles.push(keep(current.request,1));return;}
+function step(){steps++;if(cancelled){cleanup();return;}if(!current){return;}
  const c=current;if(Date.now()-c.started>20000)throw new Error('native load/playback timed out');
  if(c.playStarted){const active=unbox(call(playing,c.source)).readU8()!==0;if(!active){c.result.playback_finished=true;send({result:c.result});cleanup();}return;}
  if(unbox(call(isDone,c.request)).readU8()===0)return;
  c.bundle=call(requestBundle,c.request);if(c.bundle.isNull())throw new Error('native AssetBundle load failed');c.handles.push(keep(c.bundle,1));
  const media=call(load,c.bundle,[string(c.name)]);if(media.isNull())throw new Error('native named asset missing');c.handles.push(keep(media,1));
- const kind=classname(getclass(media)).readUtf8String();const r={name:c.name,kind,loaded:true};
+ const kind=classname(getclass(media)).readUtf8String();const r={id:c.id,name:c.name,kind,loaded:true};
  if(kind==='AudioClip'){
   r.seconds=unbox(call(getlen,media)).readFloat();r.samples=unbox(call(getsamples,media)).readS32();r.channels=unbox(call(getchannels,media)).readS32();r.frequency=unbox(call(getfreq,media)).readS32();if(r.seconds<=0||r.samples<=0)throw new Error('native audio has no decoded duration/samples');
   if(c.play){c.go=objectnew(domain,klass('GameObject'));c.handles.push(keep(c.go,1));call(ctor,c.go,[string('OniSoulMediaQA')]);c.source=call(addcomponent,c.go,[string('AudioSource')]);c.handles.push(keep(c.source,1));call(volume,c.source,[zero]);call(setclip,c.source,[media]);call(play,c.source);r.playback_started=unbox(call(playing,c.source)).readU8()!==0;if(!r.playback_started)throw new Error('native audio did not start');c.playStarted=Date.now();c.result=r;return;}
  }else if(kind==='Texture2D'){r.width=unbox(call(getwidth,media)).readS32();r.height=unbox(call(getheight,media)).readS32();if(r.width<=0||r.height<=0)throw new Error('empty native texture');}else throw new Error('unexpected native class '+kind);
  send({result:r});cleanup();
 }
-Interceptor.attach(mono.getExportByName('mono_runtime_invoke'),{onEnter(args){if(guard||(!queue.length&&!current))return;try{this.run=names(args[0]).readUtf8String()==='Update';}catch(e){}},onLeave(){if(!this.run||guard)return;guard=true;try{step();}catch(e){send({error:String(e),name:current?current.name:null});try{cleanup();}catch(e){send({cleanupError:String(e)});}}finally{guard=false;}}});
-rpc.exports={enqueue(job){if(cancelled)throw new Error('probe cancelled');queue.push(job);return queue.length;},cancel(){queue=[];cancelled=true;},status(){return{queued:queue.length,current:current?current.name:null,steps};}};
+function advance(){
+ // Keep a small bounded set of asynchronous requests in flight. Native Unity
+ // calls still run only on Update; binary RPC avoids JSON arrays of megabytes.
+ const pending=[];
+ for(const job of active){
+  current=job;
+  try{step();}catch(e){send({error:String(e),id:job.id,name:job.name});try{cleanup();}catch(e){send({cleanupError:String(e)});}}
+  if(current)pending.push(current);
+ }
+ active=pending;current=null;
+ while(!cancelled&&active.length<4&&queue.length){
+  current=queue.shift();current.handles=[];current.started=Date.now();
+  try{const bytes=new Uint8Array(current.bytes);delete current.bytes;
+   const arr=arraynew(domain,byteclass,bytes.length);arr.add(16).writeByteArray(bytes);
+   current.handles.push(keep(arr,1));current.request=call(create,null,[arr]);
+   if(current.request.isNull())throw new Error('null bundle request');
+   current.handles.push(keep(current.request,1));active.push(current);
+  }catch(e){send({error:String(e),id:current.id,name:current.name});cleanup();}
+  current=null;
+ }
+}
+Interceptor.attach(mono.getExportByName('mono_runtime_invoke'),{onEnter(args){if(guard||(!queue.length&&!active.length))return;try{this.run=names(args[0]).readUtf8String()==='Update';}catch(e){}},onLeave(){if(!this.run||guard)return;guard=true;try{advance();}finally{guard=false;}}});
+rpc.exports={enqueue(job,bytes){if(cancelled)throw new Error('probe cancelled');job.bytes=bytes;queue.push(job);return queue.length;},cancel(){queue=[];cancelled=true;},status(){return{queued:queue.length,current:active.length?active.map(j=>j.name):null,steps};}};
 send({ready:true,domain:domain.toString()});

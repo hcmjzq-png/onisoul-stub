@@ -17,6 +17,30 @@ import time
 ENGINE_SHA256 = '0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5'
 
 
+def validate_results(proofs: list[dict], events: list[dict]) -> list[dict]:
+    """Match asynchronous native results by ID and verify decoded metadata."""
+    loaded = [event['result'] for event in events if 'result' in event]
+    errors = [event for event in events if 'error' in event or event.get('type') == 'error']
+    if errors or len(loaded) != len(proofs):
+        raise RuntimeError(f'native verification failed: {len(loaded)}/{len(proofs)}, {len(errors)} errors')
+    by_id = {result['id']: result for result in loaded}
+    if len(by_id) != len(proofs):
+        raise RuntimeError('duplicate/missing native result IDs')
+    for index, row in enumerate(proofs):
+        result = by_id[row.get('id', str(index))]
+        if result['name'] != row['name'] or result['kind'] != row['kind'] or not result.get('loaded'):
+            raise RuntimeError('native asset identity changed: ' + row['name'])
+        if row['kind'] == 'Texture2D':
+            if (result['width'], result['height']) != (row['width'], row['height']):
+                raise RuntimeError('native texture dimensions changed: ' + row['name'])
+        else:
+            expected = row.get('ogg_granule_samples', row['source_samples'])
+            if (result['frequency'], result['channels'], result['samples']) != (
+                    row['sample_rate'], row['channels'], expected):
+                raise RuntimeError('native audio metadata changed: ' + row['name'])
+    return loaded
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--pid', type=int, required=True)
@@ -25,10 +49,13 @@ def main() -> None:
     parser.add_argument('--play', action='append', default=[], help='Exact clip name; muted playback')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--timeout', type=int, default=150)
+    parser.add_argument('--queue-size', type=int, default=4, help='Bound simultaneous queued bundle bytes')
     args = parser.parse_args()
     if args.output.exists():
         parser.error('output already exists')
     proofs = json.loads(args.manifest.read_text(encoding='utf-8'))['converted']
+    if args.queue_size < 1:
+        parser.error('--queue-size must be positive')
     for row in proofs:
         blob = (args.root / row['output']).read_bytes()
         if hashlib.sha256(blob).hexdigest() != row['output_sha256']:
@@ -39,6 +66,10 @@ def main() -> None:
     session = frida.attach(args.pid)
     events = []
     status = None
+    def save() -> None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(dict(pid=args.pid, engine_sha256=ENGINE_SHA256,
+            status=status, events=events), indent=2), encoding='utf-8')
     try:
         lookup = session.create_script(
             "rpc.exports.path=()=>Process.getModuleByName('webplayer_win.dll').path;")
@@ -53,15 +84,25 @@ def main() -> None:
         script.on('message', receive)
         script.load()
         try:
-            for row in proofs:
-                script.exports_sync.enqueue(dict(name=row['name'],
-                    bytes=list((args.root / row['output']).read_bytes()), play=row['name'] in args.play))
             start = time.monotonic()
+            submitted = 0
+            last_saved = 0
             while time.monotonic() - start < args.timeout:
                 status = script.exports_sync.status()
-                if not status['queued'] and not status['current']:
+                if submitted < len(proofs) and status['queued'] < args.queue_size:
+                    row = proofs[submitted]
+                    script.exports_sync.enqueue(dict(id=row.get('id', str(submitted)), name=row['name'],
+                        play=row['name'] in args.play), (args.root / row['output']).read_bytes())
+                    submitted += 1
+                    continue
+                finished = sum('result' in event or 'error' in event for event in events)
+                if finished >= last_saved + 100:
+                    save()
+                    last_saved = finished
+                    print(f'NATIVE {finished}/{len(proofs)}', flush=True)
+                if submitted == len(proofs) and not status['queued'] and not status['current']:
                     break
-                time.sleep(.3)
+                time.sleep(.02)
             else:
                 raise TimeoutError('native resource probe timed out')
         finally:
@@ -71,13 +112,8 @@ def main() -> None:
                 time.sleep(.1)
     finally:
         session.detach()
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(json.dumps(dict(pid=args.pid, engine_sha256=ENGINE_SHA256,
-            status=status, events=events), indent=2), encoding='utf-8')
-    loaded = [event['result'] for event in events if 'result' in event]
-    errors = [event for event in events if 'error' in event or event.get('type') == 'error']
-    if errors or len(loaded) != len(proofs):
-        raise RuntimeError(f'native verification failed: {len(loaded)}/{len(proofs)}, {len(errors)} errors')
+        save()
+    loaded = validate_results(proofs, events)
     print(json.dumps(dict(loaded=len(loaded), playback=sum(bool(r.get('playback_finished')) for r in loaded))))
 
 

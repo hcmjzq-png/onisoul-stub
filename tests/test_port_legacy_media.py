@@ -1,8 +1,10 @@
 import struct
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
+from pathlib import Path
 
-from tools.port_legacy_media import pack_pc, repack_serialized, unpack_pc
+from tools.port_legacy_media import ogg_frames, pack_pc, repack_serialized, transcode, unpack_pc
 from tools.repair_unityweb_lzma import layout, repair
 
 
@@ -56,3 +58,44 @@ class LegacyMediaContainerTest(unittest.TestCase):
         sf.target_platform = 10
         with self.assertRaisesRegex(ValueError, 'PC template required'):
             repack_serialized(raw, sf, {2: b'converted'})
+
+
+class VorbisGranuleTest(unittest.TestCase):
+    @staticmethod
+    def page(granule, flags=4, serial=7, payload=b'vorbis'):
+        return (b'OggS\0' + bytes([flags]) + struct.pack('<qIII', granule, serial, 0, 0)
+                + bytes([1, len(payload)]) + payload)
+
+    def test_eos_count_is_read_from_page_boundaries_not_payload(self):
+        data = self.page(0, flags=2, payload=b'OggS\0not-a-page') + self.page(35712)
+        self.assertEqual(ogg_frames(data), 35712)
+        for invalid in (data[:-1], data + b'garbage', self.page(3, flags=0),
+                        self.page(3) + self.page(4), self.page(0, flags=2) + self.page(4, serial=8),
+                        self.page(4, flags=0) + self.page(3)):
+            with self.assertRaises(ValueError):
+                ogg_frames(invalid)
+
+    @patch('tools.port_legacy_media.ffmpeg')
+    @patch('tools.port_legacy_media.pcm')
+    def test_short_clip_padding_is_excluded_but_signal_changes_fail(self, mocked_pcm, mocked_ffmpeg):
+        samples = struct.pack('<' + 'h' * 100, *range(100))
+        mocked_ffmpeg.return_value = self.page(100)
+        mocked_pcm.side_effect = [(samples, 48000, 1), (samples + bytes(1920), 48000, 1)]
+        _, proof = transcode(Path('ffmpeg'), b'source')
+        self.assertEqual(proof['output_samples'], 100)
+        self.assertEqual(proof['ffmpeg_padding_samples'], 960)
+        mocked_pcm.side_effect = [(samples, 48000, 1), (bytes(len(samples)) + bytes(1920), 48000, 1)]
+        with self.assertRaisesRegex(ValueError, 'SNR'):
+            transcode(Path('ffmpeg'), b'source')
+
+    @patch('tools.port_legacy_media.ffmpeg')
+    @patch('tools.port_legacy_media.pcm')
+    def test_real_silent_placeholder_requires_explicit_opt_in(self, mocked_pcm, mocked_ffmpeg):
+        mocked_ffmpeg.return_value = self.page(100)
+        mocked_pcm.side_effect = [(bytes(200), 48000, 1)] * 6
+        with self.assertRaisesRegex(ValueError, 'source is silent'):
+            transcode(Path('ffmpeg'), b'source')
+        _, proof = transcode(Path('ffmpeg'), b'source', allow_silent=True)
+        self.assertTrue(proof['source_silent'])
+        self.assertIsNone(proof['decoded_snr_db'])
+        self.assertEqual(proof['output_samples'], 100)

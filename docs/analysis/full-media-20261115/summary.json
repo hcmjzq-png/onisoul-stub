@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "unit": "distinct serialized AudioClip/Texture2D per platform",
+  "deduplication": "platform + class + exact serialized object bytes",
+  "inventory_sha256": "0530abf0f56750e8443f64d2c7d7eaee450eb5af00de6d6901aa1ed673d6b415",
+  "manifest_sha256": "79b9d3f736cf338cc60827b4245a1a363044bbc9d8458dbb443b724e8ec2c0f7",
+  "inputs": {
+    "ps3_root": "C:\\RPCS3\\dev_hdd0\\game\\NPJB00304\\USRDIR\\Media\\Raw",
+    "ps3_bundles": 10462,
+    "apk_sources": [
+      {
+        "source": "E:\\oni-soul\\downloads\\gwzsoul_1.00.15_20140217.apk",
+        "sha256": "4c8546829e6c444331e672c8300f5f53ae883a08f902e5d79a699bc192cdb79c"
+      },
+      {
+        "source": "E:\\oni-soul\\downloads\\onisoul_1.00.13.apk",
+        "sha256": "35ccbb174c396939eafb9847b1f8e9a2c9eef313f9e04b9aaf024fcc2c6616bb"
+      },
+      {
+        "source": "E:\\oni-soul\\downloads\\onisoul_1.00.18.apk",
+        "sha256": "38ebe7df34a03034a8c3464d24862555e974958cbcb300effa0ae608fd6e0021"
+      }
+    ],
+    "unique_apk_members": 102,
+    "duplicate_apk_members": 168
+  },
+  "media_counts": {
+    "Android/AudioClip": 14,
+    "Android/Texture2D": 72,
+    "PS3/AudioClip": 10095,
+    "PS3/Texture2D": 1969
+  },
+  "total": 12150,
+  "previous": 147,
+  "newly_available": 12003,
+  "new_final_files": 12017,
+  "reused_files": 133,
+  "conversion_failures": 0,
+  "output_bytes": 555127376,
+  "native_loaded": 12150,
+  "native_engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+  "native_playback_finished": 7,
+  "initial_native_failures": 763,
+  "silent_source_placeholders": 45,
+  "rgba_fallbacks": 17,
+  "min_audio_snr_db": 31.325,
+  "full_ps3_containers_unported": {
+    "building": 288,
+    "scene": 60
+  },
+  "classes_by_family": {
+    "PS3": {
+      "AssetBundle": 10462,
+      "Material": 1605,
+      "Texture2D": 2061,
+      "Mesh": 5850,
+      "TextAsset": 301,
+      "AnimationClip": 2652,
+      "GameObject": 23297,
+      "Transform": 23297,
+      "MeshRenderer": 12425,
+      "MeshFilter": 12102,
+      "MeshCollider": 2952,
+      "Animation": 2958,
+      "PreloadData": 32,
+      "MonoScript": 805,
+      "OcclusionCullingSettings": 32,
+      "RenderSettings": 32,
+      "HaloManager": 32,
+      "LightmapSettings": 32,
+      "NavMeshSettings": 32,
+      "Camera": 74,
+      "GUILayer": 62,
+      "FlareLayer": 54,
+      "MonoBehaviour": 10714,
+      "BoxCollider": 819,
+      "AudioListener": 40,
+      "TextMesh": 67,
+      "Shader": 27,
+      "ParticleSystem": 1411,
+      "ParticleSystemRenderer": 1411,
+      "Rigidbody": 192,
+      "AudioSource": 10,
+      "SphereCollider": 2,
+      "AudioClip": 11795,
+      "RenderTexture": 1,
+      "GUIText": 2,
+      "LineRenderer": 3,
+      "ConstantForce": 4
+    },
+    "Android": {
+      "Texture2D": 83,
+      "MonoBehaviour": 217,
+      "Material": 31,
+      "Shader": 83,
+      "AudioClip": 14,
+      "TextAsset": 5,
+      "GameObject": 218,
+      "Transform": 218,
+      "MeshRenderer": 105,
+      "MeshFilter": 105,
+      "BoxCollider": 20,
+      "Mesh": 84,
+      "Animation": 1,
+      "OcclusionCullingSettings": 17,
+      "RenderSettings": 17,
+      "HaloManager": 17,
+      "LightmapSettings": 17,
+      "NavMeshSettings": 17,
+      "Camera": 19,
+      "AudioListener": 8,
+      "GUILayer": 17,
+      "FlareLayer": 14,
+      "PlayerSettings": 2,
+      "InputManager": 2,
+      "TagManager": 2,
+      "AudioManager": 2,
+      "ScriptMapper": 2,
+      "MonoManager": 2,
+      "GraphicsSettings": 2,
+      "TimeManager": 2,
+      "Unknown (71)": 2,
+      "DelayedCallManager": 2,
+      "PhysicsManager": 2,
+      "BuildSettings": 2,
+      "Unknown (52)": 2,
+      "QualitySettings": 2,
+      "ResourceManager": 2,
+      "NetworkManager": 2,
+      "MasterServerInterface": 2,
+      "NavMeshProjectSettings": 2,
+      "PreloadData": 18,
+      "MonoScript": 7459,
+      "Font": 1
+    }
+  },
+  "ps3_extra_files": [
+    {
+      "source": "C:\\RPCS3\\dev_hdd0\\game\\NPJB00304\\USRDIR\\Media\\Raw\\Movies\\movie.pam",
+      "bytes": 155904000,
+      "sha256": "a9c24c90ca55a96e12504d5405e9d4ac6264eacc4a793ef68c40fe5524934885"
+    },
+    {
+      "source": "C:\\RPCS3\\dev_hdd0\\game\\NPJB00304\\USRDIR\\Media\\Raw\\SaveIcon\\SaveIcon.png",
+      "bytes": 87326,
+      "sha256": "9544e48d869f7f0da66826745ba8ab4836453b5bf1dc1757de03d0dce909e611"
+    }
+  ],
+  "native_evidence": [
+    {
+      "path": "native-all-results.json",
+      "sha256": "cd247b73ef69fd4c91a7dab6b234878cc426d416fb5984ac74743a5694baf6f5"
+    },
+    {
+      "path": "native-retry-results.json",
+      "sha256": "864a0e79e88c676f833b23c2ed79c08d145f3d45c88c3a43efbfd7b0285f6c9b"
+    }
+  ],
+  "raw_png_bundles": 12,
+  "raw_png_by_family": {
+    "Android": 11,
+    "PS3": 1
+  },
+  "all_pc_bundles": 12162,
+  "all_native_loaded": 12162,
+  "all_newly_available": 12015,
+  "target_image_names": 268,
+  "target_image_source_matches": 0,
+  "target_table_snapshot_sha256": "5ae4797a155df80dee389ea858890e77e4d8f37583410928feedc25dbf53c025"
+}
