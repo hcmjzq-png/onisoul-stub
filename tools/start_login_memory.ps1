@@ -1,7 +1,11 @@
 [CmdletBinding()]
 param([string]$PythonPath)
 $ErrorActionPreference = 'Stop'
-if (-not $PythonPath) { $PythonPath = (Get-Command python -ErrorAction Stop).Source }
+if (-not $PythonPath) {
+    $installed = @(Get-ChildItem -Path "$env:LOCALAPPDATA\Python\pythoncore-*\python.exe" -ErrorAction SilentlyContinue | Sort-Object FullName -Descending)
+    if ($installed.Count) { $PythonPath = $installed[0].FullName }
+    else { $PythonPath = (Get-Command python -ErrorAction Stop).Source }
+}
 $uri = 'http://127.0.0.1:19765/health'
 function Test-LoginMemory {
     try {

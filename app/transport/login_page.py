@@ -129,10 +129,17 @@ function go(p){ if(p==="login"){ location.href="{action}"; return; } location.hr
   var box=document.getElementById("remember"), form=document.querySelector("form");
   if(!box||!form){ return; }
   var acc=form.querySelector('input[name="account"]'), pwd=form.querySelector('input[name="password"]');
+  var touched=false, pending=[], busy=false;
+  acc.oninput=pwd.oninput=function(){touched=true;};
   function checked(){ return box.className.indexOf("checked")>=0; }
   function call(method,value,done){
+    pending.push([method,value,done]);pump();
+  }
+  function pump(){
+    if(busy||!pending.length){return;}busy=true;
+    var job=pending.shift(),method=job[0],value=job[1],done=job[2];
     var ended=false, x=new XMLHttpRequest();
-    function finish(ok,data){ if(ended){return;} ended=true;done(ok,data); }
+    function finish(ok,data){ if(ended){return;} ended=true;busy=false;done(ok,data);pump(); }
     var timer=setTimeout(function(){x.abort();finish(false,{});},2000);
     x.onreadystatechange=function(){
       if(x.readyState!==4){return;}
@@ -149,10 +156,11 @@ function go(p){ if(p==="login"){ location.href="{action}"; return; } location.hr
   }
   document.cookie="oni_login=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
   call("GET",null,function(ok,o){
-    if(ok&&o.a&&!acc.value&&!pwd.value){acc.value=o.a;pwd.value=o.p||"";box.className="ui-radio checked";}
+    if(ok&&o.a&&!touched&&!acc.value&&!pwd.value){acc.value=o.a;pwd.value=o.p||"";box.className="ui-radio checked";}
     box.title=ok?"保存账号密码（本机加密）":"保存功能尚未启动，仍可正常登录";
   });
   box.onclick=function(){
+    touched=true;
     box.className=checked()?"ui-radio":"ui-radio checked";
     if(!checked()){call("POST",{},function(){});}
   };
