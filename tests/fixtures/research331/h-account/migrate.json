@@ -1,0 +1,10 @@
+{
+  "migrate": {
+    "migrate_0001": {
+      "id": "migrate_0001",
+      "interval": 2592000,
+      "credit": 480,
+      "upperRankAllowable": 0
+    }
+  }
+}
