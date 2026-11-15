@@ -1,0 +1,48 @@
+{
+  "source_root": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115",
+  "source_files": [
+    {
+      "file": "PoliticBgModel.cs",
+      "sha256": "581bd3eccdd8436021bf388e0190cd2c957645e88a2572d2eaac613e4fc7fc4f"
+    },
+    {
+      "file": "CountrySettingAccessor.cs",
+      "sha256": "01f20a00207e43ffcab9bae78dc4330c9a875b5ec90bfb6ae8e5aa3bd29b7dd6"
+    },
+    {
+      "file": "AssetPathConverter.cs",
+      "sha256": "34a7ca255bf5254e5109a048aba0d6a032302decaf192ff05ba7616db95f06bc"
+    },
+    {
+      "file": "Loader.cs",
+      "sha256": "a7b8fa79cb1c48aaea2f97c48dff70dbca95fc2a4e681ff2d2be3b5ca9d5acb2"
+    },
+    {
+      "file": "MD5.cs",
+      "sha256": "eb6de578dc5c9ae60c23590b8f0ba72c6adbcc49c5816b29121eb4349df7ac4b"
+    },
+    {
+      "file": "PoliticFSMStartup.cs",
+      "sha256": "6965242e21817dc5ff4c5eb81d39a0248426015a04ad04747754cf0a00f1651b"
+    }
+  ],
+  "name_hash_encoding": "UTF-16LE MD5",
+  "names": {
+    "pbm01_01": "0258748169d62d7065ab80a56cef3960",
+    "pbm37_01": "db45320f915d81f7dbda1d07a9687091",
+    "scr2_000001": "cc4294d197c943136191cfba8db1a950"
+  },
+  "country_table": {
+    "source": "D:/onisoul/work/quest-contract-20261115/all-tables/country_setting.json",
+    "sha256": "a1efe4e7c13ea533439808599786bffc55454f62674e6e70155b8a707f6c8a83"
+  },
+  "rejected_script_candidate": {
+    "source": "E:/oni-soul/work/webclient/assets/scr/scr__cc4294d197c943136191cfba8db1a950.unity3d",
+    "bytes": 828,
+    "sha256": "fc0d9a0939fb9ad87cad1ee1ca3953c65dcbca0c4c4092d24305388baf3df75c",
+    "container_bytes": 7740,
+    "container_sha256": "c7c11297029e91ae00c8dcd77d69e9683fcdac164e08e5baa211d71bb347a129",
+    "reason": "empty startup XML and empty message table; original contents not recovered",
+    "deployed": false
+  }
+}
