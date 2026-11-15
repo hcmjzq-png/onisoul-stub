@@ -73,7 +73,7 @@ class AdditivePublicationTest(unittest.TestCase):
         self.assertIsNone(self.rows[2]['canonical'])
 
     def test_http_failure_rolls_back_only_this_publish_and_keeps_originals(self):
-        with patch('tools.publish_converted_media.http.client.HTTPConnection', side_effect=OSError('HTTP unavailable')):
+        with patch('tools.publish_converted_media.verify_url', side_effect=OSError('HTTP unavailable')):
             with self.assertRaises(OSError):
                 install(self.args())
         self.assertEqual(self.original.read_bytes(), b'original-PC-from-cache')

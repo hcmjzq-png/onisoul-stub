@@ -11,7 +11,6 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import hashlib
-import http.client
 import io
 import json
 import os
@@ -24,6 +23,7 @@ import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tools.probe_legacy_media import ENGINE_SHA256, validate_results
+from tools.media_http import verify_url
 
 PREFIX = 'converted/pr69'
 HEX = re.compile(r'[0-9a-f]{64}')
@@ -196,21 +196,14 @@ def install(args: argparse.Namespace) -> None:
             index_relative = PREFIX + '/index.json'
             link(index_file, index_relative, sha(index_file))
             requests.append(dict(relative=index_relative, sha256=sha(index_file)))
-        def check(row: dict) -> None:
-            connection = http.client.HTTPConnection(args.http_host, args.http_port, timeout=30)
-            try:
-                connection.request('GET', '/client/pc/jp/assets/' + row['relative'])
-                response = connection.getresponse()
-                if response.status != 200 or hashlib.sha256(response.read()).hexdigest() != row['sha256']:
-                    raise ValueError('HTTP digest verification failed: ' + row['relative'])
-            finally:
-                connection.close()
-        with ThreadPoolExecutor(max_workers=8) as pool:
-            list(pool.map(check, requests))
+        def check(row: dict) -> int:
+            return verify_url(f'http://{args.http_host}:{args.http_port}/client/pc/jp/assets/' + row['relative'], row['sha256'])
+        with ThreadPoolExecutor(max_workers=getattr(args, 'http_workers', 4)) as pool:
+            retries = sum(pool.map(check, requests))
         verify_snapshot(before)
         result = dict(media=len(plan['files']), movie=1, new_files=len(created), canonical_voice_added=canonical_added,
             canonical_existing_preserved=len(kept), original_files_preserved=len(before), http_verified=len(requests),
-            backup=str(backup), archive_sha256=sha(args.archive), success=True)
+            backup=str(backup), archive_sha256=sha(args.archive), http_transient_retries=retries, success=True)
         (backup / 'created.json').write_text(json.dumps(created, indent=2))
         (backup / 'kept.json').write_text(json.dumps(kept, indent=2))
         (backup / 'result.json').write_text(json.dumps(result, indent=2))
@@ -242,6 +235,7 @@ def main() -> None:
         installer.add_argument('--' + name, type=Path, required=True)
     installer.add_argument('--http-host', default='127.0.0.1')
     installer.add_argument('--http-port', type=int, default=80)
+    installer.add_argument('--http-workers', type=int, default=4)
     args = parser.parse_args()
     build(args) if args.action == 'build' else install(args)
 

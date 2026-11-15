@@ -14,7 +14,10 @@ import hashlib
 import json
 from pathlib import Path
 import time
-from urllib.request import ProxyHandler, build_opener
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from tools.media_http import verify_url
 
 ENGINE_SHA256 = '0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5'
 
@@ -75,18 +78,10 @@ def main() -> None:
     prefetch = None
     checks = None
     if any(row.get('url') for row in proofs):
-        def check_http(row: dict) -> str | None:
+        def check_http(row: dict) -> int | None:
             if not row.get('url'):
                 return None
-            digest = hashlib.sha256()
-            with build_opener(ProxyHandler({})).open(row['url'], timeout=30) as response:
-                if response.status != 200:
-                    raise ValueError('HTTP preflight failed: ' + row['name'])
-                for block in iter(lambda: response.read(256 * 1024), b''):
-                    digest.update(block)
-            if digest.hexdigest() != row['output_sha256']:
-                raise ValueError('HTTP preflight digest differs: ' + row['name'])
-            return digest.hexdigest()
+            return verify_url(row['url'], row['output_sha256'])
         prefetch = ThreadPoolExecutor(max_workers=8)
         checks = [prefetch.submit(check_http, row) for row in proofs]
     def save() -> None:
@@ -119,7 +114,9 @@ def main() -> None:
                         output_sha256=row['output_sha256'], expected_bytes=row['output_bytes'],
                         url=row.get('url'), play=row['name'] in args.play)
                     if checks:
-                        job['http_preflight_sha256'] = checks[submitted].result()
+                        retries = checks[submitted].result()
+                        if job['url']:
+                            job.update(http_preflight_sha256=row['output_sha256'], http_preflight_retries=retries)
                     script.exports_sync.enqueue(job, b'' if job['url'] else (args.root / row['output']).read_bytes())
                     submitted += 1
                     continue
