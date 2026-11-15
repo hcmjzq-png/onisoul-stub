@@ -184,18 +184,18 @@ class SocialServicesTest(unittest.TestCase):
             two = pool.submit(self.call, "sendFriendOffer", self.b, self.a)
             self.assertEqual(sum(r["result"] for r in (one.result(5), two.result(5))), 1)
 
-    def test_missing_adapter_and_expired_offer_fail_without_saving(self):
+    def test_missing_adapter_fails_and_expired_offer_clears_both_sides(self):
         self.reload(atomic=False)
         before = copy.deepcopy(self.states.rows)
         self.assertIn("atomic", self.call("sendFriendOffer", self.a, self.b)["detail"]["0"])
         self.assertEqual(before, self.states.rows)
         self.reload()
         self.send()
-        before = copy.deepcopy(self.states.rows)
         self.now += 604800
         self.assertIn("expired", self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["detail"]["0"])
-        self.assertIn("errorReason", self.call("getFriends", self.a, option="send"))
-        self.assertEqual(before, self.states.rows)
+        self.assertEqual(self.call("getFriends", self.a, option="send"), {})
+        self.assertEqual(self.call("getFriends", self.b, option="receive"), {})
+        self.assertTrue(all(not p["socialOffers"] for p in self.states.rows.values() if "socialOffers" in p))
 
     def test_competing_acceptances_cannot_exceed_capacity(self):
         self.assertTrue(self.call("sendFriendOffer", self.a, self.b)["result"])
@@ -232,24 +232,26 @@ class SocialServicesTest(unittest.TestCase):
         with patch.object(self.service.catalog, "load", side_effect=MissingTableError("defines")):
             self.assertIn("stub has no assets", self.call("getFriends", self.a, option="")["errorReason"])
 
-    def test_expiry_boundary_and_invalid_timestamps_never_clear_or_accept(self):
+    def test_expiry_boundary_clears_and_invalid_timestamps_never_accept(self):
         self.send()
         created = self.now
         self.now = created + 604799
         self.assertEqual(self.call("updateFriendData", self.a)["count"]["send"], 1.)
         self.now = created + 604800
-        before = copy.deepcopy(self.states.rows)
-        for operation in (lambda: self.call("updateFriendData", self.a),
-                          lambda: self.call("feedbackFriendOffer", self.b, self.a, reply="ok")):
-            self.assertIn("expired", str(operation()))
-        self.assertEqual(before, self.states.rows)
+        result = self.call("updateFriendData", self.a)
+        self.assertEqual(result["count"]["send"], 0.)
+        self.assertEqual(result["remove"], {self.b["playerId"]: "expired"})
+        self.assertFalse(self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["result"])
         self.now = created + 1
+        self.send()
+        created = self.now
         for timestamp in (True, -1, self.now + 1, float("inf"), float("nan"), "1000"):
             self.states.rows[self.a["playerId"]]["socialOffers"][self.b["playerId"]]["createdAt"] = timestamp
             before_text = json.dumps(self.states.rows, sort_keys=True)
             self.assertFalse(self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["result"])
             self.assertEqual(before_text, json.dumps(self.states.rows, sort_keys=True))
         self.states.rows[self.a["playerId"]]["socialOffers"][self.b["playerId"]]["createdAt"] = created + .5
+        self.now += 1
         self.assertIn("timestamps", self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["detail"]["0"])
 
 

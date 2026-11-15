@@ -1,0 +1,119 @@
+{
+  "access_date": "2026-11-15",
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "original_cs": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendConfirmationWindow.cs",
+      "sha256": "3f0ca33259a4eae557cff290955b07c1b97ca6783b40b8effb1e560b5f3d1d1b",
+      "evidence": "168-187 remove membership; 195-299 mutation callback increments"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendData.cs",
+      "sha256": "98404adc46c6af34914115dfa82cedc4a747b0a49c9c5fb4c500e5a44f503796",
+      "evidence": "40-94 public friend/profile projection"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendListWindow.cs",
+      "sha256": "bc37ace82c5c3c3b68c512d605fe147222e210da006599480d8c3edcebaea10a",
+      "evidence": "38-116 root rows and option"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendWindowControll.cs",
+      "sha256": "96d5e8354fe955ecd15abfb79ae9dcaf0201808b1f74d0714b56a374366f37cb",
+      "evidence": "118-127 absolute counts"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\FriendSpecWindow.cs",
+      "sha256": "f0a0ae5059fe59d37ad51b99f81952f074b2d42e25a3a511a198e31835663ead",
+      "evidence": "102-174 capacity UI"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "evidence": "2604-2734 friends; 3352-3394 mailbox; 3451-3468 inbox; 190-216 network retry"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+      "evidence": "148-164 absolute periodic social counts; 648-656 reward display"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMFriendMap.cs",
+      "sha256": "1fe5804d921f9da73570df2cb6d51cf22f010cc869cd2166fa312e341e036325",
+      "evidence": "62-78 distinct friend/nonfriend visit scripts"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticUserInfo.cs",
+      "sha256": "d49b826c62e125fb8de2080cac7c6d33abcf351d5285e07f4a213296d37ffe69",
+      "evidence": "IsFriend is set by status == ok in friend constructors"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\Politic.cs",
+      "sha256": "c56766260a6b1db8fbd3c163c37dd054c8de125998aa1e56f4741ab0e7b3c528",
+      "evidence": "312-352 Data2 then visit; 362-368 profile"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLMailCore.cs",
+      "sha256": "67985a7192bd5a89739fd119e2351d20bdaa00fcb478bb4bf71d96f2821f666e",
+      "evidence": "30-149 bridge, to/subject/body have no attachment field"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLBbsMediator.cs",
+      "sha256": "84503b0cebc54778bf537755c889077302954ecc8be6e99b18d7ce1427c2151a",
+      "evidence": "318-329 sess_key; 388-667 commit/text/forwarding"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InboxReader.cs",
+      "sha256": "7d0813b7767a8baf4a11f430ff0588ebf8a1cae990453f8eef9dc3ed2d050023",
+      "evidence": "92-177 parcels/time/rewards; makeDummy excluded"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InboxResolveWorker.cs",
+      "sha256": "b29e223b35246675f030f795004128e91dba2e3df374a5962c9af4ab59f91d16",
+      "evidence": "11-105 successful rewards and failed.Count"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoReceiveMail.cs",
+      "sha256": "5d90bf137d0c6a00a70e7d84c47a47c2b274de4302e1b12477e7c67f0ff4c7e5",
+      "evidence": "12-66 query 0..499 then accept all"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardProcessor.cs",
+      "sha256": "00a403c195aa271fd36691b605034890c2a2f8b53aa1d58cdf8654d368eb9bb4",
+      "evidence": "51-73,164-185,239-246 four resource IDs and incremental display"
+    }
+  ],
+  "original_tables": [
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\defines.json",
+      "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+      "row_ids": [
+        "friendoffer_send_max",
+        "friendoffer_receive_max",
+        "friendoffer_expire_time"
+      ]
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\playerLevel.json",
+      "sha256": "a04583b4e84018c501265e4ad1048e7f38fd5ae120861f1f9e8a1189369d3531",
+      "row_ids": [
+        "1",
+        "2"
+      ]
+    }
+  ],
+  "web_bridge": {
+    "path": "D:\\onisoul-worktrees\\parallel-342-f-war-campaigns\\docs\\analysis\\parallel-342\\f-war-campaigns\\war_campaigns_local\\app.js",
+    "sha256": "5d2d8402770f557b01832382ce04eb8f45d4b2f92bd6bfc8f073862eb10a7e0e",
+    "lines": "39-50 BBS; 94-114 mailbox/mail; 144-153 reward",
+    "cache_records_checked": 159,
+    "missing_body_paths": [
+      "bbs/bbs.html",
+      "mailbox/mailbox.html",
+      "mail/mail.html",
+      "reward/reward.html"
+    ],
+    "scope": "original installer cache only; no runtime 404 or universal asset absence implied",
+    "installer_sha256": "ad34a14e3dd67b30c59d5abd9ed2a82b2ab53161e24f3be654a63175e6d890ad"
+  }
+}
