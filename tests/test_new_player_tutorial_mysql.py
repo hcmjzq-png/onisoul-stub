@@ -128,6 +128,8 @@ class TutorialMySQLTest(unittest.TestCase):
         with ThreadPoolExecutor(max_workers=2) as pool:
             results = list(pool.map(reserve, ids))
         self.assertEqual(sum(r["succeeded"] for r in results), 1)
+        refused = next(r for r in results if not r["succeeded"])
+        self.assertEqual(set(refused), {"succeeded", "now"})
         winner = next(pid for pid in ids if state.load(pid)["entity"]["username"] == name)
         loser = next(pid for pid in ids if pid != winner)
         before = state.load(loser)
@@ -136,6 +138,23 @@ class TutorialMySQLTest(unittest.TestCase):
         self.assertFalse(result["succeeded"])
         self.assertEqual(state.load(loser), before)
         self.assertEqual(state.load(winner)["entity"]["playerId"], winner)
+
+    def test_http_taken_name_remains_retryable_without_transport_error(self):
+        other = "taken_" + uuid.uuid4().hex
+        from app.business.gameplay import GameplayService
+        service = GameplayService(catalog=self.catalog)
+        value = service._default_state(other)
+        value["entity"]["username"] = other
+        state.save(value, other)
+        before = state.load(self.pid)
+        refused = self.api("auth/registerName", username=other)
+        self.assertIs(refused["succeeded"], False)
+        self.assertEqual(set(refused), {"succeeded", "now"})
+        self.assertEqual(state.load(self.pid), before)
+        # The same token can retry after the native name-in-use dialog closes.
+        accepted = self.api("auth/registerName", username=self.account)
+        self.assertIs(accepted["succeeded"], True)
+        self.assertNotIn("errorReason", accepted)
 
     def test_name_migration_refuses_legacy_duplicates_without_changing_saves(self):
         import pymysql
