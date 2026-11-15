@@ -13,6 +13,9 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app import db
 
@@ -51,8 +54,10 @@ def apply(expected: dict, backup: Path) -> int:
             backup.parent.mkdir(parents=True, exist_ok=True)
             with backup.open('x', encoding='utf-8') as stream:
                 os.chmod(backup, 0o600)
-                cur.execute('SELECT * FROM sessions WHERE player_id IN (' + ','.join(['%s'] * len(ids)) + ')', tuple(sorted(ids))) if ids else None
-                sessions = cur.fetchall() if ids else []
+                sessions = []
+                if ids:
+                    cur.execute('SELECT * FROM sessions WHERE player_id IN (' + ','.join(['%s'] * len(ids)) + ')', tuple(sorted(ids)))
+                    sessions = cur.fetchall()
                 json.dump({'players': [row for row in rows if row['player_id'] in ids],
                            'sessions': sessions, 'plan': expected}, stream, ensure_ascii=False, indent=2)
                 stream.flush(); os.fsync(stream.fileno())

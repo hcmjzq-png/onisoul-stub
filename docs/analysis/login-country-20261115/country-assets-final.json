@@ -1,0 +1,3852 @@
+{
+  "summary": {
+    "countries": 47,
+    "local_images": 20,
+    "generated_candidates": 17,
+    "generated_match_and_names": 17,
+    "selectable_navigators": 8,
+    "navigator_colors": 40,
+    "navigator_icons_source_verified": true,
+    "server_image_statuses": {
+      "404": 27,
+      "200": 20
+    },
+    "countries_with_all_appearance_clips": 0,
+    "navigator_asset_statuses": {
+      "bust": {
+        "404": 38,
+        "200": 2
+      },
+      "icon": {
+        "404": 35,
+        "200": 5
+      }
+    },
+    "navigator_greeting_statuses": {
+      "404": 40
+    }
+  },
+  "rows": [
+    {
+      "country": "country01",
+      "character": "chara1_00001_01",
+      "image": "chara1_00001_01",
+      "image_hash": "05408acd6c1d55d25f99368a9a90de38",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country02",
+      "character": "chara1_00013_01",
+      "image": "chara1_00013_01",
+      "image_hash": "02228774fac67cd0593ee088e2bc9df5",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country03",
+      "character": "chara1_00040_01",
+      "image": "chara1_00040_01",
+      "image_hash": "a5044b17d31baa870cf9acb3b7c375d1",
+      "appearance_clips": [
+        "vse034_1_020501_12_01",
+        "vse034_1_020501_12_02",
+        "vse034_1_020501_12_03",
+        "vse034_1_020501_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\a5044b17d31baa870cf9acb3b7c375d1.unity3d",
+        "sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a",
+          "after_sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a",
+          "payload_sha256": "4aa821678f354d8795676b730b1245137b94f3c4f5316a404a00a14c49e3e639",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00040_01_1_03",
+          "chara1_00040_01_1_01",
+          "chara1_00040_01_3_01",
+          "chara1_00040_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__a5044b17d31baa870cf9acb3b7c375d1.unity3d",
+        "sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a",
+          "after_sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a",
+          "payload_sha256": "4aa821678f354d8795676b730b1245137b94f3c4f5316a404a00a14c49e3e639",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00040_01_1_03",
+          "chara1_00040_01_1_01",
+          "chara1_00040_01_3_01",
+          "chara1_00040_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse034_1_020501_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse034_1_020501_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse034_1_020501_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse034_1_020501_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse034_1_020501_12_01": 404,
+        "vse034_1_020501_12_02": 404,
+        "vse034_1_020501_12_03": 404,
+        "vse034_1_020501_12_04": 404
+      }
+    },
+    {
+      "country": "country04",
+      "character": "chara1_00054_01",
+      "image": "chara1_00054_01",
+      "image_hash": "8a10873fd1f23c221116259f99b70883",
+      "appearance_clips": [
+        "vse008_1_040701_12_01",
+        "vse008_1_040701_12_02",
+        "vse008_1_040701_12_03",
+        "vse008_1_040701_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\8a10873fd1f23c221116259f99b70883.unity3d",
+        "sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256",
+          "after_sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256",
+          "payload_sha256": "2bff8bfd0d708a9030900d8dc6929ec6332bd2608daf9fe2648e922bce5f580f",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00054_01_1_03",
+          "chara1_00054_01_1_01",
+          "chara1_00054_01_3_01",
+          "chara1_00054_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__8a10873fd1f23c221116259f99b70883.unity3d",
+        "sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256",
+          "after_sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256",
+          "payload_sha256": "2bff8bfd0d708a9030900d8dc6929ec6332bd2608daf9fe2648e922bce5f580f",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00054_01_1_03",
+          "chara1_00054_01_1_01",
+          "chara1_00054_01_3_01",
+          "chara1_00054_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse008_1_040701_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_040701_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_040701_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_040701_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse008_1_040701_12_01": 404,
+        "vse008_1_040701_12_02": 404,
+        "vse008_1_040701_12_03": 404,
+        "vse008_1_040701_12_04": 404
+      }
+    },
+    {
+      "country": "country05",
+      "character": "chara1_00085_01",
+      "image": "chara1_00085_01",
+      "image_hash": "c74ea4e81b96b628511d43dd5f5768d9",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country06",
+      "character": "chara1_00093_01",
+      "image": "chara1_00093_01",
+      "image_hash": "ea0935eb6ffdc80dcc69b916f0dd9d70",
+      "appearance_clips": [
+        "vse001_1_010101_12_01",
+        "vse001_1_010101_12_02",
+        "vse001_1_010101_12_03",
+        "vse001_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse001_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse001_1_010101_12_01": 404,
+        "vse001_1_010101_12_02": 404,
+        "vse001_1_010101_12_03": 404,
+        "vse001_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country07",
+      "character": "chara1_00111_01",
+      "image": "chara1_00111_01",
+      "image_hash": "bbc7b7091ac58d4e37b4179588ef9d48",
+      "appearance_clips": [
+        "vse001_1_010101_12_01",
+        "vse001_1_010101_12_02",
+        "vse001_1_010101_12_03",
+        "vse001_1_010101_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\bbc7b7091ac58d4e37b4179588ef9d48.unity3d",
+        "sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c",
+          "after_sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c",
+          "payload_sha256": "d7d7c8dff9b8ce177d05bc63930512c717efe337addd6e1f3a48de366f4fc519",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00111_01_1_03",
+          "chara1_00111_01_1_01",
+          "chara1_00111_01_3_01",
+          "chara1_00111_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__bbc7b7091ac58d4e37b4179588ef9d48.unity3d",
+        "sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c",
+          "after_sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c",
+          "payload_sha256": "d7d7c8dff9b8ce177d05bc63930512c717efe337addd6e1f3a48de366f4fc519",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00111_01_1_03",
+          "chara1_00111_01_1_01",
+          "chara1_00111_01_3_01",
+          "chara1_00111_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse001_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse001_1_010101_12_01": 404,
+        "vse001_1_010101_12_02": 404,
+        "vse001_1_010101_12_03": 404,
+        "vse001_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country08",
+      "character": "chara1_00123_01",
+      "image": "chara1_00123_01",
+      "image_hash": "bd3e920e329c4ccb64f3a7a3d696c414",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\bd3e920e329c4ccb64f3a7a3d696c414.unity3d",
+        "sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692",
+          "after_sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692",
+          "payload_sha256": "8ea9d42867452a1a59ee519a9cf14d2a92714f3265409d1954de289b9d1bc978",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00123_01_1_03",
+          "chara1_00123_01_1_01",
+          "chara1_00123_01_3_01",
+          "chara1_00123_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__bd3e920e329c4ccb64f3a7a3d696c414.unity3d",
+        "sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692",
+          "after_sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692",
+          "payload_sha256": "8ea9d42867452a1a59ee519a9cf14d2a92714f3265409d1954de289b9d1bc978",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00123_01_1_03",
+          "chara1_00123_01_1_01",
+          "chara1_00123_01_3_01",
+          "chara1_00123_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country09",
+      "character": "chara1_00142_01",
+      "image": "chara1_00142_01",
+      "image_hash": "bcf9fae2b80874635c1dc7ae216237ab",
+      "appearance_clips": [
+        "vse019_1_040701_12_01",
+        "vse019_1_040701_12_02",
+        "vse019_1_040701_12_03",
+        "vse019_1_040701_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\bcf9fae2b80874635c1dc7ae216237ab.unity3d",
+        "sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021",
+          "after_sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021",
+          "payload_sha256": "a23377c20f6e22361ef5c465a82cd4061e0f42a9e3c68b91c4964197de6e5e38",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00142_01_1_03",
+          "chara1_00142_01_1_01",
+          "chara1_00142_01_3_01",
+          "chara1_00142_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__bcf9fae2b80874635c1dc7ae216237ab.unity3d",
+        "sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021",
+          "after_sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021",
+          "payload_sha256": "a23377c20f6e22361ef5c465a82cd4061e0f42a9e3c68b91c4964197de6e5e38",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00142_01_1_03",
+          "chara1_00142_01_1_01",
+          "chara1_00142_01_3_01",
+          "chara1_00142_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse019_1_040701_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse019_1_040701_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse019_1_040701_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse019_1_040701_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse019_1_040701_12_01": 404,
+        "vse019_1_040701_12_02": 404,
+        "vse019_1_040701_12_03": 404,
+        "vse019_1_040701_12_04": 404
+      }
+    },
+    {
+      "country": "country10",
+      "character": "chara1_00159_01",
+      "image": "chara1_00159_01",
+      "image_hash": "152c0064ae9c5e845734a4f8386b8bbe",
+      "appearance_clips": [
+        "vse021_1_020401_12_01",
+        "vse021_1_020401_12_02",
+        "vse021_1_020401_12_03",
+        "vse021_1_020401_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\152c0064ae9c5e845734a4f8386b8bbe.unity3d",
+        "sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7",
+          "after_sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7",
+          "payload_sha256": "337a09df4ea417e14aa2d84311089e0427ff72060a57856bdf63743e3baf6292",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00159_01_1_03",
+          "chara1_00159_01_1_01",
+          "chara1_00159_01_3_01",
+          "chara1_00159_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__152c0064ae9c5e845734a4f8386b8bbe.unity3d",
+        "sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7",
+          "after_sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7",
+          "payload_sha256": "337a09df4ea417e14aa2d84311089e0427ff72060a57856bdf63743e3baf6292",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00159_01_1_03",
+          "chara1_00159_01_1_01",
+          "chara1_00159_01_3_01",
+          "chara1_00159_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse021_1_020401_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_020401_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_020401_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_020401_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse021_1_020401_12_01": 404,
+        "vse021_1_020401_12_02": 404,
+        "vse021_1_020401_12_03": 404,
+        "vse021_1_020401_12_04": 404
+      }
+    },
+    {
+      "country": "country11",
+      "character": "chara1_00172_01",
+      "image": "chara1_00172_01",
+      "image_hash": "720ee66bdafa2701e1159512f981a674",
+      "appearance_clips": [
+        "vse009_1_050901_12_01",
+        "vse009_1_050901_12_02",
+        "vse009_1_050901_12_03",
+        "vse009_1_050901_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\720ee66bdafa2701e1159512f981a674.unity3d",
+        "sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f",
+          "after_sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f",
+          "payload_sha256": "a9ad1d4c968c41d2743320d0519d24f1d841a66d495dbcd8490dc84edacc8e15",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00172_01_1_03",
+          "chara1_00172_01_1_01",
+          "chara1_00172_01_3_01",
+          "chara1_00172_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__720ee66bdafa2701e1159512f981a674.unity3d",
+        "sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f",
+          "after_sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f",
+          "payload_sha256": "a9ad1d4c968c41d2743320d0519d24f1d841a66d495dbcd8490dc84edacc8e15",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00172_01_1_03",
+          "chara1_00172_01_1_01",
+          "chara1_00172_01_3_01",
+          "chara1_00172_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse009_1_050901_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050901_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050901_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050901_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse009_1_050901_12_01": 404,
+        "vse009_1_050901_12_02": 404,
+        "vse009_1_050901_12_03": 404,
+        "vse009_1_050901_12_04": 404
+      }
+    },
+    {
+      "country": "country12",
+      "character": "chara1_00193_01",
+      "image": "chara1_00193_01",
+      "image_hash": "4cef965c9271a5b8956289dc1ff316df",
+      "appearance_clips": [
+        "vse022_1_030501_12_01",
+        "vse022_1_030501_12_02",
+        "vse022_1_030501_12_03",
+        "vse022_1_030501_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse022_1_030501_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse022_1_030501_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse022_1_030501_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse022_1_030501_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse022_1_030501_12_01": 404,
+        "vse022_1_030501_12_02": 404,
+        "vse022_1_030501_12_03": 404,
+        "vse022_1_030501_12_04": 404
+      }
+    },
+    {
+      "country": "country13",
+      "character": "chara1_00222_01",
+      "image": "chara1_00222_01",
+      "image_hash": "1fddcc444ead0ddfaeab921fb6714445",
+      "appearance_clips": [
+        "vse004_1_030601_12_01",
+        "vse004_1_030601_12_02",
+        "vse004_1_030601_12_03",
+        "vse004_1_030601_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\1fddcc444ead0ddfaeab921fb6714445.unity3d",
+        "sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5",
+          "after_sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5",
+          "payload_sha256": "f36cdd239a0bef3af4e4b0bba86fafd460e21351c043546d3e32b70282d52bec",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00222_01_1_03",
+          "chara1_00222_01_1_01",
+          "chara1_00222_01_3_01",
+          "chara1_00222_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__1fddcc444ead0ddfaeab921fb6714445.unity3d",
+        "sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5",
+          "after_sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5",
+          "payload_sha256": "f36cdd239a0bef3af4e4b0bba86fafd460e21351c043546d3e32b70282d52bec",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00222_01_1_03",
+          "chara1_00222_01_1_01",
+          "chara1_00222_01_3_01",
+          "chara1_00222_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse004_1_030601_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse004_1_030601_12_01": 404,
+        "vse004_1_030601_12_02": 404,
+        "vse004_1_030601_12_03": 404,
+        "vse004_1_030601_12_04": 404
+      }
+    },
+    {
+      "country": "country14",
+      "character": "chara1_00230_01",
+      "image": "chara1_00230_01",
+      "image_hash": "4403b537bc6307cddf6b59ecba8cd51b",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country15",
+      "character": "chara1_00260_01",
+      "image": "chara1_00260_01",
+      "image_hash": "a12540e4af277562b53a7d99ba2e60eb",
+      "appearance_clips": [
+        "vse008_1_050801_12_01",
+        "vse008_1_050801_12_02",
+        "vse008_1_050801_12_03",
+        "vse008_1_050801_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse008_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "path": "D:\\onisoul\\assets\\pc\\bundles\\vse\\f9c0557078d03607e495d1f021c93dc5.unity3d",
+          "error": "LZMA payload does not match its bounded UnityWeb level"
+        },
+        {
+          "path": "D:\\onisoul\\assets\\pc\\bundles\\vse\\0d81189a6ca1ec4bf0f38a663f26cf35.unity3d",
+          "error": "LZMA payload does not match its bounded UnityWeb level"
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse008_1_050801_12_01": 404,
+        "vse008_1_050801_12_02": 404,
+        "vse008_1_050801_12_03": 200,
+        "vse008_1_050801_12_04": 200
+      }
+    },
+    {
+      "country": "country16",
+      "character": "chara1_00311_01",
+      "image": "chara1_00311_01",
+      "image_hash": "f24996cee1d4c15f58a19f972ce5cdb5",
+      "appearance_clips": [
+        "vse004_1_020401_12_01",
+        "vse004_1_020401_12_02",
+        "vse004_1_020401_12_03",
+        "vse004_1_020401_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse004_1_020401_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_020401_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_020401_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_020401_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse004_1_020401_12_01": 404,
+        "vse004_1_020401_12_02": 404,
+        "vse004_1_020401_12_03": 404,
+        "vse004_1_020401_12_04": 404
+      }
+    },
+    {
+      "country": "country17",
+      "character": "chara1_00317_01",
+      "image": "chara1_00317_01",
+      "image_hash": "6c5e6911972cbafea71aef7a8ded698f",
+      "appearance_clips": [
+        "vse003_1_010201_12_01",
+        "vse003_1_010201_12_02",
+        "vse003_1_010201_12_03",
+        "vse003_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse003_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse003_1_010201_12_01": 404,
+        "vse003_1_010201_12_02": 404,
+        "vse003_1_010201_12_03": 404,
+        "vse003_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country18",
+      "character": "chara1_00341_01",
+      "image": "chara1_00341_01",
+      "image_hash": "69e30186b8b4e5649be7b31103de7558",
+      "appearance_clips": [
+        "vse001_1_010101_12_01",
+        "vse001_1_010101_12_02",
+        "vse001_1_010101_12_03",
+        "vse001_1_010101_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\69e30186b8b4e5649be7b31103de7558.unity3d",
+        "sha256": "6c6668c6ad0d6854ce63a019bcb2746213c3ca3c698a4483cd46b076d2862f45",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "6c6668c6ad0d6854ce63a019bcb2746213c3ca3c698a4483cd46b076d2862f45",
+          "after_sha256": "6c6668c6ad0d6854ce63a019bcb2746213c3ca3c698a4483cd46b076d2862f45",
+          "payload_sha256": "32c6121ca1343b985f41a3cbf528e507d4074db0abf0a646b348f04b8e606200",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00341_01_1_03",
+          "chara1_00341_01_1_01",
+          "chara1_00341_01_3_01",
+          "chara1_00341_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__69e30186b8b4e5649be7b31103de7558.unity3d",
+        "sha256": "6c6668c6ad0d6854ce63a019bcb2746213c3ca3c698a4483cd46b076d2862f45",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "6c6668c6ad0d6854ce63a019bcb2746213c3ca3c698a4483cd46b076d2862f45",
+          "after_sha256": "6c6668c6ad0d6854ce63a019bcb2746213c3ca3c698a4483cd46b076d2862f45",
+          "payload_sha256": "32c6121ca1343b985f41a3cbf528e507d4074db0abf0a646b348f04b8e606200",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00341_01_1_03",
+          "chara1_00341_01_1_01",
+          "chara1_00341_01_3_01",
+          "chara1_00341_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse001_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse001_1_010101_12_01": 404,
+        "vse001_1_010101_12_02": 404,
+        "vse001_1_010101_12_03": 404,
+        "vse001_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country19",
+      "character": "chara1_00357_01",
+      "image": "chara1_00357_01",
+      "image_hash": "0f86db57eb1f1832e66bc5ebd54ba850",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\0f86db57eb1f1832e66bc5ebd54ba850.unity3d",
+        "sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37",
+          "after_sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37",
+          "payload_sha256": "514875e66473e694fda4915499f4542d798485e99262d8864ad3b7183b2e8f17",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00357_01_1_03",
+          "chara1_00357_01_1_01",
+          "chara1_00357_01_3_01",
+          "chara1_00357_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__0f86db57eb1f1832e66bc5ebd54ba850.unity3d",
+        "sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37",
+          "after_sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37",
+          "payload_sha256": "514875e66473e694fda4915499f4542d798485e99262d8864ad3b7183b2e8f17",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00357_01_1_03",
+          "chara1_00357_01_1_01",
+          "chara1_00357_01_3_01",
+          "chara1_00357_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country20",
+      "character": "chara1_00402_01",
+      "image": "chara1_00402_01",
+      "image_hash": "b75395b36cb1fa3c7c4dd892868d6438",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country21",
+      "character": "chara1_00445_01",
+      "image": "chara1_00445_01",
+      "image_hash": "b630ad229880364c6f0b23765849a71a",
+      "appearance_clips": [
+        "vse014_1_050901_12_01",
+        "vse014_1_050901_12_02",
+        "vse014_1_050901_12_03",
+        "vse014_1_050901_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse014_1_050901_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse014_1_050901_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse014_1_050901_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse014_1_050901_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse014_1_050901_12_01": 404,
+        "vse014_1_050901_12_02": 404,
+        "vse014_1_050901_12_03": 404,
+        "vse014_1_050901_12_04": 404
+      }
+    },
+    {
+      "country": "country22",
+      "character": "chara1_00479_01",
+      "image": "chara1_00479_01",
+      "image_hash": "484d8c7c7cbb2af464cceb6a99d54344",
+      "appearance_clips": [
+        "vse024_1_010101_12_01",
+        "vse024_1_010101_12_02",
+        "vse024_1_010101_12_03",
+        "vse024_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010101_12_01": 404,
+        "vse024_1_010101_12_02": 404,
+        "vse024_1_010101_12_03": 404,
+        "vse024_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country23",
+      "character": "chara1_00614_01",
+      "image": "chara1_00614_01",
+      "image_hash": "75d441c89a75bd5bb404ca4312e0293e",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\75d441c89a75bd5bb404ca4312e0293e.unity3d",
+        "sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347",
+          "after_sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347",
+          "payload_sha256": "57215ebe32ac4bb34e401dd904d0f3a16b1c001735ae39baf3a8602d5c28b002",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00614_01_1_03",
+          "chara1_00614_01_1_01",
+          "chara1_00614_01_3_01",
+          "chara1_00614_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__75d441c89a75bd5bb404ca4312e0293e.unity3d",
+        "sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347",
+          "after_sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347",
+          "payload_sha256": "57215ebe32ac4bb34e401dd904d0f3a16b1c001735ae39baf3a8602d5c28b002",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00614_01_1_03",
+          "chara1_00614_01_1_01",
+          "chara1_00614_01_3_01",
+          "chara1_00614_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country24",
+      "character": "chara1_00673_01",
+      "image": "chara1_00673_01",
+      "image_hash": "ddc56a7f3f71d252c947f6e40cf998eb",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\ddc56a7f3f71d252c947f6e40cf998eb.unity3d",
+        "sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb",
+          "after_sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb",
+          "payload_sha256": "caf7116aa4917f1cd9b78c9aa0bc1d7393e79a461b67f1546880614ce99a0681",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00673_01_1_03",
+          "chara1_00673_01_1_01",
+          "chara1_00673_01_3_01",
+          "chara1_00673_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__ddc56a7f3f71d252c947f6e40cf998eb.unity3d",
+        "sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb",
+          "after_sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb",
+          "payload_sha256": "caf7116aa4917f1cd9b78c9aa0bc1d7393e79a461b67f1546880614ce99a0681",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00673_01_1_03",
+          "chara1_00673_01_1_01",
+          "chara1_00673_01_3_01",
+          "chara1_00673_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country25",
+      "character": "chara1_00689_01",
+      "image": "chara1_00689_01",
+      "image_hash": "b6c88175b58f489bebf782eef21ace35",
+      "appearance_clips": [
+        "vse003_1_010101_12_01",
+        "vse003_1_010101_12_02",
+        "vse003_1_010101_12_03",
+        "vse003_1_010101_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\b6c88175b58f489bebf782eef21ace35.unity3d",
+        "sha256": "d6d6637d7cc99a3fcc1bac3f6c0533797ce14acf447df0446389ccbd6ee7910c",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "d6d6637d7cc99a3fcc1bac3f6c0533797ce14acf447df0446389ccbd6ee7910c",
+          "after_sha256": "d6d6637d7cc99a3fcc1bac3f6c0533797ce14acf447df0446389ccbd6ee7910c",
+          "payload_sha256": "ac62d36de31771c707000a12ed3bff7a67c2d11429e8798f7e55451ccda0dbdc",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00689_01_1_03",
+          "chara1_00689_01_1_01",
+          "chara1_00689_01_3_01",
+          "chara1_00689_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__b6c88175b58f489bebf782eef21ace35.unity3d",
+        "sha256": "d6d6637d7cc99a3fcc1bac3f6c0533797ce14acf447df0446389ccbd6ee7910c",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "d6d6637d7cc99a3fcc1bac3f6c0533797ce14acf447df0446389ccbd6ee7910c",
+          "after_sha256": "d6d6637d7cc99a3fcc1bac3f6c0533797ce14acf447df0446389ccbd6ee7910c",
+          "payload_sha256": "ac62d36de31771c707000a12ed3bff7a67c2d11429e8798f7e55451ccda0dbdc",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00689_01_1_03",
+          "chara1_00689_01_1_01",
+          "chara1_00689_01_3_01",
+          "chara1_00689_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse003_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse003_1_010101_12_01": 404,
+        "vse003_1_010101_12_02": 404,
+        "vse003_1_010101_12_03": 404,
+        "vse003_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country26",
+      "character": "chara1_00757_01",
+      "image": "chara1_00757_01",
+      "image_hash": "759f9e91a56a2aab75b1d64bf101a5ef",
+      "appearance_clips": [
+        "vse023_1_010101_12_01",
+        "vse023_1_010101_12_02",
+        "vse023_1_010101_12_03",
+        "vse023_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010101_12_01": 404,
+        "vse023_1_010101_12_02": 404,
+        "vse023_1_010101_12_03": 404,
+        "vse023_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country27",
+      "character": "chara1_00787_01",
+      "image": "chara1_00787_01",
+      "image_hash": "adab798b1a597e970fa1995aa4a9dd11",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country28",
+      "character": "chara1_00814_01",
+      "image": "chara1_00814_01",
+      "image_hash": "395a38ee07917a3f1342358cdb6c4fff",
+      "appearance_clips": [
+        "vse003_1_010101_12_01",
+        "vse003_1_010101_12_02",
+        "vse003_1_010101_12_03",
+        "vse003_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse003_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse003_1_010101_12_01": 404,
+        "vse003_1_010101_12_02": 404,
+        "vse003_1_010101_12_03": 404,
+        "vse003_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country29",
+      "character": "chara1_00842_01",
+      "image": "chara1_00842_01",
+      "image_hash": "9cb1a1ed6e425baaa75cd0b9fd52561c",
+      "appearance_clips": [
+        "vse004_1_030601_12_01",
+        "vse004_1_030601_12_02",
+        "vse004_1_030601_12_03",
+        "vse004_1_030601_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\9cb1a1ed6e425baaa75cd0b9fd52561c.unity3d",
+        "sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6",
+          "after_sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6",
+          "payload_sha256": "8f3aec899bdc70b525b2be50e86dfa4f3b70120514f10dd32342f7135786dfc2",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00842_01_1_03",
+          "chara1_00842_01_1_01",
+          "chara1_00842_01_3_01",
+          "chara1_00842_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__9cb1a1ed6e425baaa75cd0b9fd52561c.unity3d",
+        "sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6",
+          "after_sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6",
+          "payload_sha256": "8f3aec899bdc70b525b2be50e86dfa4f3b70120514f10dd32342f7135786dfc2",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00842_01_1_03",
+          "chara1_00842_01_1_01",
+          "chara1_00842_01_3_01",
+          "chara1_00842_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse004_1_030601_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse004_1_030601_12_01": 404,
+        "vse004_1_030601_12_02": 404,
+        "vse004_1_030601_12_03": 404,
+        "vse004_1_030601_12_04": 404
+      }
+    },
+    {
+      "country": "country30",
+      "character": "chara1_00866_01",
+      "image": "chara1_00866_01",
+      "image_hash": "e5db131aefd94332bad1ff54f2c3929a",
+      "appearance_clips": [
+        "vse018_1_061001_12_01",
+        "vse018_1_061001_12_02",
+        "vse018_1_061001_12_03",
+        "vse018_1_061001_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\e5db131aefd94332bad1ff54f2c3929a.unity3d",
+        "sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3",
+          "after_sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3",
+          "payload_sha256": "177f3d0bb5e2e9db688674db887a3aaa1b39d6801a513e05912c7b1f9db2d69d",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00866_01_1_03",
+          "chara1_00866_01_1_01",
+          "chara1_00866_01_3_01",
+          "chara1_00866_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__e5db131aefd94332bad1ff54f2c3929a.unity3d",
+        "sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3",
+          "after_sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3",
+          "payload_sha256": "177f3d0bb5e2e9db688674db887a3aaa1b39d6801a513e05912c7b1f9db2d69d",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00866_01_1_03",
+          "chara1_00866_01_1_01",
+          "chara1_00866_01_3_01",
+          "chara1_00866_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse018_1_061001_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse018_1_061001_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse018_1_061001_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse018_1_061001_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse018_1_061001_12_01": 404,
+        "vse018_1_061001_12_02": 404,
+        "vse018_1_061001_12_03": 404,
+        "vse018_1_061001_12_04": 404
+      }
+    },
+    {
+      "country": "country31",
+      "character": "chara1_00879_01",
+      "image": "chara1_00879_01",
+      "image_hash": "7c58deaa2283219ca924e3529d29c80b",
+      "appearance_clips": [
+        "vse015_1_040201_12_01",
+        "vse015_1_040201_12_02",
+        "vse015_1_040201_12_03",
+        "vse015_1_040201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse015_1_040201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse015_1_040201_12_01": 404,
+        "vse015_1_040201_12_02": 404,
+        "vse015_1_040201_12_03": 404,
+        "vse015_1_040201_12_04": 404
+      }
+    },
+    {
+      "country": "country32",
+      "character": "chara1_00891_01",
+      "image": "chara1_00891_01",
+      "image_hash": "1565c5b492c7ba3efa964e64f37b2507",
+      "appearance_clips": [
+        "vse021_1_021201_12_01",
+        "vse021_1_021201_12_02",
+        "vse021_1_021201_12_03",
+        "vse021_1_021201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse021_1_021201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse021_1_021201_12_01": 404,
+        "vse021_1_021201_12_02": 404,
+        "vse021_1_021201_12_03": 404,
+        "vse021_1_021201_12_04": 404
+      }
+    },
+    {
+      "country": "country33",
+      "character": "chara1_00916_01",
+      "image": "chara1_00916_01",
+      "image_hash": "1450fa13b6e0098ea407efee5de253b2",
+      "appearance_clips": [
+        "vse024_1_010201_12_01",
+        "vse024_1_010201_12_02",
+        "vse024_1_010201_12_03",
+        "vse024_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010201_12_01": 404,
+        "vse024_1_010201_12_02": 404,
+        "vse024_1_010201_12_03": 404,
+        "vse024_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country34",
+      "character": "chara1_00938_01",
+      "image": "chara1_00938_01",
+      "image_hash": "11fa2cd211464fed945a28c33860ebfe",
+      "appearance_clips": [
+        "vse038_1_030601_12_01",
+        "vse038_1_030601_12_02",
+        "vse038_1_030601_12_03",
+        "vse038_1_030601_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse038_1_030601_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse038_1_030601_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse038_1_030601_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse038_1_030601_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse038_1_030601_12_01": 404,
+        "vse038_1_030601_12_02": 404,
+        "vse038_1_030601_12_03": 404,
+        "vse038_1_030601_12_04": 404
+      }
+    },
+    {
+      "country": "country35",
+      "character": "chara1_00979_01",
+      "image": "chara1_00979_01",
+      "image_hash": "ce57256cfc6ca37a8a40dd57a4933fd2",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\ce57256cfc6ca37a8a40dd57a4933fd2.unity3d",
+        "sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad",
+          "after_sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad",
+          "payload_sha256": "dbb12ec3841eb6dfa3ce0df2933541ae44b0426742e5f86c96e8481dddec2744",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00979_01_1_03",
+          "chara1_00979_01_1_01",
+          "chara1_00979_01_3_01",
+          "chara1_00979_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__ce57256cfc6ca37a8a40dd57a4933fd2.unity3d",
+        "sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad",
+          "after_sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad",
+          "payload_sha256": "dbb12ec3841eb6dfa3ce0df2933541ae44b0426742e5f86c96e8481dddec2744",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_00979_01_1_03",
+          "chara1_00979_01_1_01",
+          "chara1_00979_01_3_01",
+          "chara1_00979_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country36",
+      "character": "chara1_00997_01",
+      "image": "chara1_00997_01",
+      "image_hash": "3e87841ff03b2b7d93e15d3d5be0afa5",
+      "appearance_clips": [
+        "vse021_1_021201_12_01",
+        "vse021_1_021201_12_02",
+        "vse021_1_021201_12_03",
+        "vse021_1_021201_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\3e87841ff03b2b7d93e15d3d5be0afa5.unity3d",
+        "error": "LZMA payload does not match its bounded UnityWeb level"
+      },
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse021_1_021201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse021_1_021201_12_01": 404,
+        "vse021_1_021201_12_02": 404,
+        "vse021_1_021201_12_03": 404,
+        "vse021_1_021201_12_04": 404
+      }
+    },
+    {
+      "country": "country37",
+      "character": "chara1_01012_01",
+      "image": "chara1_01012_01",
+      "image_hash": "616bf995dd5d3d7f4c7b3f1298829820",
+      "appearance_clips": [
+        "vse008_1_050801_12_01",
+        "vse008_1_050801_12_02",
+        "vse008_1_050801_12_03",
+        "vse008_1_050801_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\616bf995dd5d3d7f4c7b3f1298829820.unity3d",
+        "error": "LZMA payload does not match its bounded UnityWeb level"
+      },
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse008_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "path": "D:\\onisoul\\assets\\pc\\bundles\\vse\\f9c0557078d03607e495d1f021c93dc5.unity3d",
+          "error": "LZMA payload does not match its bounded UnityWeb level"
+        },
+        {
+          "path": "D:\\onisoul\\assets\\pc\\bundles\\vse\\0d81189a6ca1ec4bf0f38a663f26cf35.unity3d",
+          "error": "LZMA payload does not match its bounded UnityWeb level"
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse008_1_050801_12_01": 404,
+        "vse008_1_050801_12_02": 404,
+        "vse008_1_050801_12_03": 200,
+        "vse008_1_050801_12_04": 200
+      }
+    },
+    {
+      "country": "country38",
+      "character": "chara1_01020_01",
+      "image": "chara1_01020_01",
+      "image_hash": "b2d91e7e448411a75c1582939eebdbc0",
+      "appearance_clips": [
+        "vse009_1_050801_12_01",
+        "vse009_1_050801_12_02",
+        "vse009_1_050801_12_03",
+        "vse009_1_050801_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse009_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse009_1_050801_12_01": 404,
+        "vse009_1_050801_12_02": 404,
+        "vse009_1_050801_12_03": 404,
+        "vse009_1_050801_12_04": 404
+      }
+    },
+    {
+      "country": "country39",
+      "character": "chara1_01038_01",
+      "image": "chara1_01038_01",
+      "image_hash": "8151e5be879fdc24d67bb8e796f00851",
+      "appearance_clips": [
+        "vse024_1_010301_12_01",
+        "vse024_1_010301_12_02",
+        "vse024_1_010301_12_03",
+        "vse024_1_010301_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\8151e5be879fdc24d67bb8e796f00851.unity3d",
+        "error": "LZMA payload does not match its bounded UnityWeb level"
+      },
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse024_1_010301_12_01": 404,
+        "vse024_1_010301_12_02": 404,
+        "vse024_1_010301_12_03": 404,
+        "vse024_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country40",
+      "character": "chara1_01072_01",
+      "image": "chara1_01072_01",
+      "image_hash": "e4866ecfc7ad77208583ab70675efb04",
+      "appearance_clips": [
+        "vse009_1_050801_12_01",
+        "vse009_1_050801_12_02",
+        "vse009_1_050801_12_03",
+        "vse009_1_050801_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse009_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse009_1_050801_12_01": 404,
+        "vse009_1_050801_12_02": 404,
+        "vse009_1_050801_12_03": 404,
+        "vse009_1_050801_12_04": 404
+      }
+    },
+    {
+      "country": "country41",
+      "character": "chara1_01084_01",
+      "image": "chara1_01084_01",
+      "image_hash": "525ac179b1a7a23e5a34bc0cd9d72f07",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country42",
+      "character": "chara1_01110_01",
+      "image": "chara1_01110_01",
+      "image_hash": "85e3d5e0fbbe25812757434d1af4fc10",
+      "appearance_clips": [
+        "vse024_1_010101_12_01",
+        "vse024_1_010101_12_02",
+        "vse024_1_010101_12_03",
+        "vse024_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010101_12_01": 404,
+        "vse024_1_010101_12_02": 404,
+        "vse024_1_010101_12_03": 404,
+        "vse024_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country43",
+      "character": "chara1_01124_01",
+      "image": "chara1_01124_01",
+      "image_hash": "5919d7957faa0171ac4e0286b1ed0069",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country44",
+      "character": "chara1_01145_01",
+      "image": "chara1_01145_01",
+      "image_hash": "96a5a2f82a74e4ce5b00d888e317cca9",
+      "appearance_clips": [
+        "vse024_1_010201_12_01",
+        "vse024_1_010201_12_02",
+        "vse024_1_010201_12_03",
+        "vse024_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010201_12_01": 404,
+        "vse024_1_010201_12_02": 404,
+        "vse024_1_010201_12_03": 404,
+        "vse024_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country45",
+      "character": "chara1_01175_01",
+      "image": "chara1_01175_01",
+      "image_hash": "414e3cada280f28ae33b122bee148121",
+      "appearance_clips": [
+        "vse003_1_010101_12_01",
+        "vse003_1_010101_12_02",
+        "vse003_1_010101_12_03",
+        "vse003_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse003_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse003_1_010101_12_01": 404,
+        "vse003_1_010101_12_02": 404,
+        "vse003_1_010101_12_03": 404,
+        "vse003_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country46",
+      "character": "chara1_01186_01",
+      "image": "chara1_01186_01",
+      "image_hash": "c290b0f2038a9f6609af1c7becb18e30",
+      "appearance_clips": [
+        "vse004_1_030401_12_01",
+        "vse004_1_030401_12_02",
+        "vse004_1_030401_12_03",
+        "vse004_1_030401_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse004_1_030401_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030401_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030401_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030401_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse004_1_030401_12_01": 404,
+        "vse004_1_030401_12_02": 404,
+        "vse004_1_030401_12_03": 404,
+        "vse004_1_030401_12_04": 404
+      }
+    },
+    {
+      "country": "country47",
+      "character": "chara1_01218_01",
+      "image": "chara1_01218_01",
+      "image_hash": "9a744b5f1bf3fca473cf888ae57800e5",
+      "appearance_clips": [
+        "vse015_1_040201_12_01",
+        "vse015_1_040201_12_02",
+        "vse015_1_040201_12_03",
+        "vse015_1_040201_12_04"
+      ],
+      "local_image": {
+        "path": "D:\\onisoul\\assets\\pc\\bundles\\chara\\9a744b5f1bf3fca473cf888ae57800e5.unity3d",
+        "sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac",
+          "after_sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac",
+          "payload_sha256": "f65f6a9d6677f4ede650485c912c504663d98046833e796cf79fd3b91eccf6a0",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_01218_01_1_03",
+          "chara1_01218_01_1_01",
+          "chara1_01218_01_3_01",
+          "chara1_01218_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264
+      },
+      "generated_image": {
+        "path": "E:\\oni-soul\\work\\generated_chara_lzma_fixed_20261115\\assets\\chara\\chara__9a744b5f1bf3fca473cf888ae57800e5.unity3d",
+        "sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac",
+        "legacy_lzma_compatible": true,
+        "lzma": {
+          "changed": false,
+          "lzma_length_offset": 65,
+          "declared_before": 1167976,
+          "declared_after": 1167976,
+          "before_sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac",
+          "after_sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac",
+          "payload_sha256": "f65f6a9d6677f4ede650485c912c504663d98046833e796cf79fd3b91eccf6a0",
+          "payload_bytes": 1167976,
+          "payload_unchanged": true
+        },
+        "names": [
+          "chara1_01218_01_1_03",
+          "chara1_01218_01_1_01",
+          "chara1_01218_01_3_01",
+          "chara1_01218_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated"
+      },
+      "local_voices": [
+        {
+          "clip": "vse015_1_040201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse015_1_040201_12_01": 404,
+        "vse015_1_040201_12_02": 404,
+        "vse015_1_040201_12_03": 404,
+        "vse015_1_040201_12_04": 404
+      }
+    }
+  ],
+  "navigators": [
+    {
+      "navigator": "navi8000101",
+      "sex": "male",
+      "voice": "vse017_2_010101",
+      "countries": [
+        "country01",
+        "country03",
+        "country04",
+        "country08",
+        "country12",
+        "country15",
+        "country18",
+        "country22",
+        "country24",
+        "country25",
+        "country27",
+        "country34",
+        "country38",
+        "country41",
+        "country45",
+        "country47"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000101",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80001_01_3_01",
+              "texture": "cch1_80001_01_3_01",
+              "url": "/client/pc/jp/assets/cch/dc6bef58c56f1079d024ca6b2734fd0c.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000101",
+              "texture": "item12_8000101_02",
+              "url": "/client/pc/jp/assets/item/98e5eb991a688637fa12bd048d9386ad.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000102",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80001_02_3_01",
+              "texture": "cch1_80001_02_3_01",
+              "url": "/client/pc/jp/assets/cch/e50f8d7bb6ab05e7f37ee8f2e9e030ec.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000102",
+              "texture": "item12_8000102_02",
+              "url": "/client/pc/jp/assets/item/b748630e30095008d5a5f0aa1412a351.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000103",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80001_03_3_01",
+              "texture": "cch1_80001_03_3_01",
+              "url": "/client/pc/jp/assets/cch/2c550ac2b1f09f3bd5a1b446bab2e9c9.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000103",
+              "texture": "item12_8000103_02",
+              "url": "/client/pc/jp/assets/item/c0225952e0393cd5b405e7e181f85eb6.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000104",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80001_04_3_01",
+              "texture": "cch1_80001_04_3_01",
+              "url": "/client/pc/jp/assets/cch/dc395741033950e49f0a0e8540a79de5.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000104",
+              "texture": "item12_8000104_02",
+              "url": "/client/pc/jp/assets/item/872adcba4a1946c3b6311e28ea971fea.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000105",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80001_05_3_01",
+              "texture": "cch1_80001_05_3_01",
+              "url": "/client/pc/jp/assets/cch/931eb46fcd6b0689dcd05e923906f93d.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000105",
+              "texture": "item12_8000105_02",
+              "url": "/client/pc/jp/assets/item/810edef771e292e08ea7baa6a8b8d181.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse017_2_010101_01_01",
+        "vse017_2_010101_01_02",
+        "vse017_2_010101_01_03",
+        "vse017_2_010101_01_04",
+        "vse017_2_010101_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse017_2_010101_01_01": "/client/pc/jp/assets/vse/455e4e3938c50f684f53f42edae64883.unity3d",
+        "vse017_2_010101_01_02": "/client/pc/jp/assets/vse/03f1256047756024b91eac23f0de7cd4.unity3d",
+        "vse017_2_010101_01_03": "/client/pc/jp/assets/vse/0fc575c6d95f97344420d3ab561f4234.unity3d",
+        "vse017_2_010101_01_04": "/client/pc/jp/assets/vse/09c6f80b0d3a437093e476950c1b71cf.unity3d",
+        "vse017_2_010101_01_05": "/client/pc/jp/assets/vse/404fe4ec94e5f3dd7bb130156cb07f59.unity3d"
+      },
+      "server_first_greeting": {
+        "vse017_2_010101_01_01": 404,
+        "vse017_2_010101_01_02": 404,
+        "vse017_2_010101_01_03": 404,
+        "vse017_2_010101_01_04": 404,
+        "vse017_2_010101_01_05": 404
+      }
+    },
+    {
+      "navigator": "navi8000201",
+      "sex": "male",
+      "voice": "vse015_2_010101",
+      "countries": [
+        "country05",
+        "country07",
+        "country10",
+        "country14",
+        "country16",
+        "country17",
+        "country20",
+        "country26",
+        "country28",
+        "country30",
+        "country31",
+        "country35",
+        "country36",
+        "country37",
+        "country40",
+        "country43"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000201",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80002_01_3_01",
+              "texture": "cch1_80002_01_3_01",
+              "url": "/client/pc/jp/assets/cch/ed8e270faf845162d07583fcc6d495b3.unity3d",
+              "local": {
+                "path": "D:\\onisoul\\assets\\pc\\bundles\\cch\\ed8e270faf845162d07583fcc6d495b3.unity3d",
+                "error": "LZMA payload does not match its bounded UnityWeb level"
+              },
+              "server_status": 200
+            },
+            "icon": {
+              "bundle": "item12_8000201",
+              "texture": "item12_8000201_02",
+              "url": "/client/pc/jp/assets/item/ad86a62d03680af2f8fe3baf9721b033.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000202",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80002_02_3_01",
+              "texture": "cch1_80002_02_3_01",
+              "url": "/client/pc/jp/assets/cch/66010f6c1f8341a9a1a3e2bd92ecc553.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000202",
+              "texture": "item12_8000202_02",
+              "url": "/client/pc/jp/assets/item/f6795825d78c16442278a4dc18fbff39.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000203",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80002_03_3_01",
+              "texture": "cch1_80002_03_3_01",
+              "url": "/client/pc/jp/assets/cch/2809821e8d76d927fbbb3e28b5d3f441.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000203",
+              "texture": "item12_8000203_02",
+              "url": "/client/pc/jp/assets/item/986e67f74ddf5d225c250cc7ba17883f.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000204",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80002_04_3_01",
+              "texture": "cch1_80002_04_3_01",
+              "url": "/client/pc/jp/assets/cch/a4dddae6e50ed1109a10b4f64e43da58.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000204",
+              "texture": "item12_8000204_02",
+              "url": "/client/pc/jp/assets/item/d3e1b10f1c8a06fb4f17c3a854247f37.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000205",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80002_05_3_01",
+              "texture": "cch1_80002_05_3_01",
+              "url": "/client/pc/jp/assets/cch/341173d645bae3a8ef630be5329f3037.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000205",
+              "texture": "item12_8000205_02",
+              "url": "/client/pc/jp/assets/item/edecf37622195e697a6e9672f2691e14.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse015_2_010101_01_01",
+        "vse015_2_010101_01_02",
+        "vse015_2_010101_01_03",
+        "vse015_2_010101_01_04",
+        "vse015_2_010101_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse015_2_010101_01_01": "/client/pc/jp/assets/vse/9338824194a9729f96df29b022a940a9.unity3d",
+        "vse015_2_010101_01_02": "/client/pc/jp/assets/vse/0cc4ec87efa666a8cc714f81f83409f1.unity3d",
+        "vse015_2_010101_01_03": "/client/pc/jp/assets/vse/dff3bb33bb6b8691fbe43f3ad165edac.unity3d",
+        "vse015_2_010101_01_04": "/client/pc/jp/assets/vse/acbba214cc8c55b9418b45148e8203fc.unity3d",
+        "vse015_2_010101_01_05": "/client/pc/jp/assets/vse/dc6afee9aa9e50d3d8c552c1dee7c31b.unity3d"
+      },
+      "server_first_greeting": {
+        "vse015_2_010101_01_01": 404,
+        "vse015_2_010101_01_02": 404,
+        "vse015_2_010101_01_03": 404,
+        "vse015_2_010101_01_04": 404,
+        "vse015_2_010101_01_05": 404
+      }
+    },
+    {
+      "navigator": "navi8000301",
+      "sex": "male",
+      "voice": "vse013_2_010101",
+      "countries": [
+        "country02",
+        "country06",
+        "country09",
+        "country11",
+        "country13",
+        "country19",
+        "country21",
+        "country23",
+        "country29",
+        "country32",
+        "country33",
+        "country39",
+        "country42",
+        "country44",
+        "country46"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000301",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80003_01_3_01",
+              "texture": "cch1_80003_01_3_01",
+              "url": "/client/pc/jp/assets/cch/bf7ff3b461e95c11736aa0ea1b9ff92d.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000301",
+              "texture": "item12_8000301_02",
+              "url": "/client/pc/jp/assets/item/b66432a18f6889c4253ab98836b34129.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000302",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80003_02_3_01",
+              "texture": "cch1_80003_02_3_01",
+              "url": "/client/pc/jp/assets/cch/a8cde5d36291e25a79ed68314e5a412b.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000302",
+              "texture": "item12_8000302_02",
+              "url": "/client/pc/jp/assets/item/43bf047cef62acb2cfc7ac4b33fd514f.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000303",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80003_03_3_01",
+              "texture": "cch1_80003_03_3_01",
+              "url": "/client/pc/jp/assets/cch/30e029e93f511e03c5b70171a71b3d8d.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000303",
+              "texture": "item12_8000303_02",
+              "url": "/client/pc/jp/assets/item/7ce3ba635889ee982edfddb81e9f12d4.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000304",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80003_04_3_01",
+              "texture": "cch1_80003_04_3_01",
+              "url": "/client/pc/jp/assets/cch/692248b27fe1d7f73bc909718133e2b9.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000304",
+              "texture": "item12_8000304_02",
+              "url": "/client/pc/jp/assets/item/22252220be499d4aefbfca1bf469823b.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000305",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80003_05_3_01",
+              "texture": "cch1_80003_05_3_01",
+              "url": "/client/pc/jp/assets/cch/12e297b85b466f7970f39c3260568ff7.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000305",
+              "texture": "item12_8000305_02",
+              "url": "/client/pc/jp/assets/item/d0b0a8090b5a35a329ac1169711157cf.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse013_2_010101_01_01",
+        "vse013_2_010101_01_02",
+        "vse013_2_010101_01_03",
+        "vse013_2_010101_01_04",
+        "vse013_2_010101_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse013_2_010101_01_01": "/client/pc/jp/assets/vse/ed0082905808f5baaf65eb8d526ce446.unity3d",
+        "vse013_2_010101_01_02": "/client/pc/jp/assets/vse/080e8f08921822ace5b4def0a775176e.unity3d",
+        "vse013_2_010101_01_03": "/client/pc/jp/assets/vse/375601597a589cc034725d3f08853696.unity3d",
+        "vse013_2_010101_01_04": "/client/pc/jp/assets/vse/2a01399aec2a98bce31be77a1e7e9c48.unity3d",
+        "vse013_2_010101_01_05": "/client/pc/jp/assets/vse/548d97b009dfabbd087dc9dc8b4d3008.unity3d"
+      },
+      "server_first_greeting": {
+        "vse013_2_010101_01_01": 404,
+        "vse013_2_010101_01_02": 404,
+        "vse013_2_010101_01_03": 404,
+        "vse013_2_010101_01_04": 404,
+        "vse013_2_010101_01_05": 404
+      }
+    },
+    {
+      "navigator": "navi8000401",
+      "sex": "male",
+      "voice": "vse019_2_010101",
+      "countries": [
+        "country47"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000401",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80004_01_3_01",
+              "texture": "cch1_80004_01_3_01",
+              "url": "/client/pc/jp/assets/cch/32c27591166d6a822fc37cea572f13ae.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000401",
+              "texture": "item12_8000401_02",
+              "url": "/client/pc/jp/assets/item/693fe4aef5dae8b053b4e42196be22cc.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000402",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80004_02_3_01",
+              "texture": "cch1_80004_02_3_01",
+              "url": "/client/pc/jp/assets/cch/0df8f15d3598a8937f1b4be8f09ddb56.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000402",
+              "texture": "item12_8000402_02",
+              "url": "/client/pc/jp/assets/item/0822a072eca1ae47c9dc9c896698d366.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000403",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80004_03_3_01",
+              "texture": "cch1_80004_03_3_01",
+              "url": "/client/pc/jp/assets/cch/0d8c15dc3ba9ef14d788707dc95a190c.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000403",
+              "texture": "item12_8000403_02",
+              "url": "/client/pc/jp/assets/item/8fb0ad9ea8f85c1bc762c4ecbd790f18.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000404",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80004_04_3_01",
+              "texture": "cch1_80004_04_3_01",
+              "url": "/client/pc/jp/assets/cch/12cb4547aae2b907d5410a1871fbcc25.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000404",
+              "texture": "item12_8000404_02",
+              "url": "/client/pc/jp/assets/item/1114760054b198b8caab2735972b8123.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000405",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80004_05_3_01",
+              "texture": "cch1_80004_05_3_01",
+              "url": "/client/pc/jp/assets/cch/5f32ea00523baa1e5f540c115d71df6d.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000405",
+              "texture": "item12_8000405_02",
+              "url": "/client/pc/jp/assets/item/5e4f03b78134828613610f2e7a44823b.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse019_2_010101_01_01",
+        "vse019_2_010101_01_02",
+        "vse019_2_010101_01_03",
+        "vse019_2_010101_01_04",
+        "vse019_2_010101_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse019_2_010101_01_01": "/client/pc/jp/assets/vse/429d9ebe9b92d8596817560eaade22d5.unity3d",
+        "vse019_2_010101_01_02": "/client/pc/jp/assets/vse/6bb2a5c8b025cb205ffd2cbeeff5b072.unity3d",
+        "vse019_2_010101_01_03": "/client/pc/jp/assets/vse/fc4c8f514d539e1e49d78186f61987d3.unity3d",
+        "vse019_2_010101_01_04": "/client/pc/jp/assets/vse/53f71bc67608d7bab4c9873ed16aba5d.unity3d",
+        "vse019_2_010101_01_05": "/client/pc/jp/assets/vse/55c91e843c804c98bff64c0068eea22b.unity3d"
+      },
+      "server_first_greeting": {
+        "vse019_2_010101_01_01": 404,
+        "vse019_2_010101_01_02": 404,
+        "vse019_2_010101_01_03": 404,
+        "vse019_2_010101_01_04": 404,
+        "vse019_2_010101_01_05": 404
+      }
+    },
+    {
+      "navigator": "navi8000501",
+      "sex": "female",
+      "voice": "vse018_2_010201",
+      "countries": [
+        "country01",
+        "country03",
+        "country04",
+        "country08",
+        "country12",
+        "country15",
+        "country18",
+        "country22",
+        "country24",
+        "country25",
+        "country27",
+        "country34",
+        "country38",
+        "country41",
+        "country45",
+        "country47"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000501",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80005_01_3_01",
+              "texture": "cch1_80005_01_3_01",
+              "url": "/client/pc/jp/assets/cch/be4f6a4f8500f0ec8f2ed75ca4b0735a.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000501",
+              "texture": "item12_8000501_02",
+              "url": "/client/pc/jp/assets/item/f19bb5c20462c000bdee4c2e7b404976.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000502",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80005_02_3_01",
+              "texture": "cch1_80005_02_3_01",
+              "url": "/client/pc/jp/assets/cch/02da8cf84fe92fc7d1058826c47b74ea.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000502",
+              "texture": "item12_8000502_02",
+              "url": "/client/pc/jp/assets/item/46a4d33dad39686a13d376dbd6132931.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000503",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80005_03_3_01",
+              "texture": "cch1_80005_03_3_01",
+              "url": "/client/pc/jp/assets/cch/e3e7a6b4facb23588ff86d0a409c0228.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000503",
+              "texture": "item12_8000503_02",
+              "url": "/client/pc/jp/assets/item/ae7f19d353cc10f2542376fafa8031ba.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000504",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80005_04_3_01",
+              "texture": "cch1_80005_04_3_01",
+              "url": "/client/pc/jp/assets/cch/af1061ddb319bbcf6d2bc4106b036df0.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000504",
+              "texture": "item12_8000504_02",
+              "url": "/client/pc/jp/assets/item/e29596341b0a89ee315d425446a5b95c.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000505",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80005_05_3_01",
+              "texture": "cch1_80005_05_3_01",
+              "url": "/client/pc/jp/assets/cch/cd2bfcda74819cf2b42fb307a553b363.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000505",
+              "texture": "item12_8000505_02",
+              "url": "/client/pc/jp/assets/item/fd6f6bdac2d2e7da1a34745377e45319.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse018_2_010201_01_01",
+        "vse018_2_010201_01_02",
+        "vse018_2_010201_01_03",
+        "vse018_2_010201_01_04",
+        "vse018_2_010201_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse018_2_010201_01_01": "/client/pc/jp/assets/vse/065aa19114c497a23284e4661ed702c6.unity3d",
+        "vse018_2_010201_01_02": "/client/pc/jp/assets/vse/65c0f351a7ce2640d9d2bffdbbc85109.unity3d",
+        "vse018_2_010201_01_03": "/client/pc/jp/assets/vse/f293f5cea346f87a17532da52022f4ec.unity3d",
+        "vse018_2_010201_01_04": "/client/pc/jp/assets/vse/8919e7f56cafaf9c0384e135d4a954d5.unity3d",
+        "vse018_2_010201_01_05": "/client/pc/jp/assets/vse/b9c9b62f058a1a98fe3d563e1752c84b.unity3d"
+      },
+      "server_first_greeting": {
+        "vse018_2_010201_01_01": 404,
+        "vse018_2_010201_01_02": 404,
+        "vse018_2_010201_01_03": 404,
+        "vse018_2_010201_01_04": 404,
+        "vse018_2_010201_01_05": 404
+      }
+    },
+    {
+      "navigator": "navi8000601",
+      "sex": "female",
+      "voice": "vse016_2_010201",
+      "countries": [
+        "country05",
+        "country07",
+        "country10",
+        "country14",
+        "country16",
+        "country17",
+        "country20",
+        "country26",
+        "country28",
+        "country30",
+        "country31",
+        "country35",
+        "country36",
+        "country37",
+        "country40",
+        "country43"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000601",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80006_01_3_01",
+              "texture": "cch1_80006_01_3_01",
+              "url": "/client/pc/jp/assets/cch/c3f01d7176ce520dab9bd1a8328acb1f.unity3d",
+              "local": {
+                "path": "D:\\onisoul\\assets\\pc\\bundles\\cch\\c3f01d7176ce520dab9bd1a8328acb1f.unity3d",
+                "error": "LZMA payload does not match its bounded UnityWeb level"
+              },
+              "server_status": 200
+            },
+            "icon": {
+              "bundle": "item12_8000601",
+              "texture": "item12_8000601_02",
+              "url": "/client/pc/jp/assets/item/699525c56fb6a8c7b8d2dea4a940207d.unity3d",
+              "local": {
+                "path": "D:\\onisoul\\assets\\pc\\bundles\\item\\699525c56fb6a8c7b8d2dea4a940207d.unity3d",
+                "error": "LZMA payload does not match its bounded UnityWeb level"
+              },
+              "server_status": 200
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000602",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80006_02_3_01",
+              "texture": "cch1_80006_02_3_01",
+              "url": "/client/pc/jp/assets/cch/eec63a0b07127faf5c9ab170c39de5de.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000602",
+              "texture": "item12_8000602_02",
+              "url": "/client/pc/jp/assets/item/7cd7ac2b2e697e3aa0a95945f0af5613.unity3d",
+              "local": {
+                "path": "D:\\onisoul\\assets\\pc\\bundles\\item\\7cd7ac2b2e697e3aa0a95945f0af5613.unity3d",
+                "error": "LZMA payload does not match its bounded UnityWeb level"
+              },
+              "server_status": 200
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000603",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80006_03_3_01",
+              "texture": "cch1_80006_03_3_01",
+              "url": "/client/pc/jp/assets/cch/be3cff33f6dcc5f6a94219500b468a41.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000603",
+              "texture": "item12_8000603_02",
+              "url": "/client/pc/jp/assets/item/54c91a46ea23ba587f2ad4c540df3a61.unity3d",
+              "local": {
+                "path": "D:\\onisoul\\assets\\pc\\bundles\\item\\54c91a46ea23ba587f2ad4c540df3a61.unity3d",
+                "error": "LZMA payload does not match its bounded UnityWeb level"
+              },
+              "server_status": 200
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000604",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80006_04_3_01",
+              "texture": "cch1_80006_04_3_01",
+              "url": "/client/pc/jp/assets/cch/ebbf37d49c8cdffdf4d35213d730e69a.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000604",
+              "texture": "item12_8000604_02",
+              "url": "/client/pc/jp/assets/item/5dd54c404f670bba91f92f1171ec1c08.unity3d",
+              "local": {
+                "path": "D:\\onisoul\\assets\\pc\\bundles\\item\\5dd54c404f670bba91f92f1171ec1c08.unity3d",
+                "error": "LZMA payload does not match its bounded UnityWeb level"
+              },
+              "server_status": 200
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000605",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80006_05_3_01",
+              "texture": "cch1_80006_05_3_01",
+              "url": "/client/pc/jp/assets/cch/0d351b0722515a96d9c22b63cbb73fe8.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000605",
+              "texture": "item12_8000605_02",
+              "url": "/client/pc/jp/assets/item/b367c77807e6f2b665e1cefa4cfbb1f0.unity3d",
+              "local": {
+                "path": "D:\\onisoul\\assets\\pc\\bundles\\item\\b367c77807e6f2b665e1cefa4cfbb1f0.unity3d",
+                "error": "LZMA payload does not match its bounded UnityWeb level"
+              },
+              "server_status": 200
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse016_2_010201_01_01",
+        "vse016_2_010201_01_02",
+        "vse016_2_010201_01_03",
+        "vse016_2_010201_01_04",
+        "vse016_2_010201_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse016_2_010201_01_01": "/client/pc/jp/assets/vse/26c12a4ea1a8e92ab520fe9b2655fa94.unity3d",
+        "vse016_2_010201_01_02": "/client/pc/jp/assets/vse/a1228e977563e83a20109117a71a7438.unity3d",
+        "vse016_2_010201_01_03": "/client/pc/jp/assets/vse/056419566884cc2534db2a3bae0fb30c.unity3d",
+        "vse016_2_010201_01_04": "/client/pc/jp/assets/vse/595384efc2f32072dc2311b54d4fec78.unity3d",
+        "vse016_2_010201_01_05": "/client/pc/jp/assets/vse/59c41edec23bf86e0f5f6f02a33c69af.unity3d"
+      },
+      "server_first_greeting": {
+        "vse016_2_010201_01_01": 404,
+        "vse016_2_010201_01_02": 404,
+        "vse016_2_010201_01_03": 404,
+        "vse016_2_010201_01_04": 404,
+        "vse016_2_010201_01_05": 404
+      }
+    },
+    {
+      "navigator": "navi8000701",
+      "sex": "female",
+      "voice": "vse014_2_010201",
+      "countries": [
+        "country02",
+        "country06",
+        "country09",
+        "country11",
+        "country13",
+        "country19",
+        "country21",
+        "country23",
+        "country29",
+        "country32",
+        "country33",
+        "country39",
+        "country42",
+        "country44",
+        "country46"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000701",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80007_01_3_01",
+              "texture": "cch1_80007_01_3_01",
+              "url": "/client/pc/jp/assets/cch/24b82c8ba1a81bdf159243731c8b658d.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000701",
+              "texture": "item12_8000701_02",
+              "url": "/client/pc/jp/assets/item/799be3c68e5028ea1383822cc0dba0aa.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000702",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80007_02_3_01",
+              "texture": "cch1_80007_02_3_01",
+              "url": "/client/pc/jp/assets/cch/2567df693c916066ec4dad0fbfb05eba.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000702",
+              "texture": "item12_8000702_02",
+              "url": "/client/pc/jp/assets/item/cb0380961f15a9ce89383117d1c38275.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000703",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80007_03_3_01",
+              "texture": "cch1_80007_03_3_01",
+              "url": "/client/pc/jp/assets/cch/f610582f693db58df68e2e954d855657.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000703",
+              "texture": "item12_8000703_02",
+              "url": "/client/pc/jp/assets/item/962039e00b8ef1b1ad36231757160d98.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000704",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80007_04_3_01",
+              "texture": "cch1_80007_04_3_01",
+              "url": "/client/pc/jp/assets/cch/60ae6fb761d3b60f9555e4d0cecbdb57.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000704",
+              "texture": "item12_8000704_02",
+              "url": "/client/pc/jp/assets/item/3482019976ccd4126ead79caae54695e.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000705",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80007_05_3_01",
+              "texture": "cch1_80007_05_3_01",
+              "url": "/client/pc/jp/assets/cch/fc4d79783dc8dbca34036abfb7040df3.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000705",
+              "texture": "item12_8000705_02",
+              "url": "/client/pc/jp/assets/item/affbbc2329db6c0ce8cfa5a3c31defff.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse014_2_010201_01_01",
+        "vse014_2_010201_01_02",
+        "vse014_2_010201_01_03",
+        "vse014_2_010201_01_04",
+        "vse014_2_010201_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse014_2_010201_01_01": "/client/pc/jp/assets/vse/114353245174089fcf30a6a236a5a2ad.unity3d",
+        "vse014_2_010201_01_02": "/client/pc/jp/assets/vse/9c093e288943fb92607e2af8eed620e4.unity3d",
+        "vse014_2_010201_01_03": "/client/pc/jp/assets/vse/82d32aa74545773ef27887f94ff402ac.unity3d",
+        "vse014_2_010201_01_04": "/client/pc/jp/assets/vse/79cbfc1a5955370be3b5e2a9d1bc7c83.unity3d",
+        "vse014_2_010201_01_05": "/client/pc/jp/assets/vse/567239a2c021239fa755f1d422b81fde.unity3d"
+      },
+      "server_first_greeting": {
+        "vse014_2_010201_01_01": 404,
+        "vse014_2_010201_01_02": 404,
+        "vse014_2_010201_01_03": 404,
+        "vse014_2_010201_01_04": 404,
+        "vse014_2_010201_01_05": 404
+      }
+    },
+    {
+      "navigator": "navi8000801",
+      "sex": "female",
+      "voice": "vse020_2_010201",
+      "countries": [
+        "country47"
+      ],
+      "colors": [
+        {
+          "color": 1,
+          "item": "item12_8000801",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80008_01_3_01",
+              "texture": "cch1_80008_01_3_01",
+              "url": "/client/pc/jp/assets/cch/f826648c916dab3818bee4fdc54ffe9d.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000801",
+              "texture": "item12_8000801_02",
+              "url": "/client/pc/jp/assets/item/10454c572a588270908b3a87b9f1352b.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 2,
+          "item": "item12_8000802",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80008_02_3_01",
+              "texture": "cch1_80008_02_3_01",
+              "url": "/client/pc/jp/assets/cch/ab612c404e34fb66edb1aa1d6e82228d.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000802",
+              "texture": "item12_8000802_02",
+              "url": "/client/pc/jp/assets/item/78a66f8f8c1f867b3081f71b70e40458.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 3,
+          "item": "item12_8000803",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80008_03_3_01",
+              "texture": "cch1_80008_03_3_01",
+              "url": "/client/pc/jp/assets/cch/7aa070ab724d9b25042202bf9b8c86ed.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000803",
+              "texture": "item12_8000803_02",
+              "url": "/client/pc/jp/assets/item/2e0e13ba82ea4c794b1ab85116b7c923.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 4,
+          "item": "item12_8000804",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80008_04_3_01",
+              "texture": "cch1_80008_04_3_01",
+              "url": "/client/pc/jp/assets/cch/b96de5431e69c466039a42ab1030978c.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000804",
+              "texture": "item12_8000804_02",
+              "url": "/client/pc/jp/assets/item/78c480e12526122bb626ba307395dbbe.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        },
+        {
+          "color": 5,
+          "item": "item12_8000805",
+          "assets": {
+            "bust": {
+              "bundle": "cch1_80008_05_3_01",
+              "texture": "cch1_80008_05_3_01",
+              "url": "/client/pc/jp/assets/cch/fae61b5816656538724bcea25289a059.unity3d",
+              "local": null,
+              "server_status": 404
+            },
+            "icon": {
+              "bundle": "item12_8000805",
+              "texture": "item12_8000805_02",
+              "url": "/client/pc/jp/assets/item/2ebe1e869089d9ecf2c3d2c398aef1d5.unity3d",
+              "local": null,
+              "server_status": 404
+            }
+          }
+        }
+      ],
+      "first_greeting_clips": [
+        "vse020_2_010201_01_01",
+        "vse020_2_010201_01_02",
+        "vse020_2_010201_01_03",
+        "vse020_2_010201_01_04",
+        "vse020_2_010201_01_05"
+      ],
+      "first_greeting_urls": {
+        "vse020_2_010201_01_01": "/client/pc/jp/assets/vse/2ee4749969b0f287c71c324402465d27.unity3d",
+        "vse020_2_010201_01_02": "/client/pc/jp/assets/vse/134b3d93bcd0016f82c5b9ff6beb75b1.unity3d",
+        "vse020_2_010201_01_03": "/client/pc/jp/assets/vse/1be4e16c6c8e6195d11c9b5863b92026.unity3d",
+        "vse020_2_010201_01_04": "/client/pc/jp/assets/vse/f42fc5e4c65c873ac2c829f780f79f2e.unity3d",
+        "vse020_2_010201_01_05": "/client/pc/jp/assets/vse/d809e02e69e983c8367f355b0d71002e.unity3d"
+      },
+      "server_first_greeting": {
+        "vse020_2_010201_01_01": 404,
+        "vse020_2_010201_01_02": 404,
+        "vse020_2_010201_01_03": 404,
+        "vse020_2_010201_01_04": 404,
+        "vse020_2_010201_01_05": 404
+      }
+    }
+  ],
+  "navigator_item_source": {
+    "path": "work\\login-country\\item12.json",
+    "sha256": "f11dc21435748db9c16f5fa8fc14e0c67ee9fe53e55fa12f2b592bd31992eca0"
+  }
+}

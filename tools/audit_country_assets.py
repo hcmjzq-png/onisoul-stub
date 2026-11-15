@@ -12,8 +12,12 @@ from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 from pathlib import Path
+import sys
 import urllib.error
 import urllib.request
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from tools.repair_unityweb_lzma import repair
 
 
 def asset_hash(name: str) -> str:
@@ -26,7 +30,13 @@ def inspect(path: Path, kind: str, required: list[str]) -> dict:
         env = UnityPy.load(str(path))
         objects = [obj.read() for obj in env.objects if obj.type.name == kind]
         names = [obj.m_Name for obj in objects]
-        return {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        blob = path.read_bytes()
+        lzma_proof = None
+        if blob.startswith(b"UnityWeb\0"):
+            _fixed, lzma_proof = repair(blob)
+        return {"path": str(path), "sha256": hashlib.sha256(blob).hexdigest(),
+                "legacy_lzma_compatible": lzma_proof is None or not lzma_proof["changed"],
+                "lzma": lzma_proof,
                 "names": names, "missing_names": sorted(set(required) - set(names)),
                 "payload_bytes": sum(len(getattr(obj, "image_data", b"")) for obj in objects)
                 if kind == "Texture2D" else sum(len(getattr(obj, "m_AudioData", b"")) for obj in objects)}
@@ -141,6 +151,8 @@ def main() -> int:
                    and not r["generated_image"].get("error")) for r in rows)}
     summary.update(selectable_navigators=len(navigator_rows),
                    navigator_colors=sum(len(n["colors"]) for n in navigator_rows),
+                   generated_legacy_lzma_compatible=sum(bool(r["generated_image"] and
+                       r["generated_image"].get("legacy_lzma_compatible")) for r in rows),
                    navigator_icons_source_verified=bool(args.navigator_items))
     if args.server:
         summary.update(server_image_statuses=dict(Counter(str(r["server_image"]) for r in rows)),
