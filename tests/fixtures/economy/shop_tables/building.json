@@ -1,0 +1,212 @@
+{
+  "building": {
+    "building200_090_01_01_1_1": {
+      "id": "building200_090_01_01_1_1",
+      "name": "登别温泉",
+      "desc": "北海道的地方建筑。",
+      "category": "goldProduction",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        400
+      ],
+      "products": [
+        "building200_090_01_01_1_1"
+      ],
+      "produceType": "auto",
+      "durability": 3,
+      "levelUpTypeId": "seigen",
+      "connectChipType": "none",
+      "itemId": "item05_0200090",
+      "waitImages": [
+        "building200_090_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 1002,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 60,
+      "kokudakaMax": 60,
+      "regularSoldier": 0,
+      "dedication": 50,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_101_01_01_1_1": {
+      "id": "building200_101_01_01_1_1",
+      "name": "奥药研温泉",
+      "desc": "青森县的地方建筑。",
+      "category": "goldProduction",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        400
+      ],
+      "products": [
+        "building200_101_01_01_1_1"
+      ],
+      "produceType": "auto",
+      "durability": 3,
+      "levelUpTypeId": "seigen",
+      "connectChipType": "none",
+      "itemId": "item05_0200101",
+      "waitImages": [
+        "building200_101_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 1013,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 60,
+      "kokudakaMax": 60,
+      "regularSoldier": 0,
+      "dedication": 50,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_648_01_01_1_1": {
+      "id": "building200_648_01_01_1_1",
+      "name": "梅",
+      "desc": "植物",
+      "category": "decor",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        20
+      ],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "none",
+      "itemId": "item05_0200648",
+      "waitImages": [
+        "building200_648_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 656,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 5,
+      "kokudakaMax": 5,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_651_01_01_1_1": {
+      "id": "building200_651_01_01_1_1",
+      "name": "招财猫（黑）",
+      "desc": "鉴赏",
+      "category": "decor",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        20
+      ],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "none",
+      "itemId": "item05_0200651",
+      "waitImages": [
+        "building200_651_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 659,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 5,
+      "kokudakaMax": 5,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    }
+  }
+}

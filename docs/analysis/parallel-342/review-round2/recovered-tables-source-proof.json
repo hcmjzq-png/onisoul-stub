@@ -1,0 +1,62 @@
+{
+  "container_sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7",
+  "deployed": false,
+  "tables": [
+    {
+      "name": "item08",
+      "rows": 1035,
+      "sha256": "7946ce46ad7d811d10fe50f26d6cb1b34f5a3f3b30c64922ca6014169048c017",
+      "offset": 79226572,
+      "length": 345706,
+      "evidence": "h-account-progress/deep-review.json"
+    },
+    {
+      "name": "item13",
+      "rows": 6,
+      "sha256": "5195d97a0501e4e37e97db4ace2c20b9ec43ff50e5fa18485e2944d31b7f620c",
+      "offset": 78151388,
+      "length": 2026,
+      "evidence": "d-economy/shop-evidence.json"
+    },
+    {
+      "name": "item14",
+      "rows": 51,
+      "sha256": "1047b9455e27ffb51ac4cbd455446ca3aee18fccb546e61a5efa08a57de70ee5",
+      "offset": 15616804,
+      "length": 17345,
+      "evidence": "d-economy/shop-evidence.json"
+    },
+    {
+      "name": "reward06_trophy",
+      "rows": 168,
+      "sha256": "68cf7b61a39ee535d3eea0d72962f6e9d310ce22d4987e409e751839276a1def",
+      "offset": 47256412,
+      "length": 209813,
+      "evidence": "h-account-progress/deep-review.json"
+    },
+    {
+      "name": "skillRefreshG2",
+      "rows": 200,
+      "sha256": "ddc950f0fd8e892b12e2865458ce43b4fe411154a4f7a8a422acc3ff6395b4de",
+      "offset": 100093500,
+      "length": 17710,
+      "evidence": "c-card-growth/followup-evidence.json"
+    },
+    {
+      "name": "skillRefreshG4",
+      "rows": 235,
+      "sha256": "e3cfc41829ff8be9cedbc36ef8fb245338f4515baf4b981a9261baac23e7ea84",
+      "offset": 38154132,
+      "length": 20790,
+      "evidence": "c-card-growth/followup-evidence.json"
+    },
+    {
+      "name": "skillRefreshG6",
+      "rows": 158,
+      "sha256": "a420b5834dba41176fae7fc64aa3904af32b6c5209b4f305a291011576cfda17",
+      "offset": 37938228,
+      "length": 14014,
+      "evidence": "c-card-growth/followup-evidence.json"
+    }
+  ]
+}

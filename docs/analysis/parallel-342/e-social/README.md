@@ -3,7 +3,7 @@
 基线 `1f287e33123afa452d2f5d2aac2427566d549f73`；工作树 `D:\onisoul-worktrees\parallel-342-e-social`；分支 `parallel/342-e-social-20261115`。
 任务引用 A 文件但明确指定 E，故采用同目录 E-social.txt 的 41 个入口与允许文件范围。
 
-交付 **7 个限定范围、未生产挂载的处理器**：好友发送/接受或拒绝/取消/解除、列表、计数、Unity 公开资料。不是完整社交系统；没有减少全局占位数量。
+交付 **9 个限定范围、未生产挂载的处理器**：好友发送/接受或拒绝/取消/解除、列表、计数、Unity 公开资料，加收件箱查询及确定数量四资源领取。不是完整社交系统；没有减少全局占位数量。
 `reviewed-endpoints.tsv` 逐项覆盖 41 个入口；`evidence.json` 保存原 C# / 原表路径、SHA-256、方法或行号，并分开列出兼容决策。
 
 ## 原版证据与实现范围
@@ -24,7 +24,7 @@ PoliticBuilding.cs:209 的 IsFriendBuilding 是建筑分类，不能误认为账
 ## 信箱与社区静态边界
 
 HTMLMailCore.cs:30-149 已追 Unity→原 HTML 桥接：邮件请求只有 to/subject/body，未发现附件参数。邮箱和 inbox 是不同路径，不能将旧密书箱直接作为附件收件箱实现。
-InboxReader.cs:92-177 消费 parcels/totalCount，InboxResolveWorker.cs:11-105 消费 successful.<id>.rewards 与 failed；makeDummy 仅客户端调试函数，**不是原服奖励证据**。奖励原子消费需 C 的库存/容量规则，尚未实现领取。
+InboxReader.cs:92-177 消费 parcels/totalCount，InboxResolveWorker.cs:11-105 消费 successful.<id>.rewards 与 failed；makeDummy 仅客户端调试函数，**不是原服奖励证据**。追加实现仅限数量确定的四资源领取；其他奖励原子消费仍需 C 的库存/容量规则。见 [过期与领取追加复核](expiry-inbox-followup.md)。
 HTMLBbsMediator.cs:318-667 展示 sess_key、commit、原始文本转义和 HTML 转发。guid 为客户端追加；listThread/listComment 的 list 与 infoThread.thread/infoComment.comment 是嵌套响应，不能按接口名推平。关闭/删除/提交权限以及原 pcweb 最终字段消费尚缺证据。
 在原客户端安装目录的文件名搜索未发现可直接核验的 pcweb/bbs/mail/inbox 源文件；未扫描解码全部缓存，不宣称这些资源不存在。`D:\onisoul\work\pcweb` 的来源链未核实，本批不用其内容替代原版证据。
 
@@ -39,6 +39,6 @@ python -m unittest tests.test_social_services -v
 python -m unittest discover -s tests -v
 ```
 
-本组 11 项；完整回归 237 项通过，0 跳过。详见 test-results.txt。包括双边生命周期、容量、无费用副作用、越权、即时重试、20 路重复操作、反向申请不死锁、竞争接受不超容量、提交故障回滚和服务重建后读取。
+本组 22 项；完整回归 248 项通过，0 跳过。详见 test-results.txt。包括双边生命周期、容量、无费用副作用、越权、即时重试、20 路重复操作、反向申请不死锁、竞争接受不超容量、提交故障回滚和服务重建后读取。
 持久化验证使用同一个隔离内存存储重建服务，不是 MySQL 崩溃恢复或真实 Unity 验收。
-原子适配器只在测试中提供；生产存储适配/迁移、鉴权边界、过期机制与动态验证是明确集成前置条件。未部署、未操作真实账号、未修改 hosts/proxy80/config.ini 或共享客户端。
+好友跨账号原子适配器只在测试中提供；收件箱使用既有单玩家保存，生产存储适配/包裹来源与迁移、鉴权边界、过期机制与动态验证是明确集成前置条件。未部署、未操作真实账号、未修改 hosts/proxy80/config.ini 或共享客户端。

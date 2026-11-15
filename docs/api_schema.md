@@ -154,3 +154,20 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 背景 `setBackground` 的 mapId 仍待确认（原 mypageBgSelectWindow 传 1，而候选只支持 0）。
 `trophy/getTrophyProgress` 旧 SCALAR_ROOT 记录不足以指导全部 access；至少 mypage 消费者要求根记录映射，
 本批不接入该业务、不将其算完成。其余商业规则和状态生产者仍按汇总逐项标记为待验证。
+
+## 2026-11-15 A–H 第二轮候选协议（未挂载）
+
+以下为候选组件的原消费者字段，来源索引及阻塞见 [第二轮汇总](analysis/parallel-342/review-round2/README.md)。
+本轮不减少占位数，新增内部存档键不作为原协议字段。
+
+| 字段 / 行为 | 来源 | 证据与限制 |
+| --- | --- | --- |
+| `getQuestEncountWorks.obstacle.<questType>.questId/chapter/area/step/category/type/needAmount/amount`；`clearObstacle.isSuccess/uses.category/uses.<resource>` | bundle / 待验证 | B lifecycle-evidence.json，QuestScriptCommand.cs:724-732,2189-2232,2287-2289。仅已生成且获授权的四资源障碍；已解除重试明确失败不重放扣费量是本服策略；未恢复原遭遇生成或活动授权。 |
+| `deck/sellTactics.sellPrice/tactics.<baseId>` | bundle / 待验证 | DeckSale_Tactics.cs:307-368、DeckSaleTacticsObj、TacticsTableAccessor；数量是已售数量增量。只有内部可信 operation_id 事务入口，收据/1024 限额为本服策略，未公开挂载。 |
+| `getBackgroundItems.shopItems`、`buyBackgroundItem.resources`；国家商城 `shopItems.<id>.state/remain`、根 `recommendedItems`、购买 `resources` | bundle / 待验证 | D shop-evidence.json / 原 ShopUpdateBg、ShopItemBackground、ShopItemNationalPower。shopItems 的背景空值是仅消费键的兼容选择。静态上架、全局 period、items 归属为待接内部策略，不证明原运营排期。 |
+| `inbox/getParcels` 的 `parcels.<id>.createdTime/rewards`、根 `totalCount`；`resolveParcels` 的 `successful.<id>.rewards`、根 `failed` | bundle / 待验证 | InboxReader.cs:92-177、InboxResolveWorker、PluginRunner_DoReceiveMail、RewardProcessor。仅四资源；包含 end 的分页、排序、500 批次、永久已领取 ID、重试空 rewards 均为兼容选择。未恢复发行、旧档和通知。 |
+| `siege/getPairings.pairings.<index>.defender/attacker.<slot>` | bundle | HTMLSiegeMediator.request 的数字槽及国家 ID；名称、排名、isMe 为客户端产生，不当作服务端字段。真实配对生产端未提供。 |
+| `strategy/getStrategyWinLossRecords` 根 `totalCount`；`records.<index>.openTime`、该记录内 `decisions.<match>.winner` 及 `a/b.<slot>.countryId/rate` | bundle / 待验证 | HTMLStrategyMatchMediator_History.analize；a/b 在 match 内。rate 经 HashAccessFuncs.getInt，投影拒绝 float32/Int32 无法精确表示的整数。按已存完整记录计总数和排序为限定兼容行为，无真实历史来源。 |
+| `trophy/getTrophyProgress.<category>.level/status/window`；`completeTrophy.progress/rewards/characters/equips/toInBox` | bundle / 待验证 | TrophyWindow、mypageTrophyUpdate、mypageTrophyReward；mypage 查询裸根、toInBox 大小写已核实。仅 playerLevel 首档，清除提醒及重复拒绝是本服策略，首次 4 级阈值和固定奖励来自原表。其他 access、后续档和历史领取迁移未支持。 |
+
+A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增公开响应字段，不据此开启生产或排行榜。

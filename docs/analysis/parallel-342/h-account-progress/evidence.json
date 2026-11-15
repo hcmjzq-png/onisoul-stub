@@ -540,9 +540,9 @@
           ]
         }
       ],
-      "response": "mypage: 裸根 <category>.level/status/window；其他 access 另审",
-      "callback": "TrophyWindow.cs:init;mypageTrophyUpdate.cs:init;WebApiClient.cs:getTrophyProgress",
-      "status": "待证规则"
+      "response": "裸根 playerLevel.{level,status,window}；领取后如实显示第二档资格；仅首档支持领奖",
+      "callback": "TrophyWindow.cs:init;mypageTrophyUpdate.cs:init;WebApiClient.cs:getTrophyProgress;mypageTrophyItem.cs:update;RewardTableAccessor.cs:getReward;mypageTrophyItemDetail.cs:update",
+      "status": "已实现 mypage/playerLevel 首档限定范围，未挂载"
     },
     "trophy/completeTrophy": {
       "wrappers": [
@@ -584,8 +584,8 @@
         }
       ],
       "response": "mypage: root.progress/rewards/characters/equips/toInBox",
-      "callback": "mypageTrophyReward.cs:回调",
-      "status": "待证规则"
+      "callback": "mypageTrophyReward.cs:回调;mypageTrophyItem.cs:update;RewardTableAccessor.cs:getReward;mypageTrophyItemDetail.cs:update",
+      "status": "已实现 mypage/playerLevel 首档限定范围，未挂载"
     },
     "trophy/messageWindowTrophy": {
       "wrappers": [
@@ -600,8 +600,8 @@
         }
       ],
       "response": "回调未读取负载",
-      "callback": "WebApiClient.cs:message_window_trophy;TrophyWindow.cs:init",
-      "status": "待证规则"
+      "callback": "WebApiClient.cs:message_window_trophy;TrophyWindow.cs:init;mypageTrophyItem.cs:update;RewardTableAccessor.cs:getReward;mypageTrophyItemDetail.cs:update",
+      "status": "已实现 mypage/playerLevel 首档限定范围，未挂载"
     }
   },
   "sources": {
@@ -855,6 +855,24 @@
         }
       ]
     },
+    "RewardTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardTableAccessor.cs",
+      "sha256": "bc04bca53baf665e9618c82f31da8c0dffeff429cee1cd18c49e2660149f6111",
+      "method_lines": [
+        {
+          "line": 20,
+          "declaration": "public void init()"
+        },
+        {
+          "line": 51,
+          "declaration": "public RewardData getReward(string key, int no)"
+        },
+        {
+          "line": 129,
+          "declaration": "public RewardData getReward(string key, int no)"
+        }
+      ]
+    },
     "TableLoad.cs": {
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TableLoad.cs",
       "sha256": "82e4f0f8b794f0d6984647425553c471be5c4c006e9b3348dd30d2b989361943",
@@ -914,6 +932,10 @@
         {
           "line": 2271,
           "declaration": "public void getCredit2Logs(int startIndex, int endIndex, Responder responder)"
+        },
+        {
+          "line": 2650,
+          "declaration": "public void updateFriendData(Responder responder)"
         },
         {
           "line": 4177,
@@ -1113,10 +1135,47 @@
         }
       ]
     },
+    "mypageTrophyItem.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyItem.cs",
+      "sha256": "baf2915ace91422c1f6c10e1cfe82dcbf45008caecafc78593e6404549fa1191",
+      "method_lines": [
+        {
+          "line": 42,
+          "declaration": "public void init(mypageTrophyUpdate trophyUpdate, string id, string status, int level, int nowLevel, int maxLevel)"
+        },
+        {
+          "line": 64,
+          "declaration": "private void update()"
+        }
+      ]
+    },
+    "mypageTrophyItemDetail.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyItemDetail.cs",
+      "sha256": "fe36ab3bc7294328f168671cd66dd7cedd95238b609688a7fdc9fbed84939c79",
+      "method_lines": [
+        {
+          "line": 45,
+          "declaration": "private void update()"
+        },
+        {
+          "line": 94,
+          "declaration": "private mypageTrophyRewardItem createRewardItem(RewardTableAccessor.RewardData data, int no)"
+        }
+      ]
+    },
     "mypageTrophyReward.cs": {
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyReward.cs",
       "sha256": "ca646d8e4b049e63e44d790d6afc2458959e6f9c3894378311b1267d021a3ae3",
-      "method_lines": []
+      "method_lines": [
+        {
+          "line": 64,
+          "declaration": "private void update()"
+        },
+        {
+          "line": 95,
+          "declaration": "private void updateResorces(string itemId, int amount)"
+        }
+      ]
     },
     "mypageTrophyUpdate.cs": {
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageTrophyUpdate.cs",
@@ -1129,6 +1188,18 @@
         {
           "line": 93,
           "declaration": "private void init(Hashtable hash)"
+        },
+        {
+          "line": 141,
+          "declaration": "public override void update(Hashtable hash)"
+        },
+        {
+          "line": 164,
+          "declaration": "private void updatePage()"
+        },
+        {
+          "line": 237,
+          "declaration": "public void getReward()"
         }
       ]
     }
@@ -1195,6 +1266,11 @@
     "diagnostic log retries append (no request nonce); reward field never changes inventory",
     "no source establishes server reward probability, activity calendar, or migration reset policy"
   ],
+  "phase2": {
+    "report": "deep-review.json",
+    "source": "fingerprinted original tableAssets.bin",
+    "scope": "mypage/playerLevel first tier only; three additional limited handlers, not mounted"
+  },
   "setting_fixture": {
     "path": "tests/fixtures/account_progress/plugin-setting.json",
     "sha256": "e2ed1a7e541c1c2ba57b75d27cd93b56930dd7da2b7cfa4464e6bf0d2e1aad23",

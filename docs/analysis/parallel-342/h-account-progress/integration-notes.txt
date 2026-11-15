@@ -4,13 +4,13 @@ H 组集成说明（未挂载、未部署；基线 1f287e33123afa452d2f5d2aac242
 app/business/gameplay.py 的 GameplayService.register：
   from app.business.account_progress_services import AccountProgressServices
   AccountProgressServices(self, revisions=verified_manifest).register(registry)
-应放在原有业务注册之后、register_contract_defaults 之前。只接管 6 项：
-common/getRevisions、common/getPlayerCogid、plugin/getPluginData、plugin/setPluginData、plugin/getPluginLog、plugin/addPluginLog。
+应放在原有业务注册之后、register_contract_defaults 之前。累计接管 9 个限定入口：
+common/getRevisions、common/getPlayerCogid、plugin/getPluginData、plugin/setPluginData、plugin/getPluginLog、plugin/addPluginLog，另含 trophy/getTrophyProgress、completeTrophy、messageWindowTrophy（仅 mypage/playerLevel 首档）。
 本分支没有修改 GameplayService/registry/main/response_shapes/placeholders；测试显式注册。
 verified_manifest 必须含 server/unity/table/root 四个非负整数；来自实际部署资源清单，不能从当前日期或资源单一 URL 猜全套值。
 getRevisions 在原 TableLoad._setup 登录前调用；总集成核对 app/main.py 的认证策略，允许该端点匿名读取，其他五项必须使用会话。
 getPlayerCogid 返回本服 session.playerId（Configs.GetUserInfo 只读 playerId.ToString）；不是原平台 COG 绑定恢复，平台链接不属于此实现。
-保留 getPlayerParams、创建角色、初始资源、PlayerServices 既有处理器全部行为。6 项没有覆盖其中任何处理器。
+保留 getPlayerParams、创建角色、初始资源、PlayerServices 既有处理器全部行为。9 项没有覆盖其中任何既有专用处理器。
 
 2. 存档/锁/事务
 accountProgress 为新增内部存档命名空间，绝不直接返回此根键：
@@ -52,6 +52,16 @@ D：credit/credit2 消费日志和付费插件使用同一真实账本；plugin_
 本机与局域网分别记录路由；H 不改 hosts/proxy80/config.ini，不部署服务器、不改变游戏尺寸或监控 UI。
 
 6. 验证
-python -m unittest tests.test_account_progress_services -q：12 项通过。
-python -m unittest discover -s tests -q：238 项通过，无跳过/缺可选依赖；基线测试有 ResourceWarning，不是失败。
-全局占位数量不变，6 个限定处理器只有本组测试显式挂载，不表示 37 项玩法完成。
+python -m unittest tests.test_account_progress_services -q：27 项通过。
+python -m unittest discover -s tests -q：253 项通过，无跳过/缺可选依赖；基线测试有 ResourceWarning，不是失败。
+全局占位数量不变，9 个限定处理器只有本组测试显式挂载，不表示 37 项玩法完成。
+
+7. 第二轮精确集成补充（覆盖上文成就尚未实现的旧描述）
+AccountProgressServices.register 现已调用 AccountProgressTrophies.register；无需额外生产调用。app/business/account_progress_trophies.py 局部为 getTrophyProgress 返回裸根表，错误带 errorReason；没有修改共享 response_shapes.py，也没有替换其他 access 的既有专用实现（基线中没有专用实现）。如 F/G 后续实现活动成就，总集成必须按 access 分流，不能让 H 覆盖它们。
+运行表依赖：trophy_setting、mypage_trophy、reward06_trophy、item08；playerLevel 沿用现有容量机制。当前公共 manifest/表目录没有 reward06_trophy 和 item08，请总集成从 fingerprinted tableAssets.bin 提取完整原表并登记 docs/analysis/server_tables.tsv；不要将 tests/fixtures 中的小样本部署成完整表。deep-review.json 给出对应偏移、长度、SHA-256。只缺行引用时标 no stub response；实际表加载失败才标 stub has no assets。
+原容器中 reward04_mypage 同样已找到，交 C/后续收藏实现取用；本轮没有安装全表或新增收藏领奖。
+内部存档 accountProgress.trophyClaims.playerLevel_001.rewards 保存首档实际发放；accountProgress.levelTrophyNoticeSeen 保存首档通知确认。金额和 items.item08_0102701 与账本同次 save/CAS，单玩家锁不能替代多进程存储 CAS。
+新角色/本基线旧档无成就实际发奖，缺账本按未领取兼容；导入其他服务存档必须迁移真实记录或禁止本功能，不能默认为可重新领奖。
+当前后续档位即使等级满足也不领取；进度如实显示第二档 complete，重试/后续领取返回明确错误。若扩展后续档位，须先解决 category-only 无 nonce 的延迟重试歧义，不能简单 nextLevel++。
+window 首档通知策略仅支持第一次资格展示与确认；后续 window 序号推进仍待验证。
+补充验证：两独立 GameplayService 实例 + 内存 revision CAS 同时领奖，一成功一冲突，资产与账本仅一次；这不替代真实 DB 并发验收。总计27项 H 测试、253项回归通过，无跳过。

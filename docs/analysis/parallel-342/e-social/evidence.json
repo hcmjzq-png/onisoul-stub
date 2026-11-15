@@ -352,7 +352,7 @@
       "persistence": "只读；沿用PlayerServices兼容规范化保存",
       "permission_cost_retry": "只读公开投影，拒绝未知玩家；费用不适用",
       "status": "limited_unmounted",
-      "next_step": "仅计数；remove 空；过期清理未实现且明确失败"
+      "next_step": "过期表值604800无C#直接读取；remove仅查键；不猜清理触发/原因；仍明确失败；加强非法时间戳防绕过"
     },
     {
       "endpoint": "friend/visitFriendMap",
@@ -368,24 +368,24 @@
     {
       "endpoint": "inbox/getParcels",
       "request": "token,start,end",
-      "response": "parcels.<id>.createdTime/rewards; totalCount",
-      "evidence": "WebApiClient.cs:3451 getParcels; InboxReader.cs:92-177",
-      "tables": "未证明规则表；见说明",
-      "persistence": "未实现；不伪造存档",
-      "permission_cost_retry": "权限/费用/重试未完整证实",
-      "status": "consumer_evidence_pending_rules",
-      "next_step": "makeDummy不作原服数据证据；分页边界/过期/附件数据来源待证"
+      "response": "parcels.<id>.createdTime/rewards; totalCount (known-field projection; HTML headers unverified)",
+      "evidence": "WebApiClient.cs:3451 getParcels; InboxReader.cs:92-177; PluginRunner_DoReceiveMail.cs:12-66; RewardProcessor.cs:51-73,164-185,239-246; WebApiClient.cs:190-216",
+      "tables": "RewardProcessor.cs resource ID mapping; no item11 row or probability invented",
+      "persistence": "socialInbox v1 pending/resolved + resources in same player JSON (internal); existing PlayerServices/lock/save",
+      "permission_cost_retry": "认证已创建角色；仅自身包裹；领取无请求奖励输入；重复已领取ID空rewards；满容量保留待领；资源快照重同步待集成",
+      "status": "limited_unmounted",
+      "next_step": "仅确定数量的gold/wood/food/iron；不创建或迁移包裹；原pcweb头字段/分页边界/过期/其他奖励类型待证"
     },
     {
       "endpoint": "inbox/resolveParcels",
       "request": "token,responses",
-      "response": "successful.<parcelId>.rewards; failed map",
-      "evidence": "WebApiClient.cs:3461 resolveParcels; InboxResolveWorker.cs:11-35,48-105",
-      "tables": "未证明规则表；见说明",
-      "persistence": "未实现；不伪造存档",
-      "permission_cost_retry": "权限/费用/重试未完整证实",
-      "status": "consumer_evidence_pending_rules",
-      "next_step": "responses 映射/accept；30条分批；奖励分类、容量、领取幂等与C协同"
+      "response": "successful.<id>.rewards; failed map; consumed retry rewards={} (compatibility decision)",
+      "evidence": "WebApiClient.cs:3461 resolveParcels; InboxResolveWorker.cs:11-35,48-105; PluginRunner_DoReceiveMail.cs:12-66; RewardProcessor.cs:51-73,164-185,239-246; WebApiClient.cs:190-216",
+      "tables": "RewardProcessor.cs resource ID mapping; no item11 row or probability invented",
+      "persistence": "socialInbox v1 pending/resolved + resources in same player JSON (internal); existing PlayerServices/lock/save",
+      "permission_cost_retry": "认证已创建角色；仅自身包裹；领取无请求奖励输入；重复已领取ID空rewards；满容量保留待领；资源快照重同步待集成",
+      "status": "limited_unmounted",
+      "next_step": "仅确定数量的gold/wood/food/iron；不创建或迁移包裹；原pcweb头字段/分页边界/过期/其他奖励类型待证"
     },
     {
       "endpoint": "invitation/getMyCode",
@@ -499,7 +499,10 @@
         "WebApiClient.cs:3374 getMailBody; HTMLMailCore.cs:99-119",
         "WebApiClient.cs:3363 getMailHeaders; HTMLMailCore.cs:69-96",
         "WebApiClient.cs:3352 sendMails; HTMLMailCore.cs:30-66",
-        "WebApiClient.cs:2697 getFriendMapData; Politic.cs:312-352; PoliticMapInfo.cs"
+        "WebApiClient.cs:2697 getFriendMapData; Politic.cs:312-352; PoliticMapInfo.cs",
+        "sendRequest:190-216 identical form retry, at most ten attempts",
+        "_httpCall:255-275 serializes only params; httpCallId is local",
+        "getParcels:3451-3459; resolveParcels:3461-3468"
       ]
     },
     {
@@ -526,7 +529,8 @@
         "WebApiClient.cs:2641 dissolutionFriend; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
         "WebApiClient.cs:2622 feedbackFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
         "WebApiClient.cs:2613 sendFriendOffer; FriendConfirmationWindow.cs:127-154,195-299; FriendSpecWindow.cs:102-174",
-        "WebApiClient.cs:2650 updateFriendData; FriendWindowControll.cs:118-127; FriendConfirmationWindow.cs:168-184"
+        "WebApiClient.cs:2650 updateFriendData; FriendWindowControll.cs:118-127; FriendConfirmationWindow.cs:168-184",
+        "doInvoke:168-187 uses remove membership; removal value ToString only, no expiry test"
       ]
     },
     {
@@ -557,7 +561,8 @@
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DefinesTableAccessor.cs",
       "sha256": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4",
       "references": [
-        "see README/integration-notes methods"
+        "see README/integration-notes methods",
+        "getFriendSendOrderMax:175-182; getFriendRecieveOrderMax:185-192; no expiry accessor found"
       ]
     },
     {
@@ -615,7 +620,9 @@
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
       "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
       "references": [
-        "WebApiClient.cs:2707 visitFriendMap; Politic.cs:322-325; PoliticFriendMapRewardMenu.cs; UserStatus.cs:updateFriendMap"
+        "WebApiClient.cs:2707 visitFriendMap; Politic.cs:322-325; PoliticFriendMapRewardMenu.cs; UserStatus.cs:updateFriendMap",
+        "SocialInformation.update:148-164 reads inboxParcel/friendOffer/unreadMail",
+        "resource names:648-656; addResourceValue:990"
       ]
     },
     {
@@ -663,14 +670,18 @@
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InboxReader.cs",
       "sha256": "7d0813b7767a8baf4a11f430ff0588ebf8a1cae990453f8eef9dc3ed2d050023",
       "references": [
-        "WebApiClient.cs:3451 getParcels; InboxReader.cs:92-177"
+        "WebApiClient.cs:3451 getParcels; InboxReader.cs:92-177",
+        "openEditor:64-90 sends accept; convertHtmlParameter:92-147 consumes createdTime/rewards/totalCount",
+        "makeDummy:18-36 excluded as original protocol evidence for name/text"
       ]
     },
     {
       "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\InboxResolveWorker.cs",
       "sha256": "b29e223b35246675f030f795004128e91dba2e3df374a5962c9af4ab59f91d16",
       "references": [
-        "WebApiClient.cs:3461 resolveParcels; InboxResolveWorker.cs:11-35,48-105"
+        "WebApiClient.cs:3461 resolveParcels; InboxResolveWorker.cs:11-35,48-105",
+        "processReward:11-37 uses failed.Count and successful.*.rewards",
+        "onResolve:49-105 decrements badge by requested count and chunks at 30"
       ]
     },
     {
@@ -749,6 +760,37 @@
       ],
       "sample": "tests/fixtures/social/playerLevel.json",
       "sample_sha256": "322fd06787e457a98a2f84c98216ea5ca86e2702820c6154d18bfb6949113e63"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoReceiveMail.cs",
+      "sha256": "5d90bf137d0c6a00a70e7d84c47a47c2b274de4302e1b12477e7c67f0ff4c7e5",
+      "references": [
+        "Run:12-20 getParcels(0,499)",
+        "onGetParcels:22-42 sends accept for all returned parcels without UI 30-item batching",
+        "onResolveParcels:44-68 reads rewards even for empty success records"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardProcessor.cs",
+      "sha256": "00a403c195aa271fd36691b605034890c2a2f8b53aa1d58cdf8654d368eb9bb4",
+      "references": [
+        "parameterTables_g:23-49; resorucerTables_g:51-73 map four item IDs",
+        "processAll:164-176; process:177-185; updateResource:239-246 adds delta"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RpcQueue.cs",
+      "sha256": "4396bce9b6cb125a2aef47c803fa40105df4be435db43256b6b66a9d178ef972",
+      "references": [
+        "reliable:105-108; predicable:110-118 enqueue calls; no receipt ledger"
+      ]
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PeriodicRounder.cs",
+      "sha256": "687d151687e21d0f145624c9b95c5718c06c61188ed2e3a1f69280e46f16bb74",
+      "references": [
+        "refresh:64-79 dispatches periodicInquiry result to subscribers"
+      ]
     }
   ],
   "compatibility_decisions": [
@@ -760,5 +802,54 @@
     "Only Unity forHTML=false implemented; nonfriends can read public profile",
     "Normal envelope follows shared response_shapes; getFriends is bare; detail diagnostics are simulator text",
     "No production transaction adapter, registration, deployment, or global endpoint count changes"
-  ]
+  ],
+  "followup": {
+    "date": "2026-11-15",
+    "source_file_count": 2034,
+    "expiry_literal_search": {
+      "literal": "friendoffer_expire_time",
+      "csharp_matches": [],
+      "table_path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\defines.json",
+      "table_row": {
+        "id": "friendoffer_expire_time",
+        "value": 604800
+      },
+      "limit": "No direct literal accessor found; generic access or server logic is not ruled out"
+    },
+    "cache_scan": {
+      "path": "D:\\鬼武者魂\\cache\\data7",
+      "files_examined": 164,
+      "method": "Qt cache header URL, filename keywords inbox/friend/bbs/mail; excludes image and bundle suffixes",
+      "matching_text_urls": 0,
+      "limit": "Not an installer extraction or exhaustive body scan; not evidence of missing assets"
+    },
+    "new_protocol_findings": [
+      "HTTP transport resends the same form on network error; request has responses only plus token; no claim-idempotency key seen",
+      "UI adds successful parcel reward deltas; failed.Count restores optimistic inbox badge",
+      "Original bundled plugin asks 0..499 and sends all returned IDs in one resolve call, so 30 is NOT established as a server limit",
+      "Resource ID mapping and addResourceValue call are direct original C# evidence; no random grant or item11 table row invented",
+      "remove is checked by membership, its value is converted to string but not branched on in Unity; expiry cause/timing remain unknown"
+    ],
+    "compatibility_decisions": [
+      "Separate SocialInboxServices with two unmounted endpoints; supports pre-materialized four-resource parcels only",
+      "socialInbox v1 pending + permanent resolved tombstones is private server state; no mail migration, issuance or unproven expiry",
+      "Reject whole parcel on overflow, permit other parcels in the same batch; all successful updates and tombstones committed in one existing player save",
+      "Repeat consumed ID returns successful[id].rewards={} so it never repeats client delta; lost first response requires authoritative resource refresh/relogin",
+      "Unknown IDs and unsupported decisions/categories remain failed; failed diagnostic values are simulator choices, not original error codes",
+      "Inclusive end and descending createdTime then ID order are compatibility choices; max batch 500 is supported range, not original server cap",
+      "getParcels exposes only verified createdTime/rewards/totalCount; original pcweb text/header rendering still unverified",
+      "Friend expiry remains fail closed at internal seconds threshold; timestamps must be finite/nonnegative/not future and match on both sides"
+    ],
+    "synthetic_fixture": {
+      "path": "tests/fixtures/social/inbox-resource-parcels.json",
+      "sha256": "326a875dfbc21a58d9387311da726784997c5035df24804cb30599bc715f23f4",
+      "origin": "synthetic isolated server-ledger test data, NOT original rewards or original parcel sample"
+    },
+    "validation": {
+      "own_tests": 22,
+      "regression_tests": 248,
+      "skips": 0,
+      "production_db_or_client_tested": false
+    }
+  }
 }

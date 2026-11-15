@@ -1,10 +1,10 @@
-B 组交付：4 个限定只读查询，35 个入口复核，未生产挂载，未部署。
+B 组交付：四项存档查询 + 资源障碍恢复/扣费解除模块，35 个入口复核，未生产挂载，未部署。
 
 1. 挂载位置（仅建议，由总集成实施）
 app/business/gameplay.py:GameplayService.register 内，在现有专用处理器之后、register_contract_defaults 前，
 导入 app.business.adventure_services.AdventureServices，执行 AdventureServices(self).register(registry)。
 注册仅覆盖 quest/getQuestProgress、getChapterData、getQuestCompleteFlags、getQuestRewardOpenFlags。
-保留其余所有现有处理器，包括 completeTasks 建造行为；本组没有修改或注册其他 31 个入口。
+保留其余所有现有处理器，包括 completeTasks 建造行为；另两项注册见下；其余29个入口未注册。
 缺乏可信 adventureV1 存档时查询失败；不能直接挂载后宣称新角色物语已通。
 
 2. 共享状态与迁移
@@ -50,3 +50,18 @@ C：推进/结算/开箱的 reward 与 toInbox 需要共用卡牌/道具发放�
 错误仍按 客户端→hosts→proxy80→stub 定位；本组未改 hosts/proxy80/config.ini。
 stub has no assets仅指缺失/不可加载表资源；原表缺行是引用/ID问题；未知业务是no stub response。
 不改变游戏原始尺寸；如总集成调试UI，监控面板与游戏等大对齐。
+
+6. 新增障碍写入集成门槛（详见 lifecycle-review.md）
+独立模块 app/business/adventure_obstacle_services.py:AdventureObstacleServices，
+在 GameplayService.register 中额外 AdventureObstacleServices(self, authorize=trusted_policy).register(registry)。
+这只是未来挂载建议；当前没有 trusted_policy，也没有可信遭遇生产者，不能用 lambda True 接生产。
+策略必须验证当前账号对实例的活动资格、当前有效状态，以及 resolution.reward/toInbox 明确为空。
+现有原包障碍全部禁用，不得以静态表或测试实例授权活动。不能迁移测试的合成实例到真实玩家。
+内部 adventureV1.obstacles 以 type:quest:chapter:area 为键，每条含 eventId、位置、section/eventSlot、
+status=pending/cleared、resolution；adventureV1.obstacleReceipts 保存合约散列和成功业务回包。
+请求中的 needAmount/type/playerId 等额外字段不能替换服务端描述。
+余额/状态/凭据同次save；底层必须实现整份玩家存档原子提交和revision检查（沿用现有state.player.save）。
+没有跨玩家写入，也不假装实现多人事务。每区域只允许一次，禁止替换已结算实例以免旧请求误扣。
+复测需覆盖客户端重复成功 uses 的显示增量；原服务端“余额恰好足够”行为未证，本实现采用 >=。
+资源障碍有奖励、药水/魂障碍、轮回、事件生产者/概率、活动排期全部继续待办。
+原章节/费用辅助函数 section_at/displayed_cost 只移植客户端显示逻辑，不代表原服务端MP扣款规则。

@@ -1,6 +1,6 @@
 """F-group integration component; not mounted by GameplayService.
 
-Only strategy/isAlive reads an authoritative, unexpired saved observation.
+Liveness, siege pairings and strategy history read authoritative saved data.
 No campaign, troop, schedule, result, reward or default alive value is invented.
 The _warCampaigns storage schema is INTERNAL, not original wire protocol.
 """
@@ -13,6 +13,7 @@ from typing import Any, Callable
 
 from app.business import response_shapes
 from app.business.player_services import PlayerServices, integer
+from app.business.war_campaigns_views import siege_pairings, strategy_history
 
 
 class WarCampaignsServices(PlayerServices):
@@ -31,6 +32,37 @@ class WarCampaignsServices(PlayerServices):
     def register(self, registry: Any) -> None:
         api = "strategy/isAlive"
         registry.register(api, self.service._guard(api, partial(self.read_alive, api)))
+        for api, projector in (("siege/getPairings", siege_pairings),
+                               ("strategy/getStrategyWinLossRecords", strategy_history)):
+            registry.register(api, self.service._guard(api, partial(self.read_records, api, projector)))
+
+    def read_records(self, api: str, projector: Callable[[list[dict]], dict], params: dict, session: dict | None) -> dict:
+        """INTERNAL queries[api] record: ownerId/observedAt/validUntil/complete/rows.
+
+        complete=True explicitly certifies a full dataset, including a real empty
+        history. No HTTP endpoint writes these snapshots. Future producers must
+        publish/invalidate them in their authoritative campaign transaction.
+        """
+        found = self.service._session_player(api, session)
+        if isinstance(found, dict):
+            return found
+        player_id, player, _dirty = found
+        if set(params) - {"token"}:
+            return self.service._failure(api, "unexpected campaign query parameter")
+        campaigns = player.get("_warCampaigns")
+        queries = campaigns.get("queries") if isinstance(campaigns, dict) else None
+        record = queries.get(api) if isinstance(queries, dict) else None
+        if not isinstance(record, dict) or record.get("ownerId") != player_id:
+            return self.service._failure(api, "no stub response: authoritative campaign records unavailable")
+        start, end = record.get("observedAt"), record.get("validUntil")
+        if (record.get("complete") is not True or not isinstance(record.get("rows"), list)
+                or not _timestamp(start) or not _timestamp(end) or not start <= self.clock() < end):
+            return self.service._failure(api, "no stub response: incomplete or stale campaign records")
+        try:
+            payload = projector(record["rows"])
+        except ValueError as exc:
+            return self.service._failure(api, f"no stub response: {exc}")
+        return response_shapes.success(api, payload)
 
     def read_alive(self, api: str, params: dict, session: dict | None) -> dict:
         found = self.service._session_player(api, session)

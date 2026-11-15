@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "pending": {
+    "synthetic-resource-1": {"createdTime": 1000, "rewards": {"item11_0000101": 7, "item11_0000201": 3}},
+    "synthetic-resource-2": {"createdTime": 1001, "rewards": {"item11_0000301": 5, "item11_0000401": 2}}
+  },
+  "resolved": {}
+}

@@ -4,7 +4,15 @@
 `parallel/342-b-adventure-20261115`。仅处理任务指定的 35 个入口。
 没有部署、修改共享客户端或其他工作树。
 
-## 可集成实现及边界
+## 当前交付
+
+除下述四项查询，新增 `AdventureObstacleServices`：资源障碍恢复查询与真实扣费解除，
+支持原子保存、重登重试、并发/CAS保护。必须有受信任授权和明确无奖励的已生成遭遇，
+默认不开放活动。原包185个障碍槽全部在禁用活动内；不猜排期。详见
+[lifecycle-review.md](lifecycle-review.md) 与 lifecycle-evidence.json。
+原版章节定位/费用继承已实现为辅助函数，仍不作为推进扣MP或随机事件算法。
+
+## 四项存档查询及边界
 
 新增 `app/business/adventure_services.py`，显式注册四个查询：
 `getQuestProgress`、`getChapterData`、`getQuestCompleteFlags`、`getQuestRewardOpenFlags`。
@@ -34,7 +42,7 @@ complete/step/items，items 的 1..4 对应数值开启标记。完整测试示�
 
 原包程序集指纹与既有 source-proof 一致；没有使用旧 E 盘实现。
 `table-audit.json` 本次重新解析六张索引和新手区域/奖励表并记录散列。
-`tests/fixtures/adventure` 仅收录七条原索引行和来源散列，没有上传整表包或原客户端源码。
+`tests/fixtures/adventure` 收录七条原索引行及追加12条章节/障碍样本和来源散列，没有上传整表包或原客户端源码。
 
 索引 `0_1` 确认为一地区、10 步。原区域 `1_1_5.event1` 的事件类型为 6，
 `1_1_10.event1` 为 7，末段 stepCount=-1；前批 QuestAreaTableAccessor / QuestScriptCommand
@@ -59,9 +67,12 @@ python -m unittest discover -s tests -p test_adventure_services.py -v
 python -m unittest discover -s tests -q
 ```
 
-12 项独立测试覆盖真实索引步数、裸根/布尔类型、重登持久化、认证/账号隔离、无初始赠送、
+首批12项独立测试覆盖真实索引步数、裸根/布尔类型、重登持久化、认证/账号隔离、无初始赠送、
 缺表与缺行区分、非法请求/损坏记录、并发重试、响应副本隔离、基线保存冲突与未挂载范围。
-测试使用内存状态和隔离账号，不涉及共享数据库。没有扣费/跨账号写入业务，故费用不足、
-奖励回滚和跨账号事务不是本次测试可证明的功能。
+测试使用内存状态和隔离账号，不涉及共享数据库。新增障碍测试覆盖扣费不足、存档失败与CAS冲突；跨账号写入、奖励发放及其事务仍未实现。
 完整回归结果记录于 validation.json；既有测试产生 ResourceWarning，无需为本组修改公共测试。
 尚未做 Unity 动态验收；最小取证步骤与具体集成建议见 integration-notes.txt。
+
+障碍模块另有11项测试，合计23项；命令 `python -m unittest discover -s tests -p "test_adventure*.py" -v`。
+涵盖真实资源扣减、余额不足/等额、并发单扣、账号隔离、受信任授权缺失、非空奖励拒绝、
+保存失败/版本冲突、重登凭据、区域替换拒绝、两个独立服务实例CAS竞争与原版费用继承。

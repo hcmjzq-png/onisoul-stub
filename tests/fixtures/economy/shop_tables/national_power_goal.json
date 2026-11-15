@@ -1,0 +1,14 @@
+{
+  "national_power_goal": {
+    "3": {
+      "id": 3,
+      "name": "NATIONAL_POWER_GOAL_MSG_3_NAME",
+      "desc": "NATIONAL_POWER_GOAL_MSG_3_DESC",
+      "nationalPower": 20000,
+      "incentives": [
+        "shop_01",
+        "shop_05"
+      ]
+    }
+  }
+}

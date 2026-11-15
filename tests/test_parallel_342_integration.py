@@ -26,6 +26,13 @@ HELD = {
     "friend/getFriendProfile", "friend/getFriends", "friend/sendFriendOffer", "friend/updateFriendData",
     "strategy/isAlive", "ranking/getRankersInKokudaka", "ranking/getBriefOfKokudaka",
     "common/getRevisions", "plugin/setPluginData",
+    # Round 2 components still need producers, migration or runtime tables.
+    "quest/getQuestEncountWorks", "quest/clearObstacle", "deck/sellTactics",
+    "politic/shop/getBackgroundItems", "politic/shop/buyBackgroundItem",
+    "politic/shop/getShopItemsFromNationalPower", "politic/shop/buyShopItemFromNationalPower",
+    "inbox/getParcels", "inbox/resolveParcels", "siege/getPairings",
+    "strategy/getStrategyWinLossRecords", "trophy/getTrophyProgress",
+    "trophy/completeTrophy", "trophy/messageWindowTrophy",
 }
 
 

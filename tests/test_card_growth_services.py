@@ -1,6 +1,8 @@
 """C-group isolated registration, real small table samples and state invariants."""
 import copy
 import json
+import hashlib
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import unittest
@@ -21,10 +23,10 @@ class GrowthCatalog(TableCatalog):
         directory = FIXTURES / "gameplay" / "tables"
         super().__init__(directory, directory / "table_list.tsv")
         self.samples = {name: json.loads((FIXTURES / "card_growth" / (name + ".json")).read_text(encoding="utf-8"))[name]
-                        for name in ("character", "equip", "defines")}
+                        for name in ("character", "equip", "defines", "tactics")}
 
     def load(self, name):
-        if name == "equip":
+        if name in ("equip", "tactics"):
             return copy.deepcopy(self.samples[name])
         rows = super().load(name)
         return {**rows, **copy.deepcopy(self.samples.get(name, {}))}
@@ -219,6 +221,168 @@ class CardGrowthTest(unittest.TestCase):
         self.assertEqual(self.saved(), before)
         self.reload()
         self.assertEqual(self.call("politic/lottery/getSouls"), result)
+
+    def seed_tactics(self):
+        p = self.saved()
+        p["tactics"] = {"card1_00001_01": {"amount": 10}, "card1_00002_01": {"amount": 3}}
+        self.save(p)
+
+    def tactic_sale(self, quantities=None, operation_id="sale-1", session=None):
+        return CardGrowthServices(self.service).sell_tactics_with_receipt(
+            {"tactics": quantities if quantities is not None else {"card1_00001_01": 2}},
+            self.session if session is None else session, operation_id=operation_id)
+
+    def test_tactic_sale_partial_batch_and_client_subtraction_roundtrip(self):
+        self.seed_tactics()
+        before = self.saved()
+        result = self.tactic_sale({"card1_00001_01": 2, "card1_00002_01": 3})
+        self.assertEqual(result["sellPrice"], 80.0)
+        self.assertEqual(result["tactics"], {"card1_00001_01": 2.0, "card1_00002_01": 3.0})
+        self.reload()
+        self.session, _ = self.service._issue_login("c-card-growth")
+        after = self.call("common/getTactics")
+        for key, sold in result["tactics"].items():
+            self.assertEqual(after[key]["amount"], before["tactics"][key]["amount"] - sold)
+        self.assertEqual(self.call("politic/mypage/getPlayerProfile")["tacticCount"], 8.0)
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], before["resources"]["gold"]["amount"] + 80)
+
+    def test_tactic_receipt_survives_reload_replenishment_and_changed_table(self):
+        self.seed_tactics()
+        first = self.tactic_sale()
+        p = self.saved(); p["tactics"]["card1_00001_01"]["amount"] = 100; self.save(p)
+        self.reload()
+        self.service.catalog.samples["tactics"]["card1_00001_01"]["sellPrice"] = 99
+        before = self.saved()
+        repeated = self.tactic_sale()
+        self.assertEqual(repeated["sellPrice"], first["sellPrice"])
+        self.assertEqual(repeated["tactics"], first["tactics"])
+        self.assertEqual(self.saved(), before)
+        # The same quantities are a valid second intent with a NEW trusted ID.
+        self.assertEqual(self.tactic_sale(operation_id="sale-2")["sellPrice"], 198.0)
+        self.assertEqual(self.saved()["tactics"]["card1_00001_01"]["amount"], 98)
+
+    def test_tactic_receipt_id_cannot_be_reused_for_changed_quantities(self):
+        self.seed_tactics(); self.tactic_sale()
+        before = self.saved()
+        self.assertIn("already used", self.tactic_sale({"card1_00001_01": 3})["errorReason"])
+        self.assertEqual(self.saved(), before)
+
+    def test_tactic_invalid_batch_and_insufficient_stock_atomic(self):
+        self.seed_tactics(); before = self.saved()
+        for quantities in ({}, [], {"card1_00001_01": 0}, {"card1_00001_01": True},
+                           {"card1_00001_01": 1.5}, {"card1_00001_01": -1},
+                           {"card1_00001_01": 2, "card1_00002_01": 4},
+                           {"card1_00001_01": 2, "unknown": 1}, {1: 1},
+                           {str(i): 1 for i in range(9)}):
+            self.assertIn("errorReason", self.tactic_sale(quantities))
+            self.assertEqual(self.saved(), before)
+        self.assertTrue(self.tactic_sale()["succeeded"])  # rejected attempt did not reserve ID
+
+    def test_tactic_references_all_groups_and_gold_overflow(self):
+        self.seed_tactics()
+        for kind in ("attack", "defense", "politic", "quest", "strategy", "siege"):
+            p = self.saved(); p["decks"][kind]["0"]["tactics"]["0"] = "card1_00001_01"; self.save(p)
+            before = self.saved()
+            self.assertIn("referenced", self.tactic_sale()["errorReason"])
+            self.assertEqual(self.saved(), before)
+            p["decks"][kind]["0"]["tactics"].pop("0"); self.save(p)
+        p = self.saved(); p["resources"]["gold"]["amount"] = p["resources"]["gold"]["maxAmount"]; self.save(p)
+        before = self.saved()
+        self.assertIn("overflow", self.tactic_sale()["errorReason"])
+        self.assertEqual(self.saved(), before)
+
+    def test_tactic_concurrent_same_receipt_and_distinct_intents(self):
+        self.seed_tactics(); gold = self.saved()["resources"]["gold"]["amount"]
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(lambda _: self.tactic_sale(), range(2)))
+        self.assertTrue(all(r["succeeded"] for r in results))
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], gold + 20)
+        self.assertEqual(len(self.saved()["cardGrowthTacticSales"]), 1)
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(lambda i: self.tactic_sale({"card1_00001_01": 5}, f"next-{i}"), range(2)))
+        self.assertEqual(sum("errorReason" not in r for r in results), 1)
+        self.assertEqual(self.saved()["tactics"]["card1_00001_01"]["amount"], 3)
+
+    def test_tactic_conflict_and_save_failure_leave_no_receipt_or_spending(self):
+        self.seed_tactics(); before = self.saved()
+        with patch.object(self.service, "save_state", side_effect=state.StateConflictError("conflict")):
+            self.assertIn("errorReason", self.tactic_sale())
+        self.assertEqual(self.saved(), before)
+        with patch.object(self.service, "save_state", side_effect=RuntimeError("storage unavailable")):
+            with self.assertRaises(RuntimeError):
+                self.tactic_sale()
+        self.assertEqual(self.saved(), before)
+        self.assertTrue(self.tactic_sale()["succeeded"])
+
+    def test_tactic_auth_account_scope_and_missing_identity(self):
+        self.seed_tactics(); before = self.saved()
+        for identity in (None, "", "has spaces", "x" * 129, 123, "中文"):
+            self.assertIn("errorReason", self.tactic_sale(operation_id=identity))
+        self.assertIn("errorReason", self.tactic_sale(session={}))
+        other, _ = self.service._issue_login("other-tactic-user")
+        self.service.create_player(dict(username="other", countryId="country01", navigatorId="navi8000101", colorIndex="color1"), other)
+        self.assertIn("errorReason", self.tactic_sale(session=other))
+        self.assertEqual(self.saved(), before)
+        # Receipts are player-local; a matching ID cannot reveal another player's result.
+        self.tactic_sale()
+        self.assertIn("errorReason", self.tactic_sale(session=other))
+
+    def test_tactic_missing_assets_and_missing_row_are_distinct(self):
+        self.seed_tactics(); before = self.saved(); original = self.service.catalog.load
+        def load(name):
+            if name == "tactics":
+                raise MissingTableError("tactics")
+            return original(name)
+        with patch.object(self.service.catalog, "load", side_effect=load):
+            self.assertIn("stub has no assets", self.tactic_sale()["errorReason"])
+        self.service.catalog.samples["tactics"].pop("card1_00002_01")
+        self.assertIn("no stub response", self.tactic_sale({"card1_00001_01": 1, "card1_00002_01": 1})["errorReason"])
+        self.assertEqual(self.saved(), before)
+
+    def test_tactic_ledger_limit_never_evicts_old_receipts(self):
+        self.seed_tactics(); self.tactic_sale()
+        p = self.saved()
+        for i in range(1023):
+            key = hashlib.sha256(f"historic-{i}".encode()).hexdigest()
+            p["cardGrowthTacticSales"][key] = {"quantities": {}, "payload": {}}
+        self.save(p); before = self.saved()
+        self.assertIn("archive required", self.tactic_sale(operation_id="new-sale")["errorReason"])
+        self.assertTrue(self.tactic_sale()["succeeded"])
+        self.assertEqual(self.saved(), before)
+
+    def test_tactic_settlement_is_not_registered_as_public_handler(self):
+        self.seed_tactics()
+        handler = self.registry._handlers["deck/sellTactics"]
+        self.assertEqual(handler.__module__, "app.business.placeholders")
+
+    def test_tactic_two_service_instances_cas_loser_retries_from_receipt(self):
+        self.seed_tactics(); before = self.saved()
+        barrier, save_lock = threading.Barrier(2), threading.Lock()
+        def synchronized_load(player_id):
+            snapshot = self.states.load(player_id)
+            barrier.wait(timeout=5)
+            return snapshot
+        def cas_save(player, player_id):
+            with save_lock:
+                current = self.states.load(player_id)
+                revision = current.get("_revision", 0)
+                if player.get("_revision", 0) != revision:
+                    raise state.StateConflictError("competing instance committed")
+                self.states.save({**player, "_revision": revision + 1}, player_id)
+        instances = [GameplayService(catalog=GrowthCatalog(), load_state=synchronized_load,
+                                     save_state=cas_save, session_store=self.sessions) for _ in range(2)]
+        def run(service):
+            return CardGrowthServices(service).sell_tactics_with_receipt(
+                {"tactics": {"card1_00001_01": 2}}, self.session, operation_id="same-intent")
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(run, instances))
+        self.assertEqual(sum("errorReason" not in r for r in results), 1)
+        committed = self.saved()
+        self.assertEqual(committed["resources"]["gold"]["amount"], before["resources"]["gold"]["amount"] + 20)
+        self.assertEqual(len(committed["cardGrowthTacticSales"]), 1)
+        instances[0].load_state = self.states.load
+        self.assertTrue(run(instances[0])["succeeded"])
+        self.assertEqual(self.saved(), committed)
 
 
 if __name__ == "__main__":

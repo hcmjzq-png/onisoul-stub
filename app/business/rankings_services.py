@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from functools import partial
+import struct
 from typing import Any, Callable
 
 from app.business.player_services import PlayerServices, integer
@@ -25,7 +26,14 @@ class ScoreRecord:
         if any(not isinstance(value, str) or not value for value in
                (self.player_id, self.username, self.country)):
             raise ValueError("invalid ranking identity")
-        integer(self.score, minimum=0, maximum=2**53 - 1)
+        score = integer(self.score, minimum=0, maximum=2**53 - 1)
+        # mypageRankingWindow:503 calls HashAccessFuncs.getInt, which parses
+        # float32 then casts to Int32. The HTML list uses getDouble instead.
+        # Reject unrepresentable scores rather than round/clamp authoritative
+        # data and make the two views disagree. This is a support constraint,
+        # not evidence of an original-game kokudaka cap.
+        if score > 2**31 - 1 or struct.unpack("!f", struct.pack("!f", score))[0] != score:
+            raise ValueError("no stub response: kokudaka score cannot be represented by client Int32/float32")
 
 
 @dataclass(frozen=True)
@@ -61,6 +69,9 @@ class SnapshotPair:
 
     None means unavailable (fail), Snapshot(country, ()) means proven empty.
     No automatic midnight reset or fabricated previous period is performed.
+    One request retains one immutable pair even if the provider publishes a new
+    pair concurrently. Separate HTTP requests may observe different pairs;
+    the original wrappers do not send a snapshot revision to pin them together.
     """
     current: Snapshot | None
     last: Snapshot | None

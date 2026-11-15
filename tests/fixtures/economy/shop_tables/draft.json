@@ -1,0 +1,48 @@
+{
+  "draft": {
+    "draft2000090": {
+      "id": "draft2000090",
+      "name": "ITEM_MSG_04_0200090_NAME",
+      "desc": "北海道的地方建筑。",
+      "buildType": "building200_090_01_01_1_1",
+      "isConsume": true,
+      "progressCount": 1,
+      "immediateBuild": false,
+      "continueBuild": false,
+      "initialAmount": 0
+    },
+    "draft2000101": {
+      "id": "draft2000101",
+      "name": "ITEM_MSG_04_0200101_NAME",
+      "desc": "青森县的地方建筑。",
+      "buildType": "building200_101_01_01_1_1",
+      "isConsume": true,
+      "progressCount": 1,
+      "immediateBuild": false,
+      "continueBuild": false,
+      "initialAmount": 0
+    },
+    "draft2000648": {
+      "id": "draft2000648",
+      "name": "ITEM_MSG_04_0200648_NAME",
+      "desc": "植物",
+      "buildType": "building200_648_01_01_1_1",
+      "isConsume": true,
+      "progressCount": 0,
+      "immediateBuild": true,
+      "continueBuild": false,
+      "initialAmount": 0
+    },
+    "draft2000651": {
+      "id": "draft2000651",
+      "name": "ITEM_MSG_04_0200651_NAME",
+      "desc": "鉴赏",
+      "buildType": "building200_651_01_01_1_1",
+      "isConsume": true,
+      "progressCount": 0,
+      "immediateBuild": true,
+      "continueBuild": false,
+      "initialAmount": 0
+    }
+  }
+}

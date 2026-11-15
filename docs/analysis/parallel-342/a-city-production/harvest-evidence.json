@@ -1,0 +1,317 @@
+{
+  "scope": "Static catalogue facts, NOT server settlement formulas or probabilities",
+  "table_sources": [
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building.json",
+      "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+      "rows": 1343
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\product.json",
+      "sha256": "36f9de13973ed4c6f57c8dcbfba09a7fe9c69e13d2435ad8534b8e33ff8478c7",
+      "rows": 1288
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\reward01_politic.json",
+      "sha256": "ba1c4d8ff335af146b020924bf7b9c6e51436ccd90496dc1e30afc9e28cfc525",
+      "rows": 2476
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building_level.json",
+      "sha256": "b4c2466cc4ad68de233e808afa72170c0b8d285352f51e6e9057ac8349da9813",
+      "rows": 2183
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\defines.json",
+      "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+      "rows": 111
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\skill.json",
+      "sha256": "f1fa45ed69abb41a758b30445c038c39a2d17f92e78a410fa678df82ac9d5cd3",
+      "rows": 4129
+    }
+  ],
+  "reward_audit": {
+    "active_slot_count_histogram_per_product": {
+      "2": 237,
+      "1": 377,
+      "3": 367,
+      "7": 18,
+      "6": 32,
+      "9": 33,
+      "5": 39,
+      "8": 144,
+      "4": 13,
+      "10": 20
+    },
+    "missing_references_not_missing_asset_files": [
+      {
+        "product": "building200_030_03_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      },
+      {
+        "product": "building200_030_04_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      },
+      {
+        "product": "building200_030_05_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      },
+      {
+        "product": "building200_030_06_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      },
+      {
+        "product": "building200_030_07_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      },
+      {
+        "product": "building200_030_08_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      },
+      {
+        "product": "building200_030_09_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      },
+      {
+        "product": "building200_030_10_01_1_1",
+        "rewardId": "reward01_02_00027_01"
+      }
+    ],
+    "non_politic_reward_prefixes": [],
+    "parse_errors": [],
+    "products_with_repeated_active_group": 625,
+    "products_with_variable_count_bounds": 588,
+    "products_with_variable_ratio_bounds": 304,
+    "resolved_products_with_player_exp_item": 599,
+    "resolved_products_with_buildingExp_field": 1280,
+    "products_with_gainTypes_or_gainAmounts": 0,
+    "note": "Repeated group or fixed ratios do not prove an RNG algorithm; counts are per product, may overlap."
+  },
+  "durability_histogram": {
+    "10001": 797,
+    "10": 10,
+    "100": 3,
+    "3": 492,
+    "1": 14,
+    "6": 1,
+    "20": 1,
+    "30": 1,
+    "40": 1,
+    "5": 2,
+    "4": 12,
+    "2": 9
+  },
+  "level_audit": {
+    "lowercase_intervalRatio_histogram": {
+      "1": 2183
+    },
+    "uppercase_IntervalRatio_rows": 0,
+    "gainRatio_rows": 0,
+    "nonunit_costRatio_rows": 102
+  },
+  "source_files": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardTableAccessor.cs",
+      "sha256": "bc04bca53baf665e9618c82f31da8c0dffeff429cee1cd18c49e2660149f6111",
+      "methods_or_lines": "getReward:52-82"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ProductsTableAccessor.cs",
+      "sha256": "06c27eee427434ff9e23889f90956949a4ec192b9fc3d8b3f5b056e60df2d02f",
+      "methods_or_lines": "getGain:77-98 (no external textual call found)"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuildingParameter.cs",
+      "sha256": "ff7f635f305109926a5ad774eada7365352b7fdfed88e534d697df1d4e2e2996",
+      "methods_or_lines": "IsInfiniteDurability/IsDead:79-81; set:157-170"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DefinesTableAccessor.cs",
+      "sha256": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4",
+      "methods_or_lines": "getAutoHarvestPoint:77-84; getInfiniteDurability:145-153"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PopUpBuildingIcon.cs",
+      "sha256": "1c2237f68d065cff23a13e170f62bd72d0324626705fc7b3b7a83a4859f4e8dc",
+      "methods_or_lines": "setZzzPopUp:420-463; setProducingPopUp:500-537"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuildingState\\StateAutoProduce.cs",
+      "sha256": "7d82b4c4220823af6de97a6f2011745c26a7c965495469778aed5d0cd03933b2",
+      "methods_or_lines": "payout:96-188; onCompliteProducings:401-430; onComplite:475-507"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuildingState\\StateManualProduce.cs",
+      "sha256": "3570c727533ada094e5c25ff5602b5f695703a285c6ee17fd1eab34027d660cf",
+      "methods_or_lines": "onComplite:78-85"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticGainResourceExp.cs",
+      "sha256": "58118e407944fe2fb360525dd56bc7c2fea9a60e8bd34773e9f137c2b4049543",
+      "methods_or_lines": "getGainResource:15-22"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticGainResource.cs",
+      "sha256": "5def47fd43d2f09afa9fb7d3f3667799ac88b9a048dcff3054abd5c6b7b8388b",
+      "methods_or_lines": "getGainResource:17-20"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticGainResourceCreate.cs",
+      "sha256": "03fa7d2a415e1e6715fc4820e67665fc8f44be205d2b6ae6d7befcf84c8664fa",
+      "methods_or_lines": "createPayResourceIcon"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBuilding.cs",
+      "sha256": "12ce58588bea07a4eb39f70c86d54b7cabb00380846dcef449c104b227fd5a9a",
+      "methods_or_lines": "getProductCosts:1872-1885; processDead:549-568; submitProduce:1110-1134"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginPoliticDataReader.cs",
+      "sha256": "0f71ce610a764f933682ba0ed4cf2f582e3ab1323df19cef886fb58d5b174518",
+      "methods_or_lines": "getProductCosts:220-238"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\LevelUpTableAccessor.cs",
+      "sha256": "9280ac11104667e1679660a33de1d78a19c6574348d7c57af6850c83e8433d74",
+      "methods_or_lines": "getCostRatio:53-61; getIntervalRatio:63-71; getGainRatio:73-81"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+      "methods_or_lines": "calcAmount:1735-1741"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMAutoHarvest.cs",
+      "sha256": "81beebb6e9b31e57fe8f3296dce1a4592d1043324f181d079481ce1471eb4a67",
+      "methods_or_lines": "noticeResult:83-125"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoHarvest.cs",
+      "sha256": "1eefc3d4f3fa86d64512955236c1fa52ef5ab48b636938c84a10afde4f856ea9",
+      "methods_or_lines": "CalcPoliticPoint:81-87"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginPoliticDataWriter.cs",
+      "sha256": "b3dc93560785f28e7b1aa58e85ffe6ccf13a2c831ff60d55e1f7027c20c7688f",
+      "methods_or_lines": "OnGetProductings:20-47"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticRoadChecker.cs",
+      "sha256": "bfd17102fa64a2c88f8c387068a605e0860324b43bdf3ae26b7ad9a3727a2158",
+      "methods_or_lines": "Update:34-71"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticConnectBase.cs",
+      "sha256": "2018962ff12a1fd0ee58b67d7f6a66443a97c1c8e457ae1b447bc5ebe6db2fed",
+      "methods_or_lines": "addRoad:236-257; searchRoad:355-435"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticPeople.cs",
+      "sha256": "871fda1723a7c72b17a766ce9147a20c07d90d5305cce83aa1c6bcf2bdda32c7",
+      "methods_or_lines": "RoadChecker calls:192,298,394"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SkillTableAccessor.cs",
+      "sha256": "cac0aec16ab9fce274d80cb5a93540392842b3634c01b39ea69b9b0200f41fbf",
+      "methods_or_lines": "getDesc; getCategory; no road multiplier formula"
+    }
+  ],
+  "localized_evidence": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\tableAssets.bin",
+    "sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7",
+    "texts": [
+      {
+        "offset": 387826,
+        "byte_length": 260,
+        "id": "POM_MES_000006_03_001",
+        "tw": "「邻接道路的建筑物拥有提高生产量的效果，\n　因此建议在建筑物的旁边建设道路。\n　此外，RGBA(1,0.6,0.2,1)建筑道路并不会消耗金钱和内政点数。RGBA(1,1,1,1)」@"
+      },
+      {
+        "offset": 459277,
+        "byte_length": 192,
+        "id": "POM_MES_000033_01_001",
+        "tw": "「每当建筑物实行收获时，都可以获得些许的经验值。\n　累积了一定的经验值，建筑物的等级就会上升。」@"
+      },
+      {
+        "offset": 530930,
+        "byte_length": 201,
+        "id": "POM_MES_000089_03_002",
+        "tw": "「农家位于《城下》列表，会对城的生产有所影响，\n　藉由收集城所生产的兵法书，让农家的经验值持续累积。」@"
+      },
+      {
+        "offset": 711779,
+        "byte_length": 269,
+        "id": "POM_MES_000220_01_001",
+        "tw": "「领主大人，为了让城下町更加繁荣，请让农家‧长屋‧商家的等级上升吧。\n　《城下》列表里的建筑物，可藉由城的生产物之收获累积经验值，\n　让等级上升。」@"
+      },
+      {
+        "offset": 787964,
+        "byte_length": 159,
+        "id": "POM_MES_000273_03_001",
+        "tw": "「首先，建筑物分成能够无限生产类型，\n　已经有限制生产次数类型共２种类。」@"
+      },
+      {
+        "offset": 788155,
+        "byte_length": 287,
+        "id": "POM_MES_000273_03_002",
+        "tw": "「虽然『田地』可以不断持续生产，但『金山』却只能收获数次。\n　此外，当有次数制限的建筑物之『剩余次数』变成『０』时会自动消灭。\n　虽然有些感伤，但还请您理解。」@"
+      },
+      {
+        "offset": 788830,
+        "byte_length": 221,
+        "id": "POM_MES_000273_03_005",
+        "tw": "「『水田』等建筑物会『自动生产』，\n　收获之后会自动开始进行生产。\n　生产时不需要使用到资源，是非常便利的建筑物。」@"
+      },
+      {
+        "offset": 4269394,
+        "byte_length": 243,
+        "id": "SKILL_MSG_1_11058_01_DESC",
+        "tw": "发动率：常态(仅限内政有效)(不可重复发动)\n※自身是「城代」「水上」时发动。\n「道路」的影响上升50%。\n追加生产1本兵法书之机率上升50%。"
+      },
+      {
+        "offset": 4452089,
+        "byte_length": 263,
+        "id": "SKILL_MSG_1_11064_01_DESC",
+        "tw": "发动率：随时(仅限内政有效)(不可重复发动)(不可继承)\n※自身担任「城代」或「水上」时发动。\n「道路」的影响上升10%。\n兵法书追加生产1册的机率上升20%。"
+      }
+    ],
+    "unresolved_ids": []
+  },
+  "fixture": {
+    "path": "tests/fixtures/city_production/production-rules.json",
+    "sha256": "2aae6352e1fd49e284843e5e6937062c165c4d177a63804b52408daac5a09754",
+    "row_ids": {
+      "building": [
+        "building200_041_01_01_1_1",
+        "building200_031_01_01_1_1",
+        "building200_036_02_01_1_1"
+      ],
+      "product": [
+        "product060_023_01_01_1_1",
+        "building200_031_01_01_1_1",
+        "building200_036_02_01_1_1"
+      ],
+      "building_level": [
+        "product_early1001",
+        "product_store2003"
+      ],
+      "defines": [
+        "infinite_building_durability",
+        "politic_auto_harvest_point"
+      ],
+      "skill": [
+        "skill1_10041_01",
+        "skill1_10050_01"
+      ],
+      "reward01_politic": [
+        "reward01_01_00001_01",
+        "reward01_01_00035_01",
+        "reward01_01_00051_01",
+        "reward01_01_00013_01"
+      ]
+    },
+    "exact_original_rows": true
+  }
+}

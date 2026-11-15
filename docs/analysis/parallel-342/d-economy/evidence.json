@@ -1051,11 +1051,12 @@
     "Inclusive bounds match adjacent client dropdown ranges; original server boundary captures unavailable",
     "Page size cap 300, stable item_sn tie break, numeric root display slots, decimal string scalars are local compatibility decisions",
     "Expiry is derived from internal expires_at and snapshot observed_at; not a recovered storage schema",
-    "No writes, no production registration, no global endpoint count change, no permanent background grant"
+    "Four shop handlers added in economy_shop_services; shop-evidence.json separates policy from protocol; no production registration/global count change"
   ],
   "limitations": [
     "Original-server economics, auction tax constants, listing eligibility, event schedules and retry IDs unavailable",
-    "item13.json and item14.json not in the supplied 662-table extraction: does NOT prove missing installed assets",
-    "No original-server replay or Unity dynamic verification; read provider not integrated"
-  ]
+    "item13/item14 recovered from hash-verified original container by build_shop_evidence.py; only small samples committed",
+    "No original-server replay or Unity dynamic verification; read provider and authoritative national context not integrated"
+  ],
+  "continuation": "shop-evidence.json: recovered assets, national table audit, deeper callbacks and internal sale policies"
 }

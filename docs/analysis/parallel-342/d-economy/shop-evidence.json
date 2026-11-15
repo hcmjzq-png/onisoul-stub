@@ -1,0 +1,837 @@
+{
+  "container": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\tableAssets.bin",
+    "sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7"
+  },
+  "recovered": [
+    {
+      "file": "item14.json",
+      "root_key": "item14",
+      "container_name_offset": 15616788,
+      "script_offset": 15616804,
+      "script_length": 17345,
+      "sha256": "1047b9455e27ffb51ac4cbd455446ca3aee18fccb546e61a5efa08a57de70ee5",
+      "rows": 51
+    },
+    {
+      "file": "item13.json",
+      "root_key": "item13",
+      "container_name_offset": 78151372,
+      "script_offset": 78151388,
+      "script_length": 2026,
+      "sha256": "5195d97a0501e4e37e97db4ace2c20b9ec43ff50e5fa18485e2944d31b7f620c",
+      "rows": 6
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\MightOfNationAchievement.cs",
+      "sha256": "81c8bae71187fc2c21261db172e575df3d37a9237fd462601877ee216f571dd3",
+      "anchors": {
+        "getPower(key) <= power": [
+          31
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NationalPowerShopTableAccessor.cs",
+      "sha256": "dc307574703d979b622a67eddbafdff0ba9918e49863bceb03f4c74d292e593d",
+      "anchors": {
+        "getCosts(": [
+          204
+        ],
+        "getItemIds(": [
+          163
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ShopItemNationalPower.cs",
+      "sha256": "f3b44433dbb49b8050f74c1d6828f764e01f0d1076362de8722089831f7f5f81",
+      "anchors": {
+        "index = -1": [
+          182
+        ],
+        "addDraft(winResult.num": [
+          205
+        ],
+        "Amount >= 99": [
+          213
+        ],
+        "setRemain(": [
+          178,
+          229
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ShopUpdateNationalPower.cs",
+      "sha256": "363891752a8e7d54cba4c9f93880e19d683703db3f0dc72f5ad6dc18714e519d",
+      "anchors": {
+        "getString(\"state\")": [
+          184
+        ],
+        "getInt(\"remain\")": [
+          191
+        ],
+        "getCosts(shopItemId)": [
+          210
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageShopBgWindow.cs",
+      "sha256": "89a26e6ec3f75cfcd51d1fe0c959a687c0cbb60a97c93edcf4bb237aaaf13032",
+      "anchors": {
+        "getBackgroundItems(": [
+          150
+        ],
+        "getCredit(requestItemCode_)": [
+          199
+        ],
+        "Remove(requestItemCode_)": [
+          227
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ItemsTableAccessor.cs",
+      "sha256": "9cc83fb58f0bed02a4c38e9915c7804fc7434483b17d9cb4d14e5c5b8921a605",
+      "anchors": {
+        "i < 16": [
+          203
+        ],
+        "key.Substring(0, 6)": [
+          212
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticBgModel.cs",
+      "sha256": "581bd3eccdd8436021bf388e0190cd2c957645e88a2572d2eaac613e4fc7fc4f",
+      "anchors": {
+        "getParameterId": [
+          183,
+          186
+        ],
+        "item13_0000001": [
+          90
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionSellPostCard.cs",
+      "sha256": "0b5d3d03f6baaee4051eba37b6fd9263fd50fdd96ff66472bdc80004312d9b59",
+      "anchors": {
+        "TaxCard_.BaseTax": [
+          315
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionPostToSellBtn.cs",
+      "sha256": "71aca8a86f44493d368f3fe38d746f8b5f3552866e5942d7629eecee0265b982",
+      "anchors": {
+        "TaxCard_.BaseTax": [
+          62
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionSellResourcePage.cs",
+      "sha256": "9ed7b52d93a5506e686cca12bc554dbc87368e88973bd4a757e4a7cd890bf333",
+      "anchors": {
+        "TaxResource_.BaseTax": [
+          118
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionTaxCard.cs",
+      "sha256": "d0f44a8ddeb30288a47b9247d59f80480490a1ed5cce6f2522f80488aeb22b13",
+      "anchors": {
+        "public float": [
+          3,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionTaxResource.cs",
+      "sha256": "9212d18384e47c40b7b510278dc6b0875102d21cfc9bbf741edb6deb150ddcb4",
+      "anchors": {
+        "public float": [
+          3,
+          5
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginRunner_DoTrade.cs",
+      "sha256": "eaba9be0152182b95aff3cbf0d5d2fcb3a58dd1c8279bfa00d2e6b1cde6f89d5",
+      "anchors": {
+        "getCostTypes": [
+          99,
+          136
+        ],
+        "getCostAmounts": [
+          100,
+          137
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WaterBorneTradeTableAccessor.cs",
+      "sha256": "f256d8f97115e33525a60118d7a2aa7c3dcb37018294bd9137a6b7df0216ceb6",
+      "anchors": {
+        "getResultFileName(": [
+          148,
+          164
+        ],
+        "index == 4": [
+          155
+        ],
+        "[\"friendResult\"]": [
+          159
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\KokugiScene.cs",
+      "sha256": "6ff68e6041dd0cb38c418736950a3d5af5cf2d31764583b3fd24030d9b456363",
+      "anchors": {
+        "public static int toLevel": [
+          432
+        ],
+        "public static long toPoint": [
+          448
+        ],
+        "num += (long)": [
+          439,
+          455
+        ]
+      }
+    }
+  ],
+  "tables": [
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item_bg.json",
+      "sha256": "1779a2d3f40de582ffd7f3e0fb2188ebb3f3a988ece8af201ebaecf2689e13be"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\national_power_shop_item.json",
+      "sha256": "1e1019a0cb8e690873da1bb66fb8c00444187cb9ac6f4317442ba2dd26dfbc56"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\national_power_goal.json",
+      "sha256": "caf66505e98dc93b1ecef32ff75e3f70ab1569e15af530a6dbb1e37931c23529"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item_country.json",
+      "sha256": "9b38a0be51bd724cef6a788ea7529c5c7047abc76bf02a56c703895a4d25abd8"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\item04.json",
+      "sha256": "25c45e584410b906060b0ba44850c4f2a9bb74e085bbbd35dfdf09d67b87e086"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\draft.json",
+      "sha256": "d92f775087b21acdbbaac789471687808dc08b159907783bc4ea8f771bf0a1c7"
+    },
+    {
+      "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\building.json",
+      "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe"
+    }
+  ],
+  "sample_rows": {
+    "shop_item_bg": [
+      "bgstore_01_0001_0001",
+      "bgstore_01_0001_0002",
+      "bgstore_01_0001_0003",
+      "bgstore_01_0001_0004",
+      "bgstore_11_0001_0001",
+      "bgstore_11_0001_0002",
+      "bgstore_11_0001_0003",
+      "bgstore_11_0001_0004"
+    ],
+    "item13": [
+      "item13_0000004",
+      "item13_0000005"
+    ],
+    "item14": [
+      "item14_1000048",
+      "item14_1000049"
+    ],
+    "national_power_shop_item": [
+      "np_shop0000001",
+      "np_shop0000005",
+      "np_shop0000009"
+    ],
+    "national_power_goal": [
+      "3"
+    ],
+    "shop_item_country": [
+      "countryshop_00003"
+    ],
+    "item04": [
+      "item04_0200090",
+      "item04_0200101",
+      "item04_0200648",
+      "item04_0200651"
+    ],
+    "draft": [
+      "draft2000090",
+      "draft2000101",
+      "draft2000648",
+      "draft2000651"
+    ],
+    "building": [
+      "building200_090_01_01_1_1",
+      "building200_101_01_01_1_1",
+      "building200_648_01_01_1_1",
+      "building200_651_01_01_1_1"
+    ]
+  },
+  "national_row_audit": [
+    {
+      "id": "np_shop0000001",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000002",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000003",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000004",
+      "goal": "shop_04",
+      "thresholds": [
+        [
+          "10",
+          750000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000005",
+      "goal": "shop_05",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000006",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000007",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000008",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000009",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000010",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000011",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000012",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000013",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000014",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000015",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 2,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000016",
+      "goal": "shop_01",
+      "thresholds": [
+        [
+          "3",
+          20000
+        ]
+      ],
+      "limit": 2,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000017",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000018",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000019",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000020",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000021",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000022",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000023",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000024",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 10,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000025",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000026",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000027",
+      "goal": "shop_02",
+      "thresholds": [
+        [
+          "5",
+          50000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000028",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000029",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000030",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000031",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000032",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 5,
+      "supported_row": false
+    },
+    {
+      "id": "np_shop0000033",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000034",
+      "goal": "shop_03",
+      "thresholds": [
+        [
+          "6",
+          75000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000035",
+      "goal": "shop_06",
+      "thresholds": [
+        [
+          "11",
+          1000000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000036",
+      "goal": "shop_06",
+      "thresholds": [
+        [
+          "11",
+          1000000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000037",
+      "goal": "shop_06",
+      "thresholds": [
+        [
+          "11",
+          1000000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    },
+    {
+      "id": "np_shop0000038",
+      "goal": "shop_06",
+      "thresholds": [
+        [
+          "11",
+          1000000
+        ]
+      ],
+      "limit": 1,
+      "supported_row": true,
+      "reference_failures": {}
+    }
+  ],
+  "supported_national_rows": 27,
+  "countries_checked": [
+    "country01",
+    "country02",
+    "country03",
+    "country04",
+    "country05",
+    "country06",
+    "country07",
+    "country08",
+    "country09",
+    "country10",
+    "country11",
+    "country12",
+    "country13",
+    "country14",
+    "country15",
+    "country16",
+    "country17",
+    "country18",
+    "country19",
+    "country20",
+    "country21",
+    "country22",
+    "country23",
+    "country24",
+    "country25",
+    "country26",
+    "country27",
+    "country28",
+    "country29",
+    "country30",
+    "country31",
+    "country32",
+    "country33",
+    "country34",
+    "country35",
+    "country36",
+    "country37",
+    "country38",
+    "country39",
+    "country40",
+    "country41",
+    "country42",
+    "country43",
+    "country44",
+    "country45",
+    "country46",
+    "country47"
+  ],
+  "decisions": [
+    "Static background sale opt-in; existing items count is single ownership source; no automatic initial grant or expiry inference",
+    "Country power threshold is client/table-supported; live country score and global period must come from authoritative context held through save",
+    "Only quota-one national draft sets; wider quotas need retry identity; repeat national purchase errors to avoid client addDraft twice",
+    "All new state keys and policy switches are internal compatibility choices, not original protocol"
+  ]
+}

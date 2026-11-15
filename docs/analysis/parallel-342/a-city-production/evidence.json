@@ -892,5 +892,17 @@
       ],
       "exact_original_rows": true
     }
-  ]
+  ],
+  "harvest_followup": {
+    "report": "harvest-review.md",
+    "evidence": "harvest-evidence.json",
+    "reproducer": "city_production_audit.py",
+    "implementation": "app/business/city_production_rules.py",
+    "scope": "Pure client calculations only; no settlement or new HTTP route enabled",
+    "verification": {
+      "new_rule_tests": 9,
+      "all_tests": 247,
+      "skipped": 0
+    }
+  }
 }

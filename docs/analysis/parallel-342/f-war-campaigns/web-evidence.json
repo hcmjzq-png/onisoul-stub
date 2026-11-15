@@ -1,0 +1,991 @@
+{
+  "installer_path": "C:\\Users\\74378\\Downloads\\OniSoul_Setup_20140712.exe",
+  "installer_sha256": "ad34a14e3dd67b30c59d5abd9ed2a82b2ab53161e24f3be654a63175e6d890ad",
+  "cache_record_count": 159,
+  "query_strings_removed": true,
+  "original_cache_inventory": [
+    {
+      "record": "app/cache/data7/0/13h1m5gp.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/f82a225c3d7fe96edadc43e5e3b62571.unity3d",
+      "sha256": "78834a43ff85b9c654a89844ada5bccbd501312375cf2a9fdd7ea7e609bd81ab"
+    },
+    {
+      "record": "app/cache/data7/0/1f7kcfl0.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/5d7056ff4b24ade99d4b7c78ddc79db3.unity3d",
+      "sha256": "118d4041d863dc5b4156600bf6434549efad0b04ccf8d686fa525c0741e39527"
+    },
+    {
+      "record": "app/cache/data7/0/2m73194p.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/bgm/5b7ebaae6b9ea0a8e79c014237bb83cd.unity3d",
+      "sha256": "a413456009e13fa09a1a4ac9880186ae672d45c75e5d769e2590369f5957c828"
+    },
+    {
+      "record": "app/cache/data7/0/2v7gpra0.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/d5cf30411e7bb6000b867ba9dfa00e73.unity3d",
+      "sha256": "f9d317c82adfce28bedb53a142fe598a62b13a6313267eeb002c9d1f76bc8ae8"
+    },
+    {
+      "record": "app/cache/data7/0/2wr3wu1p.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/2ef7326e9d8ae19ff06222baf2beef02.unity3d",
+      "sha256": "a9fceef1030e5e139a5327003ead5000b50cf35aad222d2a10235d3f1e509e94"
+    },
+    {
+      "record": "app/cache/data7/0/38o89qw0.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/gwz/images/wrap_bg.jpg",
+      "sha256": "78fdd5c5b802135657e3a27b331c26cea45a7739c39710c24950b642af750524"
+    },
+    {
+      "record": "app/cache/data7/0/3m4zekx0.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/5d8c21ee81a19d393bd1476056c7bfb4.unity3d",
+      "sha256": "6a8de1eae5a1e3f594ae30767b3ee4c71ed6f521abc495f36c39c2cd81a2e0db"
+    },
+    {
+      "record": "app/cache/data7/0/bhf8uk8p.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/se/8374ee1fba90f54f800a690c5dfa1976.unity3d",
+      "sha256": "905765fdee6020381875dfd72968a3a09de0302a751d3ff0760798bf876b7c35"
+    },
+    {
+      "record": "app/cache/data7/1/12dlozfq.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/img/logo.png",
+      "sha256": "b1d18f020a41ddf603740a1ad2771bfcbc588e9001eab7b6d763e927075eed53"
+    },
+    {
+      "record": "app/cache/data7/1/1ez9vc11.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/commontool.js",
+      "sha256": "06121f47ba65bfba634194b955a39495089b7048cd888b02895c6c7f1d0734e0"
+    },
+    {
+      "record": "app/cache/data7/1/1gaq4pva.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/ed01fcf6b5eab3090b70855498a106e9.unity3d",
+      "sha256": "9b5f06b2c3db5683f8a4f3ff6738b8b7c8da7ba82302cd4d3db59ec809b14235"
+    },
+    {
+      "record": "app/cache/data7/1/2hwspo0a.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/7f963973463ed3cf3318cd5c9cce5b58.unity3d",
+      "sha256": "a492b46e399542b0fd457d636ba27e98fb5dfc8388c9ecd3f59b84e01d312ba3"
+    },
+    {
+      "record": "app/cache/data7/1/338ovs41.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/d764796ca645149c06bb0120c4d6175b.unity3d",
+      "sha256": "e58bbd5141c906d1210e4f084d55fc021a8fb1c86c0c3c63d584d08af125e12c"
+    },
+    {
+      "record": "app/cache/data7/1/356d577q.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/c42732b9c2d1b801b61ca3e693b4689b.unity3d",
+      "sha256": "7e4b8a2ddf25f4b338ac55ff263f0372568c8c26702c917bb442256e22ba7e48"
+    },
+    {
+      "record": "app/cache/data7/1/39sof5oa.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/jquery.cookie.js",
+      "sha256": "9a97fb0170c4d69d2dfe54871977bc3410fd9176315296049a2360f5870de505"
+    },
+    {
+      "record": "app/cache/data7/1/3lchz31q.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/8e163beed3b8e16261e7297ed0cf1575.unity3d",
+      "sha256": "ba2ae2908bf80e251af8a5150c94aed601aefc46da59fe313a9a8a370821b432"
+    },
+    {
+      "record": "app/cache/data7/1/4ph7ga2a.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/419248c2f6c2fa3a275b49a2a8aa7112.unity3d",
+      "sha256": "869088ff7d50a77b3c44f35876638664324cad1611bd49da6203d8434bbdd2f7"
+    },
+    {
+      "record": "app/cache/data7/1/cplh5cqa.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/vse/fb059e936cb988749e0c64c374b19451.unity3d",
+      "sha256": "124f6db45240f9fd10b5ac8e60bda4ec3695c68cd9932d976050fbda1ae9aed5"
+    },
+    {
+      "record": "app/cache/data7/1/d9ghgrba.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/social.js",
+      "sha256": "8b417fee21ff28972245f38ef5f3b88ea6651eee17fc2ab4e7daddc366852a19"
+    },
+    {
+      "record": "app/cache/data7/1/lwde8yfq.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/c07e9888353a249cb599b47a47be33fa.unity3d",
+      "sha256": "577f809f01aaea821eabaa146941a61ec480365f00b4a6bb3e63c7d678c020ef"
+    },
+    {
+      "record": "app/cache/data7/2/13eqmwqb.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/43fd3c24f9bc3bd2c04ddb5ed8b63531.unity3d",
+      "sha256": "ef4868eddc4a2871587b2dae193181cfa7102ad43bda7deb574bd6876e886c20"
+    },
+    {
+      "record": "app/cache/data7/2/13kar3xr.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/5a126726b7cc08e422e04a44f96d020b.unity3d",
+      "sha256": "f9ec12e66f164ba393a49d24db9c0154268b24461bed1c86620a295656a9ef88"
+    },
+    {
+      "record": "app/cache/data7/2/14jh5wp2.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/eb5ab5ad1ea77f30828e583e5ff29428.unity3d",
+      "sha256": "6a02bf9d14a6a66cd28a1330e42e38b0faf1f984ff733075d091dd2dbbb120c5"
+    },
+    {
+      "record": "app/cache/data7/2/1cy904vb.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/84fa3ca2d7adf11b1fbb1f20cb231a86.unity3d",
+      "sha256": "0c473c29c97e360922d8b257efa715d347ade775dcd2ceecaf97d24d3f841d20"
+    },
+    {
+      "record": "app/cache/data7/2/1ej3j89r.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/mission/4ec31b518739314305da9230a6dbfee6.unity3d",
+      "sha256": "d15c2fbd9a998ad25157b72732e2d9bbdecad5754f18304ed50de36ac116f00f"
+    },
+    {
+      "record": "app/cache/data7/2/1gczeaxb.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/f1fc33136d0e4938836c8f8468613c1a.unity3d",
+      "sha256": "149bdfef4eae844af7aba7f436c96327d4894ac9d78ccbe8648975df535c0d44"
+    },
+    {
+      "record": "app/cache/data7/2/1huz6kfb.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/3b427f03bff3c84752a2092e6ea21ee2.unity3d",
+      "sha256": "e0f44041ec0433e717ffa8fa853c5ded70b054b4088595bba2f1c9b04c614d71"
+    },
+    {
+      "record": "app/cache/data7/2/1ul8rut2.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/9bb4ca6d8f841bff4e35f63b352135e3.unity3d",
+      "sha256": "77ec2318ddc2fff30b83860e8e7f120b8372f88fa7915cc5830e7466b161d89a"
+    },
+    {
+      "record": "app/cache/data7/2/1xccv9v2.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/js/jquery.cookie.js",
+      "sha256": "2284f7d1c92ed731c6b4fd8c0372800cef8586ca84c021982b9a6f88faf68d62"
+    },
+    {
+      "record": "app/cache/data7/2/2abrqpp2.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/dbc150e5a67d861899aa68a07cc544c9.unity3d",
+      "sha256": "89fde05b32f235f19b65d3926383c8e8af09e55ba87926b36a6a80f0eab0e936"
+    },
+    {
+      "record": "app/cache/data7/2/2vj3udxb.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/21f922c997e0ce6d37edd5d592364480.unity3d",
+      "sha256": "cf0c6805304677f4c35f3576ddd1deb6ddefc5425a8c5811ca270cd090c49476"
+    },
+    {
+      "record": "app/cache/data7/2/2xxlsu72.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/1a1ed6e361d5ca1d3143b93b8343c838.unity3d",
+      "sha256": "1e086357a5996d9bbeb274b12bd968bf831b02552a476dc7e4b9212beba053ec"
+    },
+    {
+      "record": "app/cache/data7/2/3a36n2ub.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/f9518352989950de517e167e309aa0be.unity3d",
+      "sha256": "61e8740d188082b1f6b52b3df9b4a4fbb6d96060031239cad13a52d340a3242d"
+    },
+    {
+      "record": "app/cache/data7/2/3jj1lpt2.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/3e57686f114055829ab4da8c4fefac14.unity3d",
+      "sha256": "9992962c4382f1166204c948a4e22691fdd460756f24c21dd57a16f6f598e8f6"
+    },
+    {
+      "record": "app/cache/data7/2/gwms9712.d",
+      "url_without_query": "http://game-onisoul.86joy.com/favicon.ico",
+      "sha256": "9f5efd5f95eb935c3bc1dfc8d8b9e684d8219a25e2c7edac0f0d7e5e363453c1"
+    },
+    {
+      "record": "app/cache/data7/2/yo22jctr.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/fa11a468fe4ae9dabc3e8af0c69b569b.unity3d",
+      "sha256": "08784fffc34c06b5d356f218a6dd694ae3970558f5f06c585c112393c0f80eae"
+    },
+    {
+      "record": "app/cache/data7/3/1148y9y3.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/30e6b0c49cf787a90d496da7a35e30e2.unity3d",
+      "sha256": "bf802db49c5b5be22e8acd605859dc655697d4be33b4f80fa459159f3ceb9b57"
+    },
+    {
+      "record": "app/cache/data7/3/19hqojms.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/441147d9b569e8cb8b359bbafc426f4f.unity3d",
+      "sha256": "52b7a4704057c5d4bdcc26f5b51612a0a054b019bf7eb819371f1955ca057d59"
+    },
+    {
+      "record": "app/cache/data7/3/1ddu8kvs.d",
+      "url_without_query": "http://static.86joy.com/gameweb/gwz/images/bg_body.jpg",
+      "sha256": "ba42b8189145d6f3341f3ed98b0c7f588628861343a0d8a3e1f7d0ce4eae455f"
+    },
+    {
+      "record": "app/cache/data7/3/1la4kpns.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/d27441e1cd0a71d55594cd977f7d9e66.unity3d",
+      "sha256": "0d32696d762a1a7ac65fd352e883a915647c7530bb2c937eaf8c3cf42dd82797"
+    },
+    {
+      "record": "app/cache/data7/3/1uahvf53.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/UnityObject.js",
+      "sha256": "f72d7ecc123367892f9b167695587841570c50ae1460744ebbca237d0bb89a08"
+    },
+    {
+      "record": "app/cache/data7/3/22fynxh3.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/c522994c27c9202bc08e7450e5e3a805.unity3d",
+      "sha256": "602a1c1ebe6d8375f890241311277c781cae5549eb2790eba3c4cdf6acbb23da"
+    },
+    {
+      "record": "app/cache/data7/3/2kwvyad3.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/app.html",
+      "sha256": "ea51179ba76634ca9988222fb9dc193f2ddf60772da1f9d032117ff8895666ab"
+    },
+    {
+      "record": "app/cache/data7/3/7qzzapa3.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/b7134edd93674ea94402a3af15ad98a5.unity3d",
+      "sha256": "236afa16cc25ea2d441f0f9501e918ca3d97b4ac5c0de6ac7995eb5028bc7c32"
+    },
+    {
+      "record": "app/cache/data7/3/f8cp3eh3.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/54c91a46ea23ba587f2ad4c540df3a61.unity3d",
+      "sha256": "238d5a5102b6c986c39168c24518e5c3ee54e386ec1e159ab3ba596f6401d8ef"
+    },
+    {
+      "record": "app/cache/data7/4/14cwjsst.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/css/dialog.css",
+      "sha256": "12d82c2c1b2cca83df1655571149a3849ca3cce79327cbe91210dc8ea0577c66"
+    },
+    {
+      "record": "app/cache/data7/4/17at82ed.d",
+      "url_without_query": "http://game-onisoul.86joy.com/api/common/getRevisions",
+      "sha256": "10d61c1f3065bdcd4b0708251c791c95a10d0333c65fb8a8d535420fa557ce54"
+    },
+    {
+      "record": "app/cache/data7/4/1l9aviqd.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/518da28958b05279387d24557c335c25.unity3d",
+      "sha256": "235ef88856ee6c43dd148e992d352e04fb2c8a1feb0e4fece93e4d65c604c2d1"
+    },
+    {
+      "record": "app/cache/data7/4/1yzdkcpt.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/47453607987ec3c9afe1c2e458880327.unity3d",
+      "sha256": "9b04e345fabc00ff3a3355f087f422ccde5dbbff245c949db8c0de7a8c8d0d8d"
+    },
+    {
+      "record": "app/cache/data7/4/2bvew6ot.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/cch/c3f01d7176ce520dab9bd1a8328acb1f.unity3d",
+      "sha256": "13838c45c0f5415dc7fbb9d3ba9a7c22d87b2ee37398e5f40bcf087397f935f1"
+    },
+    {
+      "record": "app/cache/data7/4/2ragc37d.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/65851d3b04e23b0cf02cdbc8db17182a.unity3d",
+      "sha256": "5f15d01e6cf2578efe9cb7cb0e313535a8c65f8313a0466d9134e399e18fc750"
+    },
+    {
+      "record": "app/cache/data7/4/3esganf4.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/questBanner/71d774326dbdd6a67e1eb3aeaef8f11d.unity3d",
+      "sha256": "e549b0f1545c031ff291f7bf1e068c868f1bf819fd0437833c2765fb63000627"
+    },
+    {
+      "record": "app/cache/data7/4/3gxqecu4.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/7536912f38fca927a22a16bdbefcdc07.unity3d",
+      "sha256": "5ab023b1d7cd581034a76ec674fa6650916644733c4cd7dae89ca7acfbd7664b"
+    },
+    {
+      "record": "app/cache/data7/4/3ij9e3t4.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/4ff92a1fcc52647703883a2d6a0fe94d.unity3d",
+      "sha256": "d2b69729460333098073efd46916d3da0a70dcf37c64859da24a08fb4ac2c9e2"
+    },
+    {
+      "record": "app/cache/data7/4/3ltlrr6d.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/2eea52261596923abe2f1eeaa898a625.unity3d",
+      "sha256": "0026161e9d300865a8facfc372dc2c8dff15dd08bcf310bc68e8bdf858f85c2d"
+    },
+    {
+      "record": "app/cache/data7/4/4cxpohj4.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/63c3c475d331c0b5fe8c123edcd4eead.unity3d",
+      "sha256": "06dca78c81274d0c0e4b962cbfc9f03ed7aa7381c7d89ec711f2bbd51d285b75"
+    },
+    {
+      "record": "app/cache/data7/4/5054jhgt.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/0a7062e9aa5ea9f55133c90a60f3de79.unity3d",
+      "sha256": "4dcec1a1fa4e0c096092a4aa42e1fa7cdf117f3d13ee45d5b0538e7e82f7f368"
+    },
+    {
+      "record": "app/cache/data7/4/sq0zg3qt.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/e4c91b7e4d7565ae7dab4398d2152009.unity3d",
+      "sha256": "1b18700f6ec1fbeb1cad9b2eca5ff19cf40a530382838db536056114e9065a0f"
+    },
+    {
+      "record": "app/cache/data7/5/1117johe.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/8b3d6b8a2eee38dd37d33fe34ae145bc.unity3d",
+      "sha256": "bb7d3102c74902eff9b6c0088ed4644a618f31fdc112a82aaa5f00772f12be18"
+    },
+    {
+      "record": "app/cache/data7/5/1mcewvtu.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/72a9681a62ca8d431085f29761cded89.unity3d",
+      "sha256": "1d42b1750c548b2afccae714e1dd19d43ce95719f455235d7aca5d71d9143319"
+    },
+    {
+      "record": "app/cache/data7/5/1n4deboe.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/3941037661211e22767e898a1798644d.unity3d",
+      "sha256": "e00d5c1fa3484d31650014bf8710a06fcb4f50ace744320914a4c79760decf01"
+    },
+    {
+      "record": "app/cache/data7/5/1x7n6gle.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/19085ae8c80495b09bb69f1158dcb0e3.unity3d",
+      "sha256": "a3030f6c48211aa019ead2186e46129f54522dcc7cfbff4ae04a42a8c55ae0bd"
+    },
+    {
+      "record": "app/cache/data7/5/29sff5j5.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/bb1914a070f6b8c00d6a65ae522fcbca.unity3d",
+      "sha256": "2a92a53920c52d399202d076ac7042235b38c904e4ffe41b55dcc784c682752d"
+    },
+    {
+      "record": "app/cache/data7/5/3ecbg63u.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/bgm/59e9ae6514c76974d2a354b0b6cb580e.unity3d",
+      "sha256": "1733649b734c29b21858bf763409d8caf534efd74acb79cf44b3bc66a22e693d"
+    },
+    {
+      "record": "app/cache/data7/5/8e3ohvlu.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/gwz/images/start.png",
+      "sha256": "5a34a0f2b47710cb3525542ab731df1715fc6cfcb2127385ef92d932b379e85d"
+    },
+    {
+      "record": "app/cache/data7/5/awnxane5.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/js/alertPlugin.js",
+      "sha256": "df770eef6bc1791271b0c4f56da3d963521ef3033803629febc7c064094045f9"
+    },
+    {
+      "record": "app/cache/data7/5/bvndeg25.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/ef5588b7df8f1977caac1d8bf0674b5b.unity3d",
+      "sha256": "b928272bd1d87ee6b40dff9abd4f44c14bc1d4c0cc55a2af77a9fbfd2eb84b3c"
+    },
+    {
+      "record": "app/cache/data7/5/gyqmwqiu.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/img/getunity.png",
+      "sha256": "3b1788fe6dfab881a685321099c69e6da3b5ca8204fefe61b80e07a901927331"
+    },
+    {
+      "record": "app/cache/data7/6/16vf0nhv.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/0c6b2f793998fcc29e98cb1e2e901460.unity3d",
+      "sha256": "0de253740eac534664e396eb32421cdc929a94aeaba7a9a4f5db71e135fad644"
+    },
+    {
+      "record": "app/cache/data7/6/28ebhw36.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/1ac13bd637a6ae646b4c42226cdee284.unity3d",
+      "sha256": "55e430d05dbbd4b64fca50694b00dde76c4347088854bc13ba29976f56e40e9f"
+    },
+    {
+      "record": "app/cache/data7/6/2qzg5nif.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/js/jquery-1.7.2.min.js",
+      "sha256": "753bb1ca758a45b8ad8ff10fdd67318e86e7da273c7c6fefcf5811b6a31c4f03"
+    },
+    {
+      "record": "app/cache/data7/6/33d8buo6.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/6793061ce300f1ee4de75c50f62d18c8.unity3d",
+      "sha256": "4061c4afd0a75fd107d93b79ef5dc7644bc2b053923fd1bbae3a5646e52004c6"
+    },
+    {
+      "record": "app/cache/data7/6/3b8n12rf.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/54000c1d9c88fa2e45fac3dde2ce1696.unity3d",
+      "sha256": "9979c7a023b6c96eb4d321bf248bc2fb6ed1f531240246787719f9b90b50de29"
+    },
+    {
+      "record": "app/cache/data7/6/3j8syprv.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/7cd7ac2b2e697e3aa0a95945f0af5613.unity3d",
+      "sha256": "b545ca345c5225d354eddc3d29f402f247350e89c8a1e45dc1056193ca025468"
+    },
+    {
+      "record": "app/cache/data7/6/3ry1juqv.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/2d9ff1d12ce221cd1f2dd69e4072cf2b.unity3d",
+      "sha256": "c08b69198c4adabd58c80a10ac9d42fdf53aa5e095d57e80277c32675f71f62b"
+    },
+    {
+      "record": "app/cache/data7/6/3uuzybu6.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/260d893ab040238315f81640897df3fc.unity3d",
+      "sha256": "04a61dd3583d0f4a574139d6ee68817934fad087e4f85bc3c06900d1b6087206"
+    },
+    {
+      "record": "app/cache/data7/6/d7k2cya6.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/0548a845a4bbbc4c3224ff9bc2675148.unity3d",
+      "sha256": "3a3f68e7169c054c7fe888fa6cb121f3a0d7f3e33799f1fb7b1e4f55b2a6bbef"
+    },
+    {
+      "record": "app/cache/data7/6/sus8rz6f.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/building/e6178897267dab64030b8d893ede358b.unity3d",
+      "sha256": "25f14f0c7e232123a9c74039d5fd445d407cfdd88f17c6d14f5b26abab0ecd1e"
+    },
+    {
+      "record": "app/cache/data7/6/u0rgaz1f.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/a1cde17379b715843d630e70bcab4bb3.unity3d",
+      "sha256": "0760dd3510b0f5dea79ec68c4ed8d1edf33441d5cca6724b9a4c6b94de6e854e"
+    },
+    {
+      "record": "app/cache/data7/7/1aukmnrw.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/35e81fe8d8f859475950a457fd2fcd74.unity3d",
+      "sha256": "90e48b6089425a355b1e31ae4bd5adefd654082a18b02bc495f45febae9b95da"
+    },
+    {
+      "record": "app/cache/data7/7/1jh1nvsg.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/gwz/images/spt-index.png",
+      "sha256": "0511a93ebef1cb2e32ead80559ae97cd4feefc031b5bbc0abb4fe9fede077c93"
+    },
+    {
+      "record": "app/cache/data7/7/1ks5jx17.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/app.js",
+      "sha256": "ce3474dd7128a5b192a36a77ce49b3f9ee3da5b039aca0b54ffbf059d97b3ffe"
+    },
+    {
+      "record": "app/cache/data7/7/2025yrfg.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/39530166ef5e10cb3e71f25f30a9708b.unity3d",
+      "sha256": "f11707738846223a58a0878433de83cb25773bb3f3f004147f5db451db0f0756"
+    },
+    {
+      "record": "app/cache/data7/7/209gnt3w.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/e2fba99c99363bea94b0fcf07926fb16.unity3d",
+      "sha256": "f9e03c01961e716c31571e441bb010909413d7dd26d157237d17d5b4f19259a5"
+    },
+    {
+      "record": "app/cache/data7/7/25lq83j7.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/building/69e7c7cecc931d8cf28d4530cabf38c6.unity3d",
+      "sha256": "c65a3ee4fb17676f20517a77f9ff2a73595f44eae4f733673a2fe1e13b675925"
+    },
+    {
+      "record": "app/cache/data7/7/2dltc1h7.d",
+      "url_without_query": "http://autoupdate-revision.unity3d.com/revisions.plist",
+      "sha256": "2c856e3b12c69e4eea5852c03ba85e724dfe976465817504779f3bde3f3ab04b"
+    },
+    {
+      "record": "app/cache/data7/7/32fhy2rw.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/5fd8a8e65e1bae7c5da186db71b9da8d.unity3d",
+      "sha256": "ff9b0b483bbb782f3324ed65f4d230c12a08b4e5379738c4929107531ab8329f"
+    },
+    {
+      "record": "app/cache/data7/7/3amg2g8g.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/d5b88d106d4c7ed57b34f79333b1347f.unity3d",
+      "sha256": "8675a73a6cbc41747fefb43ca705f57c2d1ccb1bf1022aabfc9ff911165fa92d"
+    },
+    {
+      "record": "app/cache/data7/7/edgu4uug.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/52fda9b71611af3247b9777ceb4236bd.unity3d",
+      "sha256": "b0b19ae2578973abff127e76d9ffdb894d1ff3a56ab7f2445ba23338588f9df7"
+    },
+    {
+      "record": "app/cache/data7/7/nf7kpngg.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/login.js",
+      "sha256": "52f66b5b71706dd00dc7362a4acd521caff3d1e7ceee5a986790d0ae6b8f00ee"
+    },
+    {
+      "record": "app/cache/data7/7/qc8llfag.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/3973efe3d0e130b030ef24929c2264c4.unity3d",
+      "sha256": "c5295a4ca3060978de43b6fc124ff05a1f3dd62f25605d4d5a489b0eaf3212e6"
+    },
+    {
+      "record": "app/cache/data7/8/15h0gpjh.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/building/40298d6028f2b43e1952a7c0af39ed0c.unity3d",
+      "sha256": "2d5cb4df1921fa3f50fb690c135536f26948d10ce392cc3783a12da7c89d5710"
+    },
+    {
+      "record": "app/cache/data7/8/1db5wxnh.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/ceac002f6ae6f5df7f01b6c2efd4f2cc.unity3d",
+      "sha256": "07f0d4b2bad61275490e2d0c6ec0de09c3d8662844db713aa5e68aadd5befe44"
+    },
+    {
+      "record": "app/cache/data7/8/1dcl7xpx.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/ddb77a7e974c72badbc6b1855ce4ee62.unity3d",
+      "sha256": "d995f5f2d90f57c40ccedd6f52ed6c299f25a30e0045927713a39f4cd42535f2"
+    },
+    {
+      "record": "app/cache/data7/8/1dqrimmh.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/95af7e463be3c80120dff83d32becf70.unity3d",
+      "sha256": "c7221f0551d0de341689ffc594bfe1ef468c5a03cbbfe0c9eee7148a601f8d35"
+    },
+    {
+      "record": "app/cache/data7/8/1kttcmp8.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/questBanner/36f69b232797303c280b9575324927c6.unity3d",
+      "sha256": "c8a2663f000a3c18ababf6587a4b0b2515d62222981d3321b42685d73d7163e7"
+    },
+    {
+      "record": "app/cache/data7/8/1m3g7wox.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/8151e5be879fdc24d67bb8e796f00851.unity3d",
+      "sha256": "5d3c929d9db31d5bc23b75071b225aaae20f9baa85d4be0de06b42347bb578f0"
+    },
+    {
+      "record": "app/cache/data7/8/1wzsp59h.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/7b1989109b2f5bcf4e72f130565d232d.unity3d",
+      "sha256": "624ac3058c7d5953c2ed2fd324feebac5b46c8a0627db5f3507edfba7964fba8"
+    },
+    {
+      "record": "app/cache/data7/8/2hxog9ch.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/616bf995dd5d3d7f4c7b3f1298829820.unity3d",
+      "sha256": "548aa601dc082e680ca292f660a87c52b8e49b19db5807e1383c3db2f9ab6261"
+    },
+    {
+      "record": "app/cache/data7/8/2yu2cktx.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/8feea5224b8b4bed5baaeaadea8d5e26.unity3d",
+      "sha256": "a1b59d12b891e062fe6b7c0d2227d115fcdcd0ba32e91861339cd1d976771e46"
+    },
+    {
+      "record": "app/cache/data7/8/2zkkpok8.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/8e1095f46917daa9989a137a4b986b38.unity3d",
+      "sha256": "9ab32742766466856c7243b851a939915d7f70df6e047ec2249f213c410c958e"
+    },
+    {
+      "record": "app/cache/data7/8/38oew0qh.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/questBanner/662ffb9d859b0d8dc05b4242cd5f5e4e.unity3d",
+      "sha256": "380c3d5dd8be5be4ba3f7afe32743783c66cb5fc62a04fd03ca78da873b6d8f7"
+    },
+    {
+      "record": "app/cache/data7/8/3az1p0rh.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/vse/f6927ea15224b13d8b5e18d2a167c870.unity3d",
+      "sha256": "fe976087e7cc468ebacf7f824dfa0e99daf03797fbccd0b7b54b770125cf89c1"
+    },
+    {
+      "record": "app/cache/data7/8/3bmoo41h.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/c75f8c81f81fb1fac89b5ec9bfe9f919.unity3d",
+      "sha256": "2cfb44f8f1494560e5f3d25315c6b37f101a9403d54c3c90581c0e2b3b427ee7"
+    },
+    {
+      "record": "app/cache/data7/8/3i67szyh.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/059e5789c848f6ead1827e213ad5a55d.unity3d",
+      "sha256": "93fb889beec2ec71bc29aace97037697d8742a8df226b76c5ada67b3608828f3"
+    },
+    {
+      "record": "app/cache/data7/8/ixkwhxmh.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/10f36f0d51a0cb436e6f3db7ae102012.unity3d",
+      "sha256": "d60c21af13e0c784c5a85222182dd3e13644a11a1a4ac12e626c04abbc29fb92"
+    },
+    {
+      "record": "app/cache/data7/8/qfrkajch.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/jquery-1.7.2.min.js",
+      "sha256": "0796d893da7878decccfda79abedd90d4f29a6faca280ce66475b239f542c976"
+    },
+    {
+      "record": "app/cache/data7/8/xn8jju08.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/b367c77807e6f2b665e1cefa4cfbb1f0.unity3d",
+      "sha256": "1186cc99ac26f3b24dcc5453923132d8bed08248eed7bd8a8a3e14876f8c6656"
+    },
+    {
+      "record": "app/cache/data7/9/14paetry.d",
+      "url_without_query": "http://client-onisoul.86joy.com/crossdomain.xml",
+      "sha256": "425ef830a441a537071f4ef437ca31732c48767e6ff161a4b8f1a493dfc3c4bd"
+    },
+    {
+      "record": "app/cache/data7/9/1rwugzgy.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/gwz/css/client_login.css",
+      "sha256": "4198629c60937cfbab922e292a53244ba3a81953a25e7b957682e35c93ac94f2"
+    },
+    {
+      "record": "app/cache/data7/9/29crtbyy.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/vse/0d81189a6ca1ec4bf0f38a663f26cf35.unity3d",
+      "sha256": "0ba57368573698921468575914c12ff40a6605a38ef509b2b87efa27cca06972"
+    },
+    {
+      "record": "app/cache/data7/9/2l7v1vpi.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/app.css",
+      "sha256": "fd5fc5fd21674c734ec4ef64f78ae2869f81a58a31b4f8e593276360a937e5be"
+    },
+    {
+      "record": "app/cache/data7/9/3dq73m4i.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/img/progressBar.png",
+      "sha256": "fc7c82095962b8cb6ab1788994ff757e5fd7d188ab26fb8fb9752e6430f6b5c1"
+    },
+    {
+      "record": "app/cache/data7/9/3fpboh49.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/8f84377a198c71e070b6db7cdf553ed8.unity3d",
+      "sha256": "e0a56365e7ca76e25ec62f9eddaaf01402d2cae7aaf5f7f20d9c2c1ca0bd44c9"
+    },
+    {
+      "record": "app/cache/data7/9/3kflj1fy.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/c497220561df790e43c4dd38373aec41.unity3d",
+      "sha256": "9aa87bd80e4d7606c88bd69dee4136cc4843dd40b1e86827b9c8143d65d78e1f"
+    },
+    {
+      "record": "app/cache/data7/9/3knhbvey.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/adc1d7a0c343058b8e5ab028cda935f5.unity3d",
+      "sha256": "6a0b4eddb709d876d99fafbd7bfcdbb402c4bc134dc6c2de4447a7e178c911df"
+    },
+    {
+      "record": "app/cache/data7/9/3r5tbsly.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/126bbace5523a5a31d9292628d57ff26.unity3d",
+      "sha256": "549b1afc19acc502f1b2396d43176246b684e4eaf1f032181aba3664c14764f3"
+    },
+    {
+      "record": "app/cache/data7/9/5y4q7x6y.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/7bf2c1d92f87d89a4f646a9cefb8fb62.unity3d",
+      "sha256": "ee6fcae6e8a50135631826694ab30b115003318fc22b4348271446013c0ac7ee"
+    },
+    {
+      "record": "app/cache/data7/9/v91uvtby.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/05c30c921f7df859c43b06814295ffec.unity3d",
+      "sha256": "5b76b439f538525cab30d1648d974924012d9a55e5f8b7ada8c9275c160eb4e8"
+    },
+    {
+      "record": "app/cache/data7/a/1mgzzdej.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/33737de7e4b5c348911896722329e64e.unity3d",
+      "sha256": "0047456e1068241d2e323a07524b3ebee99a5cd320552d44db7e49c128f10073"
+    },
+    {
+      "record": "app/cache/data7/a/2f6f3g2j.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/497199bd73b1a959dfb449546a779ac2.unity3d",
+      "sha256": "18a7816694f67b0a8a043edb912bbacca041ce16b91b57e46f58befbd923afff"
+    },
+    {
+      "record": "app/cache/data7/a/2gpsuv3z.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/cch/ed8e270faf845162d07583fcc6d495b3.unity3d",
+      "sha256": "8fd9b8aa6cc8d4da53507d78e54f29e72c7cc32909f67bb25fd11b43559fa00b"
+    },
+    {
+      "record": "app/cache/data7/a/2thd08lz.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/building/38d69ffa1534490a6b475943da550ee5.unity3d",
+      "sha256": "2621a99d0e88a1f4ba0f0cb414e8e6654fc6984b9ba50955df7ce678c183e4fd"
+    },
+    {
+      "record": "app/cache/data7/a/2ydob53j.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/78a4465015e3bd14bc422ab9309ece80.unity3d",
+      "sha256": "09f870a0c2f7f02ad54434a39fd5a600454e2f4ab8c2b754b2eda8306eebdc17"
+    },
+    {
+      "record": "app/cache/data7/a/3vrkhdsj.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/unityProxy.js",
+      "sha256": "9d8f75910d383a4763179c91b19c0fb82ec3e5ebbd143b1a24fad6c28ee70e04"
+    },
+    {
+      "record": "app/cache/data7/a/eg45axbz.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/1b3772fdd4b788f942075d29d2f32423.unity3d",
+      "sha256": "f06304531faeacb89af50511ad6179dc9877de17968e1160c33bcbd992933537"
+    },
+    {
+      "record": "app/cache/data7/a/mcvg1ifj.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/58479003f5c8fd0533991bf149daafec.unity3d",
+      "sha256": "a0f18e218cc3ffd42aa881a398503a8c7a017aec9b26c564f2514c35049e078a"
+    },
+    {
+      "record": "app/cache/data7/a/x2wksfij.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/847e04518ae0fc425763026b8eba31d0.unity3d",
+      "sha256": "51ec2b52f58e82610789ca3f5f1c23a4a600171870c0444c3068dc3432857cd8"
+    },
+    {
+      "record": "app/cache/data7/a/zdzw1gkz.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/9fc1c652593120bf331b9c032ee3a3a1.unity3d",
+      "sha256": "a52fc8012bf9f9c55ac1a865ab6bd3b5f190dd3ac7361d45999505adee52e8dc"
+    },
+    {
+      "record": "app/cache/data7/b/1n82vj2k.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/7e4e0099d6ba81ed5c3775dfebd67b39.unity3d",
+      "sha256": "80fb31ae3bbe095870ae6d3e3c2cfc08e1e1da32ded16d2949526e5df5840835"
+    },
+    {
+      "record": "app/cache/data7/b/1zpy5ynk.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbm/db45320f915d81f7dbda1d07a9687091.unity3d",
+      "sha256": "f5a87eb21953637a333a5d7a6af86a52ea494ad76250563bde6e90c0dfcadd82"
+    },
+    {
+      "record": "app/cache/data7/b/26l0kxik.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/7aa93dd1892f164b2c18b8acf24a803e.unity3d",
+      "sha256": "f6abb4f5c8b2516ae1e52908de6c73f61005e5c541d3e499395aaad99e0d4c42"
+    },
+    {
+      "record": "app/cache/data7/b/b1spzr0k.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/5dd54c404f670bba91f92f1171ec1c08.unity3d",
+      "sha256": "afea22f4fb2a14c6c467af5000c1a0461f81e8b2d0b27b910518350007f41b62"
+    },
+    {
+      "record": "app/cache/data7/b/u9g2k6lk.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/bgm/af2799ae4c9f2dfc4b19182582af84f7.unity3d",
+      "sha256": "27f2e72949950f8a2fbfe75bdc50bb7bf292e561eb60e83312c8815d044112d3"
+    },
+    {
+      "record": "app/cache/data7/c/1efspfil.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/9cea2756fc5fb7cb0179cea6461d305f.unity3d",
+      "sha256": "8dd4421d2706049a4063f55e2f6286b3ca53e7dfa8832c2934b5efbdbd24bc3a"
+    },
+    {
+      "record": "app/cache/data7/c/3h56yh3l.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/7385b1fdf1cdc03103ecdbfc4cb16fa9.unity3d",
+      "sha256": "eb41129095f981953cff55b95c1adc3c356e1cbd3cc99ac0392208fad5a3a40b"
+    },
+    {
+      "record": "app/cache/data7/c/h0u2d57l.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/img/progressFrame.png",
+      "sha256": "1a581833d10d9571cf02cd5689b6c753502f5e2b235e8f1cb117ffdb0b8488a7"
+    },
+    {
+      "record": "app/cache/data7/c/wj3tfozl.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/c9b51a59a598497d255163202eae18a7.unity3d",
+      "sha256": "860ac4ad2d18ca4f3fbaeaf47a124945466e669a96c6d3f58fee7ea374c503f2"
+    },
+    {
+      "record": "app/cache/data7/d/16pv7vmm.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/decaf7c5dfcfe9245dff598fa0c8387b.unity3d",
+      "sha256": "f0060720771c1f409a20df2f9f221291d52d0214be07b16de46288e4a3b96a4d"
+    },
+    {
+      "record": "app/cache/data7/d/1ct0kzbm.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/7a5a704083c6fe1866b4b2377977f426.unity3d",
+      "sha256": "6927004cb47c53947b54df54d656b0667bacf40c251b51036cd1f553abb01535"
+    },
+    {
+      "record": "app/cache/data7/d/2abaf5hm.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/723c59e175751f90d310626eb22d866e.unity3d",
+      "sha256": "c643efabbb341bee86f9d2b6c03eff6af38856316a25b68b4f0777428eca266d"
+    },
+    {
+      "record": "app/cache/data7/d/2mveqaqm.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/e8732d2149d29a864dc846dd6ec3d180.unity3d",
+      "sha256": "16964b8a9a150f7d4ba2cfee12825782673e40d3155cb272f74a9c49068109f5"
+    },
+    {
+      "record": "app/cache/data7/d/39mroj5m.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scr/632df91e564261f2d8499408c5d77615.unity3d",
+      "sha256": "4376e11d92bcc09169040e35c1d71d739c5c623ec630697454f01d2e6aab67db"
+    },
+    {
+      "record": "app/cache/data7/d/3oid4i2m.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/91a475d96d505fb3c976182eda2dba51.unity3d",
+      "sha256": "1c0564bda2a8813c9c0241b95a0b4e1ef3130eb84bbdbfa0bb0355f0c3639552"
+    },
+    {
+      "record": "app/cache/data7/d/kbeizo6m.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/app.unity3d",
+      "sha256": "2289efef2c60763139468112f9ab4ff3c80635ed28fb29a37f188d6401fba5f3"
+    },
+    {
+      "record": "app/cache/data7/e/17drm04n.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/item/699525c56fb6a8c7b8d2dea4a940207d.unity3d",
+      "sha256": "87498d38b762b3724e00d24958f32500a48ba3b371c90bc2fdd7e8962bbc5e56"
+    },
+    {
+      "record": "app/cache/data7/e/1dou7awn.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/27aeca84745819e5b09fd02644d98a60.unity3d",
+      "sha256": "8de9a798b9cb627515c2496c7dd302b4d09625d43ddcbe21aab7350a56b3f036"
+    },
+    {
+      "record": "app/cache/data7/e/1exturen.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/questBanner/954e5488990d54038aadc509838c7456.unity3d",
+      "sha256": "66415cd5f439aca56b77cc6f567ab254abe3725c8ae9cdbea4a6e650a91ed8fa"
+    },
+    {
+      "record": "app/cache/data7/e/1ul55dwn.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/product/847d17e7731b7f07a0d48c670bd81f24.unity3d",
+      "sha256": "9623de96306f2b83bda612dc28aedbd7dba4496f1cae525ba22f6c684df3368f"
+    },
+    {
+      "record": "app/cache/data7/e/29dto9an.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/vse/f9c0557078d03607e495d1f021c93dc5.unity3d",
+      "sha256": "eaa923d03211437d70ca10029b8af8b4c234e592e7e9b287024826b278c1a8b2"
+    },
+    {
+      "record": "app/cache/data7/e/389htzvn.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/scene/1243ea6aa67634ac98d68538c84a3a84.unity3d",
+      "sha256": "2afee860bbe0a18e8ff33a1123c628c1c3668d43da5aacc5dc863b472a0decc8"
+    },
+    {
+      "record": "app/cache/data7/e/3ar1l1in.d",
+      "url_without_query": "http://game-onisoul.86joy.com/client/js/revision.js",
+      "sha256": "3a1806abf6e8c7371c7e9de4890e0c4192c0dff886c7aabdc33ec6b894cee3a6"
+    },
+    {
+      "record": "app/cache/data7/e/3l9hih0n.d",
+      "url_without_query": "http://static.86joy.com/cms/upload/ad/635381867987689579.jpg",
+      "sha256": "a618cdc534d7d6d16000c67def9ecd0e726489b65e51b7333990e997fe497835"
+    },
+    {
+      "record": "app/cache/data7/e/3q38dc2n.d",
+      "url_without_query": "http://passport.86joy.com/Public/aucenter/js/jquery.blockUI.js",
+      "sha256": "feaefa7dfeb6da190b4889923460dfc3c68629dd3e81c0941a81f9ac522f6d96"
+    },
+    {
+      "record": "app/cache/data7/e/5r8j81bn.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/92957851aaaf53d9e3318713a37bfac6.unity3d",
+      "sha256": "d528cd2a88a06c2b0f199fdc6eef5c92427b4846b9e83cb4c21366047efed39d"
+    },
+    {
+      "record": "app/cache/data7/f/2d2jvjfo.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/41ab23488bde47140f9cabc3d7807a92.unity3d",
+      "sha256": "ad9b5c55102c1c2077c2c0a5d67e053dc25d35ed363fc7d12775d9b800e01463"
+    },
+    {
+      "record": "app/cache/data7/f/r74amd8o.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/3e87841ff03b2b7d93e15d3d5be0afa5.unity3d",
+      "sha256": "043ba47e55e15a9d6063119d66b3773c0c3b3ecfff9973b145f366e1842f3f85"
+    },
+    {
+      "record": "app/cache/data7/f/uncp7wwo.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/chara/5a10edfdede8bd03f7436a55fdf63aaa.unity3d",
+      "sha256": "b277cd47d5e3d0f4e16f3bea734245e2575b8e1a7a74ebdfe4aac67e1a250fb6"
+    },
+    {
+      "record": "app/cache/data7/f/y9xrgd6o.d",
+      "url_without_query": "http://client-onisoul.86joy.com/client/pc/jp/assets/pbg/6649236a9155e08b427eb1bdfa6b4da9.unity3d",
+      "sha256": "c68cc9fb3a09999e1a16cce29af13aec91dcda495e355053d19977144f60f0dd"
+    }
+  ],
+  "original_bridges": {
+    "commontool.js": {
+      "record": "app/cache/data7/1/1ez9vc11.d",
+      "record_sha256": "06121f47ba65bfba634194b955a39495089b7048cd888b02895c6c7f1d0734e0",
+      "body_sha256": "1f88ccdbad83a481d5360537496a90f377d71d36edb8214ab8146c394c75f1ca",
+      "offset": 311,
+      "decoding": "plain UTF-8 BOM",
+      "line_count": 224
+    },
+    "app.html": {
+      "record": "app/cache/data7/3/2kwvyad3.d",
+      "record_sha256": "ea51179ba76634ca9988222fb9dc193f2ddf60772da1f9d032117ff8895666ab",
+      "body_sha256": "3b2c4c7cd0de619eb83b43c3892d0ca3496a251c2ec5b89c130de669d822a7ec",
+      "offset": 408,
+      "decoding": "zlib",
+      "line_count": 207
+    },
+    "app.js": {
+      "record": "app/cache/data7/7/1ks5jx17.d",
+      "record_sha256": "ce3474dd7128a5b192a36a77ce49b3f9ee3da5b039aca0b54ffbf059d97b3ffe",
+      "body_sha256": "5d2d8402770f557b01832382ce04eb8f45d4b2f92bd6bfc8f073862eb10a7e0e",
+      "offset": 304,
+      "decoding": "plain UTF-8 BOM",
+      "line_count": 213
+    },
+    "unityProxy.js": {
+      "record": "app/cache/data7/a/3vrkhdsj.d",
+      "record_sha256": "9d8f75910d383a4763179c91b19c0fb82ec3e5ebbd143b1a24fad6c28ee70e04",
+      "body_sha256": "204aed4bef88a96d888dbe703db46b04b8ddc96b214dbad0f26f0168de18a66a",
+      "offset": 311,
+      "decoding": "plain UTF-8 BOM",
+      "line_count": 141
+    }
+  },
+  "missing_page_bodies": [
+    "strategy/strategymatch.html",
+    "strategy/strategy.html",
+    "siege/siege.html",
+    "siegeResult/siegeResult.html",
+    "turfWarResult/turfWarResult.html"
+  ],
+  "absence_scope": "Only this original installer cache; not proof pages never existed or all client assets were searched",
+  "original_cs": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BrowserProxy.cs",
+      "sha256": "ba02b20688aea58470be85333fa6cafad7834e1a32f5adc63e0108464f8fd077"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLSiegeMediator.cs",
+      "sha256": "f628604c34a17f8f48aa4c9b21b106c39c804f46a13d6ce0ba539bd099716721"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategyMatchMediator.cs",
+      "sha256": "59bf1ffddd3d0b569a6625fcfd3bd33403aea3bec900d141c0fde033a8f8f60f"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategyMatchMediator_History.cs",
+      "sha256": "7bb8ae46e3e233e50b065cca0b2c1b64e1f6198a81401429788b5106822d86b6"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategy.cs",
+      "sha256": "2dc57cae895c2d89e8c2d832d6c999aaeaaf0573c95680798007e551c97755f8"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategyMediator2.cs",
+      "sha256": "074434f30c8b34316848a26938508c2ad19be5ba83fe6e69b69833360c7e9c33"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategyMediatorPlayer.cs",
+      "sha256": "6e371f0d9f9e0ab317752080d7f36a0bca3cce8837c91659ba6077496fcf17f5"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategyMediatorPlayer2.cs",
+      "sha256": "3acdebf46b9ecec3224b9802384fbc138e4f4568a74cb45ff9b9f99d9fc1ffc3"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategyMediatorPlayerBattle.cs",
+      "sha256": "d8100da6484f0001feec90aa15c36a99ba30dcd9e48d8bb402d15a1f5175afdd"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyLogAnalizer.cs",
+      "sha256": "022b5d769d7786c9aab3807cf9c35f5388a7dde02e42766ee72f5ba3530b98e8"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyResultWindow2.cs",
+      "sha256": "3053aad96bf6b5c656f3e4ed3476323a956d119a4f66a4d2b1f70862a57af21d"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyResultPoliticWindow.cs",
+      "sha256": "cbdca4712b19297676bf4e3773606f614c846e5e8c026ba816ab52fc065d1914"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SiegeResultRenderer.cs",
+      "sha256": "5ff2ccd9bbf9461e8533466b9c08d13906e5153cf57bfc305bd402d993be6b53"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarResultRenderer.cs",
+      "sha256": "bf28b3412d452eb86e738061f21abff7b259a7e6899054b267e57698e9a5d54b"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategySelect.cs",
+      "sha256": "8ea06faed8a8b403f4b577a87cd70d471d4615a34ffa75ae8f01a2ff47901802"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategySelect_army.cs",
+      "sha256": "a19cdca01a396f851c0d8297b25421da1ddbb37b724129b3d862d64c2a5f1029"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyMoveableRegionSelector.cs",
+      "sha256": "64fc028c8797e0b607a5131fce9b6298251ddead9a0b00f34baed67cfd394f06"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticButton.cs",
+      "sha256": "9a6b3936a1bf1c2cbbd37d092c8365b0a366c5495f4c7a6c7de68c1ebeb8cd44"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticEventStrategyButton.cs",
+      "sha256": "ae800583d5836e15679b4622933a2846e7aef7b6241d26fd4379babe982dacc3"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticEventSiegeButton.cs",
+      "sha256": "51a3a985f4d5b3315227a03ecbbc029d22d4abbf6c5f76725f2c6a6c4b33a475"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticEventTurfWarButton.cs",
+      "sha256": "dba8b4f3d8e4b89a31d6b1f3f56562b72ddf2182631a803b3e8915edf4f32998"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarWorldMap.cs",
+      "sha256": "fdc39a81aab5791e572c22b279491416906b1308bffb8a0fef8e2784bc3d122e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarBriefCache.cs",
+      "sha256": "d3834cf7aa9a42f51fcd52d7bcbc27c58ed63b3992d0ca36c49444a6640c0868"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\siegeBriefMenu.cs",
+      "sha256": "580efc16cbdac4f0424bdd0212d72271d410ff8053e94c6e9ee90963cd084436"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\vsSetting_Siege.cs",
+      "sha256": "5782cd031b60e11f861803d6ca8a4b671b3bb9dec8558e6794a514d30510616e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessFuncs.cs",
+      "sha256": "517f91fc078044b7461ff9ea14d92d9dfe57c8bebe218c40c5af995ae85ad15c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessor.cs",
+      "sha256": "f35537d17a9758c7bebf1ec8d42c61ebf696a53d460f46b9e77bb60405c6df2e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TimeFuncs.cs",
+      "sha256": "d1654b2cf206530ccc9487ca98cd81dd7f26700c19fe8ff0fc0779ba889e82ef"
+    }
+  ],
+  "evidence_lines": {
+    "app.js": [
+      "15-31 SendMessage forwarding",
+      "53-80 iframe paths",
+      "169-173 reseiveMessage postMessage"
+    ],
+    "unityProxy.js": [
+      "76-85 open iframe",
+      "103-140 receive/send responseId"
+    ],
+    "HTMLSiegeMediator.cs": [
+      "61-118 request -> pairings -> derived rows"
+    ],
+    "HTMLStrategyMatchMediator.cs": [
+      "134-221 analize actual data (exclude getDebugHash)"
+    ],
+    "HTMLStrategyMatchMediator_History.cs": [
+      "179-248 totalCount -> records -> decisions -> winner"
+    ],
+    "TurfWarWorldMap.cs": [
+      "291-328 optimistic Battlefield change BEFORE request"
+    ],
+    "StrategyMoveableRegionSelector.cs": [
+      "145-168 reachable/route/coolTime/seqId"
+    ]
+  },
+  "limitations": [
+    "Missing iframe DOM/JS consumers remain unverified",
+    "Bridge-derived display keys are not API fields",
+    "No server matching, cycle, reward or claim idempotency inferred",
+    "New record projections need a trusted producer and are not mounted"
+  ]
+}

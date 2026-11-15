@@ -1,1 +1,20 @@
-{"group":"H","baseline":"1f287e33123afa452d2f5d2aac2427566d549f73","targeted":{"command":"python -m unittest tests.test_account_progress_services -q","passed":12,"skipped":0},"regression":{"command":"python -m unittest discover -s tests -q","passed":238,"skipped":0,"notes":"Existing ResourceWarning in baseline tests; no failures or missing optional dependency"},"production_mounted":false,"deployed":false,"unity_validated":false}
+{
+  "group": "H",
+  "baseline": "1f287e33123afa452d2f5d2aac2427566d549f73",
+  "targeted": {
+    "command": "python -m unittest tests.test_account_progress_services -q",
+    "passed": 27,
+    "skipped": 0
+  },
+  "regression": {
+    "command": "python -m unittest discover -s tests -q",
+    "passed": 253,
+    "skipped": 0,
+    "notes": "Existing ResourceWarning in baseline tests; no failures or missing optional dependency"
+  },
+  "production_mounted": false,
+  "deployed": false,
+  "unity_validated": false,
+  "phase2_added_tests": 15,
+  "phase2_scope": "mypage/playerLevel first-tier only; no stamp/daily success implementation"
+}

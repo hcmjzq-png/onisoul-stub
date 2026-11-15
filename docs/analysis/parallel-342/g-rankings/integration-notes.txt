@@ -17,6 +17,10 @@ G 基线 1f287e33123afa452d2f5d2aac2427566d549f73；不部署、不动公共文�
    源数据刷新时点/结榜边界、同分策略、参与资格需要确认。现有模拟同分策略明确标记为兼容选择。
    只读接口沿用 PlayerServices.call，正常数据不写档；已有 dirty 规范化行为仍沿用现有框架。
    国家必须由认证玩家 entity.country 派生；请求的 playerId/country 不可选择他人个人记录。
+   自审补充：单次响应持有同一不可变 SnapshotPair；跨请求不锁定版本，客户端未发快照版本字段。
+   并发换代测试已覆盖两账号交错读取，但不能替代尚未提供的数据库构建/发布事务。
+   ScoreRecord 拒绝超出 Int32 或 float32 不能精确表示的分数，避免摘要与列表显示不同；
+   这是模拟服支持范围，不是原服石高封顶规则。发布前构造失败必须整批拒绝，不要跳过坏行或取整。
 
 3. docs/api_schema.md / docs/analysis/api_*.tsv（仅总集成改）
    石高列表 entries(number)、myRecord.rank/score、rankers.<pageIndex>.rank/score/username/playerId/country。
@@ -45,9 +49,13 @@ G 基线 1f287e33123afa452d2f5d2aac2427566d549f73；不部署、不动公共文�
    刷新/重登验证石高与名次一致；上期不可从当前复制；快照缺失必须走 errorReason，不能显示伪造第一。
    献纳仅在可用原服证据或可信存档下采样：1000/2000金币、贴上限、溢出、一次卡片献纳、重试及重登；留取脱敏前后状态与回包。
    所需未证规则：时效倍率、周期边界、贡献清零/国力衰减、同分/资格、国家结算、去重语义。
+   原石高历史 Around 先用当前 brief.rank 再请求 term=last（HTMLRankingMediator_Kokudaka:43-53）；
+   独占客户端验证时单列此已知定位局限，不要把它误判为列表排名混期或擅改摘要语义。
    模拟服自己生成的回包不能反过来作为原版规则证据。
 
 7. 回归结果
-   python -m unittest tests.test_rankings_services -v：9 passed。
-   python -m unittest discover -s tests：235 passed，0 skipped；原公共测试 ResourceWarning 未改。
+   PR #45 自审后：G 测试 15 passed（新增 6 项），完整回归 241 passed，0 skipped。
+   命令：python -m unittest tests.test_rankings_services -v；python -m unittest discover -s tests。
+   覆盖 JSON 响应层级、完整分页、零分/未上榜、可表示边界、两账号并发换代、无效来源不写档。
+   原公共测试 ResourceWarning 未改。
    源码/表仅只读；主目录原暂存修改不动；没有网络服务器部署或客户端修改。
