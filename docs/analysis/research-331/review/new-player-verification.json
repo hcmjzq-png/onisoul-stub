@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-15",
+  "base_commit": "4ceef1783fdba4b38e457ac43917967534dc83a7",
+  "full_suite": {"discovered": 616, "passed": 613, "skipped_optional_il": 3, "failed": 0},
+  "optional_il_separate_run": {"passed": 3, "failed": 0},
+  "mysql": {"version": "8.4.13", "isolated_loopback_port": 33365, "normal_http_auth": true, "update_failure_rollback": true, "commit_failure_rollback": true},
+  "production": {"runtime_commit": "87025548628335a46a45df91fa4a33817b691cfd", "repair_mode": "dry-run", "players_scanned": 6, "repair_eligible": 2, "writes_applied": 0, "both_services_active": true},
+  "ui": {"new_player_tutorial": "not-accepted", "reason": "Configs.setup falls back from unknown host:port to production domains; existing port-80 relay did not match its old process record", "game_closed": true, "config_restored_sha256": "1db6e36bf219e8ac5711d62729ed74dca9e375c97de257a67e44e646c39bc52f", "hosts_unchanged": true, "existing_relay_unchanged": true},
+  "cleanup": {"temporary_ui_database_dropped": true, "temporary_stub_stopped": true, "isolated_mysql_stopped": true},
+  "routes": {"total": 402, "dedicated": 80, "placeholders": 322}
+}

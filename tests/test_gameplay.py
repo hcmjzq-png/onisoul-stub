@@ -149,7 +149,7 @@ class GameplayFlowTest(unittest.TestCase):
     def test_missions_1_to_4_rewards_buildings_and_persistence(self):
         session = self._login_and_create()
         baseline = self.service.get_mission_states({}, session)
-        self.assertEqual(baseline["states"], {"0": "C", "1": "O"})
+        self.assertEqual(baseline["states"], {"0": "C"})
         self.assertEqual(self.service.get_drafts({}, session)["draft2000002"]["amount"], 1.0)
 
         for state in ("opened", "accepted", "finished", "closed"):
@@ -211,9 +211,9 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertEqual(map_data["occupiedGrids"]["27,27"], "2")
         self.assertEqual(map_data["buildings"]["2"]["status"], "none")
 
-    def test_client_unlock_bits_survive_reload(self):
+    def test_unearned_client_unlock_bits_are_rejected(self):
         session = self._login_and_create()
-        self.service.set_working_value(
+        result = self.service.set_working_value(
             {
                 "missionId": "po_mission_00000",
                 "indexes": [0],
@@ -222,9 +222,10 @@ class GameplayFlowTest(unittest.TestCase):
             session,
         )
         stored = self.states.load(session["playerId"])
-        self.assertTrue(int(stored["unlockBits"]) & 0x400)
+        self.assertFalse(result["succeeded"])
+        self.assertFalse(int(stored["unlockBits"]) & 0x400)
         missions = self.service.get_missions_in_progress({}, session)["missions"]
-        self.assertTrue(int(missions["po_mission_00000"]["work0"]) & 0x400)
+        self.assertFalse(int(missions["po_mission_00000"]["work0"]) & 0x400)
 
     def test_new_player_detection_is_account_specific(self):
         first = self._login_and_create()

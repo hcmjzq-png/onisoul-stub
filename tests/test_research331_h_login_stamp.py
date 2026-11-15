@@ -2,8 +2,6 @@
 import copy
 import datetime as dt
 import json
-import re
-import subprocess
 import threading
 import types
 import unittest
@@ -300,27 +298,12 @@ class LoginStampTest(unittest.TestCase):
     def test_integration_patch_drives_original_login_trigger_and_relogin(self):
         # Apply the delivered unified diff in memory, never editing a shared file.
         root = Path(__file__).resolve().parents[1]
-        source = subprocess.check_output(['git', 'show',
-            '8023c3fee8e525040d101fee8bf843b48b3256d3:app/business/gameplay.py'], cwd=root).decode().splitlines(True)
-        lines = (root / 'docs/analysis/research-331/results/h-account/integration.patch').read_text().splitlines(True)
-        output, cursor = [], 0
-        for line in lines[2:]:
-            if line == '\n':  # git apply accepts unprefixed empty context lines.
-                line = ' \n'
-            if line.startswith('@@'):
-                start = int(re.match(r'@@ -(\d+)', line).group(1)) - 1
-                output.extend(source[cursor:start])
-                cursor = start
-            elif line.startswith((' ', '-')):
-                self.assertEqual(source[cursor], line[1:])
-                if line[0] == ' ':
-                    output.append(line[1:])
-                cursor += 1
-            elif line.startswith('+'):
-                output.append(line[1:])
-        output.extend(source[cursor:])
+        from tests.patch_context import apply_context
+        source = (root / 'app/business/gameplay.py').read_text(encoding='utf-8')
+        candidate = (root / 'docs/analysis/research-331/results/h-account/integration.patch').read_text()
+        output = apply_context(source, candidate)
         module = types.ModuleType('h_integration_gameplay')
-        exec(compile(''.join(output), 'integration.patch/gameplay.py', 'exec'), module.__dict__)
+        exec(compile(output, 'integration.patch/gameplay.py', 'exec'), module.__dict__)
         def service(plan):
             return module.GameplayService(catalog=self.service.catalog, load_state=self.states.load,
                 save_state=self.states.save, session_store=self.sessions, login_stamp_plan=plan,

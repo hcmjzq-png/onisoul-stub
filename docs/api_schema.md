@@ -203,3 +203,16 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 | item11_0000101/201/301/401 → gold/wood/food/iron | bundle | RewardProcessor.cs:51-73。仅四资源，不扩展付费货币、卡牌或随机奖；容量不足该包裹失败。无已证期限，此发行子集明确无自动过期。 |
 | 管理/调试拒绝的根 `errorReason` | bundle 字段 / 本服关闭策略 | GameRestarter.cs:79-99 在成功消费者之前检查。32 项在 HTTP 认证及 Registry 直调均拒绝；原包装器存在不构成管理员授权。 |
 | socialOffers/socialRemovals/socialInboxIssuances/shared_records | 本服内部持久化设计 | 不加入原请求/响应。无对应字段的本服旧档按各模块缺省读取，损坏数据拒绝；不自动导入原服历史、重置资源或授予奖励。 |
+
+## 2026-11-15 新手初始化与开放位一致性
+
+来源：**bundle**。详见 [运行修复与验证](analysis/research-331/review/new-player-fix-20261115.md)。
+
+- `getStatesFromAllMissions.states` 不再为尚未唤醒的任务预先写 O；初始仅系统任务 0:C。
+  O/A/F 摘要与 `getMissionsInProgress.missions` 明细必须一致，否则明确报错，不生成虚构进度。
+- 系统任务 `work0` 由原客户端默认映射位、任务接受/完成开放位及 10 级截图条件派生。
+  `unlockBits` 是内部缓存，不是独立授权来源；不持久化未经验证的客户端上报。
+- `setWorkingValue` 只实现原客户端当前可追溯的系统任务 index=0。允许确认已符合前置的接受开放位，
+  以兼容原客户端先上报位、后提交状态的顺序；实际权限在任务状态提交后保存。
+- 不新增协议字段，不把 0x1fffffff 传输范围当作玩家权限，也不绕过剧情临时操作锁。
+  本轮静态/HTTP/MySQL 回归完成，真机新手对话与逐步解锁尚未验收。
