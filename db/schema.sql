@@ -14,6 +14,16 @@ CREATE TABLE IF NOT EXISTS accounts (
   UNIQUE KEY uk_account_player (player_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Private transaction receipts, quotas and snapshot pointers. NULL reserves a key.
+CREATE TABLE IF NOT EXISTS shared_records (
+  namespace   VARBINARY(64)  NOT NULL,
+  record_key  VARBINARY(128) NOT NULL,
+  state_json  JSON          NULL,
+  revision    BIGINT UNSIGNED NOT NULL DEFAULT 0,
+  updated_at  DOUBLE        NOT NULL,
+  PRIMARY KEY (namespace, record_key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- 登录会话
 CREATE TABLE IF NOT EXISTS sessions (
   token       VARCHAR(128) NOT NULL,

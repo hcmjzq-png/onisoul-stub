@@ -21,6 +21,29 @@ class StateConflictError(RuntimeError):
     """The caller attempted to save a stale player snapshot."""
 
 
+class RetryableTransactionError(StateConflictError):
+    """The entire transaction rolled back; reload and retry the operation."""
+
+
+def revision(state: dict[str, Any]) -> int:
+    value = state.get("_revision", 0)
+    if type(value) is not int or value < 0:
+        raise ValueError("invalid persisted state revision")
+    return value
+
+
+def decode_state(raw: Any, player_id: str) -> dict[str, Any]:
+    try:
+        data = json.loads(raw) if isinstance(raw, (str, bytes)) else raw
+    except (ValueError, TypeError) as exc:
+        raise ValueError("invalid persisted player state") from exc
+    if not isinstance(data, dict) or not isinstance(data.get("entity", {}), dict):
+        raise ValueError("invalid persisted player state")
+    data.setdefault("entity", {})["playerId"] = player_id
+    data["_revision"] = revision(data)
+    return data
+
+
 def _default_state(player_id: str) -> dict[str, Any]:
     return {
         "version": 1,
@@ -48,28 +71,14 @@ def load(player_id: str = DEFAULT_PLAYER_ID) -> dict[str, Any]:
             row = cur.fetchone()
     if not row:
         return _default_state(pid)
-    try:
-        data = json.loads(row["state_json"])
-    except (ValueError, TypeError) as exc:
-        raise ValueError("invalid persisted player state") from exc
-    if not isinstance(data, dict) or not isinstance(data.get("entity", {}), dict):
-        raise ValueError("invalid persisted player state")
-    data.setdefault("entity", {})["playerId"] = pid
-    try:
-        data["_revision"] = int(data.get("_revision") or 0)
-    except (TypeError, ValueError):
-        data["_revision"] = 0
-    return data
+    return decode_state(row["state_json"], pid)
 
 
 def save(state: dict[str, Any], player_id: str = DEFAULT_PLAYER_ID) -> None:
     """Save a player snapshot using optimistic revision checking."""
     pid = str(player_id or DEFAULT_PLAYER_ID)
     now = time.time()
-    try:
-        expected_revision = int(state.get("_revision") or 0)
-    except (TypeError, ValueError):
-        expected_revision = 0
+    expected_revision = revision(state)
     with db.connection() as con:
         with con.cursor() as cur:
             cur.execute(
@@ -79,21 +88,16 @@ def save(state: dict[str, Any], player_id: str = DEFAULT_PLAYER_ID) -> None:
             row = cur.fetchone()
             current_revision = 0
             if row:
-                raw = row["state_json"]
-                current = json.loads(raw) if isinstance(raw, str) else raw
-                if isinstance(current, dict):
-                    try:
-                        current_revision = int(current.get("_revision") or 0)
-                    except (TypeError, ValueError):
-                        current_revision = 0
-            if row and current_revision != expected_revision:
+                current_revision = revision(decode_state(row["state_json"], pid))
+            if current_revision != expected_revision:
                 raise StateConflictError(
                     f"player {pid} revision changed: "
                     f"expected {expected_revision}, found {current_revision}"
                 )
 
             next_revision = expected_revision + 1
-            payload = json.dumps({**state, "_revision": next_revision}, ensure_ascii=False)
+            payload = json.dumps({**state, "_revision": next_revision},
+                                 ensure_ascii=False, allow_nan=False)
             if row:
                 cur.execute(
                     "UPDATE players SET state_json = %s, updated_at = %s "

@@ -1,0 +1,445 @@
+{
+  "access_date": "2026-11-15",
+  "target": "2014-07-12 国际中文版 PC 原安装包",
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "source_root": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115",
+  "source_proof": "docs/analysis/static-review-20261115/source-proof.json",
+  "files": {
+    "BattleApiClient.cs": "70e027944624ba41a2d6b3faa9a917f6f3d4a40616263a7a17fad257488113e7",
+    "BattleLogManager.cs": "bf3ada868c109d0d2cc74fa46e9a626ceb9b2e1b619f8b10782fbfcfacf20d89",
+    "BootUp.cs": "4efaa8f34f3d652a8301cca8fc8653e049e4ca0be5e08d8dd13fdac142f065b8",
+    "DebugMakeCharacterMenu.cs": "40dd67595728fca0bc262496e50e231719c48fa9a479e4ba60878e017fce9dd4",
+    "DebugMakeEquipMenu.cs": "f5abece101784239f0f28ea657d0e4c6efd4f443c6c5ea80d434e532533271e8",
+    "GameRestarter.cs": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea",
+    "MightOfNationDialog.cs": "2baa31b417d244242d0553776678412b4bfa331f68f5e720727173e43801b619",
+    "PoliticDebugMenu.cs": "6d75dbc92a36a0b2cb826fb6786f82285bd80cb137a7c1714eb372b331df0d4d",
+    "Quest.cs": "7b3946f597182c8f99b203619537c8d5be41288cc073ee25a5c7f34dc7c04c2b",
+    "QuestDataCache.cs": "95fc0a1e0573ffb57264f52a80302295456d312e4209defe8df7d84bb65c3b6b",
+    "QuestStoryAreaSelector.cs": "b2b18b0a40176218f74a791863c126dd3e9e6bdb017c79b27b63eae1a667ae4d",
+    "QuestStorySelector.cs": "c7987db67c373dcaeb03ac4e6e55ccf6fcace1df9257a4ed9148ef567808126f",
+    "QuestTypeSelector.cs": "2562c7f3020bcf5555a2dc5e9fe85b9b2c032c619a2eab93d0876284a0f2b462",
+    "SessionKeeper.cs": "2f04661dea4962be2760fb647c8a9235d54b504c5e62f3c2cfc1422c849d7aa9",
+    "WebApiClient.cs": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+    "mypage.cs": "f8986aca91fb41c410098aa2c6b942a5d42852a16b51dc7f55fb0cb01ab187dc"
+  },
+  "endpoints": {
+    "debug/debugLoginCog": {
+      "method": "debugLoginCog",
+      "declaration_line": 456,
+      "http_call_line": 462,
+      "request_keys": [
+        "loginId",
+        "password"
+      ],
+      "lexical_callers": [
+        "BootUp.cs:147",
+        "SessionKeeper.cs:98"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/dedicate": {
+      "method": "debug_addDedicateScore",
+      "declaration_line": 646,
+      "http_call_line": 652,
+      "request_keys": [
+        "token",
+        "score"
+      ],
+      "lexical_callers": [
+        "MightOfNationDialog.cs:440",
+        "MightOfNationDialog.cs:447",
+        "MightOfNationDialog.cs:454",
+        "MightOfNationDialog.cs:461"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/resetDedication": {
+      "method": "debug_resetDedicateScore",
+      "declaration_line": 655,
+      "http_call_line": 660,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [
+        "MightOfNationDialog.cs:468"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/clearBuildings": {
+      "method": "debug_clearBuildings",
+      "declaration_line": 937,
+      "http_call_line": 942,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [
+        "PoliticDebugMenu.cs:445"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugDeleteAllCharacter": {
+      "method": "debug_DelteAllCharacter",
+      "declaration_line": 1377,
+      "http_call_line": 1382,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [
+        "PoliticDebugMenu.cs:228"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugDeleteAllEquip": {
+      "method": "debug_DelteAllEquip",
+      "declaration_line": 1385,
+      "http_call_line": 1390,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugCreateQuestEncount": {
+      "method": "debugCreateQuestEncount",
+      "declaration_line": 1562,
+      "http_call_line": 1576,
+      "request_keys": [],
+      "lexical_callers": [
+        "BattleApiClient.cs:14",
+        "BattleLogManager.cs:5223"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/resetPlayer": {
+      "method": "resetPlayer",
+      "declaration_line": 1764,
+      "http_call_line": 1770,
+      "request_keys": [
+        "token",
+        "isCreatePlayer"
+      ],
+      "lexical_callers": [
+        "PoliticDebugMenu.cs:464"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugGetQuestCompleteFlags": {
+      "method": "debug_getQuestCompleteFlags",
+      "declaration_line": 1815,
+      "http_call_line": 1821,
+      "request_keys": [
+        "token",
+        "questType"
+      ],
+      "lexical_callers": [
+        "QuestDataCache.cs:494"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/resetQuest": {
+      "method": "resetQuest",
+      "declaration_line": 1845,
+      "http_call_line": 1850,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [
+        "QuestTypeSelector.cs:351"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/forceCompleteQuest": {
+      "method": "forceCompleteQuest",
+      "declaration_line": 1853,
+      "http_call_line": 1860,
+      "request_keys": [
+        "token",
+        "questType",
+        "questId"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/forceProgressQuest": {
+      "method": "forceProgressQuest",
+      "declaration_line": 1863,
+      "http_call_line": 1872,
+      "request_keys": [
+        "token",
+        "questType",
+        "questId",
+        "chapter",
+        "area"
+      ],
+      "lexical_callers": [
+        "QuestStoryAreaSelector.cs:253",
+        "QuestStorySelector.cs:412",
+        "QuestTypeSelector.cs:376",
+        "QuestTypeSelector.cs:408"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugOpenQuest": {
+      "method": "debug_openQuest",
+      "declaration_line": 1884,
+      "http_call_line": 1890,
+      "request_keys": [
+        "token",
+        "questType"
+      ],
+      "lexical_callers": [
+        "QuestDataCache.cs:454",
+        "QuestTypeSelector.cs:378",
+        "QuestTypeSelector.cs:380",
+        "QuestTypeSelector.cs:410",
+        "QuestTypeSelector.cs:412",
+        "QuestTypeSelector.cs:414"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/setQuestStep": {
+      "method": "setQuestStep",
+      "declaration_line": 1934,
+      "http_call_line": 1944,
+      "request_keys": [
+        "token",
+        "questType",
+        "questId",
+        "chapterId",
+        "areaId",
+        "step"
+      ],
+      "lexical_callers": [
+        "Quest.cs:116"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugRentalNavigatorBarelyExpiration": {
+      "method": "debug_setRentalNavigatorBarelyExpiration",
+      "declaration_line": 2065,
+      "http_call_line": 2070,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/addCollections": {
+      "method": "addCollections",
+      "declaration_line": 2205,
+      "http_call_line": 2213,
+      "request_keys": [
+        "token",
+        "type",
+        "seriesId",
+        "ids"
+      ],
+      "lexical_callers": [
+        "mypage.cs:343"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/addItems": {
+      "method": "debug_addItems",
+      "declaration_line": 2347,
+      "http_call_line": 2353,
+      "request_keys": [
+        "token",
+        "ids"
+      ],
+      "lexical_callers": [
+        "DebugMakeCharacterMenu.cs:164",
+        "DebugMakeEquipMenu.cs:145",
+        "PoliticDebugMenu.cs:73",
+        "PoliticDebugMenu.cs:89"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugCreateCharacter": {
+      "method": "debugCreateCharacter",
+      "declaration_line": 2356,
+      "http_call_line": 2364,
+      "request_keys": [
+        "token",
+        "baseId",
+        "status",
+        "skills"
+      ],
+      "lexical_callers": [
+        "DebugMakeCharacterMenu.cs:221",
+        "DebugMakeCharacterMenu.cs:241"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugCreateEquip": {
+      "method": "debugCreateEquip",
+      "declaration_line": 2367,
+      "http_call_line": 2375,
+      "request_keys": [
+        "token",
+        "baseId",
+        "status",
+        "skills"
+      ],
+      "lexical_callers": [
+        "DebugMakeEquipMenu.cs:221",
+        "DebugMakeEquipMenu.cs:329"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugAddBuildingExp": {
+      "method": "debug_AddBuildingExp",
+      "declaration_line": 2378,
+      "http_call_line": 2384,
+      "request_keys": [
+        "token",
+        "buildingExp"
+      ],
+      "lexical_callers": [
+        "PoliticDebugMenu.cs:188"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugAccelerateProduceTask": {
+      "method": "debug_AccelerateProduceTask",
+      "declaration_line": 2387,
+      "http_call_line": 2392,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [
+        "PoliticDebugMenu.cs:194"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugIncreasePlayerLevel": {
+      "method": "debug_increasePlayerLevel",
+      "declaration_line": 2395,
+      "http_call_line": 2400,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [
+        "PoliticDebugMenu.cs:210"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugGradeUpBuildings": {
+      "method": "debug_GradeUpBuildings",
+      "declaration_line": 2403,
+      "http_call_line": 2408,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [
+        "PoliticDebugMenu.cs:200"
+      ],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/forceFeedbackFriendOffer": {
+      "method": "debug_forceFeedbackFriendOffer",
+      "declaration_line": 2668,
+      "http_call_line": 2676,
+      "request_keys": [
+        "token",
+        "receivePlayerId",
+        "sendPlayerId",
+        "reply"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/withdrawTurfWar": {
+      "method": "debug_withdrawTurfWar",
+      "declaration_line": 2868,
+      "http_call_line": 2873,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugResetCreditStepCount": {
+      "method": "debugResetBpStepCount",
+      "declaration_line": 3443,
+      "http_call_line": 3448,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "admin/inbox/present": {
+      "method": "forcePresents",
+      "declaration_line": 3470,
+      "http_call_line": 3477,
+      "request_keys": [
+        "playerIds",
+        "text",
+        "rewards"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugCreateRaidBossWork": {
+      "method": "debugCreateRaidBoss",
+      "declaration_line": 3648,
+      "http_call_line": 3655,
+      "request_keys": [
+        "token",
+        "monsterId",
+        "options"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/forceProgressGiganticPhase": {
+      "method": "debug_ForceProgressGiganticPhase",
+      "declaration_line": 3741,
+      "http_call_line": 3746,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/forceProgressGiganticChain": {
+      "method": "debug_ForceProgressGiganticChain",
+      "declaration_line": 3749,
+      "http_call_line": 3754,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/clearLastMigrateTime": {
+      "method": "devClearMigrateTime",
+      "declaration_line": 4191,
+      "http_call_line": 4196,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    },
+    "debug/debugRankingNationalPowerAddScoreWithSwitch": {
+      "method": "devRankingScoreSwitch",
+      "declaration_line": 4199,
+      "http_call_line": 4204,
+      "request_keys": [
+        "token"
+      ],
+      "lexical_callers": [],
+      "caller_limit": "lexical references only; not proof of UI reachability/authorization"
+    }
+  },
+  "new_findings": [
+    "forcePresents sends playerIds/text/rewards without token; this is not administrator authorization",
+    "debugLoginCog precedes token issue; it is not a safe pre-auth allowlist justification",
+    "GameRestarter.cs:79-99 requires errorReason to suppress a success callback",
+    "32 entries remain closed under authenticated, unauthenticated and observe modes"
+  ],
+  "old_report": "No earlier I report: parallel-342/review explicitly reserved these 32 entries",
+  "no_rule_claim": "No debug reward/level/period/gift values adopted from wrappers or tests"
+}
