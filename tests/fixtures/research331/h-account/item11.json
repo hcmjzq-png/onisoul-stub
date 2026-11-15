@@ -1,0 +1,60 @@
+{
+  "item11": {
+    "item11_0000101": {
+      "id": "item11_0000101",
+      "enable": true,
+      "value": 0,
+      "category": "parameter",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_11_0000101",
+      "yomiId": "none",
+      "descId": "none",
+      "iconName": "item11_0000101",
+      "parameterId": "none"
+    },
+    "item11_0000201": {
+      "id": "item11_0000201",
+      "enable": true,
+      "value": 0,
+      "category": "parameter",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_11_0000201",
+      "yomiId": "none",
+      "descId": "none",
+      "iconName": "item11_0000201",
+      "parameterId": "none"
+    },
+    "item11_0000301": {
+      "id": "item11_0000301",
+      "enable": true,
+      "value": 0,
+      "category": "parameter",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_11_0000301",
+      "yomiId": "none",
+      "descId": "none",
+      "iconName": "item11_0000301",
+      "parameterId": "none"
+    },
+    "item11_0000401": {
+      "id": "item11_0000401",
+      "enable": true,
+      "value": 0,
+      "category": "parameter",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_11_0000401",
+      "yomiId": "none",
+      "descId": "none",
+      "iconName": "item11_0000401",
+      "parameterId": "none"
+    }
+  }
+}

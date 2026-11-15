@@ -1,0 +1,221 @@
+{
+  "base": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "client_dll_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "container": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\tableAssets.bin",
+    "sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7"
+  },
+  "files": {
+    "WebApiClient.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43",
+      "reviewed_line_ranges": [
+        "671-684",
+        "295-337"
+      ]
+    },
+    "GameRestarter.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\GameRestarter.cs",
+      "sha256": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea",
+      "reviewed_line_ranges": [
+        "60-92"
+      ]
+    },
+    "ClockTimer.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ClockTimer.cs",
+      "sha256": "798952c85623b3c1197cc7cddaa5c8894fc4f8aac2849f875b6d7f90366b0640",
+      "reviewed_line_ranges": [
+        "23-48",
+        "88-94"
+      ]
+    },
+    "SceneResources.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SceneResources.cs",
+      "sha256": "98fd8f79f177384a112e9a130fbb075453bcec5b85984e92356533b5ea804fcc",
+      "reviewed_line_ranges": [
+        "114-117"
+      ]
+    },
+    "Politic.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\Politic.cs",
+      "sha256": "c56766260a6b1db8fbd3c163c37dd054c8de125998aa1e56f4741ab0e7b3c528",
+      "reviewed_line_ranges": [
+        "116-124"
+      ]
+    },
+    "PoliticFSMLogin.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMLogin.cs",
+      "sha256": "28b74f8c1868368eb5ce978435f9017dfea2b2f4638243fa1ed624197007c2b9",
+      "reviewed_line_ranges": [
+        "48-69",
+        "119-129"
+      ]
+    },
+    "PoliticScriptCommand.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticScriptCommand.cs",
+      "sha256": "1e7810767f3f06d2d5166e24301ef3539901e9aaabb3fec0115f155e543241a3",
+      "reviewed_line_ranges": [
+        "1571-1605"
+      ]
+    },
+    "LoginBounusMenu.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\LoginBounusMenu.cs",
+      "sha256": "43a8f9c6d0ffb457fa641abc743f8aa3fc102c61bfc1e3868d78d59928c54e47",
+      "reviewed_line_ranges": [
+        "175-180",
+        "210-216",
+        "270-332"
+      ]
+    },
+    "UserStatus.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac",
+      "reviewed_line_ranges": [
+        "777-788",
+        "1791-1818"
+      ]
+    },
+    "RewardProcessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardProcessor.cs",
+      "sha256": "00a403c195aa271fd36691b605034890c2a2f8b53aa1d58cdf8654d368eb9bb4",
+      "reviewed_line_ranges": [
+        "25-70",
+        "239-245"
+      ]
+    },
+    "DailyMissionScene.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionScene.cs",
+      "sha256": "ade4b5a99ee026617af780168c79d71759d0b7d0514166e026bd7546e0a78bc1",
+      "reviewed_line_ranges": [
+        "136-192",
+        "331-403",
+        "560-574"
+      ]
+    },
+    "DailyMissionTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DailyMissionTableAccessor.cs",
+      "sha256": "de31787416e375d13de315fb0e6e39eecfb97da9d12e58afe32932f7ea4eaac1",
+      "reviewed_line_ranges": [
+        "1-26"
+      ]
+    },
+    "mypageCollectionSeriesParam.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageCollectionSeriesParam.cs",
+      "sha256": "49e4eb86237042c0ed4c39d75157be7c33c0c07a01764c0cf4c6999d7a53ca65",
+      "reviewed_line_ranges": [
+        "48-89",
+        "96-117"
+      ]
+    }
+  },
+  "tables": {
+    "item11": {
+      "file": "item11.json",
+      "root_key": "item11",
+      "container_name_offset": 24932460,
+      "script_offset": 24932476,
+      "script_length": 10772,
+      "sha256": "a09e50e911f785ee03a68c8a7224421ea8cacd2ab3e1c1801a7f40ed5abb6523",
+      "rows": 35,
+      "row_count": 35,
+      "fields": [
+        "category",
+        "descId",
+        "enable",
+        "iconName",
+        "id",
+        "isAuction",
+        "isCirculate",
+        "isGift",
+        "nameId",
+        "parameterId",
+        "value",
+        "yomiId"
+      ]
+    },
+    "item08": {
+      "file": "item08.json",
+      "root_key": "item08",
+      "container_name_offset": 79226556,
+      "script_offset": 79226572,
+      "script_length": 345706,
+      "sha256": "7946ce46ad7d811d10fe50f26d6cb1b34f5a3f3b30c64922ca6014169048c017",
+      "rows": 1035,
+      "row_count": 1035,
+      "fields": [
+        "category",
+        "descId",
+        "enable",
+        "iconName",
+        "id",
+        "isAuction",
+        "isCirculate",
+        "isGift",
+        "nameId",
+        "parameterId",
+        "value",
+        "yomiId"
+      ]
+    },
+    "daily_mission": {
+      "file": "daily_mission.json",
+      "root_key": "daily_mission",
+      "container_name_offset": 65993948,
+      "script_offset": 65993972,
+      "script_length": 8645,
+      "sha256": "16bac33bc794bbffd8e7e84601ffb565ba4732cd4e99ae6ba2e2e939b4b0c86a",
+      "rows": 85,
+      "row_count": 85,
+      "fields": [
+        "id",
+        "missionName"
+      ]
+    },
+    "migrate": {
+      "file": "migrate.json",
+      "root_key": "migrate",
+      "container_name_offset": 51217508,
+      "script_offset": 51217524,
+      "script_length": 133,
+      "sha256": "c66ae118e97bfe1c5f38f0778796d091ca65680673efc0f05a9dd54bf1c1e426",
+      "rows": 1,
+      "row_count": 1,
+      "fields": [
+        "credit",
+        "id",
+        "interval",
+        "upperRankAllowable"
+      ]
+    }
+  },
+  "fixtures": {
+    "tests\\fixtures\\research331\\h-account\\item11.json": {
+      "row_ids": [
+        "item11_0000101",
+        "item11_0000201",
+        "item11_0000301",
+        "item11_0000401"
+      ],
+      "sha256": "2854bcef52cdea0733da2881d84746ed160db24d3ed6b7234a2019c035604cd1"
+    },
+    "tests\\fixtures\\research331\\h-account\\item08.json": {
+      "row_ids": [
+        "item08_0102701"
+      ],
+      "sha256": "9dd03b858b4272864d5363eb32b0d167e71bb21afb44e966f0320bd3dbc94b2f"
+    },
+    "tests\\fixtures\\research331\\h-account\\daily_mission.json": {
+      "row_ids": [
+        "daily_mission_52",
+        "daily_mission_84"
+      ],
+      "sha256": "d0fd642a145650c55c5edbacd041537e923ad3cb5db6901cc514b6cd21c3fea5"
+    },
+    "tests\\fixtures\\research331\\h-account\\migrate.json": {
+      "row_ids": [
+        "migrate_0001"
+      ],
+      "sha256": "79a1ae4b5cc0d5503538da9f75ff9f05121e4810be29a8d3e9c25b825bc1cb6d"
+    }
+  }
+}
