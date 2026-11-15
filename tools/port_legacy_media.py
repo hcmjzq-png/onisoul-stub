@@ -131,7 +131,40 @@ def pcm(command: Path, data: bytes) -> tuple[bytes, int, int]:
         return wav.readframes(wav.getnframes()), wav.getframerate(), wav.getnchannels()
 
 
-def transcode(command: Path, data: bytes) -> tuple[bytes, dict]:
+def ogg_frames(data: bytes) -> int:
+    """Read the final granule of a bounded, single-stream Vorbis Ogg file."""
+    position = 0
+    serial = None
+    granule = -1
+    eos = False
+    while position < len(data):
+        if len(data) - position < 27 or data[position:position + 5] != b'OggS\0':
+            raise ValueError('invalid Ogg page')
+        flags = data[position + 5]
+        current, current_serial = struct.unpack_from('<qI', data, position + 6)
+        if serial is None:
+            serial = current_serial
+        if serial != current_serial or eos:
+            raise ValueError('single Ogg stream required')
+        segments = data[position + 26]
+        table_end = position + 27 + segments
+        if table_end > len(data):
+            raise ValueError('truncated Ogg lacing table')
+        page_end = table_end + sum(data[position + 27:table_end])
+        if page_end > len(data):
+            raise ValueError('truncated Ogg page')
+        if current >= 0:
+            if current < granule:
+                raise ValueError('Ogg granule moved backwards')
+            granule = current
+        eos = bool(flags & 4)
+        position = page_end
+    if not eos or granule <= 0:
+        raise ValueError('Ogg requires a final sample granule')
+    return granule
+
+
+def transcode(command: Path, data: bytes, *, allow_silent: bool = False) -> tuple[bytes, dict]:
     before, rate, channels = pcm(command, data)
     ogg = ffmpeg(command, data, ['-map', '0:a:0', '-map_metadata', '-1',
         '-fflags', '+bitexact', '-flags:a', '+bitexact', '-c:a', 'libvorbis',
@@ -139,6 +172,16 @@ def transcode(command: Path, data: bytes) -> tuple[bytes, dict]:
     after, rate_after, channels_after = pcm(command, ogg)
     if not ogg.startswith(b'OggS') or (rate, channels) != (rate_after, channels_after):
         raise ValueError('Vorbis output changed sample rate/channels')
+    # FFmpeg can emit a trailing Vorbis block beyond the EOS granule for short
+    # one-page clips. The Ogg sample count, also checked in the native player,
+    # is authoritative. Compare the complete declared signal, not that padding.
+    declared_samples = ogg_frames(ogg)
+    decoded_samples = len(after) // (2 * channels)
+    trailing_padding = max(0, decoded_samples - declared_samples)
+    if trailing_padding > 2048:
+        raise ValueError('decoded Vorbis padding exceeds one long block')
+    if trailing_padding:
+        after = after[:declared_samples * channels * 2]
     a, b = array('h', before), array('h', after)
     if sys.byteorder != 'little':
         a.byteswap(); b.byteswap()
@@ -147,19 +190,24 @@ def transcode(command: Path, data: bytes) -> tuple[bytes, dict]:
     n = min(len(a), len(b))
     energy = sum(v * v for v in a[:n])
     error = sum((x - y) ** 2 for x, y in zip(a[:n], b[:n]))
-    if not energy:
+    if not energy and not allow_silent:
         raise ValueError('source is silent; do not publish as restored voice')
-    snr = 10 * math.log10(energy / max(error, 1))
-    if snr < 24:
+    if not energy and error:
+        raise ValueError('silent source acquired nonzero samples')
+    snr = 10 * math.log10(energy / max(error, 1)) if energy else None
+    if snr is not None and snr < 24:
         raise ValueError(f'decoded signal differs: SNR {snr:.2f} dB')
     return ogg, dict(sample_rate=rate, channels=channels, source_samples=len(a) // channels,
         output_samples=len(b) // channels, seconds=len(a) / channels / rate,
-        decoded_snr_db=round(snr, 3), source_audio_sha256=digest(data),
+        ogg_granule_samples=declared_samples, ffmpeg_padding_samples=trailing_padding,
+        decoded_snr_db=round(snr, 3) if snr is not None else None,
+        source_silent=not bool(energy), source_audio_sha256=digest(data),
         output_audio_sha256=digest(ogg))
 
 
 def convert(source: Path, template: Path, name: str, *, member: str | None = None,
-            command: Path | None = None) -> tuple[bytes, dict]:
+            command: Path | None = None, path_id: int | None = None,
+            allow_silent: bool = False, expected_object_sha256: str | None = None) -> tuple[bytes, dict]:
     import UnityPy
     source_blob = source.read_bytes()
     data = source_blob
@@ -169,23 +217,28 @@ def convert(source: Path, template: Path, name: str, *, member: str | None = Non
     proof = dict(source=str(source), source_sha256=digest(source_blob), member=member,
         member_sha256=digest(data), name=name, template=str(template),
         template_sha256=digest(template.read_bytes()))
-    if source.suffix.lower() in ('.tga', '.png') and not member:
+    image_source = Path(member) if member else source
+    if image_source.suffix.lower() in ('.tga', '.png'):
         from PIL import Image
-        if source.stem != name:
+        if image_source.stem != name:
             raise ValueError('source image basename must match the requested name')
         image = Image.open(io.BytesIO(data)).convert('RGBA')
         kind = 'Texture2D'
         proof.update(source_platform='raster', source_version=None)
     else:
         matches = [o for o in UnityPy.load(data).objects if o.type.name in
-            ('AudioClip', 'Texture2D') and o.read().m_Name == name]
+            ('AudioClip', 'Texture2D') and (path_id is None or o.path_id == path_id)
+            and o.read().m_Name == name]
         if len(matches) != 1:
             raise ValueError('exactly one source object with the requested name required')
         original = matches[0]
+        proof['source_object_sha256'] = digest(original.get_raw_data())
+        if expected_object_sha256 and proof['source_object_sha256'] != expected_object_sha256:
+            raise ValueError('source object changed since inventory')
         obj = original.read()
         kind = original.type.name
         proof.update(source_platform=int(original.platform),
-            source_version=original.assets_file.unity_version)
+            source_version=original.assets_file.unity_version, source_path_id=original.path_id)
         if int(original.platform) not in (7, 10, 13):
             raise ValueError('only verified PC/PS3/Android source platforms supported')
         if kind == 'Texture2D':
@@ -194,7 +247,7 @@ def convert(source: Path, template: Path, name: str, *, member: str | None = Non
         else:
             if not command:
                 raise ValueError('--ffmpeg is required for audio conversion')
-            audio, audio_proof = transcode(command, bytes(obj.m_AudioData))
+            audio, audio_proof = transcode(command, bytes(obj.m_AudioData), allow_silent=allow_silent)
             proof.update(audio_proof)
     template_blob = template.read_bytes()
     header, _node_name, raw = unpack_pc(template_blob)
@@ -227,13 +280,17 @@ def convert(source: Path, template: Path, name: str, *, member: str | None = Non
     entries = container_tree['m_Container']
     if len(entries) != 1 or entries[0][1]['asset']['m_PathID'] != target.path_id:
         raise ValueError('template container does not point at its media object')
-    container_tree['m_Container'] = [(name, entries[0][1])]
+    # AssetBundle.Load canonicalizes its lookup to lowercase in the old PC
+    # player. Preserve Texture2D.m_Name, but normalize the container lookup key.
+    container_tree['m_Container'] = [(name.lower(), entries[0][1])]
     replacements = {target.path_id: target.save_typetree(tree),
                     container.path_id: container.save_typetree(container_tree)}
     node = repack_serialized(raw, target.assets_file, replacements)
     # Every generated bundle needs a distinct archive name while simultaneously
     # loaded; retaining a shared template GUID can collide in the old player.
-    archive_name = 'CustomAssetBundle-' + hashlib.md5(name.encode('utf-16le')).hexdigest()
+    # Different APK versions/scenes can carry different media with the same name.
+    # Include the rebuilt node so those variants do not share an archive GUID.
+    archive_name = 'CustomAssetBundle-' + hashlib.md5(name.encode('utf-16le') + node).hexdigest()
     result = pack_pc(header, archive_name, node)
     checked = list(UnityPy.load(result).objects)
     media = next(o for o in checked if o.type.name == kind)
@@ -249,7 +306,22 @@ def convert(source: Path, template: Path, name: str, *, member: str | None = Non
             raise ValueError('PC texture dimensions changed')
         mae = sum(abs(x-y) for x,y in zip(image.tobytes(), got.tobytes())) / (width * height * 4)
         proof['pixel_mae'] = round(mae, 4)
-        if mae > 8:
+        if mae > 8 and texture_format == 12:
+            # Alpha masks and small UI gradients can exceed the BC3 error limit.
+            # Keep the decoded source exactly rather than dropping that asset.
+            pixels = image.transpose(Image.Transpose.FLIP_TOP_BOTTOM).tobytes()
+            tree.update(m_CompleteImageSize=len(pixels), m_TextureFormat=4)
+            tree['image data'] = pixels
+            replacements[target.path_id] = target.save_typetree(tree)
+            node = repack_serialized(raw, target.assets_file, replacements)
+            archive_name = 'CustomAssetBundle-' + hashlib.md5(name.encode('utf-16le') + node).hexdigest()
+            result = pack_pc(header, archive_name, node)
+            media = next(o for o in UnityPy.load(result).objects if o.type.name == kind)
+            got = media.read().image.convert('RGBA')
+            if got.size != image.size or got.tobytes() != image.tobytes():
+                raise ValueError('RGBA32 fallback changed decoded source pixels')
+            proof.update(pc_texture_format=4, pixel_mae=0.0, bc3_fallback_mae=round(mae, 4))
+        elif mae > 8:
             raise ValueError(f'PC texture orientation/color verification failed: MAE {mae}')
     proof.update(kind=kind, pc_platform=7, pc_version=media.assets_file.unity_version,
         pc_archive=archive_name, output_bytes=len(result), output_sha256=digest(result),
@@ -263,13 +335,16 @@ def main() -> None:
     ap.add_argument('--member', help='Serialized-file entry inside an Android APK')
     ap.add_argument('--template', type=Path, required=True)
     ap.add_argument('--name', required=True)
+    ap.add_argument('--path-id', type=int, help='Disambiguate equal names within a source file')
+    ap.add_argument('--allow-silent', action='store_true', help='Preserve genuine silent source placeholders; not restored speech')
     ap.add_argument('--ffmpeg', type=Path)
     ap.add_argument('--output', type=Path, required=True)
     args = ap.parse_args()
     if args.output.resolve() in (args.source.resolve(), args.template.resolve()):
         ap.error('output must differ from both source and template')
     blob, proof = convert(args.source, args.template, args.name,
-                         member=args.member, command=args.ffmpeg)
+                         member=args.member, command=args.ffmpeg, path_id=args.path_id,
+                         allow_silent=args.allow_silent)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open('xb') as stream:
         stream.write(blob)
