@@ -1,0 +1,14 @@
+diff --git a/tools/pack_chara.py b/tools/pack_chara.py
+index b11511f..5a6ef77 100644
+--- a/tools/pack_chara.py
++++ b/tools/pack_chara.py
+@@ -120,6 +120,9 @@ def build(cid: str, tpl) -> dict:
+         return {"ok": False, "reason": "payload 长度变化"}
+ 
+     comp = lzma.compress(new_payload, format=lzma.FORMAT_ALONE, filters=LZMA_FILTERS)
++    # FORMAT_ALONE emits unknown length (UINT64_MAX). Legacy WebPlayer reads
++    # its low 32 bits and preallocates ~4 GiB of 100 KiB decompression buffers.
++    comp = comp[:5] + struct.pack("<Q", len(new_payload)) + comp[13:]
+ 
+     # 重建头：按 headerSize 字段定位其它 size 字段（全大端）
+     hdr = bytearray(raw[:hdr_size])

@@ -1,0 +1,810 @@
+{
+  "engine_version": "4.3.7f1",
+  "loaded_data_version": "3.5.6f4",
+  "engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+  "memory_samples": {
+    "memory-baseline": {
+      "samples": 88,
+      "first": {
+        "t": 2.02,
+        "pid": 31648,
+        "private": 232796160,
+        "working": 231481344
+      },
+      "last": {
+        "t": 89.34,
+        "pid": 31648,
+        "private": 609816576,
+        "working": 598786048
+      },
+      "peak": {
+        "t": 40.16,
+        "pid": 31648,
+        "private": 629469184,
+        "working": 616050688
+      },
+      "every_10th": [
+        {
+          "t": 2.02,
+          "pid": 31648,
+          "private": 232796160,
+          "working": 231481344
+        },
+        {
+          "t": 12.06,
+          "pid": 31648,
+          "private": 491319296,
+          "working": 472203264
+        },
+        {
+          "t": 22.1,
+          "pid": 31648,
+          "private": 519229440,
+          "working": 500334592
+        },
+        {
+          "t": 32.13,
+          "pid": 31648,
+          "private": 518590464,
+          "working": 501067776
+        },
+        {
+          "t": 42.17,
+          "pid": 31648,
+          "private": 629469184,
+          "working": 616050688
+        },
+        {
+          "t": 52.21,
+          "pid": 31648,
+          "private": 620158976,
+          "working": 607465472
+        },
+        {
+          "t": 62.25,
+          "pid": 31648,
+          "private": 609976320,
+          "working": 598491136
+        },
+        {
+          "t": 72.28,
+          "pid": 31648,
+          "private": 609816576,
+          "working": 598540288
+        },
+        {
+          "t": 82.32,
+          "pid": 31648,
+          "private": 609816576,
+          "working": 598663168
+        }
+      ]
+    },
+    "memory-name-country": {
+      "samples": 178,
+      "first": {
+        "t": 1.57,
+        "pid": 31648,
+        "private": 540819456,
+        "working": 544935936
+      },
+      "last": {
+        "t": 179.97,
+        "pid": 31648,
+        "private": 187113472,
+        "working": 217112576
+      },
+      "peak": {
+        "t": 53.77,
+        "pid": 31648,
+        "private": 1469104128,
+        "working": 664064000
+      },
+      "every_10th": [
+        {
+          "t": 1.57,
+          "pid": 31648,
+          "private": 540819456,
+          "working": 544935936
+        },
+        {
+          "t": 11.61,
+          "pid": 31648,
+          "private": 541372416,
+          "working": 545357824
+        },
+        {
+          "t": 21.65,
+          "pid": 31648,
+          "private": 541569024,
+          "working": 545435648
+        },
+        {
+          "t": 31.68,
+          "pid": 31648,
+          "private": 541675520,
+          "working": 545857536
+        },
+        {
+          "t": 41.72,
+          "pid": 31648,
+          "private": 541675520,
+          "working": 545992704
+        },
+        {
+          "t": 51.76,
+          "pid": 31648,
+          "private": 541675520,
+          "working": 546091008
+        },
+        {
+          "t": 61.8,
+          "pid": 31648,
+          "private": 186519552,
+          "working": 217063424
+        },
+        {
+          "t": 71.84,
+          "pid": 31648,
+          "private": 186519552,
+          "working": 217063424
+        },
+        {
+          "t": 82.61,
+          "pid": 31648,
+          "private": 186519552,
+          "working": 217063424
+        },
+        {
+          "t": 92.64,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217145344
+        },
+        {
+          "t": 102.68,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217145344
+        },
+        {
+          "t": 112.72,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217145344
+        },
+        {
+          "t": 122.76,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217145344
+        },
+        {
+          "t": 132.8,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217235456
+        },
+        {
+          "t": 142.83,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217235456
+        },
+        {
+          "t": 152.87,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217235456
+        },
+        {
+          "t": 162.9,
+          "pid": 31648,
+          "private": 187359232,
+          "working": 217235456
+        },
+        {
+          "t": 172.94,
+          "pid": 31648,
+          "private": 187113472,
+          "working": 217112576
+        }
+      ]
+    },
+    "memory-fixed": {
+      "samples": 298,
+      "first": {
+        "t": 1.61,
+        "pid": 37268,
+        "private": 194068480,
+        "working": 195338240
+      },
+      "last": {
+        "t": 299.72,
+        "pid": 37268,
+        "private": 645791744,
+        "working": 628875264
+      },
+      "peak": {
+        "t": 282.66,
+        "pid": 37268,
+        "private": 645873664,
+        "working": 627159040
+      },
+      "every_10th": [
+        {
+          "t": 1.61,
+          "pid": 37268,
+          "private": 194068480,
+          "working": 195338240
+        },
+        {
+          "t": 11.65,
+          "pid": 37268,
+          "private": 485765120,
+          "working": 466694144
+        },
+        {
+          "t": 21.69,
+          "pid": 37268,
+          "private": 514752512,
+          "working": 495104000
+        },
+        {
+          "t": 31.72,
+          "pid": 37268,
+          "private": 513875968,
+          "working": 495808512
+        },
+        {
+          "t": 41.76,
+          "pid": 37268,
+          "private": 512782336,
+          "working": 494833664
+        },
+        {
+          "t": 51.8,
+          "pid": 37268,
+          "private": 513998848,
+          "working": 496181248
+        },
+        {
+          "t": 61.84,
+          "pid": 37268,
+          "private": 507760640,
+          "working": 489971712
+        },
+        {
+          "t": 71.87,
+          "pid": 37268,
+          "private": 615510016,
+          "working": 604282880
+        },
+        {
+          "t": 81.91,
+          "pid": 37268,
+          "private": 603975680,
+          "working": 592748544
+        },
+        {
+          "t": 91.95,
+          "pid": 37268,
+          "private": 603975680,
+          "working": 592748544
+        },
+        {
+          "t": 101.98,
+          "pid": 37268,
+          "private": 604098560,
+          "working": 592830464
+        },
+        {
+          "t": 112.02,
+          "pid": 37268,
+          "private": 604368896,
+          "working": 593948672
+        },
+        {
+          "t": 122.06,
+          "pid": 37268,
+          "private": 604233728,
+          "working": 593694720
+        },
+        {
+          "t": 132.09,
+          "pid": 37268,
+          "private": 604618752,
+          "working": 595066880
+        },
+        {
+          "t": 142.13,
+          "pid": 37268,
+          "private": 604372992,
+          "working": 596930560
+        },
+        {
+          "t": 152.17,
+          "pid": 37268,
+          "private": 604372992,
+          "working": 597643264
+        },
+        {
+          "t": 162.21,
+          "pid": 37268,
+          "private": 604409856,
+          "working": 598155264
+        },
+        {
+          "t": 172.25,
+          "pid": 37268,
+          "private": 604606464,
+          "working": 598503424
+        },
+        {
+          "t": 182.29,
+          "pid": 37268,
+          "private": 604930048,
+          "working": 597958656
+        },
+        {
+          "t": 192.32,
+          "pid": 37268,
+          "private": 626958336,
+          "working": 609394688
+        },
+        {
+          "t": 202.36,
+          "pid": 37268,
+          "private": 626958336,
+          "working": 609394688
+        },
+        {
+          "t": 212.39,
+          "pid": 37268,
+          "private": 627056640,
+          "working": 609492992
+        },
+        {
+          "t": 222.43,
+          "pid": 37268,
+          "private": 626974720,
+          "working": 609497088
+        },
+        {
+          "t": 232.47,
+          "pid": 37268,
+          "private": 627101696,
+          "working": 609599488
+        },
+        {
+          "t": 242.5,
+          "pid": 37268,
+          "private": 627228672,
+          "working": 609665024
+        },
+        {
+          "t": 252.54,
+          "pid": 37268,
+          "private": 627355648,
+          "working": 609890304
+        },
+        {
+          "t": 262.58,
+          "pid": 37268,
+          "private": 645328896,
+          "working": 625197056
+        },
+        {
+          "t": 272.62,
+          "pid": 37268,
+          "private": 645582848,
+          "working": 626106368
+        },
+        {
+          "t": 282.66,
+          "pid": 37268,
+          "private": 645873664,
+          "working": 627159040
+        },
+        {
+          "t": 292.7,
+          "pid": 37268,
+          "private": 645791744,
+          "working": 628154368
+        }
+      ]
+    },
+    "memory-fixed-country03": {
+      "samples": 178,
+      "first": {
+        "t": 1.59,
+        "pid": 37268,
+        "private": 582762496,
+        "working": 584445952
+      },
+      "last": {
+        "t": 179.25,
+        "pid": 37268,
+        "private": 589176832,
+        "working": 588050432
+      },
+      "peak": {
+        "t": 178.25,
+        "pid": 37268,
+        "private": 589176832,
+        "working": 587984896
+      },
+      "every_10th": [
+        {
+          "t": 1.59,
+          "pid": 37268,
+          "private": 582762496,
+          "working": 584445952
+        },
+        {
+          "t": 11.63,
+          "pid": 37268,
+          "private": 583004160,
+          "working": 584544256
+        },
+        {
+          "t": 21.67,
+          "pid": 37268,
+          "private": 583008256,
+          "working": 584617984
+        },
+        {
+          "t": 31.71,
+          "pid": 37268,
+          "private": 583221248,
+          "working": 585105408
+        },
+        {
+          "t": 41.75,
+          "pid": 37268,
+          "private": 584134656,
+          "working": 585748480
+        },
+        {
+          "t": 51.78,
+          "pid": 37268,
+          "private": 584228864,
+          "working": 585789440
+        },
+        {
+          "t": 61.82,
+          "pid": 37268,
+          "private": 584228864,
+          "working": 585891840
+        },
+        {
+          "t": 71.86,
+          "pid": 37268,
+          "private": 584146944,
+          "working": 586010624
+        },
+        {
+          "t": 81.9,
+          "pid": 37268,
+          "private": 584122368,
+          "working": 586059776
+        },
+        {
+          "t": 91.93,
+          "pid": 37268,
+          "private": 584335360,
+          "working": 586289152
+        },
+        {
+          "t": 101.97,
+          "pid": 37268,
+          "private": 584335360,
+          "working": 586452992
+        },
+        {
+          "t": 112.01,
+          "pid": 37268,
+          "private": 584597504,
+          "working": 586682368
+        },
+        {
+          "t": 122.04,
+          "pid": 37268,
+          "private": 588804096,
+          "working": 586878976
+        },
+        {
+          "t": 132.08,
+          "pid": 37268,
+          "private": 588804096,
+          "working": 587132928
+        },
+        {
+          "t": 142.12,
+          "pid": 37268,
+          "private": 589107200,
+          "working": 587329536
+        },
+        {
+          "t": 152.16,
+          "pid": 37268,
+          "private": 589029376,
+          "working": 587456512
+        },
+        {
+          "t": 162.19,
+          "pid": 37268,
+          "private": 589029376,
+          "working": 587685888
+        },
+        {
+          "t": 172.23,
+          "pid": 37268,
+          "private": 589103104,
+          "working": 587853824
+        }
+      ]
+    }
+  },
+  "native_heap_last_summary": {
+    "t": 65.18,
+    "event": {
+      "type": "send",
+      "payload": {
+        "kind": "heapSummary",
+        "pid": 11900,
+        "groups": [
+          [
+            "104452|webplayer_win.dll+0x4853ab;ntdll.dll+0x3dba0;webplayer_win.dll+0x1466;webplayer_win.dll+0x3166;webplayer_win.dll+0x3ce5;webplayer_win.dll+0x2507;webplayer_win.dll+0x2705;webplayer_win.dll+0x279b65;webplayer_win.dll+0x2798d9;webplayer_win.dll+0x279a4e;webplayer_win.dll+0x27c7e1;webplayer_win.dll+0x27c906;webplayer_win.dll+0x14eaa7;KERNEL32.DLL+0x15d49;ntdll.dll+0x6c88b;ntdll.dll+0x6c811",
+            1684
+          ]
+        ],
+        "calls": {
+          "AssetBundle:Load/2": 219,
+          "WWW:Dispose/0": 1,
+          "LoginJapanMapObserver:Start/0": 1,
+          "LoginCountrySelect:Start/0": 1
+        },
+        "last": [
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_019_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_019_2"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_010_043_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_018_1a"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_018_2a"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_018_1b"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_018_2b"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_010_042_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_017_1a"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_017_2a"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_017_1b"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_017_2b"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_010_041_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_016_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_016_2"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_010_041_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_001_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_040_001_2"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_010_042_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_050_025_1"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "LoginCountrySelectMaterial"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "login_country.json"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "LoginActiveCountryPrefab"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "LoginActiveCountryLargeNamePrefab"
+          },
+          {
+            "label": "AssetBundle:Load/2",
+            "value": "ui7_030_025_1"
+          }
+        ]
+      }
+    }
+  },
+  "fixed_native_lzma_probe": [
+    {
+      "time": 1794742247.0118287,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "lzma_header",
+          "header": "5d0000800068d2110000000000",
+          "low32": 1167976,
+          "high32": 0
+        }
+      }
+    },
+    {
+      "time": 1794742247.0120244,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "parsed_size",
+          "bytes": 1167976
+        }
+      }
+    },
+    {
+      "time": 1794742247.015133,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "buffer_plan",
+          "decoded_bytes": 1167976,
+          "block_bytes": 102400,
+          "blocks": 12
+        }
+      }
+    },
+    {
+      "time": 1794742247.0177526,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "buffer_plan",
+          "decoded_bytes": 1167976,
+          "block_bytes": 102400,
+          "blocks": 12
+        }
+      }
+    },
+    {
+      "time": 1794742247.0195947,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "buffer_plan",
+          "decoded_bytes": 1167976,
+          "block_bytes": 102400,
+          "blocks": 12
+        }
+      }
+    },
+    {
+      "time": 1794742247.0197458,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "buffer_plan",
+          "decoded_bytes": 1167976,
+          "block_bytes": 102400,
+          "blocks": 12
+        }
+      }
+    },
+    {
+      "time": 1794742247.019824,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "buffer_plan",
+          "decoded_bytes": 1167976,
+          "block_bytes": 102400,
+          "blocks": 12
+        }
+      }
+    },
+    {
+      "time": 1794742247.0714703,
+      "message": {
+        "type": "send",
+        "payload": {
+          "event": "buffer_plan",
+          "decoded_bytes": 1167976,
+          "block_bytes": 102400,
+          "blocks": 12
+        }
+      }
+    }
+  ],
+  "candidate_repair_summary": {
+    "generated": 68,
+    "carried": 10,
+    "lengths_repaired": 68,
+    "payloads_unchanged": true
+  },
+  "qt_login_probe": {
+    "synthetic_only": true,
+    "save_observed": true,
+    "terminated_then_reopened_refill_observed": true,
+    "clear_removed_dpapi": true
+  },
+  "targeted_qt_cache_records_backed_up": 3,
+  "runtime_image_qa": [
+    "country25/浅井长政",
+    "country03/九户政实",
+    "country04/伊达政宗"
+  ],
+  "tests": {
+    "tested_code_commit": "503270f8a18f3259c5a72479296a6451ca0a5988",
+    "local": {
+      "ran": 625,
+      "passed": 597,
+      "skipped": 28
+    },
+    "isolated_mysql": {
+      "ran": 625,
+      "passed": 613,
+      "skipped": 12
+    },
+    "python_versions_for_lzma_tests": [
+      "3.13",
+      "3.15"
+    ]
+  },
+  "cleanup": {
+    "own_test_account_removed": true,
+    "remaining_original_players": 3,
+    "configuration_restored_sha256": "1db6e36bf219e8ac5711d62729ed74dca9e375c97de257a67e44e646c39bc52f",
+    "temporary_server_probe_removed": true
+  }
+}

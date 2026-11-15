@@ -114,6 +114,51 @@ class TutorialMySQLTest(unittest.TestCase):
         self.assertEqual(self.api("common/getPlayerParams")["entity"]["exp"], 25)
         self.assertIn("errorReason", self.api("politic/mission/setWorkingValue", missionId="po_mission_00000", indexes=[0], values=[0xfffffff]))
 
+    def test_unique_name_index_blocks_races_and_direct_create_bypass(self):
+        from concurrent.futures import ThreadPoolExecutor
+        import uuid
+        from app.business.gameplay import GameplayService
+        service = GameplayService(catalog=self.catalog)
+        ids = ["name_" + uuid.uuid4().hex for _ in range(2)]
+        for pid in ids:
+            state.save(service._default_state(pid), pid)
+        name = "昵称" + uuid.uuid4().hex[:8]
+        def reserve(pid):
+            return service.register_name({"username": name}, {"playerId": pid})
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results = list(pool.map(reserve, ids))
+        self.assertEqual(sum(r["succeeded"] for r in results), 1)
+        winner = next(pid for pid in ids if state.load(pid)["entity"]["username"] == name)
+        loser = next(pid for pid in ids if pid != winner)
+        before = state.load(loser)
+        result = service.create_player(dict(username=name, countryId="country01",
+            navigatorId="navi8000101", colorIndex="color1"), {"playerId": loser})
+        self.assertFalse(result["succeeded"])
+        self.assertEqual(state.load(loser), before)
+        self.assertEqual(state.load(winner)["entity"]["playerId"], winner)
+
+    def test_name_migration_refuses_legacy_duplicates_without_changing_saves(self):
+        import pymysql
+        other = "legacy_name_" + uuid.uuid4().hex
+        with db.connection() as con:
+            with con.cursor() as cur:
+                cur.execute("ALTER TABLE players DROP INDEX uk_players_username, DROP COLUMN username_key")
+        value = state.load(self.pid)
+        value["entity"]["playerId"] = other; value["_revision"] = 0
+        state.save(value, other)
+        before = {pid: state.load(pid) for pid in (self.pid, other)}
+        migration = (Path(__file__).resolve().parents[1] /
+            "db/migrations/20261115_unique_player_names.sql").read_text()
+        with self.assertRaises(pymysql.err.IntegrityError), db.connection() as con:
+            with con.cursor() as cur:
+                cur.execute(migration)
+        self.assertEqual({pid: state.load(pid) for pid in before}, before)
+        # Resolve only this test's deliberately duplicated name, then verify DDL.
+        value = state.load(other); value["entity"]["username"] = other; state.save(value, other)
+        with db.connection() as con:
+            with con.cursor() as cur:
+                cur.execute(migration)
+
     def test_atomic_repair_backup_and_persistent_reload(self):
         plan = self.plan_for(self.pid)
         before = state.load(self.pid)
@@ -130,6 +175,7 @@ class TutorialMySQLTest(unittest.TestCase):
     def test_second_update_failure_rolls_back_both_players(self):
         other = "repair_" + uuid.uuid4().hex
         value = state.load(self.pid); value["entity"]["playerId"] = other; value["_revision"] = 0
+        value["entity"]["username"] = other
         state.save(value, other)
         plan = self.plan_for(self.pid, other)
         before = {pid: state.load(pid) for pid in (self.pid, other)}

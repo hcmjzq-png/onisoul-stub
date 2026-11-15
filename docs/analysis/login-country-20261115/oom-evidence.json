@@ -1,0 +1,68 @@
+[
+  {
+    "file": "log_189375b7ba782f4c8d7fc84c4fa89f5b.txt",
+    "error_line": 455,
+    "memory_excerpt": [
+      "DynamicHeapAllocator out of memory - Could not get memory for large allocationCould not allocate memory: System out of memory!",
+      "Trying to allocate: 102400B with 4 alignment. MemoryLabel: File",
+      "Allocation happend at: Line:51 in ",
+      "Memory overview",
+      "",
+      "",
+      "[ ALLOC_DEFAULT ] used: 71962936B | peak: 0B | reserved: 80078620B ",
+      "",
+      "[ ALLOC_GFX ] used: 256669B | peak: 0B | reserved: 5242880B ",
+      "",
+      "[ ALLOC_CACHEOBJECTS ] used: 1019155400B | peak: 0B | reserved: 1054781440B ",
+      "",
+      "[ ALLOC_TYPETREE ] used: 5624480B | peak: 0B | reserved: 8388608B ",
+      "",
+      "[ ALLOC_PROFILER ] used: 19800B | peak: 0B | reserved: 4194304B ",
+      "Could not allocate memory: System out of memory!"
+    ]
+  },
+  {
+    "file": "log_ab7c1cf804c6014486d0ff61b1425928.txt",
+    "error_line": 292,
+    "memory_excerpt": [
+      "DynamicHeapAllocator out of memory - Could not get memory for large allocationCould not allocate memory: System out of memory!",
+      "Trying to allocate: 102400B with 4 alignment. MemoryLabel: File",
+      "Allocation happend at: Line:51 in ",
+      "Memory overview",
+      "",
+      "",
+      "[ ALLOC_DEFAULT ] used: 71822887B | peak: 0B | reserved: 80078620B ",
+      "",
+      "[ ALLOC_GFX ] used: 255865B | peak: 0B | reserved: 5242880B ",
+      "",
+      "[ ALLOC_CACHEOBJECTS ] used: 1020486600B | peak: 0B | reserved: 1055862784B ",
+      "",
+      "[ ALLOC_TYPETREE ] used: 5624480B | peak: 0B | reserved: 8388608B ",
+      "",
+      "[ ALLOC_PROFILER ] used: 16344B | peak: 0B | reserved: 4194304B ",
+      "Could not allocate memory: System out of memory!"
+    ]
+  },
+  {
+    "file": "log_fb843d00cc856a4790a9a64418508e5e.txt",
+    "error_line": 292,
+    "memory_excerpt": [
+      "DynamicHeapAllocator out of memory - Could not get memory for large allocationCould not allocate memory: System out of memory!",
+      "Trying to allocate: 102400B with 4 alignment. MemoryLabel: File",
+      "Allocation happend at: Line:51 in ",
+      "Memory overview",
+      "",
+      "",
+      "[ ALLOC_DEFAULT ] used: 71823871B | peak: 0B | reserved: 80078620B ",
+      "",
+      "[ ALLOC_GFX ] used: 255865B | peak: 0B | reserved: 5242880B ",
+      "",
+      "[ ALLOC_CACHEOBJECTS ] used: 1019257800B | peak: 0B | reserved: 1054519296B ",
+      "",
+      "[ ALLOC_TYPETREE ] used: 5624480B | peak: 0B | reserved: 8388608B ",
+      "",
+      "[ ALLOC_PROFILER ] used: 16344B | peak: 0B | reserved: 4194304B ",
+      "Could not allocate memory: System out of memory!"
+    ]
+  }
+]

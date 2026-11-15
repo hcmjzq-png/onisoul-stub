@@ -42,6 +42,10 @@ CREATE TABLE IF NOT EXISTS sessions (
 CREATE TABLE IF NOT EXISTS players (
   player_id  VARCHAR(64) NOT NULL,
   state_json JSON       NOT NULL,
+  -- Display names are unique, but player_id remains the stable identity.
+  username_key VARBINARY(512) GENERATED ALWAYS AS
+    (CAST(NULLIF(JSON_UNQUOTE(JSON_EXTRACT(state_json, '$.entity.username')), '') AS BINARY)) STORED,
   updated_at DOUBLE     NOT NULL,
-  PRIMARY KEY (player_id)
+  PRIMARY KEY (player_id),
+  UNIQUE KEY uk_players_username (username_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

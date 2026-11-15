@@ -1,0 +1,122 @@
+[
+  {
+    "country": "country03",
+    "image": "chara1_00040_01",
+    "file": "a5044b17d31baa870cf9acb3b7c375d1.unity3d",
+    "sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a",
+    "payload_sha256": "4aa821678f354d8795676b730b1245137b94f3c4f5316a404a00a14c49e3e639",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country04",
+    "image": "chara1_00054_01",
+    "file": "8a10873fd1f23c221116259f99b70883.unity3d",
+    "sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256",
+    "payload_sha256": "2bff8bfd0d708a9030900d8dc6929ec6332bd2608daf9fe2648e922bce5f580f",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country07",
+    "image": "chara1_00111_01",
+    "file": "bbc7b7091ac58d4e37b4179588ef9d48.unity3d",
+    "sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c",
+    "payload_sha256": "d7d7c8dff9b8ce177d05bc63930512c717efe337addd6e1f3a48de366f4fc519",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country08",
+    "image": "chara1_00123_01",
+    "file": "bd3e920e329c4ccb64f3a7a3d696c414.unity3d",
+    "sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692",
+    "payload_sha256": "8ea9d42867452a1a59ee519a9cf14d2a92714f3265409d1954de289b9d1bc978",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country09",
+    "image": "chara1_00142_01",
+    "file": "bcf9fae2b80874635c1dc7ae216237ab.unity3d",
+    "sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021",
+    "payload_sha256": "a23377c20f6e22361ef5c465a82cd4061e0f42a9e3c68b91c4964197de6e5e38",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country10",
+    "image": "chara1_00159_01",
+    "file": "152c0064ae9c5e845734a4f8386b8bbe.unity3d",
+    "sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7",
+    "payload_sha256": "337a09df4ea417e14aa2d84311089e0427ff72060a57856bdf63743e3baf6292",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country11",
+    "image": "chara1_00172_01",
+    "file": "720ee66bdafa2701e1159512f981a674.unity3d",
+    "sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f",
+    "payload_sha256": "a9ad1d4c968c41d2743320d0519d24f1d841a66d495dbcd8490dc84edacc8e15",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country13",
+    "image": "chara1_00222_01",
+    "file": "1fddcc444ead0ddfaeab921fb6714445.unity3d",
+    "sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5",
+    "payload_sha256": "f36cdd239a0bef3af4e4b0bba86fafd460e21351c043546d3e32b70282d52bec",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country19",
+    "image": "chara1_00357_01",
+    "file": "0f86db57eb1f1832e66bc5ebd54ba850.unity3d",
+    "sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37",
+    "payload_sha256": "514875e66473e694fda4915499f4542d798485e99262d8864ad3b7183b2e8f17",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country23",
+    "image": "chara1_00614_01",
+    "file": "75d441c89a75bd5bb404ca4312e0293e.unity3d",
+    "sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347",
+    "payload_sha256": "57215ebe32ac4bb34e401dd904d0f3a16b1c001735ae39baf3a8602d5c28b002",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country24",
+    "image": "chara1_00673_01",
+    "file": "ddc56a7f3f71d252c947f6e40cf998eb.unity3d",
+    "sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb",
+    "payload_sha256": "caf7116aa4917f1cd9b78c9aa0bc1d7393e79a461b67f1546880614ce99a0681",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country29",
+    "image": "chara1_00842_01",
+    "file": "9cb1a1ed6e425baaa75cd0b9fd52561c.unity3d",
+    "sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6",
+    "payload_sha256": "8f3aec899bdc70b525b2be50e86dfa4f3b70120514f10dd32342f7135786dfc2",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country30",
+    "image": "chara1_00866_01",
+    "file": "e5db131aefd94332bad1ff54f2c3929a.unity3d",
+    "sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3",
+    "payload_sha256": "177f3d0bb5e2e9db688674db887a3aaa1b39d6801a513e05912c7b1f9db2d69d",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country35",
+    "image": "chara1_00979_01",
+    "file": "ce57256cfc6ca37a8a40dd57a4933fd2.unity3d",
+    "sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad",
+    "payload_sha256": "dbb12ec3841eb6dfa3ce0df2933541ae44b0426742e5f86c96e8481dddec2744",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  },
+  {
+    "country": "country47",
+    "image": "chara1_01218_01",
+    "file": "9a744b5f1bf3fca473cf888ae57800e5.unity3d",
+    "sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac",
+    "payload_sha256": "f65f6a9d6677f4ede650485c912c504663d98046833e796cf79fd3b91eccf6a0",
+    "provenance": "TGA reconstructed; fixed LZMA size; original serialized payload retained"
+  }
+]

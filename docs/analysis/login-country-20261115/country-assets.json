@@ -1,0 +1,2144 @@
+{
+  "summary": {
+    "countries": 47,
+    "local_images": 5,
+    "generated_candidates": 17,
+    "generated_match_and_names": 17,
+    "server_image_statuses": {
+      "404": 42,
+      "200": 5
+    },
+    "countries_with_all_appearance_clips": 0
+  },
+  "rows": [
+    {
+      "country": "country01",
+      "character": "chara1_00001_01",
+      "image": "chara1_00001_01",
+      "image_hash": "05408acd6c1d55d25f99368a9a90de38",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country02",
+      "character": "chara1_00013_01",
+      "image": "chara1_00013_01",
+      "image_hash": "02228774fac67cd0593ee088e2bc9df5",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country03",
+      "character": "chara1_00040_01",
+      "image": "chara1_00040_01",
+      "image_hash": "a5044b17d31baa870cf9acb3b7c375d1",
+      "appearance_clips": [
+        "vse034_1_020501_12_01",
+        "vse034_1_020501_12_02",
+        "vse034_1_020501_12_03",
+        "vse034_1_020501_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "43edd21fecaff05c1d6891c14deddcee7513c8dc5c93376d3db7146508f1fcdf",
+        "names": [
+          "chara1_00040_01_1_03",
+          "chara1_00040_01_1_01",
+          "chara1_00040_01_3_01",
+          "chara1_00040_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__a5044b17d31baa870cf9acb3b7c375d1.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse034_1_020501_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse034_1_020501_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse034_1_020501_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse034_1_020501_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse034_1_020501_12_01": 404,
+        "vse034_1_020501_12_02": 404,
+        "vse034_1_020501_12_03": 404,
+        "vse034_1_020501_12_04": 404
+      }
+    },
+    {
+      "country": "country04",
+      "character": "chara1_00054_01",
+      "image": "chara1_00054_01",
+      "image_hash": "8a10873fd1f23c221116259f99b70883",
+      "appearance_clips": [
+        "vse008_1_040701_12_01",
+        "vse008_1_040701_12_02",
+        "vse008_1_040701_12_03",
+        "vse008_1_040701_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "220a05d55c6a1628da192117f522a5af9a96bd3fa862bf97a6f53a54dba894d3",
+        "names": [
+          "chara1_00054_01_1_03",
+          "chara1_00054_01_1_01",
+          "chara1_00054_01_3_01",
+          "chara1_00054_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__8a10873fd1f23c221116259f99b70883.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse008_1_040701_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_040701_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_040701_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_040701_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse008_1_040701_12_01": 404,
+        "vse008_1_040701_12_02": 404,
+        "vse008_1_040701_12_03": 404,
+        "vse008_1_040701_12_04": 404
+      }
+    },
+    {
+      "country": "country05",
+      "character": "chara1_00085_01",
+      "image": "chara1_00085_01",
+      "image_hash": "c74ea4e81b96b628511d43dd5f5768d9",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country06",
+      "character": "chara1_00093_01",
+      "image": "chara1_00093_01",
+      "image_hash": "ea0935eb6ffdc80dcc69b916f0dd9d70",
+      "appearance_clips": [
+        "vse001_1_010101_12_01",
+        "vse001_1_010101_12_02",
+        "vse001_1_010101_12_03",
+        "vse001_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse001_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse001_1_010101_12_01": 404,
+        "vse001_1_010101_12_02": 404,
+        "vse001_1_010101_12_03": 404,
+        "vse001_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country07",
+      "character": "chara1_00111_01",
+      "image": "chara1_00111_01",
+      "image_hash": "bbc7b7091ac58d4e37b4179588ef9d48",
+      "appearance_clips": [
+        "vse001_1_010101_12_01",
+        "vse001_1_010101_12_02",
+        "vse001_1_010101_12_03",
+        "vse001_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "f9c9f6ee6e830144d1522fbd7d3081dcfd224514440baf690531f70c4abbba4d",
+        "names": [
+          "chara1_00111_01_1_03",
+          "chara1_00111_01_1_01",
+          "chara1_00111_01_3_01",
+          "chara1_00111_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__bbc7b7091ac58d4e37b4179588ef9d48.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse001_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse001_1_010101_12_01": 404,
+        "vse001_1_010101_12_02": 404,
+        "vse001_1_010101_12_03": 404,
+        "vse001_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country08",
+      "character": "chara1_00123_01",
+      "image": "chara1_00123_01",
+      "image_hash": "bd3e920e329c4ccb64f3a7a3d696c414",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "872e18935bf358e8f559681293cbb2629c2d8f5741059ab98610409eec804a3e",
+        "names": [
+          "chara1_00123_01_1_03",
+          "chara1_00123_01_1_01",
+          "chara1_00123_01_3_01",
+          "chara1_00123_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__bd3e920e329c4ccb64f3a7a3d696c414.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country09",
+      "character": "chara1_00142_01",
+      "image": "chara1_00142_01",
+      "image_hash": "bcf9fae2b80874635c1dc7ae216237ab",
+      "appearance_clips": [
+        "vse019_1_040701_12_01",
+        "vse019_1_040701_12_02",
+        "vse019_1_040701_12_03",
+        "vse019_1_040701_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "89c776d423c2401f790f3aca4c38f34a1b15b9e83cbb141638b188b1d9654465",
+        "names": [
+          "chara1_00142_01_1_03",
+          "chara1_00142_01_1_01",
+          "chara1_00142_01_3_01",
+          "chara1_00142_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__bcf9fae2b80874635c1dc7ae216237ab.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse019_1_040701_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse019_1_040701_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse019_1_040701_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse019_1_040701_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse019_1_040701_12_01": 404,
+        "vse019_1_040701_12_02": 404,
+        "vse019_1_040701_12_03": 404,
+        "vse019_1_040701_12_04": 404
+      }
+    },
+    {
+      "country": "country10",
+      "character": "chara1_00159_01",
+      "image": "chara1_00159_01",
+      "image_hash": "152c0064ae9c5e845734a4f8386b8bbe",
+      "appearance_clips": [
+        "vse021_1_020401_12_01",
+        "vse021_1_020401_12_02",
+        "vse021_1_020401_12_03",
+        "vse021_1_020401_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "3d7fa7db9b753e0c7285eff803167c01cf2a0ebe58351f189ee770f68ce3e654",
+        "names": [
+          "chara1_00159_01_1_03",
+          "chara1_00159_01_1_01",
+          "chara1_00159_01_3_01",
+          "chara1_00159_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__152c0064ae9c5e845734a4f8386b8bbe.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse021_1_020401_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_020401_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_020401_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_020401_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse021_1_020401_12_01": 404,
+        "vse021_1_020401_12_02": 404,
+        "vse021_1_020401_12_03": 404,
+        "vse021_1_020401_12_04": 404
+      }
+    },
+    {
+      "country": "country11",
+      "character": "chara1_00172_01",
+      "image": "chara1_00172_01",
+      "image_hash": "720ee66bdafa2701e1159512f981a674",
+      "appearance_clips": [
+        "vse009_1_050901_12_01",
+        "vse009_1_050901_12_02",
+        "vse009_1_050901_12_03",
+        "vse009_1_050901_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "eb4c1440becc157b00d960aa440d24d41933407320f818203b8ac59a99829408",
+        "names": [
+          "chara1_00172_01_1_03",
+          "chara1_00172_01_1_01",
+          "chara1_00172_01_3_01",
+          "chara1_00172_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__720ee66bdafa2701e1159512f981a674.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse009_1_050901_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050901_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050901_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050901_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse009_1_050901_12_01": 404,
+        "vse009_1_050901_12_02": 404,
+        "vse009_1_050901_12_03": 404,
+        "vse009_1_050901_12_04": 404
+      }
+    },
+    {
+      "country": "country12",
+      "character": "chara1_00193_01",
+      "image": "chara1_00193_01",
+      "image_hash": "4cef965c9271a5b8956289dc1ff316df",
+      "appearance_clips": [
+        "vse022_1_030501_12_01",
+        "vse022_1_030501_12_02",
+        "vse022_1_030501_12_03",
+        "vse022_1_030501_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse022_1_030501_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse022_1_030501_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse022_1_030501_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse022_1_030501_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse022_1_030501_12_01": 404,
+        "vse022_1_030501_12_02": 404,
+        "vse022_1_030501_12_03": 404,
+        "vse022_1_030501_12_04": 404
+      }
+    },
+    {
+      "country": "country13",
+      "character": "chara1_00222_01",
+      "image": "chara1_00222_01",
+      "image_hash": "1fddcc444ead0ddfaeab921fb6714445",
+      "appearance_clips": [
+        "vse004_1_030601_12_01",
+        "vse004_1_030601_12_02",
+        "vse004_1_030601_12_03",
+        "vse004_1_030601_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "f01488282043063ddfd684426e64d311be6b2f8d0c29436deeec670f4a986162",
+        "names": [
+          "chara1_00222_01_1_03",
+          "chara1_00222_01_1_01",
+          "chara1_00222_01_3_01",
+          "chara1_00222_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__1fddcc444ead0ddfaeab921fb6714445.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse004_1_030601_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse004_1_030601_12_01": 404,
+        "vse004_1_030601_12_02": 404,
+        "vse004_1_030601_12_03": 404,
+        "vse004_1_030601_12_04": 404
+      }
+    },
+    {
+      "country": "country14",
+      "character": "chara1_00230_01",
+      "image": "chara1_00230_01",
+      "image_hash": "4403b537bc6307cddf6b59ecba8cd51b",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country15",
+      "character": "chara1_00260_01",
+      "image": "chara1_00260_01",
+      "image_hash": "a12540e4af277562b53a7d99ba2e60eb",
+      "appearance_clips": [
+        "vse008_1_050801_12_01",
+        "vse008_1_050801_12_02",
+        "vse008_1_050801_12_03",
+        "vse008_1_050801_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse008_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "sha256": "e33c5a956a701786dd1e5ff67d46da308558bd2eaf3f930891dd6ed44be4cc61",
+          "names": [
+            "vse008_1_050801_12_03"
+          ],
+          "missing_names": [],
+          "payload_bytes": 32392,
+          "file": "f9c0557078d03607e495d1f021c93dc5.unity3d"
+        },
+        {
+          "sha256": "e08b3f24a506a7a40aa71b0c153d4c3aeba03b70c0acb225ff9def4d8798b160",
+          "names": [
+            "vse008_1_050801_12_04"
+          ],
+          "missing_names": [],
+          "payload_bytes": 44639,
+          "file": "0d81189a6ca1ec4bf0f38a663f26cf35.unity3d"
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse008_1_050801_12_01": 404,
+        "vse008_1_050801_12_02": 404,
+        "vse008_1_050801_12_03": 200,
+        "vse008_1_050801_12_04": 200
+      }
+    },
+    {
+      "country": "country16",
+      "character": "chara1_00311_01",
+      "image": "chara1_00311_01",
+      "image_hash": "f24996cee1d4c15f58a19f972ce5cdb5",
+      "appearance_clips": [
+        "vse004_1_020401_12_01",
+        "vse004_1_020401_12_02",
+        "vse004_1_020401_12_03",
+        "vse004_1_020401_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse004_1_020401_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_020401_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_020401_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_020401_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse004_1_020401_12_01": 404,
+        "vse004_1_020401_12_02": 404,
+        "vse004_1_020401_12_03": 404,
+        "vse004_1_020401_12_04": 404
+      }
+    },
+    {
+      "country": "country17",
+      "character": "chara1_00317_01",
+      "image": "chara1_00317_01",
+      "image_hash": "6c5e6911972cbafea71aef7a8ded698f",
+      "appearance_clips": [
+        "vse003_1_010201_12_01",
+        "vse003_1_010201_12_02",
+        "vse003_1_010201_12_03",
+        "vse003_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse003_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse003_1_010201_12_01": 404,
+        "vse003_1_010201_12_02": 404,
+        "vse003_1_010201_12_03": 404,
+        "vse003_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country18",
+      "character": "chara1_00341_01",
+      "image": "chara1_00341_01",
+      "image_hash": "69e30186b8b4e5649be7b31103de7558",
+      "appearance_clips": [
+        "vse001_1_010101_12_01",
+        "vse001_1_010101_12_02",
+        "vse001_1_010101_12_03",
+        "vse001_1_010101_12_04"
+      ],
+      "local_image": {
+        "sha256": "361b2682f936680bfd0a5c547fc4d5b71056d11ecf37365a3b45732c385458bc",
+        "names": [
+          "chara1_00341_01_1_03",
+          "chara1_00341_01_1_01",
+          "chara1_00341_01_3_01",
+          "chara1_00341_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "file": "69e30186b8b4e5649be7b31103de7558.unity3d"
+      },
+      "generated_image": {
+        "sha256": "361b2682f936680bfd0a5c547fc4d5b71056d11ecf37365a3b45732c385458bc",
+        "names": [
+          "chara1_00341_01_1_03",
+          "chara1_00341_01_1_01",
+          "chara1_00341_01_3_01",
+          "chara1_00341_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__69e30186b8b4e5649be7b31103de7558.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse001_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse001_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse001_1_010101_12_01": 404,
+        "vse001_1_010101_12_02": 404,
+        "vse001_1_010101_12_03": 404,
+        "vse001_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country19",
+      "character": "chara1_00357_01",
+      "image": "chara1_00357_01",
+      "image_hash": "0f86db57eb1f1832e66bc5ebd54ba850",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "e03841a3b0ae17b8137a869b4ef8cea5a42d45b01f5360f88f7f342c64322013",
+        "names": [
+          "chara1_00357_01_1_03",
+          "chara1_00357_01_1_01",
+          "chara1_00357_01_3_01",
+          "chara1_00357_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__0f86db57eb1f1832e66bc5ebd54ba850.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country20",
+      "character": "chara1_00402_01",
+      "image": "chara1_00402_01",
+      "image_hash": "b75395b36cb1fa3c7c4dd892868d6438",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country21",
+      "character": "chara1_00445_01",
+      "image": "chara1_00445_01",
+      "image_hash": "b630ad229880364c6f0b23765849a71a",
+      "appearance_clips": [
+        "vse014_1_050901_12_01",
+        "vse014_1_050901_12_02",
+        "vse014_1_050901_12_03",
+        "vse014_1_050901_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse014_1_050901_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse014_1_050901_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse014_1_050901_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse014_1_050901_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse014_1_050901_12_01": 404,
+        "vse014_1_050901_12_02": 404,
+        "vse014_1_050901_12_03": 404,
+        "vse014_1_050901_12_04": 404
+      }
+    },
+    {
+      "country": "country22",
+      "character": "chara1_00479_01",
+      "image": "chara1_00479_01",
+      "image_hash": "484d8c7c7cbb2af464cceb6a99d54344",
+      "appearance_clips": [
+        "vse024_1_010101_12_01",
+        "vse024_1_010101_12_02",
+        "vse024_1_010101_12_03",
+        "vse024_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010101_12_01": 404,
+        "vse024_1_010101_12_02": 404,
+        "vse024_1_010101_12_03": 404,
+        "vse024_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country23",
+      "character": "chara1_00614_01",
+      "image": "chara1_00614_01",
+      "image_hash": "75d441c89a75bd5bb404ca4312e0293e",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "ee8835e41f3aaf93d0b9849267f8e49d42b7761bc62fdb55bc4ca41640440727",
+        "names": [
+          "chara1_00614_01_1_03",
+          "chara1_00614_01_1_01",
+          "chara1_00614_01_3_01",
+          "chara1_00614_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__75d441c89a75bd5bb404ca4312e0293e.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country24",
+      "character": "chara1_00673_01",
+      "image": "chara1_00673_01",
+      "image_hash": "ddc56a7f3f71d252c947f6e40cf998eb",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "00c3458f10b3000dce6f58e86fac5da6c34c4748a1ff74420f56380a49a9d4f1",
+        "names": [
+          "chara1_00673_01_1_03",
+          "chara1_00673_01_1_01",
+          "chara1_00673_01_3_01",
+          "chara1_00673_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__ddc56a7f3f71d252c947f6e40cf998eb.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country25",
+      "character": "chara1_00689_01",
+      "image": "chara1_00689_01",
+      "image_hash": "b6c88175b58f489bebf782eef21ace35",
+      "appearance_clips": [
+        "vse003_1_010101_12_01",
+        "vse003_1_010101_12_02",
+        "vse003_1_010101_12_03",
+        "vse003_1_010101_12_04"
+      ],
+      "local_image": {
+        "sha256": "a11d75f056a576b2078a000998de508283e24ea32a8aa35b4dee92622aaa4791",
+        "names": [
+          "chara1_00689_01_1_03",
+          "chara1_00689_01_1_01",
+          "chara1_00689_01_3_01",
+          "chara1_00689_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "file": "b6c88175b58f489bebf782eef21ace35.unity3d"
+      },
+      "generated_image": {
+        "sha256": "a11d75f056a576b2078a000998de508283e24ea32a8aa35b4dee92622aaa4791",
+        "names": [
+          "chara1_00689_01_1_03",
+          "chara1_00689_01_1_01",
+          "chara1_00689_01_3_01",
+          "chara1_00689_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__b6c88175b58f489bebf782eef21ace35.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse003_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse003_1_010101_12_01": 404,
+        "vse003_1_010101_12_02": 404,
+        "vse003_1_010101_12_03": 404,
+        "vse003_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country26",
+      "character": "chara1_00757_01",
+      "image": "chara1_00757_01",
+      "image_hash": "759f9e91a56a2aab75b1d64bf101a5ef",
+      "appearance_clips": [
+        "vse023_1_010101_12_01",
+        "vse023_1_010101_12_02",
+        "vse023_1_010101_12_03",
+        "vse023_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010101_12_01": 404,
+        "vse023_1_010101_12_02": 404,
+        "vse023_1_010101_12_03": 404,
+        "vse023_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country27",
+      "character": "chara1_00787_01",
+      "image": "chara1_00787_01",
+      "image_hash": "adab798b1a597e970fa1995aa4a9dd11",
+      "appearance_clips": [
+        "vse013_1_010101_12_01",
+        "vse013_1_010101_12_02",
+        "vse013_1_010101_12_03",
+        "vse013_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse013_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse013_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse013_1_010101_12_01": 404,
+        "vse013_1_010101_12_02": 404,
+        "vse013_1_010101_12_03": 404,
+        "vse013_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country28",
+      "character": "chara1_00814_01",
+      "image": "chara1_00814_01",
+      "image_hash": "395a38ee07917a3f1342358cdb6c4fff",
+      "appearance_clips": [
+        "vse003_1_010101_12_01",
+        "vse003_1_010101_12_02",
+        "vse003_1_010101_12_03",
+        "vse003_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse003_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse003_1_010101_12_01": 404,
+        "vse003_1_010101_12_02": 404,
+        "vse003_1_010101_12_03": 404,
+        "vse003_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country29",
+      "character": "chara1_00842_01",
+      "image": "chara1_00842_01",
+      "image_hash": "9cb1a1ed6e425baaa75cd0b9fd52561c",
+      "appearance_clips": [
+        "vse004_1_030601_12_01",
+        "vse004_1_030601_12_02",
+        "vse004_1_030601_12_03",
+        "vse004_1_030601_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "57847a34c8d5afccf3f9abb844dff226c57f13ef34253e7ae14d8fb15e5542db",
+        "names": [
+          "chara1_00842_01_1_03",
+          "chara1_00842_01_1_01",
+          "chara1_00842_01_3_01",
+          "chara1_00842_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__9cb1a1ed6e425baaa75cd0b9fd52561c.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse004_1_030601_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030601_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse004_1_030601_12_01": 404,
+        "vse004_1_030601_12_02": 404,
+        "vse004_1_030601_12_03": 404,
+        "vse004_1_030601_12_04": 404
+      }
+    },
+    {
+      "country": "country30",
+      "character": "chara1_00866_01",
+      "image": "chara1_00866_01",
+      "image_hash": "e5db131aefd94332bad1ff54f2c3929a",
+      "appearance_clips": [
+        "vse018_1_061001_12_01",
+        "vse018_1_061001_12_02",
+        "vse018_1_061001_12_03",
+        "vse018_1_061001_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "1061667fadf364d3be3ff131de463240fba934c1a6758db70db958b941ab1beb",
+        "names": [
+          "chara1_00866_01_1_03",
+          "chara1_00866_01_1_01",
+          "chara1_00866_01_3_01",
+          "chara1_00866_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__e5db131aefd94332bad1ff54f2c3929a.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse018_1_061001_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse018_1_061001_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse018_1_061001_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse018_1_061001_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse018_1_061001_12_01": 404,
+        "vse018_1_061001_12_02": 404,
+        "vse018_1_061001_12_03": 404,
+        "vse018_1_061001_12_04": 404
+      }
+    },
+    {
+      "country": "country31",
+      "character": "chara1_00879_01",
+      "image": "chara1_00879_01",
+      "image_hash": "7c58deaa2283219ca924e3529d29c80b",
+      "appearance_clips": [
+        "vse015_1_040201_12_01",
+        "vse015_1_040201_12_02",
+        "vse015_1_040201_12_03",
+        "vse015_1_040201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse015_1_040201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse015_1_040201_12_01": 404,
+        "vse015_1_040201_12_02": 404,
+        "vse015_1_040201_12_03": 404,
+        "vse015_1_040201_12_04": 404
+      }
+    },
+    {
+      "country": "country32",
+      "character": "chara1_00891_01",
+      "image": "chara1_00891_01",
+      "image_hash": "1565c5b492c7ba3efa964e64f37b2507",
+      "appearance_clips": [
+        "vse021_1_021201_12_01",
+        "vse021_1_021201_12_02",
+        "vse021_1_021201_12_03",
+        "vse021_1_021201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse021_1_021201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse021_1_021201_12_01": 404,
+        "vse021_1_021201_12_02": 404,
+        "vse021_1_021201_12_03": 404,
+        "vse021_1_021201_12_04": 404
+      }
+    },
+    {
+      "country": "country33",
+      "character": "chara1_00916_01",
+      "image": "chara1_00916_01",
+      "image_hash": "1450fa13b6e0098ea407efee5de253b2",
+      "appearance_clips": [
+        "vse024_1_010201_12_01",
+        "vse024_1_010201_12_02",
+        "vse024_1_010201_12_03",
+        "vse024_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010201_12_01": 404,
+        "vse024_1_010201_12_02": 404,
+        "vse024_1_010201_12_03": 404,
+        "vse024_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country34",
+      "character": "chara1_00938_01",
+      "image": "chara1_00938_01",
+      "image_hash": "11fa2cd211464fed945a28c33860ebfe",
+      "appearance_clips": [
+        "vse038_1_030601_12_01",
+        "vse038_1_030601_12_02",
+        "vse038_1_030601_12_03",
+        "vse038_1_030601_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse038_1_030601_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse038_1_030601_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse038_1_030601_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse038_1_030601_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse038_1_030601_12_01": 404,
+        "vse038_1_030601_12_02": 404,
+        "vse038_1_030601_12_03": 404,
+        "vse038_1_030601_12_04": 404
+      }
+    },
+    {
+      "country": "country35",
+      "character": "chara1_00979_01",
+      "image": "chara1_00979_01",
+      "image_hash": "ce57256cfc6ca37a8a40dd57a4933fd2",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "d534a1fad397aae6e85f4c59f74dd0a569faeb6075571dd670ddf7a820673c2d",
+        "names": [
+          "chara1_00979_01_1_03",
+          "chara1_00979_01_1_01",
+          "chara1_00979_01_3_01",
+          "chara1_00979_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__ce57256cfc6ca37a8a40dd57a4933fd2.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country36",
+      "character": "chara1_00997_01",
+      "image": "chara1_00997_01",
+      "image_hash": "3e87841ff03b2b7d93e15d3d5be0afa5",
+      "appearance_clips": [
+        "vse021_1_021201_12_01",
+        "vse021_1_021201_12_02",
+        "vse021_1_021201_12_03",
+        "vse021_1_021201_12_04"
+      ],
+      "local_image": {
+        "sha256": "bf19525321416bc8dc3657ce4b3e4ffe51014db1ffc5c0528f9afac615e83a6f",
+        "names": [
+          "chara1_00997_01_1_03",
+          "chara1_00997_01_1_01",
+          "chara1_00997_01_3_01",
+          "chara1_00997_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "file": "3e87841ff03b2b7d93e15d3d5be0afa5.unity3d"
+      },
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse021_1_021201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse021_1_021201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse021_1_021201_12_01": 404,
+        "vse021_1_021201_12_02": 404,
+        "vse021_1_021201_12_03": 404,
+        "vse021_1_021201_12_04": 404
+      }
+    },
+    {
+      "country": "country37",
+      "character": "chara1_01012_01",
+      "image": "chara1_01012_01",
+      "image_hash": "616bf995dd5d3d7f4c7b3f1298829820",
+      "appearance_clips": [
+        "vse008_1_050801_12_01",
+        "vse008_1_050801_12_02",
+        "vse008_1_050801_12_03",
+        "vse008_1_050801_12_04"
+      ],
+      "local_image": {
+        "sha256": "be284b6b959f200efa384abd6eaa4e963ca8e859ad65f4f15229834ff48d7744",
+        "names": [
+          "chara1_01012_01_1_02",
+          "chara1_01012_01_1_01",
+          "chara1_01012_01_3_01",
+          "chara1_01012_01_1_03"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "file": "616bf995dd5d3d7f4c7b3f1298829820.unity3d"
+      },
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse008_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse008_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "sha256": "e33c5a956a701786dd1e5ff67d46da308558bd2eaf3f930891dd6ed44be4cc61",
+          "names": [
+            "vse008_1_050801_12_03"
+          ],
+          "missing_names": [],
+          "payload_bytes": 32392,
+          "file": "f9c0557078d03607e495d1f021c93dc5.unity3d"
+        },
+        {
+          "sha256": "e08b3f24a506a7a40aa71b0c153d4c3aeba03b70c0acb225ff9def4d8798b160",
+          "names": [
+            "vse008_1_050801_12_04"
+          ],
+          "missing_names": [],
+          "payload_bytes": 44639,
+          "file": "0d81189a6ca1ec4bf0f38a663f26cf35.unity3d"
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse008_1_050801_12_01": 404,
+        "vse008_1_050801_12_02": 404,
+        "vse008_1_050801_12_03": 200,
+        "vse008_1_050801_12_04": 200
+      }
+    },
+    {
+      "country": "country38",
+      "character": "chara1_01020_01",
+      "image": "chara1_01020_01",
+      "image_hash": "b2d91e7e448411a75c1582939eebdbc0",
+      "appearance_clips": [
+        "vse009_1_050801_12_01",
+        "vse009_1_050801_12_02",
+        "vse009_1_050801_12_03",
+        "vse009_1_050801_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse009_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse009_1_050801_12_01": 404,
+        "vse009_1_050801_12_02": 404,
+        "vse009_1_050801_12_03": 404,
+        "vse009_1_050801_12_04": 404
+      }
+    },
+    {
+      "country": "country39",
+      "character": "chara1_01038_01",
+      "image": "chara1_01038_01",
+      "image_hash": "8151e5be879fdc24d67bb8e796f00851",
+      "appearance_clips": [
+        "vse024_1_010301_12_01",
+        "vse024_1_010301_12_02",
+        "vse024_1_010301_12_03",
+        "vse024_1_010301_12_04"
+      ],
+      "local_image": {
+        "sha256": "b037a600c165954f73c44377accd9f100a045bd413cf874c26482264df81ef88",
+        "names": [
+          "chara1_01038_01_1_03",
+          "chara1_01038_01_3_01",
+          "chara1_01038_01_1_02",
+          "chara1_01038_01_1_01"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "file": "8151e5be879fdc24d67bb8e796f00851.unity3d"
+      },
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 200,
+      "server_appearance": {
+        "vse024_1_010301_12_01": 404,
+        "vse024_1_010301_12_02": 404,
+        "vse024_1_010301_12_03": 404,
+        "vse024_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country40",
+      "character": "chara1_01072_01",
+      "image": "chara1_01072_01",
+      "image_hash": "e4866ecfc7ad77208583ab70675efb04",
+      "appearance_clips": [
+        "vse009_1_050801_12_01",
+        "vse009_1_050801_12_02",
+        "vse009_1_050801_12_03",
+        "vse009_1_050801_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse009_1_050801_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse009_1_050801_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse009_1_050801_12_01": 404,
+        "vse009_1_050801_12_02": 404,
+        "vse009_1_050801_12_03": 404,
+        "vse009_1_050801_12_04": 404
+      }
+    },
+    {
+      "country": "country41",
+      "character": "chara1_01084_01",
+      "image": "chara1_01084_01",
+      "image_hash": "525ac179b1a7a23e5a34bc0cd9d72f07",
+      "appearance_clips": [
+        "vse023_1_010301_12_01",
+        "vse023_1_010301_12_02",
+        "vse023_1_010301_12_03",
+        "vse023_1_010301_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010301_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010301_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010301_12_01": 404,
+        "vse023_1_010301_12_02": 404,
+        "vse023_1_010301_12_03": 404,
+        "vse023_1_010301_12_04": 404
+      }
+    },
+    {
+      "country": "country42",
+      "character": "chara1_01110_01",
+      "image": "chara1_01110_01",
+      "image_hash": "85e3d5e0fbbe25812757434d1af4fc10",
+      "appearance_clips": [
+        "vse024_1_010101_12_01",
+        "vse024_1_010101_12_02",
+        "vse024_1_010101_12_03",
+        "vse024_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010101_12_01": 404,
+        "vse024_1_010101_12_02": 404,
+        "vse024_1_010101_12_03": 404,
+        "vse024_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country43",
+      "character": "chara1_01124_01",
+      "image": "chara1_01124_01",
+      "image_hash": "5919d7957faa0171ac4e0286b1ed0069",
+      "appearance_clips": [
+        "vse023_1_010201_12_01",
+        "vse023_1_010201_12_02",
+        "vse023_1_010201_12_03",
+        "vse023_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse023_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse023_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse023_1_010201_12_01": 404,
+        "vse023_1_010201_12_02": 404,
+        "vse023_1_010201_12_03": 404,
+        "vse023_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country44",
+      "character": "chara1_01145_01",
+      "image": "chara1_01145_01",
+      "image_hash": "96a5a2f82a74e4ce5b00d888e317cca9",
+      "appearance_clips": [
+        "vse024_1_010201_12_01",
+        "vse024_1_010201_12_02",
+        "vse024_1_010201_12_03",
+        "vse024_1_010201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse024_1_010201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse024_1_010201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse024_1_010201_12_01": 404,
+        "vse024_1_010201_12_02": 404,
+        "vse024_1_010201_12_03": 404,
+        "vse024_1_010201_12_04": 404
+      }
+    },
+    {
+      "country": "country45",
+      "character": "chara1_01175_01",
+      "image": "chara1_01175_01",
+      "image_hash": "414e3cada280f28ae33b122bee148121",
+      "appearance_clips": [
+        "vse003_1_010101_12_01",
+        "vse003_1_010101_12_02",
+        "vse003_1_010101_12_03",
+        "vse003_1_010101_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse003_1_010101_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse003_1_010101_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse003_1_010101_12_01": 404,
+        "vse003_1_010101_12_02": 404,
+        "vse003_1_010101_12_03": 404,
+        "vse003_1_010101_12_04": 404
+      }
+    },
+    {
+      "country": "country46",
+      "character": "chara1_01186_01",
+      "image": "chara1_01186_01",
+      "image_hash": "c290b0f2038a9f6609af1c7becb18e30",
+      "appearance_clips": [
+        "vse004_1_030401_12_01",
+        "vse004_1_030401_12_02",
+        "vse004_1_030401_12_03",
+        "vse004_1_030401_12_04"
+      ],
+      "local_image": null,
+      "generated_image": null,
+      "local_voices": [
+        {
+          "clip": "vse004_1_030401_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030401_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030401_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse004_1_030401_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse004_1_030401_12_01": 404,
+        "vse004_1_030401_12_02": 404,
+        "vse004_1_030401_12_03": 404,
+        "vse004_1_030401_12_04": 404
+      }
+    },
+    {
+      "country": "country47",
+      "character": "chara1_01218_01",
+      "image": "chara1_01218_01",
+      "image_hash": "9a744b5f1bf3fca473cf888ae57800e5",
+      "appearance_clips": [
+        "vse015_1_040201_12_01",
+        "vse015_1_040201_12_02",
+        "vse015_1_040201_12_03",
+        "vse015_1_040201_12_04"
+      ],
+      "local_image": null,
+      "generated_image": {
+        "sha256": "3749229c1b609c514c1e78d0f6d94208a3ce4e6e311e9026190b58c42c18d884",
+        "names": [
+          "chara1_01218_01_1_03",
+          "chara1_01218_01_1_01",
+          "chara1_01218_01_3_01",
+          "chara1_01218_01_1_02"
+        ],
+        "missing_names": [],
+        "payload_bytes": 1163264,
+        "manifest_matches": true,
+        "provenance": "generated",
+        "file": "chara__9a744b5f1bf3fca473cf888ae57800e5.unity3d"
+      },
+      "local_voices": [
+        {
+          "clip": "vse015_1_040201_12_01",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_02",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_03",
+          "missing": true
+        },
+        {
+          "clip": "vse015_1_040201_12_04",
+          "missing": true
+        }
+      ],
+      "server_image": 404,
+      "server_appearance": {
+        "vse015_1_040201_12_01": 404,
+        "vse015_1_040201_12_02": 404,
+        "vse015_1_040201_12_03": 404,
+        "vse015_1_040201_12_04": 404
+      }
+    }
+  ]
+}

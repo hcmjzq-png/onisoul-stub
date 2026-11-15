@@ -224,3 +224,12 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 原有领奖记录保证重试不重复累加；失败批次不保存奖励，正常重登通过 getPlayerParams 读取累计经验。
 不新增协议字段、不自动升等级，也不自动修复未经核对的旧奖励记录。
 真机发现与 #65 上线边界见 [部署验收](analysis/research-331/review/deployment65-20261115.md)。
+
+## 2026-11-15 昵称唯一性
+
+来源：**bundle**，`LoginEnvironment.registerName` 按 succeeded 判断命名能否继续；
+`LoginTransNameEntry.onResult` 已有名字不可用的提示。本轮保持这两条接口的响应结构，
+为 auth/registerName 和 auth/createPlayer 增加数据库冲突到 succeeded=false 的处理。
+内部 player_id 保持稳定主键；username_key 仅为内部唯一索引，不是新增协议字段。
+上线前必须解决现有两组精确重名，迁移不会擅自改名。
+国家图片/随机语音、最终决定等待及白屏内存证据见 [本轮审核](analysis/login-country-20261115/README.md)。
