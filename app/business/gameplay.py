@@ -14,7 +14,9 @@ from typing import Any
 
 from app import sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
-from app.business.mission_chain import MissionChain, SYSTEM_MISSION
+from app.business.mission_chain import (
+    DEFAULT_BUTTON_BITS, SCREENSHOT_BIT, WIRE_BUTTON_MASK, MissionChain, SYSTEM_MISSION,
+)
 from app.business.registry import Registry
 from app.business.player_services import PlayerServices, integer
 from app.business.progression import ProgressionServices, level_cap
@@ -325,7 +327,6 @@ class GameplayService:
         if not isinstance(result.get("missions"), dict):
             result["missions"] = {}
         result["missions"].setdefault("0", "C")
-        mission_validation.seed_auto(result, self.missions.rows())
         result["unlockBits"] = self._unlock_bits(result)
         for key in ("buildings", "occupiedGrids", "produce", "items", "characters", "decks"):
             if not isinstance(result.get(key), dict):
@@ -784,6 +785,10 @@ class GameplayService:
         if isinstance(found, dict):
             return found
         player_id, player, dirty = found
+        try:
+            mission_validation.validate_progress(player, self.missions.rows())
+        except ValueError as exc:
+            return self._failure("politic/mission/getStatesFromAllMissions", str(exc))
         states = dict(self.missions.baseline_states())
         states.update({str(key): str(value) for key, value in player["missions"].items()})
         player["missions"] = states
@@ -794,12 +799,24 @@ class GameplayService:
         return self._success("politic/mission/getStatesFromAllMissions", {"states": states})
 
     def _unlock_bits(self, player: dict[str, Any]) -> int:
-        derived = self.missions.unlock_bits(player["missions"])
-        try:
-            reported = int(player.get("unlockBits") or 0)
-        except (TypeError, ValueError):
-            reported = 0
-        return (derived | reported) & 0x0FFFFFFF
+        bits = DEFAULT_BUTTON_BITS | self.missions.unlock_bits(player["missions"])
+        if integer(player["entity"].get("level", 1), 1) >= 10:
+            bits |= SCREENSHOT_BIT
+        # unlockBits is a derived cache, never a second source of permissions.
+        return bits & WIRE_BUTTON_MASK
+
+    def _allowed_unlock_request(self, player: dict[str, Any]) -> int:
+        allowed = self._unlock_bits(player)
+        rows = self.missions.rows()
+        for code, row in rows.items():
+            if (code != SYSTEM_MISSION
+                    and mission_validation.state_of(player, rows, code) in ("locked", "opened")
+                    and mission_validation.eligible(player, rows, code)):
+                # phaseOpened queues getAcceptUnlocks BEFORE makeUpdateStatusList.
+                # Acknowledge eligible accept flags, but commit them only when
+                # changeState accepts the mission. This does not start a mission.
+                allowed |= self.missions._bits(row.get("acceptUnlocks"))
+        return allowed & WIRE_BUTTON_MASK
 
     def get_missions_in_progress(
         self, params: dict[str, Any], session: dict[str, Any] | None
@@ -810,6 +827,10 @@ class GameplayService:
         if isinstance(found, dict):
             return found
         _player_id, player, _dirty = found
+        try:
+            mission_validation.validate_progress(player, self.missions.rows())
+        except ValueError as exc:
+            return self._failure("politic/mission/getMissionsInProgress", str(exc))
         missions = {
             mission_id: _deep(progress)
             for mission_id, progress in player["missionProgress"].items()
@@ -830,16 +851,27 @@ class GameplayService:
         found = self._session_player("politic/mission/setWorkingValue", session)
         if isinstance(found, dict):
             return found
-        player_id, player, _dirty = found
-        if str(params.get("missionId") or "") == SYSTEM_MISSION:
-            for index, value in zip(params.get("indexes") or [], params.get("values") or []):
-                try:
-                    if int(index) == 0:
-                        player["unlockBits"] = self._unlock_bits(player) | int(value)
-                except (TypeError, ValueError):
-                    continue
+        player_id, player, dirty = found
+        api = "politic/mission/setWorkingValue"
+        try:
+            if not player["entity"].get("created"):
+                raise ValueError("player must be created before unlocking functions")
+            if params.get("missionId") != SYSTEM_MISSION:
+                raise ValueError("non-system mission working values are not implemented")
+            indexes, values = params.get("indexes"), params.get("values")
+            if not isinstance(indexes, list) or not isinstance(values, list) or len(indexes) != 1 or len(values) != 1:
+                raise ValueError("expected one system work0 value")
+            if integer(indexes[0]) != 0:
+                raise ValueError("unsupported system working index")
+            requested = integer(values[0], 0, WIRE_BUTTON_MASK)
+            if requested & ~self._allowed_unlock_request(player):
+                raise ValueError("function unlock prerequisites are not satisfied or not implemented")
+        except (ValueError, TypeError) as exc:
+            return self._failure(api, str(exc))
+        if dirty:
+            player["unlockBits"] = self._unlock_bits(player)
             self._save(player, player_id)
-        return self._success("politic/mission/setWorkingValue")
+        return self._success(api)
 
     def change_mission_state(
         self, params: dict[str, Any], session: dict[str, Any] | None

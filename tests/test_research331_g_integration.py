@@ -1,13 +1,13 @@
 """Validate the submitted patch without modifying a shared public file."""
 import csv
 from pathlib import Path
-import re
 import unittest
 
 from app.business.rankings_services import LedgerRankingsServices
 from app.business.registry import Registry
 from app.tables import TableCatalog
 from tools.gameplay_smoke import MemorySessions, MemoryState
+from tests.patch_context import apply_context
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,27 +17,12 @@ RESULTS = ROOT / "docs/analysis/research-331/results/g-rankings"
 class GIntegrationTest(unittest.TestCase):
     def test_patch_registers_exactly_eight_only_with_explicit_provider(self):
         relative = "app/business/gameplay.py"
-        source = (ROOT / relative).read_text(encoding="utf-8").splitlines(True)
+        source = (ROOT / relative).read_text(encoding="utf-8")
         patch = (RESULTS / "integration.patch").read_text(encoding="utf-8")
         section = patch.split("--- a/" + relative + "\n", 1)[1].split("--- a/docs/", 1)[0]
-        out, cursor, position = [], 0, 0
-        for line in section.splitlines(True):
-            if line.startswith("+++ "):
-                continue
-            if line.startswith("@@"):
-                position = int(re.match(r"@@ -(\d+)", line)[1]) - 1
-                out.extend(source[cursor:position])
-                cursor = position
-            elif line[0] in " -":
-                self.assertEqual(source[cursor], line[1:])
-                if line[0] == " ":
-                    out.append(line[1:])
-                cursor += 1
-            elif line[0] == "+":
-                out.append(line[1:])
-        out.extend(source[cursor:])
+        out = apply_context(source, section)
         namespace = {"__name__": "app.business.gameplay"}
-        exec(compile("".join(out), relative, "exec"), namespace)
+        exec(compile(out, relative, "exec"), namespace)
         catalog = TableCatalog(ROOT / "tests/fixtures/gameplay/tables",
                                ROOT / "tests/fixtures/gameplay/tables/table_list.tsv")
         def registry(provider=None):

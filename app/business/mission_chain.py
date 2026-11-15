@@ -38,6 +38,12 @@ UNLOCK_BITS: dict[str, int] = {
 }
 
 SYSTEM_MISSION = "po_mission_00000"
+# PoliticButtonManager.init/calcNowUnlock: mapped default buttons are auction,
+# presentBox and batchUpgrade. flagBtnUnlock.all omits the latter despite the
+# client actually sending it; do not use that debug constant as the wire mask.
+DEFAULT_BUTTON_BITS = 0x10120000
+SCREENSHOT_BIT = 0x02000000
+WIRE_BUTTON_MASK = 0x1FFFFFFF
 STATE_TO_LETTER = {
     "locked": "L",
     "opened": "O",
@@ -71,6 +77,8 @@ class MissionChain:
         return result
 
     def baseline_states(self) -> dict[str, str]:
+        # Unlisted missions are locked and eligible for the original client's
+        # wakeupMission(). Never seed O without a matching progress record.
         return {"0": "C"}
 
     def unlock_bits(self, states: dict[str, str]) -> int:
