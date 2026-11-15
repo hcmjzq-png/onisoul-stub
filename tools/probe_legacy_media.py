@@ -85,6 +85,28 @@ def validate_results(proofs: list[dict], events: list[dict]) -> list[dict]:
     return loaded
 
 
+def resume_results(proofs: list[dict], previous: dict, manifest_sha256: str,
+                   probe_sha256: str, play: set[str]) -> tuple[list[dict], set[str]]:
+    """Reuse only successful, fully validated results from the exact same inputs."""
+    for key, expected in (('engine_sha256', ENGINE_SHA256),
+                          ('manifest_sha256', manifest_sha256), ('probe_sha256', probe_sha256)):
+        if previous.get(key) != expected:
+            raise ValueError('resume fingerprint mismatch: ' + key)
+    by_id = {row.get('id', str(index)): row for index, row in enumerate(proofs)}
+    successes = [event for event in previous['events'] if 'result' in event]
+    ids = [event['result']['id'] for event in successes]
+    if len(set(ids)) != len(ids) or not set(ids) <= by_id.keys():
+        raise ValueError('resume contains duplicate or unknown result IDs')
+    validate_results([by_id[ident] for ident in ids], successes)
+    # A newly requested playback sample must really be played, even if a prior
+    # attempt already decoded that clip without playback.
+    successes = [event for event in successes if event['result']['name'] not in play or
+                 event['result'].get('playback_finished')]
+    accepted = {event['result']['id'] for event in successes}
+    retries = [event for event in previous['events'] if event.get('retry')]
+    return retries + successes, accepted
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--pid', type=int, required=True)
@@ -100,10 +122,12 @@ def main() -> None:
     parser.add_argument('--http-timeout', type=float, default=10, help='Seconds per HTTP preflight socket operation')
     parser.add_argument('--http-attempts', type=int, default=5)
     parser.add_argument('--native-attempts', type=int, default=5)
+    parser.add_argument('--resume-from', type=Path, help='Reuse validated successes from this checkpoint; keep the same manifest')
     args = parser.parse_args()
     if args.output.exists():
         parser.error('output already exists')
-    proofs = json.loads(args.manifest.read_text(encoding='utf-8'))['converted']
+    manifest_bytes = args.manifest.read_bytes()
+    proofs = json.loads(manifest_bytes)['converted']
     if min(args.queue_size, args.native_concurrency, args.http_workers, args.timeout,
            args.transfer_timeout, args.http_timeout, args.http_attempts, args.native_attempts) <= 0:
         parser.error('queue, concurrency, timeouts and attempt counts must be positive')
@@ -116,24 +140,39 @@ def main() -> None:
             raise ValueError('converted file changed: ' + row['name'])
     if not set(args.play) <= {row['name'] for row in proofs}:
         parser.error('--play name is not in the conversion manifest')
+    manifest_sha256 = hashlib.sha256(manifest_bytes).hexdigest()
+    native_source = Path(__file__).with_suffix('.js').read_text(encoding='utf-8')
+    probe_sha256 = hashlib.sha256(native_source.encode()).hexdigest()
+    events = []
+    accepted = set()
+    history = []
+    if args.resume_from:
+        previous_bytes = args.resume_from.read_bytes()
+        previous = json.loads(previous_bytes)
+        events, accepted = resume_results(proofs, previous, manifest_sha256, probe_sha256, set(args.play))
+        history = previous.get('previous_attempts', []) + [dict(
+            checkpoint=str(args.resume_from.resolve()), sha256=hashlib.sha256(previous_bytes).hexdigest(),
+            accepted=len(accepted), progress=previous.get('progress'),
+            errors=[event for event in previous['events'] if 'error' in event or event.get('type') == 'error'])]
+    pending = [dict(row, id=row.get('id', str(index))) for index, row in enumerate(proofs)
+               if row.get('id', str(index)) not in accepted]
     import frida
     session = frida.attach(args.pid)
-    events = []
     status = None
-    progress = dict(total=len(proofs), submitted=0, finished=0, elapsed_seconds=0)
+    progress = dict(total=len(proofs), submitted=len(accepted), finished=len(accepted),
+                    resumed=len(accepted), elapsed_seconds=0)
     prefetch = None
-    if any(row.get('url') for row in proofs):
-        prefetch = HttpPreflight(proofs, args.http_workers,
+    if any(row.get('url') for row in pending):
+        prefetch = HttpPreflight(pending, args.http_workers,
                                  attempts=args.http_attempts, timeout=args.http_timeout)
-    native_source = Path(__file__).with_suffix('.js').read_text(encoding='utf-8')
     settings = dict(concurrency=args.native_concurrency, timeoutMs=args.transfer_timeout * 1000,
                     attempts=args.native_attempts)
     def save() -> None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         temporary = args.output.with_name(args.output.name + '.tmp')
         temporary.write_text(json.dumps(dict(pid=args.pid, engine_sha256=ENGINE_SHA256,
-            manifest_sha256=hashlib.sha256(args.manifest.read_bytes()).hexdigest(),
-            probe_sha256=hashlib.sha256(native_source.encode()).hexdigest(),
+            manifest_sha256=manifest_sha256, probe_sha256=probe_sha256,
+            previous_attempts=history,
             http_settings=dict(workers=args.http_workers, attempts=args.http_attempts,
                                socket_timeout=args.http_timeout),
             settings=settings, progress=progress, status=status, events=events), indent=2), encoding='utf-8')
@@ -156,35 +195,38 @@ def main() -> None:
         try:
             start = time.monotonic()
             submitted = 0
-            last_saved = 0
+            last_saved = len(accepted)
             last_saved_at = start
             while time.monotonic() - start < args.timeout:
                 status = script.exports_sync.status()
                 index = None
-                if (submitted < len(proofs) and
+                if (submitted < len(pending) and
                         status['queued'] + len(status['current'] or []) < args.queue_size):
                     index = prefetch.ready() if prefetch else submitted
                 if index is not None:
-                    row = proofs[index]
-                    job = dict(id=row.get('id', str(index)), name=row['name'],
+                    row = pending[index]
+                    job = dict(id=row['id'], name=row['name'],
                         output_sha256=row['output_sha256'], expected_bytes=row['output_bytes'],
                         url=row.get('url'), play=row['name'] in args.play)
                     if prefetch:
-                        retries = prefetch.take(index)
+                        try:
+                            retries = prefetch.take(index)
+                        except Exception as exc:
+                            raise RuntimeError(f"HTTP preflight failed for {row['id']} ({row.get('url')}): {type(exc).__name__}: {exc}") from exc
                         if job['url']:
                             job.update(http_preflight_sha256=row['output_sha256'], http_preflight_retries=retries)
                     script.exports_sync.enqueue(job, b'' if job['url'] else (args.root / row['output']).read_bytes())
                     submitted += 1
                     continue
                 finished = sum('result' in event or 'error' in event for event in events)
-                progress.update(submitted=submitted, finished=finished,
+                progress.update(submitted=len(accepted) + submitted, finished=finished,
                                 elapsed_seconds=round(time.monotonic() - start, 3))
                 if finished >= last_saved + 100 or time.monotonic() - last_saved_at >= 10:
                     save()
                     last_saved = finished
                     last_saved_at = time.monotonic()
                     print(f'NATIVE {finished}/{len(proofs)}', flush=True)
-                if submitted == len(proofs) and not status['queued'] and not status['current']:
+                if submitted == len(pending) and not status['queued'] and not status['current']:
                     break
                 time.sleep(.02)
             else:
