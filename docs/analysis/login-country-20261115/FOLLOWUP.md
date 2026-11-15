@@ -90,9 +90,9 @@ HTTP 200 仍不等于全部玩法验收；本次真机抽验 country25（近江/
 本轮再按精确资源名/UTF-16LE MD5 扫描 E 盘 12632 个包、图像及独立音频文件，另找到：
 
 - 10 条小姓 FirstGreeting 候选，仅存在于 `assets_serve/client/android/jp/assets/vse`。
-  内部 AudioClip 名与请求名一致，10 条音频数据指纹各不相同；这些包为 3.5.7f6、平台 10、MP3 数据，
-  而当前 PC 模板为 3.5.6f4、平台 7、Ogg 数据。没有把它们直接算入 PC 已恢复数量。
-  逐条格式/名称/指纹见 [android-navigator-voice-candidates.json](android-navigator-voice-candidates.json)。
+  内部 AudioClip 名与请求名一致，10 条音频数据指纹各不相同；这些包为 3.5.7f6、平台 10（PS3）、MP3 数据，
+  而当前 PC 模板为 3.5.6f4、平台 7（WebPlayerStreamed）、Ogg 数据。目录名 android 不能证明包的平台。
+  没有把它们直接算入 PC 已恢复数量。逐条格式/名称/指纹见 [cross-platform-navigator-voice-candidates.json](cross-platform-navigator-voice-candidates.json)。
   后续可保留原 MP3 来源，按 PC AudioClip 模板转制，在当前引擎验证加载、音频时长、实际台词和播放结束回调；
   即使这 10 条全部通过，也还缺 30 条随机候选。
 - 4 套小姓立绘 TGA（`cch1_80002_01_3_01` 与 `cch1_80006_01/02/04_3_01`），
