@@ -781,6 +781,30 @@
   "targeted_qt_cache_records_backed_up": 3,
   "runtime_image_qa": [
     "country25/浅井长政",
-    "country03/九户政实"
-  ]
+    "country03/九户政实",
+    "country04/伊达政宗"
+  ],
+  "tests": {
+    "tested_code_commit": "503270f8a18f3259c5a72479296a6451ca0a5988",
+    "local": {
+      "ran": 625,
+      "passed": 597,
+      "skipped": 28
+    },
+    "isolated_mysql": {
+      "ran": 625,
+      "passed": 613,
+      "skipped": 12
+    },
+    "python_versions_for_lzma_tests": [
+      "3.13",
+      "3.15"
+    ]
+  },
+  "cleanup": {
+    "own_test_account_removed": true,
+    "remaining_original_players": 3,
+    "configuration_restored_sha256": "1db6e36bf219e8ac5711d62729ed74dca9e375c97de257a67e44e646c39bc52f",
+    "temporary_server_probe_removed": true
+  }
 }
