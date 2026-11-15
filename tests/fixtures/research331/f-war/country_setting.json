@@ -1,0 +1,63 @@
+{
+  "country_setting": {
+    "country01": {
+      "id": "country01",
+      "attribute": "oni",
+      "region": "region01",
+      "regionName": "COUNTRY_MSG_REGION_01",
+      "oldCountryName": "OLDCOUNTRY_MSG_01_NAME",
+      "newCountryName": "NEWCOUNTRY_MSG_01_NAME",
+      "doubleCountryName": "DOUBLECOUNTRY_MSG_01_NAME",
+      "shortCountryName": "SHORTCOUNTRY_MSG_01_NAME",
+      "defaultMapName": "城",
+      "neighboringCountries": [
+        "country02",
+        "country05"
+      ],
+      "countryPlate": "country01",
+      "backdrop": "pbm01",
+      "chatRoomName": [
+        "CHATROOM_MSG_0101_NAME",
+        "CHATROOM_MSG_0102_NAME",
+        "CHATROOM_MSG_0103_NAME",
+        "CHATROOM_MSG_0104_NAME",
+        "CHATROOM_MSG_0105_NAME",
+        "CHATROOM_MSG_0106_NAME",
+        "CHATROOM_MSG_0107_NAME",
+        "CHATROOM_MSG_0108_NAME",
+        "CHATROOM_MSG_0109_NAME",
+        "CHATROOM_MSG_0110_NAME"
+      ]
+    },
+    "country02": {
+      "id": "country02",
+      "attribute": "evil",
+      "region": "region01",
+      "regionName": "COUNTRY_MSG_REGION_01",
+      "oldCountryName": "OLDCOUNTRY_MSG_02_NAME",
+      "newCountryName": "NEWCOUNTRY_MSG_02_NAME",
+      "doubleCountryName": "DOUBLECOUNTRY_MSG_02_NAME",
+      "shortCountryName": "SHORTCOUNTRY_MSG_02_NAME",
+      "defaultMapName": "城",
+      "neighboringCountries": [
+        "country01",
+        "country03",
+        "country05"
+      ],
+      "countryPlate": "country02",
+      "backdrop": "pbm02",
+      "chatRoomName": [
+        "CHATROOM_MSG_0201_NAME",
+        "CHATROOM_MSG_0202_NAME",
+        "CHATROOM_MSG_0203_NAME",
+        "CHATROOM_MSG_0204_NAME",
+        "CHATROOM_MSG_0205_NAME",
+        "CHATROOM_MSG_0206_NAME",
+        "CHATROOM_MSG_0207_NAME",
+        "CHATROOM_MSG_0208_NAME",
+        "CHATROOM_MSG_0209_NAME",
+        "CHATROOM_MSG_0210_NAME"
+      ]
+    }
+  }
+}
