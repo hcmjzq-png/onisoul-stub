@@ -1,19 +1,30 @@
 """Group A: verified inventory sales and explicitly owned background selection.
 
 GameplayService mounts inventory sales only. Production settlement is unimplemented.
-backgroundOwnership/mapBackgrounds are proposed SERVER-INTERNAL save fields,
-not original wire fields. No ownership is granted by these handlers.
+items/mapBackgrounds are SERVER-INTERNAL save fields, not original wire fields.
+The original background UI is subcity-only (mapId=1). It needs a verified
+subcity provider before mounting; no ownership or city unlock is granted here.
 """
 from __future__ import annotations
 
 from functools import partial
-from typing import Any
+from typing import Any, Callable
 
 from app.business.city_services import CityServices
 from app.business.player_services import integer
 
 
 class CityProductionServices(CityServices):
+    def __init__(self, service: Any, *, subcity_enabled: Callable[[dict], bool] | None = None) -> None:
+        super().__init__(service)
+        # Provider reads authoritative player state under the shared player lock.
+        # No production provider exists yet; callers cannot supply this via params.
+        self.subcity_enabled = subcity_enabled
+
+    def require_subcity(self, player: dict) -> None:
+        if self.subcity_enabled is None or self.subcity_enabled(player) is not True:
+            raise ValueError("no stub response: verified subcity state is not integrated or locked")
+
     def register(self, registry: Any, *, apis: frozenset[str] | None = None) -> None:
         for api, action in {
             "politic/shop/sellBuildings": self.sell_buildings,
@@ -64,10 +75,7 @@ class CityProductionServices(CityServices):
                 "buildingCount": float(len(player["buildings"]))}
 
     def backgrounds(self, player: dict, params: dict) -> dict:
-        self.current_map(player)
-        owned = player.get("backgroundOwnership")
-        if not isinstance(owned, dict):
-            raise ValueError("no stub response: background ownership has not been migrated")
+        self.require_subcity(player)
         catalogue = self.table("shop_item_bg")
         known = {"nearGround": set(), "farGround": set()}
         for row in catalogue.values():
@@ -80,20 +88,17 @@ class CityProductionServices(CityServices):
                 known[category].update(code for code in row["itemIds"] if isinstance(code, str))
         result = {}
         for category in known:
-            codes = owned.get(category)
+            codes = sorted(code for code in known[category] if integer(player["items"].get(code, 0)) > 0)
             # Empty lists crash mypageBgItemSelect.SelectItemCode; do not
             # invent a default background to make the selector appear usable.
-            if not isinstance(codes, list) or not codes:
+            if not codes:
                 raise ValueError("no stub response: both background categories need verified ownership")
-            if any(not isinstance(code, str) or code not in known[category] for code in codes):
-                raise ValueError("no stub response: owned background is outside supported catalogue")
             result[category] = {code: {} for code in codes}
         return result
 
     def set_background(self, player: dict, params: dict) -> dict:
-        self.current_map(player)
-        if integer(params.get("mapId")) != 0:
-            raise ValueError("no stub response: sub-map background selection is unsupported")
+        if integer(params.get("mapId")) != 1:
+            raise ValueError("no stub response: original background selection requires subcity mapId=1")
         owned = self.backgrounds(player, {})
         chosen = {}
         for category in ("nearGround", "farGround"):
@@ -101,14 +106,15 @@ class CityProductionServices(CityServices):
             if not isinstance(code, str) or code not in owned[category]:
                 raise ValueError("background not owned in the requested category")
             chosen[category] = code
-        player.setdefault("mapBackgrounds", {})["0"] = chosen
+        player.setdefault("mapBackgrounds", {})["1"] = chosen
         return {}
 
-    @staticmethod
-    def selected_background(player: dict) -> dict:
-        """Integration helper for getMapData.map; never grants ownership."""
-        selected = (player.get("mapBackgrounds") or {}).get("0", {})
-        owned = player.get("backgroundOwnership") or {}
+    def selected_background(self, player: dict, map_id: int) -> dict:
+        """Subcity-only projection; never copies map 1 backgrounds into main map 0."""
+        if map_id != 1:
+            return {}
+        owned = self.backgrounds(player, {})
+        selected = (player.get("mapBackgrounds") or {}).get("1", {})
         return {category: code for category, code in selected.items()
                 if category in ("nearGround", "farGround")
                 and isinstance(code, str) and code in owned.get(category, [])}
