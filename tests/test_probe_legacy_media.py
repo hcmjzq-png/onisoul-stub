@@ -5,7 +5,7 @@ import subprocess
 import unittest
 from unittest.mock import patch
 
-from tools.probe_legacy_media import HttpPreflight, validate_results
+from tools.probe_legacy_media import ENGINE_SHA256, HttpPreflight, resume_results, validate_results
 
 
 class NativeResultTest(unittest.TestCase):
@@ -112,3 +112,39 @@ assert.equal(retryDownload('timeout'),false);assert.equal(events.length,2);
 current.httpRetries=0;current.bundle={};assert.equal(retryDownload('decode error'),false);
 '''.replace('FUNCTIONS', functions)
         subprocess.run(['node', '-e', test], check=True, capture_output=True, text=True)
+
+
+class ResumeTest(unittest.TestCase):
+    def setUp(self):
+        self.row = dict(id='a', name='tex', kind='Texture2D', width=4, height=8,
+                        output_sha256='bytes', url='http://owned/a')
+        result = dict(self.row, loaded=True, source_url=self.row['url'], http_preflight_sha256='bytes')
+        self.previous = dict(engine_sha256=ENGINE_SHA256, manifest_sha256='manifest',
+                             probe_sha256='probe', events=[dict(result=result),
+                             dict(retry=True, id='b'), dict(error='HTTP timeout', phase='driver')])
+
+    def test_resume_keeps_valid_successes_and_retry_evidence_but_not_failed_results(self):
+        events, accepted = resume_results([self.row], self.previous, 'manifest', 'probe', set())
+        self.assertEqual(accepted, {'a'})
+        self.assertTrue(events[0]['retry'])
+        validate_results([self.row], events)
+        self.assertTrue(any('error' in event for event in self.previous['events']))
+
+    def test_changed_input_engine_probe_or_native_metadata_cannot_resume(self):
+        for key in ('engine_sha256', 'manifest_sha256', 'probe_sha256'):
+            changed = dict(self.previous, **{key:'changed'})
+            with self.assertRaisesRegex(ValueError, 'fingerprint'):
+                resume_results([self.row], changed, 'manifest', 'probe', set())
+        self.previous['events'][0]['result']['width'] = 16
+        with self.assertRaisesRegex(RuntimeError, 'dimensions'):
+            resume_results([self.row], self.previous, 'manifest', 'probe', set())
+
+    def test_duplicate_unknown_ids_and_missing_playback_cannot_be_reused(self):
+        duplicate = dict(self.previous, events=self.previous['events']*2)
+        with self.assertRaisesRegex(ValueError, 'duplicate'):
+            resume_results([self.row], duplicate, 'manifest', 'probe', set())
+        with self.assertRaisesRegex(ValueError, 'unknown'):
+            resume_results([], self.previous, 'manifest', 'probe', set())
+        events, accepted = resume_results([self.row], self.previous, 'manifest', 'probe', {'tex'})
+        self.assertEqual(accepted, set())
+        self.assertFalse(any('result' in event for event in events))
