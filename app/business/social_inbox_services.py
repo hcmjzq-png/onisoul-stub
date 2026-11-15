@@ -1,13 +1,15 @@
-"""Unmounted inbox subset: already-materialized gold/wood/food/iron parcels.
+"""Four-resource parcels, trusted issuance receipts and exactly-once credit.
 
 Wire evidence: InboxReader, InboxResolveWorker, PluginRunner_DoReceiveMail and
 RewardProcessor from the original client. socialInbox is our private versioned
-storage contract, NOT an original mail format. No issuance or expiry is inferred.
+storage contract, NOT an original mail format. Issuance is server-internal only.
 Rewards and permanent consumed-ID tombstones share the existing player save.
 """
 from __future__ import annotations
 
 import copy
+import hashlib
+import json
 import math
 from functools import partial
 from typing import Any
@@ -21,6 +23,58 @@ class SocialInboxServices(PlayerServices):
                  "item11_0000301": "food", "item11_0000401": "iron"}
     # Support the bundled plugin's 0..499 request; not an original server limit.
     BATCH_LIMIT = 500
+
+    def stage_parcel(self, player: dict, *, issuance_id: str, source: dict,
+                     rewards: dict, created_time: float) -> str:
+        """Trusted gameplay/admin only, inside the caller's player transaction.
+
+        Never register this as an RPC or pass request params here. The caller
+        authenticates its authority and binds issuance_id to a real event. This
+        API stages the parcel AND durable provenance; it does not save/commit.
+        No original expiry is known, so this explicit subset has no expiry.
+        """
+        ledger = copy.deepcopy(self.ledger(player))
+        if (not isinstance(issuance_id, str) or not issuance_id.strip()
+                or issuance_id.strip() != issuance_id or len(issuance_id) > 200):
+            raise ValueError("stable server issuance_id required")
+        if (not isinstance(source, dict) or set(source) != {"kind", "authority", "reference"}
+                or source["kind"] not in ("administrator", "gameplay")
+                or any(not isinstance(source[k], str) or not source[k].strip()
+                       or len(source[k]) > 500 for k in ("authority", "reference"))):
+            raise ValueError("trusted issuer provenance required")
+        parcel = self.parcel({"createdTime": created_time, "rewards": rewards})
+        pid = player["entity"].get("playerId")
+        if not isinstance(pid, str) or not pid:
+            raise ValueError("persisted recipient ID required")
+        digest = hashlib.sha256(json.dumps([pid, issuance_id],
+            ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
+        parcel_id = "social-" + digest
+        issuance = copy.deepcopy(player.get("socialInboxIssuances", {"version": 1, "grants": {}}))
+        if (not isinstance(issuance, dict) or set(issuance) != {"version", "grants"}
+                or type(issuance["version"]) is not int or issuance["version"] != 1
+                or not isinstance(issuance["grants"], dict)):
+            raise ValueError("no stub response: issuance ledger migration required")
+        receipt = {"parcelId": parcel_id, "source": copy.deepcopy(source), **parcel}
+        previous = issuance["grants"].get(issuance_id)
+        if previous is not None:
+            if (not isinstance(previous, dict) or set(previous) != set(receipt)
+                    or previous["parcelId"] != parcel_id or previous["source"] != source
+                    or previous["rewards"] != parcel["rewards"]):
+                raise ValueError("issuance ID already bound to different contents")
+            stored = self.parcel({k: previous[k] for k in ("createdTime", "rewards")})
+            if parcel_id in ledger["pending"]:
+                if self.parcel(ledger["pending"][parcel_id]) != stored:
+                    raise ValueError("no stub response: issuance/parcel mismatch requires repair")
+            elif parcel_id not in ledger["resolved"]:
+                raise ValueError("no stub response: issuance receipt has no parcel or tombstone")
+            return parcel_id  # Retry never refreshes time or resurrects a claim.
+        if parcel_id in ledger["pending"] or parcel_id in ledger["resolved"]:
+            raise ValueError("no stub response: parcel ID collision requires repair")
+        ledger["pending"][parcel_id] = parcel
+        issuance["grants"][issuance_id] = receipt
+        player["socialInbox"] = ledger
+        player["socialInboxIssuances"] = issuance
+        return parcel_id
 
     def register(self, registry: Any) -> None:
         for api, action in (("inbox/getParcels", self.parcels),
