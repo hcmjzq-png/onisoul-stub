@@ -1,0 +1,77 @@
+你负责鬼武者魂研究任务 C：卡牌成长、抽签、九宫格与道具，本组 30 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-c-card-growth
+分支：feature/research331-c-card-growth-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 优先一条原表证据充分的武将强化/技能槽/道具使用闭环，核对材料消耗、经验/费用、保护与编队限制，不能仅做查询或内部 helper。
+2. 九宫格 getNineGridInfo/playNineGridGacha/claimReward 全部归 C，claimReward 从 H 转入，抽取资格、奖励存档及重试策略由同组完成。
+3. 复核强化/进化/技能继承及 G2/G4/G6 刷新表的概率含义；rate 字段不自动等于已证随机算法。武具强化是用户警示的争议功能，必须原版证据。
+4. 战术出售请求没有 nonce；保留旧报告已证问题，不能相同参数永久去重，也不能每次随机 operation_id。补可审核的内部事务/客户端一致性策略，再申请公开挂载。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/c-card-growth/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 強化 進化 技能繼承 機率 技能槽
+鬼武者魂 九宮格 抽獎 領獎 小姓 倉庫
+鬼武者Soul 技継承 技リセット グレードアップ 九マス
+优先入口：S8, S4, S1
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/card_growth_services.py
+app/business/card_growth_transactions.py
+app/business/card_growth_ninegrid.py
+tests/test_card_growth_services.py
+tests/test_research331_c*.py（仅自己的前缀）
+tests/fixtures/research331/c-card-growth/（小样本）
+docs/analysis/research-331/results/c-card-growth/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+所选成长/道具操作精确扣费与消耗，失败不半写、受保护卡不损失、重登结果一致；随机规则未知时不虚构概率上线。
+
+本组端点（每项只有本组一个负责人）：
+01. deck/enlargeCharacterLimit
+02. deck/extendCharacterStore
+03. deck/getFormation
+04. deck/gradeUpCharacter
+05. deck/gradeUpEquip
+06. deck/inheritCharacterSkill
+07. deck/powerUpCharacter
+08. deck/powerUpEquip
+09. deck/sellTactics
+10. deck/setCharacterVoice
+11. deck/setFormation
+12. deck/setSkillSlot
+13. deck/setSkillcoins
+14. deck/transferStoreCharacters
+15. navigator/activateNavigator
+16. navigator/getNavigatorDetails
+17. navigator/getNavigators
+18. navigator/getUsableNavigators
+19. navigator/hireNavigator
+20. politic/boosterPack/buy
+21. politic/boosterPack/buyWithItem
+22. politic/boosterPack/getRemains
+23. politic/lottery/lot
+24. politic/mypage/claimReward
+25. politic/mypage/getNineGridInfo
+26. politic/mypage/playNineGridGacha
+27. politic/support_item/useDopingItem
+28. politic/support_item/useDopingRemoveItem
+29. politic/support_item/usePotions
+30. politic/support_item/useSkillPotion
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

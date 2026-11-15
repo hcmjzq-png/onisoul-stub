@@ -1,0 +1,77 @@
+你负责鬼武者魂研究任务 H：签到、日常任务、收藏与账号活动，本组 29 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-h-account
+分支：feature/research331-h-account-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 优先签到或每日任务一个小闭环，核对日界线、断签、重复领取、排期/版本、奖励来源及真实进度事件。不要把浏览接口写成自动补满资源。
+2. 收藏品、家宝、宝玉的收集/消耗/领奖必须对照原表和原 UI；用户警示的收藏假实现不能作为证据。迁国资格、冷却、日志另行追踪。
+3. 九宫格 politic/mypage/claimReward 已转 C，禁止在本组重复实现。PR #50 的三个已挂载首档 trophy 路由保留并回归；后续档研究属于已实现接口的扩展，不能算 331 的减少。
+4. 挂机时长和兑换码需要真实权益/发行来源；common/getRevisions 需要部署版本清单。不能把礼包攻略转成无条件免费发放。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/h-account-progress/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 登入 印章 每日任務 日界線 獎勵
+鬼武者魂 家寶 寶玉 收藏品 遷國 掛機
+鬼武者Soul ログインスタンプ デイリーミッション 家宝 移住
+优先入口：S4, S5, S1, S2
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/account_progress_services.py
+app/business/account_progress_trophies.py
+app/business/account_progress_daily.py
+app/business/account_progress_collections.py
+tests/test_account_progress_services.py
+tests/test_research331_h*.py（仅自己的前缀）
+tests/fixtures/research331/h-account/（小样本）
+docs/analysis/research-331/results/h-account/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+正常事件生成任务/签到资格；领取与奖励同次保存，重登不丢、重复不发；没有历史排期依据的奖励不自动开启。
+
+本组端点（每项只有本组一个负责人）：
+01. common/getActionPoints
+02. common/getAnnouncement
+03. common/getLoginStampSheet
+04. common/getResources
+05. common/getRevisions
+06. common/getShopcredit2
+07. common/stampLoginSheet
+08. dailymission/exchangeDailyMissionItem
+09. dailymission/getDailyMission
+10. dailymission/getDailyMissionReward
+11. dailymission/getPoint
+12. depletionmission/drawDepletionItem
+13. depletionmission/exchangeDepletionPoint
+14. depletionmission/getDepletionMission
+15. plugin/buyPluginTime
+16. plugin/setPluginData
+17. politic/mypage/getArtifactSeries
+18. politic/mypage/getArtifactSeriesReward
+19. politic/mypage/getCharacterCollection
+20. politic/mypage/getCredit2Logs
+21. politic/mypage/getCreditLogs
+22. politic/mypage/getEventcodeLogs
+23. politic/mypage/getJewelSeries
+24. politic/mypage/getJewelSeriesReward
+25. politic/mypage/getMigratePlanCountryStatus
+26. politic/mypage/getMigratePlansStatus
+27. politic/mypage/getPlayerRecords
+28. politic/mypage/migrate
+29. politic/mypage/useEventcode
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

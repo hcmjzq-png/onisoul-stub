@@ -1,0 +1,85 @@
+你负责鬼武者魂研究任务 D：交易、拍卖、国技与国家商城，本组 37 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-d-economy
+分支：feature/research331-d-economy-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 先选旅交易 send/getStatus/receive 或国家商城一条可核实流程；确定时间、门槛、费用、奖励领取和周期来源，完成真实记录生成。
+2. 拍卖须补挂牌→锁定/扣除库存→搜索→购买/撤回→交割；手续费/上下架/有效期用外部资料核对，原子跨账号与市场记录由 I 提供基础能力。
+3. 国家商城 period 与国力从 G 的真实统计/周期来；付费余额不能从外站描述中伪造支付到账。
+4. 背景查询/购买已转 A，不在本组 37 项。economy_shop_services.py 虽由 D 唯一修改，但其中背景方法及其现有行为本轮冻结；不得覆盖 #50 的 subcity_enabled 边界。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/d-economy/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 旅交易 交易 智略 成功 大成功 國政
+鬼武者魂 拍賣 手續費 上架 交易所 國家商店
+鬼武者Soul 交易 競売 手数料 国技 国力 リセット
+优先入口：S4, S2, S1
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/economy_services.py
+app/business/economy_shop_services.py
+app/business/economy_trade_services.py
+app/business/economy_market_services.py
+tests/test_economy_services.py
+tests/test_research331_d*.py（仅自己的前缀）
+tests/fixtures/research331/d-economy/（小样本）
+docs/analysis/research-331/results/d-economy/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+查询使用真实交易/周期记录；到期或成交才能结算，重试不双扣双发，多账号失败完整回滚，不把假市场快照当生产完成。
+
+本组端点（每项只有本组一个负责人）：
+01. auction/auctionCardBrowse
+02. auction/auctionCardBuy
+03. auction/auctionCardOffShelf
+04. auction/auctionCardOnShelf
+05. auction/auctionCardSale
+06. auction/auctionCardSearchArmy
+07. auction/auctionCardSearchFaction
+08. auction/auctionCardSearchGender
+09. auction/auctionCardSearchGrade
+10. auction/auctionCardSearchName
+11. auction/auctionCardSearchSkill
+12. auction/auctionResourceBrowse
+13. auction/auctionResourceBuy
+14. auction/auctionResourceOffShelf
+15. auction/auctionResourceOnShelf
+16. auction/auctionResourceSale
+17. auction/auctionResourceSearch
+18. auction/auctionStatus
+19. netCafe/exchangeNpoint
+20. politic/errantry/call3
+21. politic/errantry/getStatus3
+22. politic/errantry/receive3
+23. politic/errantry/send3
+24. politic/kokugi/addPoint
+25. politic/kokugi/develop
+26. politic/kokugi/getStatus
+27. politic/shop/buyShopItemCredit
+28. politic/shop/buyShopItemFromNationalPower
+29. politic/shop/getShopItemsCredit
+30. politic/shop/getShopItemsFromNationalPower
+31. politic/waterborneTrade/call
+32. politic/waterborneTrade/getFleet
+33. politic/waterborneTrade/getFriendTraders
+34. politic/waterborneTrade/getStatus
+35. politic/waterborneTrade/receive
+36. politic/waterborneTrade/send
+37. politic/waterborneTrade/sendWithFriends
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

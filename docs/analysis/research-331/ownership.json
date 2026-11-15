@@ -1,0 +1,343 @@
+{
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "groups": {
+    "A": {
+      "slug": "a-city",
+      "title": "城市、生产、支城与背景",
+      "count": 29,
+      "old": "a-city-production",
+      "files": [
+        "app/business/city_services.py",
+        "app/business/city_production_services.py",
+        "app/business/city_production_rules.py",
+        "app/business/city_background_services.py",
+        "tests/test_city_services.py",
+        "tests/test_city_production_services.py",
+        "tests/test_city_production_rules.py"
+      ],
+      "focus": [
+        "优先打通普通田地/资源建筑的生产任务→到期→收获→重登闭环；分别核对道路邻接、倍率、技能叠加、取整、耐久扣次、玩家/建筑经验。田地受道路加成已由用户确认，不能再当不存在。",
+        "其次追踪原支城开放任务/石高条件与地图状态生产；只有来源可信后接通四个背景入口。原 UI mapId=1 已确定，禁止回退到 0 或用测试 True 开城。",
+        "背景购买两个入口从 D 转交本组。D 的现有购买类只读复用，需调整时写 city_background_services.py 或 integration.patch；不要同时编辑 economy_shop_services.py。",
+        "好友助产仍归 A 管业务结算，好友权限来自 E，双账号原子性来自 I；支城所需鬼物语进度来自 B，石高口径与 G 协调。"
+      ],
+      "queries": [
+        "鬼武者魂 田地 道路 加成 街道整備 內政 收穫",
+        "鬼武者魂 支城 開放 條件 石高 京都美妃",
+        "鬼武者Soul 生産 道路 隣接 棒道整備 支城 解放"
+      ],
+      "sources": [
+        "S3",
+        "S5",
+        "S6",
+        "S1"
+      ],
+      "acceptance": "明确一类建筑的成本、到期时间、真实产出和道路计算，重复收获不重发；背景仅在可信已解锁支城生效，买后可选且重登一致。",
+      "task_file": "tasks/A-city.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-a-city",
+      "branch": "feature/research331-a-city-20261115",
+      "result_dir": "docs/analysis/research-331/results/a-city"
+    },
+    "B": {
+      "slug": "b-adventure",
+      "title": "物语、普通战斗与 Raid",
+      "count": 35,
+      "old": "b-adventure",
+      "files": [
+        "app/business/adventure_services.py",
+        "app/business/adventure_obstacle_services.py",
+        "app/business/adventure_events.py",
+        "app/business/adventure_battles.py",
+        "tests/test_adventure_services.py",
+        "tests/test_adventure_obstacle_services.py"
+      ],
+      "focus": [
+        "优先普通常驻章节：开放→步进→遭遇生成→处理→结算→章节旗标；原动态表已有来源，不再只读人工 adventureV1 测试快照。",
+        "追踪敌我属性、战斗顺序、技能、失败/成功奖励及 Raid 归属；活动入口与常驻入口分开，不能因为表里有禁用活动就自动开启。",
+        "clearObstacle 已修复重复响应扣客户端资源的问题，必须保留。支城解锁所需章节完成事件提供给 A；真实战斗/击杀记录提供给 G。",
+        "battle/getVsBattleLogs 归 B；C# getStrategyBattleLogs 的某个重载实际调用它，不能按方法名分给 F。禁止虚构胜利回放或由库存倒推历史。"
+      ],
+      "queries": [
+        "鬼武者魂 鬼物語 步數 障礙 獎勵 幻夢空間",
+        "鬼武者魂 惡鬼羅剎 救援 討伐 獎勵 技能",
+        "鬼武者Soul 鬼物語 悪鬼羅刹 戦闘 順番 報酬"
+      ],
+      "sources": [
+        "S4",
+        "S2",
+        "S1"
+      ],
+      "acceptance": "至少一个常驻章节的状态确由正常操作生成，消耗与奖励持久化；重试/并发不多走步数、不重复奖励，查询和回放来自真实事件。",
+      "task_file": "tasks/B-adventure.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-b-adventure",
+      "branch": "feature/research331-b-adventure-20261115",
+      "result_dir": "docs/analysis/research-331/results/b-adventure"
+    },
+    "C": {
+      "slug": "c-card-growth",
+      "title": "卡牌成长、抽签、九宫格与道具",
+      "count": 30,
+      "old": "c-card-growth",
+      "files": [
+        "app/business/card_growth_services.py",
+        "app/business/card_growth_transactions.py",
+        "app/business/card_growth_ninegrid.py",
+        "tests/test_card_growth_services.py"
+      ],
+      "focus": [
+        "优先一条原表证据充分的武将强化/技能槽/道具使用闭环，核对材料消耗、经验/费用、保护与编队限制，不能仅做查询或内部 helper。",
+        "九宫格 getNineGridInfo/playNineGridGacha/claimReward 全部归 C，claimReward 从 H 转入，抽取资格、奖励存档及重试策略由同组完成。",
+        "复核强化/进化/技能继承及 G2/G4/G6 刷新表的概率含义；rate 字段不自动等于已证随机算法。武具强化是用户警示的争议功能，必须原版证据。",
+        "战术出售请求没有 nonce；保留旧报告已证问题，不能相同参数永久去重，也不能每次随机 operation_id。补可审核的内部事务/客户端一致性策略，再申请公开挂载。"
+      ],
+      "queries": [
+        "鬼武者魂 強化 進化 技能繼承 機率 技能槽",
+        "鬼武者魂 九宮格 抽獎 領獎 小姓 倉庫",
+        "鬼武者Soul 技継承 技リセット グレードアップ 九マス"
+      ],
+      "sources": [
+        "S8",
+        "S4",
+        "S1"
+      ],
+      "acceptance": "所选成长/道具操作精确扣费与消耗，失败不半写、受保护卡不损失、重登结果一致；随机规则未知时不虚构概率上线。",
+      "task_file": "tasks/C-card-growth.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-c-card-growth",
+      "branch": "feature/research331-c-card-growth-20261115",
+      "result_dir": "docs/analysis/research-331/results/c-card-growth"
+    },
+    "D": {
+      "slug": "d-economy",
+      "title": "交易、拍卖、国技与国家商城",
+      "count": 37,
+      "old": "d-economy",
+      "files": [
+        "app/business/economy_services.py",
+        "app/business/economy_shop_services.py",
+        "app/business/economy_trade_services.py",
+        "app/business/economy_market_services.py",
+        "tests/test_economy_services.py"
+      ],
+      "focus": [
+        "先选旅交易 send/getStatus/receive 或国家商城一条可核实流程；确定时间、门槛、费用、奖励领取和周期来源，完成真实记录生成。",
+        "拍卖须补挂牌→锁定/扣除库存→搜索→购买/撤回→交割；手续费/上下架/有效期用外部资料核对，原子跨账号与市场记录由 I 提供基础能力。",
+        "国家商城 period 与国力从 G 的真实统计/周期来；付费余额不能从外站描述中伪造支付到账。",
+        "背景查询/购买已转 A，不在本组 37 项。economy_shop_services.py 虽由 D 唯一修改，但其中背景方法及其现有行为本轮冻结；不得覆盖 #50 的 subcity_enabled 边界。"
+      ],
+      "queries": [
+        "鬼武者魂 旅交易 交易 智略 成功 大成功 國政",
+        "鬼武者魂 拍賣 手續費 上架 交易所 國家商店",
+        "鬼武者Soul 交易 競売 手数料 国技 国力 リセット"
+      ],
+      "sources": [
+        "S4",
+        "S2",
+        "S1"
+      ],
+      "acceptance": "查询使用真实交易/周期记录；到期或成交才能结算，重试不双扣双发，多账号失败完整回滚，不把假市场快照当生产完成。",
+      "task_file": "tasks/D-economy.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-d-economy",
+      "branch": "feature/research331-d-economy-20261115",
+      "result_dir": "docs/analysis/research-331/results/d-economy"
+    },
+    "E": {
+      "slug": "e-social",
+      "title": "好友、访问、邮件、收件箱与社区",
+      "count": 41,
+      "old": "e-social",
+      "files": [
+        "app/business/social_services.py",
+        "app/business/social_inbox_services.py",
+        "app/business/social_mail_services.py",
+        "app/business/social_community_services.py",
+        "tests/test_social_services.py"
+      ],
+      "focus": [
+        "先接通好友申请→接受/拒绝→双边关系→过期/取消→通知；用 I 的真实双账号事务取代只存在于测试的内存适配。",
+        "收件箱优先补发行来源、实际包裹记录、领取与 periodicInquiry 通知；发行由可信玩法或受控管理员发起，不能让客户端自填奖励。",
+        "区分 inbox 奖励包裹、mailbox 邮件和 community 网页会话；原网页/Unity 桥接缺失时先找原页面/玩家录屏，不沿用旧 AI 假界面。",
+        "好友访问和助产权限以原行为为准，不能直接假定“只能访问好友”。A 负责助产结算，本组提供关系/访问权限；共享 periodic.py 修改交接入补丁。"
+      ],
+      "queries": [
+        "鬼武者魂 好友 申請 拜訪 加速 收成",
+        "鬼武者魂 密書箱 收件箱 報酬 期限 郵件",
+        "鬼武者Soul フレンド 申請 訪問 手伝い 受信箱 書状"
+      ],
+      "sources": [
+        "S4",
+        "S2",
+        "S1"
+      ],
+      "acceptance": "正常双账号操作可生成并查询同一关系/包裹；过期/重试不造成一边好友、一边非好友或重复奖励；刷新和重登通知一致。",
+      "task_file": "tasks/E-social.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-e-social",
+      "branch": "feature/research331-e-social-20261115",
+      "result_dir": "docs/analysis/research-331/results/e-social"
+    },
+    "F": {
+      "slug": "f-war",
+      "title": "国战、攻城战与天下分目",
+      "count": 47,
+      "old": "f-war-campaigns",
+      "files": [
+        "app/business/war_campaigns_services.py",
+        "app/business/war_campaigns_views.py",
+        "app/business/war_campaigns_events.py",
+        "app/business/war_campaigns_commands.py",
+        "tests/test_war_campaigns_services.py"
+      ],
+      "focus": [
+        "优先核对一个玩法的报名→配对→行动/战斗→结算完整时序；从官方改版及玩家录屏区分不同战争系统，切勿把同类字段串为一套规则。",
+        "把原父页/Unity 桥接与缺失 iframe 页面区分；截图只证明呈现，不能凭截图编造回调字段或战况记录。",
+        "现有 pairing/history/isAlive 只有投影能力，必须补真实事件/记录生产来源后才申请挂载；不编假国家得分、匹配或胜者。",
+        "保留 rate 的 float32/Int32 验证。F 的 strategy/getStrategyBattleLogs 与 B 的 battle/getVsBattleLogs 是不同路由；共享 turf_war.py 只交接入补丁。"
+      ],
+      "queries": [
+        "鬼武者魂 攻城戰 配對 報名 三之丸 獎勵",
+        "鬼武者魂 國戰 大合戰 天下分目 行軍 補給",
+        "鬼武者Soul 攻城戦 大合戦 天下分け目戦 開催 報酬"
+      ],
+      "sources": [
+        "S6",
+        "S5",
+        "S1",
+        "S2"
+      ],
+      "acceptance": "至少选定一种战争的受限、真实状态流程；未开启期不能伪装运行，记录和奖励由真实状态推导，查询不造历史。",
+      "task_file": "tasks/F-war.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-f-war",
+      "branch": "feature/research331-f-war-20261115",
+      "result_dir": "docs/analysis/research-331/results/f-war"
+    },
+    "G": {
+      "slug": "g-rankings",
+      "title": "排行榜、石高、捐献与国力",
+      "count": 51,
+      "old": "g-rankings",
+      "files": [
+        "app/business/rankings_services.py",
+        "app/business/rankings_aggregation.py",
+        "app/business/rankings_periods.py",
+        "tests/test_rankings_services.py"
+      ],
+      "focus": [
+        "先给出石高/捐献/国力中一个可落地统计口径及真实生产端：从建筑/捐献事件生成，不直接读人工 SnapshotPair。石高与 A 的建筑和技能规则一致。",
+        "外部核对日榜、周榜、月榜、同分顺序、当前/上期、维护重置及奖励资格；日服与台服维护时间不能混用。",
+        "把 51 个相似入口按同一统计源批量建投影，优先一条真实写入→聚合→排名→上期切换链路；没有原始战绩的榜单继续明确待 B/F。",
+        "给 A 支城提供可追溯石高，给 D 国家商店提供国力与周期。原请求无快照版本，跨请求切换策略显式说明；保留 float32 精度边界。"
+      ],
+      "queries": [
+        "鬼武者魂 石高 計算 國力 納入 貢獻 排行 重置",
+        "鬼武者魂 排行榜 每日 每週 月排名 同分",
+        "鬼武者Soul 石高 国力 献上 ランキング 集計 更新"
+      ],
+      "sources": [
+        "S5",
+        "S4",
+        "S2",
+        "S1"
+      ],
+      "acceptance": "一个真实统计源驱动查询；同分/分页/切期可复现，不能将诊断日志、当前库存或固定分数当作历史统计。",
+      "task_file": "tasks/G-rankings.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-g-rankings",
+      "branch": "feature/research331-g-rankings-20261115",
+      "result_dir": "docs/analysis/research-331/results/g-rankings"
+    },
+    "H": {
+      "slug": "h-account",
+      "title": "签到、日常任务、收藏与账号活动",
+      "count": 29,
+      "old": "h-account-progress",
+      "files": [
+        "app/business/account_progress_services.py",
+        "app/business/account_progress_trophies.py",
+        "app/business/account_progress_daily.py",
+        "app/business/account_progress_collections.py",
+        "tests/test_account_progress_services.py"
+      ],
+      "focus": [
+        "优先签到或每日任务一个小闭环，核对日界线、断签、重复领取、排期/版本、奖励来源及真实进度事件。不要把浏览接口写成自动补满资源。",
+        "收藏品、家宝、宝玉的收集/消耗/领奖必须对照原表和原 UI；用户警示的收藏假实现不能作为证据。迁国资格、冷却、日志另行追踪。",
+        "九宫格 politic/mypage/claimReward 已转 C，禁止在本组重复实现。PR #50 的三个已挂载首档 trophy 路由保留并回归；后续档研究属于已实现接口的扩展，不能算 331 的减少。",
+        "挂机时长和兑换码需要真实权益/发行来源；common/getRevisions 需要部署版本清单。不能把礼包攻略转成无条件免费发放。"
+      ],
+      "queries": [
+        "鬼武者魂 登入 印章 每日任務 日界線 獎勵",
+        "鬼武者魂 家寶 寶玉 收藏品 遷國 掛機",
+        "鬼武者Soul ログインスタンプ デイリーミッション 家宝 移住"
+      ],
+      "sources": [
+        "S4",
+        "S5",
+        "S1",
+        "S2"
+      ],
+      "acceptance": "正常事件生成任务/签到资格；领取与奖励同次保存，重登不丢、重复不发；没有历史排期依据的奖励不自动开启。",
+      "task_file": "tasks/H-account.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-h-account",
+      "branch": "feature/research331-h-account-20261115",
+      "result_dir": "docs/analysis/research-331/results/h-account"
+    },
+    "I": {
+      "slug": "i-infrastructure",
+      "title": "事务基础设施与 debug/admin 审核",
+      "count": 32,
+      "old": null,
+      "files": [
+        "app/state/__init__.py",
+        "app/state/player.py",
+        "app/db.py",
+        "app/auth.py",
+        "app/business/admin_debug_services.py",
+        "tests/test_db.py",
+        "tests/test_state_concurrency.py",
+        "tests/test_auth_guard.py",
+        "app/state/transactions.py",
+        "db/schema.sql",
+        "db/migrations/research331_i_*.sql"
+      ],
+      "focus": [
+        "这 32 项不是 32 个待开放玩法。先按受控管理、测试辅助、保留关闭分类，默认不开放任意改档、debug 登录或赠送接口。",
+        "优先为 D/E/F/G 提供真实数据库的多账号/共享记录事务接口，复用现有 revision CAS，稳定锁顺序、失败回滚、唯一性及进程间并发。不要只新增内存 Mock。",
+        "admin/inbox/present 若要实现，只能由明确管理员身份产生可信包裹并有发行幂等；E 消费发行记录。不得让普通请求携带奖励即入账。",
+        "无需硬找 Wiki 解释内部事务或调试接口；代码、原请求包装和数据库/HTTP权限测试是主证据。共享 HTTP/registry/配置接入交 integration.patch，生产保持关闭。"
+      ],
+      "queries": [
+        "不要求外部玩法资料；需要数据库技术资料时使用对应官方文档，不能照搬不明代码片段"
+      ],
+      "sources": [],
+      "acceptance": "真实数据库事务接口有明确单写/多写边界和并发回滚验证；普通玩家不可借管理/调试端点改档；保持关闭不伪计为玩法完成。",
+      "task_file": "tasks/I-infrastructure.txt",
+      "worktree": "D:/onisoul-worktrees/research-331-i-infrastructure",
+      "branch": "feature/research331-i-infrastructure-20261115",
+      "result_dir": "docs/analysis/research-331/results/i-infrastructure"
+    }
+  },
+  "shared_integrator_only": [
+    "app/main.py",
+    "app/business/gameplay.py",
+    "app/business/response_shapes.py",
+    "app/business/periodic.py",
+    "app/business/mission_chain.py",
+    "app/business/player_services.py",
+    "app/business/progression.py",
+    "app/business/turf_war.py",
+    "app/business/registry.py",
+    "app/business/placeholders.py",
+    "app/transport/http_server.py",
+    "app/tables.py",
+    "docs/api_schema.md",
+    "docs/analysis/server_tables.tsv",
+    "tests/test_parallel_342_integration.py"
+  ],
+  "transfers": {
+    "politic/shop/getBackgroundItems": "A",
+    "politic/shop/buyBackgroundItem": "A",
+    "politic/mypage/claimReward": "C"
+  },
+  "notes": [
+    "D owns economy_shop_services.py but background methods are frozen; A supplies adapter in own module.",
+    "I owns app/state and app/db transaction changes; other groups supply integration requests.",
+    "No group edits the live server, shared client, hosts or user-staged root files."
+  ]
+}

@@ -1,0 +1,89 @@
+你负责鬼武者魂研究任务 E：好友、访问、邮件、收件箱与社区，本组 41 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-e-social
+分支：feature/research331-e-social-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 先接通好友申请→接受/拒绝→双边关系→过期/取消→通知；用 I 的真实双账号事务取代只存在于测试的内存适配。
+2. 收件箱优先补发行来源、实际包裹记录、领取与 periodicInquiry 通知；发行由可信玩法或受控管理员发起，不能让客户端自填奖励。
+3. 区分 inbox 奖励包裹、mailbox 邮件和 community 网页会话；原网页/Unity 桥接缺失时先找原页面/玩家录屏，不沿用旧 AI 假界面。
+4. 好友访问和助产权限以原行为为准，不能直接假定“只能访问好友”。A 负责助产结算，本组提供关系/访问权限；共享 periodic.py 修改交接入补丁。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/e-social/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 好友 申請 拜訪 加速 收成
+鬼武者魂 密書箱 收件箱 報酬 期限 郵件
+鬼武者Soul フレンド 申請 訪問 手伝い 受信箱 書状
+优先入口：S4, S2, S1
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/social_services.py
+app/business/social_inbox_services.py
+app/business/social_mail_services.py
+app/business/social_community_services.py
+tests/test_social_services.py
+tests/test_research331_e*.py（仅自己的前缀）
+tests/fixtures/research331/e-social/（小样本）
+docs/analysis/research-331/results/e-social/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+正常双账号操作可生成并查询同一关系/包裹；过期/重试不造成一边好友、一边非好友或重复奖励；刷新和重登通知一致。
+
+本组端点（每项只有本组一个负责人）：
+01. common/recordChat
+02. community/bbs/closeBbs
+03. community/bbs/closeThread
+04. community/bbs/createBbs
+05. community/bbs/createThread
+06. community/bbs/deleteBbs
+07. community/bbs/deleteComment
+08. community/bbs/deleteThread
+09. community/bbs/getBbsId
+10. community/bbs/getBbsList
+11. community/bbs/infoComment
+12. community/bbs/infoThread
+13. community/bbs/listComment
+14. community/bbs/listThread
+15. community/bbs/openBbs
+16. community/bbs/openThread
+17. community/bbs/postComment
+18. community/libs/bbsSession
+19. friend/cancelFriendOffer
+20. friend/dissolutionFriend
+21. friend/feedbackFriendOffer
+22. friend/findFriends
+23. friend/findFriendsAndSend
+24. friend/getFriendMap
+25. friend/getFriendMapData
+26. friend/getFriendMapData2
+27. friend/getFriendProfile
+28. friend/getFriends
+29. friend/getVisitFriendLogs
+30. friend/sendFriendOffer
+31. friend/setGuestMap
+32. friend/updateFriendData
+33. friend/visitFriendMap
+34. inbox/getParcels
+35. inbox/resolveParcels
+36. invitation/getMyCode
+37. invitation/getPlayer
+38. mailbox/deleteMails
+39. mailbox/getMailBody
+40. mailbox/getMailHeaders
+41. mailbox/sendMails
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

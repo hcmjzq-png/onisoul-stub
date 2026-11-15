@@ -1,0 +1,35 @@
+A 组：城市、生产、支城与背景（29 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/A-city.txt
+你只负责 A 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+B 组：物语、普通战斗与 Raid（35 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/B-adventure.txt
+你只负责 B 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+C 组：卡牌成长、抽签、九宫格与道具（30 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/C-card-growth.txt
+你只负责 C 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+D 组：交易、拍卖、国技与国家商城（37 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/D-economy.txt
+你只负责 D 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+E 组：好友、访问、邮件、收件箱与社区（41 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/E-social.txt
+你只负责 E 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+F 组：国战、攻城战与天下分目（47 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/F-war.txt
+你只负责 F 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+G 组：排行榜、石高、捐献与国力（51 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/G-rankings.txt
+你只负责 G 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+H 组：签到、日常任务、收藏与账号活动（29 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/H-account.txt
+你只负责 H 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。
+
+I 组：事务基础设施与 debug/admin 审核（32 项）
+请读取并执行任务文件：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/tasks/I-infrastructure.txt
+你只负责 I 组，使用任务指定的独立工作树；用原客户端代码和外部资料交叉核对，证据充分的部分落实为可测试服务端代码。请现在开始，不要只回复计划。

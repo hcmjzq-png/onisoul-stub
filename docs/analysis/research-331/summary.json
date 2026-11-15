@@ -1,0 +1,23 @@
+{
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "baseline_pr": 50,
+  "registered": 402,
+  "dedicated_handlers": 71,
+  "placeholders": 331,
+  "gameplay": 299,
+  "debug_admin": 32,
+  "groups": {
+    "A": 29,
+    "B": 35,
+    "C": 30,
+    "D": 37,
+    "E": 41,
+    "F": 47,
+    "G": 51,
+    "H": 29,
+    "I": 32
+  },
+  "assignment_sha256": "39659e87a9bb22cf26bfdadfe8c38c620668a2a45dcf80be268f725074a13a46",
+  "source_mode": "normal registry plus prior indexed evidence; historical blockers not claimed freshly re-audited",
+  "scope": "planning only; no runtime route changes or server deployment"
+}

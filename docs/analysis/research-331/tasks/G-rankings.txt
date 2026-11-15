@@ -1,0 +1,98 @@
+你负责鬼武者魂研究任务 G：排行榜、石高、捐献与国力，本组 51 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-g-rankings
+分支：feature/research331-g-rankings-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 先给出石高/捐献/国力中一个可落地统计口径及真实生产端：从建筑/捐献事件生成，不直接读人工 SnapshotPair。石高与 A 的建筑和技能规则一致。
+2. 外部核对日榜、周榜、月榜、同分顺序、当前/上期、维护重置及奖励资格；日服与台服维护时间不能混用。
+3. 把 51 个相似入口按同一统计源批量建投影，优先一条真实写入→聚合→排名→上期切换链路；没有原始战绩的榜单继续明确待 B/F。
+4. 给 A 支城提供可追溯石高，给 D 国家商店提供国力与周期。原请求无快照版本，跨请求切换策略显式说明；保留 float32 精度边界。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/g-rankings/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 石高 計算 國力 納入 貢獻 排行 重置
+鬼武者魂 排行榜 每日 每週 月排名 同分
+鬼武者Soul 石高 国力 献上 ランキング 集計 更新
+优先入口：S5, S4, S2, S1
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/rankings_services.py
+app/business/rankings_aggregation.py
+app/business/rankings_periods.py
+tests/test_rankings_services.py
+tests/test_research331_g*.py（仅自己的前缀）
+tests/fixtures/research331/g-rankings/（小样本）
+docs/analysis/research-331/results/g-rankings/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+一个真实统计源驱动查询；同分/分页/切期可复现，不能将诊断日志、当前库存或固定分数当作历史统计。
+
+本组端点（每项只有本组一个负责人）：
+01. common/dedicate
+02. common/getBriefOfNationalPower
+03. ranking/getBriefOfBattle
+04. ranking/getBriefOfBattleDaily
+05. ranking/getBriefOfBrawn
+06. ranking/getBriefOfCountriesInGiganticRaidBoss
+07. ranking/getBriefOfCountryBattle
+08. ranking/getBriefOfDedication
+09. ranking/getBriefOfDedicationMonthly
+10. ranking/getBriefOfGiganticRaidBoss
+11. ranking/getBriefOfGiganticRaidBossDaily
+12. ranking/getBriefOfKokudaka
+13. ranking/getBriefOfMaxDamageInGiganticRaidBoss
+14. ranking/getBriefOfNationalPower
+15. ranking/getBriefOfNationalRanking
+16. ranking/getBriefOfRaidBoss
+17. ranking/getBriefOfRaidBossDaily
+18. ranking/getBriefOfRaidBossNational
+19. ranking/getBriefOfRandomQuest
+20. ranking/getBriefOfSiege
+21. ranking/getBriefOfStrategy
+22. ranking/getBriefOfTurfWar
+23. ranking/getBriefOfTurfWarDaily
+24. ranking/getDailyRankersAroundMeInTurfWar
+25. ranking/getDailyRankersInBattle
+26. ranking/getDailyRankersInRaidBoss
+27. ranking/getDailyRankersInTurfWar
+28. ranking/getDailyTopRankersInTurfWar
+29. ranking/getMonthlyRankersInDedication
+30. ranking/getMyRankInTurfWar
+31. ranking/getRankersAroundMeInTurfWar
+32. ranking/getRankersInBattle
+33. ranking/getRankersInBrawn
+34. ranking/getRankersInDedication
+35. ranking/getRankersInGiganticRaidBoss
+36. ranking/getRankersInKokudaka
+37. ranking/getRankersInNationalPower
+38. ranking/getRankersInNationalRanking
+39. ranking/getRankersInRaidBoss
+40. ranking/getRankersInRaidBossNational
+41. ranking/getRankersInRandomQuest
+42. ranking/getRankersInSiege
+43. ranking/getRankersInStrategy
+44. ranking/getRankersInStrategyForMypage
+45. ranking/getRankersInStrategyPie
+46. ranking/getRankersInTurfWar
+47. ranking/getRankersOfCountriesInGiganticRaidBoss
+48. ranking/getRankersOfMaxDamageInGiganticRaidBoss
+49. ranking/getRankingOfCountriesInBattle
+50. ranking/getRecordOfCountryInBattle
+51. ranking/getTopRankersInTurfWar
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

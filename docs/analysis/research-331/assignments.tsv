@@ -1,0 +1,332 @@
+group	endpoint	previous_group	baseline_handler	prior_evidence	historical_blocker
+I	admin/inbox/present	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+D	auction/auctionCardBrowse	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Correct shared shape; C supplies trade-eligible card projection; prove search name/skill and tie rules
+D	auction/auctionCardBuy	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Trace downstream UI; prove taxes; implement database transaction/ledger before registering
+D	auction/auctionCardOffShelf	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Trace downstream UI; prove taxes; implement database transaction/ledger before registering
+D	auction/auctionCardOnShelf	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Trace downstream UI; prove taxes; implement database transaction/ledger before registering
+D	auction/auctionCardSale	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove tax values and expiry/collection, implement persisted market query
+D	auction/auctionCardSearchArmy	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Correct shared shape; C supplies trade-eligible card projection; prove search name/skill and tie rules
+D	auction/auctionCardSearchFaction	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Correct shared shape; C supplies trade-eligible card projection; prove search name/skill and tie rules
+D	auction/auctionCardSearchGender	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Correct shared shape; C supplies trade-eligible card projection; prove search name/skill and tie rules
+D	auction/auctionCardSearchGrade	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Correct shared shape; C supplies trade-eligible card projection; prove search name/skill and tie rules
+D	auction/auctionCardSearchName	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Correct shared shape; C supplies trade-eligible card projection; prove search name/skill and tie rules
+D	auction/auctionCardSearchSkill	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Correct shared shape; C supplies trade-eligible card projection; prove search name/skill and tie rules
+D	auction/auctionResourceBrowse	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	没有真实 auction resource provider；需事务内一致快照与挂牌/成交生命周期
+D	auction/auctionResourceBuy	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Trace downstream UI; prove taxes; implement database transaction/ledger before registering
+D	auction/auctionResourceOffShelf	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Trace downstream UI; prove taxes; implement database transaction/ledger before registering
+D	auction/auctionResourceOnShelf	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Trace downstream UI; prove taxes; implement database transaction/ledger before registering
+D	auction/auctionResourceSale	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove tax values and expiry/collection, implement persisted market query
+D	auction/auctionResourceSearch	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	没有真实 auction resource provider；需事务内一致快照与挂牌/成交生命周期
+D	auction/auctionStatus	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Integrator supplies explicit market availability
+B	battle/captchaVsBattle	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	验证码挑战与战斗准入绑定；有效期/次数/重试待证，不回固定true
+B	battle/executeBattle	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	请求battleInformation按battleType分支；事件归属/编队/费用/战斗算法/结算幂等需同一事务，不能固定胜利
+B	battle/getRaidBossDetail	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	entry关联真实首领与参与者；跨账号访问权限和一致快照待证
+B	battle/getRaidBossEntries	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	真实首领实例/好友入口/排名读取；不得把表里的首领全部当活动实例
+B	battle/getRaidBossLogs	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	保存战斗与SENDRESCUE事件；根信封会被转Hashtable；共享形态修复交总集成
+B	battle/getRivals2	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	matchingType区分vs/turfWar；真实匹配资格/刷新周期/机器人规则未证
+B	battle/getSelfRecord	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	record含won/lost/average及daily/total AttackPoint/DefensePoint；来自实际战绩，交G/F，不能虚构
+B	battle/getTurfWarReplayData	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	仅包装器，无本树直接调用；F需给战场记录契约及访问者校验
+B	battle/getVcode	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	URL解码后Base64图片；挑战生成/有效期/与captcha关联待证
+B	battle/getVsBattleLogs	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	type包含attacker/defender及战场分支；仅查允许访问的历史记录，分页/保留期待证
+B	battle/getVsCountryRecords	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	仅包装器countryId；F提供国家战绩快照，不能凭字段名生成统计
+B	battle/getVsReplayData	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	按type/battleId加载已存过程；须鉴权，不重新运算/扣费/发奖
+B	battle/removeRaidBossWork	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	删除ownerId/index对应实例；删除条件/领奖顺序/重试语义未知
+B	battle/sendRescueRequest	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	通知名单/好友资格/冷却未知；跨账号投递需事务或outbox；根信封污染人数
+G	common/dedicate	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+H	common/getActionPoints	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	捕获原版调用与回包，核对恢复计时/公告/余额语义
+H	common/getAnnouncement	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	捕获原版调用与回包，核对恢复计时/公告/余额语义
+G	common/getBriefOfNationalPower	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+H	common/getLoginStampSheet	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	需活动排期与奖励配置；同日重复及跨日/重登对照；C 奖励原子入库
+H	common/getResources	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	捕获原版调用与回包，核对恢复计时/公告/余额语义
+H	common/getRevisions	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	getRevisions 缺部署版本清单和登录前路由；setPluginData 缺付费时长生产者，类型缺陷已修正
+H	common/getShopcredit2	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	捕获原版调用与回包，核对恢复计时/公告/余额语义
+E	common/recordChat	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	聊天室发送/记录分工、保留周期未知
+H	common/stampLoginSheet	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	需活动排期与奖励配置；同日重复及跨日/重登对照；C 奖励原子入库
+E	community/bbs/closeBbs	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/closeThread	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/createBbs	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/createThread	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/deleteBbs	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/deleteComment	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/deleteThread	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/getBbsId	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/getBbsList	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/infoComment	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/infoThread	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/listComment	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/listThread	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/openBbs	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/openThread	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/bbs/postComment	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	Unity桥接已查；guid为客户端追加，非服务端字段；sess_key权限/作者删除/commit语义与原pcweb最终消费待证
+E	community/libs/bbsSession	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	会话有效期、账号绑定、BBS type权限未知
+H	dailymission/exchangeDailyMissionItem	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	C 奖励入库；资格扣费领取记录同事务
+H	dailymission/getDailyMission	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	恢复计数事件、日界线和服务端奖励目录；不能用空表假完成
+H	dailymission/getDailyMissionReward	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	跨日归档键+领奖账本+奖励同事务，不由客户端状态判完成
+H	dailymission/getPoint	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	与每日任务统一积分存档；不凭空初始化为已实现
+I	debug/addCollections	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/addItems	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/clearBuildings	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/clearLastMigrateTime	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugAccelerateProduceTask	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugAddBuildingExp	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugCreateCharacter	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugCreateEquip	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugCreateQuestEncount	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugCreateRaidBossWork	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugDeleteAllCharacter	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugDeleteAllEquip	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugGetQuestCompleteFlags	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugGradeUpBuildings	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugIncreasePlayerLevel	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugLoginCog	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugOpenQuest	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugRankingNationalPowerAddScoreWithSwitch	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugRentalNavigatorBarelyExpiration	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/debugResetCreditStepCount	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/dedicate	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/forceCompleteQuest	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/forceFeedbackFriendOffer	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/forceProgressGiganticChain	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/forceProgressGiganticPhase	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/forceProgressQuest	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/resetDedication	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/resetPlayer	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/resetQuest	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/setQuestStep	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+I	debug/withdrawTurfWar	Z	placeholder	original 342 assignment	31 debug + 1 admin：另行审计权限、用途和持久化；本次不开放
+C	deck/enlargeCharacterLimit	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	续期叠加与到期回收、支付重试待证
+C	deck/extendCharacterStore	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	扩仓续期与到期超容量、付费重试待证
+C	deck/getFormation	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	只有包装器；无直接调用方，不能当作setDecks
+C	deck/gradeUpCharacter	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	概率、失败材料损耗、学习技能与跨等级属性待证
+C	deck/gradeUpEquip	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	旧强化不可作证据；概率、成长属性与材料损耗待证
+C	deck/inheritCharacterSkill	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	继承失败损耗、槽合法性、character更新待证
+C	deck/powerUpCharacter	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	多消费者分支不一致；随机成功等级、经验与舍入待证
+C	deck/powerUpEquip	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	随机成功等级、属性增长与舍入待证
+C	deck/sellTactics	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	无可信上游操作 ID，不能公开挂载；增量回放仍需客户端一致性策略
+C	deck/setCharacterVoice	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	默认/已购/重新购买费用与替换归属完整规则待证
+C	deck/setFormation	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	只有包装器；atkOrDef与查询atkOrdef大小写不同
+C	deck/setSkillSlot	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	paymentId映射与随机洗槽/支付待证，不是简单启用槽
+C	deck/setSkillcoins	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	换币率、特殊素材与重试规则待证
+C	deck/transferStoreCharacters	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	仓库 nextOpenLimit 无可信生产/迁移来源；付费扩容与长时重试待证
+H	depletionmission/drawDepletionItem	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	取得抽奖配置/历史回包；C 奖励事务
+H	depletionmission/exchangeDepletionPoint	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	原服回包及前后状态验证
+H	depletionmission/getDepletionMission	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	原服回包及前后状态验证
+A	friend/building/getFriendProductsByBuilding	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	E permission + owner-map product unlock rules
+E	friend/cancelFriendOffer	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	没有数据库 atomic_players 实现；申请过期清理、双账号一致性及周期通知未接入
+E	friend/dissolutionFriend	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	没有数据库 atomic_players 实现；申请过期清理、双账号一致性及周期通知未接入
+E	friend/feedbackFriendOffer	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	没有数据库 atomic_players 实现；申请过期清理、双账号一致性及周期通知未接入
+E	friend/findFriends	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	near/higher/lower阈值、排序、索引和推荐筛选未知
+E	friend/findFriendsAndSend	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	教程调用 friendMax=8；选择规则和整批跨账号事务未知
+E	friend/getFriendMap	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	旧包装器，未确认业务消费者，不能用新版响应代填
+E	friend/getFriendMapData	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	无 mapId 旧包装器；不可直接与 Data2 等同
+E	friend/getFriendMapData2	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	mapId=-1 默认；地图白名单、剩余助产计数、非好友访问均待集成
+E	friend/getFriendProfile	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	没有数据库 atomic_players 实现；申请过期清理、双账号一致性及周期通知未接入
+E	friend/getFriends	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	没有数据库 atomic_players 实现；申请过期清理、双账号一致性及周期通知未接入
+E	friend/getVisitFriendLogs	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	根表全遍历；记录保留/排序/帮助记录语义待证
+E	friend/sendFriendOffer	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	没有数据库 atomic_players 实现；申请过期清理、双账号一致性及周期通知未接入
+E	friend/setGuestMap	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	选择默认客访地图；UI禁地图2；支城解锁/持久化入口待A核对
+A	friend/task/accelerateFriendProduceTask	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	E visitor permission; per-day quota/reset, time floor; atomic two-player transaction
+A	friend/task/completeFriendTasks	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	E permissions; owner/visitor reward split, quota, atomic two-player transaction
+E	friend/updateFriendData	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	没有数据库 atomic_players 实现；申请过期清理、双账号一致性及周期通知未接入
+E	friend/visitFriendMap	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	访城日志/首次奖励/计数更新未知；不得空成功
+B	giganticRaidBoss/entryGiganticRaidBoss	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	首次入场触发；活动资格/报名持久化/重试待证，非普通物语
+B	giganticRaidBoss/getGiganticRaidBossBattleResult	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	关联当前真实战斗的追加结算，不能独立生成奖励；非普通物语
+B	giganticRaidBoss/getGiganticRaidBossEventResult	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	term区分当前/历史；实际活动快照/排行/结算未证，不能造活动日期
+B	giganticRaidBoss/getGiganticRaidBossInformation	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	活动实例+国家共享阶段/连击；多人更新需事务，不因表存在就开活动
+E	inbox/getParcels	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	可信发行与旧档迁移未接入；periodicInquiry 数量未对接
+E	inbox/resolveParcels	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	领取组件可测；发行/通知/丢回包后的余额刷新未闭环
+E	invitation/getMyCode	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	邀请码生成/关联/唯一性未知，不用账号ID伪造
+E	invitation/getPlayer	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	code校验包装器不证明绑定或奖励，和H创建角色对接
+E	mailbox/deleteMails	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	status/mailIds；删单侧还是双方/附件处理待证
+E	mailbox/getMailBody	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	读取是否标已读、邮件归属、status仍待证
+E	mailbox/getMailHeaders	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	status值/分页末端/收发归属需原pcweb证据
+E	mailbox/sendMails	E	placeholder	docs/analysis/parallel-342/e-social/reviewed-endpoints.tsv	to/subject/body没有附件字段；多收件人失败/身份解析/事务未知
+C	navigator/activateNavigator	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	已有租用/颜色归属、到期恢复默认与保存关系待证
+C	navigator/getNavigatorDetails	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	状态枚举与默认/买断/租用归属来源待证
+C	navigator/getNavigators	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	只有包装器；无直接调用方，不伪造可用列表
+C	navigator/getUsableNavigators	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	开放权限与默认/租赁状态闭环待证
+C	navigator/hireNavigator	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	租期起算、续租/重复支付、颜色归属待证
+D	netCafe/exchangeNpoint	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Obtain operator entitlement/rate and replay evidence
+H	plugin/buyPluginTime	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	核实付费资产与订单重试；不能用 max(now,end)+expiration 猜原规则
+H	plugin/setPluginData	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	getRevisions 缺部署版本清单和登录前路由；setPluginData 缺付费时长生产者，类型缺陷已修正
+C	politic/boosterPack/buy	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	概率、阶梯付费次数、赠品、活动开放未证；不信任请求cost
+C	politic/boosterPack/buyWithItem	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	票券数量、赠品与概率未证
+C	politic/boosterPack/getRemains	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	历史活动表不能推导当前剩余次数或排期
+A	politic/building/conflateBuilding	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	grade result, costs, consumed IDs and retry receipt need verification
+A	politic/building/getBuildingFabrics	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	find live consumer; do not infer fabrics inventory shape
+A	politic/building/getBuildingLevels	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	buildingId is ARRAY (singular key); verify response
+A	politic/building/getBuildings	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	capture standalone response before registering
+A	politic/building/getHarvestCounts	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	verify counts scope, keys and harvest lifecycle updates
+A	politic/building/raiseBuildingEventOfBattle	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	event sampling, battle preconditions and persistence unresolved
+A	politic/building/resolveBuildingEvent	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	verify actual battle completion, costs, demolition, restart and retry
+A	politic/edict/changeState	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	authoritative conditions/costs, expiry and one-time reward
+A	politic/edict/getMissionsInProgress	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	requires authoritative saved edict lifecycle, not fabricated empty progress
+A	politic/edict/raiseMission	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	sampling/trigger sequence and lifetime unresolved
+A	politic/edict/setWorkingValue	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	client-supplied counters must not authorize rewards
+D	politic/errantry/call3	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Resolve dynamic result chain, outcome rules, restart/claim ledger before send
+D	politic/errantry/getStatus3	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Resolve dynamic result chain, outcome rules, restart/claim ledger before send
+D	politic/errantry/receive3	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Resolve dynamic result chain, outcome rules, restart/claim ledger before send
+D	politic/errantry/send3	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Resolve dynamic result chain, outcome rules, restart/claim ledger before send
+A	politic/fixMapProduct	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	debug repair; semantics unknown; not normal gameplay
+D	politic/kokugi/addPoint	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove point source and shared-country scope; give A/B effect definitions after verification
+D	politic/kokugi/develop	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove point source and shared-country scope; give A/B effect definitions after verification
+D	politic/kokugi/getStatus	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove point source and shared-country scope; give A/B effect definitions after verification
+C	politic/lottery/lot	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	概率算法、费用次数、溢出入箱和重试待证
+A	politic/map/cleanup	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	title recovery; destructive scope unknown; not normal gameplay
+A	politic/map/getBackgrounds	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	PR50已统一items、确认支城mapId=1；待真实支城解锁/地图状态生产、原背景默认/期限与场景资源验证
+A	politic/map/getMap	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	do not copy getMapData contract into this endpoint
+A	politic/map/setBackground	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	PR50已统一items、确认支城mapId=1；待真实支城解锁/地图状态生产、原背景默认/期限与场景资源验证
+A	politic/map/setMapName	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	keep existing setMapName2; do not treat overload as consumer proof
+A	politic/map/switchMap	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	sub-map ownership/unlock/storage unverified; no fabricated sub-map
+C	politic/mypage/claimReward	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	九宫格统一由C负责；资格/抽取/领奖账本及重试需闭环，不是通用成就领奖
+H	politic/mypage/getArtifactSeries	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	核对分类和分页起点；C 提供真实物品获得/消耗记录
+H	politic/mypage/getArtifactSeriesReward	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	C 原子扣收藏物+发奖+receiveCount；重复请求不重复发放
+H	politic/mypage/getCharacterCollection	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	C 发卡/升阶建立历史收藏；旧存档迁移必须有来源
+H	politic/mypage/getCredit2Logs	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	原服回包及前后状态验证
+H	politic/mypage/getCreditLogs	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	D 消费账本与 G 记录边界对齐，不返回伪造历史
+H	politic/mypage/getEventcodeLogs	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	与兑换共用唯一记录；原版日志排序/日期验证
+H	politic/mypage/getJewelSeries	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	核对分类和分页起点；C 提供真实物品获得/消耗记录
+H	politic/mypage/getJewelSeriesReward	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	C 原子扣收藏物+发奖+receiveCount；重复请求不重复发放
+H	politic/mypage/getMigratePlanCountryStatus	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	G 国家排名+目标国家限制；不伪造 rank
+H	politic/mypage/getMigratePlansStatus	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	A 地图、C 卡牌、G 国势共同确认迁居预检
+C	politic/mypage/getNineGridInfo	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	非普通玩法；服务端活动配置与日期未证
+H	politic/mypage/getPlayerRecords	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	G 给记录来源；A/B/C 给事件；统一计数迁移
+H	politic/mypage/migrate	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	A/C 定义完整保留清单；预检后单次原子保存，禁止复用创建角色发初始资源
+C	politic/mypage/playNineGridGacha	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	非普通玩法；抽取概率、付费次数与奖励状态闭环待证
+H	politic/mypage/useEventcode	H	placeholder	docs/analysis/parallel-342/h-account-progress/reviewed-endpoints.tsv	取得授权兑换配置；全局限额需跨账号 DB 事务，单玩家锁不足
+A	politic/shop/buyBackgroundItem	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	PR50已统一items、确认支城mapId=1；待真实支城解锁/地图状态生产、原背景默认/期限与场景资源验证
+D	politic/shop/buyShopItemCredit	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Find runtime caller/capture before assigning response or price rules
+D	politic/shop/buyShopItemFromNationalPower	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	国家上下文锁/周期与购买事务未接入
+A	politic/shop/getBackgroundItems	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	PR50已统一items、确认支城mapId=1；待真实支城解锁/地图状态生产、原背景默认/期限与场景资源验证
+D	politic/shop/getShopItemsCredit	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Find runtime caller/capture before assigning response or price rules
+D	politic/shop/getShopItemsFromNationalPower	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	真实国力/全局周期上下文未实现
+C	politic/support_item/useDopingItem	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	属性效果、上限与批量消耗舍入待证
+C	politic/support_item/useDopingRemoveItem	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	返还道具换算、保护与恢复上限待证
+C	politic/support_item/usePotions	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	50%恢复舍入、超上限与批量数量待证；initialAmount不作赠送
+C	politic/support_item/useSkillPotion	C	placeholder	docs/analysis/parallel-342/c-card-growth/reviewed-endpoints.tsv	slot是UI索引+1字符串；经验成长、上限与批量扣量待证
+A	politic/task/accelerateProduceTask	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	table time/credit known; flooring, retry identity and lifecycle unresolved
+A	politic/task/cancelTasks	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	refund/elapsed effects and automatic durability unknown; retain errorReason
+A	politic/task/getTasksInCurrentMap	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	capture standalone response; no invented task projection
+A	politic/task/submitBulkProduceTasks	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	complete lifecycle blocked; all-or-nothing fees/retries needed
+A	politic/task/submitProduceTask	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	complete lifecycle blocked: final rewards/roads/skills/durability; retain errorReason
+A	politic/task/submitSerialBuildTask	A	placeholder	docs/analysis/parallel-342/a-city-production/reviewed-endpoints.tsv	do not copy submitSerialBuildAndComplete; preserve completeTasks construction
+D	politic/waterborneTrade/call	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations
+D	politic/waterborneTrade/getFleet	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations
+D	politic/waterborneTrade/getFriendTraders	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations
+D	politic/waterborneTrade/getStatus	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations
+D	politic/waterborneTrade/receive	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations
+D	politic/waterborneTrade/send	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations
+D	politic/waterborneTrade/sendWithFriends	D	placeholder	docs/analysis/parallel-342/d-economy/reviewed-endpoints.tsv	Prove fleet effects/outcome/expiry; integrate E friend permissions and atomic multi-player reservations
+B	quest/checkCompleteQuestEx	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	推进/首领/宝箱/领奖账本同一状态机；确定领取条件和库存事务后实现
+B	quest/checkEmergencyQuest	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	event3排期与时区未知；不可猜日期或把空表当完整实现
+B	quest/clearObstacle	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	可信遭遇/活动授权缺失；已修重复成功回包再次扣显示余额
+B	quest/executeQuestEx	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	quest索引->区域section->奖励；原ratio不是已证百分比，事件生成与结算未知
+B	quest/executeQuestEx2	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	仅包装器；assets固定map0；无本树直接调用，需动态证明用途
+B	quest/getAutoStep	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	仅包装器；无本树直接调用，不把名称解释成自动推进实现
+B	quest/getChapterData	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	adventureV1 没有可信生产者；初始化、进度、事件、战斗和领取共享状态未完成
+B	quest/getQuestBossPunish	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	需真实首领惩罚状态；根Count决定读script，空成功信封有风险，交总集成
+B	quest/getQuestCompleteFlags	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	adventureV1 没有可信生产者；初始化、进度、事件、战斗和领取共享状态未完成
+B	quest/getQuestEncount	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	首领恢复查询；entry非空阻止恢复；实例ID/战斗生命周期未证，未实现
+B	quest/getQuestEncountWorks	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	可信遭遇生产者与活动授权缺失
+B	quest/getQuestProgress	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	adventureV1 没有可信生产者；初始化、进度、事件、战斗和领取共享状态未完成
+B	quest/getQuestRewardOpenFlags	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	adventureV1 没有可信生产者；初始化、进度、事件、战斗和领取共享状态未完成
+B	quest/getRandomQuestRanking	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	实际积分与排名统计窗口/并列规则未知，交G，不虚构名次
+B	quest/openQuest	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	普通/随机/活动开启并非统一动作；解锁/排期/首次生成/重试未知
+B	quest/openTreasureBox	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	treasureId必须关联自己未结算事件；useItem不可由客户端决定奖或费用，开箱概率/事务待证
+B	quest/useSoulToStep	B	placeholder	docs/analysis/parallel-342/b-adventure/reviewed-endpoints.tsv	仅包装器lotteryId/questType；无直接调用，不能猜魂消耗/步数
+G	ranking/getBriefOfBattle	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfBattleDaily	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfBrawn	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfCountriesInGiganticRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfCountryBattle	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfDedication	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfDedicationMonthly	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfGiganticRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfGiganticRaidBossDaily	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfKokudaka	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	没有可信石高汇总、当前/上期原子快照来源；不能用等级或当前库存替代
+G	ranking/getBriefOfMaxDamageInGiganticRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfNationalPower	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfNationalRanking	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfRaidBossDaily	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfRaidBossNational	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfRandomQuest	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfSiege	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfStrategy	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getBriefOfTurfWarDaily	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getDailyRankersAroundMeInTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getDailyRankersInBattle	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getDailyRankersInRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getDailyRankersInTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getDailyTopRankersInTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getMonthlyRankersInDedication	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getMyRankInTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersAroundMeInTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInBattle	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInBrawn	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInDedication	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInGiganticRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInKokudaka	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	没有可信石高汇总、当前/上期原子快照来源；不能用等级或当前库存替代
+G	ranking/getRankersInNationalPower	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInNationalRanking	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInRaidBossNational	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInRandomQuest	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInSiege	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInStrategy	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInStrategyForMypage	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInStrategyPie	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersInTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersOfCountriesInGiganticRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankersOfMaxDamageInGiganticRaidBoss	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRankingOfCountriesInBattle	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getRecordOfCountryInBattle	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+G	ranking/getTopRankersInTurfWar	G	placeholder	docs/analysis/parallel-342/g-rankings/reviewed-endpoints.tsv	obtain authoritative settlement, period and scope evidence before mounting
+F	siege/discharge	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	核实放出时机/积分/费用，依赖 B 战斗事务
+F	siege/enter	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	确认报名资格/活动期/重复报名
+F	siege/getBrief	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	配对与活动日期未知；init 的国家常量不能作服务端事实
+F	siege/getPairings	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	没有权威配对生产端，原 iframe 正文未恢复
+F	siege/getSiegeResultLog	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	补全 HTML 下游与真实已结算日志
+F	siege/getSiegeStatus	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	证明 spots/dailyScores、兵力、敌手及活动轮转
+F	siege/lookSiegeResult	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	查首次领取与重复查看差异/奖励入账事务
+F	siege/openingBet	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	原 siege_bet_rate 有表；投入上限、取整及重复请求待证
+F	strategy/command/attack	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	command 字符串变体与 B 战斗输入输出对齐；禁止固定胜负
+F	strategy/command/buildCastle	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/command/cancelMarch	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	路径取消是否退资源/取消冷却未证
+F	strategy/command/changeBase	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/command/conscript	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/command/march	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	缺 strategy_battlefield；march2 使用 seqId，需路径版本/重放/占格规则
+F	strategy/command/march2	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	缺 strategy_battlefield；march2 使用 seqId，需路径版本/重放/占格规则
+F	strategy/command/returnBase	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/command/revenge	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/command/strategize	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/command/supply	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/command/traceroute	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	position=[x,y]；需路径算法、seqId 生命周期，不能猜地图
+F	strategy/command/training	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整状态转换、冷却/费用、并发及重试未证；共享地图需事务
+F	strategy/entryStrategy	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	雇佣菜单费用=count*mercenaryPrice 已证；容量/报名资格/幂等待证；fieldName 不发送
+F	strategy/getMercenaryEmployInfo	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	mercenaryPrice=50 是原 defines 行；最大/常备兵公式未证，不按国力猜算
+F	strategy/getStrategyActionLogs	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	未找到普通 C# 调用；查原页面与动态流量，不能宣称玩法实现
+F	strategy/getStrategyActionLogs2	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	补全消息变体及原 HTML；不可与旧 ActionLogs 混用
+F	strategy/getStrategyBattleLogs	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	与 B 协议对齐；mypageBattleLogUpdateStrategy 的 string force 重载属于 battle/getVsBattleLogs
+F	strategy/getStrategyBrief	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	需要真实周期和队伍快照；不生成固定对手
+F	strategy/getStrategyCellLogs	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	原日志结构和地图地名依赖，不能以缺字段变空日志
+F	strategy/getStrategyCommandInfo	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	原表费用并列数组可读取；force/diffMaxForce 的结算单位与贡献公式待证
+F	strategy/getStrategyLogs	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	旧日志链需动态确认是否仍可达；debug 值不可用于胜负
+F	strategy/getStrategyNormRewardInfo	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	积分必须来自持久结算，领取进度/阈值另行验证
+F	strategy/getStrategyOverview	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	未找到普通 C# 调用；查原页面与动态流量，不能宣称玩法实现
+F	strategy/getStrategyPairings	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	原页面层级/日历/配对来源待证
+F	strategy/getStrategyPairingsChat	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	未找到普通 C# 调用；查原页面与动态流量，不能宣称玩法实现
+F	strategy/getStrategyPersonalLogs	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	保留根记录结构；fieldName 为客户端派生，非服务端已证字段
+F	strategy/getStrategyPromptReport	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	请求 position 为字符串；继续追踪 setupParams 与页面消费者
+F	strategy/getStrategyStatus	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	完整地图/格子消费者链未闭合；缺 strategy_battlefield
+F	strategy/getStrategyWinLossRecords	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	没有真实历史生产端；已修 getInt 浮点精度边界
+F	strategy/isAlive	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	strategy/isAlive 观测记录没有权威生产者；不能写默认 true
+F	strategy/lookStrategyResult	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	查一次性领奖/跨重登幂等，与 B/G 结算协作
+F	turfWar/entryBattlefield	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	资格/所属队/战场容量/重试未证，空回包不能算报名成功
+F	turfWar/entryWar	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	自动报名在 open 且 team=none 分支；分队算法/持久化未知
+F	turfWar/getSelfRecord	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	未找到普通 C# 调用；勿把 decisiveBattleSituation 的 battle/getSelfRecord 混入
+F	turfWar/getSelfSituation	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	未找到普通 C# 调用；须查原页面/动态流量
+F	turfWar/getTurfWarResultLog	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	追踪原页面全部字段；日榜和总榜周期交 G
+F	turfWar/moveBattlefield	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	移动费用/冷却/占领联动未知，需要多玩家事务
+F	turfWar/receiveTurfWarReward	F	placeholder	docs/analysis/parallel-342/f-war-campaigns/reviewed-endpoints.tsv	领取幂等/奖励入账/邮箱溢出都待证，不按固定红魂发放
