@@ -975,6 +975,11 @@ class GameplayService:
     @staticmethod
     def _grant_items(player: dict[str, Any], items: dict[str, int]) -> None:
         for item_id, amount in items.items():
+            # RewardProcessor.parameterTables/updateExp: this parameter adds
+            # player experience; it is neither currency nor an inventory item.
+            if item_id == "item11_0000501":
+                player["entity"]["exp"] = integer(player["entity"].get("exp", 0)) + integer(amount, 0)
+                continue
             resource = ITEM_TO_RESOURCE.get(item_id)
             if resource:
                 player["resources"][resource]["amount"] = (
