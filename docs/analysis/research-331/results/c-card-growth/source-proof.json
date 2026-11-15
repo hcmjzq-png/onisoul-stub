@@ -1,0 +1,150 @@
+[
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+    "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\GameRestarter.cs",
+    "sha256": "b9879a51b44a682f466f2cded6815b644e4a9c4b5900f33d126ae701a11af5ea"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterStatus.cs",
+    "sha256": "15c42f061d3aef4279513a5301803afb5f53d038ae58ccc287195841c9d7e673"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterLavelTableAccessor.cs",
+    "sha256": "d36e2631ebedb1fd999165efc92cbe60cea653281babc5dd1ca4df01860855fd"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ConflateItem.cs",
+    "sha256": "79aeb711288fd905b2714ef968024c035f0f941d0603f98b4a58fc04ee1538dd"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckUseItem.cs",
+    "sha256": "1f95bf8509dc83a1524e4e868640d09bb0c99f7822ddf92f1ff5b27f63b2bc13"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckUseItem_itemSelect.cs",
+    "sha256": "fc3ada804fdb4b0e51e2429286b90908bd5ce06347c54f5cfd6877f57b54ff86"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckUseItem_itemSelectReleaseItem.cs",
+    "sha256": "109ab2e81ae8a136b5ec1a983071ced8768a98c2d8ed85538c56389fccfabda5"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckUseItem_confimation.cs",
+    "sha256": "b95010aa22cf20b65ddbc298b082735de0328373692ca16990900cd902d39d94"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckUseItem_ItemView.cs",
+    "sha256": "0b8516e13e5c938a15a724586f6af1dd5e83949315bd9fe65292a3ec82c8ddf2"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckUseItem_result.cs",
+    "sha256": "a282e75b791f2a8c35a26f34f7c603c849ecf9dfd7ef0054c946cf21435e6153"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PotionTableAccessor.cs",
+    "sha256": "618796e19cebba7caacee13ce02ba08e3a4c1b8a2255312b3cab3b863c202a08"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate.cs",
+    "sha256": "989cb9e89ff0c4074151da064155ca2dc75d2342f0e216c3f688510b97d4a4ed"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_Conflate.cs",
+    "sha256": "a123dd67f34ef85066f7a77341e769d41ac644df3ab868bdf02a0a67e5cd19fa"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_Evo.cs",
+    "sha256": "39e783a836c1a4c846894705a468305b8ba6b7338f3a8df286b521fcb0af00a3"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_Skill.cs",
+    "sha256": "975dd8d1526794fd2a350650be3e0e6f3231a24a282abfe9c276ff477001e722"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckConflate_SkillRefresh.cs",
+    "sha256": "3f53464ce504c073bf669486782dfaad5e3321f6acb8c0de8cca0a6a1defe843"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterGradeTableAccessor.cs",
+    "sha256": "0ede83a49930d4e0f254abaf2e7139fa42194d85adf7bfcff1f8ee32f2fe1b86"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SkillTableAccessor.cs",
+    "sha256": "cac0aec16ab9fce274d80cb5a93540392842b3634c01b39ea69b9b0200f41fbf"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridDataManager.cs",
+    "sha256": "20f65fd87a4bc495dfdc9cc99ac6c524aeaaaca5dedc423d4ef08f76ee5db7da"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridDataParser.cs",
+    "sha256": "255290d3bdd379b3baa45533b0de1d71a123bf74e5079135fc57de55d87aa6e4"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridGacha.cs",
+    "sha256": "02475db1aa2ac5fb9a3683a3d8337d40192f968517a0c09ee3abc91b0f27da80"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\NineGridCollectionRewards.cs",
+    "sha256": "7b56f80c3e896de3b107e7588060032e07dbae66717f06fcf19ac04d1d73fd8f"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SingleNineGridReward.cs",
+    "sha256": "89f824a8c1657665de7d7f0ea3904d8cf28255af8e5fc62b0ca13de725a437df"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DeckSale_Tactics.cs",
+    "sha256": "32062ed91691174f403d6695823bae885dd4195f994416e37984ebac29ad57b8"
+  },
+  {
+    "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\CharacterConflateFablic.cs",
+    "sha256": "16583039d597b0a931a5ef24452815245838a3eb26f1a932d30f201817064736"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\potion.json",
+    "sha256": "8120c12f4f93dad913f82392a1d06af5d999cdd029b319c129397211d338dbfd"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\character.json",
+    "sha256": "811b7dc8d58563dc287cfdce07104cabf5bda49823d976e1fd9440f0f05f90c8"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\characterGrade.json",
+    "sha256": "b589e60d0d201319d24a3d6e0c5a27128a9752edcbe2c8efc98dbe92bc705334"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\characterLevel.json",
+    "sha256": "78b5c85d31a997884ba77f46edc2184182dd963cfdc9b46cd16c61b1ac2856f7"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item.json",
+    "sha256": "4a2cd143a91d899d4df686b5730460933c31c9928d9fc69f5cae0a909b95fa8a"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\skill.json",
+    "sha256": "f1fa45ed69abb41a758b30445c038c39a2d17f92e78a410fa678df82ac9d5cd3"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\eventcoef.json",
+    "sha256": "29e7115a594dd553427214af0a2e84f8a0c39c8a28de41c6b217182b4bd62bad"
+  },
+  {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\skill_slot_payment.json",
+    "sha256": "90c6640741dfdb7c71742c0ae82aae071611cbb10d6160596681fdb0b5dfaeb4"
+  },
+  {
+    "path": "D:\\onisoul\\work\\verified-trophies-20261115\\runtime-tables\\skillRefreshG2.json",
+    "sha256": "ddc950f0fd8e892b12e2865458ce43b4fe411154a4f7a8a422acc3ff6395b4de"
+  },
+  {
+    "path": "D:\\onisoul\\work\\verified-trophies-20261115\\runtime-tables\\skillRefreshG4.json",
+    "sha256": "e3cfc41829ff8be9cedbc36ef8fb245338f4515baf4b981a9261baac23e7ea84"
+  },
+  {
+    "path": "D:\\onisoul\\work\\verified-trophies-20261115\\runtime-tables\\skillRefreshG6.json",
+    "sha256": "a420b5834dba41176fae7fc64aa3904af32b6c5209b4f305a291011576cfda17"
+  }
+]

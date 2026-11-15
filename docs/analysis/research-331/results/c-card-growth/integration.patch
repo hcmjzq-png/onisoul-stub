@@ -1,0 +1,24 @@
+--- a/docs/api_schema.md
++++ b/docs/api_schema.md
+@@ -186,3 +186,21 @@
+ | 通知确认与首次旧档初始化 | 待验证 | `accountProgress.trophyClaims` / `levelTrophyNoticeSeen` 是本服内部状态。原 stub 尚未发放成就，缺失 ledger 视为未领取；已有合法 ledger 保留，损坏 ledger 拒绝。禁止未经迁移导入原服领取历史。通知确认不发奖励；超资源上限整笔拒绝，未实现信箱分流。 |
+ | 背景 mapId / 解锁边界 | bundle | mypageCastleTownItem.cs:101-147 仅 no=1 显示背景切换和商店按钮，并要求 mapEntry.isEnable、PoliticMissionManager.IsOpenSubMap。mypageBgSelectWindow.cs:135-150 明确发送 mapId=1 并更新同一 mapEntry。主城 no=0 隐藏按钮，不存在 0→1 偏移映射。 |
+ | 背景内部归属与选择 | 待验证 | 候选购买/选择统一读取 items，选择保存于 mapBackgrounds["1"]。内部 subcity_enabled 提供者尚无正式实现，因此四个背景入口仍不挂载，不把旧 backgroundOwnership 或 mapBackgrounds["0"] 自动认定为原服权益。 |
++
++## research-331 C 候选道具事务（未公开挂载）
++
++来源 bundle / compatibility-policy，完整边界见
++[本轮 C 接入说明](analysis/research-331/results/c-card-growth/integration-notes.md)。
++
++| 候选字段 | 来源 | 原消费者 / 语义 |
++| --- | --- | --- |
++| useDopingItem.potion.<potionId>.amount、character | bundle | DeckUseItem_confimation.cs:187-204,227-236；余额替换、完整武将刷新。 |
++| useDopingRemoveItem.addItems.<potionId> | bundle | DeckUseItem_result.cs:150-174；返还数量，非库存余额。 |
++| useDopingRemoveItem.changeItems.<potionId>.amount、character | bundle | DeckUseItem_confimation.cs:167-182；PotionHash记录替换、完整武将刷新。包括变为零的铃。 |
++| 总属性/atkAdd、defAdd、intAdd | bundle | CharacterStatus.cs:176-182；有限实现按potion.effects增加两者；characterLevel.cap约束总属性。 |
++| cardGrowthOperations / OperationContext | compatibility-policy | 仅内部持久收据/可信传输上下文；不加入原请求或响应。 |
++| 已结算重复返回 errorReason | bundle字段 / compatibility-policy使用 | GameRestarter.cs:70-95过滤，WebApiClient.cs:324-337不再执行成功增量；丢响应需重登回读。 |
++
++仅原20种能力石的完整1/5/10批次和无余数拆除转换；超cap/库存溢出、保护/编队等限制
++详见本轮报告。普通注册保持关闭，待可信操作身份来源与Unity验收；不能用测试provider上线。
++战术出售旧持久收据保留但禁止重放成功增量。同参数的新意图使用新可信身份。

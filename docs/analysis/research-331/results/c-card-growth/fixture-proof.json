@@ -1,0 +1,51 @@
+[
+  {
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\potion.json",
+    "sha256": "8120c12f4f93dad913f82392a1d06af5d999cdd029b319c129397211d338dbfd",
+    "rows": [
+      "potion0000201",
+      "potion0000401",
+      "potion0000402",
+      "potion0000403",
+      "potion0000404",
+      "potion0000405",
+      "potion0000406",
+      "potion0000407",
+      "potion0000408",
+      "potion0000409",
+      "potion0000410",
+      "potion0000411",
+      "potion0000412",
+      "potion0000413",
+      "potion0000414",
+      "potion0000415",
+      "potion0000416",
+      "potion0000417",
+      "potion0000418",
+      "potion0000419",
+      "potion0000420"
+    ],
+    "fixture": "tests/fixtures/research331/c-card-growth/potion.json",
+    "fixture_sha256": "ce9330ed48c5109b651f5dbd7b22bdcf442faca51240f7efefacc5a1c919d695"
+  },
+  {
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\characterLevel.json",
+    "sha256": "78b5c85d31a997884ba77f46edc2184182dd963cfdc9b46cd16c61b1ac2856f7",
+    "rows": [
+      "1_1",
+      "1_2"
+    ],
+    "fixture": "tests/fixtures/research331/c-card-growth/characterLevel.json",
+    "fixture_sha256": "b45212eec62e2c95a98f1ecbc97f392ccadd7b63dda479eb7b82934e07f0d379"
+  },
+  {
+    "source": "D:\\onisoul\\work\\quest-contract-20261115\\all-tables\\shop_item.json",
+    "sha256": "4a2cd143a91d899d4df686b5730460933c31c9928d9fc69f5cae0a909b95fa8a",
+    "rows": [
+      "shop0700013",
+      "shop0700014"
+    ],
+    "fixture": "tests/fixtures/research331/c-card-growth/shop_item.json",
+    "fixture_sha256": "0f3f4601545fd8342bf55a0339e1519a1eedceb1002fe4b9ec1ba26d15ea33a0"
+  }
+]

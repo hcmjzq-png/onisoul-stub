@@ -1,0 +1,60 @@
+{
+  "shop_item": {
+    "shop0700013": {
+      "id": "shop0700013",
+      "name": "SHOP_ITEM_MSG_0700013_NAME",
+      "brief": "SHOP_ITEM_MSG_0700013_DESC",
+      "openDesc": "強化値を取り消し、石に変換する",
+      "lockDesc": "消耗品2(LOCK)",
+      "category": "consumable",
+      "class": "doping",
+      "isSet": true,
+      "itemIds": [
+        "item07_0020001"
+      ],
+      "iconName": "",
+      "quantities": [
+        1
+      ],
+      "costTypes": [
+        "credit"
+      ],
+      "costAmounts": [
+        300
+      ],
+      "credit": 150,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true,
+      "sortno": 1
+    },
+    "shop0700014": {
+      "id": "shop0700014",
+      "name": "SHOP_ITEM_MSG_0700014_NAME",
+      "brief": "SHOP_ITEM_MSG_0700014_DESC",
+      "openDesc": "強化石外しの鈴のお得なセット",
+      "lockDesc": "消耗品2(LOCK)",
+      "category": "consumable",
+      "class": "doping",
+      "isSet": true,
+      "itemIds": [
+        "item07_0020001"
+      ],
+      "iconName": "",
+      "quantities": [
+        11
+      ],
+      "costTypes": [
+        "credit"
+      ],
+      "costAmounts": [
+        3000
+      ],
+      "credit": 1500,
+      "isNew": false,
+      "discount": false,
+      "isInitialSale": true,
+      "sortno": 2
+    }
+  }
+}

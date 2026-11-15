@@ -248,14 +248,13 @@ class CardGrowthTest(unittest.TestCase):
 
     def test_tactic_receipt_survives_reload_replenishment_and_changed_table(self):
         self.seed_tactics()
-        first = self.tactic_sale()
+        self.tactic_sale()
         p = self.saved(); p["tactics"]["card1_00001_01"]["amount"] = 100; self.save(p)
         self.reload()
         self.service.catalog.samples["tactics"]["card1_00001_01"]["sellPrice"] = 99
         before = self.saved()
         repeated = self.tactic_sale()
-        self.assertEqual(repeated["sellPrice"], first["sellPrice"])
-        self.assertEqual(repeated["tactics"], first["tactics"])
+        self.assertIn("already committed", repeated["errorReason"])
         self.assertEqual(self.saved(), before)
         # The same quantities are a valid second intent with a NEW trusted ID.
         self.assertEqual(self.tactic_sale(operation_id="sale-2")["sellPrice"], 198.0)
@@ -295,7 +294,7 @@ class CardGrowthTest(unittest.TestCase):
         self.seed_tactics(); gold = self.saved()["resources"]["gold"]["amount"]
         with ThreadPoolExecutor(max_workers=2) as pool:
             results = list(pool.map(lambda _: self.tactic_sale(), range(2)))
-        self.assertTrue(all(r["succeeded"] for r in results))
+        self.assertEqual(sum("errorReason" not in r for r in results), 1)
         self.assertEqual(self.saved()["resources"]["gold"]["amount"], gold + 20)
         self.assertEqual(len(self.saved()["cardGrowthTacticSales"]), 1)
         with ThreadPoolExecutor(max_workers=2) as pool:
@@ -347,7 +346,7 @@ class CardGrowthTest(unittest.TestCase):
             p["cardGrowthTacticSales"][key] = {"quantities": {}, "payload": {}}
         self.save(p); before = self.saved()
         self.assertIn("archive required", self.tactic_sale(operation_id="new-sale")["errorReason"])
-        self.assertTrue(self.tactic_sale()["succeeded"])
+        self.assertIn("already committed", self.tactic_sale()["errorReason"])
         self.assertEqual(self.saved(), before)
 
     def test_tactic_settlement_is_not_registered_as_public_handler(self):
@@ -381,7 +380,7 @@ class CardGrowthTest(unittest.TestCase):
         self.assertEqual(committed["resources"]["gold"]["amount"], before["resources"]["gold"]["amount"] + 20)
         self.assertEqual(len(committed["cardGrowthTacticSales"]), 1)
         instances[0].load_state = self.states.load
-        self.assertTrue(run(instances[0])["succeeded"])
+        self.assertIn("already committed", run(instances[0])["errorReason"])
         self.assertEqual(self.saved(), committed)
 
 

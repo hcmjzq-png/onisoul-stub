@@ -1,6 +1,6 @@
 """C-group handlers; GameplayService mounts sales and saved soul balances only.
 
-Evidence and conservative support limits: docs/analysis/parallel-342/c-card-growth/.
+Evidence and support limits: docs/analysis/research-331/results/c-card-growth/.
 Uses PlayerServices.call and GameplayService's lock/save/revision boundary.
 """
 from __future__ import annotations
@@ -9,15 +9,49 @@ import copy
 import hashlib
 import time
 from functools import partial
-from typing import Any
+from typing import Any, Callable
 
 from app.business.decks import KINDS, character_id
 from app.business.player_services import PlayerServices, integer
+from app.business.card_growth_transactions import OperationContext, settle_once
 
 SOUL_COLORS = ("red", "blue", "purple", "yellow", "green", "black", "white")
 
 
 class CardGrowthServices(PlayerServices):
+    def register_mutations(
+        self, registry: Any, *, operation_context: Callable[[], OperationContext | None]
+    ) -> None:
+        """Candidate registration requiring a real, reviewed transport adapter.
+
+        Normal GameplayService.register does not invoke this method. The original
+        client has no nonce. Test providers must never become production defaults.
+        """
+        for api in ("politic/support_item/useDopingItem",
+                    "politic/support_item/useDopingRemoveItem", "deck/sellTactics"):
+            registry.register(api, partial(self.mutate, api, operation_context))
+
+    def mutate(self, api: str, provider: Callable[[], OperationContext | None],
+               params: dict, session: dict | None) -> dict:
+        request = copy.deepcopy(params)
+
+        def action(player: dict, body: dict) -> dict:
+            self.require_player(player)
+            if api not in ("politic/support_item/useDopingItem",
+                           "politic/support_item/useDopingRemoveItem", "deck/sellTactics"):
+                raise ValueError("no stub response: unsupported card growth mutation")
+            context = provider()
+            if not isinstance(context, OperationContext):
+                raise ValueError("no stub response: trusted operation context unavailable")
+            context.validate(self.service._player_id(session), api, body)
+            if api == "deck/sellTactics":
+                return settle_once(player, context, partial(
+                    self._sell_tactics, params=body, operation_id=context.operation_id))
+            handler = self.use_doping if api.endswith("/useDopingItem") else self.remove_doping
+            return settle_once(player, context, partial(handler, params=body))
+
+        return self.service._guard(api, partial(self.call, api, action))(request, session)
+
     def sell_tactics_with_receipt(
         self, params: dict, session: dict | None, *, operation_id: str
     ) -> dict:
@@ -154,6 +188,8 @@ class CardGrowthServices(PlayerServices):
                 or any(not (c.isalnum() or c in "-_.:") for c in operation_id)):
             raise ValueError("no stub response: trusted sale operation id required")
         raw = params.get("tactics")
+        if set(params) - {"token", "tactics"}:
+            raise ValueError("unexpected tactic sale request field")
         if not isinstance(raw, dict) or not 1 <= len(raw) <= 8:
             raise ValueError("tactics must contain one to eight card types")
         if any(not isinstance(key, str) or not key for key in raw):
@@ -161,13 +197,19 @@ class CardGrowthServices(PlayerServices):
         quantities = {key: integer(value, 1) for key, value in sorted(raw.items())}
         # Service-internal durable ledger; not sent as a protocol field. No TTL
         # or eviction: expiring a receipt would make a delayed retry spend again.
-        receipts = player.get("cardGrowthTacticSales") or {}
+        receipts = player.get("cardGrowthTacticSales", {})
+        if not isinstance(receipts, dict):
+            raise ValueError("no stub response: invalid tactic sale ledger")
         receipt_key = hashlib.sha256(operation_id.encode("ascii")).hexdigest()
         if receipt_key in receipts:
             receipt = receipts[receipt_key]
+            if not isinstance(receipt, dict) or not isinstance(receipt.get("quantities"), dict):
+                raise ValueError("no stub response: invalid tactic sale receipt")
             if receipt["quantities"] != quantities:
                 raise ValueError("sale operation id was already used for different quantities")
-            return copy.deepcopy(receipt["payload"])
+            # DeckSale_Tactics adds sellPrice and subtracts tactics on EVERY
+            # success. Replaying the old payload corrupts the client's balances.
+            raise ValueError("sale already committed; refresh tactics and resources")
         # Bound this initial internal ledger without silently evicting receipts.
         # This is a service support limit, not an original game limit.
         if len(receipts) >= 1024:
@@ -203,6 +245,121 @@ class CardGrowthServices(PlayerServices):
         player["cardGrowthTacticSales"] = {**receipts, receipt_key: {
             "quantities": quantities, "payload": copy.deepcopy(payload)}}
         return payload
+
+    def doping_target(self, player: dict, params: dict, *, remove: bool) -> tuple[str, dict]:
+        self.require_player(player)
+        allowed = {"token", "potionId", "characterId"} | (set() if remove else {"count"})
+        if set(params) - allowed:
+            raise ValueError("unexpected doping request field")
+        key = character_id(params.get("characterId"))
+        owned, stored = player.get("characters", {}), player.get("storedCharacters", {})
+        if not isinstance(owned, dict) or not isinstance(stored, dict) or set(owned) & set(stored):
+            raise ValueError("no stub response: invalid or duplicate character inventory")
+        target = owned.get(key)
+        if not isinstance(target, dict):
+            raise ValueError("doping requires an owned carried character")
+        # Conservative support policy: do not change protected or assigned cards.
+        # This is not a claim that original item usage shares material-sale rules.
+        if (key in self.references(player, "characters")
+                or key in (player.get("protectedCards", {}).get("characters", []))):
+            raise ValueError("character is protected or referenced by a deck/avatar")
+        if target.get("baseId") not in self.table("character"):
+            raise ValueError("no stub response: character base row missing")
+        for stat in ("atk", "def", "int"):
+            if integer(target.get(stat)) < integer(target.get(stat + "Add")):
+                raise ValueError("no stub response: inconsistent character doping totals")
+        return key, target
+
+    def doping_row(self, potion_id: str, *, remove: bool = False) -> dict:
+        supported = ({"potion0000201"} if remove else
+                     {f"potion00004{i:02d}" for i in range(1, 21)})
+        if not isinstance(potion_id, str) or potion_id not in supported:
+            raise ValueError("no stub response: unsupported doping potion")
+        row = self.table("potion").get(potion_id)
+        if (not isinstance(row, dict) or row.get("id") != potion_id
+                or row.get("category") != ("dopingRemove" if remove else "doping")
+                or not isinstance(row.get("itemID"), str) or not row["itemID"].startswith("item07_")):
+            raise ValueError("no stub response: invalid doping potion row")
+        if not remove:
+            uses, effects = row.get("uses"), row.get("effects")
+            if (uses not in (["atk"], ["def"], ["int"], ["atk", "def", "int"])
+                    or not isinstance(effects, list) or len(effects) != len(uses)
+                    or row.get("range") != [-1, -1]):
+                raise ValueError("no stub response: unsupported doping effects or range")
+            for effect in effects:
+                integer(effect, 1)
+        return row
+
+    def use_doping(self, player: dict, params: dict) -> dict:
+        """Original 20 stones, full batches only: no clipping or guessed refunds."""
+        _key, target = self.doping_target(player, params, remove=False)
+        potion_id = params.get("potionId")
+        row = self.doping_row(potion_id)
+        count = integer(params.get("count"), 1, 10)
+        if count not in (1, 5, 10):
+            raise ValueError("unsupported doping batch; client offers 1, 5 or 10")
+        grade, level = integer(target.get("grade"), 1), integer(target.get("level"), 1)
+        level_row = self.table("characterLevel").get(f"{grade}_{level}")
+        if not isinstance(level_row, dict) or "cap" not in level_row:
+            raise ValueError("no stub response: character level cap row missing")
+        cap = integer(level_row["cap"], 1)
+        items = player.get("items")
+        if not isinstance(items, dict):
+            raise ValueError("no stub response: invalid item inventory")
+        remaining = integer(items.get(row["itemID"], 0)) - count
+        if remaining < 0:
+            raise ValueError("insufficient doping items")
+        changed = copy.deepcopy(target)
+        for stat, effect in zip(row["uses"], row["effects"]):
+            delta = count * integer(effect, 1)
+            if integer(target[stat]) + delta > cap:
+                raise ValueError("no stub response: partial or over-cap doping unsupported")
+            changed[stat] = target[stat] + delta
+            changed[stat + "Add"] = target[stat + "Add"] + delta
+        items[row["itemID"]] = remaining
+        target.update(changed)
+        return {"potion": {potion_id: {"amount": float(remaining)}},
+                "character": copy.deepcopy(target)}
+
+    def remove_doping(self, player: dict, params: dict) -> dict:
+        """Preview's descending-effect conversion, only exactly representable adds."""
+        _key, target = self.doping_target(player, params, remove=True)
+        potion_id = params.get("potionId")
+        bell = self.doping_row(potion_id, remove=True)
+        items = player.get("items")
+        if not isinstance(items, dict):
+            raise ValueError("no stub response: invalid item inventory")
+        bell_left = integer(items.get(bell["itemID"], 0)) - 1
+        if bell_left < 0:
+            raise ValueError("insufficient removal items")
+        refunds, balances, changed = {}, {potion_id: {"amount": float(bell_left)}}, copy.deepcopy(target)
+        item_balances = {bell["itemID"]: bell_left}
+        for stat, first in (("atk", 1), ("def", 6), ("int", 11)):
+            remaining = integer(target[stat + "Add"])
+            rows = [(f"potion00004{i:02d}", self.doping_row(f"potion00004{i:02d}"))
+                    for i in range(first, first + 5)]
+            for pid, row in sorted(rows, key=lambda pair: pair[1]["effects"][0], reverse=True):
+                if row["uses"] != [stat]:
+                    raise ValueError("no stub response: inconsistent refund stone row")
+                amount, remaining = divmod(remaining, integer(row["effects"][0], 1))
+                if not amount:
+                    continue
+                item_id = row["itemID"]
+                if item_id in item_balances:
+                    raise ValueError("no stub response: overlapping refund item references")
+                total = integer(items.get(item_id, 0)) + amount
+                integer(total)  # Reject overflow atomically; never route to an invented inbox.
+                refunds[pid], balances[pid] = float(amount), {"amount": float(total)}
+                item_balances[item_id] = total
+            if remaining:
+                raise ValueError("no stub response: nonrepresentable doping remainder")
+            changed[stat] = target[stat] - target[stat + "Add"]
+            changed[stat + "Add"] = 0
+        if not refunds:
+            raise ValueError("character has no removable doping")
+        items.update(item_balances)
+        target.update(changed)
+        return {"addItems": refunds, "changeItems": balances, "character": copy.deepcopy(target)}
 
     @staticmethod
     def souls(player: dict, params: dict) -> dict:

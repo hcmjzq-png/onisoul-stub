@@ -1,0 +1,196 @@
+{
+  "sources": [
+    {
+      "id": "S8",
+      "url": "https://forum.gamer.com.tw/Co.php?bPage=0&bsn=22241&sn=18669&subbsn=1",
+      "title": "給剛入門的新手們",
+      "date": "2013-05-01 edited",
+      "region": "国际中文版开服指南",
+      "nature": "玩家指南/一手使用描述，非统计实验",
+      "summary": "文中按技能槽说明继承；付费保护祭品失败不消失，未称付费继承必成。",
+      "client": "DeckConflate_Skill.cs:314-341,475-517;DeckConflate.cs:331-345",
+      "table_rows": [
+        "potion.potion0000605"
+      ],
+      "conflict": "早期同槽限制不可直接推广到目标20140712所有技能；实际技能及槽限制仍以原代码为准",
+      "confidence": "中；说明性质可交叉确认",
+      "classification": "verified UI; unsupported settlement",
+      "implementation": "不开放继承；README.md概率复核",
+      "access_date": "2026-11-15 Asia/Shanghai",
+      "web_tool_status": "403 Forbidden",
+      "fallback": "ordinary public urllib.request GET, User-Agent Mozilla/5.0; no cookies or authentication",
+      "http_status": 200,
+      "final_url": "https://forum.gamer.com.tw/Co.php?bPage=0&bsn=22241&sn=18669&subbsn=1",
+      "html_sha256": "b572b13e211ed606cc25378612d9df426b92becffb3fd71d524176425763f5cb",
+      "bytes": 108336,
+      "read_status": "public full body fetched; relevant sections inspected; only own summary retained",
+      "located_dates": [
+        "2013-05-01 19:35:39",
+        "2013-05-05 05:35:10",
+        "2013-05-10 16:29:45",
+        "2013-05-10 18:22:09"
+      ]
+    },
+    {
+      "id": "S4",
+      "url": "https://forum.gamer.com.tw/Co.php?bsn=22241&sn=4031",
+      "title": "新手指南（标题2014/05/06更新）",
+      "date": "正文显示2014-11-19 23:45:21编辑；各段年代不同",
+      "region": "日服/台服混合",
+      "nature": "玩家编辑汇总",
+      "summary": "G4主卡吃G3/G2/G1的列举值80/50/35与目标characterGrade表对应；文章混入晚于安装包的更新。",
+      "client": "DeckConflate_Evo.cs:388-395;CharacterGradeTableAccessor.cs:45-62",
+      "table_rows": [
+        "characterGrade.4.gradeMin3",
+        "characterGrade.4.gradeMin2",
+        "characterGrade.4.gradeMin1"
+      ],
+      "conflict": "标题不能作为全文版本日期；概率评论不是服务器随机算法；文内拆除铃损失仅传闻",
+      "confidence": "数值与原UI交叉一致高；其他总结中低",
+      "classification": "verified preview only",
+      "implementation": "保留强化/进化/继承关闭；不移植白魂概率或战斗浮动率",
+      "access_date": "2026-11-15 Asia/Shanghai",
+      "web_tool_status": "403 Forbidden",
+      "fallback": "ordinary public urllib.request GET, User-Agent Mozilla/5.0; no cookies or authentication",
+      "http_status": 200,
+      "final_url": "https://forum.gamer.com.tw/Co.php?bsn=22241&sn=4031",
+      "html_sha256": "952a52ed43596ea6e4720fdc9a453b3012d3a020488a2eb95f20271d4709ab92",
+      "bytes": 191601,
+      "read_status": "public full body fetched; relevant sections inspected; only own summary retained",
+      "located_dates": [
+        "2014-11-19 23:45:21",
+        "2013-06-01 17:20:18",
+        "2013-06-01 17:21:06",
+        "2013-06-07 01:08:55"
+      ]
+    },
+    {
+      "id": "S-stones",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=677",
+      "title": "冷知識討論，來這分享遊戲中的小細節吧（10楼）",
+      "date": "10楼2012-12-22 22:36:52",
+      "region": "2012年玩家讨论，早于国际中文版开服；按日服时期处理",
+      "nature": "玩家直接报告效果，不是抽样统计",
+      "summary": "五档强化石的增量为10/20/30/40/100，极不是50；和目标原potion表一致。",
+      "client": "ConflateItem.cs:96-147;DeckUseItem_confimation.cs:70-136",
+      "table_rows": [
+        "potion.potion0000401..potion0000420",
+        "characterLevel.1_1.cap"
+      ],
+      "conflict": "年代不同但目标原表逐值相符；未证明超过cap时的消耗或返还",
+      "confidence": "完整批次有限范围高；上限截断未知",
+      "classification": "verified subset",
+      "implementation": "app/business/card_growth_services.py:use_doping;tests/test_research331_c_items.py",
+      "access_date": "2026-11-15 Asia/Shanghai",
+      "web_tool_status": "403 Forbidden",
+      "fallback": "ordinary public urllib.request GET, User-Agent Mozilla/5.0; no cookies or authentication",
+      "http_status": 200,
+      "final_url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=677",
+      "html_sha256": "bbc13f5242e7ecdc32319d8d847ee508e89ba87eb523434a6260e09f7546d466",
+      "bytes": 277974,
+      "read_status": "public full body fetched; relevant sections inspected; only own summary retained",
+      "located_dates": [
+        "2012-12-04 20:23:05",
+        "2012-12-04 21:01:27",
+        "2012-12-04 21:07:53",
+        "2012-12-04 21:09:26"
+      ]
+    },
+    {
+      "id": "S-ninegrid",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=88819",
+      "title": "武將蒐集新系統正式上線",
+      "date": "2013-11-19 11:36:20",
+      "region": "国际中文版；文中称领先日本推出",
+      "nature": "GNN标记厂商提供资料原文（一级资料转载）",
+      "summary": "指定九格按三卡成线、线数领奖；同时排除挂卖和鬼签获得的卡。公告额外活动奖励有独立截止日期。",
+      "client": "NineGridDataManager.cs:167-258;NineGridCollectionRewards.cs:63-80",
+      "table_rows": [],
+      "conflict": "拥有同卡即点亮与获卡渠道排除须由来源账本同时解释；没有20140712活动配置/概率",
+      "confidence": "几何和历史来源限制高；当前活动不支持",
+      "classification": "verified geometry; unsupported event issuance",
+      "implementation": "app/business/card_growth_ninegrid.py;不生成九宫格玩家权益或奖励",
+      "access_date": "2026-11-15 Asia/Shanghai",
+      "web_tool_status": "403 Forbidden",
+      "fallback": "ordinary public urllib.request GET, User-Agent Mozilla/5.0; no cookies or authentication",
+      "http_status": 200,
+      "final_url": "https://gnn.gamer.com.tw/detail.php?sn=88819",
+      "html_sha256": "bfd495be0ba6e5c9ac72f7eb173226eb4e90819a480950b7b37212ce2b238b07",
+      "bytes": 89296,
+      "read_status": "public full body fetched; relevant sections inspected; only own summary retained",
+      "located_dates": [
+        "2013-11-19 11:36:20"
+      ]
+    },
+    {
+      "id": "S-diamond",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=98372",
+      "title": "武聖再度降臨 全面開啟事件任務",
+      "date": "2014-06-10 17:01:21",
+      "region": "国际中文版一/二服",
+      "nature": "CAPCOM公告报道（一级公告内容）",
+      "summary": "报道新增一次到顶的强化钻石；目标potion表doping类别仅20种普通石，没有该物品的可用匹配。",
+      "client": "DeckUseItem_itemSelect.cs:24-30;ConflateItem.cs:96-147",
+      "table_rows": [
+        "potion(category=doping):20 rows"
+      ],
+      "conflict": "公告早于安装包不保证本地静态表含活动动态物品；不能用公告虚构新ID或效果",
+      "confidence": "历史推出高；本包物品映射未知",
+      "classification": "unsupported",
+      "implementation": "拒绝未白名单物品；不把普通石改成到顶钻石",
+      "access_date": "2026-11-15 Asia/Shanghai",
+      "web_tool_status": "403 Forbidden",
+      "fallback": "ordinary public urllib.request GET, User-Agent Mozilla/5.0; no cookies or authentication",
+      "http_status": 200,
+      "final_url": "https://gnn.gamer.com.tw/detail.php?sn=98372",
+      "html_sha256": "50b63c5f23ea4cb70e6c951a4a7253ae156049a42227f301cf04b44038475559",
+      "bytes": 91046,
+      "read_status": "public full body fetched; relevant sections inspected; only own summary retained",
+      "located_dates": [
+        "2014-06-10 17:01:21"
+      ]
+    },
+    {
+      "id": "S1",
+      "url": "https://wikiwiki.jp/onimusyasoul/",
+      "title": "鬼武者soul攻略wiki FrontPage",
+      "date": "首页含2012-11-01公告",
+      "region": "日服",
+      "nature": "玩家Wiki与旧公告索引",
+      "access_date": "2026-11-15 Asia/Shanghai",
+      "read_status": "web tool full body readable",
+      "summary": "用于年代定位；未找到可补全本轮结算的精确规则。",
+      "client": null,
+      "table_rows": [],
+      "conflict": "时代和服别不匹配",
+      "confidence": "仅索引",
+      "classification": "unsupported",
+      "implementation": "无生产常量"
+    },
+    {
+      "id": "S-ninegrid-reprint",
+      "url": "https://www.gamersky.com/news/201311/308463.shtml",
+      "title": "武将搜集新系统正式上线",
+      "date": "2013-11-22",
+      "region": "国际中文版转载",
+      "nature": "转载巴哈同一新闻；不是独立证据",
+      "access_date": "2026-11-15 Asia/Shanghai",
+      "read_status": "web tool full body readable",
+      "summary": "与S-ninegrid同源；不重复计算佐证。",
+      "client": "NineGridDataManager.cs:167-258",
+      "table_rows": [],
+      "conflict": "无独立佐证价值",
+      "confidence": "同源",
+      "classification": "unsupported as independent evidence",
+      "implementation": "无额外常量"
+    }
+  ],
+  "queries": [
+    "鬼武者魂 技能繼承 九宮格 2014",
+    "鬼武者魂 強化 大成功 確率 宝珠",
+    "鬼武者魂 強化石拆除鈴 還",
+    "鬼武者Soul 強化石外し 返",
+    "鬼武者魂 強化鑽石"
+  ],
+  "limitations": "未找到公开原服流量或服务器随机实现；搜索摘要从未作为生产常量"
+}
