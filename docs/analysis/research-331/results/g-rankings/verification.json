@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-15",
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "task_endpoints_exact_match": 51,
+  "original_source_hashes_verified": 13,
+  "focused_tests": 35,
+  "full_tests": 437,
+  "skipped": 0,
+  "git_diff_check": "passed",
+  "integration_patch_apply_check": "passed",
+  "integration_patch_runtime": "2 tests passed, in-memory only; default remains unchanged, injection replaces exactly 8",
+  "new_query_components": 8,
+  "internal_write_commands": [
+    "city",
+    "gold"
+  ],
+  "formal_placeholder_reduction": 0,
+  "unity_acceptance": 0,
+  "production_database_acceptance": false
+}

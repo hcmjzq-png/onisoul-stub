@@ -1,0 +1,8 @@
+{
+  "defines": {
+    "scale_kokudaka_for_dedication": {
+      "id": "scale_kokudaka_for_dedication",
+      "value": 10
+    }
+  }
+}
