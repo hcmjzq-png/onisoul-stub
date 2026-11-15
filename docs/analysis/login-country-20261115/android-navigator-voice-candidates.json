@@ -1,0 +1,312 @@
+[
+  {
+    "asset": "vse017_2_010101_01_02",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\03f1256047756024b91eac23f0de7cd4.unity3d",
+    "extension": ".unity3d",
+    "bytes": 12633,
+    "sha256": "ce55053c5af9e1192269efd8a925cea043c6a4b3e5b0dfb5211e8dcba8f6b991",
+    "audio": [
+      {
+        "name": "vse017_2_010101_01_02",
+        "fields": {
+          "m_Name": "vse017_2_010101_01_02",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 14208,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "0f652563eb96b41a427ed1e5445ff0c389bb539491709d41d2890cb9169505c4"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-833236320b5d60144a7d37c403fea204",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse016_2_010201_01_03",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\056419566884cc2534db2a3bae0fb30c.unity3d",
+    "extension": ".unity3d",
+    "bytes": 17284,
+    "sha256": "72d044ae85a9b88e6fd834401d27da94124b4a0590489eabf4d7503cfc16bbbd",
+    "audio": [
+      {
+        "name": "vse016_2_010201_01_03",
+        "fields": {
+          "m_Name": "vse016_2_010201_01_03",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 19200,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "205b2932dc9a76578240a67eb1fe18f86b8ffe480b480293d53de2e01699a2be"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-3a65804c256d6ec4cb4a66631d797370",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse018_2_010201_01_01",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\065aa19114c497a23284e4661ed702c6.unity3d",
+    "extension": ".unity3d",
+    "bytes": 17013,
+    "sha256": "6fabe3305a3abb10ab02c5b655b1325d9fc35a0d52639604c8e34cbe8eab8c8a",
+    "audio": [
+      {
+        "name": "vse018_2_010201_01_01",
+        "fields": {
+          "m_Name": "vse018_2_010201_01_01",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 19008,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "af86e55dba5a21a61eb80cc69b6c38da6a08a3b79cc890e61384b35170f9de69"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-967f6cd62c689764c8d069788b91d048",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse013_2_010101_01_02",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\080e8f08921822ace5b4def0a775176e.unity3d",
+    "extension": ".unity3d",
+    "bytes": 27926,
+    "sha256": "a3f5093747d1c90f56e9cb9aebd14d8c87b06eef34bf906d9584874dcd48e5bc",
+    "audio": [
+      {
+        "name": "vse013_2_010101_01_02",
+        "fields": {
+          "m_Name": "vse013_2_010101_01_02",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 29664,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "a11d456e04854e60f9dc3cda745058f13b6237f8a6721de0c23df9d3505da61b"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-f1c87aa7309b2be4aa9255fdf3671695",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse017_2_010101_01_04",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\09c6f80b0d3a437093e476950c1b71cf.unity3d",
+    "extension": ".unity3d",
+    "bytes": 13230,
+    "sha256": "5d518790300f5ea779fbd640384bc4ae4dbbc61660e15d18b118050fb6e25995",
+    "audio": [
+      {
+        "name": "vse017_2_010101_01_04",
+        "fields": {
+          "m_Name": "vse017_2_010101_01_04",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 14976,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "1e028a4c108e217293df1f3c57de1126b03eee4fe600c13a256f1ec64f60b9ed"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-d5744c43bda83b7468ff4a1bf7b6f6f4",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse015_2_010101_01_02",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\0cc4ec87efa666a8cc714f81f83409f1.unity3d",
+    "extension": ".unity3d",
+    "bytes": 13578,
+    "sha256": "2972ef29d841ee0d58b12b643db319e798660b041951b2ace2baa3d55128000d",
+    "audio": [
+      {
+        "name": "vse015_2_010101_01_02",
+        "fields": {
+          "m_Name": "vse015_2_010101_01_02",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 15360,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "66724653fd8fe98ee53ff23cb726bd567ca3ce2443e7f1c9d065fe68e3ac852f"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-b9d28a681978aae49ae79d3430f84f56",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse017_2_010101_01_03",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\0fc575c6d95f97344420d3ab561f4234.unity3d",
+    "extension": ".unity3d",
+    "bytes": 15772,
+    "sha256": "ed4e1c7cfb2173e14e28209784608534337e08351557bb96ce9c6b7d5ba73b06",
+    "audio": [
+      {
+        "name": "vse017_2_010101_01_03",
+        "fields": {
+          "m_Name": "vse017_2_010101_01_03",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 17472,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "1b180eceafa9d269030e471b4c082fb2e3d60d15921372a9feb6c48b0ec20131"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-15b2c7b3a0883574fba21586eaf18f46",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse014_2_010201_01_01",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\114353245174089fcf30a6a236a5a2ad.unity3d",
+    "extension": ".unity3d",
+    "bytes": 17410,
+    "sha256": "7f73a7aa1a77907ec10efd799c6891b103d5feea5dc1ad10d20882eacf0b03ba",
+    "audio": [
+      {
+        "name": "vse014_2_010201_01_01",
+        "fields": {
+          "m_Name": "vse014_2_010201_01_01",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 19200,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "283866d5fc284efc277a16d75bbc048e1db913380ac8a800ffd9fce15c9b4b7e"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-5103985e903207646aff90f6c5f4a3b2",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse020_2_010201_01_02",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\134b3d93bcd0016f82c5b9ff6beb75b1.unity3d",
+    "extension": ".unity3d",
+    "bytes": 13272,
+    "sha256": "64637d67a74a1f1a7ab3d0e082c2699d5cac446221847368fcc837ef38527d41",
+    "audio": [
+      {
+        "name": "vse020_2_010201_01_02",
+        "fields": {
+          "m_Name": "vse020_2_010201_01_02",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 14976,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "32b1d72d477a544e759a817fd23b9fedf52ae201684278f92de3c6c9f19741df"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-7e994fa1ccdff3c4fb9bc14a7fe7975e",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  },
+  {
+    "asset": "vse020_2_010201_01_03",
+    "role": "navigator_voice",
+    "path": "E:\\oni-soul\\assets_serve\\client\\android\\jp\\assets\\vse\\1be4e16c6c8e6195d11c9b5863b92026.unity3d",
+    "extension": ".unity3d",
+    "bytes": 13192,
+    "sha256": "c3c02c7abd76e7adbeaa58c699f6027781d2053c7d3cc0d7f0cb1f781fe9d007",
+    "audio": [
+      {
+        "name": "vse020_2_010201_01_03",
+        "fields": {
+          "m_Name": "vse020_2_010201_01_03",
+          "m_Format": 2,
+          "m_Type": 13,
+          "m_3D": false,
+          "m_UseHardware": false,
+          "m_Stream": 1
+        },
+        "bytes": 14784,
+        "magic": "4944330300000000077654434f4e0000",
+        "sha256": "b1849ce5620606d572dd2084dc8a9b806dd97501f1fe0291316e0129f4833c9e"
+      }
+    ],
+    "serialized_files": [
+      {
+        "name": "CustomAssetBundle-943a8b3be7ffa7d45aef6f9ebaf20d11",
+        "platform": 10,
+        "version": "3.5.7f6"
+      }
+    ]
+  }
+]
