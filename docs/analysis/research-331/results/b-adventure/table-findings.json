@@ -1,0 +1,216 @@
+{
+  "container_sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7",
+  "tables": [
+    {
+      "file": "monster_story_1.json",
+      "root_key": "monster_story_1",
+      "container_name_offset": 51248052,
+      "script_offset": 51248076,
+      "script_length": 102510,
+      "sha256": "e29a3e2bb2d320c3a61014b25c8f400e813a823e161e73c485a0711e2e3bbdd4",
+      "rows": 722,
+      "selected_original_rows": {
+        "q_mons_0000_01": {
+          "name": "MONSTER_MSG_NAME_1_00007_01",
+          "maxHp": 1000,
+          "voice": "vse035_3_010301",
+          "images": "cch2_00007"
+        },
+        "q_mons_0000_02": {
+          "name": "MONSTER_MSG_NAME_1_00004_01",
+          "maxHp": 1200,
+          "voice": "vse035_3_010301",
+          "images": "cch2_00004"
+        }
+      }
+    },
+    {
+      "file": "raidBoss.json",
+      "root_key": "raidBoss",
+      "container_name_offset": 93970396,
+      "script_offset": 93970416,
+      "script_length": 198487,
+      "sha256": "2b2d3dc47c66ef80484935807559397882cc05c3b33b86842e4fcae554489fb1",
+      "rows": 147,
+      "selected_original_rows": {
+        "raidBoss1_00001_01": {
+          "id": "raidBoss1_00001_01",
+          "name": "MONSTER_MSG_NAME_1_00147_01",
+          "costBp": 20,
+          "costBpFriend": 10,
+          "category": "class4",
+          "paymentType": "fast",
+          "paramUpType": "normal",
+          "levelUpType": "normal",
+          "sex": "male",
+          "attribute": "evil",
+          "minHp": 75000,
+          "maxHp": 15000000,
+          "minAtk": 800,
+          "maxAtk": 16000,
+          "minDef": 800,
+          "maxDef": 25000,
+          "minInt": 400,
+          "maxInt": 9000,
+          "limitTime": 7200,
+          "attributeCoefAtk": [],
+          "attributeCoefDef": [],
+          "skills": [
+            "mskill1_00003_01"
+          ],
+          "script": "stq0_800000_01",
+          "voice": "vse006_3_030101",
+          "images": "cch2_00147",
+          "iconImages": "item02_0000147",
+          "punishSoul": [
+            250,
+            300
+          ],
+          "punishSoulOwnerRatio": 1,
+          "punishSoulFriendRatio": 1,
+          "punishPoint": [
+            700,
+            80000
+          ],
+          "punishPointOwnerRatio": 1,
+          "punishPointFriendRatio": 0.3,
+          "loseSoul": [
+            250,
+            300
+          ],
+          "loseSoulOwnerRatio": 1,
+          "loseSoulFriendRatio": 1,
+          "losePoint": [
+            140,
+            16000
+          ],
+          "losePointOwnerRatio": 1,
+          "losePointFriendRatio": 0.5,
+          "punishSoulFix": [
+            250,
+            300
+          ],
+          "punishSoulFixOwnerRatio": 1,
+          "punishSoulFixFriendRatio": 1,
+          "punishPointFix": [
+            300,
+            7500
+          ],
+          "punishPointFixOwnerRatio": 1,
+          "punishPointFixFriendRatio": 0.25,
+          "jewelRatioBase": [
+            40,
+            80
+          ],
+          "jewelReward": "reward02_02_jewel_1020",
+          "jewelCoefOwner": 1,
+          "jewelCoefFriend": 0.25
+        }
+      }
+    },
+    {
+      "file": "raidBossBattle.json",
+      "root_key": "raidBossBattle",
+      "container_name_offset": 27953196,
+      "script_offset": 27953220,
+      "script_length": 902,
+      "sha256": "6950763eecfebee53e91c2c0495d96c96a5c3333e07069ae195ecd1ffd0b4686",
+      "rows": 10,
+      "selected_original_rows": {
+        "raidBoss1_00048_01": {
+          "id": "raidBoss1_00048_01",
+          "suffix": "Valentine_001"
+        }
+      }
+    },
+    {
+      "file": "raidBossLevel.json",
+      "root_key": "raidBossLevel",
+      "container_name_offset": 92577332,
+      "script_offset": 92577356,
+      "script_length": 28995,
+      "sha256": "52b2269f80e1ceff2595e71c5fc965251ee66ac76da96a23cddfc0ff1104c488",
+      "rows": 100,
+      "selected_original_rows": {
+        "1": {
+          "id": 1,
+          "up_slow": 1,
+          "down_slow": 3,
+          "up_normal": 1,
+          "down_normal": 2,
+          "up_fast": 1,
+          "down_fast": 1,
+          "param_slow": 1,
+          "param_normal": 1,
+          "param_fast": 1,
+          "param_d": 1,
+          "payment_slow": 1,
+          "payment_normal": 1,
+          "payment_fast": 1
+        }
+      }
+    },
+    {
+      "file": "raidBossEncount.json",
+      "root_key": "raidBossEncount",
+      "container_name_offset": 93957924,
+      "script_offset": 93957948,
+      "script_length": 12435,
+      "sha256": "3edf945b02c39e536f09e9839eebc1cafc977dbd9dc0094e573e74550892296d",
+      "rows": 52,
+      "selected_original_rows": {
+        "raidBossEncount_1_0001": {
+          "id": "raidBossEncount_1_0001",
+          "stepMin": 10,
+          "stepMax": 20,
+          "encountRatioMin": 50,
+          "ids": [
+            "raidBoss1_00019_01",
+            "raidBoss1_00034_01",
+            "raidBoss1_00082_01",
+            "raidBoss1_00105_01"
+          ],
+          "ratio": [
+            25,
+            25,
+            25,
+            25
+          ]
+        }
+      }
+    },
+    {
+      "file": "monsterSkill.json",
+      "root_key": "monsterSkill",
+      "container_name_offset": 22012644,
+      "script_offset": 22012668,
+      "script_length": 221948,
+      "sha256": "428a132638aef53b491c55d1fa080abe53bb017543e37db5bb97a49e48fed972",
+      "rows": 400,
+      "selected_original_rows": {
+        "mskill1_00001_01": {
+          "id": "mskill1_00001_01",
+          "ratio": 2,
+          "timing": "round",
+          "multiple": true,
+          "conditionType": "normal",
+          "condition1A": "none",
+          "condition1B": "none",
+          "condition2A": "none",
+          "condition2B": "none",
+          "sign": "none",
+          "effect1Target": "self",
+          "effect1Action": "damageUpRatio",
+          "effect1ValueA": 500,
+          "effect1ValueB": "none",
+          "effect2Target": "none",
+          "effect2Action": "none",
+          "effect2ValueA": "none",
+          "effect2ValueB": "none",
+          "images": "mskill1_00001_01",
+          "effectCategory": 1000
+        }
+      }
+    }
+  ]
+}

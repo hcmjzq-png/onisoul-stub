@@ -1,0 +1,249 @@
+{
+  "accessed_at": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "target": "OniSoul_Setup_20140712.exe / international Chinese PC client; not later JP rules",
+  "search_queries": [
+    "鬼武者魂 鬼物語 步數 獎勵 物語點數 教學",
+    "鬼武者Soul 鬼物語 戦闘 順番 報酬 悪鬼羅刹",
+    "\"鬼武者魂\" \"新手教學\" \"武將\""
+  ],
+  "sources": [
+    {
+      "id": "B-E1",
+      "url": "https://lbear.pixnet.net/blog/posts/5057011406",
+      "title": "【邀測】鬼武者魂 Soul 卡普空卡牌遊戲顛峰之作",
+      "published": "2014-04-22 09:40",
+      "region": "台服/国际中文版，PC浏览器及移动端介绍",
+      "nature": "受邀第一手游玩记录；非官方规则书",
+      "access": "全文可读；本轮未完成图片/影片内容核验",
+      "summary": "存在独立物语新手教学，途中可获角色；物语报酬与城镇教学奖励分开。",
+      "original": [
+        "QuestScriptCommand.cs:490-557",
+        "RewardProcessor.cs:171-213",
+        "QuestDataCache.cs:654-674"
+      ],
+      "table_rows": [
+        "quest_1_index:0_1",
+        "quest_1_0000:1_1_3,1_1_4"
+      ],
+      "confidence": "流程中高；精确概率/技能不可由该文证明",
+      "conflicts": "不能把城镇教学额外奖励并入物语步骤。",
+      "classification": "verified",
+      "adopted": "只交叉核对流程；物品ID/数量另由原表限定",
+      "implementation": "app/business/adventure_events.py:66,149,254",
+      "tests": "tests/test_research331_b_story.py:66",
+      "remaining": "第3步角色原服技能/初阶生成需进一步实录"
+    },
+    {
+      "id": "B-E2",
+      "url": "https://gwz.yeyou.com/news/07152014/144412723.shtml",
+      "title": "新手必看！不懂就点我！超详细FAQ",
+      "published": "2014-07-15",
+      "region": "简体中文版站点；与目标国际中文版不能等同",
+      "nature": "媒体FAQ编辑汇总，来源未完全注明",
+      "access": "全文可读",
+      "summary": "物语步进消耗点数、常规章节结构与限时任务有区别。",
+      "original": [
+        "QuestStoryAreaConfirm.cs:331-354",
+        "QuestAreaTableAccessor.cs:282-307",
+        "RaidBossTableAccessor.cs:77-94"
+      ],
+      "table_rows": [
+        "quest_1_index:0_1,1_1",
+        "quest_1_0000:1_1_1",
+        "raidBoss:raidBoss1_00001_01"
+      ],
+      "confidence": "流程参考；经济数值低",
+      "conflicts": "FAQ把恶鬼挑战写成消耗20物语点；原表字段为costBp/costBpFriend，不采纳该费用说法。其5话10章15步概括不适用于10步教学。",
+      "classification": "hypothesis",
+      "adopted": "不从该页写生产常量；MP消费采用原表预览链限定解释",
+      "implementation": "app/business/adventure_events.py:149",
+      "tests": "tests/test_research331_b_story.py:155",
+      "remaining": "其他服别/时期的概率与恢复公式不移植"
+    },
+    {
+      "id": "B-E3",
+      "url": "https://wikiwiki.jp/onimusyasoul/初心者ガイド",
+      "title": "初心者ガイド",
+      "published": "未知；正文含2012-10-27信息",
+      "region": "日服，偏早期",
+      "nature": "玩家Wiki总结",
+      "access": "全文可读",
+      "summary": "初期建议推进鬼物语；恶鬼确认完成与下一次出现存在关联。",
+      "original": [
+        "WebApiClient.cs:3675-3682",
+        "RaidBossScene.cs:169-182"
+      ],
+      "table_rows": [],
+      "confidence": "仅作为待验状态转移线索",
+      "conflicts": "不得把早期建议推为目标版本的全部入场/删除/领奖条件。",
+      "classification": "hypothesis",
+      "adopted": "removeRaidBossWork仍关闭，不把点击确认视为无条件删除他人实例",
+      "implementation": null,
+      "tests": null,
+      "remaining": "本人实例确认、领奖时点与下一次生成关系"
+    },
+    {
+      "id": "B-E4",
+      "url": "https://wikiwiki.jp/onimusyasoul/鬼物語/領内巡検編/第一話「季節外れの桜」",
+      "title": "鬼物語/領内巡検編/第一話「季節外れの桜」",
+      "published": "未知",
+      "region": "日服Wiki，修订时期未确认",
+      "nature": "玩家整理的推荐战力与收集项目",
+      "access": "全文可读",
+      "summary": "列举区域推荐攻防智与四个收集项。",
+      "original": [
+        "QuestStoryAreaSelector.cs:51-97",
+        "QuestDataCache.cs:743-765"
+      ],
+      "table_rows": [
+        "quest_1_index:1_1"
+      ],
+      "confidence": "结构参考，不接受跨版本数值",
+      "conflicts": "日文收集物与目标原表不能自动对应；推荐值不是胜负判定。",
+      "classification": "hypothesis",
+      "adopted": "只用来排除推荐战力=战斗算法的错误解释",
+      "implementation": "app/business/adventure_battles.py:17",
+      "tests": "tests/test_research331_b_story.py:275",
+      "remaining": "实际伤害/先手/技能时点"
+    },
+    {
+      "id": "B-E5",
+      "url": "https://m2.4gamer.net/games/150/G015000/20120621103/",
+      "title": "「鬼武者Soul」は，城下町作りにこだわり出すと止まらない箱庭系シミュレーションRPG。「戦国体験 第弐陣」のプレイレポートを掲載",
+      "published": "2012-06-22",
+      "region": "日服2012-06封测",
+      "nature": "记者第一手封测体验",
+      "access": "正文可读",
+      "summary": "点击探索、遇敌及获得武将，敌人HP与失败存在。",
+      "original": [
+        "QuestScriptCommand.cs:616-627",
+        "PluginQuestStepHelper.cs:289-309"
+      ],
+      "table_rows": [
+        "monster_story_1:q_mons_0000_01"
+      ],
+      "confidence": "仅玩法概念；版本差异大",
+      "conflicts": "不能将2012封测部队配置或数值套入2014目标客户端。",
+      "classification": "hypothesis",
+      "adopted": "不假造必胜；暂留pending",
+      "implementation": "app/business/adventure_battles.py:17",
+      "tests": "tests/test_research331_b_story.py:220",
+      "remaining": "目标版权威战斗求解"
+    },
+    {
+      "id": "B-E6",
+      "url": "https://www.4gamer.net/games/150/G015000/20140206069/",
+      "title": "「鬼武者Soul」，黒田官兵衛を獲得できる新たなイベントクエストが配信開始",
+      "published": "2014-02-06",
+      "region": "日服PC/移动端；不等于国际中文版排期",
+      "nature": "Capcom厂家公告原文转载，非独立两份证据",
+      "access": "正文可读，标明配信元Capcom",
+      "summary": "限定活动有明确日期；特定首领技能、等级与掉落有联系。",
+      "original": [
+        "QuestIndexTableAccessor.cs",
+        "RaidBossTableAccessor.cs",
+        "WebApiClient.cs:3704-3720"
+      ],
+      "table_rows": [
+        "raidBossEncount:raidBossEncount_1_0001",
+        "raidBoss:raidBoss1_00001_01"
+      ],
+      "confidence": "当时日服活动事实高；目标服排期不适用",
+      "conflicts": "公告里的怪物和奖励不一定对应上述目标表行，未强行匹配ID。",
+      "classification": "verified",
+      "adopted": "保持活动授权与表可加载分离，不开启2026旧活动",
+      "implementation": "app/business/adventure_events.py:66",
+      "tests": "tests/test_research331_b_story.py:132",
+      "remaining": "目标服活动授权、等级插值/抽样未证"
+    },
+    {
+      "id": "B-E7",
+      "url": "https://forum.gamer.com.tw/Co.php?bsn=22241&sn=4031",
+      "title": "S4 新手指南（任务索引标题称2014/05/06更新）",
+      "published": "未从正文验证",
+      "region": "未从正文验证",
+      "nature": "任务提供检索入口",
+      "access": "HTTP403；未读全文",
+      "summary": "无采用结论。",
+      "original": [],
+      "table_rows": [],
+      "confidence": "未验证",
+      "conflicts": "搜索摘要不作全文证据。",
+      "classification": "unsupported",
+      "adopted": "无",
+      "implementation": null,
+      "tests": null,
+      "remaining": "公开可读存档"
+    },
+    {
+      "id": "B-E8",
+      "url": "https://www.ptt.cc/bbs/Oni_soul/M.1380872654.A.203.html",
+      "title": "[心得] 初心者鬼物語隊--今晚咱們來打惡鬼",
+      "published": "搜索线索2013年；正文未验证",
+      "region": "未从正文验证",
+      "nature": "第一手玩家帖子线索",
+      "access": "HTTP403；带query重试也不可访问；未读全文",
+      "summary": "无采用结论；搜索提示与BP/救援相关，数值仅以本地原表核对。",
+      "original": [
+        "RaidBossTableAccessor.cs:77-94"
+      ],
+      "table_rows": [
+        "raidBoss:raidBoss1_00001_01"
+      ],
+      "confidence": "未验证外部全文",
+      "conflicts": "不能把搜索提示当独立费用验证。",
+      "classification": "unsupported",
+      "adopted": "无",
+      "implementation": null,
+      "tests": null,
+      "remaining": "可读原帖/公开存档"
+    },
+    {
+      "id": "B-E9",
+      "url": "http://cog-members.oni-soul.jp/sp/manual/index.html",
+      "title": "鬼武者Soul 原官方在线手册入口",
+      "published": "未知",
+      "region": "日服",
+      "nature": "S2页面明确链接的官方手册",
+      "access": "当前工具不可访问；未确认存档",
+      "summary": "未读取内容。",
+      "original": [],
+      "table_rows": [],
+      "confidence": "未验证",
+      "conflicts": "不能声称从原官方手册核实公式。",
+      "classification": "unsupported",
+      "adopted": "无",
+      "implementation": null,
+      "tests": null,
+      "remaining": "公开存档"
+    }
+  ],
+  "local_rule_classification": [
+    {
+      "rule": "fixed tutorial steps and source item/monster references",
+      "classification": "verified",
+      "basis": "original index/area/reward rows and original consumers; bounded singleton-weight interpretation, no generic RNG"
+    },
+    {
+      "rule": "initial story position, once-only tutorial, stable StepIntent, reject successful retry",
+      "classification": "compatibility-policy",
+      "basis": "server save/transaction policy, not recovered original protocol"
+    },
+    {
+      "rule": "grade1 level1 empty-skill tutorial reward instance",
+      "classification": "compatibility-policy",
+      "basis": "existing bootstrap schema; initial skill lottery is not recovered"
+    },
+    {
+      "rule": "combat initiative/damage/skills and multiple-choice battle rewards",
+      "classification": "unsupported",
+      "basis": "client consumes server process, does not provide proved authoritative resolver"
+    },
+    {
+      "rule": "full chapter completion and A/G historical events",
+      "classification": "unsupported",
+      "basis": "pending enemy not resolved, no victory/kill/completion manufactured"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "branch": "feature/research331-b-adventure-20261115",
+  "date": "2026-11-15",
+  "full_suite": {
+    "command": "python -W ignore::ResourceWarning -m unittest discover -s tests -q",
+    "tests": 435,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "baseline_tests": 417,
+    "new_tests": 18
+  },
+  "checks": {
+    "git_diff_check": "passed",
+    "git_apply_check_integration_patch": "passed; not applied",
+    "endpoint_task_exact_set": 35,
+    "original_source_files_hashed": 22,
+    "fixture_original_rows": 20,
+    "original_runtime_smoke": "original-tables-smoke.json"
+  },
+  "counting": {
+    "endpoints_with_new_evidence_or_component_increment": 12,
+    "complete_chapter_loops_ready": 0,
+    "internal_prefix_loops_tested": 1,
+    "production_registrations_removed_from_placeholder_count": 0,
+    "unity_acceptances": 0
+  },
+  "not_validated": [
+    "native Unity flow",
+    "original-client stable operation identity adapter",
+    "real MySQL multi-process transactions",
+    "combat/complete chapter/Raid settlement"
+  ],
+  "production_touched": false
+}

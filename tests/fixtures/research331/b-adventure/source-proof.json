@@ -1,0 +1,110 @@
+{
+  "container_path": "D:/onisoul/work/quest-contract-20261115/tableAssets.bin",
+  "container_sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7",
+  "tables": [
+    {
+      "file": "quest_1_index.json",
+      "root_key": "quest_1_index",
+      "container_name_offset": 40840820,
+      "script_offset": 40840844,
+      "script_length": 194180,
+      "sha256": "8941d1b097a1a776ee2148d8c34a4136878e863fd24afcce30ce1cc521d9443e",
+      "rows": 315,
+      "selected_rows": [
+        "0_1",
+        "1_1"
+      ],
+      "fixture_sha256": "f8754ae326bccdd431ae0aba16b120f39a6ea2a46f87f69267db2a05810a682c"
+    },
+    {
+      "file": "quest_1_0000.json",
+      "root_key": "quest_1_0000",
+      "container_name_offset": 62485852,
+      "script_offset": 62485876,
+      "script_length": 7929,
+      "sha256": "09f3384f4af7f315e67e3c9dfd1376efd262ac81da8293b647508ee87dd17a2d",
+      "rows": 10,
+      "selected_rows": [
+        "1_1_1",
+        "1_1_2",
+        "1_1_3",
+        "1_1_4",
+        "1_1_5",
+        "1_1_6",
+        "1_1_7",
+        "1_1_8",
+        "1_1_9",
+        "1_1_10"
+      ],
+      "fixture_sha256": "50d23746574516538ffce2e18e1b5ac3f23a94dcf951590288fc5df95342d436"
+    },
+    {
+      "file": "quest_1_0000_reward.json",
+      "root_key": "quest_1_0000_reward",
+      "container_name_offset": 26046052,
+      "script_offset": 26046080,
+      "script_length": 19336,
+      "sha256": "33683a1af7a5f7c7c118c560a12b7eca368e6d764ace9f8feb2e417887c6e5ea",
+      "rows": 16,
+      "selected_rows": [
+        "quest_1_0000_03_002",
+        "quest_1_0000_03_003",
+        "quest_1_0000_06_0001"
+      ],
+      "fixture_sha256": "656afd3313faffefc15e0d1ef464fbf02ababfbd1810209843e901d7b61641a6"
+    },
+    {
+      "file": "item01.json",
+      "root_key": "item01",
+      "container_name_offset": 29670972,
+      "script_offset": 29670988,
+      "script_length": 1294546,
+      "sha256": "fa24a7fd786d9a3ee347848b25547ce50a5cf1fb4fad02a32b265af6eb62344f",
+      "rows": 3819,
+      "selected_rows": [
+        "item01_0032401"
+      ],
+      "fixture_sha256": "34f02e932f43eb1f2db71069a6b14ed601b8a47c08632fa9238bd46d0ae83e47"
+    },
+    {
+      "file": "item08.json",
+      "root_key": "item08",
+      "container_name_offset": 79226556,
+      "script_offset": 79226572,
+      "script_length": 345706,
+      "sha256": "7946ce46ad7d811d10fe50f26d6cb1b34f5a3f3b30c64922ca6014169048c017",
+      "rows": 1035,
+      "selected_rows": [
+        "item08_0102701"
+      ],
+      "fixture_sha256": "6ae67d0edd30f201b27cf4455db400314ceffaaa109983369407fec4f3d99a74"
+    },
+    {
+      "file": "character.json",
+      "root_key": "character",
+      "container_name_offset": 17311412,
+      "script_offset": 17311432,
+      "script_length": 2263361,
+      "sha256": "811b7dc8d58563dc287cfdce07104cabf5bda49823d976e1fd9440f0f05f90c8",
+      "rows": 3814,
+      "selected_rows": [
+        "chara1_00324_01"
+      ],
+      "fixture_sha256": "032d76575ba0c209279f6e919096c0a83e5458596537b64f22a8cb61efcbd7ae"
+    },
+    {
+      "file": "monster_story_1.json",
+      "root_key": "monster_story_1",
+      "container_name_offset": 51248052,
+      "script_offset": 51248076,
+      "script_length": 102510,
+      "sha256": "e29a3e2bb2d320c3a61014b25c8f400e813a823e161e73c485a0711e2e3bbdd4",
+      "rows": 722,
+      "selected_rows": [
+        "q_mons_0000_01",
+        "q_mons_0000_02"
+      ],
+      "fixture_sha256": "5fb1c5541e9f786de1deaf9f381affecbfe70ded74bc60e6b28241a837fcec6e"
+    }
+  ]
+}
