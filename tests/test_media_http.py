@@ -1,4 +1,5 @@
 import hashlib
+import http.client
 import io
 import threading
 import unittest
@@ -46,3 +47,13 @@ class MediaHttpRetryTest(unittest.TestCase):
         with self.assertRaises(HTTPError):
             verify_url('http://owned/asset', 'unused')
         self.assertEqual(opener.return_value.open.call_count, 1)
+
+    @patch('tools.media_http.time.sleep')
+    @patch('tools.media_http.build_opener')
+    def test_closed_connection_and_short_body_retry_with_configured_timeout(self, opener, sleep):
+        short = io.BytesIO(b'short'); short.status = 200; short.length = 3
+        good = io.BytesIO(b'ok'); good.status = 200; good.length = 0
+        opener.return_value.open.side_effect = [http.client.RemoteDisconnected(), short, good]
+        self.assertEqual(verify_url('http://owned/asset', hashlib.sha256(b'ok').hexdigest(),
+                                    attempts=4, timeout=60), 2)
+        self.assertEqual([call.kwargs['timeout'] for call in opener.return_value.open.call_args_list], [60]*3)
