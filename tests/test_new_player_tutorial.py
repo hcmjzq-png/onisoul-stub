@@ -80,6 +80,15 @@ class NewPlayerTutorialTest(unittest.TestCase):
         self.assertIn("errorReason", self.unlock(DEFAULT_BUTTON_BITS | 2 | 16))
         self.assertNotIn("errorReason", self.unlock(DEFAULT_BUTTON_BITS | 2))
 
+    def test_rejected_batch_does_not_commit_experience_or_reward_receipt(self):
+        self.change("po_mission_00001", "accepted")
+        before = self.saved()
+        result = self.service.change_mission_state(
+            {"missionIds": ["po_mission_00001", "unknown"], "states": ["closed", "closed"]}, self.session,
+        )
+        self.assertIn("errorReason", result)
+        self.assertEqual(self.saved(), before)
+
     def test_invalid_or_unearned_bits_never_change_saved_state(self):
         for value in (0xfffffff, -1, True, 1.5, "2", 0x8000, 0x20000000, 0x2000000):
             before = self.saved()

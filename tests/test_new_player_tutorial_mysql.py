@@ -105,8 +105,13 @@ class TutorialMySQLTest(unittest.TestCase):
         close = dict(missionIds=["po_mission_00001"], states=["closed"])
         self.assertNotIn("errorReason", self.api("politic/mission/changeState", **close))
         before = state.load(self.pid)
+        self.assertEqual(before["entity"]["exp"], 25)
+        self.assertEqual(before["resources"]["credit"]["amount"], 0)
+        self.assertNotIn("item11_0000501", before["items"])
         self.assertEqual(self.api("politic/mission/changeState", **close)["reward"], {})
         self.assertEqual(state.load(self.pid)["resources"], before["resources"])
+        self.login()
+        self.assertEqual(self.api("common/getPlayerParams")["entity"]["exp"], 25)
         self.assertIn("errorReason", self.api("politic/mission/setWorkingValue", missionId="po_mission_00000", indexes=[0], values=[0xfffffff]))
 
     def test_atomic_repair_backup_and_persistent_reload(self):

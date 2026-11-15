@@ -1,0 +1,60 @@
+{
+  "head": "9eb435f30622f2d49f0328c5f88d0b0e6267daf1",
+  "backup": "/var/backups/onisoul/review65-20261115-093127-9eb435f",
+  "backup_restore_verified": true,
+  "old_overlay_removed": true,
+  "players_scanned": 6,
+  "repaired": 2,
+  "noncandidate_players_unchanged": true,
+  "other_player_fields_unchanged": true,
+  "tables_unchanged": true,
+  "proxy_not_restarted": true,
+  "ui": {
+    "relogin_unchanged": {
+      "missions": true,
+      "missionProgress": true,
+      "missionRewards": true,
+      "resources": true,
+      "unlockBits": true
+    },
+    "gold": 10000,
+    "experience": 0,
+    "misstored_experience": 25,
+    "missions": {
+      "0": "C",
+      "1": "C",
+      "2": "A"
+    },
+    "unlockBits": 269680642,
+    "rewarded": [
+      "po_mission_00001"
+    ],
+    "temporary_accounts_cleaned": 1,
+    "original_player_count": 6,
+    "original_players_unchanged_during_ui": true,
+    "first_mission_dialogue": true,
+    "first_mission_reward_window": true,
+    "construction_menu_after_accept": true,
+    "relogin_operable": false,
+    "relogin_blocker": "stub has no assets: scr2_000001",
+    "actual_building_placement_tested": false
+  },
+  "server_tests": {
+    "total": 616,
+    "passed": 587,
+    "skipped": 29,
+    "failed": 0
+  },
+  "experience_fix": {
+    "deployed": false,
+    "isolated_mysql_suite": {
+      "total": 617,
+      "passed": 614,
+      "skipped": 3,
+      "failed": 0
+    },
+    "optional_il_separate_passed": 3,
+    "existing_player_misstored_exp_count": 0
+  },
+  "client_config_restored_sha256": "1db6e36bf219e8ac5711d62729ed74dca9e375c97de257a67e44e646c39bc52f"
+}

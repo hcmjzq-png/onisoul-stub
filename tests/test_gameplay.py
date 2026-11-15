@@ -157,13 +157,22 @@ class GameplayFlowTest(unittest.TestCase):
             self.assertIn("mission", result)
         player = self.states.load(session["playerId"])
         self.assertEqual(player["resources"]["gold"]["amount"], 10000)
-        self.assertEqual(player["resources"]["credit"]["amount"], 25)
+        self.assertEqual(player["resources"]["credit"]["amount"], 0)
+        self.assertEqual(player["entity"]["exp"], 25)
+        self.assertNotIn("item11_0000501", player["items"])
         self.assertEqual(player["missions"]["1"], "C")
 
         duplicate = self._change(session, "po_mission_00001", "closed")
         self.assertEqual(duplicate["reward"], {})
         player = self.states.load(session["playerId"])
         self.assertEqual(player["resources"]["gold"]["amount"], 10000)
+
+        self.assertEqual(player["entity"]["exp"], 25)
+        self.service = GameplayService(
+            catalog=TableCatalog(FIXTURES, FIXTURES / "table_list.tsv"),
+            load_state=self.states.load, save_state=self.states.save, session_store=self.sessions,
+        )
+        self.assertEqual(self.service.get_player_params({}, session)["entity"]["exp"], 25)
 
         self._change(session, "po_mission_00002", "accepted")
         build = self.service.submit_build_task(
