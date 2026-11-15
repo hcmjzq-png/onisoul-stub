@@ -37,13 +37,16 @@ const yes=Memory.alloc(4);yes.writeU32(1);const zero=Memory.alloc(4);zero.writeF
 let queue=[],current=null,active=[],guard=false,steps=0,cancelled=false;
 function cleanup(){if(!current)return;const c=current;try{if(c.source){call(stop,c.source);call(destroy,null,[c.go]);}if(c.bundle)call(unload,c.bundle,[yes]);if(c.url&&c.request)call(wwwDispose,c.request);}finally{for(const h of c.handles)free(h);current=null;}}
 function step(){steps++;if(cancelled){cleanup();return;}if(!current){return;}
+ if(current.retryAfter){if(Date.now()<current.retryAfter)return;current.retryAfter=0;current.started=Date.now();current.request=objectnew(domain,klass('WWW'));current.handles.push(keep(current.request,1));call(wwwCtor,current.request,[string(current.url)]);return;}
  const c=current;if(Date.now()-c.started>20000)throw new Error('native load/playback timed out');
  if(c.playStarted){const active=unbox(call(playing,c.source)).readU8()!==0;if(!active){c.result.playback_finished=true;send({result:c.result});cleanup();}return;}
  if(unbox(call(c.url?wwwDone:isDone,c.request)).readU8()===0)return;
- if(c.url){const error=readString(call(wwwError,c.request));if(error)throw new Error('native WWW HTTP error: '+error);}
+ if(c.url){const error=readString(call(wwwError,c.request));if(error){
+  if(/\b(?:429|502|503|504)\b/.test(error)&&(c.httpRetries||0)<2){call(wwwDispose,c.request);for(const h of c.handles)free(h);c.handles=[];c.request=null;c.httpRetries=(c.httpRetries||0)+1;c.retryAfter=Date.now()+250*(2**(c.httpRetries-1));return;}
+  throw new Error('native WWW HTTP error: '+error);}}
  c.bundle=call(c.url?wwwBundle:requestBundle,c.request);if(c.bundle.isNull())throw new Error('native AssetBundle load failed');c.handles.push(keep(c.bundle,1));
  const media=call(load,c.bundle,[string(c.name)]);if(media.isNull())throw new Error('native named asset missing');c.handles.push(keep(media,1));
- const kind=classname(getclass(media)).readUtf8String();const r={id:c.id,name:c.name,output_sha256:c.output_sha256,source_url:c.url||null,http_preflight_sha256:c.http_preflight_sha256||null,kind,loaded:true};
+ const kind=classname(getclass(media)).readUtf8String();const r={id:c.id,name:c.name,output_sha256:c.output_sha256,source_url:c.url||null,http_preflight_sha256:c.http_preflight_sha256||null,http_preflight_retries:c.http_preflight_retries||0,native_http_retries:c.httpRetries||0,kind,loaded:true};
  if(kind==='AudioClip'){
   r.seconds=unbox(call(getlen,media)).readFloat();r.samples=unbox(call(getsamples,media)).readS32();r.channels=unbox(call(getchannels,media)).readS32();r.frequency=unbox(call(getfreq,media)).readS32();if(r.seconds<=0||r.samples<=0)throw new Error('native audio has no decoded duration/samples');
   if(c.play){c.go=objectnew(domain,klass('GameObject'));c.handles.push(keep(c.go,1));call(ctor,c.go,[string('OniSoulMediaQA')]);c.source=call(addcomponent,c.go,[string('AudioSource')]);c.handles.push(keep(c.source,1));call(volume,c.source,[zero]);call(setclip,c.source,[media]);call(play,c.source);r.playback_started=unbox(call(playing,c.source)).readU8()!==0;if(!r.playback_started)throw new Error('native audio did not start');c.playStarted=Date.now();c.result=r;return;}
