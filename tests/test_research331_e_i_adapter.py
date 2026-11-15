@@ -4,10 +4,12 @@ SQLite's BEGIN IMMEDIATE serializes writers. Removing FOR UPDATE is dialect
 translation, NOT a test of InnoDB's row locks/deadlocks. See verify_i_adapter.py.
 """
 import json
+import http.client
 import os
 import re
 import sqlite3
 import tempfile
+import threading
 import unittest
 import uuid
 from concurrent.futures import ThreadPoolExecutor
@@ -114,7 +116,7 @@ class Research331EIAdapterTest(unittest.TestCase):
     def test_durable_lifecycle_retry_revision_and_service_restart(self):
         self.assertTrue(self.call("sendFriendOffer", "a", "b")[1]["result"])
         before = self.snapshot()
-        self.assertTrue(self.call("sendFriendOffer", "a", "b")[1]["result"])
+        self.assertFalse(self.call("sendFriendOffer", "a", "b")[1]["result"])
         self.assertEqual(before, self.snapshot())
         self.reload()
         self.assertEqual(self.call("getFriends", "b", option="receive")[1]["a"]["status"], "receive")
@@ -124,6 +126,63 @@ class Research331EIAdapterTest(unittest.TestCase):
         self.assertEqual(state.load("b")["friends"], {"a": {}})
         self.assertTrue(self.call("dissolutionFriend", "a", "b")[1]["result"])
         self.assertEqual(self.call("updateFriendData", "b")[1]["remove"], {"a": "dissolved"})
+
+    def test_normal_registry_http_lifecycle_and_precreation_poll(self):
+        # Real state adapter + real HTTP. Only the session identity and original
+        # table fixtures are injected; no mock save or alternate Registry wiring.
+        from app import main
+        from app.transport import http_server
+
+        fresh = state.load("new")
+        state.save(fresh, "new")
+        with patch.object(main, "GameplayService", return_value=self.service), \
+                patch.object(main, "SocialServices", return_value=self.social) as constructor:
+            registry = main.build_registry()
+        constructor.assert_called_once_with(self.service, atomic_players=state.atomic_players)
+        self.assertEqual(sum(h.__module__ == "app.business.placeholders"
+                             for h in registry._handlers.values()), 322)
+        server = http_server.serve("127.0.0.1", 0, registry)
+        worker = threading.Thread(target=server.serve_forever, daemon=True)
+        worker.start()
+
+        def post(api, actor, **params):
+            conn = http.client.HTTPConnection(*server.server_address, timeout=5)
+            try:
+                conn.request("POST", "/api/" + api, json.dumps({"token": actor, **params}),
+                             {"Content-Type": "application/json"})
+                response = conn.getresponse()
+                body = json.loads(response.read())
+                self.assertEqual(response.status, 200, body)
+                return body
+            finally:
+                conn.close()
+
+        try:
+            with patch.object(http_server.sessions, "resolve", side_effect=lambda token:
+                              {"playerId": token} if token in {"a", "b", "new"} else None):
+                before = state.load("new")
+                poll = post("common/periodicInquiry", "new")
+                self.assertNotIn("errorReason", poll)
+                self.assertNotIn("friendOffer", poll)
+                self.assertEqual(poll["gmMessage"], "")
+                self.assertEqual(state.load("new"), before)
+                self.assertTrue(post("friend/sendFriendOffer", "a", friendPlayerId="b")["result"])
+                self.assertFalse(post("friend/sendFriendOffer", "a", friendPlayerId="b")["result"])
+                self.assertEqual(post("common/periodicInquiry", "b")["friendOffer"], 1.)
+                self.assertTrue(post("friend/feedbackFriendOffer", "b", friendPlayerId="a", reply="ok")["result"])
+                self.assertFalse(post("friend/feedbackFriendOffer", "b", friendPlayerId="a", reply="ok")["result"])
+                self.assertEqual(post("friend/getFriends", "a", option="ok")["b"]["status"], "ok")
+                self.assertTrue(post("friend/dissolutionFriend", "a", friendPlayerId="b")["result"])
+                self.assertFalse(post("friend/dissolutionFriend", "a", friendPlayerId="b")["result"])
+                self.assertEqual(post("friend/updateFriendData", "b")["count"]["ok"], 0.)
+                self.assertFalse(post("admin/inbox/present", "a")["succeeded"])
+        finally:
+            server.shutdown()
+            server.server_close()
+            worker.join(timeout=5)
+        self.reload()
+        self.assertEqual(state.load("a")["friends"], {})
+        self.assertEqual(state.load("b")["friends"], {})
 
     def test_second_update_and_commit_failure_roll_back_real_sql(self):
         for fault in ("second-update", "commit"):

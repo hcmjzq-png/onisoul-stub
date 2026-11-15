@@ -16,6 +16,7 @@ from pathlib import Path
 
 from app.business import contract
 from app.business import response_shapes
+from app.business.admin_debug_services import DISABLED_ENDPOINTS
 from app.main import build_registry
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,6 +76,10 @@ class ContractDataTest(unittest.TestCase):
         for api in contract.endpoints():
             status, body = self.reg.dispatch(api, {}, None)
             shape = response_shapes.shape_for(api)
+            if api in DISABLED_ENDPOINTS:
+                self.assertFalse(body["succeeded"])
+                self.assertIn("errorReason", body)
+                continue  # A denied operation must not publish its success fields.
             if shape is not response_shapes.ResponseShape.ENVELOPE:
                 continue
             for field in contract.response(api):

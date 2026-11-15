@@ -204,6 +204,11 @@ class SocialServices(PlayerServices):
         actor = self.service._player_id(session)
         if not actor:
             return {}
+        # SessionKeeper.updateToken enables periodic polling before character
+        # creation. There is no social state to publish yet; do not abort login.
+        initial = self.service.load_state(actor)
+        if (initial.get("entity") or {}).get("created") is False:
+            return {}
 
         def action(rows: dict, expired: set) -> dict:
             player = rows[actor]
@@ -306,7 +311,8 @@ class SocialServices(PlayerServices):
         a = self.pair_status(actor, target, left, right)
         if name == "sendFriendOffer":
             if a in ("send", "ok"):
-                return  # Retry policy: no duplicate entry or timestamp refresh.
+                # The original success callback increments FriendSendOrderNum.
+                raise ValueError("friend request already applied; refresh friend data")
             if a:
                 raise ValueError("incoming offer must be explicitly accepted")
             if any(len(p.get("friends") or {}) >= self.limit(p) for p in (left, right)):
@@ -328,7 +334,7 @@ class SocialServices(PlayerServices):
             if reply not in ("ok", "excuse"):
                 raise ValueError("reply must be ok or excuse")
             if reply == "ok" and a == "ok":
-                return
+                raise ValueError("friend acceptance already applied; refresh friend data")
             if a != "receive":
                 raise ValueError("incoming offer required")
             if reply == "ok":
@@ -338,12 +344,12 @@ class SocialServices(PlayerServices):
                 right.setdefault("friends", {})[actor] = {}
         elif name == "cancelFriendOffer":
             if not a:
-                return
+                raise ValueError("outgoing offer no longer exists; refresh friend data")
             if a != "send":
                 raise ValueError("outgoing offer required")
         elif name == "dissolutionFriend":
             if not a:
-                return
+                raise ValueError("friendship no longer exists; refresh friend data")
             if a != "ok":
                 raise ValueError("accepted friendship required")
             left["friends"].pop(target)

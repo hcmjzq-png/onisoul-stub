@@ -1,0 +1,10 @@
+{
+  "tests": 15,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "mysql_version": "8.4.13",
+  "database": "new oni_i_test_<uuid>; dropped after run",
+  "workers": "4 independent spawn processes; 48 transfers / 48 repeated receipt attempts",
+  "production_data_accessed": false
+}

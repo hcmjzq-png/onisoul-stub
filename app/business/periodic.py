@@ -24,21 +24,30 @@ rva + 1,466,?；见 docs/repro-launcher-login.md 第十三节）：
 """
 from __future__ import annotations
 
-from typing import Any
+from functools import partial
+from typing import Any, Callable
+
+from app import state
 
 from app.business import response_shapes, show_off
 
 API = "common/periodicInquiry"
 
 
-def handler(params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+def handler(params: dict[str, Any], session: dict[str, Any] | None, *,
+            notification_provider: Callable | None = None) -> dict[str, Any]:
     payload: dict[str, Any] = {
         "show_off": show_off.next_payload(),
         # ChatInfo.setOperationMessage 无守卫，缺这个键 → NullReferenceException
         "gmMessage": "",
     }
+    if notification_provider is not None:
+        try:
+            payload.update(notification_provider(session))
+        except (ValueError, state.StateConflictError) as exc:
+            payload.update(succeeded=False, errorReason=str(exc))
     return response_shapes.success(API, payload)
 
 
-def register(registry: Any) -> None:
-    registry.register(API, handler)
+def register(registry: Any, *, notification_provider: Callable | None = None) -> None:
+    registry.register(API, partial(handler, notification_provider=notification_provider))

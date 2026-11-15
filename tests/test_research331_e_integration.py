@@ -81,6 +81,19 @@ class Research331EIntegrationTest(unittest.TestCase):
                          {"errorReason": "authentication required"})
         self.assertEqual(self.h.states.rows, before)
 
+    def test_authenticated_new_player_poll_does_not_interrupt_creation(self):
+        session, _ = self.h.service._issue_login("not-created-yet")
+        self.h.states.save({"entity": {"playerId": session["playerId"], "created": False}},
+                           session["playerId"])
+        before = self.h.states.load(session["playerId"])
+        self.assertIs(before["entity"]["created"], False)
+        status, body = self.registry.dispatch("common/periodicInquiry", {}, session)
+        self.assertEqual(status, 200)
+        self.assertNotIn("errorReason", body)
+        self.assertNotIn("friendOffer", body)
+        self.assertEqual(body["gmMessage"], "")
+        self.assertEqual(self.h.states.load(session["playerId"]), before)
+
     def test_registry_parcel_issuance_claim_and_notification(self):
         h = self.h
         inbox = SocialInboxServices(h.service)

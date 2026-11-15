@@ -104,20 +104,24 @@ class SocialServicesTest(unittest.TestCase):
         self.assertEqual(self.call("getFriends", self.a, option=""), {})
         self.assertEqual(self.call("getFriends", self.b, option=""), {})
 
-    def test_send_accept_cancel_and_dissolve_retries_do_not_duplicate_state(self):
+    def test_retries_do_not_duplicate_state_or_client_counter_deltas(self):
         self.send()
         before = copy.deepcopy(self.states.rows)
         self.now += 1
-        self.assertTrue(self.call("sendFriendOffer", self.a, self.b)["result"])
+        self.assertFalse(self.call("sendFriendOffer", self.a, self.b)["result"])
         self.assertEqual(before, self.states.rows)
         self.assertTrue(self.call("cancelFriendOffer", self.a, self.b)["result"])
-        self.assertTrue(self.call("cancelFriendOffer", self.a, self.b)["result"])
+        before = copy.deepcopy(self.states.rows)
+        self.assertFalse(self.call("cancelFriendOffer", self.a, self.b)["result"])
+        self.assertEqual(before, self.states.rows)
         self.accept()
         before = copy.deepcopy(self.states.rows)
-        self.assertTrue(self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["result"])
+        self.assertFalse(self.call("feedbackFriendOffer", self.b, self.a, reply="ok")["result"])
         self.assertEqual(before, self.states.rows)
         self.assertTrue(self.call("dissolutionFriend", self.a, self.b)["result"])
-        self.assertTrue(self.call("dissolutionFriend", self.a, self.b)["result"])
+        before = copy.deepcopy(self.states.rows)
+        self.assertFalse(self.call("dissolutionFriend", self.a, self.b)["result"])
+        self.assertEqual(before, self.states.rows)
 
     def test_reject_retry_is_safe_failure_without_resurrection(self):
         self.send()
@@ -173,10 +177,10 @@ class SocialServicesTest(unittest.TestCase):
     def test_concurrent_duplicate_send_and_accept_and_reverse_requests(self):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(lambda _: self.call("sendFriendOffer", self.a, self.b), range(20)))
-        self.assertTrue(all(r["result"] for r in results))
+        self.assertEqual(sum(r["result"] for r in results), 1)
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(lambda _: self.call("feedbackFriendOffer", self.b, self.a, reply="ok"), range(20)))
-        self.assertTrue(all(r["result"] for r in results))
+        self.assertEqual(sum(r["result"] for r in results), 1)
         self.assertEqual(len(self.states.load(self.a["playerId"])["friends"]), 1)
         self.assertTrue(self.call("dissolutionFriend", self.a, self.b)["result"])
         with ThreadPoolExecutor(max_workers=2) as pool:

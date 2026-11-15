@@ -5,6 +5,7 @@ import unittest
 
 from app.business import contract, placeholders, response_shapes
 from app.business.registry import Registry
+from app.business.admin_debug_services import DISABLED_ENDPOINTS
 from app.main import build_registry
 
 
@@ -60,8 +61,13 @@ class ResponseShapeTest(unittest.TestCase):
             with self.subTest(api=api):
                 status, body = registry.dispatch(api, {}, None)
                 self.assertEqual(status, 200)
-                self.assertIs(body["succeeded"], api not in placeholders.BLOCKED_WRITES)
+                self.assertIs(body["succeeded"],
+                              api not in placeholders.BLOCKED_WRITES and api not in DISABLED_ENDPOINTS)
                 self.assertIsInstance(body["now"], float)
+                if api in DISABLED_ENDPOINTS:
+                    self.assertIn("errorReason", body)
+                    self.assertNotIn("enable", body)
+                    continue  # Denials contain no fabricated privileged result.
                 for field in contract.response(api):
                     key, typ = field["key"], field["type"]
                     if (

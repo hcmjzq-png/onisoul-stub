@@ -38,8 +38,8 @@ class WarEnrollmentServices(PlayerServices):
         if not selected <= self.APIS:
             raise ValueError("unsupported war enrollment endpoint")
         for api in selected:
-            # Adapter owns event -> player lock order. Do not acquire a player
-            # lock first via _guard and deadlock with a campaign scheduler.
+            # Adapter follows I's players -> shared keys order in one DB unit.
+            # Do not add an independent _guard/transaction around that adapter.
             registry.register(api, partial(self.enroll, api))
 
     def enroll(self, api: str, params: dict, session: dict | None) -> dict:
