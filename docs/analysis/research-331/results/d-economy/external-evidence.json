@@ -1,0 +1,278 @@
+{
+  "access_date": "2026-11-15",
+  "target": "OniSoul_Setup_20140712.exe / original PC DLL b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "searches": [
+    "鬼武者魂 旅交易 交易 時間 智略",
+    "鬼武者ソウル 交易 競売 手数料 国技",
+    "鬼武者魂 拍賣 手續費",
+    "鬼武者魂 國家商店 國力 重置",
+    "鬼武者魂 旅交易 取消",
+    "鬼武者魂 掛賣 2013 20級"
+  ],
+  "sources": [
+    {
+      "id": "travel-first",
+      "url": "https://gwz.yeyou.com/news/07152014/152905148.shtml",
+      "title": "新玩家的第一次必读攻略",
+      "published_or_applies": "2014-07-15",
+      "accessed": "2026-11-15",
+      "region": "中国大陆国服栏目",
+      "nature": "编辑新手攻略；跨服行为交叉核对",
+      "access_status": "全文可读",
+      "summary": "旅交易需要先设定内政队，早期街道产出可用于收藏。只采用编队前提的交叉核对，不采用奖率。",
+      "client_evidence": [
+        "PoliticErrantryEntryWindow.cs:239-276",
+        "PoliticDeckTableAccessor.cs:87-113"
+      ],
+      "table_rows": [
+        "errantry.errantry_00001"
+      ],
+      "conflicts": "与目标国际中文版不是同服；不推导台服数值",
+      "confidence": "verified:编队前提由原客户端独立确认；攻略仅交叉核对",
+      "implementation": [
+        "app/business/economy_trade_services.py:100",
+        "app/business/economy_trade_services.py:214"
+      ],
+      "tests": [
+        "test_research331_d_trade.ErrantryTest.test_no_provider_or_empty_deck_never_charges"
+      ]
+    },
+    {
+      "id": "travel-player",
+      "url": "https://mrmad.com.tw/app日本遊戲大廠capcom推出戰國rpg卡牌遊戲《鬼武者魂》/2",
+      "title": "CAPCOM戰國RPG卡牌遊戲鬼武者魂（第2頁）",
+      "published_or_applies": "页面此页发表日期未知",
+      "accessed": "2026-11-15",
+      "region": "繁中；文章含APP界面，不能证明PC台服数值",
+      "nature": "玩家上手图文",
+      "access_status": "全文可读",
+      "summary": "作者演示内政编成及主城旅交易入口，建议高智略；无精确成功率模型。",
+      "client_evidence": [
+        "PoliticErrantryEntryWindow.cs:61,198-203",
+        "ErrantryTableAccessor.cs:51-60"
+      ],
+      "table_rows": [
+        "errantry.intelligenceBias",
+        "errantry.leastTotalIntelligence"
+      ],
+      "conflicts": "APP和PC差异未证实；文章建议不等于公式",
+      "confidence": "hypothesis:概率模型未采纳",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "s4",
+      "url": "https://forum.gamer.com.tw/Co.php?bsn=22241&sn=4031",
+      "title": "新手指南（标题2014/05/06更新）",
+      "published_or_applies": "2014-05-06（标题）；正文跨2013年修订",
+      "accessed": "2026-11-15",
+      "region": "台/日服混合指南",
+      "nature": "论坛编辑汇总",
+      "access_status": "正文403；搜索长摘要可见，不计全文验证",
+      "summary": "检索文本列出六类旅交易和早期水运250000金钱；只作检索线索。",
+      "client_evidence": [
+        "ErrantryTableAccessor.cs:51-91,145-154",
+        "WaterBorneTradeTableAccessor.cs"
+      ],
+      "table_rows": [
+        "errantry_00001..00006",
+        "waterborne_trade.trade_00001"
+      ],
+      "conflicts": "本包水运200000；源页混合日服更新；搜索不代替全文",
+      "confidence": "hypothesis:未将外站数值作为常量",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "waterborne",
+      "url": "https://www.4gamer.net/games/150/G015000/20130228066/",
+      "title": "鬼武者Soul 新要素公开：水上交易",
+      "published_or_applies": "2013-02-28",
+      "accessed": "2026-11-15",
+      "region": "日本PC服",
+      "nature": "厂商更新资料报道",
+      "access_status": "全文可读",
+      "summary": "当期公告水上交易可获白魂，说明奖励随版本变化，不能用2013日服公告覆盖2014繁中原表。",
+      "client_evidence": [
+        "WaterBorneTradeTableAccessor.cs:getResultFileName"
+      ],
+      "table_rows": [
+        "waterborne_trade",
+        "waterborne_trade_result_0001..0004",
+        "reward12_waterborne_trade"
+      ],
+      "conflicts": "本包奖励与该日服旧公告不同；没有直接生产规则",
+      "confidence": "hypothesis:仅版本边界",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "waterborne-friends",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=89202",
+      "title": "水上安南交易开放",
+      "published_or_applies": "2013-11-26适用（搜索线索）",
+      "accessed": "2026-11-15",
+      "region": "台湾国际中文版",
+      "nature": "厂商公告报道线索",
+      "access_status": "正文403；搜索摘要可见",
+      "summary": "线索为携带四位好友、每好友每日一次、凌晨5点重置。未全文核验，不硬编码重置时刻。",
+      "client_evidence": [
+        "WebApiClient.cs:3554-3582",
+        "WaterBorneTradeTableAccessor.cs:getResultFileName"
+      ],
+      "table_rows": [
+        "waterborne_trade.friendResult"
+      ],
+      "conflicts": "好友生产者与服务日界限未核实",
+      "confidence": "hypothesis",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "auction-release",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=87380",
+      "title": "武將自由市場交易 掛賣機制",
+      "published_or_applies": "2013-10-22",
+      "accessed": "2026-11-15",
+      "region": "台湾国际中文版测试期",
+      "nature": "搜索结果标为厂商原文，原页本次未读取",
+      "access_status": "正文403；搜索长摘要可见",
+      "summary": "线索含15级、游戏币刊登费、小判成交、8/12/24小时、过期后卖家领取。按原客户端验证字段和候选时长，不采用摘要费率。",
+      "client_evidence": [
+        "AuctionResourceSellingTimeDropListBtn.cs:5-11,18-68",
+        "AuctionSellResourcePage.cs:118-128",
+        "AuctionResourceSellSlot.cs:133-162"
+      ],
+      "table_rows": [],
+      "conflicts": "后续20级变更；客户端还存在600秒方法；收入税率不明",
+      "confidence": "hypothesis:原服数值未采纳；生命周期采用显式兼容策略",
+      "implementation": [
+        "app/business/economy_market_services.py:150",
+        "app/business/economy_market_services.py:219"
+      ],
+      "tests": [
+        "test_research331_d_market.MarketTest.test_expired_escrow_requires_owner_collection_and_keeps_slot"
+      ]
+    },
+    {
+      "id": "auction-update-primary",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=88453",
+      "title": "武將等級上限提升至G7 掛賣系統更新",
+      "published_or_applies": "2013-11-12",
+      "accessed": "2026-11-15",
+      "region": "台湾国际中文版正式期",
+      "nature": "厂商资料报道线索",
+      "access_status": "正文403；搜索长摘要可见",
+      "summary": "正式期卡牌交易准入调整线索：玩家20级、卡G2起。",
+      "client_evidence": [
+        "AuctionPostToSellBtn.cs:levelLimit"
+      ],
+      "table_rows": [],
+      "conflicts": "SerializedField可能被prefab覆盖；资源与卡牌门槛不能自动等同",
+      "confidence": "hypothesis:需prefab/抓取",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "auction-update",
+      "url": "https://www.gamersky.com/news/201311/306680.shtml",
+      "title": "等级将提升 全新交易系统上线",
+      "published_or_applies": "2013-11-13（事件2013-11-12）",
+      "accessed": "2026-11-15",
+      "region": "台湾国际中文版报道的简中转载",
+      "nature": "转载GNN，非独立第二证据",
+      "access_status": "全文可读",
+      "summary": "正文明确正式期玩家20级且武将G2方可挂卖；用于排除旧15级可无条件适用的猜测，不设生产常量。",
+      "client_evidence": [
+        "AuctionPostToSellBtn.cs:levelLimit"
+      ],
+      "table_rows": [],
+      "conflicts": "同源GNN；文章限定武将，资源门槛尚缺证据",
+      "confidence": "hypothesis:版本冲突已记录",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "kokugi-rate",
+      "url": "https://www.gamer.ne.jp/news/201309260070/",
+      "title": "国技调整及紫苑之道更新",
+      "published_or_applies": "2013-09-26",
+      "accessed": "2026-11-15",
+      "region": "日本PC服",
+      "nature": "CAPCOM更新内容报道",
+      "access_status": "全文可读",
+      "summary": "当期说明国技所需点数依国家及国技内容而异；不能对levelRate填常量。未提供目标台服精确公式。",
+      "client_evidence": [
+        "KokugiScene.cs:toLevel/toPoint",
+        "WebApiClient.cs:3517-3541"
+      ],
+      "table_rows": [
+        "kokugi",
+        "kokugiLevel"
+      ],
+      "conflicts": "日服版本；无台服比例与当前周期",
+      "confidence": "verified:动态参数性质与原客户端相符；公式unsupported",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "national-period",
+      "url": "https://forum.gamer.com.tw/Co.php?bPage=0&bsn=22241&sn=46646&subbsn=5",
+      "title": "开发营运更新整理：国力重置",
+      "published_or_applies": "2013年（准确适用日未全文确认）",
+      "accessed": "2026-11-15",
+      "region": "日服公告中文转载",
+      "nature": "论坛转载线索",
+      "access_status": "搜索摘要；同主题正文URL403",
+      "summary": "线索为每月末定期维护重置国力；没有当前模拟服的真实周期，不生成默认月份。",
+      "client_evidence": [
+        "MightOfNationAchievement.cs:updateSetting",
+        "ShopItemNationalPower.cs:checkRemain/setRemain"
+      ],
+      "table_rows": [
+        "national_power_goal",
+        "national_power_shop_item"
+      ],
+      "conflicts": "不等于国家商城重置同一期，更不等于本服日历",
+      "confidence": "unsupported:依赖G真实period/power",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "official-manual",
+      "url": "http://cog-members.oni-soul.jp/sp/manual/index.html",
+      "title": "原官方在线手册入口",
+      "published_or_applies": "未知",
+      "accessed": "2026-11-15",
+      "region": "日本服",
+      "nature": "原官方站入口",
+      "access_status": "网页工具不可访问",
+      "summary": "未取得全文，未取得可读归档，不声称核实任何税率或概率。",
+      "client_evidence": [],
+      "table_rows": [],
+      "conflicts": "旧站不可用",
+      "confidence": "unsupported",
+      "implementation": [],
+      "tests": []
+    },
+    {
+      "id": "wiki-entry",
+      "url": "https://wikiwiki.jp/onimusyasoul/初心者ガイド",
+      "title": "初心者ガイド",
+      "published_or_applies": "内容含2012-10-27榜单",
+      "accessed": "2026-11-15",
+      "region": "日本服",
+      "nature": "玩家Wiki",
+      "access_status": "全文可读",
+      "summary": "用于定位原手册及旧国政术语，不作2014繁中经济公式依据。",
+      "client_evidence": [],
+      "table_rows": [],
+      "conflicts": "早期Wiki跨版本",
+      "confidence": "hypothesis",
+      "implementation": [],
+      "tests": []
+    }
+  ],
+  "adopted_rule_boundary": "原始客户端/表确认协议与数值；外部只交叉核对玩法和版本。没有采用搜索摘要的费率/奖率/周期。",
+  "full_text_failure_note": "GNN/巴哈403按失败记录；搜索输出即使很长也不当作全文核实。"
+}
