@@ -1,0 +1,41 @@
+{
+  "head": "fbe51685cf86a9b1c34e0fe34ebbf9c13be60d2c",
+  "backup": "/var/backups/onisoul/review49-20261115-fbe5168",
+  "mission_overlay_preserved": true,
+  "proxy_not_restarted": true,
+  "preexisting_table_bytes_unchanged": true,
+  "new_original_tables_installed": 7,
+  "new_tables_active_in_default_catalog": false,
+  "new_trophy_routes_active": false,
+  "table_hashes": {
+    "item08.json": "7946ce46ad7d811d10fe50f26d6cb1b34f5a3f3b30c64922ca6014169048c017",
+    "item13.json": "5195d97a0501e4e37e97db4ace2c20b9ec43ff50e5fa18485e2944d31b7f620c",
+    "item14.json": "1047b9455e27ffb51ac4cbd455446ca3aee18fccb546e61a5efa08a57de70ee5",
+    "reward06_trophy.json": "68cf7b61a39ee535d3eea0d72962f6e9d310ce22d4987e409e751839276a1def",
+    "skillRefreshG2.json": "ddc950f0fd8e892b12e2865458ce43b4fe411154a4f7a8a422acc3ff6395b4de",
+    "skillRefreshG4.json": "e3cfc41829ff8be9cedbc36ef8fb245338f4515baf4b981a9261baac23e7ea84",
+    "skillRefreshG6.json": "a420b5834dba41176fae7fc64aa3904af32b6c5209b4f305a291011576cfda17"
+  },
+  "baseline_http_smoke": "passed",
+  "review48_http_smoke": "passed",
+  "server_tests": {
+    "run": 408,
+    "failed": 0,
+    "skipped": 3,
+    "passed": 405
+  },
+  "skipped_reason": "optional static IL dependencies unavailable; local review ran all 408",
+  "registered": 402,
+  "dedicated_handlers": 68,
+  "remaining_placeholders": 334,
+  "trophy_ledger_audit": {
+    "players": 6,
+    "existing_trophy_ledgers": 0
+  },
+  "existing_player_count": 6,
+  "existing_player_states_equal": true,
+  "unity_client_acceptance": "pending",
+  "newly_mounted_endpoints": 0,
+  "second_round_A_H_changes_included": true,
+  "scope": "limited reviewed subset; no new snapshot providers, economic rules or missing assets fabricated"
+}

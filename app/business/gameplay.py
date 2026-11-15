@@ -168,6 +168,7 @@ class GameplayService:
         AccountProgressServices(self).register(registry, apis=frozenset({
             "common/getPlayerCogid", "plugin/getPluginData",
             "plugin/getPluginLog", "plugin/addPluginLog",
+            "trophy/getTrophyProgress", "trophy/completeTrophy", "trophy/messageWindowTrophy",
         }))
         return registry
 

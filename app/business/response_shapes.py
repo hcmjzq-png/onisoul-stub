@@ -53,6 +53,7 @@ BARE_MAP_EVIDENCE: dict[str, str] = {
     "quest/checkEmergencyQuest": "EmergencyQuestChecker.cs:sendRequest@0x2413CC",
     "quest/getQuestCompleteFlags": "PluginQuestDataManager.cs:onGetStoryProgress@0x1FA5BC",
     "quest/getQuestProgress": "QuestDataCache.cs:setQuestParameter@0x243180",
+    "trophy/getTrophyProgress": "TrophyWindow.cs:load; mypageTrophyUpdate.cs:OnEnable (root rows)",
 }
 
 BARE_MAP_ENDPOINTS = frozenset(BARE_MAP_EVIDENCE)
@@ -66,7 +67,6 @@ SCALAR_ROOT_EVIDENCE: dict[str, str] = {
     "quest/getChapterData": "PluginRunner_DoEvent.cs:onQuestChapterData@0x1FD48C",
     "siege/getBrief": "siegeBriefMenuDesc.cs:setup@0x347618",
     "siege/getSiegeStatus": "vsSetting_Siege.cs:getSiegeSituation@0x34FB10",
-    "trophy/getTrophyProgress": "TrophyWindow.cs:load@0x28A5F0",
 }
 
 

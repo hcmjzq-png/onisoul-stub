@@ -151,7 +151,7 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | `plugin/getPluginData.pluginData/pluginTime.pluginTime` | bundle / 待验证 | PluginTaskManager.OnGetServerData；PluginPoliticSetting/PluginBattleSetting/HashAccessor 强类型读取三类设置，DreamSpaceType 必须有可用的 0/1 索引。返回内部 accountProgress 的已保存设置/到期秒数；无记录为空设置和零时长为兼容策略。plugin/setPluginData 仍未接入，不发时长。 |
 | `plugin/getPluginLog.logdatas`、`plugin/addPluginLog` 的 logdata.action/reward/time | bundle / 待验证 | H 组 PluginTaskManager/PluginLog 消费者。仅诊断存储，reward 不作奖励；服务端覆盖 time、按追加序号保存并限制 200 条为本服策略。无 nonce，重试允许重复日志。 |
 
-背景 `setBackground` 的 mapId 仍待确认（原 mypageBgSelectWindow 传 1，而候选只支持 0）。
+历史审核时背景 `setBackground` 的 mapId 尚待确认；后续结论见下方「首档成就与原表发布」。
 `trophy/getTrophyProgress` 旧 SCALAR_ROOT 记录不足以指导全部 access；至少 mypage 消费者要求根记录映射，
 本批不接入该业务、不将其算完成。其余商业规则和状态生产者仍按汇总逐项标记为待验证。
 
@@ -171,3 +171,18 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | `trophy/getTrophyProgress.<category>.level/status/window`；`completeTrophy.progress/rewards/characters/equips/toInBox` | bundle / 待验证 | TrophyWindow、mypageTrophyUpdate、mypageTrophyReward；mypage 查询裸根、toInBox 大小写已核实。仅 playerLevel 首档，清除提醒及重复拒绝是本服策略，首次 4 级阈值和固定奖励来自原表。其他 access、后续档和历史领取迁移未支持。 |
 
 A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增公开响应字段，不据此开启生产或排行榜。
+
+## 2026-11-15 首档成就与原表发布
+
+本批正式注册 3 个 trophy 入口，仅支持 `access=mypage` 的 `playerLevel` 首档。
+详细限制和复现命令见 [实施记录](analysis/verified-trophies-20261115/README.md)。
+
+| 字段 / 行为 | 来源 | 证据与限制 |
+| --- | --- | --- |
+| `getTrophyProgress` 裸根 `<category>.level/status/window` | bundle | TrophyWindow.cs:80-94 遍历每个根值为 Hashtable；mypageTrophyUpdate 同样消费根记录。全局形状从 SCALAR_ROOT 修正为 BARE_MAP，错误仅含 errorReason。其他 access 明确失败。 |
+| `completeTrophy.progress/rewards/characters/equips/toInBox` | bundle | mypageTrophyReward.cs:50-61；奖励逐项累加到客户端，重复领取必须失败，不能重放成功奖励增量。无角色、装备、溢出转信箱时对应 map 为空。 |
+| 首档阈值与奖励 | bundle | mypage_trophy.playerLevel_001.clearAmount=4；reward06_trophy.reward06_playerLevel_001 的 A/B 两组固定 100%：item11_0000101=100000、item08_0102701=6。item08 定义后者为启用的 jewel。原字节哈希见 recovered-tables-source-proof.json。 |
+| 领取后 `level=1,status=lock,window=0` | bundle + 待验证 | mypageTrophyItem.cs:70-94 证明该组合显示「首档已领取」、后续不显示领取按钮。只投影已支持首档是本服限制，不声称原服永远停在首档；不存在自动授予下一档。 |
+| 通知确认与首次旧档初始化 | 待验证 | `accountProgress.trophyClaims` / `levelTrophyNoticeSeen` 是本服内部状态。原 stub 尚未发放成就，缺失 ledger 视为未领取；已有合法 ledger 保留，损坏 ledger 拒绝。禁止未经迁移导入原服领取历史。通知确认不发奖励；超资源上限整笔拒绝，未实现信箱分流。 |
+| 背景 mapId / 解锁边界 | bundle | mypageCastleTownItem.cs:101-147 仅 no=1 显示背景切换和商店按钮，并要求 mapEntry.isEnable、PoliticMissionManager.IsOpenSubMap。mypageBgSelectWindow.cs:135-150 明确发送 mapId=1 并更新同一 mapEntry。主城 no=0 隐藏按钮，不存在 0→1 偏移映射。 |
+| 背景内部归属与选择 | 待验证 | 候选购买/选择统一读取 items，选择保存于 mapBackgrounds["1"]。内部 subcity_enabled 提供者尚无正式实现，因此四个背景入口仍不挂载，不把旧 backgroundOwnership 或 mapBackgrounds["0"] 自动认定为原服权益。 |
