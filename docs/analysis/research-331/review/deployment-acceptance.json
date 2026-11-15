@@ -1,0 +1,46 @@
+{
+  "head": "87025548628335a46a45df91fa4a33817b691cfd",
+  "backup": "/var/backups/onisoul/review62-20261115-075725-8702554",
+  "backup_restore_verified": true,
+  "migration": "research331_i_shared_records.sql",
+  "registered": 402,
+  "dedicated": 80,
+  "placeholders": 322,
+  "mission_overlay_preserved": true,
+  "table_bytes_unchanged": true,
+  "proxy_not_restarted": true,
+  "existing_player_count": 6,
+  "existing_player_states_equal": true,
+  "baseline_http": "passed",
+  "social_http": "passed",
+  "first_trophy_http": "passed",
+  "unity_acceptance": "blocked_before_social_ui",
+  "existing_player_states_equal_after_ui": true,
+  "ui_temporary_accounts_cleaned": 4,
+  "unity_country01": "loading_blocked_missing_pbm01_01",
+  "unity_country37": "city_rendered_startup_locked_missing_scr2_000001",
+  "original_config_restored": true,
+  "ui_client_closed": true,
+  "missing_assets": [
+    {
+      "name": "pbm01_01",
+      "path": "/client/pc/jp/assets/pbm/0258748169d62d7065ab80a56cef3960.unity3d",
+      "status": 404
+    },
+    {
+      "name": "scr2_000001",
+      "path": "/client/pc/jp/assets/scr/cc4294d197c943136191cfba8db1a950.unity3d",
+      "status": 404
+    }
+  ],
+  "services": {
+    "onisoul-stub": "active",
+    "onisoul-proxy": "active"
+  },
+  "tests": {
+    "run": 604,
+    "passed": 579,
+    "skipped": 25,
+    "failures": 0
+  }
+}
