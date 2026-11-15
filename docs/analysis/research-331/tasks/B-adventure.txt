@@ -1,0 +1,84 @@
+你负责鬼武者魂研究任务 B：物语、普通战斗与 Raid，本组 35 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-b-adventure
+分支：feature/research331-b-adventure-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 优先普通常驻章节：开放→步进→遭遇生成→处理→结算→章节旗标；原动态表已有来源，不再只读人工 adventureV1 测试快照。
+2. 追踪敌我属性、战斗顺序、技能、失败/成功奖励及 Raid 归属；活动入口与常驻入口分开，不能因为表里有禁用活动就自动开启。
+3. clearObstacle 已修复重复响应扣客户端资源的问题，必须保留。支城解锁所需章节完成事件提供给 A；真实战斗/击杀记录提供给 G。
+4. battle/getVsBattleLogs 归 B；C# getStrategyBattleLogs 的某个重载实际调用它，不能按方法名分给 F。禁止虚构胜利回放或由库存倒推历史。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/b-adventure/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 鬼物語 步數 障礙 獎勵 幻夢空間
+鬼武者魂 惡鬼羅剎 救援 討伐 獎勵 技能
+鬼武者Soul 鬼物語 悪鬼羅刹 戦闘 順番 報酬
+优先入口：S4, S2, S1
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/adventure_services.py
+app/business/adventure_obstacle_services.py
+app/business/adventure_events.py
+app/business/adventure_battles.py
+tests/test_adventure_services.py
+tests/test_adventure_obstacle_services.py
+tests/test_research331_b*.py（仅自己的前缀）
+tests/fixtures/research331/b-adventure/（小样本）
+docs/analysis/research-331/results/b-adventure/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+至少一个常驻章节的状态确由正常操作生成，消耗与奖励持久化；重试/并发不多走步数、不重复奖励，查询和回放来自真实事件。
+
+本组端点（每项只有本组一个负责人）：
+01. battle/captchaVsBattle
+02. battle/executeBattle
+03. battle/getRaidBossDetail
+04. battle/getRaidBossEntries
+05. battle/getRaidBossLogs
+06. battle/getRivals2
+07. battle/getSelfRecord
+08. battle/getTurfWarReplayData
+09. battle/getVcode
+10. battle/getVsBattleLogs
+11. battle/getVsCountryRecords
+12. battle/getVsReplayData
+13. battle/removeRaidBossWork
+14. battle/sendRescueRequest
+15. giganticRaidBoss/entryGiganticRaidBoss
+16. giganticRaidBoss/getGiganticRaidBossBattleResult
+17. giganticRaidBoss/getGiganticRaidBossEventResult
+18. giganticRaidBoss/getGiganticRaidBossInformation
+19. quest/checkCompleteQuestEx
+20. quest/checkEmergencyQuest
+21. quest/clearObstacle
+22. quest/executeQuestEx
+23. quest/executeQuestEx2
+24. quest/getAutoStep
+25. quest/getChapterData
+26. quest/getQuestBossPunish
+27. quest/getQuestCompleteFlags
+28. quest/getQuestEncount
+29. quest/getQuestEncountWorks
+30. quest/getQuestProgress
+31. quest/getQuestRewardOpenFlags
+32. quest/getRandomQuestRanking
+33. quest/openQuest
+34. quest/openTreasureBox
+35. quest/useSoulToStep
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

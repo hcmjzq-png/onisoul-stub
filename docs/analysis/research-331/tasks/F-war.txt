@@ -1,0 +1,95 @@
+你负责鬼武者魂研究任务 F：国战、攻城战与天下分目，本组 47 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-f-war
+分支：feature/research331-f-war-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 优先核对一个玩法的报名→配对→行动/战斗→结算完整时序；从官方改版及玩家录屏区分不同战争系统，切勿把同类字段串为一套规则。
+2. 把原父页/Unity 桥接与缺失 iframe 页面区分；截图只证明呈现，不能凭截图编造回调字段或战况记录。
+3. 现有 pairing/history/isAlive 只有投影能力，必须补真实事件/记录生产来源后才申请挂载；不编假国家得分、匹配或胜者。
+4. 保留 rate 的 float32/Int32 验证。F 的 strategy/getStrategyBattleLogs 与 B 的 battle/getVsBattleLogs 是不同路由；共享 turf_war.py 只交接入补丁。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/f-war-campaigns/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 攻城戰 配對 報名 三之丸 獎勵
+鬼武者魂 國戰 大合戰 天下分目 行軍 補給
+鬼武者Soul 攻城戦 大合戦 天下分け目戦 開催 報酬
+优先入口：S6, S5, S1, S2
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/war_campaigns_services.py
+app/business/war_campaigns_views.py
+app/business/war_campaigns_events.py
+app/business/war_campaigns_commands.py
+tests/test_war_campaigns_services.py
+tests/test_research331_f*.py（仅自己的前缀）
+tests/fixtures/research331/f-war/（小样本）
+docs/analysis/research-331/results/f-war/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+至少选定一种战争的受限、真实状态流程；未开启期不能伪装运行，记录和奖励由真实状态推导，查询不造历史。
+
+本组端点（每项只有本组一个负责人）：
+01. siege/discharge
+02. siege/enter
+03. siege/getBrief
+04. siege/getPairings
+05. siege/getSiegeResultLog
+06. siege/getSiegeStatus
+07. siege/lookSiegeResult
+08. siege/openingBet
+09. strategy/command/attack
+10. strategy/command/buildCastle
+11. strategy/command/cancelMarch
+12. strategy/command/changeBase
+13. strategy/command/conscript
+14. strategy/command/march
+15. strategy/command/march2
+16. strategy/command/returnBase
+17. strategy/command/revenge
+18. strategy/command/strategize
+19. strategy/command/supply
+20. strategy/command/traceroute
+21. strategy/command/training
+22. strategy/entryStrategy
+23. strategy/getMercenaryEmployInfo
+24. strategy/getStrategyActionLogs
+25. strategy/getStrategyActionLogs2
+26. strategy/getStrategyBattleLogs
+27. strategy/getStrategyBrief
+28. strategy/getStrategyCellLogs
+29. strategy/getStrategyCommandInfo
+30. strategy/getStrategyLogs
+31. strategy/getStrategyNormRewardInfo
+32. strategy/getStrategyOverview
+33. strategy/getStrategyPairings
+34. strategy/getStrategyPairingsChat
+35. strategy/getStrategyPersonalLogs
+36. strategy/getStrategyPromptReport
+37. strategy/getStrategyStatus
+38. strategy/getStrategyWinLossRecords
+39. strategy/isAlive
+40. strategy/lookStrategyResult
+41. turfWar/entryBattlefield
+42. turfWar/entryWar
+43. turfWar/getSelfRecord
+44. turfWar/getSelfSituation
+45. turfWar/getTurfWarResultLog
+46. turfWar/moveBattlefield
+47. turfWar/receiveTurfWarReward
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

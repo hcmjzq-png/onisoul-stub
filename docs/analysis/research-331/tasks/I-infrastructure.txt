@@ -1,0 +1,84 @@
+你负责鬼武者魂研究任务 I：事务基础设施与 debug/admin 审核，本组 32 个占位入口。
+请实际开始代码和事务基础设施研究；需要技术资料时查官方文档，证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-i-infrastructure
+分支：feature/research331-i-infrastructure-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 这 32 项不是 32 个待开放玩法。先按受控管理、测试辅助、保留关闭分类，默认不开放任意改档、debug 登录或赠送接口。
+2. 优先为 D/E/F/G 提供真实数据库的多账号/共享记录事务接口，复用现有 revision CAS，稳定锁顺序、失败回滚、唯一性及进程间并发。不要只新增内存 Mock。
+3. admin/inbox/present 若要实现，只能由明确管理员身份产生可信包裹并有发行幂等；E 消费发行记录。不得让普通请求携带奖励即入账。
+4. 无需硬找 Wiki 解释内部事务或调试接口；代码、原请求包装和数据库/HTTP权限测试是主证据。共享 HTTP/registry/配置接入交 integration.patch，生产保持关闭。
+5. 提供隔离测试数据库的可重复并发/回滚验证脚本；不使用生产数据库。若环境没有可用测试数据库，明确记录尚未验证的适配部分，不能把内存 Mock 通过当真实数据库验收。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+
+建议外部检索词：
+不要求外部玩法资料；需要数据库技术资料时使用对应官方文档，不能照搬不明代码片段
+优先入口：无需外部玩法资料；按 COMMON.md 证据规则
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/state/__init__.py
+app/state/player.py
+app/state/transactions.py
+app/db.py
+db/schema.sql
+db/migrations/research331_i_*.sql（仅自己的前缀，允许新建）
+app/auth.py
+app/business/admin_debug_services.py
+tests/test_db.py
+tests/test_state_concurrency.py
+tests/test_auth_guard.py
+tests/test_research331_i*.py（仅自己的前缀）
+tests/fixtures/research331/i-infrastructure/（小样本）
+docs/analysis/research-331/results/i-infrastructure/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+真实数据库事务接口有明确单写/多写边界和并发回滚验证；普通玩家不可借管理/调试端点改档；保持关闭不伪计为玩法完成。
+
+本组端点（每项只有本组一个负责人）：
+01. admin/inbox/present
+02. debug/addCollections
+03. debug/addItems
+04. debug/clearBuildings
+05. debug/clearLastMigrateTime
+06. debug/debugAccelerateProduceTask
+07. debug/debugAddBuildingExp
+08. debug/debugCreateCharacter
+09. debug/debugCreateEquip
+10. debug/debugCreateQuestEncount
+11. debug/debugCreateRaidBossWork
+12. debug/debugDeleteAllCharacter
+13. debug/debugDeleteAllEquip
+14. debug/debugGetQuestCompleteFlags
+15. debug/debugGradeUpBuildings
+16. debug/debugIncreasePlayerLevel
+17. debug/debugLoginCog
+18. debug/debugOpenQuest
+19. debug/debugRankingNationalPowerAddScoreWithSwitch
+20. debug/debugRentalNavigatorBarelyExpiration
+21. debug/debugResetCreditStepCount
+22. debug/dedicate
+23. debug/forceCompleteQuest
+24. debug/forceFeedbackFriendOffer
+25. debug/forceProgressGiganticChain
+26. debug/forceProgressGiganticPhase
+27. debug/forceProgressQuest
+28. debug/resetDedication
+29. debug/resetPlayer
+30. debug/resetQuest
+31. debug/setQuestStep
+32. debug/withdrawTurfWar
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。

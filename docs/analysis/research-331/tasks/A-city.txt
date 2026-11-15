@@ -1,0 +1,79 @@
+你负责鬼武者魂研究任务 A：城市、生产、支城与背景，本组 29 个占位入口。
+请实际开始代码与外部资料交叉研究；证据充分的子流程落实为可测试、可集成的服务端代码，不要只回复计划。
+
+共同要求（必须先读）：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/COMMON.md
+资料入口：D:/onisoul-worktrees/research-331-plan-20261115/docs/analysis/research-331/SOURCES.md
+只在此工作树工作：D:/onisoul-worktrees/research-331-a-city
+分支：feature/research331-a-city-20261115
+固定起点：8023c3fee8e525040d101fee8bf843b48b3256d3（已合并 PR #50）
+该工作树已准备。开始时检查 git status 和分支；有其他人的修改就保留，不要 reset/清理。
+当前本任务文件的组号和下面端点清单是本轮归属；不要再读取旧 342 任务文本后改成其他组。
+若本轮任务目录还没合入主分支，可以继续读取上述绝对路径，无需等待文档 PR。
+
+优先工作：
+1. 优先打通普通田地/资源建筑的生产任务→到期→收获→重登闭环；分别核对道路邻接、倍率、技能叠加、取整、耐久扣次、玩家/建筑经验。田地受道路加成已由用户确认，不能再当不存在。
+2. 其次追踪原支城开放任务/石高条件与地图状态生产；只有来源可信后接通四个背景入口。原 UI mapId=1 已确定，禁止回退到 0 或用测试 True 开城。
+3. 背景购买两个入口从 D 转交本组。D 的现有购买类只读复用，需调整时写 city_background_services.py 或 integration.patch；不要同时编辑 economy_shop_services.py。
+4. 好友助产仍归 A 管业务结算，好友权限来自 E，双账号原子性来自 I；支城所需鬼物语进度来自 B，石高口径与 G 协调。
+
+只读已有证据：
+docs/analysis/parallel-342/review/README.md
+docs/analysis/parallel-342/review-round2/README.md
+docs/analysis/verified-trophies-20261115/README.md
+docs/analysis/parallel-342/a-city-production/（含后续报告与原表证据）
+
+建议外部检索词：
+鬼武者魂 田地 道路 加成 街道整備 內政 收穫
+鬼武者魂 支城 開放 條件 石高 京都美妃
+鬼武者Soul 生産 道路 隣接 棒道整備 支城 解放
+优先入口：S3, S5, S6, S1
+
+独占可编辑文件（路径尚不存在的为允许新建）：
+app/business/city_services.py
+app/business/city_production_services.py
+app/business/city_production_rules.py
+app/business/city_background_services.py
+tests/test_city_services.py
+tests/test_city_production_services.py
+tests/test_city_production_rules.py
+tests/test_research331_a*.py（仅自己的前缀）
+tests/fixtures/research331/a-city/（小样本）
+docs/analysis/research-331/results/a-city/
+其他公共文件只读；需要接入时在自己的结果目录交 integration.patch / integration-notes.md。
+
+验收重点：
+明确一类建筑的成本、到期时间、真实产出和道路计算，重复收获不重发；背景仅在可信已解锁支城生效，买后可选且重登一致。
+
+本组端点（每项只有本组一个负责人）：
+01. friend/building/getFriendProductsByBuilding
+02. friend/task/accelerateFriendProduceTask
+03. friend/task/completeFriendTasks
+04. politic/building/conflateBuilding
+05. politic/building/getBuildingFabrics
+06. politic/building/getBuildingLevels
+07. politic/building/getBuildings
+08. politic/building/getHarvestCounts
+09. politic/building/raiseBuildingEventOfBattle
+10. politic/building/resolveBuildingEvent
+11. politic/edict/changeState
+12. politic/edict/getMissionsInProgress
+13. politic/edict/raiseMission
+14. politic/edict/setWorkingValue
+15. politic/fixMapProduct
+16. politic/map/cleanup
+17. politic/map/getBackgrounds
+18. politic/map/getMap
+19. politic/map/setBackground
+20. politic/map/setMapName
+21. politic/map/switchMap
+22. politic/shop/buyBackgroundItem
+23. politic/shop/getBackgroundItems
+24. politic/task/accelerateProduceTask
+25. politic/task/cancelTasks
+26. politic/task/getTasksInCurrentMap
+27. politic/task/submitBulkProduceTasks
+28. politic/task/submitProduceTask
+29. politic/task/submitSerialBuildTask
+
+交付：遵照 COMMON.md；推送本组分支并提交独立草稿 PR，列新证据、已实现闭环、需总集成补丁、未解决项。
+不要自行部署、合并，不要更改其他组工作树或生产数据。
