@@ -1,0 +1,5 @@
+# Offline media conversion only; never required by the running stub.
+UnityPy==1.10.18
+Pillow==13.0.0
+etcpak==0.9.15
+# Also supply --ffmpeg with a local FFmpeg build that includes libvorbis.
