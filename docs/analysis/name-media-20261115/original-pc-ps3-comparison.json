@@ -1,0 +1,16 @@
+[
+  {
+    "name": "vse008_1_050801_12_04",
+    "pc_seconds": 3.3640833333333333,
+    "ps3_seconds": 3.384,
+    "alignment_samples": 509,
+    "aligned_correlation": 0.9799252477868646
+  },
+  {
+    "name": "vse008_1_050801_12_03",
+    "pc_seconds": 2.402791666666667,
+    "ps3_seconds": 2.448,
+    "alignment_samples": -92,
+    "aligned_correlation": 0.9774945680230196
+  }
+]

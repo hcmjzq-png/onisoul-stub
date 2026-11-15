@@ -53,11 +53,13 @@ def repair(blob: bytes) -> tuple[bytes, dict]:
                 'lc': props % 9, 'lp': props // 9 % 5, 'pb': props // 45}]
     decoder = lzma.LZMADecompressor(format=lzma.FORMAT_RAW, filters=filters)
     payload = decoder.decompress(blob[offset + 13:offset + compressed], max_length=size + 1)
-    if len(payload) != size or not decoder.eof or decoder.unused_data:
+    # Original Unity encoders can omit EOS when the ALONE header supplies the
+    # exact length. Unknown-length generated streams still require EOS before
+    # this tool will replace that length. Never accept extra decoded bytes.
+    valid_end = decoder.eof or (declared == size and decoder.needs_input)
+    if len(payload) != size or not valid_end or decoder.unused_data:
         raise ValueError('LZMA payload does not match its bounded UnityWeb level')
     fixed = blob[:offset + 5] + struct.pack('<Q', size) + blob[offset + 13:]
-    if lzma.decompress(fixed[offset + 13:], format=lzma.FORMAT_RAW, filters=filters) != payload:
-        raise ValueError('repair changed the decoded payload')
     return fixed, {'changed': fixed != blob, 'lzma_length_offset': offset + 5,
         'declared_before': declared, 'declared_after': size,
         'before_sha256': hashlib.sha256(blob).hexdigest(),

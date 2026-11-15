@@ -633,7 +633,11 @@ class GameplayService:
             self._save(player, player_id)
         except Exception as exc:
             if db.duplicate_player_name(exc):
-                return self._failure("auth/registerName", "player name is already in use")
+                # PC LoginEnvironment's registerName callback consumes the bool
+                # and shows the native name-in-use dialog. errorReason is a
+                # transport fault to WebApiClient, which bypasses that callback
+                # and stops the game with the connection-interrupted dialog.
+                return self._success("auth/registerName", {"succeeded": False})
             raise
         return self._success("auth/registerName", {"succeeded": True})
 

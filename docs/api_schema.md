@@ -1,5 +1,12 @@
 # 本批服务端字段来源与边界
 
+2026-11-15 追加：**bundle**，auth/registerName 重名结果必须是布尔 succeeded=false，
+不带 errorReason。原 PC LoginEnvironment.<registerName>.<>m__7EE（RVA 0x2300F8）读取该布尔，
+LoginTransNameEntry.<onResult>.MoveNext（0x20ED88）显示姓名提示并允许重试；
+GameRestarter.isError（0x70C60）把 errorReason 判为全局错误，导致联机中断。
+不改变 createPlayer 二次校验和数据库唯一索引。详见
+[本轮证据](analysis/name-media-20261115/README.md)。
+
 2026-11-15，基于原始安装包重新提取的 `Assembly-CSharp.dll`：
 SHA-256 `b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e`。
 来源标记 **bundle** 表示该安装包中的 DLL/表有直接证据；反编译行号来自

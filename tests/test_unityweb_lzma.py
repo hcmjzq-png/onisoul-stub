@@ -15,6 +15,23 @@ def bundle(payload):
 
 
 class UnityWebLengthTest(unittest.TestCase):
+    def test_original_known_length_without_eos_is_valid_but_unknown_is_not(self):
+        source, _ = repair(bundle(b'original-known-length-no-eos' * 100))
+        source = bytearray(source[:-1])  # omit the final EOS byte
+        offset, compressed, size = layout(source + b'\0')
+        prefix_end = 13
+        for _ in range(2):
+            prefix_end = source.index(0, prefix_end) + 1
+        for field in (0, 6):
+            struct.pack_into('>I', source, prefix_end + field * 4, len(source))
+        struct.pack_into('>I', source, prefix_end + 16, compressed - 1)
+        checked, proof = repair(source)
+        self.assertEqual(checked, source)
+        self.assertFalse(proof['changed'])
+        struct.pack_into('<Q', source, offset + 5, (1 << 64) - 1)
+        with self.assertRaisesRegex(ValueError, 'bounded'):
+            repair(source)
+
     def test_only_unknown_length_bytes_change_and_payload_is_identical(self):
         source = bundle(b'original-serialized-assets' * 1000)
         fixed, proof = repair(source)
