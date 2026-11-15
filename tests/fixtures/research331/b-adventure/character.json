@@ -1,0 +1,30 @@
+{
+  "character": {
+    "chara1_00324_01": {
+      "id": "chara1_00324_01",
+      "characterCode": 1129,
+      "sortNo": 569,
+      "yomiSortNo": 2021,
+      "characterNum": 324,
+      "rarity": "C",
+      "troopClass": "spear",
+      "attribute": "oni",
+      "sex": "female",
+      "dominusId": 22,
+      "mood": 1,
+      "atk": 60,
+      "def": 465,
+      "int": 225,
+      "materialPoint": 60,
+      "sellPrice": 25,
+      "dedication": 2,
+      "images": "chara1_00324",
+      "artists": "碧风羽",
+      "voice": "vse020_1_050801",
+      "voiceCategory": 5,
+      "expansion": "EXPANSION_MSG_103_NAME",
+      "bornCountry": "SHORTCOUNTRY_MSG_17_NAME",
+      "dominusName": "DOMINUS_MSG_022_NAME"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+--- a/app/business/placeholders.py
++++ b/app/business/placeholders.py
+@@ -20,6 +20,21 @@
+ # Keep these in the placeholder count. Their callbacks advance client state on
+ # success, so a fabricated dueTime/empty map is not a harmless discovery reply.
+ BLOCKED_WRITES = {
++    # Research331 B: placeholder success must not advance quest/combat UI.
++    # These stay placeholders; the bounded producer needs a stable step intent.
++    "battle/captchaVsBattle": "challenge validation and battle admission",
++    "battle/executeBattle": "authoritative battle resolution and settlement",
++    "battle/removeRaidBossWork": "owned raid lifecycle and reward receipt",
++    "battle/sendRescueRequest": "raid ownership and shared rescue delivery",
++    "giganticRaidBoss/entryGiganticRaidBoss": "verified event schedule and admission",
++    "giganticRaidBoss/getGiganticRaidBossBattleResult": "committed shared battle result",
++    "quest/checkCompleteQuestEx": "resolved encounters and completion reward ledger",
++    "quest/clearObstacle": "authorized obstacle producer and settlement",
++    "quest/executeQuestEx": "stable logical step identity",
++    "quest/executeQuestEx2": "verified caller and stable logical step identity",
++    "quest/openQuest": "explicit story bootstrap or verified event schedule",
++    "quest/openTreasureBox": "owned treasure encounter and verified reward selection",
++    "quest/useSoulToStep": "verified soul cost and stable logical step identity",
+     "politic/task/submitProduceTask": "production settlement and road bonuses",
+     "politic/task/submitBulkProduceTasks": "production settlement and road bonuses",
+     "politic/task/cancelTasks": "cancellation and refund rules",
+--- a/docs/analysis/server_tables.tsv
++++ b/docs/analysis/server_tables.tsv
+@@ -11,3 +11,4 @@
+ skillRefreshG2.json	skillRefreshG2		original G2 refresh candidates; execution rules still unresolved
+ skillRefreshG4.json	skillRefreshG4		original G4 refresh candidates; execution rules still unresolved
+ skillRefreshG6.json	skillRefreshG6		original G6 refresh candidates; execution rules still unresolved
++monster_story_1.json	monster_story_1	MonsterTableAccessor	original tutorial monster presentation/maxHp only; source proof research-331/results/b-adventure; no combat solver

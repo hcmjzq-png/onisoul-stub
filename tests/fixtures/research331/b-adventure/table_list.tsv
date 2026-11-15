@@ -1,0 +1,8 @@
+table_file	root_key	accessors
+quest_1_index.json	quest_1_index	B original subset
+quest_1_0000.json	quest_1_0000	B original subset
+quest_1_0000_reward.json	quest_1_0000_reward	B original subset
+item01.json	item01	B original subset
+item08.json	item08	B original subset
+character.json	character	B original subset
+monster_story_1.json	monster_story_1	B original subset

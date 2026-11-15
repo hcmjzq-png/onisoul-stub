@@ -1,0 +1,14 @@
+{
+  "scope": "isolated memory; all runtime tables original; monster table loaded directly from pinned container; no Unity or production DB",
+  "table_directory": "D:\\onisoul\\work\\verified-trophies-20261115\\runtime-tables",
+  "startingMP": 25,
+  "endingMP": 20,
+  "step": 5,
+  "characterDelta": 1,
+  "jewelDelta": 1,
+  "enemy": "q_mons_0000_01",
+  "enemyMaxHp": 1000,
+  "chapterCompleted": false,
+  "battleSolved": false,
+  "productionRoutesAdded": 0
+}

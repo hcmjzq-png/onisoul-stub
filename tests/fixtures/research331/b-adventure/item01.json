@@ -1,0 +1,17 @@
+{
+  "item01": {
+    "item01_0032401": {
+      "enable": true,
+      "value": 0,
+      "category": "character",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_01_0032401_NAME",
+      "yomiId": "ITEM_MSG_01_0032401_YOMI",
+      "descId": "ITEM_MSG_01_0032401_DESC",
+      "iconName": "item01_0000324",
+      "parameterId": "chara1_00324_01"
+    }
+  }
+}
