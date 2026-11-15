@@ -1,0 +1,46 @@
+{
+  "base": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "date": "2026-11-15",
+  "endpoint_ownership_count": 29,
+  "evidence_enriched_endpoints": 6,
+  "testable_candidate_loops": 1,
+  "production_ready_loops": 0,
+  "formally_registered_reduction": 0,
+  "unity_accepted": 0,
+  "normal_registry": {
+    "total": 402,
+    "dedicated": 71,
+    "placeholder": 331
+  },
+  "tests": {
+    "full": {
+      "command": "python -W ignore::ResourceWarning -m unittest discover -s tests -q",
+      "run": 437,
+      "passed": 437,
+      "skipped": 0
+    },
+    "H": {
+      "run": 51,
+      "passed": 51,
+      "new": 20,
+      "existing": 31
+    }
+  },
+  "integration_patch": {
+    "base": "8023c3f",
+    "applied_to_shared_files": false,
+    "git_apply_check": "passed",
+    "in_memory_workflow_test": "passed"
+  },
+  "provenance": {
+    "source_files_verified": 13,
+    "fixture_rows": 8,
+    "original_table_container_hash_verified": true
+  },
+  "limits": [
+    "No production schedule",
+    "Memory CAS only, no MySQL multi-process/durability acceptance",
+    "No Unity or deployed HTTP test",
+    "No deployment, production-player/hosts/proxy80/config.ini modifications"
+  ]
+}
