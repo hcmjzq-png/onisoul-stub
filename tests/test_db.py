@@ -40,7 +40,7 @@ class SchemaBootstrapTest(unittest.TestCase):
             "CREATE DATABASE IF NOT EXISTS `oni_test``local`"
         ))
         self.assertEqual(statements[1], "USE `oni_test``local`")
-        self.assertEqual(sum("CREATE TABLE IF NOT EXISTS" in s for s in statements), 3)
+        self.assertEqual(sum("CREATE TABLE IF NOT EXISTS" in s for s in statements), 4)
         self.assertFalse(any("USE game_db" in s for s in statements))
         connection.commit.assert_called_once()
         connection.close.assert_called_once()
@@ -58,6 +58,28 @@ class SchemaBootstrapTest(unittest.TestCase):
 
 
 class TransactionTest(unittest.TestCase):
+    def test_nested_connection_cannot_commit_outside_outer_transaction(self):
+        connection = MagicMock()
+        with patch.object(db, "_connect", return_value=connection) as connect:
+            with self.assertRaisesRegex(RuntimeError, "nested database"):
+                with db.connection():
+                    with db.connection():
+                        pass
+        connect.assert_called_once()
+        connection.commit.assert_not_called()
+        connection.rollback.assert_called_once()
+
+    def test_base_exception_also_rolls_back_and_releases_context(self):
+        connection = MagicMock()
+        with patch.object(db, "_connect", return_value=connection):
+            with self.assertRaises(KeyboardInterrupt):
+                with db.connection():
+                    raise KeyboardInterrupt()
+            with db.connection():
+                pass
+        connection.rollback.assert_called_once()
+        connection.commit.assert_called_once()
+
     def test_commit_failure_rolls_back_and_closes_connection(self):
         connection = MagicMock()
         connection.commit.side_effect = RuntimeError("commit failed")

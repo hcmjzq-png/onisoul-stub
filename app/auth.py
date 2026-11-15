@@ -8,7 +8,8 @@
     debug/devLogin             WebApiClient.cs:372 / :2118，BootUp.cs:129、SceneResources.cs:125
                                —— 启动期自动登录，登录本身就是拿 token。
     debug/debugLogin           WebApiClient.cs:444，SceneResources.cs:132
-    debug/debugLoginCog        WebApiClient.cs:462 —— 账号密码登录，同样在拿 token 之前。
+    debug/debugLoginCog        WebApiClient.cs:462 是登录包装；研究 I 明确保留关闭，
+                               客户端调用存在并不证明具备安全登录实现。
     auth/login                 WebApiClient.cs:405
     auth/gameLogin             WebApiClient.cs:417
     auth/guestLogin            WebApiClient.cs:480
@@ -21,6 +22,7 @@
     strict （默认）无会话 → 直接拒绝，不执行 handler。
     observe        无会话 → 照旧执行 handler，只累计计数并打印告警，用于排查
                    「客户端到底哪些接口在没登录时会打」。
+研究 I 的 32 个 admin/debug 端点在以上模式与会话判断之前统一关闭。
 """
 from __future__ import annotations
 
@@ -37,7 +39,6 @@ PRE_AUTH_APIS = frozenset(
         "common/getRevisions",
         "debug/devLogin",
         "debug/debugLogin",
-        "debug/debugLoginCog",
         "auth/login",
         "auth/gameLogin",
         "auth/guestLogin",
@@ -84,6 +85,12 @@ def check(api: str, session: dict[str, Any] | None, *, has_token: bool = False) 
     `has_token=True` 但 session 为 None，说明 token 无效/过期/会话库不可用，
     与「压根没带 token」区分开，便于排查。
     """
+    from app.business.admin_debug_services import denial
+
+    blocked = denial(api)
+    if blocked is not None:
+        _count(_denied, api)
+        return blocked
     if session is not None:
         return None
     if is_pre_auth(api):

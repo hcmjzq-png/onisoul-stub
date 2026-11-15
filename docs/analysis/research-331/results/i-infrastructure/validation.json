@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-15",
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "full_suite": {
+    "command": "python -W ignore::ResourceWarning -m unittest discover -s tests -q",
+    "run": 440,
+    "passed": 425,
+    "skipped": 15,
+    "skip_reason": "opt-in real MySQL suite; executed separately with 15/15 passing",
+    "failures": 0,
+    "errors": 0
+  },
+  "mysql": "mysql-validation.json",
+  "http_permissions": {
+    "endpoints": 32,
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "requests": 64,
+    "handler_invocations": 0,
+    "modes_policy_tested": [
+      "strict",
+      "observe"
+    ]
+  },
+  "integration_patch": {
+    "applied_to_shared_worktree": false,
+    "git_apply_check": "passed",
+    "in_memory_dispatch_test": "passed"
+  },
+  "normal_registry": {
+    "registered": 402,
+    "dedicated": 71,
+    "placeholders": 331
+  },
+  "task_endpoint_set": "exact match: 32",
+  "evidence_completed": 32,
+  "integratable_infrastructure_loops": 1,
+  "registered_reduction": 0,
+  "unity_acceptance": 0,
+  "production_data_accessed": false,
+  "deployment": false
+}

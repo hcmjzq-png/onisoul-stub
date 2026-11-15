@@ -42,6 +42,20 @@ class FakeConnection:
 
 
 class StateRevisionTest(unittest.TestCase):
+    def test_missing_row_cannot_resurrect_a_stale_snapshot(self):
+        with patch.object(player_state.db, "connection", return_value=FakeConnection(None)):
+            with self.assertRaises(player_state.StateConflictError):
+                player_state.save({"_revision": 4, "entity": {}}, "p")
+
+    def test_corrupt_persisted_revision_is_not_reset_to_zero(self):
+        for value in (True, -1, "bad", "3", None, 1.5):
+            row = {"state_json": json.dumps({"entity": {}, "_revision": value})}
+            with self.subTest(value=value), patch.object(
+                player_state.db, "connection", return_value=FakeConnection(row)
+            ):
+                with self.assertRaises(ValueError):
+                    player_state.save({"_revision": 0, "entity": {}}, "p")
+
     def test_failed_write_or_commit_preserves_snapshot_for_retry(self):
         row = {"state_json": json.dumps({"entity": {}, "_revision": 3})}
         for fail_on_commit in (False, True):
