@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-15 Asia/Shanghai",
+  "base": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "checks": [
+    {
+      "command": "python -W ignore::ResourceWarning -m unittest discover -s tests -q",
+      "passed": 434,
+      "skipped": 0
+    },
+    {
+      "command": "python docs/analysis/research-331/results/c-card-growth/reproduce.py --table-dir D:/onisoul/work/verified-trophies-20261115/runtime-tables",
+      "passed": true,
+      "source_files": 37,
+      "fixture_files": 3,
+      "fixture_rows": 25,
+      "endpoints": 30
+    },
+    {
+      "command": "git apply --check docs/analysis/research-331/results/c-card-growth/integration.patch",
+      "passed": true
+    },
+    {
+      "command": "git diff --check",
+      "passed": true
+    }
+  ],
+  "normal_build_registry": {
+    "total": 402,
+    "specialized": 71,
+    "placeholders": 331
+  },
+  "counts": {
+    "endpoints_with_new_evidence": 10,
+    "tested_limited_component_loops": 1,
+    "candidate_item_handlers": 2,
+    "unconditionally_public_ready_loops": 0,
+    "public_registration_reduction": 0,
+    "unity_acceptances": 0
+  },
+  "not_validated": [
+    "real MySQL multiprocess transaction",
+    "original Unity error dialog and reload",
+    "trusted production operation context source",
+    "lottery/refresh random algorithms",
+    "nine-grid live event and acquisition provenance"
+  ],
+  "environment": "isolated memory stores; original complete runtime tables; no production state or deployment"
+}

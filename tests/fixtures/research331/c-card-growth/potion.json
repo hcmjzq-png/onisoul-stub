@@ -1,0 +1,395 @@
+{
+  "potion": {
+    "potion0000201": {
+      "id": "potion0000201",
+      "name": "POTION_MSG_0000201_NAME",
+      "category": "dopingRemove",
+      "uses": [],
+      "effects": [],
+      "range": [],
+      "initialAmount": 0,
+      "itemID": "item07_0020001",
+      "sortno": 21
+    },
+    "potion0000401": {
+      "id": "potion0000401",
+      "name": "POTION_MSG_0000401_NAME",
+      "category": "doping",
+      "uses": [
+        "atk"
+      ],
+      "effects": [
+        10
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040001",
+      "sortno": 0
+    },
+    "potion0000402": {
+      "id": "potion0000402",
+      "name": "POTION_MSG_0000402_NAME",
+      "category": "doping",
+      "uses": [
+        "atk"
+      ],
+      "effects": [
+        20
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040002",
+      "sortno": 1
+    },
+    "potion0000403": {
+      "id": "potion0000403",
+      "name": "POTION_MSG_0000403_NAME",
+      "category": "doping",
+      "uses": [
+        "atk"
+      ],
+      "effects": [
+        30
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040003",
+      "sortno": 2
+    },
+    "potion0000404": {
+      "id": "potion0000404",
+      "name": "POTION_MSG_0000404_NAME",
+      "category": "doping",
+      "uses": [
+        "atk"
+      ],
+      "effects": [
+        40
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040004",
+      "sortno": 3
+    },
+    "potion0000405": {
+      "id": "potion0000405",
+      "name": "POTION_MSG_0000405_NAME",
+      "category": "doping",
+      "uses": [
+        "atk"
+      ],
+      "effects": [
+        100
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040005",
+      "sortno": 4
+    },
+    "potion0000406": {
+      "id": "potion0000406",
+      "name": "POTION_MSG_0000406_NAME",
+      "category": "doping",
+      "uses": [
+        "def"
+      ],
+      "effects": [
+        10
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040006",
+      "sortno": 5
+    },
+    "potion0000407": {
+      "id": "potion0000407",
+      "name": "POTION_MSG_0000407_NAME",
+      "category": "doping",
+      "uses": [
+        "def"
+      ],
+      "effects": [
+        20
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040007",
+      "sortno": 6
+    },
+    "potion0000408": {
+      "id": "potion0000408",
+      "name": "POTION_MSG_0000408_NAME",
+      "category": "doping",
+      "uses": [
+        "def"
+      ],
+      "effects": [
+        30
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040008",
+      "sortno": 7
+    },
+    "potion0000409": {
+      "id": "potion0000409",
+      "name": "POTION_MSG_0000409_NAME",
+      "category": "doping",
+      "uses": [
+        "def"
+      ],
+      "effects": [
+        40
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040009",
+      "sortno": 8
+    },
+    "potion0000410": {
+      "id": "potion0000410",
+      "name": "POTION_MSG_0000410_NAME",
+      "category": "doping",
+      "uses": [
+        "def"
+      ],
+      "effects": [
+        100
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040010",
+      "sortno": 9
+    },
+    "potion0000411": {
+      "id": "potion0000411",
+      "name": "POTION_MSG_0000411_NAME",
+      "category": "doping",
+      "uses": [
+        "int"
+      ],
+      "effects": [
+        10
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040011",
+      "sortno": 10
+    },
+    "potion0000412": {
+      "id": "potion0000412",
+      "name": "POTION_MSG_0000412_NAME",
+      "category": "doping",
+      "uses": [
+        "int"
+      ],
+      "effects": [
+        20
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040012",
+      "sortno": 11
+    },
+    "potion0000413": {
+      "id": "potion0000413",
+      "name": "POTION_MSG_0000413_NAME",
+      "category": "doping",
+      "uses": [
+        "int"
+      ],
+      "effects": [
+        30
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040013",
+      "sortno": 12
+    },
+    "potion0000414": {
+      "id": "potion0000414",
+      "name": "POTION_MSG_0000414_NAME",
+      "category": "doping",
+      "uses": [
+        "int"
+      ],
+      "effects": [
+        40
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040014",
+      "sortno": 13
+    },
+    "potion0000415": {
+      "id": "potion0000415",
+      "name": "POTION_MSG_0000415_NAME",
+      "category": "doping",
+      "uses": [
+        "int"
+      ],
+      "effects": [
+        100
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040015",
+      "sortno": 14
+    },
+    "potion0000416": {
+      "id": "potion0000416",
+      "name": "POTION_MSG_0000416_NAME",
+      "category": "doping",
+      "uses": [
+        "atk",
+        "def",
+        "int"
+      ],
+      "effects": [
+        10,
+        10,
+        10
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040016",
+      "sortno": 15
+    },
+    "potion0000417": {
+      "id": "potion0000417",
+      "name": "POTION_MSG_0000417_NAME",
+      "category": "doping",
+      "uses": [
+        "atk",
+        "def",
+        "int"
+      ],
+      "effects": [
+        20,
+        20,
+        20
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040017",
+      "sortno": 16
+    },
+    "potion0000418": {
+      "id": "potion0000418",
+      "name": "POTION_MSG_0000418_NAME",
+      "category": "doping",
+      "uses": [
+        "atk",
+        "def",
+        "int"
+      ],
+      "effects": [
+        30,
+        30,
+        30
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040018",
+      "sortno": 17
+    },
+    "potion0000419": {
+      "id": "potion0000419",
+      "name": "POTION_MSG_0000419_NAME",
+      "category": "doping",
+      "uses": [
+        "atk",
+        "def",
+        "int"
+      ],
+      "effects": [
+        40,
+        40,
+        40
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040019",
+      "sortno": 18
+    },
+    "potion0000420": {
+      "id": "potion0000420",
+      "name": "POTION_MSG_0000420_NAME",
+      "category": "doping",
+      "uses": [
+        "atk",
+        "def",
+        "int"
+      ],
+      "effects": [
+        100,
+        100,
+        100
+      ],
+      "range": [
+        -1,
+        -1
+      ],
+      "initialAmount": 0,
+      "itemID": "item07_0040020",
+      "sortno": 19
+    }
+  }
+}
