@@ -4,8 +4,20 @@ from __future__ import annotations
 import hashlib
 import http.client
 import time
+import threading
 from urllib.error import HTTPError, URLError
 from urllib.request import ProxyHandler, build_opener
+
+_thread_http = threading.local()
+
+
+def opener():
+    # A fresh urllib opener also creates an HTTPS handler/SSL context, even for
+    # HTTP URLs. Handler-parent cycles can retain native certificate stores
+    # across a large batch. Bound that memory to one opener per worker thread.
+    if not hasattr(_thread_http, 'opener'):
+        _thread_http.opener = build_opener(ProxyHandler({}))
+    return _thread_http.opener
 
 
 def verify_url(url: str, expected_sha256: str, *, attempts: int = 3) -> int:
@@ -15,7 +27,7 @@ def verify_url(url: str, expected_sha256: str, *, attempts: int = 3) -> int:
     for attempt in range(attempts):
         try:
             hasher = hashlib.sha256()
-            with build_opener(ProxyHandler({})).open(url, timeout=30) as response:
+            with opener().open(url, timeout=30) as response:
                 if response.status != 200:
                     raise ValueError('unexpected HTTP status: ' + str(response.status))
                 for block in iter(lambda: response.read(256 * 1024), b''):
