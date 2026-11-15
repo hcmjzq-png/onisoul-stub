@@ -90,7 +90,7 @@ class CityServices(PlayerServices):
             raise ValueError("building not owned or not in the required map/storage")
         row = self.table("building").get(record.get("buildingTypeId"))
         if not isinstance(row, dict):
-            raise ValueError("stub has no assets: building row missing")
+            raise ValueError("no stub response: referenced building row missing")
         return key, record, row
 
     def ids(self, value: Any) -> list[str]:

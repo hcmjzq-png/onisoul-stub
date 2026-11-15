@@ -1,0 +1,242 @@
+{
+  "target": "OniSoul_Setup_20140712.exe",
+  "sources": [
+    {
+      "id": "A-E01",
+      "url": "https://gwz.yeyou.com/news/08192014/101521036.shtml?_platform=PC",
+      "title": "攻略投稿：城下町发展思路",
+      "published": "2014-08-19",
+      "server": "中文PC玩家投稿，推定大陆服；不能等同20140712国际中文版",
+      "kind": "具名玩家投稿/第一手玩法陈述",
+      "access": "正文可读；无参数URL一次超时，带原检索参数重试成功",
+      "summary": "作者称邻近一格道路可增产20%，技能可变为30%，经验亦受影响；不提供邻接算法、取整或完整结算样本。",
+      "client": [
+        "PoliticBuilding.cs:1872-1884",
+        "POM_MES_000006_03_001",
+        "skill1_10041_01",
+        "skill1_10042_01"
+      ],
+      "rows": [
+        "building200_041_01_01_1_1",
+        "product060_023_01_01_1_1"
+      ],
+      "conflicts": "服别/时期未完全匹配；不可把20%直接作为目标版生产常量。",
+      "confidence": "hypothesis 精确倍率；verified 道路增产存在",
+      "implementation": "未落实倍率；ManualProductionServices保留道路，仅处理开工",
+      "tests": [
+        "tests/test_research331_a_city.py:173"
+      ],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E02",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=697",
+      "title": "心得：城下建築升級數量與建議",
+      "published": "检索内容标注2012-12-06编辑",
+      "server": "2012日服时期线索，文章服别未全文核验",
+      "kind": "玩家经验；本轮仅检索摘录",
+      "access": "正文403；search结果较长仍只作线索",
+      "summary": "检索提到一格道路20%、相同道路技能不叠加和任意内政位置有效。",
+      "client": [
+        "skill1_10041_01/10042_01",
+        "SKILL_MSG_1_10041_01_DESC/10042_01_DESC"
+      ],
+      "rows": [
+        "skill1_10041_01",
+        "skill1_10042_01"
+      ],
+      "conflicts": "原包文本有城代/水上位置限制，不能采用任意位置说法。",
+      "confidence": "hypothesis；未将摘要作生产规则",
+      "implementation": "内政非空拒绝，未推断叠加算法",
+      "tests": [
+        "tests/test_research331_a_city.py:128"
+      ],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E03",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=1530",
+      "title": "官方：開發營運更新乃總整理歷程",
+      "published": "检索相关段落为2013-02-21更新",
+      "server": "日服更新繁中转载",
+      "kind": "公告转载线索",
+      "access": "正文403；只见检索内容",
+      "summary": "支城门槛下调到京都美妃及7500；只作为版本变化线索。",
+      "client": [
+        "PoliticMissionConditionOne.cs:268-280"
+      ],
+      "rows": [
+        "po_mission_00281"
+      ],
+      "conflicts": "不能拿日服2013变更日期替代台服实施日期；与E04不同版本。",
+      "confidence": "hypothesis 外部日期；本包规则另有verified原表",
+      "implementation": "SubcityRule从原表解析，不使用转载的常量",
+      "tests": [
+        "tests/test_research331_a_city.py:199"
+      ],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E04",
+      "url": "https://n.yam.com/Article/20130527512911",
+      "title": "百萬人期待：奧羽大亂改版，支城開放",
+      "published": "2013-05-27；页面标注2017-05-10资料更新",
+      "server": "国际中文版PC",
+      "kind": "台灣卡普空公告文字转载，GameDB→蕃新闻；不算两份独立来源",
+      "access": "正文可读",
+      "summary": "旧开放门槛是25级、龙虎机突参、石高30000。",
+      "client": [
+        "POM_MES_000281_01_003",
+        "PoliticMissionConditionOne.cs:268-333"
+      ],
+      "rows": [
+        "po_mission_00281"
+      ],
+      "conflicts": "与目标原包15级/京都美妃/7500冲突，按原包；不采用旧值。",
+      "confidence": "verified 历史差异，非目标版规则",
+      "implementation": "不采纳旧阈值",
+      "tests": [
+        "tests/test_research331_a_city.py:199"
+      ],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E05",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=80689",
+      "title": "28日奧羽大亂改版內容搶先公開",
+      "published": "2013-05-27，检索元数据",
+      "server": "国际中文版PC",
+      "kind": "报道/公告转载线索",
+      "access": "正文403",
+      "summary": "检索显示旧25级/30000条件；与E04同一改版，不重复计独立佐证。",
+      "client": [
+        "POM_MES_000281_01_003"
+      ],
+      "rows": [
+        "po_mission_00281"
+      ],
+      "conflicts": "旧版，未读正文",
+      "confidence": "hypothesis 检索线索",
+      "implementation": "无",
+      "tests": [],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E06",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=96690",
+      "title": "即日新增男版趙雲，週年感謝祭同步開跑",
+      "published": "2014-05-06 17:13:43，检索元数据",
+      "server": "国际中文版，文章称第二服务器",
+      "kind": "官方活动报道线索",
+      "access": "正文403，仅检索可读",
+      "summary": "检索出现Lv15、7500、京都美妃的支城任务条件，时间与原包较近。",
+      "client": [
+        "POM_MES_000281_01_003",
+        "PoliticMissionConditionOne.cs:268-280"
+      ],
+      "rows": [
+        "po_mission_00281",
+        "quest_1_index:2_5"
+      ],
+      "conflicts": "没有全文，不能确认全服务器启用与地图初始化",
+      "confidence": "hypothesis 外部佐证；规则以原包为准",
+      "implementation": "SubcityRule，非自动开服政策",
+      "tests": [
+        "tests/test_research331_a_city.py:199"
+      ],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E07",
+      "url": "https://game.watch.impress.co.jp/docs/news/568916.html",
+      "title": "Unityが作り出す華麗な戦国「鬼武者Soul」レポート",
+      "published": "2012-11-09",
+      "server": "日服PC正式服务",
+      "kind": "记者亲自游玩记录",
+      "access": "正文可读",
+      "summary": "生产和收获各有内政点消耗；支持二者分开结算的玩家可观察行为，不证明目标版全部数值。",
+      "client": [
+        "PoliticBuilding.cs:1117-1131",
+        "PoliticFSMCollectiveProduce.cs:48-59"
+      ],
+      "rows": [
+        "product060_023_01_01_1_1",
+        "product060_001_01_01_1_1"
+      ],
+      "conflicts": "早期日服，实际费用主要依据目标原代码",
+      "confidence": "verified 与原代码一致的开工扣点行为",
+      "implementation": "ManualProductionServices._submit",
+      "tests": [
+        "tests/test_research331_a_city.py:80",
+        "tests/test_research331_a_city.py:100"
+      ],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E08",
+      "url": "https://wikiwiki.jp/onimusyasoul/初心者ガイド",
+      "title": "初心者ガイド",
+      "published": "未知，正文含2012-10-27时期信息",
+      "server": "日服早期",
+      "kind": "社区总结，仅导航",
+      "access": "正文可读",
+      "summary": "定位旧官方手册；不据Wiki的围路建议推断邻接数量倍率。",
+      "client": [
+        "POM_MES_000006_03_001"
+      ],
+      "rows": [],
+      "conflicts": "未提供版本精确公式",
+      "confidence": "hypothesis/导航",
+      "implementation": "无",
+      "tests": [],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E09",
+      "url": "http://cog-members.oni-soul.jp/sp/manual/index.html",
+      "title": "旧官方在线手册",
+      "published": "未知",
+      "server": "日服PC",
+      "kind": "官方入口",
+      "access": "工具重定向HTTPS后报告不可访问；无全文",
+      "summary": "未取得可用手册正文或归档，不作为已验证来源。",
+      "client": [],
+      "rows": [],
+      "conflicts": "不可访问",
+      "confidence": "unsupported",
+      "implementation": "无",
+      "tests": [],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    },
+    {
+      "id": "A-E10",
+      "url": "https://m2.4gamer.net/games/150/G015000/20120621103/",
+      "title": "戦国体験 第弐陣プレイレポート",
+      "published": "2012-06-22",
+      "server": "日服PC封测",
+      "kind": "记者试玩记录",
+      "access": "正文可读",
+      "summary": "区分手动选择与自动生产设施；年代过早，仅作流程背景，不用于目标版收益数值。",
+      "client": [
+        "PoliticBuildingState/StateManualProduce.cs:21-36"
+      ],
+      "rows": [
+        "building200_041_01_01_1_1"
+      ],
+      "conflicts": "封测版，不能视为2014规则",
+      "confidence": "hypothesis/流程背景",
+      "implementation": "无新增经济规则",
+      "tests": [],
+      "accessed": "2026-11-15 Asia/Shanghai"
+    }
+  ],
+  "queries": [
+    "鬼武者魂 田地 道路 加成 街道整備 收穫",
+    "鬼武者魂 支城 開放 條件 石高 京都美妃",
+    "鬼武者Soul 生産量 道路 隣接 街道整備 20",
+    "鬼武者Soul 田畑 収穫 経験値 生産 道路 端数",
+    "鬼武者魂 支城 7500 2014 5月6日 台灣卡普空",
+    "鬼武者魂 道路 加成 取整 小數"
+  ],
+  "unsolved": "未找到目标版完整邻接/取整/技能叠加实测或可信原收获记录。过滤其他鬼武者作品和无关道路资料。"
+}
