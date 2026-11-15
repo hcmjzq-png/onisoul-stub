@@ -1,0 +1,94 @@
+{
+  "source_root": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115",
+  "files": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestAreaTableAccessor.cs",
+      "sha256": "2cc0bae23604905b438fd1d7deedd41675c0521b4de75dabeaf5eac035548788"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestRewardTableAccessor.cs",
+      "sha256": "edaee27c2e97e955057500007a69f4bb68a10f552ab63224f5b5c626631d542b"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestScriptCommand.cs",
+      "sha256": "39c8a0a662ad34428c23d1dbb9544817836292154af28ab66adda5c91eb11466"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestStoryAreaConfirm.cs",
+      "sha256": "ae5212644ed30b04cf6a5d33f9b03ba7995324500f06f306ecce6d8a49430611"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestDataCache.cs",
+      "sha256": "95fc0a1e0573ffb57264f52a80302295456d312e4209defe8df7d84bb65c3b6b"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginQuestStepHelper.cs",
+      "sha256": "834eea53e709fbce558112adc0f00ec2d2a076efbbd8cb848a0fc66a061dacc1"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginQuestDataManager.cs",
+      "sha256": "c32d7e5776325c06a6ba2e12c8c685f638740d80f070b9f5576418e35fa93b45"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardProcessor.cs",
+      "sha256": "00a403c195aa271fd36691b605034890c2a2f8b53aa1d58cdf8654d368eb9bb4"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\MonsterTableAccessor.cs",
+      "sha256": "3c0ab50079a0c03df44f50de97b8b27900ff0daf861f607f692ab60d413e11ab"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BattleLogManager.cs",
+      "sha256": "bf3ada868c109d0d2cc74fa46e9a626ceb9b2e1b619f8b10782fbfcfacf20d89"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BattleParameters.cs",
+      "sha256": "f98616199e6af9643916244b21c2c0c643287e6fed60674160d7467b286c8e99"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RaidBoss.cs",
+      "sha256": "a8709ef72a26e0177d9decfc78795ed0c6bb45758bbc91211833604f7114c0ee"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RaidBossTableAccessor.cs",
+      "sha256": "41be561e82b60769aae410f9b60be8aca88604cef557aa7d9374fbf8a680d107"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RaidBossBattleInfoList.cs",
+      "sha256": "818ed39ea7a0049217612d08024286803e50152ca212bd2556be451ea4c4746c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageBattleLogUpdateVs.cs",
+      "sha256": "c9cc6638eb13f0030d5593ada2cc365a8f68279c48d3f4182ad63509a3e0af8d"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\mypageRasetsu.cs",
+      "sha256": "c52569b54e0d9fe1faf114018faaaeaf6ad99880d904a604f7a668c4ca292981"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLTreasureMediator.cs",
+      "sha256": "f8144ea149f54a2ea93c4131ad15ccf51cb931df78d89330e3103e67cfb6ab90"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RewardTableAccessor.cs",
+      "sha256": "bc04bca53baf665e9618c82f31da8c0dffeff429cee1cd18c49e2660149f6111"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestStoryAreaSelector.cs",
+      "sha256": "b2b18b0a40176218f74a791863c126dd3e9e6bdb017c79b27b63eae1a667ae4d"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\QuestIndexTableAccessor.cs",
+      "sha256": "e44629b08fe132a611ab2b24ce8f186fa24eab1629abd6998e339de3abfb53e0"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\RaidBossScene.cs",
+      "sha256": "37599a5173bc1bd96bbc4ea84dd32d4b1f1080eb9a0f61b8ae5ebe34d2307111"
+    }
+  ],
+  "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e"
+}

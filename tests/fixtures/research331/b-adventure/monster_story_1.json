@@ -1,0 +1,16 @@
+{
+  "monster_story_1": {
+    "q_mons_0000_01": {
+      "name": "MONSTER_MSG_NAME_1_00007_01",
+      "maxHp": 1000,
+      "voice": "vse035_3_010301",
+      "images": "cch2_00007"
+    },
+    "q_mons_0000_02": {
+      "name": "MONSTER_MSG_NAME_1_00004_01",
+      "maxHp": 1200,
+      "voice": "vse035_3_010301",
+      "images": "cch2_00004"
+    }
+  }
+}
