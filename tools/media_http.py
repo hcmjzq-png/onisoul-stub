@@ -20,14 +20,14 @@ def opener():
     return _thread_http.opener
 
 
-def verify_url(url: str, expected_sha256: str, *, attempts: int = 3) -> int:
+def verify_url(url: str, expected_sha256: str, *, attempts: int = 3, timeout: float = 30) -> int:
     """Verify the complete response and return the number of transient retries."""
-    if attempts < 1:
-        raise ValueError('positive HTTP attempt count required')
+    if attempts < 1 or timeout <= 0:
+        raise ValueError('positive HTTP attempt count and timeout required')
     for attempt in range(attempts):
         try:
             hasher = hashlib.sha256()
-            with opener().open(url, timeout=30) as response:
+            with opener().open(url, timeout=timeout) as response:
                 if response.status != 200:
                     raise ValueError('unexpected HTTP status: ' + str(response.status))
                 for block in iter(lambda: response.read(256 * 1024), b''):

@@ -35,14 +35,28 @@ const destroy=method('Object','Destroy',1),play=method('AudioSource','Play',0),s
 const addcomponent=method('GameObject','AddComponent',1),ctor=method('GameObject','.ctor',1);
 const yes=Memory.alloc(4);yes.writeU32(1);const zero=Memory.alloc(4);zero.writeFloat(0);
 let queue=[],current=null,active=[],guard=false,steps=0,cancelled=false;
+let settings={concurrency:2,timeoutMs:60000,attempts:5};
 function cleanup(){if(!current)return;const c=current;try{if(c.source){call(stop,c.source);call(destroy,null,[c.go]);}if(c.bundle)call(unload,c.bundle,[yes]);if(c.url&&c.request)call(wwwDispose,c.request);}finally{for(const h of c.handles)free(h);current=null;}}
+function startDownload(c){c.started=Date.now();c.request=objectnew(domain,klass('WWW'));c.handles.push(keep(c.request,1));call(wwwCtor,c.request,[string(c.url)]);}
+function retryDownload(reason){
+ const c=current;if(!c.url||c.bundle||c.playStarted||(c.httpRetries||0)+1>=settings.attempts)return false;
+ call(wwwDispose,c.request);for(const h of c.handles)free(h);c.handles=[];c.request=null;
+ c.httpRetries=(c.httpRetries||0)+1;c.retryAfter=Date.now()+1000*(2**(c.httpRetries-1));
+ send({retry:true,id:c.id,name:c.name,attempt:c.httpRetries,reason,elapsed_ms:Date.now()-c.started});return true;
+}
+function transientWWW(error){
+ // Old WWW reports some connection failures only as "Failed downloading URL".
+ // Never turn decoded bundle / named-object failures into network retries.
+ if(/\b(?:400|401|403|404|410)\b/.test(error.replace(/https?:\/\/\S+/g,'')))return false;
+ return /\b(?:429|502|503|504)\b/.test(error.replace(/https?:\/\/\S+/g,''))||/^Failed downloading https?:\/\/\S+\s*$/i.test(error);
+}
 function step(){steps++;if(cancelled){cleanup();return;}if(!current){return;}
- if(current.retryAfter){if(Date.now()<current.retryAfter)return;current.retryAfter=0;current.started=Date.now();current.request=objectnew(domain,klass('WWW'));current.handles.push(keep(current.request,1));call(wwwCtor,current.request,[string(current.url)]);return;}
- const c=current;if(Date.now()-c.started>20000)throw new Error('native load/playback timed out');
- if(c.playStarted){const active=unbox(call(playing,c.source)).readU8()!==0;if(!active){c.result.playback_finished=true;send({result:c.result});cleanup();}return;}
- if(unbox(call(c.url?wwwDone:isDone,c.request)).readU8()===0)return;
+ if(current.retryAfter){if(Date.now()<current.retryAfter)return;current.retryAfter=0;startDownload(current);return;}
+ const c=current;
+ if(c.playStarted){if(Date.now()-c.playStarted>(c.result.seconds+10)*1000)throw new Error('native playback timed out');const active=unbox(call(playing,c.source)).readU8()!==0;if(!active){c.result.playback_finished=true;send({result:c.result});cleanup();}return;}
+ if(unbox(call(c.url?wwwDone:isDone,c.request)).readU8()===0){if(Date.now()-c.started>settings.timeoutMs){if(!retryDownload('native download timed out'))throw new Error('native load timed out');}return;}
  if(c.url){const error=readString(call(wwwError,c.request));if(error){
-  if(/\b(?:429|502|503|504)\b/.test(error)&&(c.httpRetries||0)<2){call(wwwDispose,c.request);for(const h of c.handles)free(h);c.handles=[];c.request=null;c.httpRetries=(c.httpRetries||0)+1;c.retryAfter=Date.now()+250*(2**(c.httpRetries-1));return;}
+  if(transientWWW(error)&&retryDownload(error))return;
   throw new Error('native WWW HTTP error: '+error);}}
  c.bundle=call(c.url?wwwBundle:requestBundle,c.request);if(c.bundle.isNull())throw new Error('native AssetBundle load failed');c.handles.push(keep(c.bundle,1));
  const media=call(load,c.bundle,[string(c.name)]);if(media.isNull())throw new Error('native named asset missing');c.handles.push(keep(media,1));
@@ -63,18 +77,18 @@ function advance(){
   if(current)pending.push(current);
  }
  active=pending;current=null;
- while(!cancelled&&active.length<4&&queue.length){
+ while(!cancelled&&active.length<settings.concurrency&&queue.length){
   current=queue.shift();current.handles=[];current.started=Date.now();
-  try{if(current.url){current.request=objectnew(domain,klass('WWW'));current.handles.push(keep(current.request,1));call(wwwCtor,current.request,[string(current.url)]);delete current.bytes;}
+  try{if(current.url){startDownload(current);delete current.bytes;}
    else{const bytes=new Uint8Array(current.bytes);delete current.bytes;
     const arr=arraynew(domain,byteclass,bytes.length);arr.add(16).writeByteArray(bytes);
-    current.handles.push(keep(arr,1));current.request=call(create,null,[arr]);}
+    current.handles.push(keep(arr,1));current.request=call(create,null,[arr]);current.handles.push(keep(current.request,1));}
    if(current.request.isNull())throw new Error('null bundle request');
-   current.handles.push(keep(current.request,1));active.push(current);
+   active.push(current);
   }catch(e){send({error:String(e),id:current.id,name:current.name});cleanup();}
   current=null;
  }
 }
 Interceptor.attach(mono.getExportByName('mono_runtime_invoke'),{onEnter(args){if(guard||(!queue.length&&!active.length))return;try{this.run=names(args[0]).readUtf8String()==='Update';}catch(e){}},onLeave(){if(!this.run||guard)return;guard=true;try{advance();}finally{guard=false;}}});
-rpc.exports={enqueue(job,bytes){if(cancelled)throw new Error('probe cancelled');job.bytes=bytes;queue.push(job);return queue.length;},cancel(){queue=[];cancelled=true;},status(){return{queued:queue.length,current:active.length?active.map(j=>j.name):null,steps};}};
+rpc.exports={configure(options){if(queue.length||active.length)throw new Error('probe already started');for(const key of ['concurrency','timeoutMs','attempts'])if(!Number.isFinite(options[key])||options[key]<=0)throw new Error('invalid '+key);settings=options;},enqueue(job,bytes){if(cancelled)throw new Error('probe cancelled');job.bytes=bytes;queue.push(job);return queue.length;},cancel(){queue=[];cancelled=true;},status(){return{queued:queue.length,current:active.length?active.map(j=>j.name):null,steps};}};
 send({ready:true,domain:domain.toString()});
