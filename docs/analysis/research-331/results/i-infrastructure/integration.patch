@@ -1,0 +1,15 @@
+--- a/app/business/registry.py
++++ b/app/business/registry.py
+@@ -44,6 +44,12 @@
+         handler = self._handlers.get(api)
+         if handler is None:
+             return 404, envelope.error(envelope.ERR_NOT_FOUND, f"no stub response: {api}")
++        # Defense for non-HTTP callers too; keep disabled endpoints in placeholder counts.
++        from app.business.admin_debug_services import denial
++
++        blocked = denial(api)
++        if blocked is not None:
++            return 200, blocked
+         try:
+             body = handler(params, session)
+             return 200, body

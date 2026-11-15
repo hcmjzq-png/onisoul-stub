@@ -1,0 +1,63 @@
+{
+  "access_date": "2026-11-15",
+  "scope": "MySQL infrastructure only; no gameplay rules, Wiki constants or original-server claims",
+  "game_region_period": "Not applicable to database semantics; client cross-check targets 2014-07-12 international Chinese PC package",
+  "implementation_policy": "compatibility-policy",
+  "sources": [
+    {
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html",
+      "title": "MySQL 8.4 Reference Manual: Locking Reads",
+      "publication_date": "unknown; version 8.4 manual",
+      "access": "full text readable",
+      "nature": "official database documentation",
+      "summary": "FOR UPDATE locks matching index records until commit/rollback; locking reads require a transaction. SKIP LOCKED can give an inconsistent view.",
+      "client_cross_check": "WebApiClient.cs:190-216,255-275 retries requests; durable atomic state required by existing E paired mutations",
+      "table_row_ids": [],
+      "conflicts": "No original game database design inferred. Shared record lock slots are this server's design.",
+      "confidence": "verified database mechanism, tested on MySQL 8.4.13",
+      "implementation": "app/state/transactions.py:atomic",
+      "tests": "tests/test_research331_i_mysql.py:test_01,test_02,test_09,test_13"
+    },
+    {
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/innodb-deadlocks-handling.html",
+      "title": "MySQL 8.4 Reference Manual: How to Minimize and Handle Deadlocks",
+      "publication_date": "unknown; version 8.4 manual",
+      "access": "full text readable",
+      "nature": "official database documentation",
+      "summary": "Use consistent operation order and short transactions; applications must handle deadlock rollback. This implementation reloads on explicit retry and never retries ambiguous connection failures.",
+      "client_cross_check": "Original wrappers do not supply a general operation nonce; WebApiClient.cs:190-216 network retries cannot authorize duplicate grants",
+      "table_row_ids": [],
+      "conflicts": "Old D integration prose suggested listing before player locks; all new adapters must use players then shared keys",
+      "confidence": "verified database mechanism; exact 1213 mapping present, actual test exercises 1205 timeout and reversed caller orders, not an induced 1213 deadlock",
+      "implementation": "app/db.py:retryable_transaction_error; app/state/transactions.py:atomic",
+      "tests": "tests/test_research331_i_mysql.py:test_01,test_09,test_14"
+    },
+    {
+      "url": "https://dev.mysql.com/doc/refman/8.4/en/implicit-commit.html",
+      "title": "MySQL 8.4 Reference Manual: Statements That Cause an Implicit Commit",
+      "publication_date": "unknown; version 8.4 manual",
+      "access": "full text readable",
+      "nature": "official database documentation",
+      "summary": "DDL including CREATE/ALTER TABLE and CREATE DATABASE implicitly commits. Run schema/migration before gameplay transactions, never inside a unit of work.",
+      "client_cross_check": "No client/table rule applies to deployment DDL",
+      "table_row_ids": [],
+      "conflicts": "None; no runtime schema mutation introduced",
+      "confidence": "verified database mechanism",
+      "implementation": "db/migrations/research331_i_shared_records.sql; app/db.py:connection",
+      "tests": "tests/test_db.py; tests/test_research331_i_mysql.py:test_07"
+    },
+    {
+      "url": "https://dev.mysql.com/downloads/mysql/8.4.html?os=3",
+      "title": "MySQL Community Server Windows ZIP download",
+      "publication_date": "unknown; retrieved listing offers 8.4.13",
+      "access": "listing readable; binary downloaded using HTTPS CLI after web binary fetch unsupported",
+      "nature": "official test runtime distribution",
+      "artifact": "mysql-8.4.13-winx64.zip",
+      "download_url": "https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.13-winx64.zip",
+      "md5": "7b94489d5524dea9b27097068bea25a8",
+      "summary": "Downloaded ZIP checksum matched official listing; initialized a separate local datadir, no service install or production access",
+      "version_limit": "No claim that production has the same MySQL version",
+      "tests": "mysql-validation.json"
+    }
+  ]
+}

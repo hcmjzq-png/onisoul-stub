@@ -5,9 +5,25 @@
 from __future__ import annotations
 
 import contextlib
+from contextvars import ContextVar
 from typing import Iterator
 
 from app import config, paths
+
+_active_connection: ContextVar[bool] = ContextVar("oni_database_transaction", default=False)
+
+
+def retryable_transaction_error(exc: BaseException) -> bool:
+    """Only a known InnoDB rollback/lock timeout is safe to retry as a whole.
+
+    Connection loss (including loss during COMMIT) has an unknown outcome and
+    must never be transparently replayed.
+    """
+    try:
+        from pymysql.err import OperationalError
+    except ImportError:
+        return False
+    return isinstance(exc, OperationalError) and exc.args[0] in (1205, 1213)
 
 
 def _connect(*, select_database: bool = True):
@@ -37,16 +53,22 @@ def _connect(*, select_database: bool = True):
 
 @contextlib.contextmanager
 def connection(*, select_database: bool = True) -> Iterator:
-    """事务连接：正常退出提交，异常回滚，最后关闭。"""
+    """One transaction; nested independent commits in the same context are forbidden."""
+    if _active_connection.get():
+        raise RuntimeError("nested database transaction; use the current unit of work")
     con = _connect(select_database=select_database)
+    token = _active_connection.set(True)
     try:
         yield con
         con.commit()
-    except Exception:
+    except BaseException:
         con.rollback()
         raise
     finally:
-        con.close()
+        try:
+            con.close()
+        finally:
+            _active_connection.reset(token)
 
 
 def init_schema(schema_path: str | None = None) -> None:
