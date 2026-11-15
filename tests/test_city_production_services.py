@@ -24,7 +24,8 @@ class CityProductionTest(unittest.TestCase):
         self.service = GameplayService(catalog=self.catalog, load_state=self.states.load,
                                        save_state=self.states.save, session_store=self.sessions)
         self.registry = self.service.register(Registry()).register_contract_defaults()
-        self.group = CityProductionServices(self.service)
+        # Test-only subcity provider. Production has no such provider and stays closed.
+        self.group = CityProductionServices(self.service, subcity_enabled=lambda player: True)
         self.group.register(self.registry)
         self.session, _ = self.service._issue_login("group-a-isolated")
         self.service.create_player({"username": "group-a", "countryId": "country01",
@@ -35,8 +36,7 @@ class CityProductionTest(unittest.TestCase):
                           for i in (1, 2)}
         p["occupiedGrids"] = {}
         p["resources"]["gold"]["amount"] = 100
-        p["backgroundOwnership"] = {"nearGround": ["item13_0000004", "item13_0000005"],
-                                    "farGround": ["item14_1000048", "item14_1000049"]}
+        p["items"].update({code: 1 for code in ("item13_0000004", "item13_0000005", "item14_1000048", "item14_1000049")})
         self.save(p)
         self.call("politic/map/getBackgrounds")  # settle existing derived counters
 
@@ -128,36 +128,44 @@ class CityProductionTest(unittest.TestCase):
         result = self.call("politic/map/getBackgrounds")
         self.assertEqual(result["nearGround"], {"item13_0000004": {}, "item13_0000005": {}})
         self.assertEqual(self.saved(), before)
-        params = dict(mapId=0, nearGround="item13_0000005", farGround="item14_1000049")
+        params = dict(mapId=1, nearGround="item13_0000005", farGround="item14_1000049")
         self.assertTrue(self.call("politic/map/setBackground", **params)["succeeded"])
         after = self.saved()
         self.call("politic/map/setBackground", **params)
         self.assertEqual(self.saved(), after)
         self.session, _ = self.service._issue_login("group-a-isolated")
-        self.assertEqual(self.group.selected_background(self.saved()), {k: v for k, v in params.items() if k != "mapId"})
-        self.assertEqual(self.saved()["backgroundOwnership"], before["backgroundOwnership"])
+        self.assertEqual(self.group.selected_background(self.saved(), 1), {k: v for k, v in params.items() if k != "mapId"})
+        self.assertEqual(self.group.selected_background(self.saved(), 0), {})
+        self.assertNotIn('0', self.saved()['mapBackgrounds'])
+        self.assertEqual(self.saved()["items"], before["items"])
         self.assertEqual(self.saved()["resources"], before["resources"])
 
-    def test_background_invalid_category_unowned_submap_and_empty_rollback(self):
-        good = dict(mapId=0, nearGround="item13_0000004", farGround="item14_1000048")
-        for bad in ({"mapId": 1}, {"mapId": True}, {"nearGround": "item14_1000048"},
+    def test_background_invalid_category_unowned_mainmap_and_empty_rollback(self):
+        good = dict(mapId=1, nearGround="item13_0000004", farGround="item14_1000048")
+        for bad in ({"mapId": 0}, {"mapId": True}, {"nearGround": "item14_1000048"},
                     {"farGround": "unknown"}, {"nearGround": []}):
             self.failed("politic/map/setBackground", **(good | bad))
-        p = self.saved(); p["backgroundOwnership"]["nearGround"] = []; self.save(p)
+        p = self.saved(); p['items'].pop('item13_0000004'); p['items'].pop('item13_0000005'); self.save(p)
         self.failed("politic/map/getBackgrounds")
         self.failed("politic/map/setBackground", **good)
-        del p["backgroundOwnership"]; self.save(p)
+        p['backgroundOwnership'] = {'nearGround': ['item13_0000004']}; self.save(p)
         self.failed("politic/map/getBackgrounds")
 
+    def test_subcity_provider_is_required_and_cannot_be_forged_in_request(self):
+        for gate in (None, lambda player: False):
+            self.group.subcity_enabled = gate
+            self.failed('politic/map/getBackgrounds', isEnable=True, mapId=1)
+            self.failed('politic/map/setBackground', mapId=1, nearGround='item13_0000004', farGround='item14_1000048')
+
     def test_background_conflict_and_concurrent_pairs_are_atomic(self):
-        params = dict(mapId=0, nearGround="item13_0000004", farGround="item14_1000048")
+        params = dict(mapId=1, nearGround="item13_0000004", farGround="item14_1000048")
         with patch.object(self.service, "save_state", side_effect=state.StateConflictError("synthetic revision conflict")):
             self.failed("politic/map/setBackground", **params)
-        pairs = [params, dict(mapId=0, nearGround="item13_0000005", farGround="item14_1000049")]
+        pairs = [params, dict(mapId=1, nearGround="item13_0000005", farGround="item14_1000049")]
         with ThreadPoolExecutor(max_workers=2) as pool:
             results = list(pool.map(lambda p: self.call("politic/map/setBackground", **p), pairs))
         self.assertTrue(all(r["succeeded"] for r in results))
-        self.assertIn(self.group.selected_background(self.saved()), [{k: v for k, v in p.items() if k != "mapId"} for p in pairs])
+        self.assertIn(self.group.selected_background(self.saved(), 1), [{k: v for k, v in p.items() if k != "mapId"} for p in pairs])
 
     def test_authentication_and_cross_account_ownership(self):
         for api in ("politic/shop/sellBuildings", "politic/map/getBackgrounds", "politic/map/setBackground"):

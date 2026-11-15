@@ -214,6 +214,8 @@ class AccountProgressTrophyTest(unittest.TestCase):
         h_catalog = TableCatalog(tables, tables / 'table_list.tsv')
         self.trophy_tables = {entry.root_key: h_catalog.load(entry.root_key) for entry in h_catalog.entries}
         self.service.catalog.load = lambda name: self.trophy_tables[name] if name in self.trophy_tables else original_load(name)
+        # Exercise the normal mounted whitelist, not explicit component registration.
+        self.registry = self.service.register(Registry()).register_contract_defaults()
 
     def level(self, level=4):
         player = self.saved()
@@ -242,7 +244,7 @@ class AccountProgressTrophyTest(unittest.TestCase):
         self.assertEqual(result['rewards'], {'item11_0000101':100000.0,'item08_0102701':6.0})
         self.assertEqual(set(result) - {'succeeded','now'}, {'rewards','characters','equips','progress','toInBox'})
         self.assertEqual(result['toInBox'], {})
-        self.assertEqual(result['progress']['playerLevel'], {'level':2.0,'status':'accept','window':0.0})
+        self.assertEqual(result['progress']['playerLevel'], {'level':1.0,'status':'lock','window':0.0})
         self.reload()
         self.session, _ = self.service._issue_login('H-account')
         player = self.saved()
@@ -261,7 +263,7 @@ class AccountProgressTrophyTest(unittest.TestCase):
     def test_retries_never_advance_to_next_tier_even_after_query_or_level_up(self):
         self.level(5)
         self.assertTrue(self.claim()['succeeded'])
-        self.assertEqual(self.progress()['playerLevel']['status'], 'complete')
+        self.assertEqual(self.progress()['playerLevel']['status'], 'lock')
         before = self.saved()
         for _ in range(3):
             self.assertIn('errorReason', self.claim())
@@ -367,12 +369,23 @@ class AccountProgressTrophyTest(unittest.TestCase):
             self.assertIn('errorReason',self.claim())
             self.assertEqual(self.saved(),before)
 
-    def test_second_stage_eligibility_does_not_fabricate_received_status(self):
+    def test_second_stage_is_not_advertised_or_marked_received(self):
         self.level(5)
         self.claim()
-        self.assertEqual(self.progress(),{'playerLevel':{'level':2.0,'status':'complete','window':0.0}})
+        self.assertEqual(self.progress(),{'playerLevel':{'level':1.0,'status':'lock','window':0.0}})
         self.assertIn('errorReason',self.claim())
-        self.assertEqual(self.progress()['playerLevel']['level'],2.0)
+        self.assertEqual(self.progress()['playerLevel']['level'],1.0)
+
+    def test_malformed_ledger_cannot_grant_or_acknowledge(self):
+        self.level()
+        for bad in (None, [], {'trophyClaims': []}, {'levelTrophyNoticeSeen': 'false'}):
+            player = self.saved()
+            player['accountProgress'] = bad
+            self.states.save(player, self.session['playerId'])
+            before = self.saved()
+            for api in ('trophy/getTrophyProgress', 'trophy/completeTrophy', 'trophy/messageWindowTrophy'):
+                self.assertIn('migration required', self.call(api, access='mypage', category='playerLevel')['errorReason'])
+            self.assertEqual(self.saved(), before)
 
     def test_two_service_instances_use_storage_cas_for_exactly_one_claim(self):
         import copy

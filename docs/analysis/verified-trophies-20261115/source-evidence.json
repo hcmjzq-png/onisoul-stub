@@ -1,0 +1,37 @@
+{
+  "source": "original installer decompilation; not patched live client",
+  "files": [
+    {
+      "file": "mypageCastleTownItem.cs",
+      "sha256": "295a6a1e2763cf9cca91dea8f0b4dbc98416ae5f76855c1b3b64897d4b99fc73"
+    },
+    {
+      "file": "mypageBgSelectWindow.cs",
+      "sha256": "2a6566b2fe2bf68e3df2e979c268369f12853b04fb419affeed8180a09691676"
+    },
+    {
+      "file": "mypageTrophyItem.cs",
+      "sha256": "baf2915ace91422c1f6c10e1cfe82dcbf45008caecafc78593e6404549fa1191"
+    },
+    {
+      "file": "TrophyWindow.cs",
+      "sha256": "968db0c18a7db01c412586db83af5fd9ef5e28798ff4d8ffd35d22ff1ea6abbc"
+    },
+    {
+      "file": "mypageTrophyUpdate.cs",
+      "sha256": "9194d403626f3d313e879b25c34735bc37512a9008cc8d2f8944ae6a6bb10b61"
+    },
+    {
+      "file": "mypageTrophyReward.cs",
+      "sha256": "ca646d8e4b049e63e44d790d6afc2458959e6f9c3894378311b1267d021a3ae3"
+    },
+    {
+      "file": "WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    {
+      "file": "UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac"
+    }
+  ]
+}

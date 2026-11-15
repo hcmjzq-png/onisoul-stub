@@ -166,7 +166,8 @@ class EconomyShopServicesTest(unittest.TestCase):
         catalog.load = load
         self.service = GameplayService(catalog=catalog, load_state=self.states.load,
             save_state=self.states.save, session_store=self.sessions)
-        self.shop = EconomyShopServices(self.service, static_background_sales=True, national_context=self.gate)
+        self.shop = EconomyShopServices(self.service, static_background_sales=True,
+                                       subcity_enabled=lambda player: True, national_context=self.gate)
         self.registry = Registry()
         self.shop.register(self.registry)
 
@@ -225,6 +226,29 @@ class EconomyShopServicesTest(unittest.TestCase):
                        self.call("getShopItemsFromNationalPower")):
             self.assertIn("no stub response", result["errorReason"])
         self.assertEqual(self.saved(), before)
+
+    def test_background_purchase_requires_authoritative_subcity(self):
+        before = self.saved()
+        for gate in (None, lambda player: False):
+            self.shop.subcity_enabled = gate
+            self.assertIn('no stub response', self.background(mapId=1, isEnable=True)['errorReason'])
+            self.assertIn('no stub response', self.call('getBackgroundItems', category='near')['errorReason'])
+            self.assertEqual(self.saved(), before)
+
+    def test_purchased_backgrounds_feed_subcity_selector_without_ownership_grant(self):
+        from app.business.city_production_services import CityProductionServices
+        selector = CityProductionServices(self.service, subcity_enabled=lambda player: True)
+        selector.register(self.registry)
+        self.background()
+        self.background(shopItemId='bgstore_11_0001_0001')
+        body = self.registry.dispatch('politic/map/getBackgrounds', {}, self.session)[1]
+        self.assertEqual(body['nearGround'], {'item13_0000004': {}})
+        self.assertEqual(body['farGround'], {'item14_1000048': {}})
+        result = self.registry.dispatch('politic/map/setBackground', dict(mapId=1,
+            nearGround='item13_0000004', farGround='item14_1000048'), self.session)[1]
+        self.assertTrue(result['succeeded'])
+        self.assertEqual(self.saved()['resources']['credit']['amount'], 164)
+        self.assertNotIn('0', self.saved()['mapBackgrounds'])
 
     def test_queries_do_not_write_and_failure_types_stay_distinct(self):
         before = self.saved()

@@ -4,3 +4,10 @@ item04.json	item04	ItemsTableAccessor	draft reward items to draft ids
 reward01_politic.json	reward01_politic	RewardTableAccessor	politic mission clear rewards
 reward99_country.json	reward99_country	RewardTableAccessor	country_*_self reward resolution
 reward14_lesson.json	reward14_lesson	RewardTableAccessor	lesson rewards; installer TextAsset verified 2026-11-15; takeLesson partially implemented; see remaining-services-20261115
+item08.json	item08	ItemsTableAccessor	original jewel definitions for first playerLevel trophy; verified TextAsset
+item13.json	item13	ItemsTableAccessor	original near background definitions; subcity workflow remains unmounted
+item14.json	item14	ItemsTableAccessor	original far background definitions; subcity workflow remains unmounted
+reward06_trophy.json	reward06_trophy	RewardTableAccessor	original trophy reward groups; first playerLevel reward only
+skillRefreshG2.json	skillRefreshG2		original G2 refresh candidates; execution rules still unresolved
+skillRefreshG4.json	skillRefreshG4		original G4 refresh candidates; execution rules still unresolved
+skillRefreshG6.json	skillRefreshG6		original G6 refresh candidates; execution rules still unresolved

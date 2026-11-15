@@ -17,6 +17,7 @@ MOUNTED = {
     "politic/shop/sellBuildings", "deck/sellCharacters", "deck/sellEquips",
     "politic/lottery/getSouls", "common/getPlayerCogid", "plugin/getPluginData",
     "plugin/getPluginLog", "plugin/addPluginLog",
+    "trophy/getTrophyProgress", "trophy/completeTrophy", "trophy/messageWindowTrophy",
 }
 HELD = {
     "politic/map/getBackgrounds", "politic/map/setBackground", "deck/transferStoreCharacters",
@@ -31,8 +32,7 @@ HELD = {
     "politic/shop/getBackgroundItems", "politic/shop/buyBackgroundItem",
     "politic/shop/getShopItemsFromNationalPower", "politic/shop/buyShopItemFromNationalPower",
     "inbox/getParcels", "inbox/resolveParcels", "siege/getPairings",
-    "strategy/getStrategyWinLossRecords", "trophy/getTrophyProgress",
-    "trophy/completeTrophy", "trophy/messageWindowTrophy",
+    "strategy/getStrategyWinLossRecords",
 }
 
 
@@ -79,7 +79,7 @@ class ParallelIntegrationTest(unittest.TestCase):
         for api in HELD:
             self.assertEqual(self.registry._handlers[api].__module__, "app.business.placeholders", api)
         self.assertEqual(sum(h.__module__ == "app.business.placeholders"
-                             for h in self.registry._handlers.values()), 334)
+                             for h in self.registry._handlers.values()), 331)
 
     def test_shared_transactions_survive_concurrent_calls_and_relogin(self):
         before = self.saved()

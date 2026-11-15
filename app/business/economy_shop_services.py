@@ -1,8 +1,8 @@
 """Uninstalled static background sales and one-per-period national draft sales.
 
 Policy switches/context are explicit simulator choices, not original schedules.
-Background purchases use player.items; A still reads backgroundOwnership.
-An ownership adapter/migration and mapId contract are required before mounting.
+Background purchases and selection share player.items. Original UI requires an
+enabled subcity (mapId=1); its authoritative provider is required before mounting.
 National periods/power must be supplied by an authoritative, locked context.
 No default open period, fabricated national score, or multi-account write.
 """
@@ -29,9 +29,11 @@ class NationalShopContext:
 
 class EconomyShopServices(PlayerServices):
     def __init__(self, service: Any, *, static_background_sales: bool = False,
+                 subcity_enabled: Callable[[dict], bool] | None = None,
                  national_context: Callable[[str], ContextManager[NationalShopContext]] | None = None) -> None:
         super().__init__(service)
         self.static_background_sales = static_background_sales
+        self.subcity_enabled = subcity_enabled
         self.national_context = national_context
 
     def register(self, registry: Any) -> None:
@@ -54,6 +56,8 @@ class EconomyShopServices(PlayerServices):
             if not player["entity"].get("created"):
                 raise ValueError("created player required")
             country = player["entity"]["country"]
+            if not national and (self.subcity_enabled is None or self.subcity_enabled(player) is not True):
+                raise ValueError("no stub response: verified subcity state is not integrated or locked")
             if national and self.national_context is None:
                 raise ValueError("no stub response: national shop context is not integrated")
             context = self.national_context(country) if national else nullcontext(None)
@@ -113,8 +117,7 @@ class EconomyShopServices(PlayerServices):
     def buy_background(self, player: dict, params: dict, gate: Any = None) -> dict:
         row = self.row("shop_item_bg", params.get("shopItemId"))
         item = self.background_goods(row)[0]
-        # One owned item. A's selection still needs an ownership adapter.
-        # Retry never charges twice.
+        # Shared with A's selector; retry never charges twice.
         if integer(player["items"].get(item, 0)) == 0:
             price = integer(row["credit"], 1)
             balance = integer(player["resources"]["credit"]["amount"])
