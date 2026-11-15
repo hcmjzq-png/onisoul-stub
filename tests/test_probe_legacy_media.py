@@ -54,18 +54,37 @@ class PreflightWindowTest(unittest.TestCase):
         executor.return_value.submit.side_effect = futures
         checks = HttpPreflight([{}] * 100, 2, attempts=5, timeout=60)
         self.addCleanup(checks.close)
-        self.assertFalse(checks.ready(0))
+        self.assertIsNone(checks.ready())
         self.assertEqual(executor.return_value.submit.call_count, 2)
         futures[0].set_result(1)
         for _ in range(20):
-            self.assertTrue(checks.ready(0))
+            self.assertEqual(checks.ready(), 0)
         self.assertEqual(executor.return_value.submit.call_count, 2)
         self.assertEqual(checks.take(0), 1)
-        self.assertFalse(checks.ready(1))
+        self.assertIsNone(checks.ready())
         self.assertEqual(executor.return_value.submit.call_count, 3)
         futures[1].set_exception(ValueError('HTTP digest mismatch'))
         with self.assertRaisesRegex(ValueError, 'digest mismatch'):
             checks.take(1)
+
+    @patch('tools.probe_legacy_media.ThreadPoolExecutor')
+    def test_one_stalled_url_does_not_block_completed_urls_or_grow_window(self, executor):
+        futures = [Future() for _ in range(5)]
+        executor.return_value.submit.side_effect = futures
+        checks = HttpPreflight([{}] * 5, 2, attempts=5, timeout=10)
+        self.addCleanup(checks.close)
+        self.assertIsNone(checks.ready())
+        futures[1].set_result(0)
+        self.assertEqual(checks.ready(), 1)
+        self.assertEqual(checks.take(1), 0)
+        self.assertIsNone(checks.ready())
+        self.assertEqual(executor.return_value.submit.call_count, 3)
+        futures[2].set_result(0)
+        self.assertEqual(checks.ready(), 2)
+        checks.take(2)
+        self.assertFalse(futures[0].done())
+        self.assertIsNone(checks.ready())
+        self.assertEqual(len(checks.pending), 2)
 
     @unittest.skipUnless(shutil.which('node'), 'Node required for native retry policy tests')
     def test_native_transport_retries_release_requests_and_remain_bounded(self):

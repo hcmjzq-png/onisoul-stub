@@ -24,7 +24,7 @@ ENGINE_SHA256 = '0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb
 
 
 class HttpPreflight:
-    """Keep at most one small window ahead of native submissions, even if stalled."""
+    """Bound preflight lookahead and let completed URLs pass a stalled download."""
 
     def __init__(self, proofs: list[dict], workers: int, *, attempts: int, timeout: float):
         self.proofs = proofs
@@ -35,12 +35,12 @@ class HttpPreflight:
         self.pending = {}
         self.next_index = 0
 
-    def ready(self, index: int) -> bool:
-        while self.next_index < min(index + self.window, len(self.proofs)):
+    def ready(self) -> int | None:
+        while len(self.pending) < self.window and self.next_index < len(self.proofs):
             row = self.proofs[self.next_index]
             self.pending[self.next_index] = self.executor.submit(self.check, row)
             self.next_index += 1
-        return self.pending[index].done()
+        return next((index for index, check in self.pending.items() if check.done()), None)
 
     def check(self, row: dict) -> int | None:
         if not row.get('url'):
@@ -96,7 +96,8 @@ def main() -> None:
     parser.add_argument('--queue-size', type=int, default=4, help='Bound queued plus active bundles')
     parser.add_argument('--native-concurrency', type=int, default=2)
     parser.add_argument('--http-workers', type=int, default=2, help='Bound preflight downloads and lookahead')
-    parser.add_argument('--transfer-timeout', type=float, default=60, help='Seconds per native download attempt / HTTP socket operation')
+    parser.add_argument('--transfer-timeout', type=float, default=60, help='Seconds per native download attempt')
+    parser.add_argument('--http-timeout', type=float, default=10, help='Seconds per HTTP preflight socket operation')
     parser.add_argument('--http-attempts', type=int, default=5)
     parser.add_argument('--native-attempts', type=int, default=5)
     args = parser.parse_args()
@@ -104,7 +105,7 @@ def main() -> None:
         parser.error('output already exists')
     proofs = json.loads(args.manifest.read_text(encoding='utf-8'))['converted']
     if min(args.queue_size, args.native_concurrency, args.http_workers, args.timeout,
-           args.transfer_timeout, args.http_attempts, args.native_attempts) <= 0:
+           args.transfer_timeout, args.http_timeout, args.http_attempts, args.native_attempts) <= 0:
         parser.error('queue, concurrency, timeouts and attempt counts must be positive')
     ids = [row.get('id', str(index)) for index, row in enumerate(proofs)]
     if len(set(ids)) != len(ids):
@@ -119,10 +120,11 @@ def main() -> None:
     session = frida.attach(args.pid)
     events = []
     status = None
+    progress = dict(total=len(proofs), submitted=0, finished=0, elapsed_seconds=0)
     prefetch = None
     if any(row.get('url') for row in proofs):
         prefetch = HttpPreflight(proofs, args.http_workers,
-                                 attempts=args.http_attempts, timeout=args.transfer_timeout)
+                                 attempts=args.http_attempts, timeout=args.http_timeout)
     native_source = Path(__file__).with_suffix('.js').read_text(encoding='utf-8')
     settings = dict(concurrency=args.native_concurrency, timeoutMs=args.transfer_timeout * 1000,
                     attempts=args.native_attempts)
@@ -132,7 +134,9 @@ def main() -> None:
         temporary.write_text(json.dumps(dict(pid=args.pid, engine_sha256=ENGINE_SHA256,
             manifest_sha256=hashlib.sha256(args.manifest.read_bytes()).hexdigest(),
             probe_sha256=hashlib.sha256(native_source.encode()).hexdigest(),
-            settings=settings, status=status, events=events), indent=2), encoding='utf-8')
+            http_settings=dict(workers=args.http_workers, attempts=args.http_attempts,
+                               socket_timeout=args.http_timeout),
+            settings=settings, progress=progress, status=status, events=events), indent=2), encoding='utf-8')
         temporary.replace(args.output)
     try:
         lookup = session.create_script(
@@ -153,26 +157,32 @@ def main() -> None:
             start = time.monotonic()
             submitted = 0
             last_saved = 0
+            last_saved_at = start
             while time.monotonic() - start < args.timeout:
                 status = script.exports_sync.status()
+                index = None
                 if (submitted < len(proofs) and
-                        status['queued'] + len(status['current'] or []) < args.queue_size and
-                        (not prefetch or prefetch.ready(submitted))):
-                    row = proofs[submitted]
-                    job = dict(id=row.get('id', str(submitted)), name=row['name'],
+                        status['queued'] + len(status['current'] or []) < args.queue_size):
+                    index = prefetch.ready() if prefetch else submitted
+                if index is not None:
+                    row = proofs[index]
+                    job = dict(id=row.get('id', str(index)), name=row['name'],
                         output_sha256=row['output_sha256'], expected_bytes=row['output_bytes'],
                         url=row.get('url'), play=row['name'] in args.play)
                     if prefetch:
-                        retries = prefetch.take(submitted)
+                        retries = prefetch.take(index)
                         if job['url']:
                             job.update(http_preflight_sha256=row['output_sha256'], http_preflight_retries=retries)
                     script.exports_sync.enqueue(job, b'' if job['url'] else (args.root / row['output']).read_bytes())
                     submitted += 1
                     continue
                 finished = sum('result' in event or 'error' in event for event in events)
-                if finished >= last_saved + 100:
+                progress.update(submitted=submitted, finished=finished,
+                                elapsed_seconds=round(time.monotonic() - start, 3))
+                if finished >= last_saved + 100 or time.monotonic() - last_saved_at >= 10:
                     save()
                     last_saved = finished
+                    last_saved_at = time.monotonic()
                     print(f'NATIVE {finished}/{len(proofs)}', flush=True)
                 if submitted == len(proofs) and not status['queued'] and not status['current']:
                     break
