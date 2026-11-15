@@ -5,6 +5,7 @@ rows from an authoritative producer; absence of rows is not an empty campaign.
 """
 from __future__ import annotations
 
+import struct
 from typing import Any
 
 from app.business.player_services import integer
@@ -26,6 +27,16 @@ def _indexed(value: Any, counts: tuple[int, ...]) -> dict:
     value = _map(value)
     if len(value) not in counts or set(value) != {str(i) for i in range(len(value))}:
         raise ValueError("campaign country slots are incomplete")
+    return value
+
+
+def _client_rate(value: Any) -> int:
+    # HTMLStrategyMatchMediator_History.cs:237-239 -> HashAccessFuncs.getInt:
+    # parse float32, then cast to Int32. Preserve authoritative values or fail;
+    # this is a projection support boundary, not an original rating cap.
+    value = integer(value, minimum=-2147483648)
+    if struct.unpack("!f", struct.pack("!f", value))[0] != value:
+        raise ValueError("campaign rate cannot be represented by client Int32/float32")
     return value
 
 
@@ -75,7 +86,7 @@ def strategy_history(rows: list[dict]) -> dict:
                     country = _map(country)
                     match[side][slot] = {
                         "countryId": _text(country.get("countryId")),
-                        "rate": integer(country.get("rate"), minimum=-2147483648),
+                        "rate": _client_rate(country.get("rate")),
                     }
             projected[key] = match
         records[str(index)] = {"openTime": opened, "decisions": projected}

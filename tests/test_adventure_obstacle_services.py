@@ -74,7 +74,8 @@ class ObstacleTest(unittest.TestCase):
         self.reload()
         self.session, _ = self.service._issue_login("B-obstacle-only")
         retry = self.call()
-        self.assertEqual(retry["uses"], result["uses"])
+        self.assertIn("already cleared", retry["errorReason"])
+        self.assertFalse(set(retry.get("uses", {})) & {"gold", "food", "wood", "iron"})
         self.assertEqual(self.saved(), saved)
 
     def test_insufficient_and_exact_balance(self):
@@ -91,7 +92,8 @@ class ObstacleTest(unittest.TestCase):
     def test_parallel_requests_debit_once(self):
         with ThreadPoolExecutor(max_workers=8) as pool:
             results = list(pool.map(lambda _: self.call(), range(32)))
-        self.assertTrue(all(result["isSuccess"] for result in results))
+        self.assertEqual(sum(result.get("isSuccess") is True and "errorReason" not in result
+                             for result in results), 1)
         self.assertEqual(self.saved()["resources"]["gold"]["amount"], 500)
         self.assertEqual(len(self.saved()["adventureV1"]["obstacleReceipts"]), 1)
 
@@ -203,8 +205,18 @@ class ObstacleTest(unittest.TestCase):
             results = [f.result() for f in futures]
         self.assertEqual(sum("errorReason" not in body for _, body in results), 1)
         self.assertEqual(self.saved()["resources"]["gold"]["amount"], 500)
-        self.assertTrue(self.call()["isSuccess"])
+        self.assertIn("already cleared", self.call()["errorReason"])
         self.assertEqual(self.saved()["resources"]["gold"]["amount"], 500)
+
+    def test_repeated_callbacks_do_not_reapply_the_client_resource_delta(self):
+        display = self.saved()["resources"]["gold"]["amount"]
+        for _ in range(2):
+            result = self.call()
+            # GameRestarter filters errorReason before QuestScriptCommand runs.
+            if "errorReason" not in result and result.get("isSuccess"):
+                display -= result["uses"]["gold"]
+        self.assertEqual(display, 500)
+        self.assertEqual(display, self.saved()["resources"]["gold"]["amount"])
 
 
 if __name__ == "__main__":

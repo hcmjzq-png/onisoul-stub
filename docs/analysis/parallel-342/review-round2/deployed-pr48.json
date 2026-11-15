@@ -1,0 +1,25 @@
+{
+  "head": "9defa01de1c7fc78f2b22e7eac5efbb4138c5f50",
+  "backup": "/var/backups/onisoul/review48-20261115-9defa01-retry",
+  "mission_overlay_preserved": true,
+  "proxy_not_restarted": true,
+  "tables_unchanged": true,
+  "baseline_http_smoke": "passed",
+  "review48_http_smoke": "passed",
+  "server_tests": {
+    "run": 323,
+    "failed": 0,
+    "skipped": 3,
+    "passed": 320
+  },
+  "skipped_reason": "optional static IL dependencies unavailable; local review ran all 323",
+  "registered": 402,
+  "dedicated_handlers": 68,
+  "remaining_placeholders": 334,
+  "existing_player_count": 6,
+  "existing_player_states_equal": true,
+  "unity_client_acceptance": "pending",
+  "newly_mounted_endpoints": 8,
+  "second_round_A_H_changes_included": false,
+  "scope": "limited reviewed subset; no new snapshot providers, economic rules or missing assets fabricated"
+}

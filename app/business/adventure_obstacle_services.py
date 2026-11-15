@@ -148,7 +148,12 @@ class AdventureObstacleServices(AdventureServices):
             if receipt.get("digest") != digest or event["status"] != "cleared":
                 # Request has no encounter id. Never charge a replacement on an old retry.
                 raise ValueError("no stub response: obstacle area already resolved; replacement unsupported")
-            return copy.deepcopy(mapping(receipt.get("response")))
+            # QuestScriptCommand applies uses as a resource delta. Replaying a
+            # successful payload after re-login deducts the display a second
+            # time even though the save was charged only once. No request nonce
+            # distinguishes a lost response from a second callback: fail without
+            # a delta; the client must reload authoritative progress/resources.
+            raise ValueError("no stub response: obstacle already cleared; reload authoritative state")
         if event["status"] != "pending":
             raise ValueError("cleared obstacle has no settlement receipt")
         last = mapping(mapping(mapping(saved.get("progress")).get(kind)).get("last"))

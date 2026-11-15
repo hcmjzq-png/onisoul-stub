@@ -1,0 +1,78 @@
+{
+  "baseline": "9defa01de1c7fc78f2b22e7eac5efbb4138c5f50",
+  "source_prs": {
+    "A": {
+      "pr": 40,
+      "previous_review_head": "e115f03a86242398133b63f34b1d8952e8cfa6a8",
+      "reviewed_head": "ce74dbee0f88e62ed085ecab3cdb3a2b6656d101"
+    },
+    "B": {
+      "pr": 43,
+      "previous_review_head": "850de39d554b734a8b5c936980a066ed60066237",
+      "reviewed_head": "d3b7357e564ee346d09103d2281d7cff273eef3e"
+    },
+    "C": {
+      "pr": 44,
+      "previous_review_head": "edf6330e9540d225ed7939b4c735c43f480bfea8",
+      "reviewed_head": "7e697d7e73f3d8266d331688b8272a1e41fbd931"
+    },
+    "D": {
+      "pr": 41,
+      "previous_review_head": "18c928479759d802f22f18622eb0f6c4bdf2fdeb",
+      "reviewed_head": "b90e5f2c055893b99cd7167194a829de96a63358"
+    },
+    "E": {
+      "pr": 42,
+      "previous_review_head": "e429f4dc7eaa152e22185894e3fee5a36716cea0",
+      "reviewed_head": "d0180a9b4e097dc132d6ff803d4bc6211c734df4"
+    },
+    "F": {
+      "pr": 47,
+      "previous_review_head": "e4ee9fe744742c3bc0ba6ceed8eaa052d5753965",
+      "reviewed_head": "e4eda5e0c442dd778f75bc89c0a515ecfb53695a"
+    },
+    "G": {
+      "pr": 45,
+      "previous_review_head": "10aa7a6f91d2f1cf001af62157a726e367e37184",
+      "reviewed_head": "67f051a1ce75e68df4a80df33f06a74806f88f6d"
+    },
+    "H": {
+      "pr": 46,
+      "previous_review_head": "cb24a5c8b6609dc1a5e664cf04058c4bc47c9dbc",
+      "reviewed_head": "8131c71068491775b37d6765b54712b7ce5e8843"
+    }
+  },
+  "scope": {
+    "A_H_index_rows": 310,
+    "reserved_debug_admin": 32,
+    "new_public_candidate_endpoints": 13,
+    "new_internal_transaction_components": 1,
+    "newly_mounted": 0,
+    "dedicated": 68,
+    "placeholders": 334
+  },
+  "source_verification": {
+    "manifests": 14,
+    "path_references": 543,
+    "unique_local_files": 407,
+    "embedded_asset_records": 16,
+    "failures": []
+  },
+  "validation": {
+    "combined_before_review": 406,
+    "after_fixes": 408,
+    "failed": 0,
+    "skipped": 0,
+    "command": "python -W ignore::ResourceWarning -m unittest discover -s tests -q"
+  },
+  "resolved_merge_conflicts": [
+    "app/business/card_growth_services.py",
+    "app/business/account_progress_services.py"
+  ],
+  "production": {
+    "deployed_commit": "9defa01de1c7fc78f2b22e7eac5efbb4138c5f50",
+    "includes_round2": false,
+    "existing_players_unchanged": 6
+  },
+  "native_unity_acceptance": false
+}

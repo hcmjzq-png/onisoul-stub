@@ -175,6 +175,22 @@ class CampaignRecordQueriesTest(unittest.TestCase):
         self.assertNotIn("privateSettlementId", match)
         self.assertEqual(result["records"]["0"]["openTime"], 12)
 
+    def test_history_rate_preserves_client_float32_int32_value_or_fails(self):
+        api = "strategy/getStrategyWinLossRecords"
+        for value in (2**24 + 1, -(2**24 + 1), 2**31 - 1):
+            rows = self.history_rows()
+            rows[0]["decisions"]["match_01"]["a"]["0"]["rate"] = value
+            self.seed_records(api, rows)
+            before = self.states.load(self.player_id)
+            self.assertIn("cannot be represented", self.record_call(api)["errorReason"])
+            self.assertEqual(self.states.load(self.player_id), before)
+        for value in (2**24, 2**24 + 2, -2147483648):
+            rows = self.history_rows()
+            rows[0]["decisions"]["match_01"]["a"]["0"]["rate"] = value
+            self.seed_records(api, rows)
+            result = self.record_call(api)
+            self.assertEqual(result["records"]["0"]["decisions"]["match_01"]["a"]["0"]["rate"], value)
+
     def test_missing_incomplete_empty_and_expired_are_distinct(self):
         for api in ("siege/getPairings", "strategy/getStrategyWinLossRecords"):
             self.assertIn("no stub response", self.record_call(api)["errorReason"])

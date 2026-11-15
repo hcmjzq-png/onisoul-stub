@@ -1,7 +1,8 @@
 """Uninstalled static background sales and one-per-period national draft sales.
 
 Policy switches/context are explicit simulator choices, not original schedules.
-Backgrounds share player.items with A (no independent permanent-grant store).
+Background purchases use player.items; A still reads backgroundOwnership.
+An ownership adapter/migration and mapId contract are required before mounting.
 National periods/power must be supplied by an authoritative, locked context.
 No default open period, fabricated national score, or multi-account write.
 """
@@ -112,7 +113,8 @@ class EconomyShopServices(PlayerServices):
     def buy_background(self, player: dict, params: dict, gate: Any = None) -> dict:
         row = self.row("shop_item_bg", params.get("shopItemId"))
         item = self.background_goods(row)[0]
-        # One owned item, also used by A's selection. Retry never charges twice.
+        # One owned item. A's selection still needs an ownership adapter.
+        # Retry never charges twice.
         if integer(player["items"].get(item, 0)) == 0:
             price = integer(row["credit"], 1)
             balance = integer(player["resources"]["credit"]["amount"])
