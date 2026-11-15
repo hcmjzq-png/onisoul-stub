@@ -1,0 +1,306 @@
+{
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "scope": "F / 47 endpoints",
+  "sources": [
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E01",
+      "url": "https://www.4gamer.net/games/150/G015000/20120525074/",
+      "title": "官方宣传资料：天下分け目戦",
+      "published": "2012-05-25",
+      "region": "日服 PC，上市前",
+      "nature": "官方资料全文转载",
+      "access": "正文可读，重点段落255-259",
+      "summary": "东、西军在三个选出的战场交战。用于分类和三槽交叉核验，不证明2014运营排期与奖励。",
+      "client": [
+        "TurfWarBriefCache.cs:349-393",
+        "TurfWarWorldMap.cs:146-166",
+        "TurfWarInformation.cs:37-49"
+      ],
+      "table_rows": [
+        "turf_war_battlefield: battlefield01,battlefield02,battlefield03"
+      ],
+      "classification": "verified",
+      "confidence": "玩法对应高；规则版本有限",
+      "conflicts": "111行catalogue不是111个当期开场；早期介绍不能证明当前活动开启。",
+      "implementation": "war_campaigns_events.declare_turf_war / war_campaigns_commands.enroll_turf_war",
+      "tests": [
+        "test_selection_requires_entry_and_cannot_bypass_movement"
+      ]
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E02",
+      "url": "https://game.watch.impress.co.jp/docs/interview/523851.html",
+      "title": "47都道府県特色：杉浦一徳访谈",
+      "published": "2012-04-19",
+      "region": "日服 PC，开发中",
+      "nature": "开发者原始采访",
+      "access": "正文可读，273-285",
+      "summary": "开发者描述国家划分东／西军，与一门另外讨论。只支持术语与早期设计；随机分国、每月举办均未写为实现算法。",
+      "client": [
+        "WebApiClient.cs:2784-2789",
+        "TurfWarBriefCache.cs:379-393"
+      ],
+      "table_rows": [
+        "country_setting"
+      ],
+      "classification": "hypothesis",
+      "confidence": "原始访谈可靠；2014台服适用性未证",
+      "conflicts": "E06有自由选择阵营的描述；客户端请求无team。",
+      "implementation": "countryTeams显式运营输入为compatibility-policy，不宣称原算法",
+      "tests": [
+        "test_second_player_enrolls_from_own_country_and_has_no_first_player_field",
+        "test_no_default_schedule_allocation_or_historical_import"
+      ]
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E03",
+      "url": "https://www.games.idv.tw/news.php?nid=9540",
+      "title": "《鬼武者魂》攻城戰全面啟動，期間限定事件再開！",
+      "published": "2013-06-18",
+      "region": "国际中文版／台服 PC",
+      "nature": "台灣卡普空更新消息转载；原公告站已不可核验",
+      "access": "正文可读，20-23",
+      "summary": "当期6月21日至24日，开期满24小时日结；按国力排行配对。仅该期提及参与黄魂，不作为通用奖励。",
+      "client": [
+        "siegeBriefMenu.cs:90-185",
+        "siegeBriefMenuDesc.cs:setup",
+        "HTMLSiegeMediator.cs:61-118",
+        "vsSetting_Siege.cs:744-811",
+        "SiegeResultRenderer.cs:39-96"
+      ],
+      "table_rows": [
+        "siege_bet_rate: item11_0000201,item11_0000301,item11_0000401"
+      ],
+      "classification": "verified",
+      "confidence": "当期时序中高；具体匹配/奖励公式仍unsupported",
+      "conflicts": "不能从日期或24小时推出本服开期、零点日结、排名相邻算法或黄魂永久权益。",
+      "implementation": "无生产常量；lifecycle.md / siege保持未挂载",
+      "tests": []
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E04",
+      "url": "https://www.gamer.ne.jp/news/201308220014/",
+      "title": "鬼武者Soul 神楽奉納編 2013-08-22 更新",
+      "published": "2013-08-22",
+      "region": "日服 PC",
+      "nature": "卡普空更新资料转载",
+      "access": "正文可读，89-104",
+      "summary": "另一期攻城战列明三个连续日段和当期奖励；与台服事件应分开，不能混用日界线与奖励武将。",
+      "client": [
+        "siegeBriefMenuDesc.cs:setup",
+        "SiegeResultRenderer.cs:39-96"
+      ],
+      "table_rows": [],
+      "classification": "verified",
+      "confidence": "该期排期可靠；目标台服数值不适用",
+      "conflicts": "日服当地18时与台服16时分属不同活动，不转换成通用时区公式。",
+      "implementation": "仅版本辨析，siege结算未实现",
+      "tests": []
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E05",
+      "url": "https://gwz.yeyou.com/news/08122014/151510978.shtml",
+      "title": "【科普】攻城流程 备战国服攻城",
+      "published": "2014-08-12",
+      "region": "大陆服筹备期，作者明确部分来自台服",
+      "nature": "玩家皇帝特权文图流程说明；非录屏，不视为独立实测数据",
+      "access": "正文可读，48、108-143",
+      "summary": "入场后选门投入资源、战斗蓄积，再放出计入门分。这里只辅助定位阶段；好友优先、20连胜和黑魂公式不采用。",
+      "client": [
+        "WebApiClient.cs:4084-4117",
+        "vsSetting_Siege.cs:744-811",
+        "PluginRunner_DoBattleSiege.cs:159-186"
+      ],
+      "table_rows": [
+        "siege_bet_rate"
+      ],
+      "classification": "hypothesis",
+      "confidence": "阶段与客户端相符；经济规则缺证据",
+      "conflicts": "后于安装包且混服；文字中的编队笔误和战斗力倍率无法直接当原服契约。",
+      "implementation": "无经济/战斗实现，lifecycle.md",
+      "tests": []
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E06",
+      "url": "https://news.17173.com/content/2014-07-23/20140723093638401.shtml",
+      "title": "天下割据战开打 《鬼武者魂》合战全解析",
+      "published": "2014-07-23",
+      "region": "大陆服不删档测试，非国际中文版",
+      "nature": "宣传文章，页面来源栏空，未验证原厂出处",
+      "access": "正文可读，19-28",
+      "summary": "提到三个战场及自由选阵营；记录其与早期分国说明和原客户端自动报名链的冲突。",
+      "client": [
+        "WebApiClient.cs:2784-2789",
+        "TurfWarBriefCache.cs:362-393"
+      ],
+      "table_rows": [],
+      "classification": "unsupported",
+      "confidence": "仅用作版本冲突线索",
+      "conflicts": "不添加team请求参数，不采纳三天或奖励叙述为生产常量。",
+      "implementation": "仅排除错误推断",
+      "tests": [
+        "test_authentication_selectors_and_other_players_are_rejected"
+      ]
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E07",
+      "url": "https://m2.4gamer.net/games/150/G015000/20121026029/",
+      "title": "杉浦访谈：天下分目战转场修改线索",
+      "published": "2012-10-26",
+      "region": "日服；采访在正式服务前",
+      "nature": "开发者访谈的搜索索引线索",
+      "access": "文章正文部分可读，但web find未找到24小时/天下分け目段落；只有搜索结果含该段",
+      "summary": "搜索索引提到考虑24小时切换战场，不能将计划当已实施规则。未确认该段完整正文，未采用冷却常量。",
+      "client": [
+        "TurfWarWorldMap.cs:291-328",
+        "TurfWarDetail.cs:80-103"
+      ],
+      "table_rows": [],
+      "classification": "hypothesis",
+      "confidence": "仅线索",
+      "conflicts": "实际2014客户端已有moveBattlefield，不代表24小时已证。",
+      "implementation": "moveBattlefield未实现",
+      "tests": [
+        "test_selection_requires_entry_and_cannot_bypass_movement"
+      ]
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E08",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=80689",
+      "title": "S6：奧羽大亂改版",
+      "published": "2013-05-27（搜索结果）",
+      "region": "国际中文版／台服",
+      "nature": "新闻线索",
+      "access": "403 Forbidden；搜索结果可见",
+      "summary": "未取得全文；另找E03作可读的同服活动资料，不将S6摘要作为规则。",
+      "client": [],
+      "table_rows": [],
+      "classification": "unsupported",
+      "confidence": "线索",
+      "conflicts": "不得声称全文核验",
+      "implementation": "无",
+      "tests": []
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E09",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=1530",
+      "title": "S5：開發營運更新乃總整理歷程",
+      "published": "各楼层未知；搜索结果涵盖2013-2014",
+      "region": "含日服转载／讨论，未逐楼验证",
+      "nature": "社区汇总线索",
+      "access": "403 Forbidden",
+      "summary": "检索到了多楼层，但未取得正文，不把各时期规则拼为一套。",
+      "client": [],
+      "table_rows": [],
+      "classification": "unsupported",
+      "confidence": "线索",
+      "conflicts": "存在不同服别与更新日期混合",
+      "implementation": "无",
+      "tests": []
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E10",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=4963",
+      "title": "不知道城戰的流程？教你如何參予攻城戰",
+      "published": "未知（搜索索引约2013）",
+      "region": "台服讨论线索",
+      "nature": "玩家攻略搜索线索",
+      "access": "403 Forbidden",
+      "summary": "只见搜索摘要，不采用其绳索/按钮或积分叙述为协议。",
+      "client": [],
+      "table_rows": [],
+      "classification": "unsupported",
+      "confidence": "线索",
+      "conflicts": "未读全文",
+      "implementation": "无",
+      "tests": []
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E11",
+      "url": "https://forum.gamer.com.tw/Co.php?bsn=22241&sn=8064",
+      "title": "大合戰临时维护／玩法翻译",
+      "published": "未知（搜索索引约2013）",
+      "region": "日服翻译线索",
+      "nature": "社区转载",
+      "access": "403 Forbidden",
+      "summary": "常备兵、足轻及行军只见索引摘要，strategy资格/补给公式仍不开。",
+      "client": [
+        "StrategySelect.cs:196-238"
+      ],
+      "table_rows": [
+        "strategy_command"
+      ],
+      "classification": "unsupported",
+      "confidence": "线索",
+      "conflicts": "缺地图表且规则未证",
+      "implementation": "无",
+      "tests": []
+    },
+    {
+      "access_date": "2026-11-15",
+      "target": "OniSoul_Setup_20140712.exe / original PC client",
+      "id": "E12",
+      "url": "https://wikiwiki.jp/onimusyasoul/初心者ガイド",
+      "title": "S1/S2 初心者ガイド及原手册入口",
+      "published": "2012时期，准确修订时间未知",
+      "region": "日服早期Wiki",
+      "nature": "Wiki导航",
+      "access": "正文可读；原http://cog-members.oni-soul.jp/sp/manual/index.html不可访问",
+      "summary": "取得旧手册URL但没有取得战争章节正文。Wiki不作为战争经济或排期依据。",
+      "client": [],
+      "table_rows": [],
+      "classification": "unsupported",
+      "confidence": "导航高，规则不可用",
+      "conflicts": "无法验证原站完整文档",
+      "implementation": "无",
+      "tests": []
+    }
+  ],
+  "searches": [
+    {
+      "queries": [
+        "鬼武者魂 攻城戰 報名 配對 三之丸",
+        "鬼武者Soul 天下分け目戦 戦場 移動 参加 東軍 西軍"
+      ],
+      "result": "取得上述可读资料和403线索；无新运营排期"
+    },
+    {
+      "queries": [
+        "鬼武者魂 天下割據戰 實況 youtube",
+        "鬼武者魂 攻城戰 三之丸 youtube",
+        "site:youtube.com/watch 鬼武者魂 攻城戦",
+        "site:youtube.com/watch 鬼武者魂 天下割據戰"
+      ],
+      "result": "没有取得可核验同版本完整流程录屏；不声称观看过。"
+    }
+  ],
+  "policy": {
+    "country_allocation": "compatibility-policy：显式运营声明，非随机匹配算法还原",
+    "no_cost": "compatibility-policy：登记子流程不扣资源；不能据回调不扣显示就证明原服免费",
+    "first_selection": "compatibility-policy：首次选择后锁定；不冒充原服永久禁止转场",
+    "event_dates": "compatibility-policy：显式新活动时间、未开/已关拒绝；不复用新闻日期",
+    "result": "unsupported：登记关期不意味着结算；没有battle/score/winner/reward事件"
+  }
+}

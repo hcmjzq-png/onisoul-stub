@@ -18,20 +18,21 @@ MOUNTED = {
     "politic/lottery/getSouls", "common/getPlayerCogid", "plugin/getPluginData",
     "plugin/getPluginLog", "plugin/addPluginLog",
     "trophy/getTrophyProgress", "trophy/completeTrophy", "trophy/messageWindowTrophy",
+    "friend/cancelFriendOffer", "friend/dissolutionFriend", "friend/feedbackFriendOffer",
+    "friend/getFriendProfile", "friend/getFriends", "friend/sendFriendOffer", "friend/updateFriendData",
+    "inbox/getParcels", "inbox/resolveParcels",
 }
 HELD = {
     "politic/map/getBackgrounds", "politic/map/setBackground", "deck/transferStoreCharacters",
     "quest/getChapterData", "quest/getQuestCompleteFlags", "quest/getQuestProgress",
     "quest/getQuestRewardOpenFlags", "auction/auctionResourceBrowse", "auction/auctionResourceSearch",
-    "friend/cancelFriendOffer", "friend/dissolutionFriend", "friend/feedbackFriendOffer",
-    "friend/getFriendProfile", "friend/getFriends", "friend/sendFriendOffer", "friend/updateFriendData",
     "strategy/isAlive", "ranking/getRankersInKokudaka", "ranking/getBriefOfKokudaka",
     "common/getRevisions", "plugin/setPluginData",
     # Round 2 components still need producers, migration or runtime tables.
     "quest/getQuestEncountWorks", "quest/clearObstacle", "deck/sellTactics",
     "politic/shop/getBackgroundItems", "politic/shop/buyBackgroundItem",
     "politic/shop/getShopItemsFromNationalPower", "politic/shop/buyShopItemFromNationalPower",
-    "inbox/getParcels", "inbox/resolveParcels", "siege/getPairings",
+    "siege/getPairings",
     "strategy/getStrategyWinLossRecords",
 }
 
@@ -79,7 +80,7 @@ class ParallelIntegrationTest(unittest.TestCase):
         for api in HELD:
             self.assertEqual(self.registry._handlers[api].__module__, "app.business.placeholders", api)
         self.assertEqual(sum(h.__module__ == "app.business.placeholders"
-                             for h in self.registry._handlers.values()), 331)
+                             for h in self.registry._handlers.values()), 322)
 
     def test_shared_transactions_survive_concurrent_calls_and_relogin(self):
         before = self.saved()
@@ -117,7 +118,12 @@ class ParallelIntegrationTest(unittest.TestCase):
     def test_authentication_identity_and_soul_root_types(self):
         before = self.saved()
         for api in MOUNTED:
-            self.assertIn("errorReason", self.registry.dispatch(api, {}, None)[1], api)
+            result = self.registry.dispatch(api, {}, None)[1]
+            if api in {"friend/cancelFriendOffer", "friend/dissolutionFriend",
+                       "friend/feedbackFriendOffer", "friend/sendFriendOffer"}:
+                self.assertIs(result["result"], False, api)
+            else:
+                self.assertIn("errorReason", result, api)
         self.assertEqual(self.saved(), before)
         result = self.call("politic/lottery/getSouls")
         self.assertEqual(set(result), {"red", "blue", "purple", "yellow", "green", "black", "white"})

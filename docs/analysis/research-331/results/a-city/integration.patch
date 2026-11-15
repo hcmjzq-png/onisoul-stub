@@ -1,0 +1,22 @@
+--- a/docs/api_schema.md
++++ b/docs/api_schema.md
+@@ -186,3 +186,19 @@
+ | 通知确认与首次旧档初始化 | 待验证 | `accountProgress.trophyClaims` / `levelTrophyNoticeSeen` 是本服内部状态。原 stub 尚未发放成就，缺失 ledger 视为未领取；已有合法 ledger 保留，损坏 ledger 拒绝。禁止未经迁移导入原服领取历史。通知确认不发奖励；超资源上限整笔拒绝，未实现信箱分流。 |
+ | 背景 mapId / 解锁边界 | bundle | mypageCastleTownItem.cs:101-147 仅 no=1 显示背景切换和商店按钮，并要求 mapEntry.isEnable、PoliticMissionManager.IsOpenSubMap。mypageBgSelectWindow.cs:135-150 明确发送 mapId=1 并更新同一 mapEntry。主城 no=0 隐藏按钮，不存在 0→1 偏移映射。 |
+ | 背景内部归属与选择 | 待验证 | 候选购买/选择统一读取 items，选择保存于 mapBackgrounds["1"]。内部 subcity_enabled 提供者尚无正式实现，因此四个背景入口仍不挂载，不把旧 backgroundOwnership 或 mapBackgrounds["0"] 自动认定为原服权益。 |
++
++## research-331 A 组候选：未注册
++
++原始来源及限制：docs/analysis/research-331/results/a-city/README.md。
++
++| 字段/行为 | 来源 | 限定含义 |
++| --- | --- | --- |
++| submitProduceTask.dueTime/now | bundle | StateManualProduce.cs:51-66 → PoliticBuildingParameter.cs:173-182；普通田地候选，未挂载。 |
++| submitBulkProduceTasks.producings.<id>.productId/createdTime/dueTime | bundle | PoliticFSMCollectiveProduce.cs:95-127 → PoliticBuildingParameter.cs:191-199；重登getMapData.tasks.producings；未实现收获。 |
++| 开工1PP及配方成本 | bundle | PoliticBuilding.cs:1117-1131,1872-1884；无内政编队修正子集，float32成本。dueTime=服务器整数秒+原dueInterval是本服兼容策略，非原服时长抓包。 |
++| 生产重试errorReason | bundle + compatibility-policy | GameRestarter.cs:64,70-90阻止回调，避免批量payoutCosts再次扣显示资源；已有任务不重放成功。 |
++| 支城任务条件 | bundle | po_mission_00281/index306：15级，storyQuestClear第2篇第5话完整标志，7500石高；target10虽解析但不参与客户端predicate。 |
++| mapProfiles.1.name/nearGround/farGround；mapId=1/map1 | bundle | UserStatus.cs:1322-1359、mypageBgSelectWindow.cs:135；只提供未接入的投影，需真实地图初始化。 |
++| citySubcityAccessV1 | compatibility-policy；内部字段 | 可信同一玩家事实首次校验后的准入收据；不回传原协议，不以unlockBits或测试True开城。 |
++
++本轮普通田地开工与四项背景候选均未加入正常注册器；331占位不变。

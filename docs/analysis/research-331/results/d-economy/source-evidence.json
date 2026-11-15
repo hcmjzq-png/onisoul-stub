@@ -1,0 +1,655 @@
+{
+  "container": {
+    "path": "D:\\onisoul\\work\\quest-contract-20261115\\tableAssets.bin",
+    "sha256": "20b987a41c5ec8f0b70dfe65bf0383c7acf25cc755f38f5b4d9dbdaa361dc4f7"
+  },
+  "sources": {
+    "WebApiClient.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    "UserStatus.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\UserStatus.cs",
+      "sha256": "03b4cb5e9916ffd5f76e52365af40f05229410a806e176eff2909a8114fd5bac"
+    },
+    "PoliticErrantryEntryWindow.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticErrantryEntryWindow.cs",
+      "sha256": "3a1243339e6abbe0b8235e5db0b37ee904a9c4fdbf04c401bbf38ee28565f9a3"
+    },
+    "PoliticFSMErrantryReward.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticFSMErrantryReward.cs",
+      "sha256": "f00b45186b91ed3aa689ece8811145a7991d7f607167092752bb0a36a6ef84ae"
+    },
+    "PoliticScriptCommand.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticScriptCommand.cs",
+      "sha256": "1e7810767f3f06d2d5166e24301ef3539901e9aaabb3fec0115f155e543241a3"
+    },
+    "PoliticDeckTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticDeckTableAccessor.cs",
+      "sha256": "b42e2e2fe448d21d64b76ee98f6f828d92b9ae58866cce1fe04e47c62d1a4936"
+    },
+    "ErrantryTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ErrantryTableAccessor.cs",
+      "sha256": "01ca4b70ecaa856c273f5cd4cdc93e350bb043942ebec2e99b4660f643e87154"
+    },
+    "ErrantryResultTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ErrantryResultTableAccessor.cs",
+      "sha256": "c4881edfeaee6613fa7ebca2311500e2d2769adca3aa5de140cf61ee6aca9edd"
+    },
+    "BuildingErrantryTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\BuildingErrantryTableAccessor.cs",
+      "sha256": "7c0c4f4530601933283c033ecbf9e1b078bb17d393ee3926538edeb681c8f9d9"
+    },
+    "AuctionDataManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionDataManager.cs",
+      "sha256": "c8bc4dac82924af2d3db04557db6281c53ccd6da11251e8d4e81cef8fb41d901"
+    },
+    "AuctionSellResourcePage.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionSellResourcePage.cs",
+      "sha256": "9ed7b52d93a5506e686cca12bc554dbc87368e88973bd4a757e4a7cd890bf333"
+    },
+    "AuctionResourceSellSlot.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionResourceSellSlot.cs",
+      "sha256": "bd3452d18aad4e86c3c2026111b3cd349fa0028e004e74c1a33943a4a54ff758"
+    },
+    "AuctionResourceSellingTimeDropListBtn.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionResourceSellingTimeDropListBtn.cs",
+      "sha256": "fde383b6546abb3a355ec627e7b753fe6059686682054e5c08c6a7e67799351f"
+    },
+    "AuctionPostToSellBtn.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\AuctionPostToSellBtn.cs",
+      "sha256": "71aca8a86f44493d368f3fe38d746f8b5f3552866e5942d7629eecee0265b982"
+    },
+    "SingleAuctionResource.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SingleAuctionResource.cs",
+      "sha256": "1ad319159ec1f4e62641fac5453ee570d49f80ab545cd958e66fd14697f7f471"
+    },
+    "KokugiScene.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\KokugiScene.cs",
+      "sha256": "6ff68e6041dd0cb38c418736950a3d5af5cf2d31764583b3fd24030d9b456363"
+    },
+    "ShopItemNationalPower.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\ShopItemNationalPower.cs",
+      "sha256": "f3b44433dbb49b8050f74c1d6828f764e01f0d1076362de8722089831f7f5f81"
+    },
+    "DefinesTableAccessor.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\DefinesTableAccessor.cs",
+      "sha256": "bb6d18eeb1ca74e4ab22f061bbe608e29dcc56066fd2a7eca1bfa965eb0e4fd4"
+    },
+    "onikujiMaster.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\onikujiMaster.cs",
+      "sha256": "ac50aee378ce350491b4e440d9f47df549e8ae733746311181ccd876fd97276e"
+    },
+    "PoliticMissionProgressList.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PoliticMissionProgressList.cs",
+      "sha256": "38b74b7269dc0398e746c16e291b3ec715977c5e2096ca6edde86fa506c66e4c"
+    },
+    "PluginPoliticDataManager.cs": {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\PluginPoliticDataManager.cs",
+      "sha256": "7092568987429386245ebc05183e18267647f1795213dabbd25d8412b9ca5714"
+    }
+  },
+  "recovered": [
+    {
+      "file": "errantry.json",
+      "root_key": "errantry",
+      "container_name_offset": 66058428,
+      "script_offset": 66058448,
+      "script_length": 2053,
+      "sha256": "b803c189dd05b1f10e82ab39b2d332bb8a18c357fe17fe5413d77e6e084cc2d5",
+      "rows": 6,
+      "previous_export_present": true
+    },
+    {
+      "file": "errantry1hokuyou.json",
+      "root_key": "errantry1hokuyou",
+      "container_name_offset": 66056228,
+      "script_offset": 66056256,
+      "script_length": 2163,
+      "sha256": "db1df56acc7c5d8f490c9d40f87a60145bbf763504a2d162afe7cebe5050135a",
+      "rows": 6,
+      "previous_export_present": false
+    },
+    {
+      "file": "errantry2musasino.json",
+      "root_key": "errantry2musasino",
+      "container_name_offset": 96575332,
+      "script_offset": 96575360,
+      "script_length": 2176,
+      "sha256": "2c5e2fd3f986a83cc384616102b584e57ed894cbe370ecfac6be7e1c78acfea9",
+      "rows": 6,
+      "previous_export_present": false
+    },
+    {
+      "file": "errantry3tyuubu.json",
+      "root_key": "errantry3tyuubu",
+      "container_name_offset": 29543964,
+      "script_offset": 29543988,
+      "script_length": 2150,
+      "sha256": "586bcf0aec822f7d31bb8bcf0724b8168310d1ba7673ce09547fc6d2033dfb03",
+      "rows": 6,
+      "previous_export_present": false
+    },
+    {
+      "file": "errantry4kamigata.json",
+      "root_key": "errantry4kamigata",
+      "container_name_offset": 68839196,
+      "script_offset": 68839224,
+      "script_length": 2176,
+      "sha256": "515298c75db9d7211ff72fe3bf55b2957a531634fdd308445207e63eda9e83fa",
+      "rows": 6,
+      "previous_export_present": false
+    },
+    {
+      "file": "errantry5setonai.json",
+      "root_key": "errantry5setonai",
+      "container_name_offset": 7892644,
+      "script_offset": 7892672,
+      "script_length": 2163,
+      "sha256": "cb2d1e73bbcfbf14ae5931c24f464c9b633078143de5c418ac923e4b3e42accc",
+      "rows": 6,
+      "previous_export_present": false
+    },
+    {
+      "file": "errantry6nangoku.json",
+      "root_key": "errantry6nangoku",
+      "container_name_offset": 62797236,
+      "script_offset": 62797264,
+      "script_length": 2163,
+      "sha256": "cc4069da493ef8cc42ede9b5fd4f1d173876794d912a336bef290d55a7584462",
+      "rows": 6,
+      "previous_export_present": false
+    },
+    {
+      "file": "errantry_result_0001.json",
+      "root_key": "errantry_result_0001",
+      "container_name_offset": 23410372,
+      "script_offset": 23410404,
+      "script_length": 9457,
+      "sha256": "d0e7377f0f011fc8706961a3481425386780852620b7178f4d9b7e371bcc7d1d",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0002.json",
+      "root_key": "errantry_result_0002",
+      "container_name_offset": 39414708,
+      "script_offset": 39414740,
+      "script_length": 9457,
+      "sha256": "4389e84fd2df96362fe7a81bac52facb8722d285e99e61d4d3a843e5c3d0308d",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0003.json",
+      "root_key": "errantry_result_0003",
+      "container_name_offset": 61771996,
+      "script_offset": 61772028,
+      "script_length": 9457,
+      "sha256": "46001f09d7bad576331c5ba4838e1e7b5f2c7cc21422451168ac67709e77bd57",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0004.json",
+      "root_key": "errantry_result_0004",
+      "container_name_offset": 70024828,
+      "script_offset": 70024860,
+      "script_length": 9457,
+      "sha256": "bf6be795a988dd2f652bbac8131daaaf9590810fc706c5105e48d8868d7a15e1",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0005.json",
+      "root_key": "errantry_result_0005",
+      "container_name_offset": 80066332,
+      "script_offset": 80066364,
+      "script_length": 9457,
+      "sha256": "c46a3ce88f716c2da6f2d8b4b16f2b34853783d1ce978791c85fa4e4c21b1843",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0006.json",
+      "root_key": "errantry_result_0006",
+      "container_name_offset": 45948692,
+      "script_offset": 45948724,
+      "script_length": 9457,
+      "sha256": "4a3d66f8e2a057ecb67ea12d6720028844081ae69bd51b457abcae76b7d1e5ce",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0007.json",
+      "root_key": "errantry_result_0007",
+      "container_name_offset": 24296164,
+      "script_offset": 24296196,
+      "script_length": 9457,
+      "sha256": "e18980afb9e9ae4c5a9d46dae208ca54388cefc9e2070d7c10dd8d3a7e121311",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0008.json",
+      "root_key": "errantry_result_0008",
+      "container_name_offset": 70015324,
+      "script_offset": 70015356,
+      "script_length": 9457,
+      "sha256": "664efe2745a7e5d83b0c3a722973f43180d84112ea51185daad86d53d56ec35c",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0009.json",
+      "root_key": "errantry_result_0009",
+      "container_name_offset": 80915628,
+      "script_offset": 80915660,
+      "script_length": 9457,
+      "sha256": "1e0b973597e1aba2ad0716cf36cfab9fca63eb830ec1ea17f89bd2b5174f61b4",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0010.json",
+      "root_key": "errantry_result_0010",
+      "container_name_offset": 55623620,
+      "script_offset": 55623652,
+      "script_length": 9457,
+      "sha256": "1c65d9b4b316f70db0e1d5b615a8861e6d78715deeccdd96efc62da36456b19c",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0011.json",
+      "root_key": "errantry_result_0011",
+      "container_name_offset": 91359268,
+      "script_offset": 91359300,
+      "script_length": 9457,
+      "sha256": "be6cf096f21618a1ae5b229f9069912906a010c4fa726078df529461a20502ff",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "errantry_result_0012.json",
+      "root_key": "errantry_result_0012",
+      "container_name_offset": 49926428,
+      "script_offset": 49926460,
+      "script_length": 9457,
+      "sha256": "64aa7be6ccb224815c909cc6d7a3fa0337dcfca3ef75fd64bbc42815741ef000",
+      "rows": 54,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "reward07_errantry.json",
+      "root_key": "reward07_errantry",
+      "container_name_offset": 54909868,
+      "script_offset": 54909896,
+      "script_length": 147900,
+      "sha256": "09ab81f07992b94651ccbfc30179a988d6b0abbdbb8fd627ff371527423b1a02",
+      "rows": 120,
+      "previous_export_present": false
+    },
+    {
+      "file": "reward12_waterborne_trade.json",
+      "root_key": "reward12_waterborne_trade",
+      "container_name_offset": 40724836,
+      "script_offset": 40724872,
+      "script_length": 21992,
+      "sha256": "d7059106d7a2219f45a028701e6e5c4089de06322428caf019485650b83bf370",
+      "rows": 18,
+      "previous_export_present": false
+    },
+    {
+      "file": "waterborne_trade.json",
+      "root_key": "waterborne_trade",
+      "container_name_offset": 70847892,
+      "script_offset": 70847920,
+      "script_length": 439,
+      "sha256": "0245f56695a34ea62ac63440468cbf8be4946d31d30ae95e66e111d998fd7b41",
+      "rows": 1,
+      "previous_export_present": false
+    },
+    {
+      "file": "waterborne_trade_effects.json",
+      "root_key": "waterborne_trade_effects",
+      "container_name_offset": 69577012,
+      "script_offset": 69577048,
+      "script_length": 580,
+      "sha256": "9dd6fb753e09f31eea60fbafada45dc24898dce670c77d3147da5abe4a6b3b04",
+      "rows": 5,
+      "previous_export_present": false
+    },
+    {
+      "file": "waterborne_trade_result_0001.json",
+      "root_key": "waterborne_trade_result_0001",
+      "container_name_offset": 24305668,
+      "script_offset": 24305708,
+      "script_length": 11813,
+      "sha256": "fa44e2de9294fda678a6dcd63ef25a97729af6036fb30c1d64f086c877bdadc6",
+      "rows": 59,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "waterborne_trade_result_0002.json",
+      "root_key": "waterborne_trade_result_0002",
+      "container_name_offset": 4971188,
+      "script_offset": 4971228,
+      "script_length": 11918,
+      "sha256": "7864d2544a37612478587e9e4857ea37ec37b974490337609841d0c80e4e979d",
+      "rows": 59,
+      "previous_export_present": false,
+      "missing_reward_references": []
+    },
+    {
+      "file": "waterborne_trade_result_0003.json",
+      "root_key": "waterborne_trade_result_0003",
+      "container_name_offset": 88640268,
+      "script_offset": 88640308,
+      "script_length": 11813,
+      "sha256": "6c67059c99bf5b3e0831cf3abcab106729d70c2397fe7a0fa7792ebd9fc06ac6",
+      "rows": 59,
+      "previous_export_present": false,
+      "missing_reward_references": [
+        "reward12_0202",
+        "reward12_0203",
+        "reward12_0204",
+        "reward12_0205",
+        "reward12_0206",
+        "reward12_0207",
+        "reward12_0208",
+        "reward12_0209",
+        "reward12_0210"
+      ]
+    },
+    {
+      "file": "waterborne_trade_result_0004.json",
+      "root_key": "waterborne_trade_result_0004",
+      "container_name_offset": 68645980,
+      "script_offset": 68646020,
+      "script_length": 11813,
+      "sha256": "46b586e2e2b50ab279c551f7e308a5995c64c6540d816ec73b961456b7ed6ebd",
+      "rows": 59,
+      "previous_export_present": false,
+      "missing_reward_references": [
+        "reward12_0302",
+        "reward12_0303",
+        "reward12_0304",
+        "reward12_0305",
+        "reward12_0306",
+        "reward12_0307",
+        "reward12_0308",
+        "reward12_0309",
+        "reward12_0310"
+      ]
+    },
+    {
+      "file": "waterborne_trade_warship.json",
+      "root_key": "waterborne_trade_warship",
+      "container_name_offset": 61781500,
+      "script_offset": 61781536,
+      "script_length": 3192,
+      "sha256": "4bba7d95c2d9beef8184d3fda44bac05fff5c03205f6d69406cb0f9a1f5692e1",
+      "rows": 21,
+      "previous_export_present": false
+    }
+  ],
+  "sample_rows": {
+    "errantry": [
+      "errantry_00001",
+      "errantry_00002"
+    ],
+    "building_errantry": [
+      "building200_000_01_01_1_1"
+    ],
+    "building": [
+      "building200_000_01_01_1_1"
+    ],
+    "errantry_result_0001": [
+      "result_0001",
+      "result_0011",
+      "result_0012",
+      "result_0013",
+      "result_0015"
+    ],
+    "reward07_errantry": [
+      "reward07_0002",
+      "reward07_0007",
+      "reward07_0008",
+      "reward07_0009",
+      "reward07_0010"
+    ],
+    "item11": [
+      "item11_0000101",
+      "item11_0000701",
+      "item11_0001101"
+    ],
+    "item07": [
+      "item07_0070001"
+    ],
+    "defines": [
+      "soul_limit"
+    ]
+  },
+  "sample_sources": [
+    {
+      "file": "errantry.json",
+      "root_key": "errantry",
+      "container_name_offset": 66058428,
+      "script_offset": 66058448,
+      "script_length": 2053,
+      "sha256": "b803c189dd05b1f10e82ab39b2d332bb8a18c357fe17fe5413d77e6e084cc2d5",
+      "rows": 6
+    },
+    {
+      "file": "building_errantry.json",
+      "root_key": "building_errantry",
+      "container_name_offset": 90657132,
+      "script_offset": 90657160,
+      "script_length": 38310,
+      "sha256": "b1e4f3802d3a9a6a76c70235692f6ba296a60a8e70e84c30a58595e948d969fe",
+      "rows": 255
+    },
+    {
+      "file": "building.json",
+      "root_key": "building",
+      "container_name_offset": 41183092,
+      "script_offset": 41183112,
+      "script_length": 1262590,
+      "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+      "rows": 1343
+    },
+    {
+      "file": "errantry_result_0001.json",
+      "root_key": "errantry_result_0001",
+      "container_name_offset": 23410372,
+      "script_offset": 23410404,
+      "script_length": 9457,
+      "sha256": "d0e7377f0f011fc8706961a3481425386780852620b7178f4d9b7e371bcc7d1d",
+      "rows": 54
+    },
+    {
+      "file": "reward07_errantry.json",
+      "root_key": "reward07_errantry",
+      "container_name_offset": 54909868,
+      "script_offset": 54909896,
+      "script_length": 147900,
+      "sha256": "09ab81f07992b94651ccbfc30179a988d6b0abbdbb8fd627ff371527423b1a02",
+      "rows": 120
+    },
+    {
+      "file": "item11.json",
+      "root_key": "item11",
+      "container_name_offset": 24932460,
+      "script_offset": 24932476,
+      "script_length": 10772,
+      "sha256": "a09e50e911f785ee03a68c8a7224421ea8cacd2ab3e1c1801a7f40ed5abb6523",
+      "rows": 35
+    },
+    {
+      "file": "item07.json",
+      "root_key": "item07",
+      "container_name_offset": 66419796,
+      "script_offset": 66419812,
+      "script_length": 79441,
+      "sha256": "5650159c1fd4e5ff3d3b44bc6a4dfd25ea7d9b339c526b10f714cbe99256bf92",
+      "rows": 231
+    },
+    {
+      "file": "defines.json",
+      "root_key": "defines",
+      "container_name_offset": 72766596,
+      "script_offset": 72766612,
+      "script_length": 9934,
+      "sha256": "0be7285cebd38958b5f154d330c10d7420421a6ddedcf5d06c50ad4967445560",
+      "rows": 111
+    }
+  ],
+  "standard_trades": [
+    {
+      "id": "errantry_00001",
+      "index": 0,
+      "leastTotalIntelligence": 1000,
+      "costTypes": [
+        "item11_0000701",
+        "item11_0000101"
+      ],
+      "costAmounts": [
+        10,
+        2000
+      ],
+      "dueInterval": 900,
+      "intelligenceBias": 100,
+      "result": "errantry_result_0001",
+      "nameId": "POLITIC_MSG_PLACE01",
+      "imageId": "errantry001_00001"
+    },
+    {
+      "id": "errantry_00002",
+      "index": 1,
+      "leastTotalIntelligence": 3000,
+      "costTypes": [
+        "item11_0000701",
+        "item11_0000101"
+      ],
+      "costAmounts": [
+        10,
+        5000
+      ],
+      "dueInterval": 1200,
+      "intelligenceBias": 200,
+      "result": "errantry_result_0002",
+      "nameId": "POLITIC_MSG_PLACE02",
+      "imageId": "errantry001_00002"
+    },
+    {
+      "id": "errantry_00003",
+      "index": 2,
+      "leastTotalIntelligence": 4000,
+      "costTypes": [
+        "item11_0000701",
+        "item11_0000101"
+      ],
+      "costAmounts": [
+        10,
+        10000
+      ],
+      "dueInterval": 1500,
+      "intelligenceBias": 300,
+      "result": "errantry_result_0003",
+      "nameId": "POLITIC_MSG_PLACE03",
+      "imageId": "errantry001_00003"
+    },
+    {
+      "id": "errantry_00004",
+      "index": 3,
+      "leastTotalIntelligence": 5000,
+      "costTypes": [
+        "item11_0000701",
+        "item11_0000101"
+      ],
+      "costAmounts": [
+        10,
+        30000
+      ],
+      "dueInterval": 1800,
+      "intelligenceBias": 500,
+      "result": "errantry_result_0004",
+      "nameId": "POLITIC_MSG_PLACE04",
+      "imageId": "errantry001_00004"
+    },
+    {
+      "id": "errantry_00005",
+      "index": 4,
+      "leastTotalIntelligence": 7500,
+      "costTypes": [
+        "item11_0000701",
+        "item11_0000101"
+      ],
+      "costAmounts": [
+        10,
+        100000
+      ],
+      "dueInterval": 3600,
+      "intelligenceBias": 700,
+      "result": "errantry_result_0005",
+      "nameId": "POLITIC_MSG_PLACE05",
+      "imageId": "errantry001_00005"
+    },
+    {
+      "id": "errantry_00006",
+      "index": 5,
+      "leastTotalIntelligence": 10000,
+      "costTypes": [
+        "item11_0000701",
+        "item11_0000101"
+      ],
+      "costAmounts": [
+        10,
+        500000
+      ],
+      "dueInterval": 10800,
+      "intelligenceBias": 700,
+      "result": "errantry_result_0006",
+      "nameId": "POLITIC_MSG_PLACE06",
+      "imageId": "errantry001_00006"
+    }
+  ],
+  "result_selection": "unsupported: leastIntelligence/intelligenceBias do not prove sampling",
+  "waterborne_base": {
+    "trade_00001": {
+      "id": "trade_00001",
+      "index": 0,
+      "leastTotalIntelligence": 3000,
+      "costTypes": [
+        "item11_0000701",
+        "item11_0000101"
+      ],
+      "costAmounts": [
+        10,
+        200000
+      ],
+      "dueInterval": 7200,
+      "intelligenceBias": 900,
+      "result": "waterborne_trade_result_0001",
+      "friendResult": "waterborne_trade_result_0002",
+      "buildingExp": 10,
+      "nameId": "POLITIC_MSG_PLACE08",
+      "imageId": "errantry003_00001"
+    }
+  },
+  "missing_reward_reference_count": 18
+}

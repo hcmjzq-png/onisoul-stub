@@ -20,6 +20,21 @@ RESERVED = {"succeeded", "now"}
 # Keep these in the placeholder count. Their callbacks advance client state on
 # success, so a fabricated dueTime/empty map is not a harmless discovery reply.
 BLOCKED_WRITES = {
+    # Research331 B: placeholder success must not advance quest/combat UI.
+    # These stay placeholders; the bounded producer needs a stable step intent.
+    "battle/captchaVsBattle": "challenge validation and battle admission",
+    "battle/executeBattle": "authoritative battle resolution and settlement",
+    "battle/removeRaidBossWork": "owned raid lifecycle and reward receipt",
+    "battle/sendRescueRequest": "raid ownership and shared rescue delivery",
+    "giganticRaidBoss/entryGiganticRaidBoss": "verified event schedule and admission",
+    "giganticRaidBoss/getGiganticRaidBossBattleResult": "committed shared battle result",
+    "quest/checkCompleteQuestEx": "resolved encounters and completion reward ledger",
+    "quest/clearObstacle": "authorized obstacle producer and settlement",
+    "quest/executeQuestEx": "stable logical step identity",
+    "quest/executeQuestEx2": "verified caller and stable logical step identity",
+    "quest/openQuest": "explicit story bootstrap or verified event schedule",
+    "quest/openTreasureBox": "owned treasure encounter and verified reward selection",
+    "quest/useSoulToStep": "verified soul cost and stable logical step identity",
     "politic/task/submitProduceTask": "production settlement and road bonuses",
     "politic/task/submitBulkProduceTasks": "production settlement and road bonuses",
     "politic/task/cancelTasks": "cancellation and refund rules",

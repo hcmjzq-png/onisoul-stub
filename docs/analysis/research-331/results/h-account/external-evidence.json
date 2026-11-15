@@ -1,0 +1,224 @@
+{
+  "access_date": "2026-11-15",
+  "timezone": "Asia/Shanghai",
+  "target": "OniSoul_Setup_20140712.exe; 国际中文版PC原DLL（不将日服/PS3规则直接移植）",
+  "sources": [
+    {
+      "id": "H-EXT-01",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=92387",
+      "title": "《鬼武者魂》季節性限定委託事件與每日任務即將上線",
+      "published_at": "2014-01-28 15:40:44",
+      "service": "台服国际中文版",
+      "nature": "厂商提供资料原文，由GNN刊载；primary announcement reproduction",
+      "access": "正文可读；原网页图片/重定向链接与本地urllib另试返回403，未读取截图",
+      "summary": "当日每日任务上线；完成指定任务取得活跃点数，兑换奖励会不定期更新。春节其他活动有另行期限。",
+      "client": [
+        "DailyMissionScene.cs:136-192,331-403,560-574",
+        "DailyMissionTableAccessor.cs:1-26"
+      ],
+      "table_ids": [
+        "daily_mission.daily_mission_52",
+        "daily_mission.daily_mission_84"
+      ],
+      "version_match": "发布日期早于目标安装包且同为中文版玩法；没有给出2014-07目录，不能绑定奖励",
+      "conflicts": "没有门槛、积分数值、日界线、跨日结转或奖励物品ID；春节礼包不能当永久每日奖励",
+      "confidence": "high for feature/reward-catalogue variability; unsupported for numerical schedule",
+      "classification": "verified (scope only)",
+      "implementation": "不挂载dailymission四接口；account_progress_daily.py:59仅接受显式排期",
+      "tests": "tests/test_research331_h_login_stamp.py:67,144,296"
+    },
+    {
+      "id": "H-EXT-02",
+      "url": "https://www.4gamer.net/games/150/G015000/20121115062/",
+      "title": "「鬼武者Soul」に「戦国BASARA」の真田幸村と本多忠勝が登場",
+      "published_at": "2012-11-15 18:20",
+      "service": "日服PC/BROWSER，2012",
+      "nature": "CAPCOM厂商发布稿全文转载（页面明确配信元与原文标记）",
+      "access": "正文可读",
+      "summary": "存在每日登录奖励，公告给出11月16日零时开始的十四日角色奖励；同时列举特定家宝收集的限时获得途径。",
+      "client": [
+        "PoliticFSMLogin.cs:48-69",
+        "LoginBounusMenu.cs:270-332",
+        "UserStatus.cs:1799-1818",
+        "mypageCollectionSeriesParam.cs:48-89"
+      ],
+      "table_ids": [],
+      "version_match": "同作品不同服别/时期；仅交叉确认系统存在和排期重要性",
+      "conflicts": "连续一词不能单独证明断签归零；开始零时不能证明台服日界线；家宝奖项不自动映射中文表ID",
+      "confidence": "high for this Japanese campaign only; unsupported for target schedule",
+      "classification": "verified (historical JP event); hypothesis (cross-version mapping)",
+      "implementation": "无生产奖励采用；显式boundary/missed_day_policy不得默认",
+      "tests": "tests/test_research331_h_login_stamp.py:111,120,128"
+    },
+    {
+      "id": "H-EXT-03",
+      "url": "https://www.famitsu.com/news/201403/06049400.html",
+      "title": "『鬼武者Soul』が『MHF-Ｇ』とのコラボキャンペーンを実施！",
+      "published_at": "2014-03-06 20:17",
+      "service": "日服PC/PS3相关发布",
+      "nature": "页面标明以下为release，厂商资料转载",
+      "access": "正文可读",
+      "summary": "同一次更新公告把奖励与特定账号、活动期限和完成条件绑定；BP购买次数每天零时重置属于购买促销。",
+      "client": [
+        "WebApiClient.cs:671-684"
+      ],
+      "table_ids": [],
+      "version_match": "不同服别，含PC/PS3；未当作目标登录或每日任务规则",
+      "conflicts": "BP购买日界线不能挪作签到日界线；正文未提供搜索线索中的签到十四格目录",
+      "confidence": "high for announcement scope; no numerical rule adopted",
+      "classification": "unsupported (login schedule)",
+      "implementation": null,
+      "tests": null
+    },
+    {
+      "id": "S4",
+      "url": "https://forum.gamer.com.tw/Co.php?bsn=22241&sn=4031",
+      "title": "新手指南（标题2014/05/06更新）",
+      "published_at": "未知（标题日期不代表全部正文适用时期）",
+      "service": "含日服讨论，正文未核",
+      "nature": "玩家整理",
+      "access": "403；只有搜索摘要",
+      "summary": "仅作为检索入口，未采用规则或数值",
+      "client": [],
+      "table_ids": [],
+      "version_match": "未确认",
+      "conflicts": "不可将摘要当全文",
+      "confidence": "unverified",
+      "classification": "unsupported",
+      "implementation": null,
+      "tests": null
+    },
+    {
+      "id": "S5",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=1530",
+      "title": "開發營運更新乃總整理歷程",
+      "published_at": "未知（多楼层）",
+      "service": "多时期/服别，未逐楼确认",
+      "nature": "论坛公告整理",
+      "access": "403；只有搜索摘要",
+      "summary": "未将其奖励列表或重置规则用于代码",
+      "client": [],
+      "table_ids": [],
+      "version_match": "未确认",
+      "conflicts": "不能把同稿转载算独立佐证",
+      "confidence": "unverified",
+      "classification": "unsupported",
+      "implementation": null,
+      "tests": null
+    },
+    {
+      "id": "H-EXT-04",
+      "url": "https://forum.gamer.com.tw/C.php?bsn=22241&snA=14206",
+      "title": "(03/06)開發營運更新",
+      "published_at": "2014-03-06（搜索线索，正文未核）",
+      "service": "日服更新中文整理线索",
+      "nature": "论坛转载线索",
+      "access": "403；搜索可见十四日奖励/受取状况字句",
+      "summary": "待追官方原文；未采用断签或循环规则",
+      "client": [
+        "LoginBounusMenu.cs:270-332"
+      ],
+      "table_ids": [],
+      "version_match": "未确认",
+      "conflicts": "搜索摘要不足以验证整个奖励表及上下文",
+      "confidence": "unverified",
+      "classification": "hypothesis",
+      "implementation": null,
+      "tests": null
+    },
+    {
+      "id": "S1-S2",
+      "url": "https://wikiwiki.jp/onimusyasoul/初心者ガイド",
+      "title": "初心者ガイド - onimusyasoul",
+      "published_at": "未知；内容包含2012-10-27记录",
+      "service": "早期日服",
+      "nature": "玩家Wiki",
+      "access": "正文可读；首页亦可读",
+      "summary": "找到旧官方手册及Q&A网址；没有恢复目标签到或每日任务目录",
+      "client": [],
+      "table_ids": [],
+      "version_match": "时代偏早，仅导航",
+      "conflicts": "不能用Wiki推荐替代原表或活动排期",
+      "confidence": "navigation only",
+      "classification": "unsupported (rules)",
+      "implementation": null,
+      "tests": null
+    },
+    {
+      "id": "H-EXT-05",
+      "url": "https://cog-members.oni-soul.jp/",
+      "title": "旧日服官方成员站",
+      "published_at": "未知",
+      "service": "日服",
+      "nature": "官方站入口",
+      "access": "TimeoutError",
+      "summary": "无法读取，未声称取得官方手册全文或存档",
+      "client": [],
+      "table_ids": [],
+      "version_match": "未确认",
+      "conflicts": null,
+      "confidence": "unavailable",
+      "classification": "unsupported",
+      "implementation": null,
+      "tests": null
+    },
+    {
+      "id": "H-EXT-06",
+      "url": "https://gnn.gamer.com.tw/detail.php?sn=88819",
+      "title": "《鬼武者魂》「武將蒐集」新系統正式上線",
+      "published_at": "未知（本次正文未读）",
+      "service": "台服线索",
+      "nature": "GNN厂商资讯线索",
+      "access": "重复打开仍403；仅搜索摘要",
+      "summary": "搜索提出武将取得来源限制，仅记为进一步验证的线索，未混同getCharacterCollection图鉴与成就",
+      "client": [],
+      "table_ids": [],
+      "version_match": "未确认",
+      "conflicts": "图鉴与收集成就可能不同系统；不能由当前库存回推历史",
+      "confidence": "unverified",
+      "classification": "hypothesis",
+      "implementation": null,
+      "tests": null
+    }
+  ],
+  "searches": [
+    "鬼武者Soul ログインスタンプ 毎日 2014",
+    "鬼武者魂 每日 任務 登入 印章 2014",
+    "鬼武者Soul ログインボーナス 更新 時間",
+    "鬼武者魂 每日任務 活躍度",
+    "鬼武者Soul 2014 3月6日 ログインボーナス",
+    "鬼武者Soul ログインボーナス 受取状況 関わらず",
+    "鬼武者魂 遷國 冷卻"
+  ],
+  "search_limitations": "迁国检索未找到足以采用的同版本来源；PS3奖杯及其他游戏结果不作为目标规则。未批量下载或转载正文。",
+  "rule_decisions": [
+    {
+      "rule": "日期格式、单格itemId/amount、stampCount与增量消费",
+      "classification": "verified",
+      "evidence": "source-proof.json原DLL、item11/item08原行",
+      "code": "app/business/account_progress_daily.py:34,168,210",
+      "test": "tests/test_research331_h_login_stamp.py:77,94"
+    },
+    {
+      "rule": "日界线、断签策略、活动起止、每日奖励清单",
+      "classification": "unsupported for original TW; compatibility-policy when explicitly configured",
+      "evidence": "H-EXT-01/02不足以给出台服参数",
+      "code": "app/business/account_progress_daily.py:59",
+      "test": "tests/test_research331_h_login_stamp.py:111,120,128,144"
+    },
+    {
+      "rule": "同日重复失败、满格停止、禁止补签、容量失败不转箱",
+      "classification": "compatibility-policy",
+      "evidence": "原请求无nonce且重复成功会客户端二次加奖；原服失败协议未恢复",
+      "code": "app/business/account_progress_daily.py:218",
+      "test": "tests/test_research331_h_login_stamp.py:94,128,175,187"
+    },
+    {
+      "rule": "资产与收据单次CAS、计划指纹/迁移检查",
+      "classification": "compatibility-policy",
+      "evidence": "COMMON.md允许内部存档/CAS；非原服网络字段",
+      "code": "app/business/account_progress_daily.py:121,251",
+      "test": "tests/test_research331_h_login_stamp.py:207,226,246,264"
+    }
+  ]
+}

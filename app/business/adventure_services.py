@@ -1,8 +1,8 @@
-"""Read verified quest snapshots; no quest initialization, combat or rewards.
+"""Read verified quest snapshots; no implicit initialization or rewards.
 
-``adventureV1`` is a proposed SERVER-INTERNAL save schema, not original wire
-protocol. A trusted producer/migration must supply it before these APIs work.
-Nothing registers this module in production. See the B integration notes.
+``adventureV1`` is SERVER-INTERNAL, not original wire protocol. AdventureEvents
+can produce the supported story prefix; other records still need a verified
+producer/migration. Production registration remains an integration decision.
 """
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ def mapping(value: Any) -> dict:
 class AdventureServices(PlayerServices):
     """Uses PlayerServices authentication, save path and GameplayService lock."""
 
-    def register(self, registry: Any) -> None:
+    def register(self, registry: Any, *, apis: frozenset[str] | None = None) -> None:
         for name, action in {
             "getQuestProgress": self.progress,
             "getChapterData": self.chapter,
@@ -33,7 +33,8 @@ class AdventureServices(PlayerServices):
             "getQuestRewardOpenFlags": self.reward_flags,
         }.items():
             api = "quest/" + name
-            registry.register(api, self.service._guard(api, partial(self.call, api, action)))
+            if apis is None or api in apis:
+                registry.register(api, self.service._guard(api, partial(self.call, api, action)))
 
     @staticmethod
     def snapshot(player: dict) -> dict:

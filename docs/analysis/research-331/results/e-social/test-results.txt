@@ -1,0 +1,59 @@
+E social acceptance — 2026-11-15 Asia/Shanghai
+Worktree: D:/onisoul-worktrees/research-331-e-social
+Baseline: 8023c3fee8e525040d101fee8bf843b48b3256d3
+
+1. python -W ignore::ResourceWarning -m unittest discover -s tests -q
+   Ran 443 tests; OK (skipped=12).
+   431 passed, zero failures/errors. The 12 are 6 I-adapter SQLite tests and
+   6 explicitly opted-in MySQL tests; base E worktree intentionally has no I
+   shared state module. They were actually run separately below, not claimed
+   as database acceptance from this default invocation.
+   Existing diagnostic output: session issue failed RuntimeError; auth observe
+   mode message from existing tests. No failing tests hidden.
+
+2. python docs/analysis/research-331/results/e-social/verify_i_adapter.py
+     --infrastructure-root D:/onisoul-worktrees/research-331-i-infrastructure
+     --output docs/analysis/research-331/results/e-social/sqlite-contract-validation.json
+   Ran 6 tests; OK, zero skipped. I's real state/transactions/db code with a
+   disposable on-disk SQLite DB-API dialect bridge. This does not certify
+   InnoDB row locks. Temporary files were closed and removed.
+
+3. D:/onisoul-worktrees/research-331-i-infrastructure/docs/analysis/research-331/results/i-infrastructure/.runtime/venv/Scripts/python.exe -B
+     docs/analysis/research-331/results/e-social/verify_i_adapter.py
+     --infrastructure-root D:/onisoul-worktrees/research-331-i-infrastructure
+     --mysql-port 33361
+     --output docs/analysis/research-331/results/e-social/mysql-validation.json
+   MySQL 8.4.13 / InnoDB. Ran 6 tests; OK, zero skipped.
+   Separate freshly created oni_e_test_<uuid> schema, dropped after completion.
+   No production config/players or I's test schema used. Multiple service
+   instances/connections, second UPDATE and pre-COMMIT failure injection,
+   stale single-player CAS, bilateral expiry, retry without revision changes,
+   issuer receipt, claim rollback, and 12 concurrent claims / one reward delta.
+   E does not claim independent multiprocess acceptance; I owns that test.
+   Adapter SHA256 d14649364a0a0918e21ddef1cba8641a8760f2045f95ba94a61217b5abca3459.
+
+4. python -m unittest tests.test_research331_e_integration -q
+   Ran 4 tests; OK. Compiles exact baseline patch texts into isolated modules:
+   notification fields, corrupted-state rejection, unauthenticated polling,
+   actual registration + issuance/query/claim/badge. No shared files edited.
+
+5. python docs/analysis/research-331/results/e-social/verify_shared_patch.py
+   Ran 4 shared regression tests; OK. Uses the exact proposed whitelist/count
+   changes; blocks any unintended real DB access in these baseline tests.
+
+6. python docs/analysis/research-331/results/e-social/build_evidence.py
+   41 unique E-owned endpoints matched current task exactly; original table
+   fixture fields verified; 159 original installer cache records scanned;
+   original parent app.js body hash matches provenance. No raw source bodies,
+   credentials, historical URL queries, full tables or databases committed.
+
+7. git apply --check docs/analysis/research-331/results/e-social/integration.patch
+   PASS against baseline; patch remains unapplied.
+   git diff --check: PASS.
+   Normal build_registry: registered 402, dedicated 71, placeholders 331.
+   Patched shared registry test: placeholders 322 (candidate only).
+
+8. issue_parcel.py example without --apply: preview only, written=false,
+   recipientChecked=false. No administrator HTTP route opened.
+
+No Unity acceptance; no deployment, merge, hosts/proxy/config changes.

@@ -1,0 +1,4 @@
+2026-11-15 Asia/Shanghai
+python -m unittest tests.test_research331_a_city -q: 15 passed
+python -W ignore::ResourceWarning -m unittest discover -s tests -q: 432 passed, 0 skipped
+No deployment, Unity or real MySQL multi-process validation.

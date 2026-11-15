@@ -1,0 +1,28 @@
+{
+  "characterLevel": {
+    "1_1": {
+      "id": "1_1",
+      "grade": 1,
+      "level": 1,
+      "exp": 0,
+      "atk": 40,
+      "def": 40,
+      "int": 40,
+      "materialPoint": 0,
+      "cost": 20,
+      "cap": 3540
+    },
+    "1_2": {
+      "id": "1_2",
+      "grade": 1,
+      "level": 2,
+      "exp": 31,
+      "atk": 40,
+      "def": 40,
+      "int": 40,
+      "materialPoint": 15,
+      "cost": 25,
+      "cap": 3580
+    }
+  }
+}

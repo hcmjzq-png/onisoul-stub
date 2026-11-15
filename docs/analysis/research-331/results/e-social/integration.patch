@@ -1,0 +1,117 @@
+--- a/app/main.py
++++ b/app/main.py
+@@ -9,8 +9,10 @@
+
+ import argparse
+
+-from app import config, db
++from app import config, db, state
+ from app.business.gameplay import GameplayService
++from app.business.social_services import SocialServices
++from app.business.social_inbox_services import SocialInboxServices
+ from app.business.periodic import register as register_periodic
+ from app.business.turf_war import register as register_turf_war
+ from app.business.registry import Registry
+@@ -23,9 +25,13 @@
+     占位响应的意义是让客户端「不撞 404、能继续走下一批请求」；业务语义仍为空。
+     """
+     registry = Registry()
+-    GameplayService().register(registry)
++    gameplay = GameplayService()
++    gameplay.register(registry)
++    social = SocialServices(gameplay, atomic_players=state.atomic_players)
++    social.register(registry)
++    SocialInboxServices(gameplay).register(registry)
+     register_turf_war(registry)
+-    register_periodic(registry)
++    register_periodic(registry, notification_provider=social.notifications)
+     return registry.register_contract_defaults()
+
+
+--- a/app/business/periodic.py
++++ b/app/business/periodic.py
+@@ -24,21 +24,30 @@
+ """
+ from __future__ import annotations
+
+-from typing import Any
++from functools import partial
++from typing import Any, Callable
++
++from app import state
+
+ from app.business import response_shapes, show_off
+
+ API = "common/periodicInquiry"
+
+
+-def handler(params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
++def handler(params: dict[str, Any], session: dict[str, Any] | None, *,
++            notification_provider: Callable | None = None) -> dict[str, Any]:
+     payload: dict[str, Any] = {
+         "show_off": show_off.next_payload(),
+         # ChatInfo.setOperationMessage 无守卫，缺这个键 → NullReferenceException
+         "gmMessage": "",
+     }
++    if notification_provider is not None:
++        try:
++            payload.update(notification_provider(session))
++        except (ValueError, state.StateConflictError) as exc:
++            payload.update(succeeded=False, errorReason=str(exc))
+     return response_shapes.success(API, payload)
+
+
+-def register(registry: Any) -> None:
+-    registry.register(API, handler)
++def register(registry: Any, *, notification_provider: Callable | None = None) -> None:
++    registry.register(API, partial(handler, notification_provider=notification_provider))
+--- a/tests/test_parallel_342_integration.py
++++ b/tests/test_parallel_342_integration.py
+@@ -18,20 +18,21 @@
+     "politic/lottery/getSouls", "common/getPlayerCogid", "plugin/getPluginData",
+     "plugin/getPluginLog", "plugin/addPluginLog",
+     "trophy/getTrophyProgress", "trophy/completeTrophy", "trophy/messageWindowTrophy",
++    "friend/cancelFriendOffer", "friend/dissolutionFriend", "friend/feedbackFriendOffer",
++    "friend/getFriendProfile", "friend/getFriends", "friend/sendFriendOffer", "friend/updateFriendData",
++    "inbox/getParcels", "inbox/resolveParcels",
+ }
+ HELD = {
+     "politic/map/getBackgrounds", "politic/map/setBackground", "deck/transferStoreCharacters",
+     "quest/getChapterData", "quest/getQuestCompleteFlags", "quest/getQuestProgress",
+     "quest/getQuestRewardOpenFlags", "auction/auctionResourceBrowse", "auction/auctionResourceSearch",
+-    "friend/cancelFriendOffer", "friend/dissolutionFriend", "friend/feedbackFriendOffer",
+-    "friend/getFriendProfile", "friend/getFriends", "friend/sendFriendOffer", "friend/updateFriendData",
+     "strategy/isAlive", "ranking/getRankersInKokudaka", "ranking/getBriefOfKokudaka",
+     "common/getRevisions", "plugin/setPluginData",
+     # Round 2 components still need producers, migration or runtime tables.
+     "quest/getQuestEncountWorks", "quest/clearObstacle", "deck/sellTactics",
+     "politic/shop/getBackgroundItems", "politic/shop/buyBackgroundItem",
+     "politic/shop/getShopItemsFromNationalPower", "politic/shop/buyShopItemFromNationalPower",
+-    "inbox/getParcels", "inbox/resolveParcels", "siege/getPairings",
++    "siege/getPairings",
+     "strategy/getStrategyWinLossRecords",
+ }
+
+@@ -79,7 +80,7 @@
+         for api in HELD:
+             self.assertEqual(self.registry._handlers[api].__module__, "app.business.placeholders", api)
+         self.assertEqual(sum(h.__module__ == "app.business.placeholders"
+-                             for h in self.registry._handlers.values()), 331)
++                             for h in self.registry._handlers.values()), 322)
+
+     def test_shared_transactions_survive_concurrent_calls_and_relogin(self):
+         before = self.saved()
+@@ -117,7 +118,12 @@
+     def test_authentication_identity_and_soul_root_types(self):
+         before = self.saved()
+         for api in MOUNTED:
+-            self.assertIn("errorReason", self.registry.dispatch(api, {}, None)[1], api)
++            result = self.registry.dispatch(api, {}, None)[1]
++            if api in {"friend/cancelFriendOffer", "friend/dissolutionFriend",
++                       "friend/feedbackFriendOffer", "friend/sendFriendOffer"}:
++                self.assertIs(result["result"], False, api)
++            else:
++                self.assertIn("errorReason", result, api)
+         self.assertEqual(self.saved(), before)
+         result = self.call("politic/lottery/getSouls")
+         self.assertEqual(set(result), {"red", "blue", "purple", "yellow", "green", "black", "white"})

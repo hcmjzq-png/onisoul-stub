@@ -1,0 +1,752 @@
+{
+  "building": {
+    "building200_041_01_01_1_1": {
+      "id": "building200_041_01_01_1_1",
+      "name": "田地",
+      "desc": "粮食生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_023_01_01_1_1",
+        "product060_001_01_01_1_1",
+        "product060_018_01_01_1_1",
+        "product060_007_01_01_1_1",
+        "product060_019_01_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200041",
+      "waitImages": [
+        "building200_041_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_013",
+      "sortno": 400,
+      "openShopItemId1": [
+        "shop0000039"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": [
+        "shop0000032"
+      ],
+      "openLevel2": 7,
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_051_01_01_1_1": {
+      "id": "building200_051_01_01_1_1",
+      "name": "道路",
+      "desc": "影响周围",
+      "category": "road",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [],
+      "costAmounts": [],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "road",
+      "itemId": "item05_0200051",
+      "waitImages": [
+        "building200_051_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 600,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 0,
+      "kokudakaMax": 0,
+      "regularSoldier": 0,
+      "dedication": 0,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    }
+  },
+  "product": {
+    "product060_023_01_01_1_1": {
+      "id": "product060_023_01_01_1_1",
+      "name": "短时间少量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        0
+      ],
+      "dueInterval": 10,
+      "rewardId": "reward01_01_00001_01",
+      "openLevel": 1,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060023",
+      "assetNames": [
+        "product060_023_01_01_1_1",
+        "product060_023_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 10,
+      "sortno": 1
+    },
+    "product060_001_01_01_1_1": {
+      "id": "product060_001_01_01_1_1",
+      "name": "短时间少量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        10
+      ],
+      "dueInterval": 900,
+      "rewardId": "reward01_01_00014_01",
+      "openLevel": 5,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060001",
+      "assetNames": [
+        "product060_001_01_01_1_1",
+        "product060_001_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 30,
+      "sortno": 6
+    }
+  },
+  "building_level": {
+    "product_early1001": {
+      "id": "product_early1001",
+      "needExp": 20,
+      "needCostRatio": 0.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1002": {
+      "id": "product_early1002",
+      "needExp": 100,
+      "needCostRatio": 0.7,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1003": {
+      "id": "product_early1003",
+      "needExp": 200,
+      "needCostRatio": 0.9,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1004": {
+      "id": "product_early1004",
+      "needExp": 366,
+      "needCostRatio": 1.2,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1005": {
+      "id": "product_early1005",
+      "needExp": 480,
+      "needCostRatio": 1.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1006": {
+      "id": "product_early1006",
+      "needExp": 606,
+      "needCostRatio": 1.8,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1007": {
+      "id": "product_early1007",
+      "needExp": 750,
+      "needCostRatio": 2.1,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1008": {
+      "id": "product_early1008",
+      "needExp": 825,
+      "needCostRatio": 2.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1009": {
+      "id": "product_early1009",
+      "needExp": 900,
+      "needCostRatio": 4.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    },
+    "product_early1010": {
+      "id": "product_early1010",
+      "needExp": 0,
+      "needCostRatio": 9.7,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    }
+  },
+  "politicMission": {
+    "po_mission_00281": {
+      "id": "po_mission_00281",
+      "index": 306,
+      "iconFileName": "mission_000017",
+      "iconIndex": -1,
+      "bootCheckFunc": "player_level",
+      "bootCheckData": [
+        "15"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 2,
+      "displayIcon1": "IconSignal",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "storyQuestClear"
+      ],
+      "conditionGrades1": [
+        "2"
+      ],
+      "conditionLevels1": [
+        "5"
+      ],
+      "conditionTargets1": [
+        "10"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "displayIcon2": "IconLevelUp",
+      "conditionCount2": 1,
+      "conditionTypes2": [
+        "getKokudaka"
+      ],
+      "conditionGrades2": [
+        "any"
+      ],
+      "conditionLevels2": [
+        "any"
+      ],
+      "conditionTargets2": [
+        "any"
+      ],
+      "conditionCheckers2": [
+        "eq_greater_than"
+      ],
+      "conditionArgs2": [
+        7500
+      ],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00281_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [
+        "unlockChangeMap"
+      ],
+      "enterScript": "scr1_000281_01",
+      "exitScript": "scr1_000281_03"
+    },
+    "po_mission_00458": {
+      "id": "po_mission_00458",
+      "index": 483,
+      "iconFileName": "mission_000017",
+      "iconIndex": -1,
+      "bootCheckFunc": "disable",
+      "bootCheckData": [
+        "20"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 2,
+      "displayIcon1": "IconSignal",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "storyQuestClear"
+      ],
+      "conditionGrades1": [
+        "5"
+      ],
+      "conditionLevels1": [
+        "5"
+      ],
+      "conditionTargets1": [
+        "10"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "displayIcon2": "IconLevelUp",
+      "conditionCount2": 1,
+      "conditionTypes2": [
+        "getKokudaka"
+      ],
+      "conditionGrades2": [
+        "any"
+      ],
+      "conditionLevels2": [
+        "any"
+      ],
+      "conditionTargets2": [
+        "any"
+      ],
+      "conditionCheckers2": [
+        "eq_greater_than"
+      ],
+      "conditionArgs2": [
+        30000
+      ],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00458_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [
+        "unlockWaterMap"
+      ],
+      "enterScript": "scr1_000458_01",
+      "exitScript": "scr1_000458_03"
+    }
+  },
+  "shop_item_bg": {
+    "bgstore_01_0001_0001": {
+      "id": "bgstore_01_0001_0001",
+      "isEnable": true,
+      "sortIndex": 0,
+      "isNew": true,
+      "category": "near",
+      "itemIds": [
+        "item13_0000004"
+      ],
+      "credit": 168,
+      "name": "SHOP_ITEM_MSG_NAME_BG_01_0001_0001",
+      "desc": "SHOP_ITEM_MSG_DESC_BG_01_0001_0001",
+      "iconName": "sitem11_0000001"
+    },
+    "bgstore_01_0001_0002": {
+      "id": "bgstore_01_0001_0002",
+      "isEnable": true,
+      "sortIndex": 1,
+      "isNew": true,
+      "category": "near",
+      "itemIds": [
+        "item13_0000005"
+      ],
+      "credit": 168,
+      "name": "SHOP_ITEM_MSG_NAME_BG_01_0001_0002",
+      "desc": "SHOP_ITEM_MSG_DESC_BG_01_0001_0002",
+      "iconName": "sitem11_0000002"
+    },
+    "bgstore_11_0001_0001": {
+      "id": "bgstore_11_0001_0001",
+      "isEnable": true,
+      "sortIndex": 0,
+      "isNew": true,
+      "category": "far",
+      "itemIds": [
+        "item14_1000048"
+      ],
+      "credit": 168,
+      "name": "SHOP_ITEM_MSG_NAME_BG_11_0001_0001",
+      "desc": "SHOP_ITEM_MSG_DESC_BG_11_0001_0001",
+      "iconName": "sitem12_0000001"
+    },
+    "bgstore_11_0001_0002": {
+      "id": "bgstore_11_0001_0002",
+      "isEnable": true,
+      "sortIndex": 1,
+      "isNew": true,
+      "category": "far",
+      "itemIds": [
+        "item14_1000049"
+      ],
+      "credit": 168,
+      "name": "SHOP_ITEM_MSG_NAME_BG_11_0001_0002",
+      "desc": "SHOP_ITEM_MSG_DESC_BG_11_0001_0002",
+      "iconName": "sitem12_0000002"
+    }
+  },
+  "item13": {
+    "item13_0000004": {
+      "id": "item13_0000004",
+      "enable": true,
+      "value": 0,
+      "category": "nearground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_13_0000004_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_13_0000004_DESC",
+      "iconName": "none",
+      "parameterId": "pbsm1_set000004"
+    },
+    "item13_0000005": {
+      "id": "item13_0000005",
+      "enable": true,
+      "value": 4,
+      "category": "nearground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_13_0000005_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_13_0000005_DESC",
+      "iconName": "none",
+      "parameterId": "pbsm1_set000005"
+    }
+  },
+  "item14": {
+    "item14_1000048": {
+      "id": "item14_1000048",
+      "enable": true,
+      "value": 1,
+      "category": "farground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_14_1000048_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_14_1000048_DESC",
+      "iconName": "item14_1000048",
+      "parameterId": "pbsm2_0049"
+    },
+    "item14_1000049": {
+      "id": "item14_1000049",
+      "enable": true,
+      "value": 2,
+      "category": "farground",
+      "isCirculate": true,
+      "isGift": false,
+      "isAuction": false,
+      "nameId": "ITEM_MSG_14_1000049_NAME",
+      "yomiId": "none",
+      "descId": "ITEM_MSG_14_1000049_DESC",
+      "iconName": "item14_1000049",
+      "parameterId": "pbsm2_0050"
+    }
+  },
+  "skill": {
+    "skill1_10041_01": {
+      "id": "skill1_10041_01",
+      "name": "SKILL_MSG_1_10041_01_NAME",
+      "yomi": "SKILL_MSG_1_10041_01_YOMI",
+      "desc": "SKILL_MSG_1_10041_01_DESC",
+      "category": "intelligence",
+      "type": "politic",
+      "battleType": [],
+      "levelUpType": "fast",
+      "minActivateRatio": 0,
+      "maxActivateRatio": 20,
+      "changeLevel": 20,
+      "changeId": "skill1_10042_01",
+      "timing": "none",
+      "multiple": false,
+      "group": 10041,
+      "priorityInGroup": 1,
+      "conditionType": "normal",
+      "condition1A": "self",
+      "condition1B": "politicDeckPositionOr",
+      "condition2A": "struct",
+      "condition2B": "5th",
+      "sign": "equal",
+      "effect1Target": "none",
+      "inheritCost": 1000,
+      "inheritFlag": true,
+      "inheritRatio": 95,
+      "inheritClass": [
+        "all"
+      ],
+      "inheritGrade": 1,
+      "inheritConditions": [],
+      "images": "skill1_10041_01",
+      "effectCategory": 4,
+      "rarity": 1
+    },
+    "skill1_10042_01": {
+      "id": "skill1_10042_01",
+      "name": "SKILL_MSG_1_10042_01_NAME",
+      "yomi": "SKILL_MSG_1_10042_01_YOMI",
+      "desc": "SKILL_MSG_1_10042_01_DESC",
+      "category": "intelligence",
+      "type": "politic",
+      "battleType": [],
+      "levelUpType": "fast",
+      "minActivateRatio": 0,
+      "maxActivateRatio": 20,
+      "changeLevel": 20,
+      "changeId": "skill1_10043_01",
+      "timing": "none",
+      "multiple": false,
+      "group": 10041,
+      "priorityInGroup": 2,
+      "conditionType": "normal",
+      "condition1A": "self",
+      "condition1B": "politicDeckPositionOr",
+      "condition2A": "struct",
+      "condition2B": "5th",
+      "sign": "equal",
+      "effect1Target": "none",
+      "inheritCost": 3000,
+      "inheritFlag": true,
+      "inheritRatio": 95,
+      "inheritClass": [
+        "all"
+      ],
+      "inheritGrade": 1,
+      "inheritConditions": [],
+      "images": "skill1_10042_01",
+      "effectCategory": 4,
+      "rarity": 1
+    }
+  },
+  "quest_1_index": {
+    "2_5": {
+      "id": "2_5",
+      "questNo": 2,
+      "questTitle": "QUEST_1_MSG_2_NAME",
+      "questDetail": "QUEST_1_MSG_2_DESC",
+      "questReward": "",
+      "enable": true,
+      "clientEnable": true,
+      "chapterNo": 5,
+      "nextId": "3_1",
+      "chapterTitle": "QUEST_1_MSG_2_5_NAME",
+      "chapterDetail": "QUEST_1_MSG_2_5_DESC",
+      "chapterReward": "reward03_02_0002_05",
+      "raidBossEncountId": "raidBossEncount_1_0001",
+      "areaCount": 10,
+      "areaStep1": 15,
+      "areaStep2": 15,
+      "areaStep3": 15,
+      "areaStep4": 15,
+      "areaStep5": 15,
+      "areaStep6": 15,
+      "areaStep7": 15,
+      "areaStep8": 15,
+      "areaStep9": 15,
+      "areaStep10": 15
+    }
+  },
+  "reward01_politic": {
+    "reward01_01_00001_01": {
+      "id": "reward01_01_00001_01",
+      "group1": "A",
+      "ratio1min": 1,
+      "ratio1max": 1,
+      "itemId1": "item11_0000301",
+      "count1min": 13,
+      "count1max": 17,
+      "group2": "B",
+      "ratio2min": 1,
+      "ratio2max": 1,
+      "itemId2": "item11_0000501",
+      "count2min": 2,
+      "count2max": 2,
+      "group3": "none",
+      "ratio3min": 0,
+      "ratio3max": 0,
+      "itemId3": "none",
+      "count3min": 0,
+      "count3max": 0,
+      "group4": "none",
+      "ratio4min": 0,
+      "ratio4max": 0,
+      "itemId4": "none",
+      "count4min": 0,
+      "count4max": 0,
+      "group5": "none",
+      "ratio5min": 0,
+      "ratio5max": 0,
+      "itemId5": "none",
+      "count5min": 0,
+      "count5max": 0,
+      "group6": "none",
+      "ratio6min": 0,
+      "ratio6max": 0,
+      "itemId6": "none",
+      "count6min": 0,
+      "count6max": 0,
+      "group7": "none",
+      "ratio7min": 0,
+      "ratio7max": 0,
+      "itemId7": "none",
+      "count7min": 0,
+      "count7max": 0,
+      "group8": "none",
+      "ratio8min": 0,
+      "ratio8max": 0,
+      "itemId8": "none",
+      "count8min": 0,
+      "count8max": 0,
+      "group9": "none",
+      "ratio9min": 0,
+      "ratio9max": 0,
+      "itemId9": "none",
+      "count9min": 0,
+      "count9max": 0,
+      "group10": "none",
+      "ratio10min": 0,
+      "ratio10max": 0,
+      "itemId10": "none",
+      "count10min": 0,
+      "count10max": 0
+    },
+    "reward01_01_00014_01": {
+      "id": "reward01_01_00014_01",
+      "group1": "A",
+      "ratio1min": 1,
+      "ratio1max": 1,
+      "itemId1": "item11_0000301",
+      "count1min": 60,
+      "count1max": 78,
+      "group2": "B",
+      "ratio2min": 1,
+      "ratio2max": 1,
+      "itemId2": "item11_0000501",
+      "count2min": 6,
+      "count2max": 6,
+      "group3": "none",
+      "ratio3min": 0,
+      "ratio3max": 0,
+      "itemId3": "none",
+      "count3min": 0,
+      "count3max": 0,
+      "group4": "none",
+      "ratio4min": 0,
+      "ratio4max": 0,
+      "itemId4": "none",
+      "count4min": 0,
+      "count4max": 0,
+      "group5": "none",
+      "ratio5min": 0,
+      "ratio5max": 0,
+      "itemId5": "none",
+      "count5min": 0,
+      "count5max": 0,
+      "group6": "none",
+      "ratio6min": 0,
+      "ratio6max": 0,
+      "itemId6": "none",
+      "count6min": 0,
+      "count6max": 0,
+      "group7": "none",
+      "ratio7min": 0,
+      "ratio7max": 0,
+      "itemId7": "none",
+      "count7min": 0,
+      "count7max": 0,
+      "group8": "none",
+      "ratio8min": 0,
+      "ratio8max": 0,
+      "itemId8": "none",
+      "count8min": 0,
+      "count8max": 0,
+      "group9": "none",
+      "ratio9min": 0,
+      "ratio9max": 0,
+      "itemId9": "none",
+      "count9min": 0,
+      "count9max": 0,
+      "group10": "none",
+      "ratio10min": 0,
+      "ratio10max": 0,
+      "itemId10": "none",
+      "count10min": 0,
+      "count10max": 0
+    }
+  },
+  "defines": {
+    "infinite_building_durability": {
+      "id": "infinite_building_durability",
+      "value": 10001
+    },
+    "politic_auto_harvest_point": {
+      "id": "politic_auto_harvest_point",
+      "value": 10
+    }
+  }
+}

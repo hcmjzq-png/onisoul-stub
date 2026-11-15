@@ -1,8 +1,9 @@
-"""F-group integration component; not mounted by GameplayService.
+"""F-group integration components; not mounted by GameplayService.
 
-Liveness, siege pairings and strategy history read authoritative saved data.
-No campaign, troop, schedule, result, reward or default alive value is invented.
-The _warCampaigns storage schema is INTERNAL, not original wire protocol.
+Enrollment writes a journal for an explicitly declared event via an atomic
+adapter. Legacy liveness/pairings/history still only read saved observations.
+No default event, country allocation, score, winner or reward is invented.
+Both storage schemas are INTERNAL, not original wire protocol.
 """
 from __future__ import annotations
 
@@ -14,6 +15,67 @@ from typing import Any, Callable
 from app.business import response_shapes
 from app.business.player_services import PlayerServices, integer
 from app.business.war_campaigns_views import siege_pairings, strategy_history
+from app.business.war_campaigns_commands import AtomicWarEnrollment, enroll_turf_war
+
+
+class WarEnrollmentServices(PlayerServices):
+    """Opt-in component. Normal GameplayService does not mount these handlers.
+
+    event_id is pinned by server composition, never inferred from a date/table
+    or accepted from the request. Automatic campaign rollover is unsupported.
+    """
+
+    APIS = frozenset({"turfWar/entryWar", "turfWar/entryBattlefield"})
+
+    def __init__(self, service: Any, *, event_id: str | None = None,
+                 atomic: AtomicWarEnrollment | None = None,
+                 clock: Callable[[], float] = time.time) -> None:
+        super().__init__(service)
+        self.event_id, self.atomic, self.clock = event_id, atomic, clock
+
+    def register(self, registry: Any, *, apis: frozenset[str] | None = None) -> None:
+        selected = self.APIS if apis is None else apis
+        if not selected <= self.APIS:
+            raise ValueError("unsupported war enrollment endpoint")
+        for api in selected:
+            # Adapter follows I's players -> shared keys order in one DB unit.
+            # Do not add an independent _guard/transaction around that adapter.
+            registry.register(api, partial(self.enroll, api))
+
+    def enroll(self, api: str, params: dict, session: dict | None) -> dict:
+        from app import state
+
+        if api not in self.APIS:
+            raise ValueError("unsupported war enrollment endpoint")
+        player_id = self.service._player_id(session)
+        if not player_id:
+            return self.service._failure(api, "authentication required")
+        fields = {"token", "battlefield"} if api.endswith("/entryBattlefield") else {"token"}
+        if not isinstance(params, dict) or set(params) - fields:
+            return self.service._failure(api, "unexpected turfWar enrollment parameter")
+        battlefield = None
+        if api.endswith("/entryBattlefield"):
+            battlefield = params.get("battlefield")
+            if not isinstance(battlefield, str) or not battlefield:
+                return self.service._failure(api, "battlefield must be a catalogue ID")
+        if self.atomic is None or not isinstance(self.event_id, str) or not self.event_id:
+            return self.service._failure(api, "no stub response: campaign transaction unavailable")
+        try:
+            with self.atomic(self.event_id, player_id) as draft:
+                if not isinstance(draft, dict) or set(draft) != {"event", "player"}:
+                    raise ValueError("no stub response: invalid campaign transaction draft")
+                event = draft["event"]
+                if (not isinstance(event, dict) or not isinstance(event.get("plan"), dict)
+                        or event["plan"].get("eventId") != self.event_id):
+                    raise ValueError("no stub response: declared campaign unavailable")
+                payload = enroll_turf_war(event, draft["player"], player_id,
+                                         now=self.clock(), battlefield=battlefield)
+        except ValueError as exc:
+            return self.service._failure(api, str(exc))
+        except state.StateConflictError:
+            return self.service._failure(api, "state changed concurrently; retry")
+        # The context has committed before emitting success.
+        return response_shapes.success(api, payload)
 
 
 class WarCampaignsServices(PlayerServices):

@@ -1,0 +1,70 @@
+{
+  "turf_war_battlefield_catalog": {
+    "battlefield_0000101": {
+      "id": "battlefield_0000101",
+      "name": "TURFWAR_MSG_BATTLEFIELD_00001_NAME",
+      "age": "TURFWAR_MSG_BATTLEFIELD_00001_AGE",
+      "desc": "TURFWAR_MSG_BATTLEFIELD_00001_DESC",
+      "westLeader": "item01_0012301",
+      "eastLeader": "item01_0005401",
+      "assetName": "bfn001",
+      "flagPos": [
+        904,
+        362
+      ],
+      "infoPos": [
+        1074,
+        320
+      ],
+      "leaderPos": [
+        1074,
+        512
+      ],
+      "place": "country01"
+    },
+    "battlefield_0000201": {
+      "id": "battlefield_0000201",
+      "name": "TURFWAR_MSG_BATTLEFIELD_00002_NAME",
+      "age": "TURFWAR_MSG_BATTLEFIELD_00002_AGE",
+      "desc": "TURFWAR_MSG_BATTLEFIELD_00002_DESC",
+      "westLeader": "item01_0035701",
+      "eastLeader": "item01_0026001",
+      "assetName": "bfn002",
+      "flagPos": [
+        780,
+        406
+      ],
+      "infoPos": [
+        782,
+        482
+      ],
+      "leaderPos": [
+        660,
+        320
+      ],
+      "place": "country01"
+    },
+    "battlefield_0000301": {
+      "id": "battlefield_0000301",
+      "name": "TURFWAR_MSG_BATTLEFIELD_00003_NAME",
+      "age": "TURFWAR_MSG_BATTLEFIELD_00003_AGE",
+      "desc": "TURFWAR_MSG_BATTLEFIELD_00003_DESC",
+      "westLeader": "item01_0098001",
+      "eastLeader": "item01_0102001",
+      "assetName": "bfn003",
+      "flagPos": [
+        490,
+        456
+      ],
+      "infoPos": [
+        344,
+        406
+      ],
+      "leaderPos": [
+        344,
+        240
+      ],
+      "place": "country01"
+    }
+  }
+}

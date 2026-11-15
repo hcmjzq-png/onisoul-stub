@@ -1,0 +1,67 @@
+{
+  "registered": 402,
+  "dedicated": 80,
+  "placeholders": 322,
+  "newly_mounted": [
+    "friend/cancelFriendOffer",
+    "friend/dissolutionFriend",
+    "friend/feedbackFriendOffer",
+    "friend/getFriendProfile",
+    "friend/getFriends",
+    "friend/sendFriendOffer",
+    "friend/updateFriendData",
+    "inbox/getParcels",
+    "inbox/resolveParcels"
+  ],
+  "groups": {
+    "A": {
+      "assigned": 29,
+      "mounted": 0,
+      "remaining": 29
+    },
+    "B": {
+      "assigned": 35,
+      "mounted": 0,
+      "remaining": 35
+    },
+    "C": {
+      "assigned": 30,
+      "mounted": 0,
+      "remaining": 30
+    },
+    "D": {
+      "assigned": 37,
+      "mounted": 0,
+      "remaining": 37
+    },
+    "E": {
+      "assigned": 41,
+      "mounted": 9,
+      "remaining": 32
+    },
+    "F": {
+      "assigned": 47,
+      "mounted": 0,
+      "remaining": 47
+    },
+    "G": {
+      "assigned": 51,
+      "mounted": 0,
+      "remaining": 51
+    },
+    "H": {
+      "assigned": 29,
+      "mounted": 0,
+      "remaining": 29
+    },
+    "I": {
+      "assigned": 32,
+      "mounted": 0,
+      "remaining": 32
+    }
+  },
+  "proof_files": 11,
+  "unique_local_paths_checked": 151,
+  "proof_scope": "explicit path/source + sha256 pairs; relative text may use LF; not a web-source or full semantic audit",
+  "errors": []
+}

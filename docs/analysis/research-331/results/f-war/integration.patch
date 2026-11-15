@@ -1,0 +1,35 @@
+--- a/app/business/turf_war.py
++++ b/app/business/turf_war.py
+@@ -75,2 +75,14 @@
+ def register(registry: Any) -> None:
+     registry.register(API, handler)
++
++
++# F research-331 candidate wiring. NOT called by register(); do not enable until
++# I's atomic store and the shared real getWarSituation producer are integrated.
++def register_enrollment_components(registry: Any, service: Any, *, event_id: str,
++                                   atomic: Any, clock: Any) -> None:
++    from app.business.war_campaigns_services import WarEnrollmentServices
++
++    if not isinstance(event_id, str) or not event_id or not callable(atomic):
++        raise ValueError("explicit event and atomic campaign store required")
++    WarEnrollmentServices(service, event_id=event_id, atomic=atomic, clock=clock).register(
++        registry, apis=frozenset({"turfWar/entryWar", "turfWar/entryBattlefield"}))
+--- a/docs/api_schema.md
++++ b/docs/api_schema.md
+@@ -186,3 +186,15 @@
+ | 通知确认与首次旧档初始化 | 待验证 | `accountProgress.trophyClaims` / `levelTrophyNoticeSeen` 是本服内部状态。原 stub 尚未发放成就，缺失 ledger 视为未领取；已有合法 ledger 保留，损坏 ledger 拒绝。禁止未经迁移导入原服领取历史。通知确认不发奖励；超资源上限整笔拒绝，未实现信箱分流。 |
+ | 背景 mapId / 解锁边界 | bundle | mypageCastleTownItem.cs:101-147 仅 no=1 显示背景切换和商店按钮，并要求 mapEntry.isEnable、PoliticMissionManager.IsOpenSubMap。mypageBgSelectWindow.cs:135-150 明确发送 mapId=1 并更新同一 mapEntry。主城 no=0 隐藏按钮，不存在 0→1 偏移映射。 |
+ | 背景内部归属与选择 | 待验证 | 候选购买/选择统一读取 items，选择保存于 mapBackgrounds["1"]。内部 subcity_enabled 提供者尚无正式实现，因此四个背景入口仍不挂载，不把旧 backgroundOwnership 或 mapBackgrounds["0"] 自动认定为原服权益。 |
++
++
++## 2026-11-15 research-331 F（候选组件，未默认挂载）
++
++| 字段 / 行为 | 来源 | 证据与限制 |
++| --- | --- | --- |
++| turfWar/entryWar.team | bundle | WebApiClient.cs:2784-2789 仅发送 token；TurfWarBriefCache.cs:379-393 接收 string team。具体国家分组来自本服显式活动声明，非恢复原服匹配算法。 |
++| turfWar/entryBattlefield.battlefield | bundle | WebApiClient.cs:2799-2806；TurfWarWorldMap.cs:146-166,195-202,291-328；TurfWarInformation.cs:37-49。选场是 active 表 catalogId（如 battlefield_0000101），不是 battlefield01 槽位。成功回调只确认并清缓存，无额外返回字段。 |
++| getWarSituation.selfBelong.team/battlefield、isMovable | bundle / 待验证 | TurfWarBriefCache.cs:362-370,235。新 turf_enrollment 仅投影本人事件记录，返回片段；不能据此生成 global/bonus/score/rank，也不映射到消费者未知的 getSelfSituation/getSelfRecord。暂不支持转场，isMovable=false 是本服限制。 |
++| 新事件存储、运营声明、登记不扣费和重试 | 待验证 / compatibility-policy | plan/journal/authorizationRef 是内部数据，不出现在原 HTTP 包；没有默认活动/默认分组。相同请求只返绝对 team/确认，无重复记录和资源增量。关闭登记不是战争结算，不发奖励。依赖 I 原子活动→玩家事务及完整真实战况，默认不挂载。 |
++
++完整限制见 [F 交接](analysis/research-331/results/f-war/integration-notes.md)。

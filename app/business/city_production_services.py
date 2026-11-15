@@ -1,16 +1,21 @@
 """Group A: verified inventory sales and explicitly owned background selection.
 
-GameplayService mounts inventory sales only. Production settlement is unimplemented.
+GameplayService mounts inventory sales only. ManualProductionServices below is
+an unmounted start/timer component; production settlement is unimplemented.
 items/mapBackgrounds are SERVER-INTERNAL save fields, not original wire fields.
 The original background UI is subcity-only (mapId=1). It needs a verified
 subcity provider before mounting; no ownership or city unlock is granted here.
 """
 from __future__ import annotations
 
+import copy
 from functools import partial
+import math
+import time
 from typing import Any, Callable
 
 from app.business.city_services import CityServices
+from app.business.city_production_rules import durability_kind, production_costs
 from app.business.player_services import integer
 
 
@@ -118,3 +123,119 @@ class CityProductionServices(CityServices):
         return {category: code for category, code in selected.items()
                 if category in ("nearGround", "farGround")
                 and isinstance(code, str) and code in owned.get(category, [])}
+
+
+class ManualProductionServices(CityServices):
+    """Unmounted start/timer component; NOT a working harvest economy.
+
+    Scope: the original G1 field, no politic deck modifiers, infinite durability.
+    Roads remain in the map; this component never claims to calculate their yield.
+    A future settlement implementation must be reviewed before mounting starts.
+    """
+
+    FIELD = "building200_041_01_01_1_1"
+    # Ordinary resource recipes only: special flower/random drops are excluded.
+    PRODUCTS = frozenset({"product060_023_01_01_1_1", "product060_001_01_01_1_1"})
+
+    def __init__(self, service: Any, *, clock: Callable[[], float] = time.time) -> None:
+        super().__init__(service)
+        self.clock = clock
+
+    def register(self, registry: Any, *, apis: frozenset[str]) -> None:
+        # No default whitelist. GameplayService deliberately does not call this.
+        for api, bulk in (("politic/task/submitProduceTask", False),
+                          ("politic/task/submitBulkProduceTasks", True)):
+            if api in apis:
+                registry.register(api, self.service._guard(
+                    api, partial(self.call, api, partial(self.submit, bulk=bulk))))
+
+    @staticmethod
+    def no_modifiers(player: dict) -> None:
+        decks = (player.get("decks") or {}).get("politic", {})
+        if not isinstance(decks, dict):
+            raise ValueError("no stub response: invalid politic deck")
+        for deck in decks.values():
+            if not isinstance(deck, dict):
+                raise ValueError("no stub response: invalid politic deck")
+            for field in ("ids", "equip", "tactics"):
+                values = deck.get(field, {})
+                if not isinstance(values, dict) or any(value != "empty" for value in values.values()):
+                    raise ValueError("no stub response: production deck modifiers are unsupported")
+
+    def submit(self, player: dict, params: dict, *, bulk: bool = False) -> dict:
+        # Work on a private candidate even for direct component callers.
+        candidate = copy.deepcopy(player)
+        payload = self._submit(candidate, params, bulk=bulk)
+        player.clear()
+        player.update(candidate)
+        return payload
+
+    def _submit(self, player: dict, params: dict, *, bulk: bool) -> dict:
+        self.current_map(player)
+        self.no_modifiers(player)
+        keys = self.ids(params.get("buildingIds") if bulk else [params.get("buildingId")])
+        codes = params.get("productIds") if bulk else [params.get("productId")]
+        if not isinstance(codes, list) or len(codes) != len(keys):
+            raise ValueError("productIds must match buildingIds")
+        now_value = self.clock()
+        # Integer Unix seconds are consumed by PoliticBuildingParameter.updateTask.
+        if isinstance(now_value, bool) or not isinstance(now_value, (int, float)):
+            raise ValueError("no stub response: invalid production clock")
+        if not math.isfinite(now_value) or now_value < 0:
+            raise ValueError("no stub response: invalid production clock")
+        now = int(now_value)
+        if now > 9007199254740991:
+            raise ValueError("no stub response: production clock out of range")
+        output, costs = {}, {}
+        catalogue, levels, defines = self.table("product"), self.table("building_level"), self.table("defines")
+        for key, code in zip(keys, codes):
+            key, record, row = self.owned(player, key)
+            # Replaying bulk success reruns payoutCosts in the original client.
+            # No response replay, even for an identical active recipe.
+            if key in player["produce"]:
+                raise ValueError("no stub response: production already exists; reload authoritative map/resources")
+            self.idle(player, key, record)
+            if (record.get("buildingTypeId") != self.FIELD or row.get("produceType") != "manual"
+                    or durability_kind(record.get("durability"), defines) != "infinite"):
+                raise ValueError("no stub response: unsupported manual production building")
+            if (not isinstance(row.get("products"), list) or not isinstance(code, str)
+                    or code not in self.PRODUCTS or code not in row["products"]):
+                raise ValueError("no stub response: unsupported production recipe")
+            product = catalogue.get(code)
+            if not isinstance(product, dict):
+                raise ValueError("no stub response: referenced product row missing")
+            if product.get("openMission") != "null" or integer(product.get("openLevel")) > integer(player["entity"].get("level"), 1):
+                raise ValueError("production recipe is locked or unsupported")
+            grade = integer(row.get("grade"), 1)
+            level = integer(record.get("level"), 1, grade * 10)
+            step = levels.get(f"{row.get('levelUpTypeId')}{grade * 1000 + level}")
+            if not isinstance(step, dict):
+                raise ValueError("no stub response: referenced production level row missing")
+            # The table's lowercase intervalRatio is NOT the dead accessor's
+            # uppercase IntervalRatio. Only the unchanged original timing subset.
+            if step.get("intervalRatio") != 1:
+                raise ValueError("no stub response: modified production intervals are unsupported")
+            # Compatibility policy for this unmodified subset: schedule the
+            # displayed table duration. No original server timing capture exists.
+            due = now + integer(product.get("dueInterval"), 1)
+            if due > 9007199254740991:
+                raise ValueError("no stub response: production dueTime out of range")
+            for resource, amount in production_costs(product, step).items():
+                if resource not in player["resources"]:
+                    raise ValueError("no stub response: unsupported production cost resource")
+                costs[resource] = integer(costs.get(resource, 0) + amount)
+            output[key] = {"productId": code, "createdTime": float(now), "dueTime": float(due)}
+        points = player["actionPoints"]["politicPoint"]
+        if integer(points.get("point")) < len(keys) or any(
+                integer(player["resources"][kind].get("amount")) < amount for kind, amount in costs.items()):
+            raise ValueError("insufficient resources or politic points")
+        points["point"] -= len(keys)
+        for kind, amount in costs.items():
+            player["resources"][kind]["amount"] -= amount
+        for key, task in output.items():
+            player["produce"][key] = task
+            player["buildings"][key]["status"] = "producing"
+        # At dueTime the client timer becomes harvestable; merely reading a map
+        # does not grant rewards, change durability, or accrue building/player XP.
+        return ({"producings": copy.deepcopy(output), "now": float(now)} if bulk
+                else {"dueTime": output[keys[0]]["dueTime"], "now": float(now)})

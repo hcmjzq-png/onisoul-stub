@@ -1,0 +1,88 @@
+{
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "task_path": "D:\\onisoul-worktrees\\research-331-plan-20261115\\docs\\analysis\\research-331\\tasks\\F-war.txt",
+  "task_sha256": "986e1bb94cceaf22c31a3b7c372f448982372a7d1d470c1dff34c670ba979602",
+  "new_evidence_endpoints": [
+    "siege/discharge",
+    "siege/enter",
+    "siege/getBrief",
+    "siege/getPairings",
+    "siege/getSiegeResultLog",
+    "siege/getSiegeStatus",
+    "siege/lookSiegeResult",
+    "siege/openingBet",
+    "turfWar/entryBattlefield",
+    "turfWar/entryWar",
+    "turfWar/moveBattlefield"
+  ],
+  "sources": [
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\WebApiClient.cs",
+      "sha256": "83072872383d59a98c5211d77235cbef435ecba3fdea05338dfe7385e9ca0d43"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarBriefCache.cs",
+      "sha256": "d3834cf7aa9a42f51fcd52d7bcbc27c58ed63b3992d0ca36c49444a6640c0868"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarWorldMap.cs",
+      "sha256": "fdc39a81aab5791e572c22b279491416906b1308bffb8a0fef8e2784bc3d122e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarInformation.cs",
+      "sha256": "2476297a12e429faa6d29ee38173fe190c4ee99a1f8a495dcc6d0b81487674aa"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarDetail.cs",
+      "sha256": "f45bd5b5be81ea59b39ff97346eabf0c0faba16e244467bd5a692825504cc41c"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarResultRenderer.cs",
+      "sha256": "bf28b3412d452eb86e738061f21abff7b259a7e6899054b267e57698e9a5d54b"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarBattleFieldTableAccessor.cs",
+      "sha256": "51d7ed7aa52f97220355f4290a3be075fec03fda42a882504e8769ef391fce90"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\TurfWarBattleFieldCatalogTableAccessor.cs",
+      "sha256": "81594271859b1bdd2f8b7080b28ed90ad403985cb14792244634459e6739422f"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\siegeBriefMenu.cs",
+      "sha256": "580efc16cbdac4f0424bdd0212d72271d410ff8053e94c6e9ee90963cd084436"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\siegeBriefMenuDesc.cs",
+      "sha256": "b00802dee4e036e9b3ef3cbb33359434def9a73cbdbf1be650618640dc46ec76"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\vsSetting_Siege.cs",
+      "sha256": "5782cd031b60e11f861803d6ca8a4b671b3bb9dec8558e6794a514d30510616e"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\SiegeResultRenderer.cs",
+      "sha256": "5ff2ccd9bbf9461e8533466b9c08d13906e5153cf57bfc305bd402d993be6b53"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategySelect.cs",
+      "sha256": "8ea06faed8a8b403f4b577a87cd70d471d4615a34ffa75ae8f01a2ff47901802"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyMoveableRegionSelector.cs",
+      "sha256": "64fc028c8797e0b607a5131fce9b6298251ddead9a0b00f34baed67cfd394f06"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\StrategyCommandResultProcessor.cs",
+      "sha256": "1fed5876fa0ca85d924fdf310a35a420d51aad0c5f71bb011f40d4d98de3f282"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HTMLStrategyMatchMediator_History.cs",
+      "sha256": "7bb8ae46e3e233e50b065cca0b2c1b64e1f6198a81401429788b5106822d86b6"
+    },
+    {
+      "path": "C:\\Users\\74378\\AppData\\Local\\Temp\\onisoul-static-original-20261115\\HashAccessFuncs.cs",
+      "sha256": "517f91fc078044b7461ff9ea14d92d9dfe57c8bebe218c40c5af995ae85ad15c"
+    }
+  ]
+}

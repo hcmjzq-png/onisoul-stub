@@ -1,0 +1,49 @@
+--- a/app/business/gameplay.py
++++ b/app/business/gameplay.py
+@@ -22,6 +22,7 @@
+ from app.business.city_production_services import CityProductionServices
+ from app.business.card_growth_services import CardGrowthServices
+ from app.business.account_progress_services import AccountProgressServices
++from app.business.account_progress_daily import AccountProgressDaily, LoginStampPlan
+ from app.tables import TableCatalog, TableError, default_catalog
+
+ StateLoader = Callable[[str], dict[str, Any]]
+@@ -112,6 +113,8 @@
+         load_state: StateLoader | None = None,
+         save_state: StateSaver | None = None,
+         session_store: Any | None = None,
++        login_stamp_plan: LoginStampPlan | None = None,
++        login_stamp_clock: Callable[[], float] = time.time,
+     ) -> None:
+         self.catalog = catalog or default_catalog()
+         self.load_state = load_state or state.load
+@@ -120,6 +123,8 @@
+         self.missions = MissionChain(self.catalog)
+         self._locks: dict[str, threading.RLock] = {}
+         self._locks_guard = threading.Lock()
++        # Explicit deployment policy only; never install a test or inferred schedule.
++        self.account_daily = AccountProgressDaily(self, plan=login_stamp_plan, clock=login_stamp_clock)
+
+     def register(self, registry: Registry) -> Registry:
+         handlers = {
+@@ -170,6 +175,8 @@
+             "plugin/getPluginLog", "plugin/addPluginLog",
+             "trophy/getTrophyProgress", "trophy/completeTrophy", "trophy/messageWindowTrophy",
+         }))
++        if self.account_daily.plan is not None:
++            self.account_daily.register(registry)
+         return registry
+
+     def _lock_for(self, player_id: str) -> threading.RLock:
+@@ -669,7 +676,10 @@
+             "id": str(navigator.get("id") or ""),
+             "colorIndex": str(navigator.get("colorIndex") or DEFAULT_COLOR),
+         }
+-        next_stamp = self._next_stamp()
++        try:
++            next_stamp = self.account_daily.next_stamp_date(player) or self._next_stamp()
++        except ValueError as exc:
++            return self._failure("common/getPlayerParams", str(exc))
+         payload = {
+             "entity": _deep(player["entity"]),
+             "actionPoints": _deep(player["actionPoints"]),

@@ -1,0 +1,10 @@
+{
+  "tests": 7,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "backend": "8.4.13",
+  "adapter_sha256": "57b4d719b8a2ffb967dae1224a6ff652e7a26a80fe7f5fe69ddf142da8098025",
+  "database": "fresh oni_e_test_<uuid>, dropped after run",
+  "production_data_accessed": false
+}

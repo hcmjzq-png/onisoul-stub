@@ -132,3 +132,65 @@ class RankingsServices(PlayerServices):
         brief = self.mine(self.rows(pair.current), player)
         brief["lastRank"] = self.mine(self.rows(pair.last), player)["rank"]
         return {"brief": brief}
+
+
+class LedgerRankingsServices(PlayerServices):
+    """Eight opt-in projections from ONE real city/gold event ledger read.
+
+    read_view returns an isolated ledger + server timestamp after sealing its
+    watermark in the shared transaction. It must never synthesize an empty
+    ledger when storage is missing. Kept unmounted pending I's storage adapter.
+    """
+
+    APIS = {
+        "ranking/getRankersInKokudaka": ("kokudaka", False),
+        "ranking/getBriefOfKokudaka": ("kokudaka", True),
+        "ranking/getRankersInDedication": ("dedication", False),
+        "ranking/getBriefOfDedication": ("dedication", True),
+        "ranking/getMonthlyRankersInDedication": ("dedication_monthly", False),
+        "ranking/getBriefOfDedicationMonthly": ("dedication_monthly", True),
+        "ranking/getRankersInNationalPower": ("national_power", False),
+        "ranking/getBriefOfNationalPower": ("national_power", True),
+    }
+
+    def __init__(self, service: Any, read_view: Callable[[], tuple[dict, int]]) -> None:
+        super().__init__(service)
+        self.read_view = read_view
+
+    def register(self, registry: Any) -> None:
+        for api, (metric, brief) in self.APIS.items():
+            action = partial(self.query, metric=metric, brief=brief)
+            registry.register(api, self.service._guard(api, partial(self.call, api, action)))
+
+    def query(self, player: dict, params: dict, *, metric: str, brief: bool) -> dict:
+        from app.business.rankings_aggregation import client_integer, project_pair
+
+        term = params.get("term")
+        if not brief:
+            if term not in ("current", "last"):
+                raise ValueError("term must be current or last")
+            start = integer(params.get("startIndex"), 0)
+            end = integer(params.get("endIndex"), start)
+            if end - start >= 100:
+                raise ValueError("at most 100 rankers per page")
+        ledger, now = self.read_view()
+        country = player["entity"]["country"]
+        current, last = project_pair(ledger, metric, country, now)
+        national = metric == "national_power"
+        identity = country if national else str(player["entity"]["playerId"])
+        identity_key = "countryId" if national else "playerId"
+
+        def mine(rows: list[dict] | None) -> dict:
+            if rows is None:
+                raise ValueError("no stub response: requested ranking period unavailable")
+            return next(({"rank": r["rank"], "score": r["score"]} for r in rows
+                         if r[identity_key] == identity), {"rank": -1.0})
+
+        if brief:
+            result = mine(current)
+            result["lastRank"] = mine(last)["rank"]
+            return {"brief": result}
+        rows = current if term == "current" else last
+        personal = mine(rows)
+        return {"entries": float(client_integer(len(rows))), "myRecord": personal,
+                "rankers": {str(i): row for i, row in enumerate(rows[start:end + 1])}}

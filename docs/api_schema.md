@@ -186,3 +186,20 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 | 通知确认与首次旧档初始化 | 待验证 | `accountProgress.trophyClaims` / `levelTrophyNoticeSeen` 是本服内部状态。原 stub 尚未发放成就，缺失 ledger 视为未领取；已有合法 ledger 保留，损坏 ledger 拒绝。禁止未经迁移导入原服领取历史。通知确认不发奖励；超资源上限整笔拒绝，未实现信箱分流。 |
 | 背景 mapId / 解锁边界 | bundle | mypageCastleTownItem.cs:101-147 仅 no=1 显示背景切换和商店按钮，并要求 mapEntry.isEnable、PoliticMissionManager.IsOpenSubMap。mypageBgSelectWindow.cs:135-150 明确发送 mapId=1 并更新同一 mapEntry。主城 no=0 隐藏按钮，不存在 0→1 偏移映射。 |
 | 背景内部归属与选择 | 待验证 | 候选购买/选择统一读取 items，选择保存于 mapBackgrounds["1"]。内部 subcity_enabled 提供者尚无正式实现，因此四个背景入口仍不挂载，不把旧 backgroundOwnership 或 mapBackgrounds["0"] 自动认定为原服权益。 |
+
+## 2026-11-15 research331 汇总：社交、通知与权限
+
+本批正常注册新增 7 个 friend 和 2 个 inbox 入口，详见 [汇总审核](analysis/research-331/review/README.md)。协议来源均为原安装包反编译，不采用旧 AI 的收件箱页面作为证据。
+
+| 字段 / 行为 | 来源 | 证据与限制 |
+| --- | --- | --- |
+| 好友写入 `result`、失败 `detail.0` | bundle / 本服重试策略 | FriendConfirmationWindow.cs:127-154,195-299。成功回调增减客户端计数；无实际状态转换的重复操作返回 false，避免重放增量。已提交丢回包需重新查询，不能证明跨全新申请周期的幂等性。 |
+| `getFriends` 裸 playerId 映射，name/country/level/baseId/grade/status | bundle | FriendData.cs:40-59。原 option 为 ""/ok/send/receive；基于双边关系投影，不返回伪造 isFirst/访城许可。 |
+| `getFriendProfile`、selfIntroduction.habits | bundle / 本服兼容策略 | FriendData.cs:61-94。仅 forHTML=false；现有缺历史统计的 0/空字符串保持明确兼容范围，不代表恢复战果。 |
+| `updateFriendData.count.ok/send/receive`、`remove.<peer>` | bundle / 本服通知策略 | FriendWindowControll.cs:118-127、FriendConfirmationWindow.cs:168-187；remove 消费键，具体原因文案与保留/刷新策略为内部实现。 |
+| `periodicInquiry.friendOffer/inboxParcel` | bundle | UserStatus.cs:148-164 按绝对数字赋值，不累加；不发送未实现的 unreadMail。SessionKeeper.cs:176-199 登录即开轮询，未创建角色时省略社交计数并保留 gmMessage/show_off。 |
+| `getParcels.parcels.<id>.createdTime/rewards,totalCount` | bundle / 本服分页策略 | InboxReader.cs:92-177；真实发行记录，时间倒序再按 ID 排序、包含 end 为本服策略；没有普通玩家指定奖励的发行入口。 |
+| `resolveParcels.successful.<id>.rewards,failed` | bundle / 本服重试策略 | InboxResolveWorker.cs:11-105、PluginRunner_DoReceiveMail.cs:12-66；失败只消费 Count。已领取重试不重放奖励增量，仅返回空 rewards。奖励与领取墓碑同一 CAS 保存。 |
+| item11_0000101/201/301/401 → gold/wood/food/iron | bundle | RewardProcessor.cs:51-73。仅四资源，不扩展付费货币、卡牌或随机奖；容量不足该包裹失败。无已证期限，此发行子集明确无自动过期。 |
+| 管理/调试拒绝的根 `errorReason` | bundle 字段 / 本服关闭策略 | GameRestarter.cs:79-99 在成功消费者之前检查。32 项在 HTTP 认证及 Registry 直调均拒绝；原包装器存在不构成管理员授权。 |
+| socialOffers/socialRemovals/socialInboxIssuances/shared_records | 本服内部持久化设计 | 不加入原请求/响应。无对应字段的本服旧档按各模块缺省读取，损坏数据拒绝；不自动导入原服历史、重置资源或授予奖励。 |

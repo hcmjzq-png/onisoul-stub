@@ -1,0 +1,69 @@
+--- a/docs/analysis/server_tables.tsv
++++ b/docs/analysis/server_tables.tsv
+@@ -11,3 +11,30 @@
+ skillRefreshG2.json	skillRefreshG2		original G2 refresh candidates; execution rules still unresolved
+ skillRefreshG4.json	skillRefreshG4		original G4 refresh candidates; execution rules still unresolved
+ skillRefreshG6.json	skillRefreshG6		original G6 refresh candidates; execution rules still unresolved
++errantry1hokuyou.json	errantry1hokuyou	ErrantryTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry2musasino.json	errantry2musasino	ErrantryTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry3tyuubu.json	errantry3tyuubu	ErrantryTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry4kamigata.json	errantry4kamigata	ErrantryTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry5setonai.json	errantry5setonai	ErrantryTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry6nangoku.json	errantry6nangoku	ErrantryTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0001.json	errantry_result_0001	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0002.json	errantry_result_0002	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0003.json	errantry_result_0003	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0004.json	errantry_result_0004	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0005.json	errantry_result_0005	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0006.json	errantry_result_0006	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0007.json	errantry_result_0007	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0008.json	errantry_result_0008	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0009.json	errantry_result_0009	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0010.json	errantry_result_0010	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0011.json	errantry_result_0011	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++errantry_result_0012.json	errantry_result_0012	ErrantryResultTableAccessor	research331 D original dynamic trade table; no rule activation
++reward07_errantry.json	reward07_errantry	D reward dependency (result.rewardId)	research331 D original dynamic trade table; no rule activation
++reward12_waterborne_trade.json	reward12_waterborne_trade	D reward dependency (result.rewardId)	research331 D original dynamic trade table; no rule activation
++waterborne_trade.json	waterborne_trade	WaterBorneTradeTableAccessor	research331 D original dynamic trade table; no rule activation
++waterborne_trade_effects.json	waterborne_trade_effects	WaterBorneTradeTableAccessor	research331 D original dynamic trade table; no rule activation
++waterborne_trade_result_0001.json	waterborne_trade_result_0001	WaterBorneTradeResultTableAccessor	research331 D original dynamic trade table; no rule activation
++waterborne_trade_result_0002.json	waterborne_trade_result_0002	WaterBorneTradeResultTableAccessor	research331 D original dynamic trade table; no rule activation
++waterborne_trade_result_0003.json	waterborne_trade_result_0003	WaterBorneTradeResultTableAccessor	research331 D original dynamic trade table; no rule activation
++waterborne_trade_result_0004.json	waterborne_trade_result_0004	WaterBorneTradeResultTableAccessor	research331 D original dynamic trade table; no rule activation
++waterborne_trade_warship.json	waterborne_trade_warship	WaterBorneTradeTableAccessor	research331 D original dynamic trade table; no rule activation
+--- a/app/business/response_shapes.py
++++ b/app/business/response_shapes.py
+@@ -26,6 +26,8 @@
+ # helper: `DeckConflateCards.createStatus` is used by common/getCharacters,
+ # common/getEquips and common/getTactics.
+ BARE_MAP_EVIDENCE: dict[str, str] = {
++    "auction/auctionResourceBrowse": "AuctionDataManager.cs:775-807,1070-1121 (root rows)",
++    "auction/auctionResourceSearch": "AuctionDataManager.cs:775-807,1070-1121 (root rows)",
+     "deck/getCharactersInStore": "DeckConflateCards_StrageCharacter.cs:setup",
+     "auction/auctionCardSale": "AuctionDataManager.cs:OnGetMySellingCards@0x294278",
+     "auction/auctionResourceSale": "AuctionDataManager.cs:OnGetMySellingResources@0x2951B8",
+--- a/docs/api_schema.md
++++ b/docs/api_schema.md
+@@ -186,3 +186,22 @@
+ | 通知确认与首次旧档初始化 | 待验证 | `accountProgress.trophyClaims` / `levelTrophyNoticeSeen` 是本服内部状态。原 stub 尚未发放成就，缺失 ledger 视为未领取；已有合法 ledger 保留，损坏 ledger 拒绝。禁止未经迁移导入原服领取历史。通知确认不发奖励；超资源上限整笔拒绝，未实现信箱分流。 |
+ | 背景 mapId / 解锁边界 | bundle | mypageCastleTownItem.cs:101-147 仅 no=1 显示背景切换和商店按钮，并要求 mapEntry.isEnable、PoliticMissionManager.IsOpenSubMap。mypageBgSelectWindow.cs:135-150 明确发送 mapId=1 并更新同一 mapEntry。主城 no=0 隐藏按钮，不存在 0→1 偏移映射。 |
+ | 背景内部归属与选择 | 待验证 | 候选购买/选择统一读取 items，选择保存于 mapBackgrounds["1"]。内部 subcity_enabled 提供者尚无正式实现，因此四个背景入口仍不挂载，不把旧 backgroundOwnership 或 mapBackgrounds["0"] 自动认定为原服权益。 |
++
++## research-331 D 限定组件（未注册）
++
++
++- bundle：WebApiClient.cs:3480-3514，send3 mapId/buildingId/errantryId；receive3 mapId；getStatus3 token。
++- bundle：UserStatus.cs:603-624，send 的 isActive(bool)/dueTime(number)/errantryId(string)/buildingId(number)。
++- bundle：UserStatus.cs:1765-1786，getStatus3 的 `<mapId>.errantry`，未出发只投影 isActive=false 为本服兼容策略。
++- bundle：PoliticMissionProgressList.cs:316-321、PluginPoliticDataManager.cs:157-162 同时调用
++  UserStatus.updateErrantry 与 PoliticDeckTableAccessor.update；后者 :87-113 无条件读取
++  `<mapId>.totalIntelligence(number)/politicDeck.<slot>`。成员 :28-52 读取 int/intAdd/grade(number)、baseId/voice(string)。
++- bundle：PoliticFSMErrantryReward.cs:26-82、PoliticScriptCommand.cs:1129-1186，
++  receive3 的 catalog/errantryId/results.<slot>.resultId/reward.<itemId>；数值奖励，原消费者增量。
++- bundle：WebApiClient.cs:4467-4489、AuctionSellResourcePage.cs:341-367、AuctionResourceSellSlot.cs:108-185，
++  资源上/下架 result=1 / item_sn / resources；购买 SingleAuctionResource.cs:215-235 result/resources。
++- bundle：AuctionDataManager.cs:843-877,1070-1121，卖家裸槽位映射+params.base/amount_mul，
++  公共 Browse/Search 裸显示槽位映射；item_sn 才是挂牌标识。
++- 兼容策略：内部记录结构、冻结结果、墓碑、失败重试、直接交付、精确十进制手续费；不伪称原服务端数据。
++
++以上字段有 bundle 消费者证据；原玩法未完整恢复，不因此新增正式注册。

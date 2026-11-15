@@ -1,0 +1,69 @@
+{
+  "base": "dcd45538899e3c56b5b1dd2807e2331b6395d999",
+  "date": "2026-11-15",
+  "pull_requests": [
+    {
+      "pr": 52,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/52",
+      "head": "feature/research331-i-infrastructure-20261115",
+      "sha": "f7a63cc03b006fb265a22677e4831c60d5848293",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 53,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/53",
+      "head": "feature/research331-a-city-20261115",
+      "sha": "0d9980eec6139fb2b39190a277ba4f715858d47a",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 54,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/54",
+      "head": "feature/research331-h-account-20261115",
+      "sha": "d8eb4eceda3f10221801e9a55b820326367421b7",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 55,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/55",
+      "head": "feature/research331-f-war-20261115",
+      "sha": "66ce8f4de76e4b2da2a645309d709cc2f58ec5d6",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 56,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/56",
+      "head": "feature/research331-c-card-growth-20261115",
+      "sha": "594bf2cb94a0d85842404f035cc8b980115fb1ae",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 57,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/57",
+      "head": "feature/research331-b-adventure-20261115",
+      "sha": "b130488103b2e278b2a123c5adef6673c273c304",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 58,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/58",
+      "head": "feature/research331-g-rankings-20261115",
+      "sha": "9d578a080c0b440f3f934d64819977c856f14918",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 59,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/59",
+      "head": "feature/research331-e-social-20261115",
+      "sha": "86d098812362102c5ed7bde74e2bd36a62cf7057",
+      "state_at_review": "open"
+    },
+    {
+      "pr": 60,
+      "url": "https://github.com/hcmjzq-png/onisoul-stub/pull/60",
+      "head": "feature/research331-d-economy-20261115",
+      "sha": "a5f3eb795fe60606369c7a832d858c83a55ac6a4",
+      "state_at_review": "open"
+    }
+  ]
+}

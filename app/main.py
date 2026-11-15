@@ -9,8 +9,10 @@ from __future__ import annotations
 
 import argparse
 
-from app import config, db
+from app import config, db, state
 from app.business.gameplay import GameplayService
+from app.business.social_services import SocialServices
+from app.business.social_inbox_services import SocialInboxServices
 from app.business.periodic import register as register_periodic
 from app.business.turf_war import register as register_turf_war
 from app.business.registry import Registry
@@ -23,9 +25,13 @@ def build_registry() -> Registry:
     占位响应的意义是让客户端「不撞 404、能继续走下一批请求」；业务语义仍为空。
     """
     registry = Registry()
-    GameplayService().register(registry)
+    gameplay = GameplayService()
+    gameplay.register(registry)
+    social = SocialServices(gameplay, atomic_players=state.atomic_players)
+    social.register(registry)
+    SocialInboxServices(gameplay).register(registry)
     register_turf_war(registry)
-    register_periodic(registry)
+    register_periodic(registry, notification_provider=social.notifications)
     return registry.register_contract_defaults()
 
 
