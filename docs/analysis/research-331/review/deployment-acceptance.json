@@ -18,7 +18,7 @@
   "existing_player_states_equal_after_ui": true,
   "ui_temporary_accounts_cleaned": 4,
   "unity_country01": "loading_blocked_missing_pbm01_01",
-  "unity_country37": "city_rendered_startup_locked_missing_scr2_000001",
+  "unity_country37": "city_rendered_newbie_mission_not_restored_and_startup_resource_missing",
   "original_config_restored": true,
   "ui_client_closed": true,
   "missing_assets": [
@@ -42,5 +42,14 @@
     "passed": 579,
     "skipped": 25,
     "failures": 0
+  },
+  "followup": {
+    "report": "new-player-followup-20261115.md",
+    "fresh_player_mission_projection_bug_reproduced": true,
+    "client_arbitrary_unlock_bits_accepted_in_memory": true,
+    "existing_created_players_checked_read_only": 4,
+    "existing_first_mission_open_without_progress": 2,
+    "existing_all_bits_unlocked": 0,
+    "runtime_fixed": false
   }
 }
