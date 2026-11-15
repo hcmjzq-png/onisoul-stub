@@ -1,0 +1,88 @@
+{
+  "baseline": "8023c3fee8e525040d101fee8bf843b48b3256d3",
+  "date": "2026-11-15",
+  "python": "3.15.0",
+  "results": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "tests.test_research331_f_enrollment",
+        "tests.test_war_campaigns_services",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "----------------------------------------------------------------------\nRan 34 tests in 0.460s\n\nOK"
+    },
+    {
+      "command": [
+        "python",
+        "-W",
+        "ignore::ResourceWarning",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-q"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "[stub][login] session issue failed: RuntimeError\n[stub][auth] 未认证调用（observe 模式放行）: politic/shop/getShopItems\n----------------------------------------------------------------------\nRan 434 tests in 4.009s\n\nOK"
+    },
+    {
+      "command": [
+        "python",
+        "docs\\analysis\\research-331\\results\\f-war\\audit.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"original_sources\": 17, \"table_files\": 3, \"fixture_rows\": 8, \"endpoints\": 47, \"result\": \"passed\"}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "docs\\analysis\\research-331\\results\\f-war\\integration.patch"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "normal_registry": {
+    "total": 402,
+    "dedicated": 71,
+    "placeholder": 331
+  },
+  "new_tests": 17,
+  "new_candidate_endpoints": 2,
+  "isolated_enrollment_loops": 1,
+  "ready_normal_client_loops": 0,
+  "formal_placeholder_reduction": 0,
+  "Unity_acceptance": 0,
+  "production_events_created": 0,
+  "limitations": [
+    "MySQL/multiprocess/crash durability not tested; I adapter pending",
+    "No live HTTP/Unity acceptance; isolated Registry only",
+    "No battle, global score, ranking or reward producer; default registration unchanged"
+  ],
+  "final_patch_checks": {
+    "cached_diff_check": "passed",
+    "fixed_baseline_apply_and_opt_in_test": "passed after LF normalization",
+    "authorized_paths_only": 19
+  }
+}
