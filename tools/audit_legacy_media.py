@@ -137,11 +137,20 @@ def port_one(item: dict, options: dict) -> dict:
         template = Path(options['audio_template'] if item['kind'] == 'AudioClip' else options['texture_template'])
         blob, proof = convert(Path(item['source']), template, item['name'],
                               member=item['member'], path_id=item['path_id'], command=Path(options['ffmpeg']),
-                              allow_silent=bool(options.get('allow_silent')))
+                              allow_silent=bool(options.get('allow_silent')),
+                              expected_object_sha256=item['object_sha256'])
+        if proof['kind'] != item['kind'] or proof['source_platform'] != item['platform']:
+            raise ValueError('source class/platform changed since inventory')
         output = Path(options['output_root']) / item['family'].lower() / item['kind'] / (item['id'] + '.unity3d')
         output.parent.mkdir(parents=True, exist_ok=True)
-        with output.open('xb') as stream:
-            stream.write(blob)
+        try:
+            with output.open('xb') as stream:
+                stream.write(blob)
+        except FileExistsError:
+            # A worker may finish writing just before its manifest checkpoint.
+            # Reuse only the exact rebuilt bytes, never replace another file.
+            if digest(output.read_bytes()) != proof['output_sha256']:
+                raise ValueError('existing output differs; choose a fresh output root')
         return dict(id=item['id'], family=item['family'], status='converted', output=str(output.resolve()), **proof)
     except Exception as exc:
         return dict(id=item['id'], family=item['family'], name=item.get('name'), kind=item['kind'],
@@ -162,8 +171,7 @@ def port_all(args: argparse.Namespace) -> None:
             raise ValueError('resume inventory changed; use a different manifest/output root')
         results = saved['results']
         # Resume only verified completed files; failures are retried.
-        results = [r for r in results if r['status'] in ('converted', 'reused')
-                   and digest(Path(r['output']).read_bytes()) == r['output_sha256']]
+        results = [r for r in results if verified_output(r)]
     done = {row['id'] for row in results}
     pending = []
     for item in inventory['media']:
@@ -231,10 +239,24 @@ def port_raw(args: argparse.Namespace) -> None:
     print(json.dumps(dict(converted=len(rows), by_family=dict(Counter(r['family'] for r in rows.values())))))
 
 
+def verified_output(row: dict) -> bool:
+    if row['status'] not in ('converted', 'reused'):
+        return False
+    try:
+        return digest(Path(row['output']).read_bytes()) == row['output_sha256']
+    except OSError:
+        return False
+
+
 def report(args: argparse.Namespace) -> None:
     """Export reviewable evidence after final file hashes/native metadata agree."""
     inventory = json.loads(args.inventory.read_text(encoding='utf-8'))
     manifest = json.loads(args.manifest.read_text(encoding='utf-8'))
+    if manifest['inventory_sha256'] != digest(args.inventory.read_bytes()):
+        raise ValueError('manifest is not bound to this inventory')
+    if any(p.get('error') and not p['error'].startswith('no serialized Unity objects')
+           for p in inventory['packages']):
+        raise ValueError('inventory has unreadable source packages')
     proofs = manifest['converted']
     if manifest['failed'] or {r['id'] for r in proofs} != {r['id'] for r in inventory['media']}:
         raise ValueError('report requires exactly one successful output per inventoried medium')
@@ -305,8 +327,12 @@ def report(args: argparse.Namespace) -> None:
         final_loaded=native[e['id']]['loaded']) for e in history])
     raw = []
     if args.raw_manifest and args.raw_native:
-        raw = json.loads(args.raw_manifest.read_text(encoding='utf-8'))['converted']
-        raw_events = json.loads(args.raw_native.read_text(encoding='utf-8'))['events']
+        raw_manifest = json.loads(args.raw_manifest.read_text(encoding='utf-8'))
+        raw = raw_manifest['converted']
+        raw_native = json.loads(args.raw_native.read_text(encoding='utf-8'))
+        if raw_manifest.get('failed') or raw_native['engine_sha256'] != ENGINE_SHA256:
+            raise ValueError('raw image conversion/native fingerprint failed')
+        raw_events = raw_native['events']
         validate_results(raw, raw_events)
         for row in raw:
             if digest(Path(row['output']).read_bytes()) != row['output_sha256']:

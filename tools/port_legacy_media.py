@@ -207,7 +207,7 @@ def transcode(command: Path, data: bytes, *, allow_silent: bool = False) -> tupl
 
 def convert(source: Path, template: Path, name: str, *, member: str | None = None,
             command: Path | None = None, path_id: int | None = None,
-            allow_silent: bool = False) -> tuple[bytes, dict]:
+            allow_silent: bool = False, expected_object_sha256: str | None = None) -> tuple[bytes, dict]:
     import UnityPy
     source_blob = source.read_bytes()
     data = source_blob
@@ -232,6 +232,9 @@ def convert(source: Path, template: Path, name: str, *, member: str | None = Non
         if len(matches) != 1:
             raise ValueError('exactly one source object with the requested name required')
         original = matches[0]
+        proof['source_object_sha256'] = digest(original.get_raw_data())
+        if expected_object_sha256 and proof['source_object_sha256'] != expected_object_sha256:
+            raise ValueError('source object changed since inventory')
         obj = original.read()
         kind = original.type.name
         proof.update(source_platform=int(original.platform),

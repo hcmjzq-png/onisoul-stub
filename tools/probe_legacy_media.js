@@ -14,6 +14,8 @@ const names=fn('mono_method_get_name','pointer',['pointer']);
 const invoke=fn('mono_runtime_invoke','pointer',['pointer','pointer','pointer','pointer']);
 const unbox=fn('mono_object_unbox','pointer',['pointer']);
 const str=fn('mono_string_new','pointer',['pointer','pointer']);
+const utf8=fn('mono_string_to_utf8','pointer',['pointer']),monoFree=fn('g_free','void',['pointer']);
+function readString(value){if(value.isNull())return '';const p=utf8(value);try{return p.readUtf8String();}finally{monoFree(p);}}
 const getclass=fn('mono_object_get_class','pointer',['pointer']);
 const classname=fn('mono_class_get_name','pointer',['pointer']);
 const keep=fn('mono_gchandle_new','uint',['pointer','int']),free=fn('mono_gchandle_free','void',['uint']);
@@ -22,6 +24,7 @@ function method(c,n,a){const m=getmethod(klass(c),Memory.allocUtf8String(n),a);i
 function string(s){return str(domain,Memory.allocUtf8String(s));}
 function call(m,obj,args=[]){const argv=Memory.alloc(Math.max(4,args.length*4));args.forEach((v,i)=>argv.add(i*4).writePointer(v));const ex=Memory.alloc(4);ex.writePointer(ptr(0));const r=invoke(m,obj||ptr(0),argv,ex);if(!ex.readPointer().isNull())throw new Error('managed '+classname(getclass(ex.readPointer())).readUtf8String());return r;}
 const create=method('AssetBundle','CreateFromMemory',1),requestBundle=method('AssetBundleCreateRequest','get_assetBundle',0),isDone=method('AsyncOperation','get_isDone',0),load=method('AssetBundle','Load',1),unload=method('AssetBundle','Unload',1);
+const wwwCtor=method('WWW','.ctor',1),wwwDone=method('WWW','get_isDone',0),wwwError=method('WWW','get_error',0),wwwBundle=method('WWW','get_assetBundle',0),wwwDispose=method('WWW','Dispose',0);
 const getlen=method('AudioClip','get_length',0),getsamples=method('AudioClip','get_samples',0),getchannels=method('AudioClip','get_channels',0),getfreq=method('AudioClip','get_frequency',0);
 const getwidth=method('Texture','get_width',0),getheight=method('Texture','get_height',0);
 const byteclass=fn('mono_get_byte_class','pointer',[])(),arraynew=fn('mono_array_new','pointer',['pointer','pointer','uint']);
@@ -32,14 +35,15 @@ const destroy=method('Object','Destroy',1),play=method('AudioSource','Play',0),s
 const addcomponent=method('GameObject','AddComponent',1),ctor=method('GameObject','.ctor',1);
 const yes=Memory.alloc(4);yes.writeU32(1);const zero=Memory.alloc(4);zero.writeFloat(0);
 let queue=[],current=null,active=[],guard=false,steps=0,cancelled=false;
-function cleanup(){if(!current)return;const c=current;try{if(c.source){call(stop,c.source);call(destroy,null,[c.go]);}if(c.bundle)call(unload,c.bundle,[yes]);}finally{for(const h of c.handles)free(h);current=null;}}
+function cleanup(){if(!current)return;const c=current;try{if(c.source){call(stop,c.source);call(destroy,null,[c.go]);}if(c.bundle)call(unload,c.bundle,[yes]);if(c.url&&c.request)call(wwwDispose,c.request);}finally{for(const h of c.handles)free(h);current=null;}}
 function step(){steps++;if(cancelled){cleanup();return;}if(!current){return;}
  const c=current;if(Date.now()-c.started>20000)throw new Error('native load/playback timed out');
  if(c.playStarted){const active=unbox(call(playing,c.source)).readU8()!==0;if(!active){c.result.playback_finished=true;send({result:c.result});cleanup();}return;}
- if(unbox(call(isDone,c.request)).readU8()===0)return;
- c.bundle=call(requestBundle,c.request);if(c.bundle.isNull())throw new Error('native AssetBundle load failed');c.handles.push(keep(c.bundle,1));
+ if(unbox(call(c.url?wwwDone:isDone,c.request)).readU8()===0)return;
+ if(c.url){const error=readString(call(wwwError,c.request));if(error)throw new Error('native WWW HTTP error: '+error);}
+ c.bundle=call(c.url?wwwBundle:requestBundle,c.request);if(c.bundle.isNull())throw new Error('native AssetBundle load failed');c.handles.push(keep(c.bundle,1));
  const media=call(load,c.bundle,[string(c.name)]);if(media.isNull())throw new Error('native named asset missing');c.handles.push(keep(media,1));
- const kind=classname(getclass(media)).readUtf8String();const r={id:c.id,name:c.name,kind,loaded:true};
+ const kind=classname(getclass(media)).readUtf8String();const r={id:c.id,name:c.name,output_sha256:c.output_sha256,source_url:c.url||null,http_preflight_sha256:c.http_preflight_sha256||null,kind,loaded:true};
  if(kind==='AudioClip'){
   r.seconds=unbox(call(getlen,media)).readFloat();r.samples=unbox(call(getsamples,media)).readS32();r.channels=unbox(call(getchannels,media)).readS32();r.frequency=unbox(call(getfreq,media)).readS32();if(r.seconds<=0||r.samples<=0)throw new Error('native audio has no decoded duration/samples');
   if(c.play){c.go=objectnew(domain,klass('GameObject'));c.handles.push(keep(c.go,1));call(ctor,c.go,[string('OniSoulMediaQA')]);c.source=call(addcomponent,c.go,[string('AudioSource')]);c.handles.push(keep(c.source,1));call(volume,c.source,[zero]);call(setclip,c.source,[media]);call(play,c.source);r.playback_started=unbox(call(playing,c.source)).readU8()!==0;if(!r.playback_started)throw new Error('native audio did not start');c.playStarted=Date.now();c.result=r;return;}
@@ -58,9 +62,10 @@ function advance(){
  active=pending;current=null;
  while(!cancelled&&active.length<4&&queue.length){
   current=queue.shift();current.handles=[];current.started=Date.now();
-  try{const bytes=new Uint8Array(current.bytes);delete current.bytes;
-   const arr=arraynew(domain,byteclass,bytes.length);arr.add(16).writeByteArray(bytes);
-   current.handles.push(keep(arr,1));current.request=call(create,null,[arr]);
+  try{if(current.url){current.request=objectnew(domain,klass('WWW'));current.handles.push(keep(current.request,1));call(wwwCtor,current.request,[string(current.url)]);delete current.bytes;}
+   else{const bytes=new Uint8Array(current.bytes);delete current.bytes;
+    const arr=arraynew(domain,byteclass,bytes.length);arr.add(16).writeByteArray(bytes);
+    current.handles.push(keep(arr,1));current.request=call(create,null,[arr]);}
    if(current.request.isNull())throw new Error('null bundle request');
    current.handles.push(keep(current.request,1));active.push(current);
   }catch(e){send({error:String(e),id:current.id,name:current.name});cleanup();}

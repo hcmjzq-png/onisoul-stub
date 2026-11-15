@@ -9,10 +9,12 @@ The engine fingerprint and every converted file digest are checked first.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 from pathlib import Path
 import time
+from urllib.request import ProxyHandler, build_opener
 
 ENGINE_SHA256 = '0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5'
 
@@ -28,6 +30,10 @@ def validate_results(proofs: list[dict], events: list[dict]) -> list[dict]:
         raise RuntimeError('duplicate/missing native result IDs')
     for index, row in enumerate(proofs):
         result = by_id[row.get('id', str(index))]
+        if row.get('output_sha256') and result.get('output_sha256') != row['output_sha256']:
+            raise RuntimeError('native result is not bound to this output digest: ' + row['name'])
+        if row.get('url') and result.get('http_preflight_sha256') != row['output_sha256']:
+            raise RuntimeError('native HTTP preflight digest mismatch: ' + row['name'])
         if result['name'] != row['name'] or result['kind'] != row['kind'] or not result.get('loaded'):
             raise RuntimeError('native asset identity changed: ' + row['name'])
         if row['kind'] == 'Texture2D':
@@ -66,6 +72,23 @@ def main() -> None:
     session = frida.attach(args.pid)
     events = []
     status = None
+    prefetch = None
+    checks = None
+    if any(row.get('url') for row in proofs):
+        def check_http(row: dict) -> str | None:
+            if not row.get('url'):
+                return None
+            digest = hashlib.sha256()
+            with build_opener(ProxyHandler({})).open(row['url'], timeout=30) as response:
+                if response.status != 200:
+                    raise ValueError('HTTP preflight failed: ' + row['name'])
+                for block in iter(lambda: response.read(256 * 1024), b''):
+                    digest.update(block)
+            if digest.hexdigest() != row['output_sha256']:
+                raise ValueError('HTTP preflight digest differs: ' + row['name'])
+            return digest.hexdigest()
+        prefetch = ThreadPoolExecutor(max_workers=8)
+        checks = [prefetch.submit(check_http, row) for row in proofs]
     def save() -> None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(dict(pid=args.pid, engine_sha256=ENGINE_SHA256,
@@ -80,7 +103,8 @@ def main() -> None:
         lookup.unload()
         script = session.create_script(Path(__file__).with_suffix('.js').read_text(encoding='utf-8'))
         def receive(message, data):
-            events.append(message['payload'] if message['type'] == 'send' else message)
+            event = message['payload'] if message['type'] == 'send' else message
+            events.append(event)
         script.on('message', receive)
         script.load()
         try:
@@ -91,8 +115,12 @@ def main() -> None:
                 status = script.exports_sync.status()
                 if submitted < len(proofs) and status['queued'] < args.queue_size:
                     row = proofs[submitted]
-                    script.exports_sync.enqueue(dict(id=row.get('id', str(submitted)), name=row['name'],
-                        play=row['name'] in args.play), (args.root / row['output']).read_bytes())
+                    job = dict(id=row.get('id', str(submitted)), name=row['name'],
+                        output_sha256=row['output_sha256'], expected_bytes=row['output_bytes'],
+                        url=row.get('url'), play=row['name'] in args.play)
+                    if checks:
+                        job['http_preflight_sha256'] = checks[submitted].result()
+                    script.exports_sync.enqueue(job, b'' if job['url'] else (args.root / row['output']).read_bytes())
                     submitted += 1
                     continue
                 finished = sum('result' in event or 'error' in event for event in events)
@@ -111,6 +139,8 @@ def main() -> None:
             while time.monotonic() < deadline and script.exports_sync.status()['current']:
                 time.sleep(.1)
     finally:
+        if prefetch:
+            prefetch.shutdown(wait=False, cancel_futures=True)
         session.detach()
         save()
     loaded = validate_results(proofs, events)

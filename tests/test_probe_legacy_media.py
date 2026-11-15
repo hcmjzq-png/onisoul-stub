@@ -4,6 +4,18 @@ from tools.probe_legacy_media import validate_results
 
 
 class NativeResultTest(unittest.TestCase):
+    def test_same_id_cannot_reuse_native_result_from_different_output_bytes(self):
+        row = dict(id='a', name='tex', kind='Texture2D', width=4, height=4, output_sha256='new')
+        result = dict(row, loaded=True, output_sha256='old')
+        with self.assertRaisesRegex(RuntimeError, 'digest'):
+            validate_results([row], [dict(result=result)])
+        result['output_sha256'] = 'new'
+        self.assertEqual(len(validate_results([row], [dict(result=result)])), 1)
+        row['url'] = 'http://owned-server/asset.unity3d'
+        with self.assertRaisesRegex(RuntimeError, 'HTTP preflight'):
+            validate_results([row], [dict(result=result)])
+        result['http_preflight_sha256'] = 'new'
+        validate_results([row], [dict(result=result)])
     def test_equal_names_in_different_versions_match_by_id_not_completion_order(self):
         rows = [dict(id='a', name='same', kind='Texture2D', width=32, height=64),
                 dict(id='b', name='same', kind='Texture2D', width=64, height=32)]

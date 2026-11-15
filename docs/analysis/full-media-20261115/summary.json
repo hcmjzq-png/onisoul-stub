@@ -39,7 +39,7 @@
   "output_bytes": 555127376,
   "native_loaded": 12150,
   "native_engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
-  "native_playback_finished": 7,
+  "native_playback_finished": 3,
   "initial_native_failures": 763,
   "silent_source_placeholders": 45,
   "rgba_fallbacks": 17,
@@ -154,6 +154,10 @@
     {
       "path": "native-retry-results.json",
       "sha256": "864a0e79e88c676f833b23c2ed79c08d145f3d45c88c3a43efbfd7b0285f6c9b"
+    },
+    {
+      "path": "native-bound-main.json",
+      "sha256": "bd94c975af1cd1bad883ea79482df97d0b380d333bff8da93571eb1cedadb264"
     }
   ],
   "raw_png_bundles": 12,
