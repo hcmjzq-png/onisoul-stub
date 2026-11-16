@@ -1,0 +1,23 @@
+{
+  "backup": "/var/backups/onisoul/country76-20261116-022251",
+  "installed": 19,
+  "untouched": 2,
+  "app_sha256": "980438293373658772bf29aac1d87dbc545992cec3e7ff1db9d0d25d68342656",
+  "assets_verified": 20,
+  "http_verified": 21,
+  "services_not_restarted": true,
+  "players_unchanged": true,
+  "player_count": 6,
+  "cleanup": {
+    "test_accounts_removed": 1,
+    "other_players_unchanged_by_cleanup": true,
+    "original_players_unchanged_since_deployment": true,
+    "remaining_players": 5
+  },
+  "production_ui": {
+    "temporary_download_hook": false,
+    "country04_portrait_and_map_click": true,
+    "country25_portrait_and_map_click": true,
+    "missing_country_loading_does_not_block_country25": true
+  }
+}
