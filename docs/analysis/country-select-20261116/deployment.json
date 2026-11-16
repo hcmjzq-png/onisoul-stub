@@ -7,5 +7,17 @@
   "http_verified": 21,
   "services_not_restarted": true,
   "players_unchanged": true,
-  "player_count": 6
+  "player_count": 6,
+  "cleanup": {
+    "test_accounts_removed": 1,
+    "other_players_unchanged_by_cleanup": true,
+    "original_players_unchanged_since_deployment": true,
+    "remaining_players": 5
+  },
+  "production_ui": {
+    "temporary_download_hook": false,
+    "country04_portrait_and_map_click": true,
+    "country25_portrait_and_map_click": true,
+    "missing_country_loading_does_not_block_country25": true
+  }
 }
