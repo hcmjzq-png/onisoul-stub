@@ -1,0 +1,71 @@
+{
+  "captured_at_utc": "2026-11-16T12:34:20.738112+00:00",
+  "host": "43.108.100.32",
+  "role": "isolated_development",
+  "base_commit": "34b5361993a84114579a722ebe065735d37e6eda",
+  "python": "3.12.3",
+  "mysql": "8.0.46-0ubuntu0.24.04.5",
+  "dotnet_sdk": "8.0.134",
+  "ilspycmd": "ilspycmd: 9.1.0.7988",
+  "regression": {
+    "total": 656,
+    "passed": 655,
+    "skipped": 1,
+    "failed": 0,
+    "skip_reasons": [
+      "test_encrypted_persistence_restart_origin_checks_and_clear (test_login_memory.LoginMemoryTest.test_encrypted_persistence_restart_origin_checks_and_clear) ... skipped 'Windows DPAPI integration'"
+    ],
+    "isolated_mysql_port": 33365,
+    "temporary_instance_stopped": true,
+    "temporary_datadir_removed": true,
+    "summary": {
+      "exit_code": 0,
+      "mysql_version": "8.0.46-0ubuntu0.24.04.5",
+      "seconds": 28.07,
+      "test_port": 33365,
+      "disposable_datadir": true,
+      "system_database_used": false,
+      "mysql_process_stopped": true,
+      "code_commit": "34b5361993a84114579a722ebe065735d37e6eda"
+    }
+  },
+  "resources": {
+    "expected_files": 23099,
+    "matched_files": 23099,
+    "missing_or_mismatched_files": 0,
+    "missing_bytes": 0,
+    "extra_files": [],
+    "manifest_sha256": "25341146e69fe3db08be8ff20f382f688680a9fed9ad8f5b9270b2c3bb2c399f",
+    "bytes": 1354668340
+  },
+  "original_pc": {
+    "assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+    "il_method_bodies_decoded": 25174,
+    "il_failures": 0,
+    "decompiled_cs_files": 2034
+  },
+  "service": {
+    "name": "onisoul-dev",
+    "state": "active",
+    "enabled": true,
+    "http_bind": "127.0.0.1:18080",
+    "mysql_bind": "127.0.0.1:3306",
+    "database": "onisoul_dev",
+    "db_user": "onisoul_dev",
+    "config_mode": "0o600",
+    "http_smoke": "passed",
+    "test_account_rows_after_cleanup": {
+      "users": 0,
+      "accounts": 0,
+      "players": 0,
+      "sessions": 0
+    },
+    "gameplay_smoke": "passed",
+    "contract_check": "passed"
+  },
+  "scope": {
+    "production_player_data_copied": false,
+    "player_entry_switched": false,
+    "windows_native_acceptance": "not performed by this environment setup"
+  }
+}

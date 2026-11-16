@@ -3,6 +3,8 @@
 功能范围和验收状态见 [项目进度](project-status/README.md)。本页面向需要运行或修改代码的人，
 日常启动游戏见 [中文导航](README.md#客户端启动与连接)。
 
+服务端后续默认使用 [韩国远程开发节点](remote-development.md)；本机保留客户端验收能力。
+
 ## 依赖与配置
 
 Python 3.12+；服务端外部依赖见 [requirements.txt](../requirements.txt)，当前为 PyMySQL。

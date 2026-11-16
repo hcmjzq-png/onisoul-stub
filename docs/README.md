@@ -34,6 +34,7 @@
 
 | 目的 | 文档 |
 | --- | --- |
+| 在新韩国节点开发和测试 | [远程开发环境](remote-development.md) |
 | 安装依赖、启动服务、运行检查 | [开发说明](development.md) |
 | 理解程序怎么连接 | [架构说明](architecture.md) |
 | 找到已接入和候选玩法代码 | [业务代码索引](../app/business/README.md) |

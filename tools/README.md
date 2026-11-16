@@ -21,6 +21,7 @@
 | 工具 | 用途 | 影响范围 |
 | --- | --- | --- |
 | [contract_check.py](contract_check.py) | 契约、调用图和批次结构校验 | 只读仓库输入 |
+| [run_isolated_mysql_tests.py](run_isolated_mysql_tests.py) | Linux 全量回归及真实 SQL 测试 | 启停一次性本机 MySQL，写测试日志，清理本次临时实例；不使用系统库 |
 | [export_system_status.py](export_system_status.py) | 按系统导出全部路由状态 | 写指定输出目录；不调用接口、不连接 DB |
 | [endpoint_progress.py](endpoint_progress.py)、[index_remaining_endpoints.py](index_remaining_endpoints.py) | 旧接口研究快照/索引 | 会写报告；旧默认目录可能是历史研究目录，先检查参数和目标 |
 | [gameplay_smoke.py](gameplay_smoke.py)、[progression_smoke.py](progression_smoke.py)、[trophy_smoke.py](trophy_smoke.py) | 使用表数据做内存玩法检查 | 隔离内存状态；不等于自然通关或 Unity 验收 |
