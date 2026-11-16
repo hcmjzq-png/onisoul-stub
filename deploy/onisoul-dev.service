@@ -1,0 +1,19 @@
+[Unit]
+Description=OniSoul isolated development server
+After=network.target mysql.service
+Requires=mysql.service
+
+[Service]
+Type=simple
+User=oni
+Group=oni
+WorkingDirectory=/srv/onisoul/repo
+EnvironmentFile=/srv/onisoul/config/dev.env
+ExecStart=/srv/onisoul/.venv/bin/python -m app.main --host 127.0.0.1 --port 18080
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
