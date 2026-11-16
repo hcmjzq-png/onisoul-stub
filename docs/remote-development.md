@@ -1,122 +1,99 @@
-# 韩国节点开发环境
+# 本机开发与云端服务
 
-2026-11-16 配置。用户指定 `43.108.100.32` 作为后续开发节点，
-现有游戏服务仍在 `43.143.69.215`。本机 Windows 继续承担 Qt/Unity 真机验收。
+2026-11-17 起采用以下分工。旧云主机退出运行，后续部署、素材读取和调试不能依赖它。
+具体服务器地址和凭据只保存在私有配置；本文中的 `<server>` 等标记需要在本机替换。
 
-## 常用入口
-
-本机已设置 SSH 别名，正常工作使用非 root 账号：
-
-```powershell
-ssh onisoul-kr
-```
-
-登录后：
-
-```bash
-cd /srv/onisoul/repo
-source /srv/onisoul/.venv/bin/activate
-git status --short
-git fetch origin main
-```
-
-SSH 私钥在本机用户私有目录，未上传到新服务器。`onisoul-kr-root` 仅用于主机配置维护。
-创建新分支前检查现有改动；多人工作使用 `/srv/onisoul/worktrees` 下的独立工作树。
-服务器原有 `/opt/onisoul` 克隆保留，当前开发入口统一使用 `/srv/onisoul/repo`。
-
-## 环境与目录
-
-| 项目 | 配置 |
+| 位置 | 工作 |
 | --- | --- |
-| 操作系统 | Ubuntu 24.04 LTS，x86_64 |
-| 开发账号 | oni；普通开发不使用 root |
-| Python | 3.12 虚拟环境；已安装服务端、IL 分析和媒体转换依赖 |
-| 静态分析 | .NET SDK 8.0、ilspycmd 9.1.0.7988；`/srv/onisoul/bin/ilspycmd` |
-| MySQL | 系统实例用于独立开发库；完整回归另起临时实例 |
-| 其他工具 | Git、Node.js、FFmpeg、编译工具、rsync 等 |
-| 内存 | 约 1.6 GiB RAM，另配置 2 GiB swap；避免并行启动多套重型任务 |
-| `/srv/onisoul/repo` | 开发仓库 |
-| `/srv/onisoul/worktrees` | 各任务独立代码工作树 |
-| `/srv/onisoul/assets/pc` | 开发资源副本：bundles、tables、web |
-| `/srv/onisoul/sources/pc-original` | 已按来源摘要校验的原版主包、解压容器、程序集；不入 Git |
-| `/srv/onisoul/sources/pc-decompiled` | 新节点生成的原版 C# 反编译源码；不入 Git |
-| `/srv/onisoul/config/dev.env` | 独立开发库私有配置，权限 0600 |
-| `/srv/onisoul/logs` | 测试与环境验收证据 |
-| `/srv/onisoul/test-runs` | 临时 MySQL 数据目录的父目录；正常测试退出后清理 |
+| 本机物理机 | Codex 对话、编辑、逆向分析、媒体转换、完整回归、Qt/Unity 原客户端验收 |
+| 云服务器 | 正式 stub、proxy80、MySQL、游戏资源；健康检查、备份和必要的发布验收 |
+| GitHub | 可公开的代码、模板、原版依据和脱敏验收记录 |
 
-资源按旧服务器实际文件摘要核对。开发库不复制旧服账号、密码或玩家存档。
-PS3/Android 原始素材、原 PC 安装包及 Windows 工具仍以各自现有来源为准，
-已发布 PC 资源副本不等于所有逆向原始材料都已搬到新节点。
+不在云服务器运行 Codex、反编译全量任务或完整测试套件。隔离 MySQL 脚本支持 Windows/Linux，
+本机可使用免安装 MySQL 运行全量回归；原客户端和调试工具也留在物理机。
+真实 SQL 测试需要独立本地数据库，未满足条件的跳过项必须明确报告。
 
-原版程序集来源沿用 [安装包重新取样记录](analysis/static-review-20261115/source-proof.json)，
-不把线上兼容补丁当作原版。IL 分析示例：
+## 日常启动
 
-```bash
-python tools/verify_il_bodies.py /srv/onisoul/sources/pc-original/Assembly-CSharp.dll
-```
+给客户端安装云端启动入口后，双击客户端目录里的 `Start-OniSoul.cmd`。
+它读取本机私有连接配置、检查/启动本机 relay 和密码保存助手，再打开原游戏。
+私有配置默认位置：`%LOCALAPPDATA%\OniSoul\connection.local.json`。
+首次配置按 [连接配置模板](../config/connection.example.json) 在本机填写。
 
-## 隔离数据库回归
-
-在相应工作树执行，输出目录每次使用新名字：
-
-```bash
-/srv/onisoul/.venv/bin/python tools/run_isolated_mysql_tests.py \
-  --temp-root /srv/onisoul/test-runs \
-  --output /srv/onisoul/logs/acceptance-YYYYMMDD-HHMMSS
-```
-
-脚本使用新的临时数据目录、`--no-defaults` 和 `127.0.0.1:33365`，
-启用 I/E/新手的真实 MySQL 测试。实例退出后停止进程并删除本次临时目录；
-测试日志和摘要保留在输出目录。默认 3306 不允许作为这个测试实例的端口。
-只有该临时实例使用无密码测试 root，系统 MySQL 和开发库保持独立认证。
-
-Ubuntu 的 MySQL AppArmor 配置增加了仅限文件所有者的开发测试目录/日志目录规则，
-原配置继续启用。原理见 [Ubuntu AppArmor 文档](https://documentation.ubuntu.com/security/security-features/privilege-restriction/apparmor/)。
-当前规则允许 `/srv/onisoul/test-runs` 和 `/srv/onisoul/logs`，换目录前先核对配置。
-
-Windows DPAPI 和 Unity 画面不能在 Linux 回归中替代验收。通过和跳过数量须分别报告。
-
-## 开发服务
-
-`onisoul-dev.service` 使用独立 `onisoul_dev` 数据库与开发资源目录，
-仅监听 `127.0.0.1:18080`。查看状态：
-
-```bash
-systemctl status onisoul-dev --no-pager
-curl --noproxy '*' http://127.0.0.1:18080/client/status
-```
-
-需要从本机访问开发 HTTP 时使用 SSH 转发：
+安装入口（会备份既有启动文件）：
 
 ```powershell
-ssh -N -L 19880:127.0.0.1:18080 onisoul-kr
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/install_cloud_client.ps1 -ClientRoot '<client-root>'
 ```
 
-本机访问 `http://127.0.0.1:19880/client/status` 可检查连接。
-原 Unity 对域名有自己的处理逻辑，这条端口转发不能直接当作游戏完整联机配置。
-本次不改玩家 hosts、不替换原有 relay，也不把开发库公开成新游戏服。
+原游戏域名继续映射本机回环，网络链路为：
 
-需在命令行执行数据库工具时，先加载这个节点的私有配置（不要打印文件内容）：
+```text
+原客户端 → hosts → 本机 relay:80 → 云端 proxy80:80 → stub:18080 → MySQL
+```
+
+本机 relay 留日志便于排查。它的监听仅在回环；局域网其他电脑仍须独立安装、配置和验收。
+已有 relay 切换服务器需要 `-RestartRelay`，脚本只停止能核对 PID、启动时间、命令路径和端口归属的进程。
+无记录或进程不匹配时，必须先核对，不能盲杀占用 80 端口的程序。
+
+## 本机开发
+
+从最新 main 创建独立工作树，保留其他聊天的未提交改动。在本机安装 requirements：
+
+```powershell
+python -m venv .venv
+& .\.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-analysis.txt -r requirements-media.txt
+& .\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
+完整 SQL 回归使用本机 MySQL 可执行文件，不安装系统服务、不使用玩家库：
+
+```powershell
+& .\.venv\Scripts\python.exe tools/run_isolated_mysql_tests.py --mysqld '<mysql-dir>/bin/mysqld.exe' --output work/local-sql-acceptance
+```
+
+输出目录必须是新目录。临时实例仅回环监听，测试后正常关闭并删除临时数据；日志留在输出目录。
+MySQL 可使用 [官方免安装 ZIP](https://dev.mysql.com/doc/refman/8.0/en/windows-install-archive.html)。
+按 [本机开发配置模板](../config/development.example.json) 保存私有
+`%LOCALAPPDATA%\OniSoul\development.local.json` 后，可直接运行 `powershell -File tools/test_local.ps1`。
+
+本地数据库、资源路径使用本机环境变量；真实玩家库不用于普通回归。
+已验证来源的原版输入、反编译源码、转换产物和本机客户端分别保留，不把补丁当原版。
+资源恢复与未实现玩法继续按 [系统台账](project-status/README.md) 推进。
+
+## 云端运行和发布
+
+| 路径 | 用途 |
+| --- | --- |
+| `/srv/onisoul/server` | 正式服务代码 |
+| `/srv/onisoul/.venv` | 服务 Python 环境 |
+| `/srv/onisoul/assets/pc` | bundles、tables、web |
+| `/srv/onisoul/data` | 运行数据 |
+| `/srv/onisoul/logs/server` | 代理抓取日志 |
+| `/srv/onisoul/backups` | 私有迁移/回退备份；不入 Git |
+| `/etc/onisoul/server.env` | root:root、0600；正式数据库及资源路径 |
+
+`onisoul-stub` 以普通账号运行，只监听 `127.0.0.1:18080`；
+`onisoul-proxy` 对外监听 80；MySQL 仅回环。两项游戏服务开机自启。
+之前的 `/srv/onisoul/repo`、开发库和开发服务是历史环境，不再作为正式运行入口。
 
 ```bash
-set -a
-source /srv/onisoul/config/dev.env
-set +a
+ssh <server-alias>
+systemctl status onisoul-stub onisoul-proxy --no-pager
+curl --noproxy '*' --fail http://127.0.0.1:18080/client/status
+curl --noproxy '*' --fail http://127.0.0.1/client/status
 ```
 
-上面的完整回归脚本自行覆盖数据库环境，使用临时 MySQL；普通 HTTP 冒烟使用开发库。
+本机完成改动和回归后创建 PR；owner 合并。发布时核对代码、SQL、资源是否各自有改动，
+先备份再更新，只在云端做必要验收。详见 [部署说明](deploy.md)。
+迁移及客户端入口的实际验收见 [本次切换记录](analysis/local-debug-cloud-service-20261117/README.md)。
 
-## 本次环境验收
+## 公开资料与私有配置
 
-见 [2026-11-16 验收记录](analysis/korea-development-20261116/README.md)。
-这是开发环境就绪证明，不增加已完成玩法数量，也不替代 Windows 原客户端验收。
+禁止把真实服务器 IP、SSH 私钥/位置、token、数据库密码或玩家存档写入 GitHub 文件、
+PR 描述及公开附件。示例使用占位符；`*.local.json`、`*.local.ps1`、`*.local.toml`、
+`*.env`、`*.pem`、`*.key`、work 和 logs 均被 Git 忽略。
+提交前运行 `python tools/check_public_config.py --staged` 并检查整个暂存差异。
+脚本检查公网 IPv4 字面量、凭据标记和私有文件名；不能替代人工审核或历史清理。
 
-## Git 与后续交付
-
-服务器能直接获取公开仓库。没有向服务器复制个人 GitHub token 或本机私钥，
-因而读取仓库成功不表示已配置 GitHub 写入认证。
-可以在远端完成编辑、测试和提交，经 Git bundle 带回可信本机发布分支/创建 PR；
-如果后续需要服务器直接推送，再配置仓库范围的写入身份。
-
-每次交付记录所用提交、环境、测试日志及资源版本。旧服代码、数据库迁移和资源发布，
-仍按相应 PR 的部署计划执行；不能把新节点测试成功当作旧服已经更新。
+此前的公开记录中的真实主机地址已脱敏；Git 历史仍保留原提交，不在普通 PR 中重写历史。

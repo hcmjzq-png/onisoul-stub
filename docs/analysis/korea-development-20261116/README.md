@@ -1,6 +1,7 @@
 # 韩国开发节点验收
 
-2026-11-16。用户指定 `43.108.100.32` 用于后续项目开发。
+2026-11-16 的历史环境验收，主机地址已脱敏。2026-11-17 起改为本机开发、云端运行，
+当前分工及迁移结果见 [切换记录](../local-debug-cloud-service-20261117/README.md)。
 服务端基线 `34b5361993a84114579a722ebe065735d37e6eda`（#78）；
 本次只添加环境约定、开发 service 模板和隔离测试入口，不修改游戏业务规则。
 操作入口见 [远程开发说明](../../remote-development.md)，原始摘要见 [acceptance.json](acceptance.json)。
@@ -9,7 +10,7 @@
 
 | 项目 | 实测结果 |
 | --- | --- |
-| SSH | 本机 `ssh onisoul-kr` 以普通账号 oni 登录；root 别名只作维护 |
+| SSH | 使用本机私有 SSH 配置，以普通账号登录；维护账号独立保存 |
 | 开发仓库 | `/srv/onisoul/repo`；独立工作树目录 `/srv/onisoul/worktrees` |
 | 依赖 | Python 3.12.3、MySQL 8.0.46、.NET SDK 8.0.134、ilspycmd 9.1.0.7988；三份 requirements 已安装，pip check 通过 |
 | 完整回归 | 656 项，655 通过、1 跳过、0 失败；跳过项为 Windows DPAPI 集成 |

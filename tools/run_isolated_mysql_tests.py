@@ -1,4 +1,4 @@
-"""Run the complete suite against a disposable loopback MySQL on Linux.
+"""Run the complete suite against a disposable loopback MySQL on Windows/Linux.
 
 Uses a new temporary data directory, never the system MySQL data/config files.
 The test instance exists only for this run; each integration test owns its UUID
@@ -24,15 +24,16 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=33365)
+    parser.add_argument("--mysqld", type=Path, help="explicit mysqld executable, including portable Windows builds")
     parser.add_argument("--temp-root", type=Path, help="existing private directory allowed by the host MySQL profile")
     parser.add_argument("--output", type=Path, required=True, help="new evidence directory")
     args = parser.parse_args()
-    if sys.platform != "linux" or os.geteuid() == 0:
-        parser.error("run as the non-root Linux developer account")
+    if sys.platform not in ("linux", "win32") or (sys.platform == "linux" and os.geteuid() == 0):
+        parser.error("run on Windows or as the non-root Linux developer account")
     if not 1024 <= args.port <= 65535 or args.port == 3306:
         parser.error("a nondefault unprivileged test port is required")
-    binary = shutil.which("mysqld")
-    if not binary:
+    binary = str(args.mysqld.resolve()) if args.mysqld else shutil.which("mysqld")
+    if not binary or not Path(binary).is_file():
         parser.error("mysqld is not installed")
     import pymysql
 
@@ -98,7 +99,22 @@ def main() -> int:
                                                 stdout=log, stderr=subprocess.STDOUT).returncode
                 finally:
                     if process.poll() is None:
-                        process.terminate()
+                        # mysqladmin requests a clean shutdown on Windows, where
+                        # Popen.terminate() would forcibly terminate mysqld.
+                        admin = Path(binary).with_name("mysqladmin.exe" if sys.platform == "win32" else "mysqladmin")
+                        if admin.is_file():
+                            try:
+                                subprocess.run([str(admin), "--no-defaults", "--protocol=TCP",
+                                                "--host=127.0.0.1", f"--port={args.port}",
+                                                "--user=root", "shutdown"],
+                                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=15)
+                            except (OSError, subprocess.TimeoutExpired):
+                                pass  # Still stop the owned instance below.
+                    if process.poll() is None:
+                        try:
+                            process.wait(timeout=5)
+                        except subprocess.TimeoutExpired:
+                            process.terminate()
                         try:
                             process.wait(timeout=30)
                         except subprocess.TimeoutExpired:

@@ -1,0 +1,4 @@
+{
+  "PythonPath": "<local-python-executable>",
+  "MySQLPath": "<local-mysql-dir>/bin/mysqld.exe"
+}

@@ -63,9 +63,11 @@ def main():
     ap.add_argument('--assembly', type=Path, required=True)
     ap.add_argument('--inventory', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True)
-    ap.add_argument('--host', default='43.143.69.215')
+    ap.add_argument('--host', help='Explicit source host; unnecessary with --source-dir')
     ap.add_argument('--source-dir', type=Path, help='Original chara files, for a reproducible offline rebuild after publishing')
     args=ap.parse_args()
+    if not args.source_dir and not args.host:
+        ap.error('Supply --source-dir for offline work or an explicit --host')
     if args.out.exists():raise ValueError('output directory already exists')
     args.out.mkdir(parents=True)
     source=args.app.read_bytes();assert sha(source)==APP_SHA
