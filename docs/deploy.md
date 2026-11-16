@@ -1,12 +1,16 @@
 # 部署指南
 
+> 本页的“首次部署”是环境搭建步骤，包含账号密码和环境文件写入。
+> 已有服务器更新按对应 PR 的迁移、资源发布和回退计划执行，不重复初始化。
+> 当前功能与最新验收记录从 [文档导航](README.md) 进入；代码、SQL、资源和本机助手分别发布。
+
 目标服务器：Ubuntu 26.04 LTS，Python 3.14，MySQL 8.4（仅监听回环）。
 拓扑：客户端 ──▶ `proxy80.py` :80 ──▶ stub `app.main` :18080 ──▶ MySQL `game_db`。
 
 ## 目录与凭据
 
 ```
-/opt/onisoul/            # 代码（app/ db/ tools/ deploy/ docs/ config/ tests/）
+/opt/onisoul/            # 代码（app/ db/ tools/ deploy/ docs/ tests/）
 /opt/onisoul/data/       # 运行数据（不入库）
 /opt/onisoul/logs/       # stub-systemd.log + capture-YYYYMMDD.jsonl
 /etc/onisoul/stub.env    # 环境变量（含 DB 密码），属 root:root，权限 600
