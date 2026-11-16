@@ -1,133 +1,54 @@
-# OniSoul Stub
+# 鬼武者魂复刻项目
 
-鬼武者魂（Onimusha Soul / OniSoul）PC 版复刻用 Stub 服务端。客户端经 80 端口代理转发到本 Stub；接口与响应字段待从客户端 bundle 实测反推，当前为分层骨架。
+这是让原《鬼武者魂》PC 客户端重新连接、保存进度并恢复玩法的项目。
+当前已有部分可用功能，完整游戏仍在恢复中。仓库名中的 `stub` 是早期“模拟服务”的名称；
+功能是否完成，以实际操作和验收记录为准。
 
-> 当前进度按 [系统与子项台账](docs/project-status/README.md) 查看：区分已接入、候选未接入、资源缺失和真机验收。
-> 402 个端点中有 80 个专用处理器；其余包含默认回包、明确失败及刻意禁用的入口，HTTP 200 不表示玩法已实现。
-> 本地、局域网、腾讯云连接方式与本次审核见 [审核记录](docs/audit-20261115.md)。
+## 先看这里
 
-## 目录
+| 你想知道什么 | 打开哪里 |
+| --- | --- |
+| 已经做了哪些、还差哪些 | [12 个系统与 57 个子项的进度清单](docs/project-status/README.md) |
+| 下一步先做什么 | [近期三个验收目标](docs/project-status/README.md#接下来的验收顺序) |
+| 各种文档有什么用 | [中文文档导航](docs/README.md) |
+| 仓库哪些保留、归档、删除或重构 | [仓库整理清单](docs/repository-maintenance.md) |
+| 需要开发或部署服务端 | [开发入口](docs/development.md) · [部署说明](docs/deploy.md) |
+| 某个脚本能不能直接运行 | [工具用途与操作范围](tools/README.md) |
 
-```
-onisoul-stub/
-├── app/
-│   ├── main.py               # 服务入口
-│   ├── config.py             # 环境变量配置
-│   ├── db.py                 # MySQL 连接层
-│   ├── protocol/            # 信封解析、统一响应、错误码
-│   ├── transport/           # HTTP 路由分发
-│   ├── sessions/            # 账号 / 会话表
-│   ├── state/               # 玩家状态（整行 JSON）
-│   ├── tables.py            # 按 108 张表清单加载 / 校验 / 热重载
-│   └── business/            # 注册表、契约读取、占位响应
-│       ├── gameplay.py      # 登录 / 玩家 / 主城 / 任务 1～4
-│       ├── mission_chain.py # 官方 politicMission 任务链
-│       ├── registry.py      # api 路径 → handler，可批量登记契约占位
-│       ├── contract.py      # 直接读 docs/analysis 的 tsv（唯一事实来源）
-│       ├── response_shapes.py # 普通 envelope / 裸映射
-│       └── placeholders.py  # 按契约类型生成「形状合法、语义为空」的响应
-├── db/schema.sql            # MySQL 表定义（目标库由 ONI_DB_NAME 决定）
-├── config/                  # 响应模板（示例）
-├── tools/proxy80.py         # 80 → 18080 转发代理
-├── tools/contract_check.py  # 契约一致性检查（端点 / 边 / 批次 / 类型覆盖）
-├── tools/import_tables.py   # 只导入清单内的 108 张配置表
-├── tools/check_pc_assembly.py # PC 程序集 PE/CLI 结构只读校验
-├── tools/decompile_pc_assembly.py # 校验后用 ilspycmd 反编译到仓库外
-├── deploy/                  # systemd 单元
-├── docs/                    # 架构与接口文档
-└── tests/                   # 协议层单测
-```
+## 平时怎么使用
 
-## 快速开始
+已按现有方案安装的 Windows 客户端，使用客户端目录里的 **Start-OniSoul.cmd** 启动。
+它先启动本机账号密码保存助手，再打开游戏；它不会自动安装云端服务器或修复网络转发。
+安装来源和适用范围见 [客户端启动说明](docs/README.md#客户端启动与连接)。
 
-```bash
-python3 -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt
+查看进度时看系统清单，不必从第一份研究报告往后读。
+看到“代码已有”时，继续看它是否已接入、部署，以及原游戏画面是否验收。
+**PR 已合并只说明代码进入主分支，不自动等于服务器和玩家电脑已经更新。**
 
-# MySQL 就绪后按 ONI_DB_NAME 建库建表并启动（初始化账号需要建库/建表权限）
-export ONI_DB_PASSWORD=你的密码
-export ONI_DB_NAME=game_db
-python -m app.main --init-schema
+报告问题时，提供所在页面、操作顺序、预期和实际结果、发生时间；有截图可以一并提供。
+排查按“客户端 → hosts → proxy80 → stub”逐段核对。本机和局域网电脑分别记录。
 
-# 启动
-python -m app.main
+## 目录的含义
 
-# 鉴权闸门默认 strict：无会话只能调 8 个放行端点（登录/换票/版本表）
-# 排查「客户端哪些接口在没登录时会打」时用 observe，只计数不拦截
-export AUTH_MODE=observe
-```
+| 目录 | 通俗说明 | 谁主要使用 |
+| --- | --- | --- |
+| [docs/project-status](docs/project-status/README.md) | 当前功能清单、缺口和验收目标 | 项目负责人 |
+| [docs](docs/README.md) | 使用、开发、部署和历史记录的入口 | 按问题查阅 |
+| [app](docs/architecture.md) | 实际运行的服务端程序；业务模块见 [索引](app/business/README.md) | 开发人员 |
+| db | 数据库表定义与升级文件 | 开发和运维人员 |
+| [tools](tools/README.md) | 启动、提取资源、诊断、发布等工具 | 按工具说明使用 |
+| tests | 自动检查程序及其测试样本 | 开发人员 |
+| deploy | Ubuntu 上后台运行服务的配置 | 运维人员 |
+| assets | 登录网页素材及本机资源目录；多数游戏包不放 Git | 资源恢复人员 |
+| [docs/analysis](docs/analysis/README.md) | 原版证据、机器清单和历次研究；有些表仍被程序直接读取 | 逆向和开发人员 |
 
-`--init-schema` 会先创建所配置的数据库，再导入表定义；不会固定切换到 `game_db`。
-已有数据库也可用 `mysql --database=你的库名 < db/schema.sql` 手动导入，之后正常
-启动无需建库权限。MySQL DDL 不保证事务回滚；初始化中断后可重跑，表使用
-`CREATE TABLE IF NOT EXISTS`，不会清空已有存档。
+## 怎样判断完成
 
-## 契约层
+每个功能都应说明：支持什么、依据是什么、是否接入、是否发布、怎样验收、还缺什么。
+路由返回成功、自动测试通过、资源能下载，分别证明对应环节；完整玩法还要经过原客户端操作。
 
-`app/business/contract.py` **直接解析** `docs/analysis/` 下的三份 tsv，不落中间产物：
+- `stub has no assets`：请求的图片、声音、脚本或表等资源缺失。
+- `no stub response`：没有对应的业务实现或可信业务状态。
+- 回包不兼容、客户端卡住、网络超时：按实际原因另行记录。
 
-| 文件 | 用途 |
-|---|---|
-| `api_contract.tsv` | 402 个端点：发送方法 / 请求参数 / 响应键与类型 |
-| `api_call_graph.tsv` | 392 条端点→端点调用边 |
-| `behavior_contract.tsv` | 场景切换 / 键守卫 |
-
-`build_registry()` 会把这 402 个端点全部登记为占位响应：按源码里**取到类型**的键填默认值
-（`int→0`、`double→0.0`、`bool→false`、`string→""`、`Hashtable→{}`），没取到类型的键不猜。
-这样客户端请求任何已知接口都拿到 200 + 结构合法的 JSON，可以继续走下一批请求，而不是撞 404。
-真实实现只要 `registry.register(api, handler)` 覆盖同名项即可。
-
-已验证会被客户端逐项遍历根表的接口必须返回裸映射，不能注入
-`succeeded` / `now`；清单与客户端读取点见 `docs/response-shapes.md`。
-
-批次定义（`contract.batches()`，共 111 个）：
-
-- `scene:<name>`：5 个。触发该场景切换的端点 + 它切换后一帧内会连带的端点。
-- `fanout:<endpoint>`：106 个。一个有出边的端点 + 它的全部出边，用于验证「一次回包连发多请求」不会 404。
-
-```bash
-python3 tools/contract_check.py     # 端点/边/批次/类型覆盖的只读检查
-```
-
-## 测试
-
-```bash
-PYTHONPATH=. python -m unittest discover -s tests
-
-# 用真实表目录跑建号 -> 任务 1～4（内存状态，不写 MySQL）
-python tools/gameplay_smoke.py --table-dir assets/pc/tables
-```
-
-`tests/test_contract_batches.py` 覆盖：402 个端点全部 200、未知路径 404、已声明类型的响应键
-存在且 Python 类型一致、392 条边两端都已登记、111 个批次成员全部已知。
-
-静态资源与配置表：
-
-```bash
-python tools/import_tables.py --source /path/to/extracted/tables
-```
-
-资源目录通过 `ONI_PC_WEB_DIR`、`ONI_PC_BUNDLE_DIR`、`ONI_PC_CACHE_DIR`、
-`ONI_TABLE_DIR` 配置，目录内容不入库。当前清单 108 张表中客户端包内实测
-可取得 106 张，仅缺 `combo.json`、`strategy_battlefield.json`；
-另有 4 张服务端运行时表由 `docs/analysis/server_tables.tsv` 管理。见
-`docs/tables.md` 和 `docs/gameplay-onboarding.md`。
-
-安装包中的 `data.bin` 已完成全文件验证，属于可由固定种子完整重建的随机填充，
-并非待解密的游戏资源包。证据与只读复核方法见
-[`docs/analysis/data-bin-verification.md`](docs/analysis/data-bin-verification.md)。
-
-`Assembly-CSharp.dll` 的提取后结构验证与反编译方法见
-[`docs/analysis/pc-assembly.md`](docs/analysis/pc-assembly.md)。
-
-PC IL 全量 body 校验、键类型、HTTP 动词、回调扇出和响应形状重跑说明见
-[`docs/analysis/il-static-analysis.md`](docs/analysis/il-static-analysis.md)。
-分析工具依赖单独的 `requirements-analysis.txt`，不影响服务端运行环境。
-
-## 部署
-
-见 `deploy/` 的 systemd 单元与 `docs/architecture.md`。Stub 绑定 `127.0.0.1:18080`，对外由 `tools/proxy80.py` 在 80 端口转发。
-
-## 协作
-
-分支、PR 审批、提交规范与字段来源纪律见 [`CONTRIBUTING.md`](CONTRIBUTING.md)。
+贡献代码和原版证据要求见 [协作规范](CONTRIBUTING.md)。

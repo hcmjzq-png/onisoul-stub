@@ -1,5 +1,9 @@
 # 客户端接口契约（docs/analysis）
 
+> 本目录同时包含静态证据、历史研究和仍被程序读取的清单。
+> 当前功能请看 [系统台账](../project-status/README.md)，阅读入口见 [中文导航](../README.md)。
+> 下文统计按原分析口径保留；不要把整个目录归档移走或将旧报告中的“未实现”直接当作当前状态。
+
 来源：唯一可信来源 `OniSoul_Setup_20140712.exe` → `app.unity3d`（UnityWeb 容器）→ `Assembly-CSharp.dll`（4,584,448 B）→ `ilspycmd 9.1.0.7988` 反编译 2034 个 `.cs` 后静态抽取。
 
 **这些结论未经运行验证**；属于「从客户端代码直接读出的线上约定」，不是抓包实测。
@@ -88,7 +92,10 @@
 - `ilspycmd` 工具链与 IL 反汇编文本
 - 历史报告 `report.md`、`scripts.tsv`、`tables_schema.lite.json`、`strings.json` 等明细清单
 
-E 盘旧目录、安卓、PS3 素材一律不采信、不入仓。
+本页接口结论依据原 PC 客户端，不能用 E 盘旧实现或其他平台的规则替代。
+后续已对部分 PS3 / Android 媒体建立来源、转换和原生加载证据，见
+[媒体最终验收](media-network-20261115/README.md)；这不证明其他平台的玩法规则与 PC 相同。
+资源二进制继续留在仓库外。
 
 ## 重跑前置
 

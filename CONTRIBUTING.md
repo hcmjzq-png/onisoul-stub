@@ -1,5 +1,9 @@
 # 协作规范
 
+当前工作从 [系统子项台账](docs/project-status/README.md) 领取，代码位置见
+[业务索引](app/business/README.md)。每个功能 PR 更新对应子项的支持范围、接入、部署和验收记录；
+历史研究报告保留当时基线，不作为当前进度的另一份总表。
+
 ## 分支模型
 
 - `main`：受保护分支，**不允许直接推送**。
@@ -28,7 +32,8 @@
 
 ## 入库排除
 
-`data/`（存档会话）、`logs/`、`assets/`（资源包）、`.env`、`*.bak`、`__pycache__/` 均不入库（见 `.gitignore`）。
+`data/`（运行数据）、`logs/`、游戏资源包、`.env`、`*.bak`、`__pycache__/` 均不入库。
+`assets/pc/web/client` 中少量登录链路网页素材是已列明的例外，实际白名单见 `.gitignore`。
 
 ## 字段来源纪律（重要）
 

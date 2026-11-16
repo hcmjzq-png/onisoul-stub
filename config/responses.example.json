@@ -1,6 +1,0 @@
-{
-  "_source": "占位响应模板。响应字段以客户端 bundle 实测为准；bundle 未核对前不得把推测值当成官方结构。",
-  "_note": "骨架阶段业务接口留空对象；接口路径与字段同样待 bundle 核对。补齐时在 docs/api_schema.md 登记来源（bundle / 待验证）。",
-  "common/getRevisions": {},
-  "common/getPlayerParams": {}
-}
