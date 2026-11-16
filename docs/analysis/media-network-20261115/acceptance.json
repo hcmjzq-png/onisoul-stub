@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "date": "2026-11-16",
+  "runtime_commit": "e9b56a82501014aa331e91bfd443e77ba8e37adc",
+  "initial_runtime_commit": "55d623939581a1e59c049e6808886406745cf48b",
+  "native": {
+    "total": 12162,
+    "passed": 12162,
+    "final_failed": 0,
+    "resumed_successes": 4709,
+    "remaining_successes": 7453,
+    "counts": {
+      "PS3": {
+        "AudioClip": 10095,
+        "Texture2D": 1970
+      },
+      "Android": {
+        "AudioClip": 14,
+        "Texture2D": 83
+      }
+    },
+    "engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+    "manifest_sha256": "e7c0c074d628bb61931fe7d45605db7b1cec91c9ccab9f45746a4c5796dd641f",
+    "result_sha256": "e0871760d4547e5dbe1b52ad8097a533361c125e37a2b79c4c0671dd874bea49",
+    "initial_elapsed_seconds": 2030.109,
+    "resumed_elapsed_seconds": 3314.141,
+    "http_retries_in_successful_results": 824,
+    "native_retry_events": 170,
+    "previous_attempts": [
+      {
+        "checkpoint_sha256": "bef5f626d94db70fa11f40a83e3f14823265dab0cd832ec4c2995bd237a8761d",
+        "accepted": 4709,
+        "errors": [
+          {
+            "error": "TimeoutError: timed out",
+            "phase": "driver"
+          }
+        ]
+      }
+    ],
+    "scope": "Unity WWW URL load plus independent full HTTP GET SHA-256; decoded name/type/dimensions/audio metadata. One interrupted attempt resumed; this is not a single uninterrupted run."
+  },
+  "server": {
+    "verified_urls": 12162,
+    "matching_length_full_gets": 25337,
+    "minimum_full_gets_per_url": 2,
+    "response_status_counts": {
+      "200": 25340
+    },
+    "matching_body_bytes": 1148671197,
+    "health": "up",
+    "services": {
+      "onisoul-stub": "active",
+      "onisoul-proxy": "active"
+    }
+  },
+  "preservation": {
+    "pc_directory_files_unchanged": 23213,
+    "baseline_files_unchanged": 289,
+    "player_count": 5,
+    "players_unchanged": true
+  },
+  "movie": {
+    "status": 206,
+    "content_range": "bytes 0-4095/153516032",
+    "bytes": 4096,
+    "sha256": "163f0b1f63171dcd48ba8ec5478c67f8017bdb8dfc2926718e6f085dd99a0426",
+    "local_prefix_matches": true
+  },
+  "regression": {
+    "windows": {
+      "total": 651,
+      "passed": 619,
+      "skipped": 32
+    },
+    "server": {
+      "total": 651,
+      "passed": 616,
+      "skipped": 35
+    }
+  },
+  "server_evidence_backup": "/var/backups/onisoul/network72-20261115-154502"
+}
