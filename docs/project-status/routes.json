@@ -1,0 +1,111 @@
+{
+  "source_commit": "e7d905f4fa70fc27190202ff9a6d21069cc1dfec",
+  "scope": "route registration only; no API dispatch, DB access or Unity acceptance",
+  "registered": 402,
+  "runtime_kinds": {
+    "contract_default": 273,
+    "dedicated_handler": 80,
+    "disabled": 32,
+    "explicit_failure": 17
+  },
+  "legacy_placeholder_total": 322,
+  "systems": {
+    "S01": {
+      "name": "接入与账号",
+      "registered": 10,
+      "runtime_kinds": {
+        "dedicated_handler": 10
+      }
+    },
+    "S02": {
+      "name": "角色与存档",
+      "registered": 6,
+      "runtime_kinds": {
+        "contract_default": 2,
+        "dedicated_handler": 4
+      }
+    },
+    "S03": {
+      "name": "新手任务与成长",
+      "registered": 22,
+      "runtime_kinds": {
+        "contract_default": 11,
+        "dedicated_handler": 11
+      }
+    },
+    "S04": {
+      "name": "主城与建筑",
+      "registered": 31,
+      "runtime_kinds": {
+        "contract_default": 14,
+        "dedicated_handler": 17
+      }
+    },
+    "S05": {
+      "name": "生产与收获",
+      "registered": 7,
+      "runtime_kinds": {
+        "contract_default": 2,
+        "dedicated_handler": 1,
+        "explicit_failure": 4
+      }
+    },
+    "S06": {
+      "name": "武将与养成",
+      "registered": 48,
+      "runtime_kinds": {
+        "contract_default": 30,
+        "dedicated_handler": 18
+      }
+    },
+    "S07": {
+      "name": "商店与交易",
+      "registered": 35,
+      "runtime_kinds": {
+        "contract_default": 32,
+        "dedicated_handler": 3
+      }
+    },
+    "S08": {
+      "name": "物语与战斗",
+      "registered": 39,
+      "runtime_kinds": {
+        "contract_default": 26,
+        "explicit_failure": 13
+      }
+    },
+    "S09": {
+      "name": "好友与社区",
+      "registered": 44,
+      "runtime_kinds": {
+        "contract_default": 35,
+        "dedicated_handler": 9
+      }
+    },
+    "S10": {
+      "name": "战争与领地",
+      "registered": 48,
+      "runtime_kinds": {
+        "contract_default": 47,
+        "dedicated_handler": 1
+      }
+    },
+    "S11": {
+      "name": "排行与活动",
+      "registered": 77,
+      "runtime_kinds": {
+        "contract_default": 73,
+        "dedicated_handler": 4
+      }
+    },
+    "S12": {
+      "name": "资源与运维",
+      "registered": 35,
+      "runtime_kinds": {
+        "contract_default": 1,
+        "dedicated_handler": 2,
+        "disabled": 32
+      }
+    }
+  }
+}
