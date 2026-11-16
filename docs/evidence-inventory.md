@@ -29,7 +29,7 @@
 |---|---|---|
 | `app\config.ini`（正式） | FinalUrl | `http://game-onisoul.86joy.com/client/app.html` |
 | `app\config.ini`（正式） | StartUrl | `http://passport.86joy.com/index.php/gwz/client/login/` |
-| `app\Cantainer\config.ini`（测试容器） | FinalUrl | `http://114.141.133.203/client/app.html` |
+| `app\Cantainer\config.ini`（测试容器） | FinalUrl | `http://<original-test-host>/client/app.html`（历史地址已脱敏） |
 | `app\Cantainer\config.ini`（测试容器） | StartUrl | `http://test12242013.86joy.com/index.php/gwz/client/login/` |
 
 - cache 159 个 WebPlayer 缓存条目（41.0 MiB），下载主机：`client-onisoul.86joy.com` 129、`game-onisoul.86joy.com` 18、`passport.86joy.com` 9、`static.86joy.com` 2、Unity 修订检查 1。

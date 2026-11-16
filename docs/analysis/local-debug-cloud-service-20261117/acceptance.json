@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-17",
+  "base_commit": "31bc74ff09738c48a7bc4e59ca11055979f69a3b",
+  "roles": {
+    "physical_pc": "Codex, editing, analysis, conversion, regression and original-client debugging",
+    "cloud": "production proxy, stub, MySQL and assets",
+    "retired_host": "game services stopped and disabled; no runtime dependency"
+  },
+  "migration_snapshot": {
+    "all_table_fingerprints_equal": true,
+    "table_rows": {"accounts": 15, "players": 5, "sessions": 1, "shared_records": 0, "users": 5},
+    "assets": {
+      "files": 23099,
+      "logical_bytes": 1354668340,
+      "manifest_sha256": "25341146e69fe3db08be8ff20f382f688680a9fed9ad8f5b9270b2c3bb2c399f",
+      "source_destination_equal": true
+    },
+    "private_dump_and_recovery_archive": "saved on physical PC and current cloud host; checksums matched"
+  },
+  "production": {
+    "services_active_and_enabled": ["onisoul-stub", "onisoul-proxy"],
+    "previous_development_service": "stopped and disabled",
+    "cloud_codex_processes": 0,
+    "mysql_public_listener": false,
+    "public_proxy_health": "HTTP 200/up",
+    "private_stub_health": "HTTP 200/up",
+    "http_smoke": "passed; temporary account cleaned"
+  },
+  "physical_pc": {
+    "python": "3.12.14",
+    "mysql": "8.0.46 portable runtime; no Windows service installed",
+    "regression": {"total": 659, "passed": 659, "skipped": 0, "failed": 0},
+    "temporary_mysql": "clean shutdown and data directory removed",
+    "gateway": "old custom gateway stopped; new tracked gateway installed, replacement and reuse verified",
+    "launcher": "Start-OniSoul.cmd reads private connection.local.json",
+    "login_page": "HTTP 200",
+    "native_client": "saved login loaded, sign-in succeeded, Unity title and in-game introduction page observed",
+    "native_main_city": "not verified in this cutover; existing account was in pre-creation flow"
+  },
+  "privacy": {
+    "private_configuration": "outside tracked files",
+    "current_tracked_public_ipv4_findings": 0,
+    "private_keys_or_database_dump_published": false,
+    "git_history_rewritten": false
+  }
+}

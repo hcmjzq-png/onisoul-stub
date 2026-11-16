@@ -1,6 +1,6 @@
 {
   "captured_at_utc": "2026-11-16T12:34:20.738112+00:00",
-  "host": "43.108.100.32",
+  "host": "<server>",
   "role": "isolated_development",
   "base_commit": "34b5361993a84114579a722ebe065735d37e6eda",
   "python": "3.12.3",

@@ -14,10 +14,11 @@
 
 ## 客户端启动与连接
 
-已安装的入口是客户端目录下的 `Start-OniSoul.cmd`。当前项目曾在 `D:\鬼武者魂` 安装并验收，
-安装来源是 [install_login_memory.ps1](../tools/install_login_memory.ps1)，
-实际启动逻辑见 [start_client.ps1](../tools/start_client.ps1)。
-它负责本机密码保存助手及原 EXE 的启动；网络配置、服务器是否运行需要另行核对。
+已安装的入口是客户端目录下的 `Start-OniSoul.cmd`。
+云端连接安装入口为 [install_cloud_client.ps1](../tools/install_cloud_client.ps1)，
+启动逻辑见 [start_cloud_client.ps1](../tools/start_cloud_client.ps1)；
+读取本机私有连接配置，检查 relay 和密码保存助手后启动原 EXE。
+纯本地模式仍可使用 [install_login_memory.ps1](../tools/install_login_memory.ps1)。
 
 | 连接方式 | 需要分清的事 |
 | --- | --- |
@@ -34,7 +35,7 @@
 
 | 目的 | 文档 |
 | --- | --- |
-| 在新韩国节点开发和测试 | [远程开发环境](remote-development.md) |
+| 本机开发调试、云端运行服务 | [工作分工与私有连接配置](remote-development.md) |
 | 安装依赖、启动服务、运行检查 | [开发说明](development.md) |
 | 理解程序怎么连接 | [架构说明](architecture.md) |
 | 找到已接入和候选玩法代码 | [业务代码索引](../app/business/README.md) |

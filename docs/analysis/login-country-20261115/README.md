@@ -127,7 +127,7 @@ manifest 带生成时像素误差检查；本轮重新检查结构/指纹，不�
 复查命令（UnityPy 为可选分析依赖，本轮用 E:/oni-soul/work/py313/python.exe）：
 
 ```powershell
-python tools/audit_country_assets.py --tables D:/onisoul/work/quest-contract-20261115/all-tables --bundles D:/onisoul/assets/pc/bundles --generated E:/oni-soul/work/generated_chara_all_20261115 --server http://43.143.69.215 --output work/country-assets.json
+python tools/audit_country_assets.py --tables <table-dir> --bundles <bundle-dir> --generated <generated-dir> --server http://<server> --output work/country-assets.json
 ```
 
 ## #66 部署与本轮状态

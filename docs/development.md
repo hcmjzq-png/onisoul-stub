@@ -3,7 +3,8 @@
 功能范围和验收状态见 [项目进度](project-status/README.md)。本页面向需要运行或修改代码的人，
 日常启动游戏见 [中文导航](README.md#客户端启动与连接)。
 
-服务端后续默认使用 [韩国远程开发节点](remote-development.md)；本机保留客户端验收能力。
+日常编辑、逆向、转换、回归和原客户端调试都在本机；云端只运行游戏服务。
+分工、私有连接配置和发布入口见 [本机开发与云端服务](remote-development.md)。
 
 ## 依赖与配置
 
@@ -19,7 +20,7 @@ python -m venv .venv
 ```
 
 服务端只读取进程环境变量。`.env.example` 是变量说明，复制成 `.env` 不会自动生效；
-需要由 shell 或部署系统注入。Ubuntu 的现有 service 使用 `/etc/onisoul/stub.env`。
+需要由 shell 或部署系统注入。正式云服务使用 `/etc/onisoul/server.env`。
 真实账号/密码和资源包不提交到 Git。
 
 运行需要 MySQL、所选环境的配置及游戏表/资源。服务入口是：

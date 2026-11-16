@@ -8,10 +8,11 @@
 | 工具 | 用途 | 影响范围 |
 | --- | --- | --- |
 | [install_login_memory.ps1](install_login_memory.ps1) | 给指定客户端安装保存助手和启动入口 | 写入客户端的 `OniSoul-LoginMemory` 目录及 `Start-OniSoul.cmd` |
+| [install_cloud_client.ps1](install_cloud_client.ps1) | 给指定客户端安装云端启动入口 | 备份旧入口，安装必要脚本；真实地址从本机私有配置读取 |
 | [start_client.ps1](start_client.ps1)、[start_login_memory.ps1](start_login_memory.ps1) | 启动本机保存助手/游戏 | 创建本机进程；助手通过 DPAPI 保存本 Windows 用户的凭据 |
 | [login_memory.py](login_memory.py) | 本机登录保存服务 | 监听本机端口，保存或清除加密凭据 |
 | [configure_client.ps1](configure_client.ps1) | 预览本机/局域网/云端连接配置 | 默认预览；`-Apply` 才备份并修改 config.ini/hosts，依选项决定是否写 hosts |
-| [start_cloud_client.ps1](start_cloud_client.ps1) | 创建/检查本机 80 relay，再启动游戏 | 进程、日志、relay 记录；既有端口不匹配时拒绝继续 |
+| [start_cloud_client.ps1](start_cloud_client.ps1) | 读取私有连接配置，创建/检查本机 80 relay，再启动游戏 | 私有日志/进程记录；支持核验后切换 relay，既有端口不匹配时拒绝继续 |
 | [proxy80.py](proxy80.py) | HTTP 转发与脱敏日志 | 监听端口、访问上游、写日志 |
 
 本机、局域网和云端的说明见 [中文导航](../docs/README.md#客户端启动与连接)。
@@ -21,7 +22,9 @@
 | 工具 | 用途 | 影响范围 |
 | --- | --- | --- |
 | [contract_check.py](contract_check.py) | 契约、调用图和批次结构校验 | 只读仓库输入 |
-| [run_isolated_mysql_tests.py](run_isolated_mysql_tests.py) | Linux 全量回归及真实 SQL 测试 | 启停一次性本机 MySQL，写测试日志，清理本次临时实例；不使用系统库 |
+| [test_local.ps1](test_local.ps1) | 一条命令执行本机完整 SQL 回归 | 读取私有 development.local.json，调用隔离实例工具并保留本次日志 |
+| [check_public_config.py](check_public_config.py) | 提交前检查公网地址/凭据标记/私有文件 | --staged 检查实际暂存内容，不打印匹配值；不扫描 Git 历史 |
+| [run_isolated_mysql_tests.py](run_isolated_mysql_tests.py) | Windows/Linux 全量回归及真实 SQL 测试 | 用 --mysqld 指定本机程序；启停一次性 MySQL、写日志并清理临时实例，不使用系统库 |
 | [export_system_status.py](export_system_status.py) | 按系统导出全部路由状态 | 写指定输出目录；不调用接口、不连接 DB |
 | [endpoint_progress.py](endpoint_progress.py)、[index_remaining_endpoints.py](index_remaining_endpoints.py) | 旧接口研究快照/索引 | 会写报告；旧默认目录可能是历史研究目录，先检查参数和目标 |
 | [gameplay_smoke.py](gameplay_smoke.py)、[progression_smoke.py](progression_smoke.py)、[trophy_smoke.py](trophy_smoke.py) | 使用表数据做内存玩法检查 | 隔离内存状态；不等于自然通关或 Unity 验收 |

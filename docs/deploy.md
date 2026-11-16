@@ -1,127 +1,74 @@
-# 部署指南
+# 云端服务部署与维护
 
-> 本页的“首次部署”是环境搭建步骤，包含账号密码和环境文件写入。
-> 已有服务器更新按对应 PR 的迁移、资源发布和回退计划执行，不重复初始化。
-> 当前功能与最新验收记录从 [文档导航](README.md) 进入；代码、SQL、资源和本机助手分别发布。
+日常 Codex、代码修改、资源转换、自动回归和原客户端调试均在物理机进行。
+云服务器只运行游戏服务。主机地址、SSH 登录配置、数据库凭据均私有保存，示例只用占位符。
+当前分工见 [本机开发与云端服务](remote-development.md)，本次迁移见
+[切换验收](analysis/local-debug-cloud-service-20261117/README.md)。
 
-目标服务器：Ubuntu 26.04 LTS，Python 3.14，MySQL 8.4（仅监听回环）。
-拓扑：客户端 ──▶ `proxy80.py` :80 ──▶ stub `app.main` :18080 ──▶ MySQL `game_db`。
+## 正式运行布局
 
-## 目录与凭据
+| 项目 | 配置 |
+| --- | --- |
+| 系统/依赖 | Ubuntu 24.04 LTS、Python 3.12 venv、MySQL 8.0；此表是本次运行环境，不是所有部署的硬限制 |
+| 代码 | `/srv/onisoul/server` |
+| Python | `/srv/onisoul/.venv/bin/python` |
+| 资源 | `/srv/onisoul/assets/pc/{bundles,tables,web}` |
+| 存档 | MySQL 正式库；库名和专用账号见私有环境配置 |
+| 配置 | `/etc/onisoul/server.env`，root:root，0600；必须存在 |
+| 代理抓取日志 | `/srv/onisoul/logs/server` |
+| 服务日志 | `journalctl -u onisoul-stub -u onisoul-proxy` |
+| 备份 | `/srv/onisoul/backups` 下的私有目录；至少另有本机副本 |
 
-```
-/opt/onisoul/            # 代码（app/ db/ tools/ deploy/ docs/ tests/）
-/opt/onisoul/data/       # 运行数据（不入库）
-/opt/onisoul/logs/       # stub-systemd.log + capture-YYYYMMDD.jsonl
-/etc/onisoul/stub.env    # 环境变量（含 DB 密码），属 root:root，权限 600
-```
+客户端 → hosts → 本机 relay:80 → 云端 proxy80:80 → stub:18080 → MySQL。
+服务以普通账号 oni 运行；proxy 单独获得绑定低端口的权限；stub 和数据库只监听回环。
+开发服务 `onisoul-dev` 已停止且取消开机自启。
 
-- systemd 的系统管理器读取 EnvironmentFile，再以 `ubuntu` 启动进程；环境文件无需开放给 ubuntu。
-- 数据库密码只写 `stub.env`，不进代码仓库；`.env`、`*.env` 已在 `.gitignore`。
+## 首次准备新主机
 
-## 首次部署
+这部分只适用于空环境；**已有正式库不要重新初始化、清空或导入演示存档**。
 
-### 1. 传代码
+1. 创建普通运行账号及上述目录，在 server 目录放已审核的服务代码。
+2. 安装 Python venv 和 MySQL，创建虚拟环境，安装 requirements.txt。云端不需要运行完整逆向/媒体工具。
+3. 创建独立正式数据库与专用账号，权限限于本库；密码在主机本地随机生成，不放命令行或 Git。
+4. 从 `.env.example` 的变量清单准备 root 私有 server.env，填入正式库、资源和日志路径。
+5. 空库使用 db/schema.sql 并核对登录 users 表；已有库必须按实际版本执行 db/migrations，不靠初始化自动升级。
+6. 迁服先停源服务写入，导出一致性快照及私有恢复备份，在新库恢复，按表核对行数和内容摘要后启动。
+7. 复制资源后逐文件校验 SHA-256。保留本机/云端备份，在正式切换后取消旧游戏服务的自动启动。
 
-把仓库代码放到 `/opt/onisoul/`（git clone 或解压 tar 包均可），目录属主 `ubuntu:ubuntu`。
-
-### 2. 安装依赖
-
-```bash
-sudo python3 -m pip install --break-system-packages 'pymysql>=1.1.0'
-python3 -c "import pymysql; print(pymysql.__version__)"
-```
-
-### 3. 数据库
-
-MySQL 已存在库 `game_db` 与账号 `game_app@127.0.0.1`、`game_app@localhost`。
-
-重置账号密码（密码不回显），并导入 schema：
-
-```bash
-PW=$(openssl rand -base64 24 | tr -dc 'A-Za-z0-9' | head -c 28)
-sudo mysql <<SQL
-ALTER USER 'game_app'@'127.0.0.1' IDENTIFIED BY '${PW}';
-ALTER USER 'game_app'@'localhost'    IDENTIFIED BY '${PW}';
-SQL
-sudo mysql --database=game_db < db/schema.sql
-```
-
-`db/schema.sql` 只包含表定义，手动导入时必须选定已有目标库。使用自定义库名时，
-导入目标与 `ONI_DB_NAME` 保持一致。也可由有建库/建表权限的账号运行
-`python -m app.main --init-schema`：它先连接 MySQL 服务，按 `ONI_DB_NAME` 建库，
-再导入表定义并启动 Stub；新库不存在时也能初始化。MySQL DDL 会隐式提交，
-失败后可重跑 `IF NOT EXISTS` 语句，但不能依赖事务回滚已执行的 DDL。
-
-### 4. 环境变量
+安装 systemd 单元（仓库模板含运行目录，按实际布局检查后执行）：
 
 ```bash
-sudo install -o root -g root -m 750 -d /etc/onisoul
-sudo tee /etc/onisoul/stub.env >/dev/null <<ENV
-ONI_DB_HOST=127.0.0.1
-ONI_DB_PORT=3306
-ONI_DB_NAME=game_db
-ONI_DB_USER=game_app
-ONI_DB_PASSWORD=${PW}
-STUB_HOST=127.0.0.1
-STUB_PORT=18080
-AUTH_MODE=strict
-STUB_DEBUG_LOGIN_KEY=
-ENV
-sudo chmod 600 /etc/onisoul/stub.env
-```
-
-### 5. systemd 单元
-
-```bash
-sudo cp deploy/onisoul-stub.service deploy/onisoul-proxy.service /etc/systemd/system/
+sudo install -m 644 deploy/onisoul-stub.service deploy/onisoul-proxy.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now onisoul-stub.service
-sudo systemctl enable --now onisoul-proxy.service
+sudo systemctl enable --now onisoul-stub onisoul-proxy
 ```
 
-### 6. 冒烟
+## 日常发布
+
+本机改动、测试、PR、owner 合并后，先确定发布的提交和各项变更：
+
+- 代码：在干净的 server 工作树更新到已审核提交，保留现有私有配置和未跟踪运行文件。
+- SQL：先备份，审查迁移的提交边界与回退方式；CREATE TABLE IF NOT EXISTS 不会补已有表的列或索引。
+- 资源：按清单校验来源和目标，备份再发布；代码合并不会自动上传游戏包或配置表。
+- 客户端工具：在物理机重新安装相应启动脚本，不把私有连接配置提交到 Git。
+
+服务更新后：
 
 ```bash
-# 直连 stub（回环）
-curl -s http://127.0.0.1:18080/client/status
-# 经代理（80）
-curl -s http://127.0.0.1/client/status
-# 公网
-curl -s http://<服务器公网IP>/client/status
-```
-
-期望返回：`{"succeeded": true, "now": ..., "service": "onisoul-stub", "status": "up"}`。
-
-未知接口经代理应返回 404 信封：
-
-```bash
-curl -s -X POST http://127.0.0.1/api/nonexistent -d 'params=%7B%7D'
-# {"succeeded": false, "error": "NOT_FOUND", "message": "no stub response: nonexistent", ...}
-```
-
-## 运维
-
-```bash
-sudo systemctl status  onisoul-stub onisoul-proxy
 sudo systemctl restart onisoul-stub onisoul-proxy
-
-journalctl -u onisoul-stub  -n 50 --no-pager
-journalctl -u onisoul-proxy -n 50 --no-pager
+systemctl is-active onisoul-stub onisoul-proxy
+curl --noproxy '*' --fail http://127.0.0.1:18080/client/status
+curl --noproxy '*' --fail http://127.0.0.1/client/status
+journalctl -u onisoul-stub -u onisoul-proxy -n 40 --no-pager
 ```
 
-- 代理调试报文：`/opt/onisoul/logs/capture-YYYYMMDD.jsonl`。
-- 会话 / 玩家表：`accounts`、`sessions`、`players`（见 `db/schema.sql`）。
+再从本机检查公网与游戏域名，执行必要的临时账号 HTTP 冒烟并清理。
+普通回归使用本机临时库；不得把云端玩家存档当测试夹具。
+发布记录分开说明代码、SQL、资源、连接入口和原客户端验收。
 
-## 回滚
+## 备份与回退
 
-1. `sudo systemctl stop onisoul-proxy onisoul-stub`
-2. 恢复上一版代码到 `/opt/onisoul/`（或 `git checkout <上一提交>`）
-3. `sudo systemctl start onisoul-stub onisoul-proxy`
-4. schema 向后兼容时无需回滚表结构；否则按 `db/schema.sql` 对应版本处理。
-
-## 安全边界
-
-- stub 只绑 `127.0.0.1:18080`，公网仅暴露代理 80。
-- MySQL 只监听 `127.0.0.1:3306`，不对外开放。
-- 新增配置（密码、主机）一律走环境变量，不硬编码进代码。
+数据库 dump、账号密码哈希、session、环境文件及恢复归档均是私有数据，不入 Git。
+迁移恢复包保留旧代码、配置、日志、运行目录及当时的表备份；游戏资源另有已核对副本。
+回退只恢复已验证的代码与对应数据，避免把新玩家写入覆盖成过时快照。
+旧云主机已退出当前拓扑，回退必须依赖本机/现云端备份，不能要求旧机在线。
