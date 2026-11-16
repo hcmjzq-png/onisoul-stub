@@ -1,0 +1,333 @@
+{
+  "http": [
+    {
+      "country": "country01",
+      "image": "chara1_00001_01",
+      "path": "/client/pc/jp/assets/chara/05408acd6c1d55d25f99368a9a90de38.unity3d?r=306620",
+      "status": 404,
+      "sha256": "7d71533baf4b9b5051a9c0b9d8bdd68e1ca605037e13a5d03929c43e30b80462"
+    },
+    {
+      "country": "country02",
+      "image": "chara1_00013_01",
+      "path": "/client/pc/jp/assets/chara/02228774fac67cd0593ee088e2bc9df5.unity3d?r=306620",
+      "status": 404,
+      "sha256": "7d71533baf4b9b5051a9c0b9d8bdd68e1ca605037e13a5d03929c43e30b80462"
+    },
+    {
+      "country": "country03",
+      "image": "chara1_00040_01",
+      "path": "/client/pc/jp/assets/chara/a5044b17d31baa870cf9acb3b7c375d1.unity3d?r=306620",
+      "status": 200,
+      "sha256": "219bbbbf6fcdd4a4715e21ed130ab164b605c161ba97a38517de082d131e2f2a"
+    },
+    {
+      "country": "country04",
+      "image": "chara1_00054_01",
+      "path": "/client/pc/jp/assets/chara/8a10873fd1f23c221116259f99b70883.unity3d?r=306620",
+      "status": 200,
+      "sha256": "437ebf72026bd92113291e5fd63477be86c3137ed533624049bcfb9c71d7e256"
+    },
+    {
+      "country": "country05",
+      "image": "chara1_00085_01",
+      "path": "/client/pc/jp/assets/chara/c74ea4e81b96b628511d43dd5f5768d9.unity3d?r=306620",
+      "status": 404,
+      "sha256": "7d71533baf4b9b5051a9c0b9d8bdd68e1ca605037e13a5d03929c43e30b80462"
+    },
+    {
+      "country": "country06",
+      "image": "chara1_00093_01",
+      "path": "/client/pc/jp/assets/chara/ea0935eb6ffdc80dcc69b916f0dd9d70.unity3d?r=306620",
+      "status": 404,
+      "sha256": "7d71533baf4b9b5051a9c0b9d8bdd68e1ca605037e13a5d03929c43e30b80462"
+    },
+    {
+      "country": "country07",
+      "image": "chara1_00111_01",
+      "path": "/client/pc/jp/assets/chara/bbc7b7091ac58d4e37b4179588ef9d48.unity3d?r=306620",
+      "status": 200,
+      "sha256": "bd7305465e37e1a83ce6cbcc573f1d1a5ea53230e5c6182325780f7a938dad3c"
+    },
+    {
+      "country": "country08",
+      "image": "chara1_00123_01",
+      "path": "/client/pc/jp/assets/chara/bd3e920e329c4ccb64f3a7a3d696c414.unity3d?r=306620",
+      "status": 200,
+      "sha256": "5bcd428ed0792c0b4ff66628e22acd6c21979830574abcee3d2f8b09679ad692"
+    },
+    {
+      "country": "country09",
+      "image": "chara1_00142_01",
+      "path": "/client/pc/jp/assets/chara/bcf9fae2b80874635c1dc7ae216237ab.unity3d?r=306620",
+      "status": 200,
+      "sha256": "e00255f8ae9e8fd0fcc81b4d922090cb586094e8cf9a78cd1299f05ee47cd021"
+    },
+    {
+      "country": "country10",
+      "image": "chara1_00159_01",
+      "path": "/client/pc/jp/assets/chara/152c0064ae9c5e845734a4f8386b8bbe.unity3d?r=306620",
+      "status": 200,
+      "sha256": "aa2d87a830bea0ec35031b04f74eef8c90f6744b0e1e727bbda313308b392ce7"
+    },
+    {
+      "country": "country11",
+      "image": "chara1_00172_01",
+      "path": "/client/pc/jp/assets/chara/720ee66bdafa2701e1159512f981a674.unity3d?r=306620",
+      "status": 200,
+      "sha256": "222b47490ea19f837472102dcdc702c2228f0dce810c727ed1e66cc69de75c3f"
+    },
+    {
+      "country": "country12",
+      "image": "chara1_00193_01",
+      "path": "/client/pc/jp/assets/chara/4cef965c9271a5b8956289dc1ff316df.unity3d?r=306620",
+      "status": 404,
+      "sha256": "69812ffe1e2053ef62c8fe75ab7b50cac03eaa8ba9e6d82cb9979db86fd83431"
+    },
+    {
+      "country": "country13",
+      "image": "chara1_00222_01",
+      "path": "/client/pc/jp/assets/chara/1fddcc444ead0ddfaeab921fb6714445.unity3d?r=306620",
+      "status": 200,
+      "sha256": "44b86ee186d74ce106825e1368fbf9e424afcb6f43d534be9004cd1100dfa8f5"
+    },
+    {
+      "country": "country14",
+      "image": "chara1_00230_01",
+      "path": "/client/pc/jp/assets/chara/4403b537bc6307cddf6b59ecba8cd51b.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2bb8d03fa9e5566e55680ac42520abe19b83b3fde2de9295f0a7c8392e618123"
+    },
+    {
+      "country": "country15",
+      "image": "chara1_00260_01",
+      "path": "/client/pc/jp/assets/chara/a12540e4af277562b53a7d99ba2e60eb.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2e3338bdf3107c9a8e5fdf7cb5cf6d68d74b7108ff98fd5cb5654183e9837ee2"
+    },
+    {
+      "country": "country16",
+      "image": "chara1_00311_01",
+      "path": "/client/pc/jp/assets/chara/f24996cee1d4c15f58a19f972ce5cdb5.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2e3338bdf3107c9a8e5fdf7cb5cf6d68d74b7108ff98fd5cb5654183e9837ee2"
+    },
+    {
+      "country": "country17",
+      "image": "chara1_00317_01",
+      "path": "/client/pc/jp/assets/chara/6c5e6911972cbafea71aef7a8ded698f.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2e3338bdf3107c9a8e5fdf7cb5cf6d68d74b7108ff98fd5cb5654183e9837ee2"
+    },
+    {
+      "country": "country18",
+      "image": "chara1_00341_01",
+      "path": "/client/pc/jp/assets/chara/69e30186b8b4e5649be7b31103de7558.unity3d?r=306620",
+      "status": 200,
+      "sha256": "6c6668c6ad0d6854ce63a019bcb2746213c3ca3c698a4483cd46b076d2862f45"
+    },
+    {
+      "country": "country19",
+      "image": "chara1_00357_01",
+      "path": "/client/pc/jp/assets/chara/0f86db57eb1f1832e66bc5ebd54ba850.unity3d?r=306620",
+      "status": 200,
+      "sha256": "4f1c35045a036f1039c037626cc949b147d8eeb8aa2ea4831b6fca8d8b840d37"
+    },
+    {
+      "country": "country20",
+      "image": "chara1_00402_01",
+      "path": "/client/pc/jp/assets/chara/b75395b36cb1fa3c7c4dd892868d6438.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2e3338bdf3107c9a8e5fdf7cb5cf6d68d74b7108ff98fd5cb5654183e9837ee2"
+    },
+    {
+      "country": "country21",
+      "image": "chara1_00445_01",
+      "path": "/client/pc/jp/assets/chara/b630ad229880364c6f0b23765849a71a.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2e3338bdf3107c9a8e5fdf7cb5cf6d68d74b7108ff98fd5cb5654183e9837ee2"
+    },
+    {
+      "country": "country22",
+      "image": "chara1_00479_01",
+      "path": "/client/pc/jp/assets/chara/484d8c7c7cbb2af464cceb6a99d54344.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2e3338bdf3107c9a8e5fdf7cb5cf6d68d74b7108ff98fd5cb5654183e9837ee2"
+    },
+    {
+      "country": "country23",
+      "image": "chara1_00614_01",
+      "path": "/client/pc/jp/assets/chara/75d441c89a75bd5bb404ca4312e0293e.unity3d?r=306620",
+      "status": 200,
+      "sha256": "a0807dd67fc0badd421c2edf4d51fc2298ccad1915242313fea35c659d01f347"
+    },
+    {
+      "country": "country24",
+      "image": "chara1_00673_01",
+      "path": "/client/pc/jp/assets/chara/ddc56a7f3f71d252c947f6e40cf998eb.unity3d?r=306620",
+      "status": 200,
+      "sha256": "07934b8a6c17684f21de04ef0efb01bd54ecd36a9ab0c0ed99b12a5dbf9b3ecb"
+    },
+    {
+      "country": "country25",
+      "image": "chara1_00689_01",
+      "path": "/client/pc/jp/assets/chara/b6c88175b58f489bebf782eef21ace35.unity3d?r=306620",
+      "status": 200,
+      "sha256": "d6d6637d7cc99a3fcc1bac3f6c0533797ce14acf447df0446389ccbd6ee7910c"
+    },
+    {
+      "country": "country26",
+      "image": "chara1_00757_01",
+      "path": "/client/pc/jp/assets/chara/759f9e91a56a2aab75b1d64bf101a5ef.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2fca7ad19cb8f56f646d22e836f73394c72c6813f0176d558fe1f552675e668c"
+    },
+    {
+      "country": "country27",
+      "image": "chara1_00787_01",
+      "path": "/client/pc/jp/assets/chara/adab798b1a597e970fa1995aa4a9dd11.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2fca7ad19cb8f56f646d22e836f73394c72c6813f0176d558fe1f552675e668c"
+    },
+    {
+      "country": "country28",
+      "image": "chara1_00814_01",
+      "path": "/client/pc/jp/assets/chara/395a38ee07917a3f1342358cdb6c4fff.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2fca7ad19cb8f56f646d22e836f73394c72c6813f0176d558fe1f552675e668c"
+    },
+    {
+      "country": "country29",
+      "image": "chara1_00842_01",
+      "path": "/client/pc/jp/assets/chara/9cb1a1ed6e425baaa75cd0b9fd52561c.unity3d?r=306620",
+      "status": 200,
+      "sha256": "47822ebf767e62720d34aa0138e17646a788e988ca207b04c69ade71a0c6f9e6"
+    },
+    {
+      "country": "country30",
+      "image": "chara1_00866_01",
+      "path": "/client/pc/jp/assets/chara/e5db131aefd94332bad1ff54f2c3929a.unity3d?r=306620",
+      "status": 200,
+      "sha256": "c002186bdc1c0750a0a29a0b124cefe53ea3f43dee3bdee2094106f97be160c3"
+    },
+    {
+      "country": "country31",
+      "image": "chara1_00879_01",
+      "path": "/client/pc/jp/assets/chara/7c58deaa2283219ca924e3529d29c80b.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2fca7ad19cb8f56f646d22e836f73394c72c6813f0176d558fe1f552675e668c"
+    },
+    {
+      "country": "country32",
+      "image": "chara1_00891_01",
+      "path": "/client/pc/jp/assets/chara/1565c5b492c7ba3efa964e64f37b2507.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2fca7ad19cb8f56f646d22e836f73394c72c6813f0176d558fe1f552675e668c"
+    },
+    {
+      "country": "country33",
+      "image": "chara1_00916_01",
+      "path": "/client/pc/jp/assets/chara/1450fa13b6e0098ea407efee5de253b2.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2fca7ad19cb8f56f646d22e836f73394c72c6813f0176d558fe1f552675e668c"
+    },
+    {
+      "country": "country34",
+      "image": "chara1_00938_01",
+      "path": "/client/pc/jp/assets/chara/11fa2cd211464fed945a28c33860ebfe.unity3d?r=306620",
+      "status": 404,
+      "sha256": "2fca7ad19cb8f56f646d22e836f73394c72c6813f0176d558fe1f552675e668c"
+    },
+    {
+      "country": "country35",
+      "image": "chara1_00979_01",
+      "path": "/client/pc/jp/assets/chara/ce57256cfc6ca37a8a40dd57a4933fd2.unity3d?r=306620",
+      "status": 200,
+      "sha256": "a6188d2d91cd93e779dd310ea1858e1af7639abd7abd343c0dd2f38e8ea19cad"
+    },
+    {
+      "country": "country36",
+      "image": "chara1_00997_01",
+      "path": "/client/pc/jp/assets/chara/3e87841ff03b2b7d93e15d3d5be0afa5.unity3d?r=306620",
+      "status": 200,
+      "sha256": "bf19525321416bc8dc3657ce4b3e4ffe51014db1ffc5c0528f9afac615e83a6f"
+    },
+    {
+      "country": "country37",
+      "image": "chara1_01012_01",
+      "path": "/client/pc/jp/assets/chara/616bf995dd5d3d7f4c7b3f1298829820.unity3d?r=306620",
+      "status": 200,
+      "sha256": "be284b6b959f200efa384abd6eaa4e963ca8e859ad65f4f15229834ff48d7744"
+    },
+    {
+      "country": "country38",
+      "image": "chara1_01020_01",
+      "path": "/client/pc/jp/assets/chara/b2d91e7e448411a75c1582939eebdbc0.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country39",
+      "image": "chara1_01038_01",
+      "path": "/client/pc/jp/assets/chara/8151e5be879fdc24d67bb8e796f00851.unity3d?r=306620",
+      "status": 200,
+      "sha256": "b037a600c165954f73c44377accd9f100a045bd413cf874c26482264df81ef88"
+    },
+    {
+      "country": "country40",
+      "image": "chara1_01072_01",
+      "path": "/client/pc/jp/assets/chara/e4866ecfc7ad77208583ab70675efb04.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country41",
+      "image": "chara1_01084_01",
+      "path": "/client/pc/jp/assets/chara/525ac179b1a7a23e5a34bc0cd9d72f07.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country42",
+      "image": "chara1_01110_01",
+      "path": "/client/pc/jp/assets/chara/85e3d5e0fbbe25812757434d1af4fc10.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country43",
+      "image": "chara1_01124_01",
+      "path": "/client/pc/jp/assets/chara/5919d7957faa0171ac4e0286b1ed0069.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country44",
+      "image": "chara1_01145_01",
+      "path": "/client/pc/jp/assets/chara/96a5a2f82a74e4ce5b00d888e317cca9.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country45",
+      "image": "chara1_01175_01",
+      "path": "/client/pc/jp/assets/chara/414e3cada280f28ae33b122bee148121.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country46",
+      "image": "chara1_01186_01",
+      "path": "/client/pc/jp/assets/chara/c290b0f2038a9f6609af1c7becb18e30.unity3d?r=306620",
+      "status": 404,
+      "sha256": "6bd1a90a2fae119182d6fecd1f7f5bd3b7dec8c78643938445f01aeebc456df7"
+    },
+    {
+      "country": "country47",
+      "image": "chara1_01218_01",
+      "path": "/client/pc/jp/assets/chara/9a744b5f1bf3fca473cf888ae57800e5.unity3d?r=306620",
+      "status": 200,
+      "sha256": "f41d46c54baab6482a552a215280025541e053ef46278db37222e85dfd59aaac"
+    }
+  ]
+}

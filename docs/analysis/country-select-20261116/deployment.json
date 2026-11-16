@@ -1,0 +1,11 @@
+{
+  "backup": "/var/backups/onisoul/country76-20261116-022251",
+  "installed": 19,
+  "untouched": 2,
+  "app_sha256": "980438293373658772bf29aac1d87dbc545992cec3e7ff1db9d0d25d68342656",
+  "assets_verified": 20,
+  "http_verified": 21,
+  "services_not_restarted": true,
+  "players_unchanged": true,
+  "player_count": 6
+}
