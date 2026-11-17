@@ -92,6 +92,8 @@ def main(argv: list[str] | None = None) -> int:
     map_data = service.get_map_data({}, session)
     if "size" not in map_data["map"]:
         raise RuntimeError("getMapData did not return map size")
+    if service.get_drafts({}, session):
+        raise RuntimeError("new player received an unsupported starting draft")
 
     for state in ("opened", "accepted", "finished", "closed"):
         service.change_mission_state(
@@ -99,12 +101,15 @@ def main(argv: list[str] | None = None) -> int:
         )
     if states.load(session["playerId"])["resources"]["gold"]["amount"] <= starting_gold:
         raise RuntimeError("mission 1 did not grant gold")
+    drafts = service.get_drafts({}, session)
+    if drafts != {"draft2000001": {"amount": 1.0}}:
+        raise RuntimeError("mission 1 did not grant exactly one country01 castle")
 
     service.change_mission_state(
         {"missionIds": ["po_mission_00002"], "states": ["accepted"]}, session
     )
     castle = service.submit_build_task(
-        {"draftId": "draft2000002", "originCoord": [25, 25]}, session
+        {"draftId": "draft2000001", "originCoord": [25, 25]}, session
     )
     if not castle["succeeded"]:
         raise RuntimeError(f"mission 2 castle failed: {castle.get('errorReason')}")
@@ -123,11 +128,17 @@ def main(argv: list[str] | None = None) -> int:
     service.change_mission_state(
         {"missionIds": ["po_mission_00004"], "states": ["accepted"]}, session
     )
-    field = service.submit_build_and_complete(
+    field = service.submit_build_task(
         {"draftId": "draft2000041", "originCoord": [27, 27]}, session
     )
     if not field["succeeded"]:
         raise RuntimeError(f"mission 4 field failed: {field.get('errorReason')}")
+    finished = service.change_mission_state(
+        {"missionIds": ["po_mission_00004"], "states": ["finished"]}, session
+    )
+    if not finished["succeeded"]:
+        raise RuntimeError(f"mission 4 finish before completeTasks failed: {finished.get('errorReason')}")
+    service.complete_tasks({"buildingIds": [field["buildingId"]]}, session)
     service.change_mission_state(
         {"missionIds": ["po_mission_00004"], "states": ["closed"]}, session
     )
