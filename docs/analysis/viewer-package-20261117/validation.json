@@ -9,5 +9,9 @@
   "small_textures_missing": 81,
   "existing_pc_complete_preserved": 20,
   "local_links_checked": true,
-  "validation": "passed"
+  "validation": "passed",
+  "rebuilt_small_textures": 81,
+  "rebuilt_four_texture_bundles": 27,
+  "rebuilt_native_textures_loaded": 108,
+  "native_bundles_held": 47
 }

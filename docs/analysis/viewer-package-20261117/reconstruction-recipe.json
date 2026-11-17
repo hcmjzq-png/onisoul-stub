@@ -1,0 +1,535 @@
+{
+  "recipes": [
+    {
+      "country": "country01",
+      "character_image": "chara1_00001_01",
+      "source_png": "3DMTEX (1124).png",
+      "source_sha256": "3770388af015f4d52fc416112d5c27ce7dcbf8630dca4de37162e320b6e27b60",
+      "attribute": "oni",
+      "face_anchor": [
+        510,
+        505
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        127,
+        10,
+        381,
+        73
+      ]
+    },
+    {
+      "country": "country02",
+      "character_image": "chara1_00013_01",
+      "source_png": "3DMTEX (2773).png",
+      "source_sha256": "0e986f8bb93d5f539fdc2c0134f39d05b39f3ce5ef40986743f7f7df4e604085",
+      "attribute": "evil",
+      "face_anchor": [
+        510,
+        500
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        133,
+        10,
+        382,
+        75
+      ]
+    },
+    {
+      "country": "country05",
+      "character_image": "chara1_00085_01",
+      "source_png": "3DMTEX (329).png",
+      "source_sha256": "86c1f55261a5e9f067652c4420ad93f7b367604c8492b9f750021b158b4f4308",
+      "attribute": "human",
+      "face_anchor": [
+        510,
+        535
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        130,
+        11,
+        379,
+        76
+      ]
+    },
+    {
+      "country": "country06",
+      "character_image": "chara1_00093_01",
+      "source_png": "3DMTEX (3474).png",
+      "source_sha256": "b3169c972eef4dd474de0d4b6b1affb67732c516edd82da3139904c0df750bda",
+      "attribute": "evil",
+      "face_anchor": [
+        525,
+        535
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        130,
+        12,
+        380,
+        75
+      ]
+    },
+    {
+      "country": "country12",
+      "character_image": "chara1_00193_01",
+      "source_png": "3DMTEX (1778).png",
+      "source_sha256": "df678c54c0f3d5d2e4a3df4dedd894adb50f4400b142f4f26027c93afd5e0a06",
+      "attribute": "oni",
+      "face_anchor": [
+        520,
+        515
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        131,
+        12,
+        378,
+        76
+      ]
+    },
+    {
+      "country": "country14",
+      "character_image": "chara1_00230_01",
+      "source_png": "3DMTEX (3087).png",
+      "source_sha256": "4461dd7a1a653ef40367b3bd32ca695342849263154c5cfb126d1f9df33326c0",
+      "attribute": "human",
+      "face_anchor": [
+        480,
+        525
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        126,
+        10,
+        380,
+        76
+      ]
+    },
+    {
+      "country": "country15",
+      "character_image": "chara1_00260_01",
+      "source_png": "3DMTEX (591).png",
+      "source_sha256": "3e5a1266c73989e3c604954069cd2612e18c1861aa073a06e5e6e5e331ee49f6",
+      "attribute": "oni",
+      "face_anchor": [
+        505,
+        530
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        131,
+        10,
+        379,
+        75
+      ]
+    },
+    {
+      "country": "country16",
+      "character_image": "chara1_00311_01",
+      "source_png": "3DMTEX (1766).png",
+      "source_sha256": "b824894c9e6f7bfec00177d03c7e85ca5176a89d6a739edc7ea45c3950bdb981",
+      "attribute": "human",
+      "face_anchor": [
+        515,
+        525
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        127,
+        11,
+        382,
+        73
+      ]
+    },
+    {
+      "country": "country17",
+      "character_image": "chara1_00317_01",
+      "source_png": "3DMTEX (3247).png",
+      "source_sha256": "12642b32fd99f9a75ad1a978d0a3e7f3b58eec1e94af988b19bfbbe207e3c3db",
+      "attribute": "human",
+      "face_anchor": [
+        490,
+        525
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        129,
+        9,
+        379,
+        73
+      ]
+    },
+    {
+      "country": "country20",
+      "character_image": "chara1_00402_01",
+      "source_png": "3DMTEX (1814).png",
+      "source_sha256": "753a4295bc1c4bdaafeb0c273975527af1e0b7967d4128cf8fe5efd28ca88dbf",
+      "attribute": "human",
+      "face_anchor": [
+        480,
+        530
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        129,
+        10,
+        382,
+        76
+      ]
+    },
+    {
+      "country": "country21",
+      "character_image": "chara1_00445_01",
+      "source_png": "3DMTEX (1658).png",
+      "source_sha256": "cfdf8cbfb5b4c8532aa042654c4fa5bc1cc64ef9b9aadb967860ef09b3a1fd0e",
+      "attribute": "evil",
+      "face_anchor": [
+        515,
+        540
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        127,
+        11,
+        380,
+        76
+      ]
+    },
+    {
+      "country": "country22",
+      "character_image": "chara1_00479_01",
+      "source_png": "3DMTEX (538).png",
+      "source_sha256": "5d14d2c9a20e1689188fa9fa39c8ab5f88616d65abfc9708f98b0347b87e4fcc",
+      "attribute": "oni",
+      "face_anchor": [
+        480,
+        525
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        128,
+        11,
+        379,
+        74
+      ]
+    },
+    {
+      "country": "country26",
+      "character_image": "chara1_00757_01",
+      "source_png": "3DMTEX (180).png",
+      "source_sha256": "c484de2611d2f1bb1d458e7f7d5b0f2577f16405171eab0bf7b3d1cd528571c3",
+      "attribute": "human",
+      "face_anchor": [
+        470,
+        505
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        129,
+        11,
+        382,
+        75
+      ]
+    },
+    {
+      "country": "country27",
+      "character_image": "chara1_00787_01",
+      "source_png": "3DMTEX (3163).png",
+      "source_sha256": "9aa1b01d020595ef8c3021c810fdd42e3372288538c9bac1208d65233d49812b",
+      "attribute": "oni",
+      "face_anchor": [
+        520,
+        500
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        95,
+        12,
+        415,
+        76
+      ]
+    },
+    {
+      "country": "country28",
+      "character_image": "chara1_00814_01",
+      "source_png": "3DMTEX (1484).png",
+      "source_sha256": "9ed3ee835d829a579cb312e10bb5cae4943d8af6fbf68cd10fd176b035305fd8",
+      "attribute": "human",
+      "face_anchor": [
+        490,
+        515
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        97,
+        10,
+        413,
+        75
+      ]
+    },
+    {
+      "country": "country31",
+      "character_image": "chara1_00879_01",
+      "source_png": "3DMTEX (3662).png",
+      "source_sha256": "32d3b424c135570a3428cc1231389b58e0a23dc10d2e180effd20fc890dbb434",
+      "attribute": "human",
+      "face_anchor": [
+        480,
+        520
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        128,
+        10,
+        380,
+        74
+      ]
+    },
+    {
+      "country": "country32",
+      "character_image": "chara1_00891_01",
+      "source_png": "3DMTEX (266).png",
+      "source_sha256": "082f09032e96588c9c0eefeb784d5e0422af83a49868b7e383bf530351b602a8",
+      "attribute": "evil",
+      "face_anchor": [
+        500,
+        560
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        128,
+        12,
+        381,
+        75
+      ]
+    },
+    {
+      "country": "country33",
+      "character_image": "chara1_00916_01",
+      "source_png": "3DMTEX (649).png",
+      "source_sha256": "9b89620115a81d608fa1fc43311a418ecdc378ef6c134ae7b58f20f794e7eb41",
+      "attribute": "evil",
+      "face_anchor": [
+        485,
+        515
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        84,
+        9,
+        396,
+        75
+      ]
+    },
+    {
+      "country": "country34",
+      "character_image": "chara1_00938_01",
+      "source_png": "3DMTEX (3453).png",
+      "source_sha256": "4289d355c95dd72a9e3c8d6e1b7fe055dacee6955f844ee059cdd82fd4135907",
+      "attribute": "oni",
+      "face_anchor": [
+        500,
+        510
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        128,
+        11,
+        381,
+        74
+      ]
+    },
+    {
+      "country": "country38",
+      "character_image": "chara1_01020_01",
+      "source_png": "3DMTEX (835).png",
+      "source_sha256": "292766eccf2e502dbac696ef4d47472db61dc56639e6bb47546f4f2aae696a54",
+      "attribute": "oni",
+      "face_anchor": [
+        520,
+        535
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        128,
+        13,
+        381,
+        73
+      ]
+    },
+    {
+      "country": "country40",
+      "character_image": "chara1_01072_01",
+      "source_png": "3DMTEX (2289).png",
+      "source_sha256": "f78ba87aef1c030d28f085721b380ea694c15ccfae26b4e2e9c54a028c9d4f38",
+      "attribute": "human",
+      "face_anchor": [
+        510,
+        535
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        97,
+        12,
+        411,
+        75
+      ]
+    },
+    {
+      "country": "country41",
+      "character_image": "chara1_01084_01",
+      "source_png": "3DMTEX (3797).png",
+      "source_sha256": "28f09c41ba8619798391c7b86116d3bcca2303ef130dcb6159e225df24a6797e",
+      "attribute": "oni",
+      "face_anchor": [
+        485,
+        535
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        95,
+        11,
+        411,
+        75
+      ]
+    },
+    {
+      "country": "country42",
+      "character_image": "chara1_01110_01",
+      "source_png": "3DMTEX (309).png",
+      "source_sha256": "6e6e30cfc6d9cdbfd1c460b3931e01598adf42ba49d9bf24a72d6c08209d561d",
+      "attribute": "evil",
+      "face_anchor": [
+        500,
+        540
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        129,
+        10,
+        379,
+        74
+      ]
+    },
+    {
+      "country": "country43",
+      "character_image": "chara1_01124_01",
+      "source_png": "3DMTEX (1227).png",
+      "source_sha256": "dcc2fff639b69407c4175b200ca79d5f67ccbb0ace2953ef7618ea71fb31630f",
+      "attribute": "human",
+      "face_anchor": [
+        510,
+        530
+      ],
+      "frame_source": "chara1_00111_01_1_03.png",
+      "frame_sha256": "25b7ed016c16285882ddd9942159973fbdef6d8413d4a388c0b50552a9c5629b",
+      "nameplate_box": [
+        127,
+        11,
+        378,
+        75
+      ]
+    },
+    {
+      "country": "country44",
+      "character_image": "chara1_01145_01",
+      "source_png": "3DMTEX (818).png",
+      "source_sha256": "49f7089fa202bf825e74942a811454ed9769329ccb2e48986ec15d82ad87718b",
+      "attribute": "evil",
+      "face_anchor": [
+        505,
+        545
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        128,
+        11,
+        384,
+        76
+      ]
+    },
+    {
+      "country": "country45",
+      "character_image": "chara1_01175_01",
+      "source_png": "3DMTEX (497).png",
+      "source_sha256": "005ca03cf5ad30c7950dd025b91c3c501a4ff57c075bdee421cf43e7c8adc31d",
+      "attribute": "oni",
+      "face_anchor": [
+        510,
+        520
+      ],
+      "frame_source": "chara1_00040_01_1_03.png",
+      "frame_sha256": "08b7b32b250e92b65ff73bcad2cdc6f02ed4643facff2e4d29fd88c03bb7a2c5",
+      "nameplate_box": [
+        127,
+        11,
+        380,
+        75
+      ]
+    },
+    {
+      "country": "country46",
+      "character_image": "chara1_01186_01",
+      "source_png": "3DMTEX (1947).png",
+      "source_sha256": "af88b38c845eaed02d2eb4a8f2b8781501e9ab24a1bf9232ce7f65793a81bc43",
+      "attribute": "evil",
+      "face_anchor": [
+        500,
+        550
+      ],
+      "frame_source": "chara1_00142_01_1_03.png",
+      "frame_sha256": "1ad778ec46e03e03a3fc83923db99f1d6c5a07075b42f34ed89d5ed0e418c65f",
+      "nameplate_box": [
+        133,
+        12,
+        382,
+        77
+      ]
+    }
+  ],
+  "source_files_modified": false,
+  "original_pc_files_overwritten": false,
+  "portrait_background": "card_image_enpty_001-1.png",
+  "portrait_background_sha256": "983ee93e082994fbe6d8ab42fa81933938d04ba7429a1905e518e540f34b3552",
+  "active_areas": {
+    "_1_01": [
+      75,
+      100
+    ],
+    "_1_02": [
+      120,
+      160
+    ],
+    "_1_03": [
+      180,
+      240
+    ]
+  }
+}
