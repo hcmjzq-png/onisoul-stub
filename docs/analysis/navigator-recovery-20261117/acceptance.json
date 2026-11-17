@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-17",
+  "base_pr": 82,
+  "classification": "PR82 stub has no assets gap resolved with compatibility images",
+  "images": {
+    "bundles": 80,
+    "original_pc_preserved": 9,
+    "ai_compatibility_bundles": 71,
+    "texture_names": 120,
+    "native_loaded": 120,
+    "native_errors": 0,
+    "palette_original_verified": false,
+    "http_verified": 80,
+    "native_http_loaded": 120,
+    "native_http_errors": 0
+  },
+  "voices": {
+    "required_names": 833,
+    "distinct_speaking_clips": 832,
+    "shared_silent_placeholder": 1,
+    "local_found": 833,
+    "complete_http_get_200": 833,
+    "http_ps3_conversion": 819,
+    "http_original_pc": 14,
+    "prior_native_loaded": 833,
+    "current_playback_finished": 8,
+    "synthesized": 0,
+    "uploaded_this_release": 0
+  },
+  "fingerprints": {
+    "engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+    "native_texture_manifest_sha256": "ba4b2aef1661d4b18ebb388ee4426eda5898f6a8edbdb9dde6cc05192fb9498e",
+    "native_texture_result_sha256": "0c89b5148ea98127c2e25c3c07a7c5754d9450919d4bf8fca120e5adb1d29b1d",
+    "native_voice_result_sha256": "b19b4c13e9bd4ae0f2aa987ffa3bf19924d59698a1bacc6e7178be4c9f499b23",
+    "native_http_result_sha256": "fc73472805e3bb494428973a4d41490b20e60fb9947c6ce2b123906f59667bcf"
+  },
+  "runtime_code_changed": false,
+  "client_bundle_changed": false,
+  "player_writes": false,
+  "full_game_ui_verified": false,
+  "deployed": true
+}
