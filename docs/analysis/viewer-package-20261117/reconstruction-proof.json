@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-17",
+  "rebuilt_small_textures": 81,
+  "reconstructed_four_texture_bundles": 27,
+  "original_pc_bundles_preserved": 20,
+  "all_native_textures_loaded": 108,
+  "native_country_bundles_held": 47,
+  "unique_archives": 47,
+  "pixel_readback": "RGBA32 exact",
+  "original_pixels_claimed": false,
+  "game_ui_verified": false,
+  "uploaded": 0,
+  "engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+  "native_all_result_sha256": "9592948df5b5ebed3e6f107c3456431386d80db0c3acf1c4a55d3f031050190c",
+  "native_held_result_sha256": "a12f108a1d392928fc8384e78da573150a981efc1101af82ad955075d4bf9696"
+}

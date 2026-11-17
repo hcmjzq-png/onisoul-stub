@@ -1,0 +1,25 @@
+{
+  "engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+  "all_images": {
+    "manifest_sha256": "f08b79f7b432653d661b685561a82cf0529cb2ab52a995a8095ac4f3f5a97767",
+    "probe_sha256": "1dc5d07ef63ba268c7edee0f501ad52331111faa9e6bd1ab56479fd5e873e8e5",
+    "raw_result_sha256": "60af0509c19031dcb41249bf81040fb8e408bb33848700bb9c736699c826e021",
+    "loaded": 3925,
+    "errors": 0,
+    "finished": 3925
+  },
+  "country_large": {
+    "manifest_sha256": "dee47e279b6fa7c27d2c14cf1d8b6e2278063ac59e240f333ca15a5e4c7f8d75",
+    "probe_sha256": "1dc5d07ef63ba268c7edee0f501ad52331111faa9e6bd1ab56479fd5e873e8e5",
+    "raw_result_sha256": "94bd46c3cb60e3ba66f4c8ff296de7464a0f998e0b332b1a39c18a301587fa9f",
+    "loaded": 27,
+    "errors": 0
+  },
+  "pixel_readback": {
+    "format": "RGBA32",
+    "pixel_mae": 0,
+    "images": 3925
+  },
+  "simultaneous_all_resident_test": false,
+  "gameplay_ui_test": false
+}

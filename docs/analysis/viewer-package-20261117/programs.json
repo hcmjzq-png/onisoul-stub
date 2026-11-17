@@ -1,0 +1,45 @@
+[
+  {
+    "name": "鬼武者魂立绘查看器.exe",
+    "machine": "0x14c",
+    "clr_version": "v2.0.50727",
+    "assembly_references": [
+      "mscorlib",
+      "System.Windows.Forms",
+      "System",
+      "IrisSkin2",
+      "System.Drawing"
+    ],
+    "types": 7,
+    "methods": 51,
+    "embedded_resources": [
+      "SoulImage.Font1.resources",
+      "SoulImage.Properties.Resources.resources",
+      "SoulImage.Form2.resources"
+    ],
+    "pinvoke_methods": 0
+  },
+  {
+    "name": "IrisSkin2.dll",
+    "machine": "0x14c",
+    "clr_version": "v2.0.50727",
+    "assembly_references": [
+      "mscorlib",
+      "System.Drawing",
+      "System",
+      "System.Windows.Forms",
+      "System.Design",
+      "mscorlib"
+    ],
+    "types": 158,
+    "methods": 8193,
+    "embedded_resources": [
+      "Sunisoft.IrisSkin.ImagesMenuControl.bmp",
+      "Sunisoft.IrisSkin.ImagesPopupMenu.bmp",
+      "Sunisoft.IrisSkin.CollectionItemIcon.bmp",
+      "Sunisoft.IrisSkin.MenuControl.bmp",
+      "Sunisoft.IrisSkin.SkinEngineIcon.bmp"
+    ],
+    "pinvoke_methods": 108
+  }
+]

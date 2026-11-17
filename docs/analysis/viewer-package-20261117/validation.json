@@ -1,0 +1,17 @@
+{
+  "image_rows": 3925,
+  "country_rows": 47,
+  "native_all_success": 3925,
+  "native_country_large_success": 27,
+  "catalog_rows": 1187,
+  "catalog_unique_numbers": 3911,
+  "metadata_skipped_rows_recovered": 11,
+  "small_textures_missing": 81,
+  "existing_pc_complete_preserved": 20,
+  "local_links_checked": true,
+  "validation": "passed",
+  "rebuilt_small_textures": 81,
+  "rebuilt_four_texture_bundles": 27,
+  "rebuilt_native_textures_loaded": 108,
+  "native_bundles_held": 47
+}
