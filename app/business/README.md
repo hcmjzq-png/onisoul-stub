@@ -14,6 +14,7 @@
 | 课题与升级 | `progression.py` | 已支持的确定性奖励、等级和任务门槛 |
 | 主城建筑 | `city_services.py` | 移动、收纳、部署、限定升级、铺路和产品查询 |
 | 建筑出售 | `city_production_services.py` | 只挂载库存建筑出售；背景/开工组件不是已接入生产 |
+| 任务 5 田地生产 | `tutorial_production.py` | 已接入无道路/内政编队的 G1 田地免费配方开工；通过 `gameplay.complete_tasks` 结算受限收获 |
 | 武将与装备出售 | `card_growth_services.py` | 只挂载两种出售和魂余额；其他成长/仓库代码是候选 |
 | 成就 | `account_progress_trophies.py` | 已证实的受限成就处理 |
 | 身份兼容与插件日志 | `account_progress_services.py` | Cogid、插件读取/日志的白名单，不开放全部插件入口 |
@@ -26,7 +27,7 @@
 
 | 系统 | 查找位置 | 接入前主要条件 |
 | --- | --- | --- |
-| 生产和支城背景 | `city_production_services.py`、`city_background_services.py`、`city_production_rules.py` | 收获、道路规则、所有权与支城来源 |
+| 通用生产和支城背景 | `city_production_services.py`、`city_background_services.py`、`city_production_rules.py` | 任务 5 之外的配方、道路规则、所有权与支城来源；受限教程接入不代表通用生产开放 |
 | 物语和战斗 | `adventure_services.py`、`adventure_events.py`、`adventure_obstacle_services.py`、`adventure_battles.py` | 步进身份、权威战斗结果、通关与奖励 |
 | 武将成长 | `card_growth_services.py`、`card_growth_transactions.py`、`card_growth_ninegrid.py` | 真实操作身份、资格、消耗与结算规则 |
 | 经济和交易 | `economy_services.py`、`economy_shop_services.py`、`economy_trade_services.py`、`economy_market_services.py` | 市场/商品来源、共享事务、锁定与交割 |

@@ -17,8 +17,9 @@ flowchart LR
     stub --> assets[网页 资源包 配置表]
 ```
 
-- stub 只监听 `127.0.0.1:18080`，不直接公网可达；对外仅 80 端口代理。
-- 仓库部署配置默认 MySQL `127.0.0.1:3306`，账号 `game_app`、库 `game_db`；实际值由部署环境注入。
+- 云端模板的 stub 监听 `127.0.0.1:18080`，对外仅 80 端口代理；MySQL 默认回环 3306，真实库/账号由环境注入。
+- 独立本地测试使用 stub 18081、代理 18082、MySQL 3307，数据库为独立的 `onisoul_local_test`。
+  本机网关 80 在游戏关闭后选择本地代理或云端链路，先核对运维环境身份。
 - 云端 relay 模式经过本机和云端两段转发；局域网及云端直连配置分别核对，不共用一套地址假设。
 - 登录保存助手在玩家电脑上运行，数据库/游戏逻辑在服务器运行；离线媒体转换和运行时客户端补丁另有独立流程。
 
@@ -37,6 +38,7 @@ flowchart LR
 | business | `business/response_shapes.py` | 区分普通 envelope 与客户端要求的裸映射响应 |
 | business | `business/gameplay.py` | 登录、角色初始化、主城、建造和已支持的任务处理；并装配部分子服务 |
 | business | `business/mission_chain.py` | 按 `politicMission.json` 计算任务状态与解锁位 |
+| business | `business/tutorial_production.py` | 任务 5 的受限田地开工/收获，复用存档和原表；不开放通用生产 |
 | tables | `tables.py` | 按客户端、服务端和动态关卡清单加载 JSON，校验 root key 并热重载 |
 | 装配 | `main.py` | 读配置、建注册表、起 HTTP 服务；可选 `--init-schema` 建表 |
 

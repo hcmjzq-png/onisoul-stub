@@ -1,12 +1,15 @@
 # 工具用途与操作范围
 
-日常玩游戏使用客户端目录中的 `Start-OniSoul.cmd`。这里大部分工具服务于开发和资源恢复，
+日常使用明确的“本地测试 / 云端正式”桌面入口，各客户端的 `Start-OniSoul.cmd` 对应各自模式。
+这里大部分工具服务于开发和资源恢复，
 文件名带 `audit`、`smoke` 或 `repair` 不代表只读，按下面列出的操作范围选择。
 
 ## 启动和连接
 
 | 工具 | 用途 | 影响范围 |
 | --- | --- | --- |
+| [game_environments.py](game_environments.py)、[install_game_environments.ps1](install_game_environments.ps1) | 双环境配置、身份核验、启动和切换 | 本地独立库/资源；游戏运行时拒绝切服，本地新启动仅刷新本地 PBM 缓存；安装器备份旧入口 |
+| [mirror_pc_assets.py](mirror_pc_assets.py) | 只读取得资源快照，按 SHA-256 复用本机素材 | 写本机新资源目录，不复制玩家数据库 |
 | [install_login_memory.ps1](install_login_memory.ps1) | 给指定客户端安装保存助手和启动入口 | 写入客户端的 `OniSoul-LoginMemory` 目录及 `Start-OniSoul.cmd` |
 | [install_cloud_client.ps1](install_cloud_client.ps1) | 给指定客户端安装云端启动入口 | 备份旧入口，安装必要脚本；真实地址从本机私有配置读取 |
 | [start_client.ps1](start_client.ps1)、[start_login_memory.ps1](start_login_memory.ps1) | 启动本机保存助手/游戏 | 创建本机进程；助手通过 DPAPI 保存本 Windows 用户的凭据 |
@@ -45,6 +48,8 @@
 | 类别 | 入口 | 操作范围 |
 | --- | --- | --- |
 | 国家资源审计 | [audit_country_assets.py](audit_country_assets.py) | 读表、包及可选线上资源状态，写报告 |
+| 初始主城背景 | `build_country_backgrounds.py`、`background_atlas_layout.py`、`render_country_backgrounds.py` | 编译独立画稿、原版草地块及连续远景，写隔离资源/预览目录；不自动发布 |
+| 三族城堡 | `port_building_bundle.py`、`build_castle_preview_set.py`、`render_castle_gallery.py` | 转换建筑包与离线预览，和国家背景分开；原生探针需要另行隔离运行 |
 | 批量扫描与媒体转换 | `audit_legacy_media.py`、`port_legacy_media.py`、`port_ps3_movie.py` | 依子命令读取来源、调用转换依赖并写产物；不等于只读扫描 |
 | 包长度修复 | [repair_unityweb_lzma.py](repair_unityweb_lzma.py) | 默认检查；明确输出路径时生成修复副本 |
 | 原生加载/内存探针 | `probe_legacy_media.py/.js`、`probe_country_bundles.py`、`probe_unity_lzma_size.py` | 连接指定客户端进程做诊断；需匹配引擎与隔离验收环境 |
@@ -58,6 +63,8 @@
 
 | 工具 | 影响范围 |
 | --- | --- |
+| `publish_country_backgrounds.py` | 47 国清单；默认只增不改，显式 baseline 允许已知旧自制包更新；支持不保留永久备份的临时恢复与失败清理 |
+| `publish_castle_assets.py` | 按城堡清单新增缺包并保留既有包；当前要求恢复目录，以该脚本实际参数为准，不套用背景工具的参数 |
 | `import_tables.py`、`publish_verified_tables.py` | 向指定运行表目录写入/发布表文件；读取清单与来源证明 |
 | `publish_converted_media.py`、`publish_country_fix.py` | 根据计划写资源目录并备份；不能只因文件已转换就直接覆盖上线 |
 | `repair_initial_mission.py`、`repair_starter_rosters.py` | 审核/修复特定旧存档；执行模式与前置条件以各脚本参数为准 |

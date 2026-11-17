@@ -2,11 +2,11 @@
 
 三份输入都是客户端反编译源码的静态抽取结论（`docs/analysis/README.md` 有口径）：
     api_contract.tsv       402 个端点：发送方法 / 请求参数 / 响应键与类型
-    api_call_graph.tsv     416 条端点→端点调用边
+    api_call_graph.tsv     端点→端点调用边，数量由 tools/contract_check.py 重算
     behavior_contract.tsv  场景切换 / 键守卫
 
-只读不改，进程内缓存一次。这样文档就是唯一事实来源，改表即改行为，不会出现
-「生成的 JSON 与文档漂移」。运行时开销是解析 3 个几百行 TSV，可忽略。
+只读不改，进程内缓存一次。这组 TSV 是直接使用的运行输入，修改必须有原客户端证据；
+玩法接入及发布状态另看注册器和系统台账，不由文档标题判定。不会生成另一份运行 JSON。
 """
 from __future__ import annotations
 
