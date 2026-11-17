@@ -71,6 +71,7 @@ class Handler(BaseHTTPRequestHandler):
     upstream_port = 18080
     protocol_version = "HTTP/1.1"
     timeout = 15
+    disable_nagle_algorithm = True
 
     def log_message(self, fmt, *args):
         return

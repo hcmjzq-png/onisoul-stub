@@ -1,14 +1,14 @@
 {
-  "source_commit": "e7d905f4fa70fc27190202ff9a6d21069cc1dfec",
+  "source_commit": "5107ce112e4a2f2a958e3c13f76b140099e9512b",
   "scope": "route registration only; no API dispatch, DB access or Unity acceptance",
   "registered": 402,
   "runtime_kinds": {
-    "contract_default": 273,
-    "dedicated_handler": 80,
+    "contract_default": 272,
+    "dedicated_handler": 81,
     "disabled": 32,
     "explicit_failure": 17
   },
-  "legacy_placeholder_total": 322,
+  "legacy_placeholder_total": 321,
   "systems": {
     "S01": {
       "name": "接入与账号",
@@ -37,8 +37,9 @@
       "name": "主城与建筑",
       "registered": 31,
       "runtime_kinds": {
-        "contract_default": 14,
-        "dedicated_handler": 17
+        "contract_default": 13,
+        "dedicated_handler": 17,
+        "explicit_failure": 1
       }
     },
     "S05": {
@@ -46,8 +47,8 @@
       "registered": 7,
       "runtime_kinds": {
         "contract_default": 2,
-        "dedicated_handler": 1,
-        "explicit_failure": 4
+        "dedicated_handler": 2,
+        "explicit_failure": 3
       }
     },
     "S06": {

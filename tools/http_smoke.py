@@ -43,6 +43,8 @@ def run(host: str, port: int) -> None:
             assert "errorReason" not in result, (name, "success rejected by GameRestarter")
         return result
 
+    # A fresh instance creates the login table on its first normal page load.
+    assert request('GET', login_path)[0] == 200
     # Confirm DB access and uniqueness before creating anything through HTTP.
     with db.connection() as con:
         with con.cursor() as cur:
@@ -182,10 +184,16 @@ def run(host: str, port: int) -> None:
         for name in ("submitProduceTask", "submitBulkProduceTasks", "cancelTasks", "accelerateProduceTask"):
             blocked = api("politic/task/" + name, {**own, "buildingId": int(field_id),
                           "buildingIds": [int(field_id)], "productId": "product060_023_01_01_1_1"})
-            assert not blocked["succeeded"] and "no stub response" in blocked["message"]
+            assert not blocked["succeeded"]
             assert blocked["errorReason"] == blocked["message"]
+            if name == "submitProduceTask":
+                # The task-5 recipe is implemented. This fresh audit account has
+                # not accepted task 5, so this is a prerequisite rejection.
+                assert "task 5" in blocked["message"], blocked
+            else:
+                assert "no stub response" in blocked["message"], blocked
         assert state.load(initial["playerId"]) == before_production
-        print("[http-smoke] player-level recipe query; four production placeholders explicitly fail without writes: OK")
+        print("[http-smoke] recipe query, task-5 prerequisite rejection and unsupported bulk/cancel/acceleration without writes: OK")
         fixture = state.load(initial["playerId"])
         assert fixture["entity"]["username"] == account
         fixture["buildings"][field_id]["exp"] = 120

@@ -1,5 +1,10 @@
 # 本批服务端字段来源与边界
 
+2026-11-17：`GET /client/status` 的 `environment`、`instance_id`、`build_id`
+以及 HTTP `X-OniSoul-Environment` / `X-OniSoul-Instance` 是**本服运维自定义**，
+用于本机启动器核对目标，非原版游戏协议。只在显式配置环境身份时启用；
+不加入 auth、politic 等业务响应。原画布尺寸和资源包保持原有格式。
+
 2026-11-18 任务 5：**bundle / 本服兼容结算**。单体开工根 dueTime/now/remainedClickCount
 及 producings.<id>.productId/createdTime/dueTime 来自 StateManualProduce、PoliticBuildingParameter；
 收获 producings.<id>.reward/building/collaborator 来自 StateAutoProduce，建筑 exp 是绝对值。
@@ -143,10 +148,12 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | `levelUpBuilding.building` / `levelUpBuildings.output_buildings` | bundle | PoliticBuilding.cs:931-951、PoliticFSMBatchUpgrade.cs:77-111、PluginRunner_LevelUp.cs:46-69。建筑字段沿用原持久记录；缺经验/成本/PP 或非空闲失败。 |
 | `levelUpBuildingCollectively.resultBuildings/totalUsedPoint/restResources.<resource>.amount` | bundle | PoliticFSMProduct.cs:1086-1124；PoliticBuilding.cs:2258-2332。原 amount 在 restResources 内，非根字段。逐级扣经验与费用，未发放经验。 |
 | 城市回包 kokudaka | 待验证 | 单体贡献 helper 可见于 BuildingsTableAccessor.cs:637，但全局汇总/加成尚未核实。本批新入口省略可选字段，保留原存档值；UserStatus.cs:1820-1830 容许缺省。 |
-| `submitProduceTask.dueTime/now` | bundle | StateManualProduce.cs:51-66 → PoliticBuildingParameter.cs:172-182；仅修契约，生产服务尚未实现。 |
+| `submitProduceTask.dueTime/now` | bundle | StateManualProduce.cs:51-66 → PoliticBuildingParameter.cs:172-182；2026-11-15 当时仅修契约。现已接入顶部 2026-11-18 所述受限任务 5 田地模式。 |
 | `submitBulkProduceTasks.producings.<id>.productId/createdTime/dueTime` | bundle | PoliticFSMCollectiveProduce.cs:98-125 → PoliticBuildingParameter.cs:191-199；仅修契约。收获时同名 producings 另有 reward/building/collaborator。 |
 
-## 2026-11-15 生产链追加证据
+## 2026-11-15 生产链追加证据（历史基线）
+
+字段证据继续保留；当前支持范围以顶部任务 5 说明和系统台账 S05 为准。
 
 | 字段 / 行为 | 来源 | 证据与限制 |
 | --- | --- | --- |
@@ -154,7 +161,7 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | products.<productId> 的空对象值 | 待验证 | 消费者只读键。空对象是模拟服兼容选择，原服值尚未抓包证实。 |
 | product.openLevel / openMission | bundle | PluginManualProduce.cs:105-113 → UserStatus.cs:1212-1215 使用玩家等级；该类为原包自动操作插件。原 1288 行 openMission 均为字符串 null；非空门槛不猜实现。 |
 | 菜单产量 countMin/countMax | bundle | ProductItem.cs:98-102 → UserStatus.cs:1735-1740 按建筑 grade/level 做 float32 线性插值后向下取整；item15 改用伤害值。只证明预览，不证明含道路/技能的最终结算。 |
-| 生产未实现错误 errorReason | bundle + 待验证 | 字段来自 GameRestarter.cs:61-94 的过滤器，WebApiClient.cs:324-333 据此跳过回调；错误文案/no stub response 是本服务诊断，不宣称原服错误码。四个生产占位写接口和 completeTasks 的生产分支明确失败、不写档。通用错误 UI 待真机验收。 |
+| 生产未实现错误 errorReason | bundle + 待验证 | 字段来自 GameRestarter.cs:61-94 的过滤器，WebApiClient.cs:324-333 据此跳过回调；no stub response 是本服务诊断。2026-11-15 当时四个写入口及收获分支未实现；现单体开工/completeTasks 已支持受限任务 5，资格不满足是业务拒绝，批量/取消/加速仍明确拒绝且不写档。 |
 
 范围与未决规则见 [生产链报告](analysis/production-contract-20261115/README.md)。
 

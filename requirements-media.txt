@@ -2,4 +2,6 @@
 UnityPy==1.10.18
 Pillow==13.0.0
 etcpak==0.9.15
+# Original-mesh offline background preview rasterizer; not a server dependency.
+numpy>=2.0
 # Also supply --ffmpeg with a local FFmpeg build that includes libvorbis.

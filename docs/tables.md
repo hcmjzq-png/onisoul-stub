@@ -4,6 +4,8 @@
 `docs/analysis/table_list.tsv`。服务端玩法额外依赖 4 张表，见
 `docs/analysis/server_tables.tsv`。表文件体积较大，不进入 Git，统一放在
 `assets/pc/tables/` 或 `ONI_TABLE_DIR` 指向的目录。
+108/106 与额外 4 张表是原清单和导入来源维度，不是当前目录全部 JSON 文件的数量；
+实际存量和漂移须结合部署清单与 `TableCatalog.check()`，不能跨批次直接相加。
 
 ## 导入
 

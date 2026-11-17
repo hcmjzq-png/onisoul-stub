@@ -19,7 +19,7 @@ from email.utils import formatdate, parsedate_to_datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 
-from app import auth, sessions
+from app import auth, sessions, environment
 from app.business.registry import Registry
 from app.protocol import envelope
 from app.transport.static import StaticFiles, StaticPathError, StaticResource
@@ -51,6 +51,7 @@ def _html_response(
     head_only: bool = False,
     location: str | None = None,
 ) -> None:
+    body = environment.mark_html(body)
     handler.send_response(status)
     if location:
         handler.send_header("Location", location)
@@ -200,6 +201,14 @@ def make_handler(
     class StubHandler(BaseHTTPRequestHandler):
         server_version = "OniSoulStub/0.1"
         timeout = 15
+        disable_nagle_algorithm = True
+
+        def end_headers(self) -> None:
+            info = environment.identity()
+            if info:
+                self.send_header('X-OniSoul-Environment', info['environment'])
+                self.send_header('X-OniSoul-Instance', info['instance_id'])
+            super().end_headers()
 
         def _read_body(self) -> bytes | None:
             if self.headers.get("Transfer-Encoding"):
@@ -232,7 +241,7 @@ def make_handler(
                 _json_response(
                     self,
                     200,
-                    envelope.ok({"service": "onisoul-stub", "status": "up"}),
+                    envelope.ok({"service": "onisoul-stub", "status": "up", **environment.identity()}),
                     head_only=head_only,
                 )
                 return

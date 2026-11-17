@@ -189,7 +189,7 @@ S11	plugin/setPluginData	contract_default	app.business.placeholders	placeholder_
 S06	politic/boosterPack/buy	contract_default	app.business.placeholders	placeholder_politic_boosterPack_buy	仅契约默认回包；未实现玩法
 S06	politic/boosterPack/buyWithItem	contract_default	app.business.placeholders	placeholder_politic_boosterPack_buyWithItem	仅契约默认回包；未实现玩法
 S06	politic/boosterPack/getRemains	contract_default	app.business.placeholders	placeholder_politic_boosterPack_getRemains	仅契约默认回包；未实现玩法
-S04	politic/building/conflateBuilding	contract_default	app.business.placeholders	placeholder_politic_building_conflateBuilding	仅契约默认回包；未实现玩法
+S04	politic/building/conflateBuilding	explicit_failure	app.business.placeholders	placeholder_politic_building_conflateBuilding	缺少 building confluence validation and settlement
 S04	politic/building/deployBuilding	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/building/getBuildCounts	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/building/getBuildingFabrics	contract_default	app.business.placeholders	placeholder_politic_building_getBuildingFabrics	仅契约默认回包；未实现玩法
@@ -267,14 +267,14 @@ S06	politic/support_item/usePotions	contract_default	app.business.placeholders	p
 S06	politic/support_item/useSkillPotion	contract_default	app.business.placeholders	placeholder_politic_support_item_useSkillPotion	仅契约默认回包；未实现玩法
 S05	politic/task/accelerateProduceTask	explicit_failure	app.business.placeholders	placeholder_politic_task_accelerateProduceTask	缺少 production timing and acceleration rules
 S05	politic/task/cancelTasks	explicit_failure	app.business.placeholders	placeholder_politic_task_cancelTasks	缺少 cancellation and refund rules
-S04	politic/task/completeTasks	dedicated_handler	app.business.gameplay	guarded	仅已支持的建设完成；生产收获未接入
+S04	politic/task/completeTasks	dedicated_handler	app.business.gameplay	guarded	已支持的建设完成及任务5受限田地收获；不代表通用/批量生产结算
 S04	politic/task/getTasksInCurrentMap	contract_default	app.business.placeholders	placeholder_politic_task_getTasksInCurrentMap	仅契约默认回包；未实现玩法
 S04	politic/task/progressBuildTask	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitBuildAndComplete	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitBuildTask	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitBulkBuildAndComplete	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S05	politic/task/submitBulkProduceTasks	explicit_failure	app.business.placeholders	placeholder_politic_task_submitBulkProduceTasks	缺少 production settlement and road bonuses
-S05	politic/task/submitProduceTask	explicit_failure	app.business.placeholders	placeholder_politic_task_submitProduceTask	缺少 production settlement and road bonuses
+S05	politic/task/submitProduceTask	dedicated_handler	app.business.gameplay	guarded	受限任务5：已接受任务、无道路/内政编队的G1田地免费10秒配方；其他条件拒绝
 S04	politic/task/submitSerialBuildAndComplete	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitSerialBuildTask	contract_default	app.business.placeholders	placeholder_politic_task_submitSerialBuildTask	仅契约默认回包；未实现玩法
 S07	politic/waterborneTrade/call	contract_default	app.business.placeholders	placeholder_politic_waterborneTrade_call	仅契约默认回包；未实现玩法

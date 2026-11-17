@@ -13,12 +13,15 @@
 | 各种文档有什么用 | [中文文档导航](docs/README.md) |
 | 仓库哪些保留、归档、删除或重构 | [仓库整理清单](docs/repository-maintenance.md) |
 | 需要开发或部署服务端 | [开发入口](docs/development.md) · [部署说明](docs/deploy.md) |
+| 当前说明是否与代码和发布一致 | [口径核对记录](docs/project-status/documentation-alignment.md) |
 | 某个脚本能不能直接运行 | [工具用途与操作范围](tools/README.md) |
 
 ## 平时怎么使用
 
-已按现有方案安装的 Windows 客户端，使用客户端目录里的 **Start-OniSoul.cmd** 启动。
-云端模式读取本机私有连接配置，检查本机 relay 和账号密码保存助手后打开游戏。
+已安装双环境的 Windows 客户端，使用桌面的 **鬼武者魂－本地测试** / **鬼武者魂－云端正式**。
+两个入口先核对目标身份；退出游戏后再切服。本地服务、资源和数据库都在玩家电脑，
+云端正式服使用独立云端存档。客户端目录的 `Start-OniSoul.cmd` 对应各自模式。
+端口、私有配置、缓存规则和旧单云端入口见 [环境说明](docs/remote-development.md)。
 日常 Codex、代码和客户端调试在本机进行，云端仅运行游戏服务。
 安装来源和适用范围见 [客户端启动说明](docs/README.md#客户端启动与连接)。
 

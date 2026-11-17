@@ -1,0 +1,237 @@
+{
+  "country01": {
+    "label": "冷杉雪原",
+    "art_direction": "wide snowy plain, dark spruce woods, distant blue volcanic peaks, pale winter sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country02": {
+    "label": "寒海赤松",
+    "art_direction": "cold indigo coast, rugged headlands, wind-bent red pines, cool silver sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country03": {
+    "label": "青岭溪谷",
+    "art_direction": "deep green mountain ridges, narrow sparkling stream valleys, early-summer deciduous forest",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country04": {
+    "label": "松湾春雾",
+    "art_direction": "misty sheltered sea bay, pine-covered islets, pale spring greens, soft silver-blue sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country05": {
+    "label": "金秋杉林",
+    "art_direction": "amber beech and cedar woods, broad golden autumn fields, blue distant foothills",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country06": {
+    "label": "雪岭温泉",
+    "art_direction": "high snowcapped ridge, dark cedar stands, emerald foothills, faint warm valley mist",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country07": {
+    "label": "湖沼红叶",
+    "art_direction": "still blue inland lake, red and orange maple slopes, distant green mountains, clear autumn sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country08": {
+    "label": "苇荡水乡",
+    "art_direction": "broad reed wetland with winding river mouths, low hazy horizon, vivid spring greens",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country09": {
+    "label": "杉径远瀑",
+    "art_direction": "tall blue-green forested ridges, a distant narrow waterfall, cool cedar woodland",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country10": {
+    "label": "高原晨光",
+    "art_direction": "sunlit plateau, stepped soft hills, warm ochre grass and dark scattered pines",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country11": {
+    "label": "平原银川",
+    "art_direction": "very broad lush river plain, a long silver meandering river, hazy blue foothills",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country12": {
+    "label": "海角沙松",
+    "art_direction": "pale sandy coastal cape, ocean glints behind low dunes, wind-shaped coastal pines",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country13": {
+    "label": "江畔柳影",
+    "art_direction": "wide placid river valley, willow groves, soft summer haze, distant purple-blue hills",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country14": {
+    "label": "海湾霞岚",
+    "art_direction": "layered coastal hills, calm blue bay, violet evening haze, deep green evergreen trees",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country15": {
+    "label": "雪国稻野",
+    "art_direction": "vast bright green rice plain below snowy mountains, cool cypress groves, crisp blue sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country16": {
+    "label": "雪峰清流",
+    "art_direction": "dramatic high snow peaks beyond rolling green foothills, branching clear rivers",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country17": {
+    "label": "碧海松丘",
+    "art_direction": "turquoise coast, undulating sandy headlands, dense dark pine groves, high white clouds",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country18": {
+    "label": "苔谷竹岚",
+    "art_direction": "mossy narrow valleys, blue-green bamboo and pine woodland, soft drifting mountain mist",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country19": {
+    "label": "盆地桃霞",
+    "art_direction": "sunlit enclosed basin, muted pink spring-blossom accents, hazy violet encircling peaks",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country20": {
+    "label": "高岳冷杉",
+    "art_direction": "towering alpine ridge and cool fir forest, bright mountain meadow, crisp cold sunlight",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country21": {
+    "label": "层峦枫溪",
+    "art_direction": "many overlapping mountain ridges, amber maple woodland, a stony winding blue stream",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country22": {
+    "label": "远峰茶坡",
+    "art_direction": "single distant snow-tipped cone, low rounded tea-green slopes, soft ocean haze",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country23": {
+    "label": "金野银河",
+    "art_direction": "broad warm-green river plain, distant low rounded blue-green hills, winding silver river, late-summer golden grass",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country24": {
+    "label": "海峡杉风",
+    "art_direction": "deep blue narrow strait, green wooded coastal hills, small distant islands, wind-shaped cedar trees",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country25": {
+    "label": "大湖芦洲",
+    "art_direction": "broad silver-blue freshwater lake, reed marsh edge, soft green ridges, cool dawn sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country26": {
+    "label": "京岚竹色",
+    "art_direction": "layered misty blue hills, restrained muted-red autumn maple accents, elegant bamboo and pine groves",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country27": {
+    "label": "湾港晴川",
+    "art_direction": "open river delta merging into a bright blue bay, low green wooded hills, warm clear sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country28": {
+    "label": "内海松屿",
+    "art_direction": "many small blue-green islands in a tranquil inland sea, dark pine foreground, golden summer light",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country29": {
+    "label": "古野青岚",
+    "art_direction": "quiet green inland basin, rounded wooded hills and ancient-looking cedar groves, soft spring haze",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country30": {
+    "label": "杉海石岸",
+    "art_direction": "steep densely wooded coastline, blue surf and pale rocky headlands, humid summer haze",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country31": {
+    "label": "沙丘晴海",
+    "art_direction": "pale coastal dunes, green shelterbelt pines, wide blue ocean, airy high cloud",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country32": {
+    "label": "云岭湖湾",
+    "art_direction": "misty green mountains, sheltered coastal lake and rocky shore, muted silver light",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country33": {
+    "label": "晴原桃林",
+    "art_direction": "warm ochre-green inland plain, soft pink orchard accents, rounded blue hills, bright spring sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country34": {
+    "label": "群岛薄暮",
+    "art_direction": "layered island silhouettes in a calm inland sea, soft peach twilight sky, deep green pines",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country35": {
+    "label": "海门苍松",
+    "art_direction": "rocky blue strait between hills, weathered pines and silver seagrass tones, overcast cool light",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country36": {
+    "label": "峡谷急流",
+    "art_direction": "deep forested mountain gorge, a bright winding river, emerald summer woods, high blue ridges",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country37": {
+    "label": "原版保留",
+    "art_direction": "preserve the original country37 background bundle byte for byte",
+    "provenance": "original_pc_preserved"
+  },
+  "country38": {
+    "label": "岛岬金风",
+    "art_direction": "golden-green coastal slopes, scattered dark pines and distant islands, warm autumn light",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country39": {
+    "label": "碧海苍峰",
+    "art_direction": "wide Pacific-blue coast, dramatic green wooded mountains, bright humid sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country40": {
+    "label": "翠野水网",
+    "art_direction": "bright lush lowland plain, many winding blue waterways, bamboo-edged woodland, warm sun",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country41": {
+    "label": "芦海夕照",
+    "art_direction": "broad shallow coastal tidal flats, golden reed meadows and distant purple hills, late-afternoon sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country42": {
+    "label": "海岬群湾",
+    "art_direction": "deeply indented green coast, blue island bays, dark coastal evergreen forest, white cloud",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country43": {
+    "label": "火山草原",
+    "art_direction": "broad highland grass basin, a distant rugged volcanic ridge, warm amber-green grass, dark pines",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country44": {
+    "label": "青峰泉雾",
+    "art_direction": "cool blue-green mountains, forested valleys and faint morning mist, silver river, cypress groves",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country45": {
+    "label": "南国海杉",
+    "art_direction": "warm subtropical coast, bright turquoise water, lush broadleaf trees and gentle hills",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country46": {
+    "label": "火山湾影",
+    "art_direction": "dark volcanic cone across a large blue bay, lush southern evergreen woodland, clear warm sky",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  },
+  "country47": {
+    "label": "南岛珊海",
+    "art_direction": "turquoise lagoon and low subtropical islands, bright green coastal woodland, pale sandy coves, soft white cloud",
+    "provenance": "synthetic_theme_not_original_geographic_evidence"
+  }
+}

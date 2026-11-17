@@ -14,8 +14,15 @@
 
 ## 客户端启动与连接
 
-已安装的入口是客户端目录下的 `Start-OniSoul.cmd`。
-云端连接安装入口为 [install_cloud_client.ps1](../tools/install_cloud_client.ps1)，
+当前双环境入口是桌面的 **鬼武者魂－本地测试** / **鬼武者魂－云端正式**，
+由 [game_environments.py](../tools/game_environments.py) 校验身份并管理，
+[install_game_environments.ps1](../tools/install_game_environments.ps1) 安装入口。
+本地 MySQL 3307、stub 18081、代理 18082；云端 stub 18080，经云端 proxy80 访问。
+两个模式共享本机原域名和 80 端口，运行游戏时不能切服；局域网另行配置。
+完整规则见 [环境说明](remote-development.md)，当前口径见[核对记录](project-status/documentation-alignment.md)。
+
+尚未安装双环境的单云端入口仍为客户端目录下的 `Start-OniSoul.cmd`。
+其安装入口为 [install_cloud_client.ps1](../tools/install_cloud_client.ps1)，
 启动逻辑见 [start_cloud_client.ps1](../tools/start_cloud_client.ps1)；
 读取本机私有连接配置，检查 relay 和密码保存助手后启动原 EXE。
 纯本地模式仍可使用 [install_login_memory.ps1](../tools/install_login_memory.ps1)。
@@ -49,6 +56,10 @@
 
 | 主题 | 记录与范围 |
 | --- | --- |
+| 双环境、47 国背景与发布 | [整合发布](analysis/environment-background-release-20261118/README.md)：代码/资源/玩家数据分别核对，PR 与发布状态分开 |
+| 47 国初始主城背景 | [背景重建](analysis/country-backgrounds-20261117/README.md)：46 国自制＋37 国原版，纪伊实机确认改善，其余国家未逐国人工验收 |
+| 任务 5 田地生产 | [受限生产](analysis/mission5-production-20261118/README.md)：无道路 G1 免费配方，不能扩大为完整生产系统 |
+| 三族城堡资源 | [城堡恢复](analysis/building-assets-20261118/README.md)：三族 1～5 品共 15 包，与国家环境背景是不同资源族 |
 | 国家地图选择 | [#76 修复与正式链路验收](analysis/country-select-20261116/README.md) |
 | 全量转换媒体 | [#75 线上原生加载验收](analysis/media-network-20261115/README.md) |
 | 姓名冲突回包、国家和小姓语音 | [#67 后续修复](analysis/name-media-20261115/README.md) |

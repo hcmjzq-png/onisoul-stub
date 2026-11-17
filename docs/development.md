@@ -9,6 +9,7 @@
 ## 依赖与配置
 
 Python 3.12+；服务端外部依赖见 [requirements.txt](../requirements.txt)，当前为 PyMySQL。
+本机 MySQL 8 首次 RSA 认证使用 [requirements-local.txt](../requirements-local.txt)。
 逆向分析和媒体转换分别使用 [requirements-analysis.txt](../requirements-analysis.txt)、
 [requirements-media.txt](../requirements-media.txt)，按相应工具要求安装在独立环境中。
 
@@ -68,6 +69,8 @@ MySQL DDL 的提交边界与普通业务事务不同，已有数据库应使用�
 
 部分测试需要显式开启的隔离 MySQL 或可选分析依赖。报告通过、跳过和失败数量；
 跳过不算通过。真实数据库测试使用独立测试库，不能把生产存档当普通测试样本。
+背景图集检查需要 Pillow；未安装时这组媒体检查会明确跳过。复现本次完整回归时，
+除本机/分析依赖外安装 `Pillow==13.0.0`；完整离线媒体工具另按 requirements-media 安装。
 
 具备真实表目录时，可以运行内存玩法检查：
 
