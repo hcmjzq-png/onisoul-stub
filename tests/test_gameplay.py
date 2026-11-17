@@ -127,6 +127,17 @@ class GameplayFlowTest(unittest.TestCase):
         self.states.save(player, session["playerId"])
         self.assertEqual(self.service.get_player_params({}, session)["resources"]["gold"]["amount"], 0)
 
+    def test_existing_draft_inventory_is_preserved_and_missing_inventory_is_not_seeded(self):
+        session = self._login_and_create()
+        player = self.states.load(session["playerId"])
+        player["drafts"] = {"draft2000002": 1}
+        self.states.save(player, session["playerId"])
+        self.service.game_login({"token": session["token"]}, session)
+        self.assertEqual(self.service.get_drafts({}, session), {"draft2000002": {"amount": 1.0}})
+        player.pop("drafts")
+        self.states.save(player, session["playerId"])
+        self.assertEqual(self.service.get_drafts({}, session), {})
+
     def test_main_map_and_avatar_payload_shapes(self):
         session = self._login_and_create()
         avatars = self.service.get_avatar_characters({}, session)
@@ -150,7 +161,7 @@ class GameplayFlowTest(unittest.TestCase):
         session = self._login_and_create()
         baseline = self.service.get_mission_states({}, session)
         self.assertEqual(baseline["states"], {"0": "C"})
-        self.assertEqual(self.service.get_drafts({}, session)["draft2000002"]["amount"], 1.0)
+        self.assertEqual(self.service.get_drafts({}, session), {})
 
         for state in ("opened", "accepted", "finished", "closed"):
             result = self._change(session, "po_mission_00001", state)
@@ -161,6 +172,9 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertEqual(player["entity"]["exp"], 25)
         self.assertNotIn("item11_0000501", player["items"])
         self.assertEqual(player["missions"]["1"], "C")
+        self.assertEqual(self.service.get_drafts({}, session), {
+            "draft2000001": {"amount": 1.0},
+        })
 
         duplicate = self._change(session, "po_mission_00001", "closed")
         self.assertEqual(duplicate["reward"], {})
@@ -173,10 +187,11 @@ class GameplayFlowTest(unittest.TestCase):
             load_state=self.states.load, save_state=self.states.save, session_store=self.sessions,
         )
         self.assertEqual(self.service.get_player_params({}, session)["entity"]["exp"], 25)
+        self.assertEqual(self.service.get_drafts({}, session)["draft2000001"]["amount"], 1.0)
 
         self._change(session, "po_mission_00002", "accepted")
         build = self.service.submit_build_task(
-            {"draftId": "draft2000002", "originCoord": [25, 25]}, session
+            {"draftId": "draft2000001", "originCoord": [25, 25]}, session
         )
         self.assertTrue(build["succeeded"])
         # GameRestarter.isError rejects the presence of errorReason, even "".
@@ -187,9 +202,11 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertEqual(completed["buildings"][castle_id]["status"], "none")
         self.assertEqual(
             self.service.get_build_counts({}, session)["type"],
-            {"building200_002_01_01_1_1": 1.0},
+            {"building200_001_01_01_1_1": 1.0},
         )
-        self.assertNotIn("draft2000002", self.service.get_drafts({}, session))
+        self.assertEqual(self.service.get_drafts({}, session), {})
+        self.service.game_login({"token": session["token"]}, session)
+        self.assertEqual(self.service.get_drafts({}, session), {})
         self._change(session, "po_mission_00002", "closed")
 
         self._change(session, "po_mission_00003", "accepted")
@@ -197,20 +214,32 @@ class GameplayFlowTest(unittest.TestCase):
         self.assertEqual(self.service.get_drafts({}, session)["draft2000041"]["amount"], 1.0)
 
         self._change(session, "po_mission_00004", "accepted")
-        field = self.service.submit_build_and_complete(
+        field = self.service.submit_build_task(
             {"draftId": "draft2000041", "originCoord": [27, 27]}, session
         )
         self.assertTrue(field["succeeded"])
         self.assertNotIn("errorReason", field)
-        self.assertEqual(field["building"]["status"], "none")
+        self.assertEqual(field["building"]["status"], "building")
+        self.assertEqual(field["building"]["remainedClickCount"], 0)
+        # Original client's observed order: mission finish precedes completeTasks.
+        finished = self._change(session, "po_mission_00004", "finished")
+        self.assertTrue(finished["succeeded"], finished)
+        self.assertNotIn("errorReason", finished)
+        self.assertEqual(self.states.load(session["playerId"])["buildings"]["2"]["status"], "building")
+        completed = self.service.complete_tasks({"buildingIds": [field["buildingId"]]}, session)
+        self.assertTrue(completed["succeeded"])
+        self.assertEqual(completed["buildings"]["2"]["status"], "none")
         self.assertEqual(
             self.service.get_build_counts({}, session)["type"],
             {
-                "building200_002_01_01_1_1": 1.0,
+                "building200_001_01_01_1_1": 1.0,
                 "building200_041_01_01_1_1": 1.0,
             },
         )
-        self._change(session, "po_mission_00004", "closed")
+        self.assertTrue(self._change(session, "po_mission_00004", "closed")["succeeded"])
+        before_retry = self.states.load(session["playerId"])
+        self.assertEqual(self._change(session, "po_mission_00004", "closed")["reward"], {})
+        self.assertEqual(self.states.load(session["playerId"]), before_retry)
 
         player = self.states.load(session["playerId"])
         self.assertEqual(player["missions"]["4"], "C")

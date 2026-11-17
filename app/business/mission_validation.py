@@ -60,7 +60,14 @@ def _measure(player: dict, rows: dict, buildings: dict, kind: str, grade: str, l
     count = 0
     for record in player["buildings"].values():
         if record.get("status") == "building":
-            continue
+            # StateBuilding.complete increments UserStatus's total counter before
+            # queuing completeTasks. The mission finish can therefore arrive first.
+            # Only totalBuildingCount shares that timing; category counts still
+            # require IsBuildComplete. Require explicit server-owned readiness.
+            remaining = record.get("remainedClickCount")
+            if (kind != "totalBuildingCount"
+                    or type(remaining) not in (int, float) or remaining != 0):
+                continue
         type_id = record.get("buildingTypeId")
         if kind == "totalBuildingCount":
             count += int(type_id == target)

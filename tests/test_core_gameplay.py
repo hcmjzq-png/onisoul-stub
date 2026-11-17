@@ -158,7 +158,8 @@ class CoreGameplayTest(unittest.TestCase):
     def test_castle_condition_ignores_unfinished_and_other_map_buildings(self):
         player = self.saved()
         player["buildings"]["1"] = {"buildingTypeId": "building200_002_01_01_1_1",
-                                      "status": "building", "deployedMapKey": "map001"}
+                                      "status": "building", "deployedMapKey": "map001",
+                                      "remainedClickCount": 0}
         rows = self.service.missions.rows()
         table = self.service._table("building")
         self.assertFalse(mission_validation.completed(player, rows, table, "po_mission_00002"))
@@ -170,9 +171,29 @@ class CoreGameplayTest(unittest.TestCase):
     def test_mission_four_accepts_each_country_variant(self):
         rows = self.service.missions.rows()
         for target in rows["po_mission_00004"]["conditionTargets1"]:
-            player = self.saved()
-            player["buildings"]["1"] = {"buildingTypeId": target, "status": "none"}
-            self.assertTrue(mission_validation.completed(player, rows, self.service._table("building"), "po_mission_00004"))
+            for status in ("none", "building"):
+                with self.subTest(target=target, status=status):
+                    player = self.saved()
+                    player["buildings"]["1"] = {"buildingTypeId": target, "status": status,
+                                                  "remainedClickCount": 0}
+                    self.assertTrue(mission_validation.completed(player, rows, self.service._table("building"), "po_mission_00004"))
+
+    def test_total_building_condition_rejects_unready_or_unrelated_buildings(self):
+        rows = self.service.missions.rows()
+        table = self.service._table("building")
+        target = rows["po_mission_00004"]["conditionTargets1"][0]
+        for remaining in (None, 1, -1, "0", False, [], float("nan")):
+            with self.subTest(remaining=remaining):
+                player = self.saved()
+                record = {"buildingTypeId": target, "status": "building"}
+                if remaining is not None:
+                    record["remainedClickCount"] = remaining
+                player["buildings"]["1"] = record
+                self.assertFalse(mission_validation.completed(player, rows, table, "po_mission_00004"))
+        player = self.saved()
+        player["buildings"]["1"] = {"buildingTypeId": "building200_002_01_01_1_1",
+                                      "status": "building", "remainedClickCount": 0}
+        self.assertFalse(mission_validation.completed(player, rows, table, "po_mission_00004"))
 
     def test_legacy_finished_self_acceptance_can_close_but_build_check_is_not_bypassed(self):
         player = self.saved()

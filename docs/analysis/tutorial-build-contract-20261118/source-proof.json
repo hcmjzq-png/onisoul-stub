@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-18",
+  "base_commit": "f25bc409faa36e014176c1e8ad3c1e6646daf9e4",
+  "input_table_sha256": {
+    "beginning_equipment.json": "edb6020f34de12e6cd5a1463ccb16ebc2ca10cf6bf0210ee6273db6213fe1441",
+    "draft.json": "d92f775087b21acdbbaac789471687808dc08b159907783bc4ea8f771bf0a1c7",
+    "building.json": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+    "politicMission.json": "1f8b764ee8d9f078d4fb4250f91d22ec055570162239b4be8613aa3c9e75863b",
+    "reward01_politic.json": "ba1c4d8ff335af146b020924bf7b9c6e51436ccd90496dc1e30afc9e28cfc525",
+    "reward99_country.json": "042a8ab8e900eb2f58e5ab94da1a804e46bfe14c93564ab33631273e609c9118",
+    "item04.json": "25c45e584410b906060b0ba44850c4f2a9bb74e085bbbd35dfdf09d67b87e086"
+  },
+  "pc_assembly_sha256": "b27be6995d07248f860e2c0700b50d52e936b17922b5568fa24f5d6659e6334e",
+  "isolated_mysql": {
+    "version": "8.0.46",
+    "tests": 673,
+    "failures": 0,
+    "skipped": 0,
+    "disposable_instance_stopped": true
+  },
+  "local_http": {
+    "passed": true,
+    "environment": "local-test",
+    "gateway_port": 80,
+    "scenarios": [
+      {
+        "country": "country01",
+        "castle_draft": "draft2000001",
+        "mission4_finish_before_completeTasks": true,
+        "castle_waits_for_completeTasks": true,
+        "no_regrant_on_retry_or_relogin": true
+      },
+      {
+        "country": "country30",
+        "castle_draft": "draft2000002",
+        "mission4_finish_before_completeTasks": true,
+        "castle_waits_for_completeTasks": true,
+        "no_regrant_on_retry_or_relogin": true
+      }
+    ],
+    "temporary_accounts_cleaned": true,
+    "existing_player_states_unchanged": true
+  },
+  "unity_after_fix_verified": false,
+  "cloud_deployed": false
+}
