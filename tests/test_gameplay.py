@@ -179,6 +179,8 @@ class GameplayFlowTest(unittest.TestCase):
             {"draftId": "draft2000002", "originCoord": [25, 25]}, session
         )
         self.assertTrue(build["succeeded"])
+        # GameRestarter.isError rejects the presence of errorReason, even "".
+        self.assertNotIn("errorReason", build)
         castle_id = build["buildingId"]
         self.assertEqual(build["building"]["status"], "building")
         completed = self.service.complete_tasks({"buildingIds": [castle_id]}, session)
@@ -199,6 +201,7 @@ class GameplayFlowTest(unittest.TestCase):
             {"draftId": "draft2000041", "originCoord": [27, 27]}, session
         )
         self.assertTrue(field["succeeded"])
+        self.assertNotIn("errorReason", field)
         self.assertEqual(field["building"]["status"], "none")
         self.assertEqual(
             self.service.get_build_counts({}, session)["type"],
@@ -219,6 +222,21 @@ class GameplayFlowTest(unittest.TestCase):
         map_data = self.service.get_map_data({}, session)
         self.assertEqual(map_data["occupiedGrids"]["27,27"], "2")
         self.assertEqual(map_data["buildings"]["2"]["status"], "none")
+
+    def test_failed_builds_keep_error_reason_without_writing_state(self):
+        session = self._login_and_create()
+        before = self.states.load(session["playerId"])
+        for submit in (
+            self.service.submit_build_task,
+            self.service.submit_build_and_complete,
+        ):
+            with self.subTest(submit=submit.__name__):
+                result = submit(
+                    {"draftId": "missing-draft", "originCoord": [15, 15]}, session
+                )
+                self.assertFalse(result["succeeded"])
+                self.assertTrue(result["errorReason"])
+                self.assertEqual(self.states.load(session["playerId"]), before)
 
     def test_unearned_client_unlock_bits_are_rejected(self):
         session = self._login_and_create()
