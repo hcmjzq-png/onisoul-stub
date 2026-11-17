@@ -54,6 +54,9 @@ def _measure(player: dict, rows: dict, buildings: dict, kind: str, grade: str, l
         # necessarily passed accepted; this does not excuse any building condition.
         return int(current == level or (target == code and level == "accepted" and current == "finished"))
     if kind not in ("totalBuildingCount", "categoryGradeCount"):
+        if kind == "resourceCount" and grade == "any" and level == "any" and target in ("food", "gold", "wood", "iron"):
+            from app.business.player_services import integer
+            return integer(player["resources"][target]["amount"])
         raise ValueError(f"unsupported mission predicate: {kind}")
     if grade != "any" or level != "any":
         raise ValueError("building grade/level mission checks are not implemented")

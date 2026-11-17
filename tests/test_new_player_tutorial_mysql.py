@@ -215,6 +215,64 @@ class TutorialMySQLTest(unittest.TestCase):
             self.assertTrue(path.exists())
         self.assertEqual({pid: state.load(pid) for pid in before}, before)
 
+    def test_field_production_http_restart_and_sql_reward_once(self):
+        from app.business.gameplay import GameplayService
+        from app.business.registry import Registry
+        from app.business.tutorial_production import TutorialFieldProduction
+        from app.tables import TableError
+        sample = json.loads((Path(__file__).parent / "fixtures/tutorial-production.json").read_text("utf-8"))
+        original = self.catalog.load
+        def load(name):
+            try:
+                value = original(name)
+            except TableError:
+                if name not in sample:
+                    raise
+                value = {}
+            return {**value, **sample.get(name, {})}
+        self.catalog.load = load
+        p = state.load(self.pid)
+        # Isolated database only: explicit constructed-field prerequisite.
+        p["missions"].update({str(i): "C" for i in range(1, 5)})
+        p["buildings"]["1"] = dict(instanceId=1, buildingTypeId=TutorialFieldProduction.FIELD,
+            level=1, exp=0, status="none", durability=10001, deployedMapKey="map001", x=4, y=4)
+        state.save(p, self.pid)
+        now = [2000000000.75]
+        def restart():
+            self.close_server()
+            service = GameplayService(catalog=self.catalog)
+            service.tutorial_production.clock = lambda: now[0]
+            registry = service.register(Registry()).register_contract_defaults()
+            self.httpd = serve("127.0.0.1", 0, registry)
+            self.worker = threading.Thread(target=self.httpd.serve_forever, daemon=True)
+            self.worker.start()
+        restart()
+        change = dict(missionIds=["po_mission_00005"], states=["accepted"])
+        self.assertTrue(self.api("politic/mission/changeState", **change)["succeeded"])
+        started = self.api("politic/task/submitProduceTask", buildingId=1, productId=TutorialFieldProduction.PRODUCT)
+        self.assertTrue(started["succeeded"])
+        self.assertEqual(started["dueTime"], 2000000010)
+        before = state.load(self.pid)
+        self.assertFalse(self.api("politic/task/completeTasks", buildingIds=[1])["succeeded"])
+        self.assertEqual(state.load(self.pid), before)
+        restart(); self.login()
+        self.assertEqual(self.api("politic/map/getMapData")["producings"]["1"]["dueTime"], started["dueTime"])
+        now[0] += 10
+        result = self.api("politic/task/completeTasks", buildingIds=[1])
+        self.assertTrue(result["succeeded"])
+        self.assertEqual(result["producings"]["1"]["reward"]["item11_0000301"], 13)
+        harvested = state.load(self.pid)
+        self.assertEqual(harvested["resources"]["food"]["amount"], 13)
+        self.assertEqual(harvested["buildings"]["1"]["exp"], 10)
+        self.assertEqual(self.api("politic/task/completeTasks", buildingIds=[1])["producings"], {})
+        self.assertEqual(state.load(self.pid), harvested)
+        for target in ("finished", "closed"):
+            self.assertTrue(self.api("politic/mission/changeState", missionIds=change["missionIds"], states=[target])["succeeded"])
+        self.assertEqual(self.api("politic/mission/changeState", missionIds=change["missionIds"], states=["closed"])["reward"], {})
+        restart(); self.login()
+        self.assertEqual(self.api("politic/mission/getStatesFromAllMissions")["states"]["5"], "C")
+        self.assertEqual(self.api("common/getPlayerParams")["resources"]["food"]["amount"], 313)
+
     def test_commit_failure_preserves_old_state_and_backup(self):
         plan = self.plan_for(self.pid); before = state.load(self.pid)
         import pymysql.connections

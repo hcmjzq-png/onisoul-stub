@@ -1,0 +1,33 @@
+{
+  "regression": {
+    "mysql_version": "8.0.46",
+    "tests": 689,
+    "passed": 689,
+    "skipped": 0,
+    "mysql_process_stopped": true,
+    "disposable_datadir": true
+  },
+  "local_http": {
+    "environment": "local-test",
+    "entry": "127.0.0.1:80",
+    "real_wait_seconds": 8.87,
+    "flow": "normal account creation -> missions 1-4 -> task5 start -> due -> harvest -> claim -> relogin",
+    "food_before": 0,
+    "food_harvested": 13,
+    "food_after_claim": 313,
+    "building_exp": 10,
+    "player_exp_from_production": 2,
+    "politic_points_spent": 2,
+    "duplicate_start_rejected": true,
+    "premature_harvest_rejected": true,
+    "duplicate_harvest_and_mission_claim_did_not_replay_reward": true,
+    "unity_acceptance": "user pending",
+    "temporary_account_cleaned": true
+  },
+  "deployment": {
+    "local_only": true,
+    "cloud_changed": false,
+    "existing_saves_unchanged_during_deployment": true
+  },
+  "original_unity_acceptance": "user pending"
+}
