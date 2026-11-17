@@ -10,6 +10,14 @@ from app.main import build_registry
 
 
 class ResponseShapeTest(unittest.TestCase):
+    def test_unimplemented_building_confluence_is_explicit_failure(self):
+        status, body = Registry().register_contract_defaults().dispatch(
+            "politic/building/conflateBuilding", {}, None
+        )
+        self.assertEqual(status, 200)
+        self.assertIs(body["succeeded"], False)
+        self.assertIn("no stub response", body["errorReason"])
+
     def test_shape_rules_are_known_disjoint_endpoints(self):
         unknown = sorted(set(response_shapes.BARE_MAP_ENDPOINTS) - set(contract.endpoints()))
         self.assertEqual(unknown, [])

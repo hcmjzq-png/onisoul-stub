@@ -38,7 +38,10 @@ def run(host: str, port: int) -> None:
                                  form if method == "POST" else None,
                                  {"Content-Type": "application/x-www-form-urlencoded"})
         assert status == 200, (name, status)
-        return json.loads(body)
+        result = json.loads(body)
+        if result.get("succeeded") is True:
+            assert "errorReason" not in result, (name, "success rejected by GameRestarter")
+        return result
 
     # Confirm DB access and uniqueness before creating anything through HTTP.
     with db.connection() as con:
@@ -97,7 +100,15 @@ def run(host: str, port: int) -> None:
         assert api("common/getPlayerParams", {"token": token})["resources"] == after_reward
         assert change("po_mission_00002", "accepted")["succeeded"]
         assert change("po_mission_00002", "closed")["succeeded"] is False
-        print("[http-smoke] inactive events/shop, owned characters, deck persistence/avatar, mission prerequisites/rewards: OK")
+        castle = api("politic/task/submitBuildTask", {"token": token,
+            "draftId": "draft2000002", "originCoord": [15, 15]})
+        assert castle["succeeded"]
+        castle_id = castle["buildingId"]
+        assert api("politic/map/getMapData", {"token": token})["buildings"][castle_id] == castle["building"]
+        completed = api("politic/task/completeTasks", {"token": token, "buildingIds": [castle_id]})
+        assert completed["succeeded"] and completed["buildings"][castle_id]["status"] == "none"
+        assert api("politic/map/getMapData", {"token": token})["buildings"][castle_id]["status"] == "none"
+        print("[http-smoke] inactive events/shop, owned characters, deck persistence/avatar, mission rewards, castle build/complete/reload: OK")
         assert api("deck/setCharacterProtect", {"token": token, "characterIds": [chosen], "enable": True}) == {}
         assert chosen in api("deck/getProtectedCharacterIds", {"token": token}).values()
         assert api("deck/setCharacterProtect", {"token": token, "characterIds": [2147483647], "enable": True}).get("errorReason")

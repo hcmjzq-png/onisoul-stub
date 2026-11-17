@@ -39,6 +39,7 @@ BLOCKED_WRITES = {
     "politic/task/submitBulkProduceTasks": "production settlement and road bonuses",
     "politic/task/cancelTasks": "cancellation and refund rules",
     "politic/task/accelerateProduceTask": "production timing and acceleration rules",
+    "politic/building/conflateBuilding": "building confluence validation and settlement",
 }
 
 _DEFAULT: dict[str, Any] = {

@@ -217,6 +217,9 @@ class GameplayService:
         self, api: str, payload: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         body = placeholders.payload(api)
+        # GameRestarter.isError treats even an empty errorReason as failure.
+        # Contract read keys include the error branch; omit its default here.
+        body.pop("errorReason", None)
         body.update(payload or {})
         return response_shapes.success(api, body)
 

@@ -240,3 +240,16 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 内部 player_id 保持稳定主键；username_key 仅为内部唯一索引，不是新增协议字段。
 上线前必须解决现有两组精确重名，迁移不会擅自改名。
 国家图片/随机语音、最终决定等待及白屏内存证据见 [本轮审核](analysis/login-country-20261115/README.md)。
+
+## 2026-11-17 建造成功响应的错误标记
+
+来源：**bundle**，`GameRestarter::isError`（`0x0600158D`）按根 `errorReason` 的存在判错，
+空串也会触发中断；`WebApiClient` 在成功回调之前执行它。契约的读取键同时包含成功、失败
+分支，不能把 `errorReason:string` 的空默认值放入真实成功响应。
+`GameplayService._success` 移除该占位默认键，失败仍走 `_failure` 并保留错误原因；
+不新增字段或改变建筑存档。任务 2 的抓包与本机验收见
+[摆放主城中断排查](analysis/mission2-build-disconnect-20261117/README.md)。
+
+同类模板审计还涉及两个建筑升级入口；四个真实处理器共用本次修复。
+尚未实现的 conflateBuilding 改为明确 no stub response，保留真正失败的 errorReason。
+普通重登缺失 scr2_000001 的临时锁另由客户端兼容补丁处理，不是协议字段或任务解锁修改。
