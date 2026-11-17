@@ -9,6 +9,20 @@ from tools import publish_country_backgrounds as publish
 
 
 class BackgroundPublicationTest(unittest.TestCase):
+    def update_fixture(self, root):
+        release, assets, backups, plan, golden = self.fixture(root)
+        baseline = root / 'baseline.json'
+        baseline.write_text(json.dumps(plan))
+        row = plan['files'][0]
+        original = (release / row['relative']).read_bytes()
+        (assets / row['relative']).write_bytes(original)
+        replacement = original + b'-v2'
+        (release / row['relative']).write_bytes(replacement)
+        row.update(bytes=len(replacement), sha256=hashlib.sha256(replacement).hexdigest())
+        row['proof']['archive'] = 'CustomAssetBundle-' + hashlib.md5(replacement).hexdigest()
+        (release / 'manifest.json').write_text(json.dumps(plan))
+        return release, assets, backups, plan, golden, baseline, original
+
     def fixture(self, root):
         release, assets, backups = (root / name for name in ('release', 'assets', 'backups'))
         files = []
@@ -89,3 +103,59 @@ class BackgroundPublicationTest(unittest.TestCase):
             self.assertEqual(len(list(assets.rglob('*.unity3d'))), 1)
             self.assertEqual((assets / 'unrelated.bin').read_bytes(), b'keep')
             self.assertEqual(publish.sha(assets / plan['files'][36]['relative']), golden)
+
+    def test_explicit_baseline_updates_only_matching_synthetic_bytes(self):
+        with tempfile.TemporaryDirectory() as folder:
+            release, assets, backups, plan, golden, baseline, original = self.update_fixture(Path(folder))
+            with patch.object(publish, 'TEMPLATE_SHA256', golden):
+                result = publish.install(release, assets, backups, baseline=baseline)
+            self.assertEqual(result['updated'], 1)
+            self.assertEqual(result['installed'], 45)
+            self.assertEqual(publish.sha(assets / plan['files'][0]['relative']), plan['files'][0]['sha256'])
+            self.assertEqual((Path(result['backup']) / 'previous' / plan['files'][0]['relative']).read_bytes(), original)
+            self.assertEqual((assets / 'unrelated.bin').read_bytes(), b'keep')
+
+    def test_failed_update_restores_old_synthetic_and_removes_new_files(self):
+        with tempfile.TemporaryDirectory() as folder:
+            release, assets, backups, plan, golden, baseline, original = self.update_fixture(Path(folder))
+            def fail(row):
+                raise ValueError('HTTP failure')
+            with patch.object(publish, 'TEMPLATE_SHA256', golden), self.assertRaisesRegex(ValueError, 'HTTP failure'):
+                publish.install(release, assets, backups, baseline=baseline, verify_http=fail)
+            self.assertEqual(len(list(assets.rglob('*.unity3d'))), 2)
+            self.assertEqual((assets / plan['files'][0]['relative']).read_bytes(), original)
+            self.assertEqual((assets / 'unrelated.bin').read_bytes(), b'keep')
+
+    def test_baseline_does_not_allow_unknown_existing_content(self):
+        with tempfile.TemporaryDirectory() as folder:
+            release, assets, backups, plan, golden, baseline, original = self.update_fixture(Path(folder))
+            target = assets / plan['files'][0]['relative']
+            target.write_bytes(b'unknown concurrent content')
+            with patch.object(publish, 'TEMPLATE_SHA256', golden), self.assertRaisesRegex(ValueError, 'refusing replacement'):
+                publish.install(release, assets, backups, baseline=baseline)
+            self.assertFalse(backups.exists())
+            self.assertEqual(target.read_bytes(), b'unknown concurrent content')
+            with patch.object(publish, 'TEMPLATE_SHA256', golden), self.assertRaises(ValueError):
+                publish.install(release, assets, None, baseline=baseline, retain_backup=False)
+            self.assertFalse(list(Path(folder).glob('.background47-*')))
+
+    def test_ephemeral_recovery_is_removed_after_success_and_failure(self):
+        for fail in (False, True):
+            with self.subTest(fail=fail), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder)
+                release, assets, backups, plan, golden, baseline, original = self.update_fixture(root)
+                def verify(row):
+                    if fail:
+                        raise ValueError('HTTP failure')
+                with patch.object(publish, 'TEMPLATE_SHA256', golden):
+                    if fail:
+                        with self.assertRaisesRegex(ValueError, 'HTTP failure'):
+                            publish.install(release, assets, None, baseline=baseline, verify_http=verify, retain_backup=False)
+                        self.assertEqual((assets / plan['files'][0]['relative']).read_bytes(), original)
+                        self.assertEqual(len(list(assets.rglob('*.unity3d'))), 2)
+                    else:
+                        result = publish.install(release, assets, None, baseline=baseline, verify_http=verify, retain_backup=False)
+                        self.assertIsNone(result['backup'])
+                        self.assertFalse(result['persistent_backup'])
+                self.assertFalse(backups.exists())
+                self.assertFalse(list(root.glob('.background47-*')))

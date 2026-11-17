@@ -1,7 +1,8 @@
-"""Publish a complete 47-country initial-city background release, create-only.
+"""Publish all 47 initial-city backgrounds, optionally updating a known baseline.
 
-Requires all 47 files and explicit synthetic provenance. Preserves every existing
-asset; a failed filesystem/HTTP check rolls back only files created by this run.
+Requires all 47 files and explicit synthetic provenance. Existing synthetic files
+can change only when their exact old bytes match an explicit baseline manifest.
+Preserves originals/unrelated files; failed checks restore this run's changes.
 Does not access a database, patch a client, or restart a game/server.
 """
 from __future__ import annotations
@@ -76,39 +77,72 @@ def safe_file(root: Path, relative: str) -> Path:
     return path
 
 
-def install(release: Path, assets: Path, backups: Path, *, verify_http=None) -> dict:
+def _install(release: Path, assets: Path, backups: Path | None, *, verify_http=None,
+             baseline: Path | None = None, retain_backup: bool = True, recovery_root: Path | None = None) -> dict:
     release, assets = release.resolve(), assets.resolve()
     if not assets.is_dir():
         raise ValueError('existing PC asset directory required')
     plan = json.loads((release / 'manifest.json').read_text(encoding='utf-8'))
     rows = validate_plan(plan)
+    old_rows = {r['relative']: r for r in validate_plan(json.loads(baseline.read_text(encoding='utf-8')))} if baseline else {}
+    replacements = {}
     for row in rows:
         source, target = (safe_file(root, row['relative']) for root in (release, assets))
         if source.stat().st_size != row['bytes'] or sha(source) != row['sha256']:
             raise ValueError('release bytes changed: ' + row['country'])
         if target.exists():
-            if target.stat().st_size != row['bytes'] or sha(target) != row['sha256']:
-                raise ValueError('existing background differs; refusing replacement: ' + row['country'])
+            current = sha(target)
+            if target.stat().st_size != row['bytes'] or current != row['sha256']:
+                previous = old_rows.get(row['relative'])
+                if (row['country'] == 'country37' or not previous or current != previous['sha256']
+                        or target.stat().st_size != previous['bytes']):
+                    raise ValueError('existing background differs; refusing replacement: ' + row['country'])
+                replacements[row['relative']] = row
         elif row['country'] == 'country37':
             raise ValueError('existing original country37 is missing')
-    stamp = datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S-%f')
-    backup = backups.resolve() / ('background47-' + stamp)
-    backup.mkdir(parents=True, mode=0o700)
+    if retain_backup:
+        if backups is None:
+            raise ValueError('backup root required unless persistent backups are disabled')
+        stamp = datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S-%f')
+        backup = backups.resolve() / ('background47-' + stamp)
+        backup.mkdir(parents=True, mode=0o700)
+    else:
+        if recovery_root is None:
+            raise ValueError('temporary recovery directory required')
+        backup = recovery_root
     before = {p.relative_to(assets).as_posix(): sha(p) for p in assets.rglob('*') if p.is_file()}
-    (backup / 'assets-before.json').write_text(json.dumps(before), encoding='utf-8')
-    shutil.copyfile(release / 'manifest.json', backup / 'manifest.json')
+    for row in rows:
+        relative = row['relative']
+        if relative in before:
+            expected = old_rows[relative]['sha256'] if relative in replacements else row['sha256']
+            if before[relative] != expected:
+                raise ValueError('existing background changed after preflight')
+    if retain_backup:
+        (backup / 'assets-before.json').write_text(json.dumps(before), encoding='utf-8')
+        shutil.copyfile(release / 'manifest.json', backup / 'manifest.json')
+    if baseline and retain_backup:
+        shutil.copyfile(baseline, backup / 'baseline.json')
+    for relative in replacements:
+        previous = safe_file(backup / 'previous', relative)
+        previous.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(safe_file(assets, relative), previous)
+        if sha(previous) != before[relative]:
+            raise ValueError('existing background changed during backup')
     stage = Path(tempfile.mkdtemp(prefix='.background47-', dir=assets.parent)).resolve()
     created = []
+    replaced = []
 
-    def verify_existing():
+    def verify_existing(updated=True):
         for relative, digest in before.items():
+            if updated and relative in replacements:
+                digest = replacements[relative]['sha256']
             if sha(assets / relative) != digest:
                 raise ValueError('pre-existing asset changed: ' + relative)
 
     try:
         for row in rows:
             target = safe_file(assets, row['relative'])
-            if target.exists():
+            if target.exists() and row['relative'] not in replacements:
                 continue
             staged = stage / row['country']
             shutil.copyfile(safe_file(release, row['relative']), staged)
@@ -116,6 +150,17 @@ def install(release: Path, assets: Path, backups: Path, *, verify_http=None) -> 
                 raise ValueError('source changed during publication')
             os.chmod(staged, 0o644)
             target.parent.mkdir(parents=True, exist_ok=True)
+            if row['relative'] in replacements:
+                if target.is_symlink() or sha(target) != before[row['relative']]:
+                    raise ValueError('concurrent background change; refusing replacement')
+                alias = stage / (row['country'] + '.publish')
+                os.link(staged, alias)
+                os.replace(alias, target)
+                replaced.append((target, staged))
+                if retain_backup:
+                    (backup / 'replaced.json').write_text(json.dumps([
+                        p.relative_to(assets).as_posix() for p, _ in replaced]), encoding='utf-8')
+                continue
             try:
                 os.link(staged, target)  # Atomic create-only; never overwrite.
             except FileExistsError:
@@ -123,8 +168,9 @@ def install(release: Path, assets: Path, backups: Path, *, verify_http=None) -> 
                     raise ValueError('concurrent background change')
             else:
                 created.append((target, staged))
-                (backup / 'created.json').write_text(json.dumps([
-                    p.relative_to(assets).as_posix() for p, _ in created]), encoding='utf-8')
+                if retain_backup:
+                    (backup / 'created.json').write_text(json.dumps([
+                        p.relative_to(assets).as_posix() for p, _ in created]), encoding='utf-8')
         verify_existing()
         for row in rows:
             if sha(safe_file(assets, row['relative'])) != row['sha256']:
@@ -132,18 +178,30 @@ def install(release: Path, assets: Path, backups: Path, *, verify_http=None) -> 
             if verify_http is not None:
                 verify_http(row)
         verify_existing()
-        result = dict(success=True, countries_verified=47, installed=len(created),
-            originals_preserved=1, pre_existing_files_preserved=len(before),
-            http_verified=47 if verify_http else 0, backup=str(backup), database_accessed=False)
-        (backup / 'result.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
+        result = dict(success=True, countries_verified=47, installed=len(created), updated=len(replaced),
+            originals_preserved=1, pre_existing_files_preserved=len(before)-len(replaced),
+            http_verified=47 if verify_http else 0, backup=str(backup) if retain_backup else None,
+            persistent_backup=retain_backup, database_accessed=False)
+        if retain_backup:
+            (backup / 'result.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
         return result
     except BaseException:
+        for target, staged in reversed(replaced):
+            relative = target.relative_to(assets).as_posix()
+            if (target.is_file() and not target.is_symlink() and os.path.samestat(target.stat(), staged.stat())
+                    and sha(target) == replacements[relative]['sha256']):
+                restore = stage / (target.name + '.restore')
+                shutil.copyfile(safe_file(backup / 'previous', relative), restore)
+                os.chmod(restore, 0o644)
+                os.replace(restore, target)
         for target, staged in reversed(created):
             if target.is_file() and not target.is_symlink() and os.path.samestat(target.stat(), staged.stat()):
                 target.unlink()
-        verify_existing()
-        (backup / 'rolled-back.json').write_text(json.dumps([
-            p.relative_to(assets).as_posix() for p, _ in created]), encoding='utf-8')
+        verify_existing(updated=False)
+        if retain_backup:
+            (backup / 'rolled-back.json').write_text(json.dumps(dict(
+                created=[p.relative_to(assets).as_posix() for p, _ in created],
+                replaced=[p.relative_to(assets).as_posix() for p, _ in replaced])), encoding='utf-8')
         raise
     finally:
         # Verify the resolved deletion target is the owned temporary directory.
@@ -152,15 +210,37 @@ def install(release: Path, assets: Path, backups: Path, *, verify_http=None) -> 
         shutil.rmtree(stage)
 
 
+def install(release: Path, assets: Path, backups: Path | None, *, verify_http=None,
+            baseline: Path | None = None, retain_backup: bool = True) -> dict:
+    if retain_backup:
+        return _install(release, assets, backups, verify_http=verify_http, baseline=baseline)
+    assets = assets.resolve()
+    if not assets.is_dir():
+        raise ValueError('existing PC asset directory required')
+    recovery = Path(tempfile.mkdtemp(prefix='.background47-recovery-', dir=assets.parent)).resolve()
+    try:
+        return _install(release, assets, None, verify_http=verify_http, baseline=baseline,
+            retain_backup=False, recovery_root=recovery)
+    finally:
+        resolved = recovery.resolve()
+        if resolved.parent != assets.parent or not recovery.name.startswith('.background47-recovery-') or recovery.is_symlink():
+            raise ValueError('unsafe temporary recovery cleanup path')
+        shutil.rmtree(recovery)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--release', type=Path, required=True)
     parser.add_argument('--assets', type=Path, required=True)
-    parser.add_argument('--backup-root', type=Path, required=True)
+    parser.add_argument('--backup-root', type=Path)
+    parser.add_argument('--no-persistent-backup', action='store_true', help='Use temporary recovery files only; remove them after verification or rollback')
+    parser.add_argument('--baseline', type=Path, help='Explicit known old 47-country manifest; only matching synthetic bytes may be replaced')
     parser.add_argument('--http-origin', help='Optional HTTP origin for all 47 GET/hash checks')
     parser.add_argument('--environment', choices=['local-test', 'cloud'])
     parser.add_argument('--instance')
     args = parser.parse_args()
+    if not args.no_persistent_backup and not args.backup_root:
+        parser.error('--backup-root is required unless --no-persistent-backup is selected')
     verify = None
     if args.http_origin:
         url = urlsplit(args.http_origin)
@@ -188,7 +268,8 @@ def main() -> None:
             if len(body) != row['bytes'] or hashlib.sha256(body).hexdigest() != row['sha256']:
                 raise ValueError('HTTP background fingerprint mismatch: ' + row['country'])
 
-    print(json.dumps(install(args.release, args.assets, args.backup_root, verify_http=verify)))
+    print(json.dumps(install(args.release, args.assets, args.backup_root, verify_http=verify,
+        baseline=args.baseline, retain_backup=not args.no_persistent_backup)))
 
 
 if __name__ == '__main__':

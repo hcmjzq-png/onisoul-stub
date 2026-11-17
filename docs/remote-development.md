@@ -96,6 +96,10 @@ MySQL 可使用 [官方免安装 ZIP](https://dev.mysql.com/doc/refman/8.0/en/wi
 
 ## 云端运行和发布
 
+47 国背景从已知旧包更新时，使用完整 `--baseline` 清单核对旧字节；
+空间受限且本机已有资源版本时，可指定 `--no-persistent-backup`，
+只保留发布过程中的临时恢复文件，验收完成后自动清理。代码版本由 Git 追溯。
+
 | 路径 | 用途 |
 | --- | --- |
 | `/srv/onisoul/server` | 正式服务代码 |
