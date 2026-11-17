@@ -1,0 +1,112 @@
+{
+  "rows": [
+    {
+      "table": "building",
+      "key": "building200_041_01_01_1_1",
+      "sha256": "08a04fbeef56c81ee32271351fefa77d6937dc31c0d9f7fbe3432fd0c8c28a77"
+    },
+    {
+      "table": "building",
+      "key": "building200_051_01_01_1_1",
+      "sha256": "a2c2feffd8fee7a36d13bddfc027016785de32ae81df6c7d36f474f7052617bd"
+    },
+    {
+      "table": "building",
+      "key": "building200_001_01_01_1_1",
+      "sha256": "e2fc2fe36f95b48cc6917a8fa2dc8f655b228d095ed54d00e7857449bf2e1bbc"
+    },
+    {
+      "table": "product",
+      "key": "product060_023_01_01_1_1",
+      "sha256": "1a64fe6fceb23ce05bb7e3d8be6e845eb8b32f37af4ea0152213b288dc1b58dc"
+    },
+    {
+      "table": "product",
+      "key": "product060_001_01_01_1_1",
+      "sha256": "ab0375da88da90f4fed87fbcd96234c195a681d69b9a145e6a5a0df37e8e56d1"
+    },
+    {
+      "table": "reward01_politic",
+      "key": "reward01_01_00001_01",
+      "sha256": "3ffd693aaaa4a882c566c76ebb80d55485c043f13087d685560c5c6706a363a8"
+    },
+    {
+      "table": "reward01_politic",
+      "key": "reward01_04_00005_01",
+      "sha256": "8a746a8685ac8358b4c15d91bf7268c225bb924c8b263ea8a2d53843f60ed271"
+    },
+    {
+      "table": "politicMission",
+      "key": "po_mission_00005",
+      "sha256": "003b8d052d303182868e8d48f98573e9a5e500da42b2be93e9605b26b9368d3c"
+    },
+    {
+      "table": "building_level",
+      "key": "product_early1001",
+      "sha256": "9ffe75448c32dbfd896b7194db9fc42bbab12092ada98e2632f0cdd2226ee4f5"
+    },
+    {
+      "table": "defines",
+      "key": "politic_expend_point",
+      "sha256": "28351383fac0d08ad05e7665188ea98f4b6ce82886f22aa3b13a5c63b9f98cb1"
+    },
+    {
+      "table": "defines",
+      "key": "politic_auto_harvest_point",
+      "sha256": "945eeb5f28519beb04490a63d7e0753fda1f7bf2d9bcf357c5c840e0c07b8640"
+    },
+    {
+      "table": "defines",
+      "key": "infinite_building_durability",
+      "sha256": "98cb9d3f496693af6b8167a3972e0d37feee94d4b3848b78bab1e0a54a7f1964"
+    }
+  ],
+  "sources": [
+    {
+      "category": "legacy-code",
+      "file": "business.py",
+      "sha256": "39aae985a426f930fe9d28b5c77ed26f13d845821a6a5cce67235db3631b6629"
+    },
+    {
+      "category": "legacy-note",
+      "file": "新号进入城下町到任务7问题与解决记录.md",
+      "sha256": "dd1a481efa28e914ee91dff38f940cae7a76f8fa4e6e8bb31877d4aa4fcc9900"
+    },
+    {
+      "category": "original-client",
+      "file": "StateManualProduce.cs",
+      "sha256": "85a2fe871a8fe20bd4dcb59164d5b06baa5af8c5fc7786da3f22532780d6b02c"
+    },
+    {
+      "category": "original-client",
+      "file": "StateAutoProduce.cs",
+      "sha256": "f952b862e2b5af62b07ba6a1a92535ba594fc6070e9dea51fcc8c4b7ce3f7e30"
+    },
+    {
+      "category": "original-client",
+      "file": "PoliticBuildingParameter.cs",
+      "sha256": "ff7f635f305109926a5ad774eada7365352b7fdfed88e534d697df1d4e2e2996"
+    },
+    {
+      "category": "original-client",
+      "file": "PoliticProduceTimer.cs",
+      "sha256": "abba1df8408644d6302636f7ff825478bdf3928bd2ce1354c50e2e17d471b6b4"
+    },
+    {
+      "category": "original-client",
+      "file": "PoliticMissionConditionOne.cs",
+      "sha256": "515ff5854491cceb512579f986fa37c95826e87563970322ef9b0c0fc91a04ef"
+    },
+    {
+      "category": "original-client",
+      "file": "PoliticBuilding.cs",
+      "sha256": "d8f21337b1b953e317563774396b8f20989e44a1846e33fe3bbed2001d44ebcf"
+    },
+    {
+      "category": "original-client",
+      "file": "UserStatus.cs",
+      "sha256": "0bf52ae2edfe9b36c2779e620512e822fbdfea9ce9ff5dd673ba229b0645757f"
+    }
+  ],
+  "legacy_code_is_not_original_server_evidence": true
+}

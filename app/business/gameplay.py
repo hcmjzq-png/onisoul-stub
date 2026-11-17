@@ -9,9 +9,11 @@ import re
 import secrets
 import threading
 import time
+from functools import cached_property
 from collections.abc import Callable
 from typing import Any
 
+from app.business.tutorial_production import TutorialFieldProduction
 from app import db, sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import (
@@ -155,6 +157,7 @@ class GameplayService:
         PlayerServices(self).register(registry)
         ProgressionServices(self).register(registry)
         CityServices(self).register(registry)
+        self.tutorial_production.register(registry)
         # A-H integration review: only endpoints backed by current save state
         # and complete local transactions. Provider-dependent candidates stay
         # unmounted; see docs/analysis/parallel-342/review/README.md.
@@ -228,6 +231,10 @@ class GameplayService:
         raw = self.load_state(player_id)
         merged = self._prepare_state(raw, player_id)
         return merged, merged != raw
+
+    @cached_property
+    def tutorial_production(self) -> TutorialFieldProduction:
+        return TutorialFieldProduction(self)
 
     def _save(self, player: dict[str, Any], player_id: str) -> None:
         self.save_state(player, player_id)
@@ -1316,15 +1323,17 @@ class GameplayService:
         player_id, player, _dirty = found
         completed: dict[str, Any] = {}
         changed = False
-        requested = _parse_ids(params.get("buildingIds"))
-        # A successful empty producings map makes StateManualProduce clear the
-        # client's task. Reject before completing any construction in a mixed
-        # batch; harvesting/road bonuses have not been established yet.
-        for value in requested:
-            key, record = self._find_building(player, value)
-            if record is not None and (str(key) in player["produce"] or record.get("status") == "producing"):
-                return self._failure("politic/task/completeTasks",
-                                     "no stub response: production settlement and road bonuses are not implemented")
+        try:
+            requested = self.tutorial_production.ids(params.get("buildingIds"))
+            production_ids = []
+            for value in requested:
+                key, record, _ = self.tutorial_production.owned(player, value)
+                if str(key) in player["produce"] or record.get("status") == "producing":
+                    production_ids.append(key)
+            harvested = self.tutorial_production.harvest(player, production_ids)
+        except ValueError as exc:
+            return self._failure("politic/task/completeTasks", str(exc))
+        changed = bool(harvested)
         for value in requested:
             key, record = self._find_building(player, value)
             if record is None or str(record.get("status") or "") != "building":
@@ -1340,14 +1349,14 @@ class GameplayService:
         return self._success(
             "politic/task/completeTasks",
             {
-                "buildings": completed,
+                "buildings": {**completed, **{key: entry["building"] for key, entry in harvested.items()}},
                 "autoProducings": {},
-                "producings": {},
+                "producings": harvested,
                 "buildingCount": float(len(player["buildings"])),
                 "kokudaka": float(player.get("kokudaka") or 0),
                 "characters": {},
                 "equips": {},
-                "completeCount": float(len(completed)),
+                "completeCount": float(len(completed) + len(harvested)),
                 "errno": 0.0,
                 "now": _now(),
             },
