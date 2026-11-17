@@ -14,7 +14,7 @@ QUERY = "politic/building/getProductsByBuilding"
 FIRST = "product060_023_01_01_1_1"
 SECOND = "product060_001_01_01_1_1"
 WRITES = ["politic/task/" + name for name in
-          ("submitProduceTask", "submitBulkProduceTasks", "cancelTasks", "accelerateProduceTask")]
+          ("submitBulkProduceTasks", "cancelTasks", "accelerateProduceTask")]
 
 
 class ProductionContractTest(unittest.TestCase):

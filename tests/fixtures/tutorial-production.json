@@ -1,0 +1,436 @@
+{
+  "building": {
+    "building200_041_01_01_1_1": {
+      "id": "building200_041_01_01_1_1",
+      "name": "田地",
+      "desc": "粮食生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_023_01_01_1_1",
+        "product060_001_01_01_1_1",
+        "product060_018_01_01_1_1",
+        "product060_007_01_01_1_1",
+        "product060_019_01_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200041",
+      "waitImages": [
+        "building200_041_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_013",
+      "sortno": 400,
+      "openShopItemId1": [
+        "shop0000039"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": [
+        "shop0000032"
+      ],
+      "openLevel2": 7,
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_051_01_01_1_1": {
+      "id": "building200_051_01_01_1_1",
+      "name": "道路",
+      "desc": "影响周围",
+      "category": "road",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [],
+      "costAmounts": [],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "road",
+      "itemId": "item05_0200051",
+      "waitImages": [
+        "building200_051_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 600,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 0,
+      "kokudakaMax": 0,
+      "regularSoldier": 0,
+      "dedication": 0,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_001_01_01_1_1": {
+      "id": "building200_001_01_01_1_1",
+      "name": "城【鬼阵营】",
+      "desc": "城下町中心建筑物",
+      "category": "castle",
+      "size": [
+        8,
+        8
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        1000
+      ],
+      "products": [
+        "building200_001_01_01_1_1"
+      ],
+      "produceType": "auto",
+      "durability": 10001,
+      "levelUpTypeId": "testearly",
+      "connectChipType": "none",
+      "itemId": "item05_0200001",
+      "waitImages": [
+        "building200_001_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_036",
+      "sortno": 6,
+      "openShopItemId1": [
+        "shop0000005"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 1280,
+      "kokudakaMax": 2880,
+      "regularSoldier": 50,
+      "dedication": 50,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    }
+  },
+  "product": {
+    "product060_023_01_01_1_1": {
+      "id": "product060_023_01_01_1_1",
+      "name": "短时间少量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        0
+      ],
+      "dueInterval": 10,
+      "rewardId": "reward01_01_00001_01",
+      "openLevel": 1,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060023",
+      "assetNames": [
+        "product060_023_01_01_1_1",
+        "product060_023_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 10,
+      "sortno": 1
+    },
+    "product060_001_01_01_1_1": {
+      "id": "product060_001_01_01_1_1",
+      "name": "短时间少量生产",
+      "desc": "选择式建筑物拥有可以选择生产内容的优点。\n生产量也比平均还要来得多。",
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        10
+      ],
+      "dueInterval": 900,
+      "rewardId": "reward01_01_00014_01",
+      "openLevel": 5,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "item10_0060001",
+      "assetNames": [
+        "product060_001_01_01_1_1",
+        "product060_001_01_01_1_2"
+      ],
+      "completeUIName": "ui1_550_021_1",
+      "resourceIconName": [
+        "ui1_050_010_1"
+      ],
+      "buildingExp": 30,
+      "sortno": 6
+    }
+  },
+  "reward01_politic": {
+    "reward01_01_00001_01": {
+      "id": "reward01_01_00001_01",
+      "group1": "A",
+      "ratio1min": 1,
+      "ratio1max": 1,
+      "itemId1": "item11_0000301",
+      "count1min": 13,
+      "count1max": 17,
+      "group2": "B",
+      "ratio2min": 1,
+      "ratio2max": 1,
+      "itemId2": "item11_0000501",
+      "count2min": 2,
+      "count2max": 2,
+      "group3": "none",
+      "ratio3min": 0,
+      "ratio3max": 0,
+      "itemId3": "none",
+      "count3min": 0,
+      "count3max": 0,
+      "group4": "none",
+      "ratio4min": 0,
+      "ratio4max": 0,
+      "itemId4": "none",
+      "count4min": 0,
+      "count4max": 0,
+      "group5": "none",
+      "ratio5min": 0,
+      "ratio5max": 0,
+      "itemId5": "none",
+      "count5min": 0,
+      "count5max": 0,
+      "group6": "none",
+      "ratio6min": 0,
+      "ratio6max": 0,
+      "itemId6": "none",
+      "count6min": 0,
+      "count6max": 0,
+      "group7": "none",
+      "ratio7min": 0,
+      "ratio7max": 0,
+      "itemId7": "none",
+      "count7min": 0,
+      "count7max": 0,
+      "group8": "none",
+      "ratio8min": 0,
+      "ratio8max": 0,
+      "itemId8": "none",
+      "count8min": 0,
+      "count8max": 0,
+      "group9": "none",
+      "ratio9min": 0,
+      "ratio9max": 0,
+      "itemId9": "none",
+      "count9min": 0,
+      "count9max": 0,
+      "group10": "none",
+      "ratio10min": 0,
+      "ratio10max": 0,
+      "itemId10": "none",
+      "count10min": 0,
+      "count10max": 0
+    },
+    "reward01_04_00005_01": {
+      "id": "reward01_04_00005_01",
+      "group1": "A",
+      "ratio1min": 1,
+      "ratio1max": 1,
+      "itemId1": "item11_0000101",
+      "count1min": 2000,
+      "count1max": 2000,
+      "group2": "B",
+      "ratio2min": 1,
+      "ratio2max": 1,
+      "itemId2": "item11_0000501",
+      "count2min": 50,
+      "count2max": 50,
+      "group3": "C",
+      "ratio3min": 1,
+      "ratio3max": 1,
+      "itemId3": "item04_0200036",
+      "count3min": 1,
+      "count3max": 1,
+      "group4": "D",
+      "ratio4min": 1,
+      "ratio4max": 1,
+      "itemId4": "item11_0000301",
+      "count4min": 300,
+      "count4max": 300,
+      "group5": "none",
+      "ratio5min": 0,
+      "ratio5max": 0,
+      "itemId5": "none",
+      "count5min": 0,
+      "count5max": 0,
+      "group6": "none",
+      "ratio6min": 0,
+      "ratio6max": 0,
+      "itemId6": "none",
+      "count6min": 0,
+      "count6max": 0,
+      "group7": "none",
+      "ratio7min": 0,
+      "ratio7max": 0,
+      "itemId7": "none",
+      "count7min": 1,
+      "count7max": 1,
+      "group8": "none",
+      "ratio8min": 0,
+      "ratio8max": 0,
+      "itemId8": "none",
+      "count8min": 0,
+      "count8max": 0,
+      "group9": "none",
+      "ratio9min": 0,
+      "ratio9max": 0,
+      "itemId9": "none",
+      "count9min": 0,
+      "count9max": 0,
+      "group10": "none",
+      "ratio10min": 0,
+      "ratio10max": 0,
+      "itemId10": "none",
+      "count10min": 0,
+      "count10max": 0
+    }
+  },
+  "politicMission": {
+    "po_mission_00005": {
+      "id": "po_mission_00005",
+      "index": 5,
+      "iconFileName": "mission_000002",
+      "iconIndex": 5,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00004"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconProduce",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "resourceCount"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "any"
+      ],
+      "conditionTargets1": [
+        "food"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00005_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_000005_01",
+      "exitScript": "scr1_000005_03"
+    }
+  },
+  "building_level": {
+    "product_early1001": {
+      "id": "product_early1001",
+      "needExp": 20,
+      "needCostRatio": 0.5,
+      "costRatio": 1,
+      "intervalRatio": 1,
+      "name": "稍快"
+    }
+  },
+  "defines": {
+    "politic_expend_point": {
+      "id": "politic_expend_point",
+      "value": 1
+    },
+    "politic_auto_harvest_point": {
+      "id": "politic_auto_harvest_point",
+      "value": 10
+    },
+    "infinite_building_durability": {
+      "id": "infinite_building_durability",
+      "value": 10001
+    }
+  }
+}
