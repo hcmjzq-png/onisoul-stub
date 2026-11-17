@@ -5,6 +5,13 @@
 用于本机启动器核对目标，非原版游戏协议。只在显式配置环境身份时启用；
 不加入 auth、politic 等业务响应。原画布尺寸和资源包保持原有格式。
 
+2026-11-18 任务 5：**bundle / 本服兼容结算**。单体开工根 dueTime/now/remainedClickCount
+及 producings.<id>.productId/createdTime/dueTime 来自 StateManualProduce、PoliticBuildingParameter；
+收获 producings.<id>.reward/building/collaborator 来自 StateAutoProduce，建筑 exp 是绝对值。
+内部 tutorialFieldProductionV1 不下发。免费 10 秒田地采用菜单插值产量、原表 buildingExp 增量是
+明确兼容策略，不声称已还原原服奖励/道路公式；限定无道路、无内政编队。粮食写 resources.food，
+经验写 entity.exp；resourceCount 检查实际余额。来源与本机边界见[任务 5 记录](analysis/mission5-production-20261118/README.md)。
+
 2026-11-18 追加（**bundle / 本服兼容判定**）：原 `beginning_equipment` 的起始图纸为空，
 主城图纸由任务 1 `clearReward → country_00041_self → reward99_country → item04` 发放。
 移除本服额外初始 `draft2000002`，保留现有物品。任务 4 使用 `totalBuildingCount`，

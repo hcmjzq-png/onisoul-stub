@@ -1,0 +1,93 @@
+{
+  "regression": {
+    "mysql_version": "8.0.46",
+    "tests": 689,
+    "passed": 689,
+    "skipped": 0,
+    "mysql_process_stopped": true,
+    "disposable_datadir": true
+  },
+  "local_http": {
+    "environment": "local-test",
+    "entry": "127.0.0.1:80",
+    "real_wait_seconds": 8.87,
+    "flow": "normal account creation -> missions 1-4 -> task5 start -> due -> harvest -> claim -> relogin",
+    "food_before": 0,
+    "food_harvested": 13,
+    "food_after_claim": 313,
+    "building_exp": 10,
+    "player_exp_from_production": 2,
+    "politic_points_spent": 2,
+    "duplicate_start_rejected": true,
+    "premature_harvest_rejected": true,
+    "duplicate_harvest_and_mission_claim_did_not_replay_reward": true,
+    "unity_acceptance": "passed, user confirmed 2026-11-18",
+    "temporary_account_cleaned": true
+  },
+  "original_unity_acceptance": "passed, user confirmed 2026-11-18",
+  "user_acceptance": {
+    "status": "passed",
+    "date": "2026-11-18",
+    "environment": "local-test",
+    "scope": "Task 5 free ten-second G1 field production, timer, harvest and mission completion",
+    "source": "User message in this chat: 验收通过"
+  },
+  "local_deployment": {
+    "local_only": true,
+    "cloud_changed": false,
+    "existing_saves_unchanged_during_deployment": true
+  },
+  "cloud_deployment": {
+    "date": "2026-11-18",
+    "code_commit": "24ee3f7064775e710e686a089562c18f363b9a12",
+    "previous_code_commit": "8654c4078843607039f0acbca99a6ee3c77b4596",
+    "branch": "codex/cloud-mission5-20261118",
+    "code_only": true,
+    "code_backup_created": false,
+    "database_dump_created": false,
+    "environment_file_unchanged": true,
+    "proxy_pid_unchanged": true,
+    "existing_player_count": 6,
+    "existing_players_unchanged_after_release_check": true,
+    "temporary_upload_removed": true,
+    "local_candidate_regression": {
+      "mysql_version": "8.0.46",
+      "tests": 701,
+      "passed": 701,
+      "skipped": 0,
+      "mysql_process_stopped": true
+    },
+    "http_release_check": {
+      "environment": "cloud",
+      "entry": "127.0.0.1:80",
+      "real_wait_seconds": 9.24,
+      "flow": "normal account creation -> missions 1-4 -> task5 start -> due -> harvest -> claim -> relogin",
+      "food_before": 0,
+      "food_harvested": 13,
+      "food_after_claim": 313,
+      "building_exp": 10,
+      "player_exp_from_production": 2,
+      "politic_points_spent": 2,
+      "duplicate_start_rejected": true,
+      "premature_harvest_rejected": true,
+      "duplicate_harvest_and_mission_claim_did_not_replay_reward": true,
+      "unity_acceptance": "cloud UI pending; local UI accepted by user",
+      "temporary_account_cleaned": true
+    },
+    "network_checks": [
+      {
+        "route": "configured SSH tunnel",
+        "status": 200,
+        "environment": "cloud",
+        "instance_matches_private_profile": true
+      },
+      {
+        "route": "public HTTP with game host",
+        "status": 200,
+        "environment": "cloud",
+        "instance_matches_private_profile": true
+      }
+    ],
+    "original_unity_acceptance": "not performed on cloud; local user acceptance remains recorded separately"
+  }
+}
