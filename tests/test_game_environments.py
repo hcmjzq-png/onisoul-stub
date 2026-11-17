@@ -1,10 +1,34 @@
 """Fail-closed profile selection and exact-owned-process identity checks."""
 import unittest
+import tempfile
+from pathlib import Path
 from unittest.mock import patch
 from tools.game_environments import Environments, same_process, validate_health
 
 
 class GameEnvironmentsTest(unittest.TestCase):
+    def test_local_cache_refresh_preserves_other_assets_and_cloud_cache(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder).resolve()
+            cache = root / 'Client/cache/data7'
+            cache.mkdir(parents=True)
+            cloud = root / 'Cloud/cache'
+            cloud.mkdir(parents=True)
+            url = b'http://client-onisoul.86joy.com/client/pc/jp/assets/pbm/' + b'a' * 32 + b'.unity3d?r=0'
+            (cache / 'background.d').write_bytes(b'Qt-header' + url + b'\0body')
+            (cache / 'portrait.d').write_bytes(url.replace(b'/pbm/', b'/chara/'))
+            (cloud / 'background.d').write_bytes(url)
+            manager = object.__new__(Environments)
+            manager.root = root
+            manager.settings = {'local_client': str(root / 'Client')}
+            self.assertEqual(manager.clear_local_background_cache(), 1)
+            self.assertFalse((cache / 'background.d').exists())
+            self.assertTrue((cache / 'portrait.d').exists())
+            self.assertTrue((cloud / 'background.d').exists())
+            manager.settings['local_client'] = str(root / 'Cloud')
+            with self.assertRaises(RuntimeError):
+                manager.clear_local_background_cache()
+
     def test_port_or_up_status_cannot_substitute_for_server_identity(self):
         for payload in ({'service': 'onisoul-stub', 'status': 'up'},
             {'service': 'onisoul-stub', 'status': 'up', 'environment': 'cloud', 'instance_id': 'other'},

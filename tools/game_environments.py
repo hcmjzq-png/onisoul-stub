@@ -16,6 +16,7 @@ import ipaddress
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import shutil
 import socket
@@ -317,6 +318,29 @@ class Environments:
             time.sleep(.1)
         raise RuntimeError('legacy gateway did not stop')
 
+    def clear_local_background_cache(self) -> int:
+        client = Path(self.settings['local_client']).resolve()
+        if client != self.root / 'Client':
+            raise RuntimeError('local client cache is outside the dedicated test directory')
+        cache = client / 'cache'
+        if not cache.is_dir():
+            return 0
+        if cache.is_symlink() or cache.is_junction():
+            raise RuntimeError('local cache must not be a link')
+        pattern = re.compile(rb'http://(?:client-onisoul|game-onisoul|test12242013)\.86joy\.com/client/pc/jp/assets/pbm/[0-9a-f]{32}\.unity3d(?:\?|\x00)')
+        removed = 0
+        for path in cache.rglob('*.d'):
+            if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(cache):
+                continue
+            if any(p.is_symlink() or p.is_junction() for p in path.parents if p != cache.parent):
+                continue
+            with path.open('rb') as stream:
+                header = stream.read(4096)
+            if pattern.search(header):
+                path.unlink()  # Disposable PBM cache in this local client only.
+                removed += 1
+        return removed
+
     def select(self, role, launch=False) -> dict:
         running = game_processes()
         gateway = self.live('gateway')
@@ -360,6 +384,8 @@ class Environments:
         print(LABELS[role] + ' 已校验，版本 ' + value.get('build_id', 'unknown'))
         if launch:
             root = Path(self.settings['local_client' if role == 'local-test' else 'cloud_client'])
+            if role == 'local-test':
+                print('本地测试：已清理背景缓存 ' + str(self.clear_local_background_cache()) + ' 条')
             subprocess.Popen([str(root / GAME_EXE)], cwd=root)
         return value
 
