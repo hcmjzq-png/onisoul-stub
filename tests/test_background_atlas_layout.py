@@ -1,8 +1,12 @@
 import unittest
-from PIL import Image
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
 from tools.background_atlas_layout import continuous_distant, preserve_grass_bc3, preserve_grass_pixels, join_error, GRASS_BOX
 
 
+@unittest.skipUnless(Image is not None, 'Pillow optional media dependency is required')
 class AtlasLayoutTest(unittest.TestCase):
     def test_cyclic_panels_and_repeating_sky_share_edge_pixels(self):
         image = Image.new('RGBA', (1024, 1024))
