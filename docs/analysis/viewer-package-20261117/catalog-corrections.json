@@ -1,0 +1,139 @@
+{
+  "source_file": "SoulPic.txt",
+  "source_modified": false,
+  "changes": [
+    {
+      "line": 73,
+      "name": "姉帶兼信",
+      "kind": "recover_skipped_row",
+      "raw": "姉帶兼信 237,238,239,240 関智一  アヤノマリナ 0 王の騎士",
+      "semantic_columns_verified": true
+    },
+    {
+      "line": 77,
+      "name": "甘粕景持",
+      "kind": "recover_skipped_row",
+      "raw": "甘粕景持 250,251,252,253 関智一 V8 報上名號  王の騎士",
+      "semantic_columns_verified": true
+    },
+    {
+      "line": 95,
+      "name": "有馬露琪亞",
+      "kind": "recover_skipped_row",
+      "raw": "有馬露琪亞 313,314,315,316 0 田村ゆかり 長浜めぐみ 引導向善 王の騎士",
+      "semantic_columns_verified": false
+    },
+    {
+      "line": 113,
+      "name": "嚴肅的僧兵",
+      "kind": "recover_skipped_row",
+      "raw": "嚴肅的僧兵 373 山崎直輝 0 0 破魔槍擊 王の騎士",
+      "semantic_columns_verified": false
+    },
+    {
+      "line": 134,
+      "name": "帥氣的阿濱",
+      "kind": "recover_skipped_row",
+      "raw": "帥氣的阿濱   434 0 0 0 夜之弦",
+      "semantic_columns_verified": true
+    },
+    {
+      "line": 354,
+      "name": "片倉小十郎",
+      "before": [
+        1024
+      ],
+      "after": [
+        1204
+      ],
+      "proof": "Manual inspection of original nameplate and grade progression; index-anomaly-contact.jpg"
+    },
+    {
+      "line": 366,
+      "name": "可兒才藏吉長",
+      "kind": "recover_skipped_row",
+      "raw": "可兒才藏 吉長 1237 0 0 0 夜之弦",
+      "semantic_columns_verified": false
+    },
+    {
+      "line": 425,
+      "name": "姬莉葉",
+      "kind": "recover_skipped_row",
+      "raw": "姬莉葉1395,1396,1397,1398 0 0 0 夜之弦",
+      "semantic_columns_verified": false
+    },
+    {
+      "line": 580,
+      "name": "杰達",
+      "kind": "recover_skipped_row",
+      "raw": "杰達 1842,1843,1844,1845  0 0 0 偽文學少年",
+      "semantic_columns_verified": true
+    },
+    {
+      "line": 728,
+      "name": "立花誾千代",
+      "before": [
+        2300,
+        2301,
+        2301,
+        2303
+      ],
+      "after": [
+        2300,
+        2301,
+        2302,
+        2303
+      ],
+      "proof": "Manual inspection of original nameplate and grade progression; index-anomaly-contact.jpg"
+    },
+    {
+      "line": 829,
+      "name": "翠絲",
+      "kind": "recover_skipped_row",
+      "raw": "翠絲 2615,2616,2617,2618 0 0 0 夜之弦",
+      "semantic_columns_verified": true
+    },
+    {
+      "line": 830,
+      "name": "多蓉",
+      "kind": "recover_skipped_row",
+      "raw": "多蓉 2619,2620,2621,2622 0 0 0 夜之弦",
+      "semantic_columns_verified": true
+    },
+    {
+      "line": 835,
+      "name": "直江兼續",
+      "kind": "recover_skipped_row",
+      "raw": "直江兼續 2639 0 0 0 0 夜之弦",
+      "semantic_columns_verified": false
+    },
+    {
+      "line": 958,
+      "name": "武將強化祭品盃",
+      "before": [
+        3058
+      ],
+      "after": [
+        3057
+      ],
+      "proof": "Manual inspection of original nameplate and grade progression; index-anomaly-contact.jpg"
+    },
+    {
+      "line": 1053,
+      "name": "三村鶴",
+      "before": [
+        3366,
+        3367,
+        3368,
+        3368
+      ],
+      "after": [
+        3366,
+        3367,
+        3368,
+        3369
+      ],
+      "proof": "Manual inspection of original nameplate and grade progression; index-anomaly-contact.jpg"
+    }
+  ]
+}

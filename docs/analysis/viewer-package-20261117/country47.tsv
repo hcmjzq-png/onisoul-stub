@@ -1,0 +1,48 @@
+country	name	character	viewer_number	source_name	source_line	large_texture_name	existing_complete_pc_preserved	new_large_native_loaded	new_large_pc_sha256	original_pc_sha256	missing_small_texture_count	mapping_evidence
+country01	蛎崎义广	chara1_00001_01	1124	蠣崎義広	329	chara1_00001_01_3_01	False	True	d8307d365cf041563cf918c5d0ee844ef5835f0b3b1c7e4e0c29aee67fb5064d		3	viewer G1 + manual variant review; candidate binding
+country02	南部晴政	chara1_00013_01	2773	南部晴政	870	chara1_00013_01_3_01	False	True	f54d29e09832d757d40b6363eb0a458cde7d99a04fe577f4a257bf3bdf96e9d5		3	viewer G1 + manual variant review; candidate binding
+country03	九户政实	chara1_00040_01	1438	九戶政実	440	chara1_00040_01_3_01	True	False		7335c38a183e59105bab7bfaada69856c2b5a13715d9d39a9b0177bd302f504f	0	existing PC visual comparison
+country04	伊达政宗	chara1_00054_01	2349	伊達政宗	741	chara1_00054_01_3_01	True	False		e53055f3a5f2122ada5826722ae829b3a4ffb3bd5dded7067499b767e0a81d8d	0	existing PC visual comparison
+country05	安东爱季	chara1_00085_01	329	安東愛季	102	chara1_00085_01_3_01	False	True	46688cec64db00a0ae77b10d305b97c472c055b04a58f302a2dca31ebc2ac394		3	viewer G1 + manual variant review; candidate binding
+country06	最上义光	chara1_00093_01	3474	最上義光	1084	chara1_00093_01_3_01	False	True	f3920128b58c7859cf93ba0a63e663848be7caf26974fd1416cb3f08a46eb30a		3	viewer G1 + manual variant review; candidate binding
+country07	芦名盛氏	chara1_00111_01	188	盧名盛世	58	chara1_00111_01_3_01	True	False		8156762d95ae07e5690a0c2ea7b02578809f7667cf362408e8ca363cd6dadbfc	0	existing PC visual comparison
+country08	佐竹义重	chara1_00123_01	1749	佐竹義重	549	chara1_00123_01_3_01	True	False		455e9881d0ab1a27d5b437153ef6d852207df82c99318396979b2b7c650da676	0	existing PC visual comparison
+country09	宇都宫广纲	chara1_00142_01	685	宇都宮廣綱	204	chara1_00142_01_3_01	True	False		585d8a4064c90cb67fad3117ec1ed4eaae86b945023e47d7c51d24e2fbb28f7c	0	existing PC visual comparison
+country10	长野业正	chara1_00159_01	2692	長野業正	849	chara1_00159_01_3_01	True	False		b8c8e9744dd2e7027a450c73de78ee56d8632e59aa5993c4bd8c210b10415299	0	existing PC visual comparison
+country11	成田甲斐	chara1_00172_01	2737	成田甲斐	861	chara1_00172_01_3_01	True	False		5277c112b594819f1d9f84d0ec904dc306ccb39666bb82480c2af4c38d430bbc	0	existing PC visual comparison
+country12	里见义尧	chara1_00193_01	1778	里見義堯	557	chara1_00193_01_3_01	False	True	c73b55a77e3f3bffff0fe181229d8fc6be979cf962dee7e80014969c4f1c74c0		3	viewer G1 + manual variant review; candidate binding
+country13	太田道灌	chara1_00222_01	792	太田道灌	233	chara1_00222_01_3_01	True	False		a28b3a6043805cb5a90dc34639e4f696e2ee90136c7c46ae79a7822ba18cf29a	0	existing PC visual comparison
+country14	北条氏康	chara1_00230_01	3087	北條氏康	970	chara1_00230_01_3_01	False	True	bbff9feb7f8caf3a4c53e7089641f7017099ff53ac2f862351307d3079ebc73f		3	viewer G1 + manual variant review; candidate binding
+country15	上杉谦信	chara1_00260_01	591	上杉謙信	177	chara1_00260_01_3_01	False	True	55bffa398a750b0e8c3062d78d6b8c2d38db12fd3890e86d9fc44349a74dc292		3	viewer G1 + manual variant review; candidate binding
+country16	佐佐成政	chara1_00311_01	1766	佐佐成政	554	chara1_00311_01_3_01	False	True	415139e9ecb32a078ebccd4c0fe8a9e0ed212f07ab82cfd77db456b92ff7c3c6		3	viewer G1 + manual variant review; candidate binding
+country17	前田利家	chara1_00317_01	3247	前田利家	1018	chara1_00317_01_3_01	False	True	71f06206a9c8a18a0992b34540cfe63b275a8c7ecda8716e4f1d20897d8dc63c		3	viewer G1 + manual variant review; candidate binding
+country18	朝仓孝景	chara1_00341_01	137	朝倉孝景	45	chara1_00341_01_3_01	True	False		5bb9e80a3ae6be9f79c9d9949dd67176251894ad3cfd6fbccbccac8c58a153ac	0	existing PC visual comparison
+country19	武田信玄	chara1_00357_01	2221	武田信玄	705	chara1_00357_01_3_01	True	False		19f70def7c19743f8a94b3c89cf2485ed3766cea85f6961978edadd8c32b801b	0	existing PC visual comparison
+country20	真田幸村	chara1_00402_01	1814	真田幸村	569	chara1_00402_01_3_01	False	True	22e847c60246ba51f6e881bf391ada4ff662814846b41a0dc878d58a710043c1		3	viewer G1 + manual variant review; candidate binding
+country21	斋藤归蝶	chara1_00445_01	1658	齊藤歸蝶	524	chara1_00445_01_3_01	False	True	0e5d85962925773a44a53e59894f1d5f731206a95cb00956cc93bea681454245		3	viewer G1 + manual variant review; candidate binding
+country22	今川义元	chara1_00479_01	538	今川義元	163	chara1_00479_01_3_01	False	True	6227965fabe08216ad2c23337091032b06bd187fe5972ded6425566b0f5d1d22		3	viewer G1 + manual variant review; candidate binding
+country23	德川家康	chara1_00614_01	2568	德川家康	814	chara1_00614_01_3_01	True	False		e042e7c35b0025f88e15b1c1bad17401456e5ea365ccbe03a455bb21e1de6791	0	existing PC visual comparison
+country24	九鬼嘉隆	chara1_00673_01	1413	九鬼嘉隆	433	chara1_00673_01_3_01	True	False		3d058714f29778c4371c8a62088d5a28685ee31853cfef8f7220c0c1a9d69d43	0	existing PC visual comparison
+country25	浅井长政	chara1_00689_01	96	淺井長政	34	chara1_00689_01_3_01	True	False		27d88a5bc9e1cc8ff0be6a628d357e3a0000f747d869a5ebf612bbd805d76e02	0	existing PC visual comparison
+country26	足利义辉	chara1_00757_01	180	足利義輝	56	chara1_00757_01_3_01	False	True	59c0be79922448976ce0319dfe32fe354e9a9d67317a5fa167842531803181fe		3	viewer G1 + manual variant review; candidate binding
+country27	本愿寺显如	chara1_00787_01	3163	本願寺顯如	992	chara1_00787_01_3_01	False	True	fedd788f5838784fb7bc41dbe104e0fc7b26bc2b71129c6b1f22822978bbddec		3	viewer G1 + manual variant review; candidate binding
+country28	黑田官兵卫	chara1_00814_01	1484	黑田官兵衛	459	chara1_00814_01_3_01	False	True	a8121c31081a4582a01b417e19d0ef02874d95a5d239b7a94e07f4e68ec4497a		3	viewer G1 + manual variant review; candidate binding
+country29	松永久秀	chara1_00842_01	3326	松永久秀	1040	chara1_00842_01_3_01	True	False		5c2fde9c63746fc1c4dfe3d0fcb6b067957b37095aecf6430a50327b1b1602e9	0	existing PC visual comparison
+country30	杂贺孙市 皋月	chara1_00866_01	1634	雜賀孫市皐月	518	chara1_00866_01_3_01	True	False		aac2fe0d7a6a446598a7d1cf03325bfab0017951125a4cbbb4f988ef7dda100c	0	existing PC visual comparison
+country31	山名佑丰	chara1_00879_01	3662	山名佑豐	1139	chara1_00879_01_3_01	False	True	1c65dd2aaefe21ceae49162e0b827c7af986b98dc731394d93ae7c5103ed19b9		3	viewer G1 + manual variant review; candidate binding
+country32	尼子经久	chara1_00891_01	266	尼子經久	81	chara1_00891_01_3_01	False	True	daade3d5f93cd8660fa7e38cef51916390b0f7b11221efe4ebfdcce0db1f7ab9		3	viewer G1 + manual variant review; candidate binding
+country33	宇喜多直家	chara1_00916_01	649	宇喜多直家	195	chara1_00916_01_3_01	False	True	3b54fcc97239108badeeadb07db1d1120b28ab26db2d9896e16293dd7cf32e80		3	viewer G1 + manual variant review; candidate binding
+country34	毛利元就	chara1_00938_01	3453	毛利元就	1078	chara1_00938_01_3_01	False	True	404ecf4e6bb9287ba654fc1353a855f1df4e3a5a61c4032d3359a045311e0f50		3	viewer G1 + manual variant review; candidate binding
+country35	大内义兴	chara1_00979_01	748	大內義興	222	chara1_00979_01_3_01	True	False		9fc0526e770f6e5f1652d694655418a1b7ec49fdecb1200b54f5c40c222fa989	0	existing PC visual comparison
+country36	三好长庆	chara1_00997_01	3390	三好長慶	1059	chara1_00997_01_3_01	True	False		093a7c1257d6ea4c1740a895b32a75326a35b1d145bc8aa3ea11fa2929342ff6	0	existing PC visual comparison
+country37	十河一存	chara1_01012_01	2156	十河一存	680	chara1_01012_01_3_01	True	False		be284b6b959f200efa384abd6eaa4e963ca8e859ad65f4f15229834ff48d7744	0	existing PC visual comparison
+country38	大祝鹤姬	chara1_01020_01	835	大祝鶴姬	248	chara1_01020_01_3_01	False	True	7dcd4d52a5feb8d4a290f3ffe3609659ce1ec964aea32a6485dd88392c58b1b1		3	viewer G1 + manual variant review; candidate binding
+country39	长宗我部元亲	chara1_01038_01	2453	長宗我部元親	777	chara1_01038_01_3_01	True	False		b037a600c165954f73c44377accd9f100a045bd413cf874c26482264df81ef88	0	existing PC visual comparison
+country40	立花银千代	chara1_01072_01	2289	立花誾千代	725	chara1_01072_01_3_01	False	True	1047b70c37544deb06c4688c2150f59b9a055a0161d9a088582e190d473fe336		3	viewer G1 + manual variant review; candidate binding
+country41	龙造寺隆信	chara1_01084_01	3797	龍造寺隆信	1184	chara1_01084_01_3_01	False	True	a38e1e408e230bdafa76def78641de5a275cbc6bd1ce90bf1809845f69d5a9d6		3	viewer G1 + manual variant review; candidate binding
+country42	有马晴信	chara1_01110_01	309	有馬晴信	94	chara1_01110_01_3_01	False	True	9fda6d73764233d0eafe4817f47d06846ada5a05a13a81ce5a3ad0ea314f0190		3	viewer G1 + manual variant review; candidate binding
+country43	加藤清正	chara1_01124_01	1227	加藤清正	362	chara1_01124_01_3_01	False	True	c77e5054e003446c83e6493351d0a4744d5ca44f7d336ef2c4bec35572f6e6f4		3	viewer G1 + manual variant review; candidate binding
+country44	大友宗麟	chara1_01145_01	818	大友宗麟	243	chara1_01145_01_3_01	False	True	c401151e4f6de9122fb120732905c94e7ee4804a3b8c7febfd239c80f81f83ff		3	viewer G1 + manual variant review; candidate binding
+country45	伊东义佑	chara1_01175_01	497	伊東義祐	152	chara1_01175_01_3_01	False	True	ece0f2e857d39d601b1eef1fabc58c8d777ac196f831308b1263757d7a49dce9		3	viewer G1 + manual variant review; candidate binding
+country46	岛津义弘	chara1_01186_01	1947	島津義弘	610	chara1_01186_01_3_01	False	True	f5b52d251d938fd91e7a53b702e175ed7cf211b1315735a5fd2672c9f4f41568		3	viewer G1 + manual variant review; candidate binding
+country47	尚真王	chara1_01218_01	1993	尚真王	626	chara1_01218_01_3_01	True	False		f63f1f417617b71db940e332f471d3bf2a7e937ffcff5c4ef550de2c00418921	0	existing PC visual comparison

@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-17",
+  "source_archive": {
+    "filename": "鬼武者魂立绘查看器（整合版）.7z",
+    "bytes": 1691367268,
+    "sha256": "d5548ed847ac6b453e8adf54dede932427f13d190787dd4e2a39a1f612fc9495",
+    "header_crc_ok": true,
+    "password_verified": true
+  },
+  "extracted": {
+    "files": 3933,
+    "bytes": 1709929421,
+    "extensions": {
+      ".txt": 5,
+      ".ssk": 1,
+      ".exe": 1,
+      ".dll": 1,
+      ".jpg": 14,
+      ".png": 3911
+    },
+    "crc_failures": [],
+    "size_failures": [],
+    "password_verified_by_extraction": true,
+    "seconds": 43.25
+  },
+  "images": {
+    "images": 3925,
+    "decoded": 3925,
+    "failed": 0,
+    "formats": {
+      "JPEG": 14,
+      "PNG": 3911
+    },
+    "modes": {
+      "RGB": 13,
+      "L": 1,
+      "RGBA": 3911
+    },
+    "dimensions": {
+      "2600x2888": 1,
+      "1000x600": 7,
+      "2300x1200": 2,
+      "580x388": 1,
+      "232x465": 1,
+      "2200x1100": 2,
+      "1024x1024": 3911
+    },
+    "transparent_images": 3911,
+    "translucent_images": 3911,
+    "opaque_images": 14,
+    "blank_alpha_images": 0,
+    "unique_file_hashes": 3925,
+    "unique_pixel_hashes": 3925,
+    "exact_pixel_duplicates": {},
+    "numbered_images": 3911,
+    "number_min": 1,
+    "number_max": 3911,
+    "number_gaps": [],
+    "seconds": 24.859
+  },
+  "conversion": {
+    "total": 3925,
+    "converted": 3925,
+    "failed": 0,
+    "output_bytes": 1370136092,
+    "seconds": 135.484,
+    "original_pc_assets_modified": false,
+    "canonical_game_bindings_verified": false
+  },
+  "native": {
+    "loaded": 3925,
+    "failed": 0,
+    "engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+    "manifest_sha256": "f08b79f7b432653d661b685561a82cf0529cb2ab52a995a8095ac4f3f5a97767",
+    "probe_sha256": "1dc5d07ef63ba268c7edee0f501ad52331111faa9e6bd1ab56479fd5e873e8e5",
+    "seconds": 104.703
+  },
+  "countries": {
+    "countries_with_large_candidate": 47,
+    "existing_complete_pc_preserved": 20,
+    "missing_large_candidates_converted": 27,
+    "missing_original_small_textures": 81,
+    "new_complete_four_texture_bundles": 0,
+    "uploaded_files": 0,
+    "original_pc_assets_modified": false
+  },
+  "country_large_native_loaded": 27,
+  "catalog": {
+    "groups": 1187,
+    "unique_source_names": 893,
+    "images": 3911,
+    "corrected_reference_rows": 4,
+    "recovered_skipped_rows": 11,
+    "rows_with_pc_same_name_candidates": 932,
+    "distinct_names_with_pc_same_name_candidates": 695,
+    "voice_rows": 35,
+    "artist_rows": 27,
+    "note_rows": 28,
+    "all_game_id_bindings_verified": false,
+    "source_files_modified": false
+  },
+  "deployment": {
+    "uploaded": 0,
+    "production_code_changed": false,
+    "original_pc_assets_modified": false,
+    "complete_pc_country_bundles_previously_verified": 20,
+    "new_complete_pc_country_bundles": 0
+  },
+  "scope_limits": [
+    "Synthetic names for the 3925 general image bundles are not original game resource bindings.",
+    "47 G1 large-image selections use viewer slot semantics, manual variant review and 20 existing PC references; original asset IDs were not retained by this package.",
+    "27 canonical large-image names load natively; no 47-country UI / full four-texture bundle acceptance is claimed.",
+    "Image totals are this package scope; not a deduplicated addition to previously converted PS3/Android media."
+  ]
+}
