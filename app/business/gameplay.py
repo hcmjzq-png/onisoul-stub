@@ -29,9 +29,6 @@ from app.tables import TableCatalog, TableError, default_catalog
 StateLoader = Callable[[str], dict[str, Any]]
 StateSaver = Callable[[dict[str, Any], str], None]
 
-# The official reset table has no readable starting draft inventory. Novice
-# mission 2 requires one castle, so this is the minimum task-specific grant.
-STARTER_DRAFT_ID = "draft2000002"
 DEFAULT_COUNTRY = "country01"
 DEFAULT_NAVIGATOR = "navi8000101"
 DEFAULT_COLOR = "color1"
@@ -312,7 +309,8 @@ class GameplayService:
             "occupiedGrids": {},
             "produce": {},
             "items": {},
-            "drafts": {STARTER_DRAFT_ID: 1},
+            # Mission 1 grants the country-specific castle through item04.
+            "drafts": {},
             "missions": self.missions.baseline_states(),
             "missionProgress": {},
             "missionRewards": {},

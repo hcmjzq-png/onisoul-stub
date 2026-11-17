@@ -63,6 +63,7 @@ def run(host: str, port: int) -> None:
         assert api("auth/createPlayer", {"token": token, "username": account, "countryId": "country01",
                                         "navigatorId": "navi8000101", "colorIndex": "color1"})["succeeded"]
         assert api("auth/gameLogin", {"token": token})["succeeded"]
+        assert api("politic/building/getDrafts", {"token": token}) == {}
         params = api("common/getPlayerParams", {"token": token}, "GET")
         assert params["entity"]["username"] == account and params["characterCount"] > 0
         assert params["resources"]["gold"]["amount"] == 5000
@@ -97,13 +98,14 @@ def run(host: str, port: int) -> None:
         assert change("po_mission_00001", "accepted")["succeeded"]
         assert change("po_mission_00001", "finished")["succeeded"]
         assert change("po_mission_00001", "closed")["succeeded"]
+        assert api("politic/building/getDrafts", {"token": token}) == {"draft2000001": {"amount": 1.0}}
         after_reward = api("common/getPlayerParams", {"token": token})["resources"]
         assert change("po_mission_00001", "closed")["reward"] == {}
         assert api("common/getPlayerParams", {"token": token})["resources"] == after_reward
         assert change("po_mission_00002", "accepted")["succeeded"]
         assert change("po_mission_00002", "closed")["succeeded"] is False
         castle = api("politic/task/submitBuildTask", {"token": token,
-            "draftId": "draft2000002", "originCoord": [15, 15]})
+            "draftId": "draft2000001", "originCoord": [15, 15]})
         assert castle["succeeded"]
         castle_id = castle["buildingId"]
         assert api("politic/map/getMapData", {"token": token})["buildings"][castle_id] == castle["building"]

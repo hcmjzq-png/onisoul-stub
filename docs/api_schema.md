@@ -5,6 +5,13 @@
 用于本机启动器核对目标，非原版游戏协议。只在显式配置环境身份时启用；
 不加入 auth、politic 等业务响应。原画布尺寸和资源包保持原有格式。
 
+2026-11-18 追加（**bundle / 本服兼容判定**）：原 `beginning_equipment` 的起始图纸为空，
+主城图纸由任务 1 `clearReward → country_00041_self → reward99_country → item04` 发放。
+移除本服额外初始 `draft2000002`，保留现有物品。任务 4 使用 `totalBuildingCount`，
+原 `StateBuilding.complete` 在排队 `completeTask` 前增加总计数；服务器对显式剩余点击
+为 0 的待确认建筑允许该条件计数，`categoryGradeCount` 仍须完工。这不新增回包字段，
+不提前修改施工状态。来源与本机验收见[图纸与任务 4 排查](analysis/tutorial-build-contract-20261118/README.md)。
+
 2026-11-15 追加：**bundle**，auth/registerName 重名结果必须是布尔 succeeded=false，
 不带 errorReason。原 PC LoginEnvironment.<registerName>.<>m__7EE（RVA 0x2300F8）读取该布尔，
 LoginTransNameEntry.<onResult>.MoveNext（0x20ED88）显示姓名提示并允许重试；
