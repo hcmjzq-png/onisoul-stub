@@ -4,7 +4,7 @@ $settings = Get-Content -LiteralPath $Config -Raw -Encoding UTF8 | ConvertFrom-J
 $pythonw = Join-Path (Split-Path $settings.python) 'pythonw.exe'
 $manager = Join-Path $settings.repo 'tools\game_environments.py'
 if (!(Test-Path -LiteralPath $pythonw) -or !(Test-Path -LiteralPath $manager)) { throw '环境启动程序不完整' }
-$desktop = [Environment]::GetFolderPath('CommonDesktopDirectory')
+$desktop = [Environment]::GetFolderPath('DesktopDirectory')
 $backup = Join-Path (Split-Path $Config) ('desktop-backup-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
 New-Item -ItemType Directory -Path $backup | Out-Null
 $shell = New-Object -ComObject WScript.Shell
@@ -21,7 +21,7 @@ foreach ($profile in @('local-test','cloud')) {
     $link.Description = '校验目标为' + $label + '后启动；请先关闭游戏再切服'
     $link.Save()
 }
-$oldLink = Join-Path $desktop '鬼武者魂.lnk'
+$oldLink = Join-Path ([Environment]::GetFolderPath('CommonDesktopDirectory')) '鬼武者魂.lnk'
 if (Test-Path -LiteralPath $oldLink) { Move-Item -LiteralPath $oldLink -Destination (Join-Path $backup '鬼武者魂.lnk') }
 foreach ($profile in @('local-test','cloud')) {
     $client = if ($profile -eq 'local-test') {$settings.local_client} else {$settings.cloud_client}
