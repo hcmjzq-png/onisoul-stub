@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import argparse
 
-from app import config, db, state
+from app import config, db, state, environment
 from app.business.gameplay import GameplayService
 from app.business.social_services import SocialServices
 from app.business.social_inbox_services import SocialInboxServices
@@ -43,6 +43,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     cfg = config.load_config()
+    environment.identity()  # Refuse an incomplete/mislabelled operator profile.
     host = args.host or cfg.host
     port = args.port or cfg.port
 

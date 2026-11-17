@@ -15,6 +15,37 @@
 
 ## 日常启动
 
+本机已安装双环境管理器时，使用桌面的 **鬼武者魂－本地测试** / **鬼武者魂－云端正式**。
+启动器先核对服务角色和实例 ID；正在运行游戏时禁止切服，不自动转接另一环境。
+本地测试的服务、资源和独立 MySQL 都运行在物理机，断开云端也能测试已有本机资源。
+本机持久测试库和全量回归的临时库仍分别隔离。
+
+| 模式 | 链路 | 数据 |
+| --- | --- | --- |
+| 本地测试 | hosts → 本机 gateway:80 → 本机 proxy:18082 → stub:18081 → MySQL:3307 | 本机独立库 `onisoul_local_test`，不导入云端玩家 |
+| 云端正式 | hosts → 本机 gateway:80 → 云端 proxy:80 → stub:18080 → MySQL | 云端原玩家库 |
+
+启动器私有配置位于 `%LOCALAPPDATA%\OniSoul\environments\profiles.local.json`；
+运行数据、资源、客户端副本和日志位于配置的 runtime_root。原游戏尺寸不变。
+本地密码保存助手使用 19766 和独立 DPAPI 文件；云端沿用 19765。
+原客户端仍可被直接执行，因此应通过桌面入口启动。两个模式共用原域名与 80 端口，
+无法同时打开；不要绕过启动器切换。系统级 Unity 缓存不承诺按客户端目录完全隔离。
+
+首次搭建：使用稳定的独立 Python 安装创建 venv，安装 `requirements-local.txt`；
+用 `tools/mirror_pc_assets.py` 只读复制云端 bundles/tables/web 并校验每个 SHA-256，
+可通过 `--local-cache` 复用本机内容一致的文件，不复制数据库。
+`tools/game_environments.py --action configure --help` 列出私有配置所需参数；
+配置后用 `--action backend` 初始化独立本机库。最后运行：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/install_game_environments.ps1 -Config '<private-profiles.json>'
+```
+
+安装器备份旧桌面入口和 Start-OniSoul.cmd。服务进程按 PID、可执行路径和创建时间管理，
+遇到未知端口占用会停止操作。默认云端使用 HTTP 直连；私有配置 `cloud_transport=ssh`
+可使用本机 SSH 隧道，仍须核对同一云端实例，不作为自动回退。
+本轮范围和验收见 [双环境记录](analysis/game-environments-20261117/README.md)。
+
 给客户端安装云端启动入口后，双击客户端目录里的 `Start-OniSoul.cmd`。
 它读取本机私有连接配置、检查/启动本机 relay 和密码保存助手，再打开原游戏。
 私有配置默认位置：`%LOCALAPPDATA%\OniSoul\connection.local.json`。

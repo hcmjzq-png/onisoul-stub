@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-from app import paths
+from app import paths, environment
 
 CROSSDOMAIN_XML = (
     b'<?xml version="1.0"?>\n'
@@ -99,6 +99,10 @@ class StaticFiles:
             stat = path.stat()
         except OSError:
             return None
+        if path.name == 'app.html' and environment.identity():
+            body = environment.mark_html(path.read_bytes())
+            return StaticResource(content_type='text/html; charset=utf-8',
+                cache_control=NO_STORE, length=len(body), body=body)
         return StaticResource(
             content_type=_content_type(path),
             cache_control=cache_control or _cache_control(path),

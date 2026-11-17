@@ -43,6 +43,8 @@ def run(host: str, port: int) -> None:
             assert "errorReason" not in result, (name, "success rejected by GameRestarter")
         return result
 
+    # A fresh instance creates the login table on its first normal page load.
+    assert request('GET', login_path)[0] == 200
     # Confirm DB access and uniqueness before creating anything through HTTP.
     with db.connection() as con:
         with con.cursor() as cur:
