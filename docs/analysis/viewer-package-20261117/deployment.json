@@ -1,0 +1,25 @@
+{
+  "installed": 27,
+  "countries_verified": 47,
+  "originals_preserved": 20,
+  "pre_existing_files_preserved": 23099,
+  "success": true,
+  "merge_sha": "b023892374ffbc3e39056a71fc59dbd03990dd35",
+  "http_verified": 47,
+  "services_not_restarted": true,
+  "players_unchanged": true,
+  "asset_file_count": 23126,
+  "date": "2026-11-17",
+  "pr": 81,
+  "uploaded_bundles": 27,
+  "runtime_code_changed": false,
+  "client_bundle_changed": false,
+  "sql_changed": false,
+  "user_acceptance": {
+    "country_avatar_and_portrait_reviewed": 47,
+    "result": "normal",
+    "source": "user report after individual review"
+  },
+  "full_new_player_flow_verified": false,
+  "temporary_test_account_cleaned": true
+}
