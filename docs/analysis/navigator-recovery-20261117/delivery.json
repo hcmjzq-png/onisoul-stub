@@ -1,0 +1,17 @@
+{
+  "filename": "navigator-20261117.zip",
+  "bytes": 73244268,
+  "sha256": "05cb03392be6645025f42ef87c2f91b482352d81af3166cdf156ad8d3eb200dd",
+  "image_bundles": 80,
+  "voice_bundles": 833,
+  "total_bundles": 913,
+  "deployed": false,
+  "validation_archive": {
+    "filename": "navigator-20261117-validation.zip",
+    "bytes": 88392470,
+    "sha256": "a45518e847d58ab35349dc3aadd230a9523be564aefebc18f6665164cfe75941",
+    "viewer": "verify.html",
+    "launcher": "Open-Validation.cmd",
+    "server_access": false
+  }
+}
