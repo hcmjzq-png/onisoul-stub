@@ -21,7 +21,7 @@
     "duplicate_start_rejected": true,
     "premature_harvest_rejected": true,
     "duplicate_harvest_and_mission_claim_did_not_replay_reward": true,
-    "unity_acceptance": "user pending",
+    "unity_acceptance": "passed, user confirmed 2026-11-18",
     "temporary_account_cleaned": true
   },
   "deployment": {
@@ -29,5 +29,12 @@
     "cloud_changed": false,
     "existing_saves_unchanged_during_deployment": true
   },
-  "original_unity_acceptance": "user pending"
+  "original_unity_acceptance": "passed, user confirmed 2026-11-18",
+  "user_acceptance": {
+    "status": "passed",
+    "date": "2026-11-18",
+    "environment": "local-test",
+    "scope": "Task 5 free ten-second G1 field production, timer, harvest and mission completion",
+    "source": "User message in this chat: 验收通过"
+  }
 }
