@@ -7,7 +7,8 @@
     "disposable_datadir": true,
     "system_database_used": false,
     "mysql_process_stopped": true,
-    "exit_code": 0
+    "exit_code": 0,
+    "tested_working_tree_committed_as": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860"
   },
   "assets": [
     {
@@ -44,11 +45,24 @@
     }
   ],
   "runtime": {
-    "deployed": false
+    "deployed": true,
+    "environment": "local-test",
+    "code_commit": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860",
+    "build_id": "city-deck-v1-20261118-36eb346",
+    "health_ports": [
+      80,
+      18082,
+      18081
+    ],
+    "previous_code_commit": "807adc7e44ac36d5df0f0caad9b4e7364bc3f7e7",
+    "profile_backup_created": true,
+    "cloud_deployed": false
   },
   "unity": {
-    "deck": "pending restart after asset publication",
-    "kokudaka": "pending code deployment"
+    "before_fix": "Observed blank deck scene and 0 kokudaka in local client",
+    "asset_loading": "16/16 textures loaded offline and through original-domain HTTP in the running PC engine",
+    "after_fix_gameplay": "Not verified; user stopped Computer Use with physical Escape",
+    "next_step": "Re-enter the game after the prior failed resource requests; verify deck UI and kokudaka display"
   },
   "remote": {
     "github_branch_pushed": false,
