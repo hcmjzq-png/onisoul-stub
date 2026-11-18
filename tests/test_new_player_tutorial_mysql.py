@@ -117,10 +117,19 @@ class TutorialMySQLTest(unittest.TestCase):
     def test_shop_whole_set_purchase_and_construction_over_http(self):
         player = state.load(self.pid)
         player["resources"]["gold"]["amount"] = 5000
+        player["missions"]["7"] = "C"
         state.save(player, self.pid)
-        self.assertIn("shop0000041", self.api("politic/shop/getShopItems", category="draft")["shopItems"])
-        bought = self.api("politic/shop/buyShopItem", shopItemId="shop0000041",
-                          storetable="shop_item", index=-1.0, quantity=1)
+        shop = "politic/shop/getShopItems"
+        buy_api = "politic/shop/buyShopItem"
+        order = dict(shopItemId="shop0000041", storetable="shop_item", index=-1.0, quantity=1)
+        self.assertEqual(self.api(shop, category="draft")["shopItems"]["shop0000041"]["state"], "lock")
+        before = state.load(self.pid)
+        self.assertFalse(self.api(buy_api, **order)["succeeded"])
+        self.assertEqual(state.load(self.pid), before)
+        self.assertTrue(self.api("politic/mission/changeState", missionIds=["po_mission_00008"],
+                                 states=["accepted"])["succeeded"])
+        self.assertEqual(self.api(shop, category="draft")["shopItems"]["shop0000041"]["state"], "open")
+        bought = self.api(buy_api, **order)
         self.assertTrue(bought["succeeded"], bought)
         self.assertNotIn("errorReason", bought)
         self.assertEqual(bought["result"]["item04_0200041"], 1)
@@ -128,6 +137,11 @@ class TutorialMySQLTest(unittest.TestCase):
         placed = self.api("politic/task/submitBuildTask", draftId="draft2000041", originCoord=[10, 10])
         self.assertTrue(placed["succeeded"], placed)
         self.assertNotIn("item04_0200041", state.load(self.pid)["items"])
+        self.assertEqual(self.api(shop, category="draft")["shopItems"]["shopFixtureOnBuild"]["state"], "lock")
+        self.assertTrue(self.api("politic/task/completeTasks", buildingIds=[int(placed["buildingId"])])["succeeded"])
+        self.login()
+        self.assertEqual(self.api(shop, category="draft")["shopItems"]["shopFixtureOnBuild"]["state"], "open")
+        self.assertTrue(self.api(buy_api, **{**order, "shopItemId": "shopFixtureOnBuild"})["succeeded"])
 
     def test_unique_name_index_blocks_races_and_direct_create_bypass(self):
         from concurrent.futures import ThreadPoolExecutor

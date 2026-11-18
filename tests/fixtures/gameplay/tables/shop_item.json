@@ -84,6 +84,16 @@
       "discount": false,
       "isInitialSale": true
     },
+    "shopFixtureOnBuild": {
+      "id": "shopFixtureOnBuild",
+      "category": "draft",
+      "isSet": true,
+      "itemIds": ["item04_0200041"],
+      "quantities": [1],
+      "costTypes": ["gold"],
+      "costAmounts": [1000],
+      "isInitialSale": false
+    },
     "shop0700005": {
       "id": "shop0700005",
       "category": "consumable",

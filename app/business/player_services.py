@@ -12,6 +12,7 @@ from typing import Any
 
 from app.business import response_shapes
 from app.business.decks import character_id
+from app.business.shop_availability import shop_item_is_open
 from app.tables import TableError
 
 
@@ -183,9 +184,13 @@ class PlayerServices:
         amounts.setdefault("potion0000102", {"amount": 0.0})
         return {"potions": amounts}
 
-    def supported_goods(self, player: dict, row: dict, index: int = 0) -> dict[str, int]:
-        if not row.get("isInitialSale"):
-            raise ValueError("shop unlock conditions are not implemented")
+    def shop_delivery_tables(self, category: str) -> dict:
+        names = ("item04", "potion", "shop_item_country")
+        if category == "draft":
+            names += ("draft", "building")
+        return {name: self.table(name) for name in names}
+
+    def supported_goods(self, player: dict, row: dict, tables: dict, index: int) -> dict[str, int]:
         if row.get("isNew") or row.get("discount"):
             raise ValueError("discount sale rules are not implemented")
         ids, amounts = row.get("itemIds"), row.get("quantities")
@@ -201,17 +206,21 @@ class PlayerServices:
             if not 0 <= index < len(ids):
                 raise ValueError("shop item index out of range")
             selected = [(ids[index], amounts[index])]
-        drafts = self.table("item04")
-        potion_items = {row.get("itemID") for row in self.table("potion").values()}
+        draft_items = tables["item04"]
+        potion_items = {row.get("itemID") for row in tables["potion"].values()}
         country = player["entity"]["country"]
         result = {}
         for item_id, amount in selected:
             if item_id.startswith("countryshop_"):
-                item_id = (self.table("shop_item_country").get(item_id) or {}).get(country)
-            if not item_id or item_id not in drafts and item_id not in potion_items:
+                item_id = (tables["shop_item_country"].get(item_id) or {}).get(country)
+            if not item_id or item_id not in draft_items and item_id not in potion_items:
                 raise ValueError("shop delivery category is not implemented")
-            if item_id in drafts and (drafts[item_id].get("category") != "draft" or not drafts[item_id].get("enable")):
-                raise ValueError("unsupported draft item")
+            if item_id in draft_items:
+                item = draft_items[item_id]
+                target = tables.get("draft", {}).get(item.get("parameterId"), {})
+                building = tables.get("building", {}).get(target.get("buildType"), {})
+                if item.get("category") != "draft" or not item.get("enable") or building.get("map0") is not True:
+                    raise ValueError("unsupported draft item")
             result[item_id] = result.get(item_id, 0) + integer(amount, 1)
         return result
 
@@ -230,24 +239,29 @@ class PlayerServices:
             raise ValueError("zero-cost shop sale is not enabled")
         return costs
 
+    def shop_quote(self, player: dict, row: dict, tables: dict, index: int, quantity: int) -> tuple[dict, dict]:
+        goods = self.supported_goods(player, row, tables, index)
+        costs = self.costs(row, quantity)
+        if any(kind not in player["resources"] for kind in costs):
+            raise ValueError("unsupported shop currency")
+        return goods, costs
+
     def shop_items(self, player: dict, params: dict) -> dict:
         category = params.get("category")
         if not isinstance(category, str):
             raise ValueError("shop category required")
         rows = self.table("shop_item")
-        # Missing catalogues are asset failures, not an empty successful shop.
-        for name in ("item04", "potion", "shop_item_country"):
-            self.table(name)
+        tables = self.shop_delivery_tables(category)
         result = {}
         for code, row in rows.items():
             if row.get("category") != category:
                 continue
             try:
-                self.supported_goods(player, row)
-                self.costs(row, 1)
+                self.shop_quote(player, row, tables, 0, 1)
             except ValueError:
                 continue
-            result[code] = {"state": "open", "isNewBuyable": False, "discount": False}
+            state = "open" if shop_item_is_open(player, code, row) else "lock"
+            result[code] = {"state": state, "isNewBuyable": False, "discount": False}
         return {"shopItems": result, "recommendedItems": {}}
 
     def buy_item(self, player: dict, params: dict) -> dict:
@@ -261,10 +275,10 @@ class PlayerServices:
         row = self.table("shop_item").get(item_id)
         if not row:
             raise ValueError("shop item not found")
-        goods = self.supported_goods(player, row, index)
-        costs = self.costs(row, quantity)
-        if any(kind not in player["resources"] for kind in costs):
-            raise ValueError("unsupported shop currency")
+        if not shop_item_is_open(player, item_id, row):
+            raise ValueError("shop item is locked")
+        tables = self.shop_delivery_tables(row["category"])
+        goods, costs = self.shop_quote(player, row, tables, index, quantity)
         if any(int(player["resources"][key].get("amount") or 0) < amount for key, amount in costs.items()):
             raise ValueError("insufficient resources")
         for key, amount in costs.items():

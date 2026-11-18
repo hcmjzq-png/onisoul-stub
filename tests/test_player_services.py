@@ -41,6 +41,7 @@ class PlayerServicesTest(unittest.TestCase):
         player = self.saved()
         player["resources"]["gold"]["amount"] = amount
         player["resources"]["credit"]["amount"] = credit
+        player["missions"]["8"] = "C"
         self.save(player)
 
     def buy(self, **changes):
@@ -168,10 +169,13 @@ class PlayerServicesTest(unittest.TestCase):
             self.assertFalse(self.buy(**changes)["succeeded"])
             self.assertEqual(self.saved(), before)
 
-    def test_shop_listing_excludes_unavailable_and_free_items(self):
+    def test_shop_lists_unverified_goods_as_locked_and_excludes_free_items(self):
         draft = self.call("politic/shop/getShopItems", category="draft")
-        self.assertIn("shop0000041", draft["shopItems"])
-        self.assertNotIn("shop0000003", draft["shopItems"])
+        self.assertEqual(draft["shopItems"]["shop0000041"]["state"], "lock")
+        self.fund()
+        draft = self.call("politic/shop/getShopItems", category="draft")
+        self.assertEqual(draft["shopItems"]["shop0000041"]["state"], "open")
+        self.assertEqual(draft["shopItems"]["shop0000003"]["state"], "lock")
         self.assertEqual(draft["recommendedItems"], {})
         self.assertNotIn("shop0900001", self.call("politic/shop/getShopItems", category="consumable")["shopItems"])
 

@@ -21,6 +21,7 @@ from app.business.automatic_production import AutomaticProduction
 from app.business.production_task_actions import ProductionTaskActions
 from app.business.building_evolution import BuildingEvolution
 from app.business.action_points import recover_politic_points, mark_politic_point_spend
+from app.business.shop_availability import SHOP_UNLOCKS, remember_shop_unlocks
 from app import db, sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import (
@@ -394,6 +395,10 @@ class GameplayService:
         for key in ("buildings", "occupiedGrids", "produce", "items", "characters", "decks"):
             if not isinstance(result.get(key), dict):
                 result[key] = {}
+        if result["entity"].get("created") and not isinstance(result.get(SHOP_UNLOCKS), list):
+            definitions = self._table("building")
+            if definitions:
+                remember_shop_unlocks(result, definitions, result["buildings"].values())
         result["counters"]["buildingCount"] = len(result["buildings"])
         result["counters"]["characterCount"] = len(result["characters"])
         self._apply_limits(result)
@@ -1302,6 +1307,7 @@ class GameplayService:
         point["point"] = int(point.get("point") or 0) - point_cost
         if completed:
             self.automatic_production.activate(player, str(instance_id))
+            remember_shop_unlocks(player, {building_type: row}, [record])
         return record
 
     def submit_build_task(
@@ -1433,6 +1439,8 @@ class GameplayService:
                 changed = True
         except ValueError as exc:
             return self._failure("politic/task/completeTasks", str(exc))
+        if completed:
+            remember_shop_unlocks(player, self._table("building"), completed.values())
         if changed:
             self._save(player, player_id)
         return self._success(

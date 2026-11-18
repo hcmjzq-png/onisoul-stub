@@ -190,6 +190,49 @@ class CityTest(unittest.TestCase):
         p["resources"]["gold"]["amount"] = 1000; p["actionPoints"]["politicPoint"]["point"] = 0; self.save(p)
         self.failed_without_writes("politic/building/levelUpBuilding", buildingId=1)
 
+    def test_shop_milestone_is_saved_only_after_qualifying_upgrade(self):
+        load = self.service.catalog.load
+        buildings = load("building")
+        buildings = {**buildings, FIELD: {**buildings[FIELD],
+            "openLevel2": 2, "openShopItemId2": ["shopFixtureOnBuild"]}}
+        player = self.saved()
+        player["missions"]["8"] = "C"
+        player["buildings"]["1"]["exp"] = 120
+        self.save(player)
+        with patch.object(self.service.catalog, "load", side_effect=lambda name: buildings if name == "building" else load(name)):
+            self.failed_without_writes("politic/building/levelUpBuildings", buildingIds=[1, 2])
+            self.assertNotIn("shopFixtureOnBuild", self.saved()["shopUnlockedItems"])
+            result = self.call("politic/building/levelUpBuilding", buildingId=1)
+            self.assertTrue(result["succeeded"], result)
+            self.assertIn("shopFixtureOnBuild", self.saved()["shopUnlockedItems"])
+
+    def test_legacy_shop_unlock_is_backfilled_before_selling_stored_building(self):
+        load = self.service.catalog.load
+        buildings = load("building")
+        buildings = {**buildings, FIELD: {**buildings[FIELD],
+            "openLevel1": 1, "openShopItemId1": ["shopFixtureOnBuild"]}}
+        player = self.saved()
+        player["missions"]["8"] = "C"
+        player.pop("shopUnlockedItems")
+        player["buildings"].pop("2")
+        player["buildings"]["1"].update(deployedMapKey="none", status="waiting")
+        player["occupiedGrids"].clear()
+        self.save(player)
+
+        def catalogue(name):
+            if name == "building":
+                return buildings
+            if name == "itemIdToShopId":
+                return {buildings[FIELD]["itemId"]: {"price": 10}}
+            return load(name)
+
+        with patch.object(self.service.catalog, "load", side_effect=catalogue):
+            sold = self.call("politic/shop/sellBuildings", buildingIds=[1])
+            self.assertTrue(sold["succeeded"], sold)
+            self.assertEqual(self.saved()["buildings"], {})
+            shop = self.call("politic/shop/getShopItems", category="draft")
+            self.assertEqual(shop["shopItems"]["shopFixtureOnBuild"]["state"], "open")
+
     def test_maximum_level_and_missing_table_cannot_consume(self):
         p = self.saved(); p["buildings"]["1"].update(level=10, exp=999999); self.save(p)
         self.failed_without_writes("politic/building/levelUpBuilding", buildingId=1)

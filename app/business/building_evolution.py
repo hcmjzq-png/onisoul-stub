@@ -5,6 +5,7 @@ import copy
 
 from app.business.city_services import CityServices
 from app.business.player_services import integer
+from app.business.shop_availability import remember_shop_unlocks
 
 
 class BuildingEvolution(CityServices):
@@ -67,6 +68,7 @@ class BuildingEvolution(CityServices):
         del player["buildings"][second]
         player["buildings"][str(number)] = result
         player["counters"].update(nextBuildingId=number + 1, buildingCount=len(player["buildings"]))
+        remember_shop_unlocks(player, {target_id: target}, [result])
         return {"buildingId": float(number), "building": copy.deepcopy(result),
                 "buildingCount": float(len(player["buildings"])),
                 "potions": {code: {"amount": float(player["items"][item])} for code, item in potion_items.items()}}

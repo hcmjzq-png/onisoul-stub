@@ -14,6 +14,7 @@ from typing import Any
 
 from app.business.player_services import PlayerServices, integer
 from app.business.production_availability import recipe_available
+from app.business.shop_availability import remember_shop_unlocks
 
 
 def building_id(value: Any) -> str:
@@ -252,6 +253,7 @@ class CityServices(PlayerServices):
             player["resources"][resource]["amount"] -= amount
         for key in active_auto:
             self.service.automatic_production.refresh_level(player, key)
+        remember_shop_unlocks(player, self.table("building"), output.values())
         if mode == "single":
             return {"building": output[keys[0]]}
         if mode == "batch":

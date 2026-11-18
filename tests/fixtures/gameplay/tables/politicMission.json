@@ -243,6 +243,17 @@
       "conditionTargets3": [],
       "conditionCheckers3": [],
       "conditionArgs3": []
+    },
+    "po_mission_00007": {
+      "id": "po_mission_00007",
+      "index": 7
+    },
+    "po_mission_00008": {
+      "id": "po_mission_00008",
+      "index": 8,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": ["po_mission_00007"],
+      "acceptUnlocks": ["unlockShop"]
     }
   }
 }
