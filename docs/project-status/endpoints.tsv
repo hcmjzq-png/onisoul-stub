@@ -145,24 +145,24 @@ S06	deck/transferStoreCharacters	contract_default	app.business.placeholders	plac
 S03	depletionmission/drawDepletionItem	contract_default	app.business.placeholders	placeholder_depletionmission_drawDepletionItem	仅契约默认回包；未实现玩法
 S03	depletionmission/exchangeDepletionPoint	contract_default	app.business.placeholders	placeholder_depletionmission_exchangeDepletionPoint	仅契约默认回包；未实现玩法
 S03	depletionmission/getDepletionMission	contract_default	app.business.placeholders	placeholder_depletionmission_getDepletionMission	仅契约默认回包；未实现玩法
-S09	friend/building/getFriendProductsByBuilding	contract_default	app.business.placeholders	placeholder_friend_building_getFriendProductsByBuilding	仅契约默认回包；未实现玩法
+S09	friend/building/getFriendProductsByBuilding	dedicated_handler	app.business.friend_production	call_friend	城主实际建筑配方与等级门槛
 S09	friend/cancelFriendOffer	dedicated_handler	app.business.social_services	mutate	专用处理器；支持范围和验收见功能台账
 S09	friend/dissolutionFriend	dedicated_handler	app.business.social_services	mutate	专用处理器；支持范围和验收见功能台账
 S09	friend/feedbackFriendOffer	dedicated_handler	app.business.social_services	mutate	专用处理器；支持范围和验收见功能台账
 S09	friend/findFriends	contract_default	app.business.placeholders	placeholder_friend_findFriends	仅契约默认回包；未实现玩法
 S09	friend/findFriendsAndSend	contract_default	app.business.placeholders	placeholder_friend_findFriendsAndSend	仅契约默认回包；未实现玩法
-S09	friend/getFriendMap	contract_default	app.business.placeholders	placeholder_friend_getFriendMap	仅契约默认回包；未实现玩法
-S09	friend/getFriendMapData	contract_default	app.business.placeholders	placeholder_friend_getFriendMapData	仅契约默认回包；未实现玩法
-S09	friend/getFriendMapData2	contract_default	app.business.placeholders	placeholder_friend_getFriendMapData2	仅契约默认回包；未实现玩法
+S09	friend/getFriendMap	dedicated_handler	app.business.friend_production	call_friend	已接受双向好友主城投影；-1 默认主城；不含私人库存
+S09	friend/getFriendMapData	dedicated_handler	app.business.friend_production	call_friend	已接受双向好友主城投影；-1 默认主城；不含私人库存
+S09	friend/getFriendMapData2	dedicated_handler	app.business.friend_production	call_friend	已接受双向好友主城投影；-1 默认主城；不含私人库存
 S09	friend/getFriendProfile	dedicated_handler	app.business.social_services	read	专用处理器；支持范围和验收见功能台账
 S09	friend/getFriends	dedicated_handler	app.business.social_services	read	专用处理器；支持范围和验收见功能台账
 S09	friend/getVisitFriendLogs	contract_default	app.business.placeholders	placeholder_friend_getVisitFriendLogs	仅契约默认回包；未实现玩法
 S09	friend/sendFriendOffer	dedicated_handler	app.business.social_services	mutate	专用处理器；支持范围和验收见功能台账
 S09	friend/setGuestMap	contract_default	app.business.placeholders	placeholder_friend_setGuestMap	仅契约默认回包；未实现玩法
-S09	friend/task/accelerateFriendProduceTask	contract_default	app.business.placeholders	placeholder_friend_task_accelerateFriendProduceTask	仅契约默认回包；未实现玩法
-S09	friend/task/completeFriendTasks	contract_default	app.business.placeholders	placeholder_friend_task_completeFriendTasks	仅契约默认回包；未实现玩法
+S09	friend/task/accelerateFriendProduceTask	dedicated_handler	app.business.friend_production	call_friend	免费按原表缩短时长；独立日次数属兼容策略
+S09	friend/task/completeFriendTasks	dedicated_handler	app.business.friend_production	call_friend	同事务给双方完整同额奖励、消耗一轮且续产；分配/日次数属兼容策略
 S09	friend/updateFriendData	dedicated_handler	app.business.social_services	read	专用处理器；支持范围和验收见功能台账
-S09	friend/visitFriendMap	contract_default	app.business.placeholders	placeholder_friend_visitFriendMap	仅契约默认回包；未实现玩法
+S09	friend/visitFriendMap	dedicated_handler	app.business.friend_production	call_friend	原小姓与奖励菜单字段；不虚构访问赠礼
 S08	giganticRaidBoss/entryGiganticRaidBoss	explicit_failure	app.business.placeholders	placeholder_giganticRaidBoss_entryGiganticRaidBoss	缺少 verified event schedule and admission
 S08	giganticRaidBoss/getGiganticRaidBossBattleResult	explicit_failure	app.business.placeholders	placeholder_giganticRaidBoss_getGiganticRaidBossBattleResult	缺少 committed shared battle result
 S08	giganticRaidBoss/getGiganticRaidBossEventResult	contract_default	app.business.placeholders	placeholder_giganticRaidBoss_getGiganticRaidBossEventResult	仅契约默认回包；未实现玩法
@@ -189,7 +189,7 @@ S11	plugin/setPluginData	contract_default	app.business.placeholders	placeholder_
 S06	politic/boosterPack/buy	contract_default	app.business.placeholders	placeholder_politic_boosterPack_buy	仅契约默认回包；未实现玩法
 S06	politic/boosterPack/buyWithItem	contract_default	app.business.placeholders	placeholder_politic_boosterPack_buyWithItem	仅契约默认回包；未实现玩法
 S06	politic/boosterPack/getRemains	contract_default	app.business.placeholders	placeholder_politic_boosterPack_getRemains	仅契约默认回包；未实现玩法
-S04	politic/building/conflateBuilding	explicit_failure	app.business.placeholders	placeholder_politic_building_conflateBuilding	缺少 building confluence validation and settlement
+S04	politic/building/conflateBuilding	dedicated_handler	app.business.gameplay	guarded	主城 488 条品级关系；原最大等级/材料资格，新实例重置采用兼容策略
 S04	politic/building/deployBuilding	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/building/getBuildCounts	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/building/getBuildingFabrics	contract_default	app.business.placeholders	placeholder_politic_building_getBuildingFabrics	仅契约默认回包；未实现玩法
@@ -197,7 +197,7 @@ S04	politic/building/getBuildingLevels	contract_default	app.business.placeholder
 S04	politic/building/getBuildings	contract_default	app.business.placeholders	placeholder_politic_building_getBuildings	仅契约默认回包；未实现玩法
 S04	politic/building/getDrafts	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S05	politic/building/getHarvestCounts	contract_default	app.business.placeholders	placeholder_politic_building_getHarvestCounts	仅契约默认回包；未实现玩法
-S05	politic/building/getProductsByBuilding	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
+S05	politic/building/getProductsByBuilding	dedicated_handler	app.business.gameplay	guarded	配方查询与开工共享门槛；田地、伐木所和炼铁所的 15 分钟基础配方提前开放
 S04	politic/building/levelUpBuilding	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/building/levelUpBuildingCollectively	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/building/levelUpBuildings	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
@@ -252,7 +252,7 @@ S02	politic/mypage/setSelfIntroduction	dedicated_handler	app.business.gameplay	g
 S03	politic/mypage/takeLesson	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S11	politic/mypage/useEventcode	contract_default	app.business.placeholders	placeholder_politic_mypage_useEventcode	仅契约默认回包；未实现玩法
 S07	politic/shop/buyBackgroundItem	contract_default	app.business.placeholders	placeholder_politic_shop_buyBackgroundItem	仅契约默认回包；未实现玩法
-S07	politic/shop/buyShopItem	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
+S07	politic/shop/buyShopItem	dedicated_handler	app.business.gameplay	guarded	普通商店整套购买接受客户端 index=-1；图纸可接续施工
 S07	politic/shop/buyShopItemCredit	contract_default	app.business.placeholders	placeholder_politic_shop_buyShopItemCredit	仅契约默认回包；未实现玩法
 S07	politic/shop/buyShopItemFromNationalPower	contract_default	app.business.placeholders	placeholder_politic_shop_buyShopItemFromNationalPower	仅契约默认回包；未实现玩法
 S07	politic/shop/getBackgroundItems	contract_default	app.business.placeholders	placeholder_politic_shop_getBackgroundItems	仅契约默认回包；未实现玩法
@@ -265,16 +265,16 @@ S06	politic/support_item/useDopingItem	contract_default	app.business.placeholder
 S06	politic/support_item/useDopingRemoveItem	contract_default	app.business.placeholders	placeholder_politic_support_item_useDopingRemoveItem	仅契约默认回包；未实现玩法
 S06	politic/support_item/usePotions	contract_default	app.business.placeholders	placeholder_politic_support_item_usePotions	仅契约默认回包；未实现玩法
 S06	politic/support_item/useSkillPotion	contract_default	app.business.placeholders	placeholder_politic_support_item_useSkillPotion	仅契约默认回包；未实现玩法
-S05	politic/task/accelerateProduceTask	explicit_failure	app.business.placeholders	placeholder_politic_task_accelerateProduceTask	缺少 production timing and acceleration rules
-S05	politic/task/cancelTasks	explicit_failure	app.business.placeholders	placeholder_politic_task_cancelTasks	缺少 cancellation and refund rules
-S04	politic/task/completeTasks	dedicated_handler	app.business.gameplay	guarded	已支持的建设完成及任务5受限田地收获；不代表通用/批量生产结算
+S05	politic/task/accelerateProduceTask	dedicated_handler	app.business.gameplay	guarded	自己生产按原加速表扣朱魂币、更新 dueTime；不提前发奖
+S05	politic/task/cancelTasks	dedicated_handler	app.business.gameplay	guarded	手动/固定生产取消，无退款；自动计时通过收纳停止
+S04	politic/task/completeTasks	dedicated_handler	app.business.gameplay	guarded	主城全部配方收获、特殊入账、自动续产及有限耐久；抽选/道路/技能叠加有明确兼容策略
 S04	politic/task/getTasksInCurrentMap	contract_default	app.business.placeholders	placeholder_politic_task_getTasksInCurrentMap	仅契约默认回包；未实现玩法
 S04	politic/task/progressBuildTask	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitBuildAndComplete	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitBuildTask	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitBulkBuildAndComplete	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
-S05	politic/task/submitBulkProduceTasks	explicit_failure	app.business.placeholders	placeholder_politic_task_submitBulkProduceTasks	缺少 production settlement and road bonuses
-S05	politic/task/submitProduceTask	dedicated_handler	app.business.gameplay	guarded	受限任务5：已接受任务、无道路/内政编队的G1田地免费10秒配方；其他条件拒绝
+S05	politic/task/submitBulkProduceTasks	dedicated_handler	app.business.gameplay	guarded	已支持资源配方的一键开工；逐栋扣费、整批提交
+S05	politic/task/submitProduceTask	dedicated_handler	app.business.gameplay	guarded	手动入口按建筑/配方校验；任务 5 的 10 秒田地配方仅可成功收获一次
 S04	politic/task/submitSerialBuildAndComplete	dedicated_handler	app.business.gameplay	guarded	专用处理器；支持范围和验收见功能台账
 S04	politic/task/submitSerialBuildTask	contract_default	app.business.placeholders	placeholder_politic_task_submitSerialBuildTask	仅契约默认回包；未实现玩法
 S07	politic/waterborneTrade/call	contract_default	app.business.placeholders	placeholder_politic_waterborneTrade_call	仅契约默认回包；未实现玩法

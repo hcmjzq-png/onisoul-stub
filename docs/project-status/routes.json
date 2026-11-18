@@ -1,14 +1,14 @@
 {
-  "source_commit": "5107ce112e4a2f2a958e3c13f76b140099e9512b",
+  "source_commit": "ceffaef8949dc7bab1949ec25e162dd2ae17a5b0",
   "scope": "route registration only; no API dispatch, DB access or Unity acceptance",
   "registered": 402,
   "runtime_kinds": {
-    "contract_default": 272,
-    "dedicated_handler": 81,
+    "contract_default": 265,
+    "dedicated_handler": 92,
     "disabled": 32,
-    "explicit_failure": 17
+    "explicit_failure": 13
   },
-  "legacy_placeholder_total": 321,
+  "legacy_placeholder_total": 310,
   "systems": {
     "S01": {
       "name": "接入与账号",
@@ -38,8 +38,7 @@
       "registered": 31,
       "runtime_kinds": {
         "contract_default": 13,
-        "dedicated_handler": 17,
-        "explicit_failure": 1
+        "dedicated_handler": 18
       }
     },
     "S05": {
@@ -47,8 +46,7 @@
       "registered": 7,
       "runtime_kinds": {
         "contract_default": 2,
-        "dedicated_handler": 2,
-        "explicit_failure": 3
+        "dedicated_handler": 5
       }
     },
     "S06": {
@@ -79,8 +77,8 @@
       "name": "好友与社区",
       "registered": 44,
       "runtime_kinds": {
-        "contract_default": 35,
-        "dedicated_handler": 9
+        "contract_default": 28,
+        "dedicated_handler": 16
       }
     },
     "S10": {
