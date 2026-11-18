@@ -65,6 +65,22 @@ class CoreGameplayTest(unittest.TestCase):
         self.assertEqual(len(value["defense"]["0"]["ids"]), 2)
         self.assertTrue(value["quest"]["0"]["ids"])
 
+    def test_deck_initialization_has_required_boolean_siege_status_without_changing_formation(self):
+        # Original DeckMake.setDeckCard: (bool)deckTable["isEntrySiege"].
+        # Missing/null/numeric values throw before setQuestPanel and card loading.
+        registry = self.service.register(Registry()).register_contract_defaults()
+        before = self.saved()
+        for params in ({}, {"isEntrySiege": True}):
+            status, body = registry.dispatch("deck/getDecks", params, self.session)
+            self.assertEqual(status, 200)
+            self.assertTrue(body["succeeded"])
+            self.assertIs(body["isEntrySiege"], False)
+            self.assertEqual({key: body[key] for key in (*decks.KINDS, "avatar")}, before["decks"])
+            self.assertEqual(self.saved(), before)
+        self.assertNotIn("isEntrySiege", before["decks"])
+        self.service = self.new_service()
+        self.assertIs(self.service.get_decks({}, self.session)["isEntrySiege"], False)
+
     def test_deck_save_survives_service_reload_and_updates_avatar(self):
         value = self.deck_value()
         value["avatar"]["id"] = 2

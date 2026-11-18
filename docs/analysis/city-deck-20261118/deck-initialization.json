@@ -1,0 +1,85 @@
+{
+  "source": "Original PC DeckMake.setDeckCard",
+  "method_rva": "0x2F7010",
+  "boolean_unbox_rva": "0x2F7320",
+  "source_sha256": "426e2f4577da5fbb5bfbab231a327f1c9c29157fdbeda3f9b89950bf483aa9b4",
+  "before_fix": [
+    {
+      "ready": true
+    },
+    {
+      "deck": "DeckScene"
+    },
+    {
+      "summary": {
+        "deckBonus_": 0,
+        "protectIds_": 0,
+        "protectEquipIds_": 0,
+        "deckData_": 12,
+        "storageInfoHash_": 7,
+        "characters_": {
+          "class": "DeckConflateCards_Character",
+          "StatusList_": 7,
+          "RefinedList_": 7,
+          "statusDic_": 7,
+          "cardDic_": 0
+        },
+        "tacticses_": {
+          "class": "DeckConflateCards_Tactics",
+          "StatusList_": 0,
+          "RefinedList_": 0,
+          "statusDic_": 0,
+          "cardDic_": 0
+        },
+        "equips_": {
+          "class": "DeckConflateCards_Equip",
+          "StatusList_": 0,
+          "RefinedList_": 0,
+          "statusDic_": 0,
+          "cardDic_": 0
+        }
+      }
+    },
+    {
+      "modeState": {
+        "nowModeObj": "DeckMake",
+        "make": "DeckMake",
+        "panelsList_": 8,
+        "atkPanelList_": 1,
+        "polPanelList_": 1,
+        "nowPanel": null,
+        "nowCards": null,
+        "pageObjs": 0
+      }
+    }
+  ],
+  "policy": "Explicit inactive siege status; siege entry remains unmounted. Not a saved deck field.",
+  "checks": {
+    "focused_tests": 47,
+    "full_sql": {
+      "passed": 796,
+      "skipped": 0,
+      "disposable_mysql": true
+    },
+    "runtime": {
+      "deployed": true,
+      "environment": "local-test",
+      "code_commit": "958ec475f6b27f9f67769ae10a0b77a41a9082c9",
+      "build_id": "deck-init-v1-20261118-958ec47",
+      "health_ports": [
+        80,
+        18082,
+        18081
+      ],
+      "previous_code_commit": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860",
+      "profile_backup_created": true,
+      "cloud_deployed": false
+    },
+    "unity_after_fix": "User confirmed generals appeared; after v2 publication/cache reset/restart, cards and portrait switching work",
+    "http": {
+      "passed": true,
+      "evidence": "deck-http.json",
+      "disposable_account_cleaned": true
+    }
+  }
+}

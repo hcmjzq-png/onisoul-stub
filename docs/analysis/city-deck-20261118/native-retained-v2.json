@@ -1,0 +1,393 @@
+{
+  "engine_sha256": "0163227eb92c799322ea26ade936216c766d9d44397d095e8dcec34bbdc00fb5",
+  "driver_sha256": "d8bbd64c119792cb81b2b01df3e22000ea0fbde55d43d3b8f74f2bc80fc73c6f",
+  "adapted_probe_sha256": "a25d3af99ecff6656cd724859e6883449da589b9ea05f05432db08cf9350b0d5",
+  "mode": "Unpublished distinct internal archives, retained together before local publication",
+  "held_simultaneously": 6,
+  "textures_verified": 24,
+  "rechecked_all_while_retained": true,
+  "released_own_bundles": true,
+  "errors": [],
+  "results": [
+    {
+      "id": "chara1_09291_01",
+      "output_sha256": "c4b205d8281418589945b28a1728b2c1b41606240e0c4a241b5991eb3bc81059",
+      "kind": "Texture2D",
+      "loaded": true,
+      "width": 256,
+      "height": 256,
+      "textures": [
+        {
+          "name": "chara1_09291_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09291_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09291_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09291_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09292_01",
+      "output_sha256": "18156fbbdb71c34726424452d00bfe1267ff99b84d6904d82eeb2ab0933086d5",
+      "kind": "Texture2D",
+      "loaded": true,
+      "width": 256,
+      "height": 256,
+      "textures": [
+        {
+          "name": "chara1_09292_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09292_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09292_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09292_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09294_01",
+      "output_sha256": "2f79f00063f2eacc220a6b5369045c64dc8b13fe6bd02f283054b7c88ec019a0",
+      "kind": "Texture2D",
+      "loaded": true,
+      "width": 256,
+      "height": 256,
+      "textures": [
+        {
+          "name": "chara1_09294_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09294_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09294_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09294_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09296_01",
+      "output_sha256": "c9eb916d0668adc7a7d452af21dc9e8022f233e2f198920e47ce9aaaf89ca5ad",
+      "kind": "Texture2D",
+      "loaded": true,
+      "width": 256,
+      "height": 256,
+      "textures": [
+        {
+          "name": "chara1_09296_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09296_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09296_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09296_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09298_01",
+      "output_sha256": "7ab39113de50db6e54e6a70e1b6dd749fe49b99158b17dea9f42f6d7a0259e05",
+      "kind": "Texture2D",
+      "loaded": true,
+      "width": 256,
+      "height": 256,
+      "textures": [
+        {
+          "name": "chara1_09298_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09298_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09298_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09298_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09299_01",
+      "output_sha256": "113d145a2d5c17f17576d83934b2fd5f7f7197efead92f527ec20eca896e1ac1",
+      "kind": "Texture2D",
+      "loaded": true,
+      "width": 256,
+      "height": 256,
+      "textures": [
+        {
+          "name": "chara1_09299_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09299_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09299_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09299_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    }
+  ],
+  "retained": [
+    {
+      "id": "chara1_09291_01",
+      "textures": [
+        {
+          "name": "chara1_09291_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09291_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09291_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09291_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09292_01",
+      "textures": [
+        {
+          "name": "chara1_09292_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09292_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09292_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09292_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09294_01",
+      "textures": [
+        {
+          "name": "chara1_09294_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09294_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09294_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09294_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09296_01",
+      "textures": [
+        {
+          "name": "chara1_09296_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09296_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09296_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09296_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09298_01",
+      "textures": [
+        {
+          "name": "chara1_09298_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09298_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09298_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09298_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    },
+    {
+      "id": "chara1_09299_01",
+      "textures": [
+        {
+          "name": "chara1_09299_01_1_03",
+          "kind": "Texture2D",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "name": "chara1_09299_01_1_01",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 128
+        },
+        {
+          "name": "chara1_09299_01_3_01",
+          "kind": "Texture2D",
+          "width": 1024,
+          "height": 1024
+        },
+        {
+          "name": "chara1_09299_01_1_02",
+          "kind": "Texture2D",
+          "width": 128,
+          "height": 256
+        }
+      ]
+    }
+  ]
+}

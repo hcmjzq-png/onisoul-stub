@@ -1,0 +1,84 @@
+{
+  "environment": "local-test",
+  "published": [
+    {
+      "logical": "chara1_09291_01",
+      "path": "/client/pc/jp/assets/chara/c575d98ec2e53d8adab6c27bd28b398d.unity3d",
+      "sha256": "c4b205d8281418589945b28a1728b2c1b41606240e0c4a241b5991eb3bc81059",
+      "bytes": 117253,
+      "http_status": 200,
+      "action": "replaced_own_prior_file"
+    },
+    {
+      "logical": "chara1_09292_01",
+      "path": "/client/pc/jp/assets/chara/c2cee3a35fee193421ec8cbe58339ec3.unity3d",
+      "sha256": "18156fbbdb71c34726424452d00bfe1267ff99b84d6904d82eeb2ab0933086d5",
+      "bytes": 93331,
+      "http_status": 200,
+      "action": "added"
+    },
+    {
+      "logical": "chara1_09294_01",
+      "path": "/client/pc/jp/assets/chara/1c8778dbcdfd338e464ac201ca59dc3d.unity3d",
+      "sha256": "2f79f00063f2eacc220a6b5369045c64dc8b13fe6bd02f283054b7c88ec019a0",
+      "bytes": 89284,
+      "http_status": 200,
+      "action": "replaced_own_prior_file"
+    },
+    {
+      "logical": "chara1_09296_01",
+      "path": "/client/pc/jp/assets/chara/f22f49b8f98e72d80638d821448d4505.unity3d",
+      "sha256": "c9eb916d0668adc7a7d452af21dc9e8022f233e2f198920e47ce9aaaf89ca5ad",
+      "bytes": 90736,
+      "http_status": 200,
+      "action": "replaced_own_prior_file"
+    },
+    {
+      "logical": "chara1_09298_01",
+      "path": "/client/pc/jp/assets/chara/35e359a61fc0cbb9591ae845dec3164d.unity3d",
+      "sha256": "7ab39113de50db6e54e6a70e1b6dd749fe49b99158b17dea9f42f6d7a0259e05",
+      "bytes": 110230,
+      "http_status": 200,
+      "action": "replaced_own_prior_file"
+    },
+    {
+      "logical": "chara1_09299_01",
+      "path": "/client/pc/jp/assets/chara/6b7709587d28b09b902a2e27654b72b8.unity3d",
+      "sha256": "113d145a2d5c17f17576d83934b2fd5f7f7197efead92f527ec20eca896e1ac1",
+      "bytes": 95570,
+      "http_status": 200,
+      "action": "added"
+    }
+  ],
+  "backup_created": true,
+  "additions": 2,
+  "replaced_own_prior_files": 4,
+  "unrelated_character_files_unchanged": true,
+  "prior_character_file_count": 63,
+  "after_character_file_count": 65,
+  "original_domain_http_full_gets_verified": 6,
+  "game_state_modified": false,
+  "cache": {
+    "environment": "local-test",
+    "matched_asset_count": 6,
+    "targeted_entries_removed": 6,
+    "backed_up": true,
+    "unrelated_cache_entries_removed": 0,
+    "resource_hashes": [
+      "1c8778dbcdfd338e464ac201ca59dc3d",
+      "35e359a61fc0cbb9591ae845dec3164d",
+      "6b7709587d28b09b902a2e27654b72b8",
+      "c2cee3a35fee193421ec8cbe58339ec3",
+      "c575d98ec2e53d8adab6c27bd28b398d",
+      "f22f49b8f98e72d80638d821448d4505"
+    ],
+    "in_memory_assets_reset": false,
+    "old_payloads_present_before_clear": [
+      "chara1_09294_01",
+      "chara1_09296_01"
+    ],
+    "first_user_restart_preceded_clear": true,
+    "all_six_disk_cache_payloads_verified_v2_after_clear": true,
+    "user_restarted_after_clear_and_verified": true
+  }
+}

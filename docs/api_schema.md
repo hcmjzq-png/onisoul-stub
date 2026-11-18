@@ -1,5 +1,10 @@
 # 本批服务端字段来源与边界
 
+2026-11-18 石高：主城完工建筑按原 `grade/kokudakaMin/kokudakaMax` 的 float32 插值汇总，
+在登录读取、完工、升级、进化、收纳及再部署后刷新 `kokudaka`。
+`UserStatus.updateKokudaka` 及建筑 FSM 读取已有根字段；道路批量根仍只包含建筑索引。
+主城汇总是本服兼容策略，技能、支城加成尚未核实，见[石高与编成修复](analysis/city-deck-20261118/README.md)。
+
 2026-11-17：`GET /client/status` 的 `environment`、`instance_id`、`build_id`
 以及 HTTP `X-OniSoul-Environment` / `X-OniSoul-Instance` 是**本服运维自定义**，
 用于本机启动器核对目标，非原版游戏协议。只在显式配置环境身份时启用；
@@ -42,6 +47,7 @@ ILSpy 8.2.0.7535 的本次输出。指纹链见 `analysis/static-review-20261115
 | `common/getShopsale` 的 `openTime/storetable/endTime` | bundle | `PoliticShopSaleManager.onGetShopSaleData`：存在前两键才进入特卖分支。当前无特卖，省略全部特卖字段，使用普通商店分支。 |
 | `common/getCharacters`、`common/getSelectCharacters` 的 `<instanceId> -> character` | bundle | `WebApiClient.cs:1098,1106`、`DeckConflateCards.createStatus`、`QuestDataCache.calcDeckParameter`；裸映射，仅返回当前玩家存档中的武将。选取接口参数是 `ids` 数组。沿用已有武将记录字段，没有发明新武将属性。 |
 | `deck/getDecks` 的 `avatar.id/grade` | bundle | `DeckScene.cs:309` 读取 avatar.id；`WebApiClient.cs:1131` 写入 id/grade；`DeckMake.cs:896` 明确发送显示 grade=1。只允许选择已拥有武将。 |
+| `deck/getDecks.isEntrySiege` | bundle / 本服未参战状态 | `DeckMake.setDeckCard` RVA 0x2F7010，0x2F7320 无条件 unbox bool；缺省或数值 0 会在卡图请求前中断编成初始化。当前未接入城战报名，明确返回 JSON `false`，不写入/覆盖六类编队；客户端参数不能伪造参战状态。未来接入城战时须改用权威报名状态。 |
 | `attack/defense/politic/quest/strategy/siege.<deck>.ids/tactics/equip` | bundle | `DeckMake.cs:80-104,847-892`、`DeckPostPanel.cs:452-540`。数字字符串键，ids 的值为数值实例 ID 或字符串 `empty`；战术/装备 ID 为字符串。保存全部六组，拒绝未拥有的卡和同组重复武将。国战/城战这里只储存编队结构，不实现争议玩法。 |
 | 编队数量及位置 | bundle / 待验证 | attack 数量来自 `playerLevel.attackDeckCount`；politic 数量由 `DeckMake.cs:214-222` 的地图解锁控制；strategy/siege 各两组，defense/quest 各一组。武将位置 0..4 见 `DeckPostPanel.cs:9-21`；attack/defense/quest 末位是主将（相应子类 settingPostObject）。装备/战术仅有空库存，非空槽位会拒绝；它们的完整槽数和玩法仍待验收。 |
 | `inheritPoint/skillCoins/possessionLimits` | bundle / 待验证 | `DeckScene.OnEnable` 直接读取这些字段。容量沿用 `playerLevel.maxCharacter/maxEquip/maxBuilding`；点数从玩家存档读，缺失返回 0，是当前模拟服默认策略，原版初始赠送值待验证。 |
@@ -73,8 +79,14 @@ getCharacters 请求偏好 IgBinary，服务端返回 application/json 仍使用
 本批服务器实现 none/clear_mission 前置检查，以及 missionStatus、totalBuildingCount、
 categoryGradeCount（建筑 grade/level=any）、eq_greater_than 条件。
 真实表的新手 1—4 任务已覆盖；第 4 任务的三种田地是任选一种，不能误写成全部完成。
-未完成建筑不计数；未知条件返回失败，不发奖。批量请求中任何一项不合法都不保存。
+建筑完成时序按[任务 4 记录](analysis/tutorial-build-contract-20261118/README.md)区分：
+totalBuildingCount 接受服务端明确剩余点击数为 0 的待确认建筑；categoryGradeCount 仍要求完工。
+未知条件返回失败，不发奖。批量请求中任何一项不合法都不保存。
 客户端可合并状态更新，所以接受 accepted→closed，但仍检查真实条件。
+**bundle**：`PoliticMissionProgressStatus.cs:305-343` 的 phaseOpened 对提前达标的非手动任务
+直接请求 opened→finished，不发送 accepted。服务端统一兼容该分支，仍检查前置与完成条件，
+不允许 locked→finished 或 opened→closed；自接受条件不生成虚构的 accepted。
+来源、精炼炉复现及其他任务回归见[任务状态转换](analysis/mission-state-transitions-20261118/README.md)。
 
 `missionChecks` 是仅服务端使用的完成组记录，不回传为协议字段。旧存档中已 finished
 但没有此记录的自接受教学任务允许继续领取；建筑条件仍必须重新验证。
@@ -151,7 +163,7 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | 库存 deployedMapKey="none"；`deployBuilding.buildingId/building/autoProducings` | bundle | PoliticBuildingParameter.cs:284-291、PoliticMap.cs:278-287、PoliticBuilding.cs:842-895。只接入空闲普通建筑，不接自动生产/道路移除。 |
 | `levelUpBuilding.building` / `levelUpBuildings.output_buildings` | bundle | PoliticBuilding.cs:931-951、PoliticFSMBatchUpgrade.cs:77-111、PluginRunner_LevelUp.cs:46-69。建筑字段沿用原持久记录；缺经验/成本/PP 或非空闲失败。 |
 | `levelUpBuildingCollectively.resultBuildings/totalUsedPoint/restResources.<resource>.amount` | bundle | PoliticFSMProduct.cs:1086-1124；PoliticBuilding.cs:2258-2332。原 amount 在 restResources 内，非根字段。逐级扣经验与费用，未发放经验。 |
-| 城市回包 kokudaka | 待验证 | 单体贡献 helper 可见于 BuildingsTableAccessor.cs:637，但全局汇总/加成尚未核实。本批新入口省略可选字段，保留原存档值；UserStatus.cs:1820-1830 容许缺省。 |
+| 城市回包 kokudaka | bundle / 本服兼容汇总 | 单体插值来自 BuildingsTableAccessor.cs:617-642；主城已完工建筑基础值汇总，更新旧缓存。建设/完工、收纳/再部署、升级/进化回包沿用原消费者读取的可选根字段。道路批量保留数字索引形状。技能和支城加成尚未核实；见 2026-11-18 石高记录。 |
 | `submitProduceTask.dueTime/now` | bundle | StateManualProduce.cs:51-66 → PoliticBuildingParameter.cs:172-182；2026-11-15 当时仅修契约。现已接入顶部 2026-11-18 所述受限任务 5 田地模式。 |
 | `submitBulkProduceTasks.producings.<id>.productId/createdTime/dueTime` | bundle | PoliticFSMCollectiveProduce.cs:98-125 → PoliticBuildingParameter.cs:191-199；仅修契约。收获时同名 producings 另有 reward/building/collaborator。 |
 

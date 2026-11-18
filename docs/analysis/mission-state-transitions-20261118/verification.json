@@ -1,0 +1,53 @@
+{
+  "fixed_code_commit": "807adc7e44ac36d5df0f0caad9b4e7364bc3f7e7",
+  "sql": {
+    "exit_code": 0,
+    "mysql_version": "8.0.46",
+    "seconds": 75.76,
+    "test_port": 33365,
+    "disposable_datadir": true,
+    "system_database_used": false,
+    "mysql_process_stopped": true,
+    "test_count": 789,
+    "skipped": 0,
+    "source_note": "working tree code subsequently committed as fixed_code_commit"
+  },
+  "http": {
+    "entry": "client hosts loopback -> gateway80 -> proxy18082 -> stub18081",
+    "build_id": "mission-transitions-v1-20261118-807adc7",
+    "checks": [
+      "temporary player created through proxy80",
+      "opened before building",
+      "missing refinery rejected",
+      "failed finish did not write state",
+      "refinery draft consumed and building placed",
+      "refinery construction completed",
+      "opened cannot claim reward directly",
+      "failed claim did not write state",
+      "relogin resumes existing player",
+      "opened restored after relogin",
+      "opened directly finishes without accepted RPC",
+      "finish does not grant reward",
+      "repeated finish does not grant reward",
+      "original mission reward granted once",
+      "closed summary restored after relogin",
+      "duplicate claim is empty",
+      "duplicate claim preserves reward balances and building",
+      "temporary account removed; existing player snapshots unchanged"
+    ],
+    "existing_players_unchanged": true,
+    "temporary_account_cleaned": true,
+    "user_save_migrated": false
+  },
+  "saved_state_copy": [
+    {
+      "http": 200,
+      "succeeded": true,
+      "reward": {},
+      "saved_copy": "F",
+      "database_written": false
+    }
+  ],
+  "original_client_after_fix": "pending",
+  "cloud_deployed": false
+}

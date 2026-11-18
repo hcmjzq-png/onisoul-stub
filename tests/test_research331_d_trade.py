@@ -29,7 +29,7 @@ class ErrantryTest(unittest.TestCase):
         player = self.saved()
         card = next(iter(player['characters']))
         player['decks'] = {'politic': {'0': {'ids': {'0': float(card)}, 'tactics': {}, 'equip': {}}}}
-        player['buildings']['1'] = dict(buildingTypeId='building200_000_01_01_1_1', deployedMapKey='map001', status='waiting')
+        player['buildings']['1'] = dict(buildingTypeId='building200_000_01_01_1_1', level=1, deployedMapKey='map001', status='waiting')
         player['resources']['gold']['amount'] = 5000
         player['actionPoints']['politicPoint']['point'] = 25
         player['souls'] = {'purple': 0}  # Explicit isolated test balance.

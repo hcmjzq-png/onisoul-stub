@@ -1,0 +1,42 @@
+{
+  "source": "original PC TextAssets; subset keys copied without changes",
+  "tables": {
+    "politicMission": {
+      "sha256": "1f8b764ee8d9f078d4fb4250f91d22ec055570162239b4be8613aa3c9e75863b",
+      "rows": [
+        "po_mission_00005",
+        "po_mission_00006",
+        "po_mission_00007",
+        "po_mission_00008",
+        "po_mission_00009"
+      ]
+    },
+    "building": {
+      "sha256": "2c4313e75c39959de61c64e016874696bac66703272bb5ece81a2e78bb2cdefe",
+      "rows": [
+        "building200_036_01_01_1_1",
+        "building200_036_02_01_1_1",
+        "building200_036_03_01_1_1",
+        "building200_039_01_01_1_1",
+        "building200_039_02_01_1_1",
+        "building200_039_03_01_1_1",
+        "building200_040_01_01_1_1",
+        "building200_040_02_01_1_1",
+        "building200_040_03_01_1_1",
+        "building200_051_01_01_1_1"
+      ]
+    },
+    "draft": {
+      "sha256": "d92f775087b21acdbbaac789471687808dc08b159907783bc4ea8f771bf0a1c7",
+      "rows": [
+        "draft2000040"
+      ]
+    },
+    "reward01_politic": {
+      "sha256": "ba1c4d8ff335af146b020924bf7b9c6e51436ccd90496dc1e30afc9e28cfc525",
+      "rows": [
+        "reward01_04_00009_01"
+      ]
+    }
+  }
+}

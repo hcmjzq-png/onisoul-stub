@@ -31,6 +31,7 @@ from app.business.registry import Registry
 from app.business.player_services import PlayerServices, integer
 from app.business.progression import ProgressionServices, level_cap
 from app.business.city_services import CityServices
+from app.business.city_kokudaka import KokudakaError, main_city_kokudaka
 from app.business.city_production_services import CityProductionServices
 from app.business.card_growth_services import CardGrowthServices
 from app.business.account_progress_services import AccountProgressServices
@@ -204,6 +205,8 @@ class GameplayService:
                     return handler(params, session)
                 except state.StateConflictError:
                     return self._failure(api, "state changed concurrently; retry")
+                except KokudakaError as exc:
+                    return self._failure(api, str(exc))
 
         return guarded
 
@@ -291,9 +294,14 @@ class GameplayService:
         return self.production_batch.call(api, self.production_batch.start, params, session)
 
     def _save(self, player: dict[str, Any], player_id: str) -> None:
+        self._refresh_kokudaka(player)
         if player.get("entity", {}).get("created"):
             mark_politic_point_spend(player, int(_now()))
         self.save_state(player, player_id)
+
+    def _refresh_kokudaka(self, player: dict[str, Any]) -> int:
+        player["kokudaka"] = main_city_kokudaka(player, self._table("building"))
+        return player["kokudaka"]
 
     def _level_row(self, level: int = 1) -> dict[str, Any]:
         rows = self._table("playerLevel")
@@ -409,6 +417,7 @@ class GameplayService:
             result, self._level_row(int(result["entity"].get("level") or 1)),
             self._table("beginning_equipment").get(country) or {}, self._table("item01"),
         )
+        self._refresh_kokudaka(result)
         return result
 
     def _apply_limits(self, player: dict[str, Any]) -> None:
@@ -843,6 +852,9 @@ class GameplayService:
         payload = _deep(player["decks"])
         payload.update({"inheritPoint": float(player.get("inheritPoint") or 0),
                         "skillCoins": float(player.get("skillCoins") or 0),
+                        # DeckMake.setDeckCard unboxes this unconditionally.
+                        # Siege entry is not mounted; the local server has no active entry.
+                        "isEntrySiege": False,
                         "possessionLimits": self._possession_limits(player)})
         return response_shapes.success(api, payload)
 
@@ -1354,6 +1366,7 @@ class GameplayService:
                 "buildingId": str(record["instanceId"]),
                 "building": _deep(record),
                 "buildingCount": float(len(player["buildings"])),
+                "kokudaka": float(player["kokudaka"]),
                 "autoProducings": {str(record["instanceId"]): _deep(player["produce"][str(record["instanceId"])])}
                     if str(record["instanceId"]) in player["produce"] else {},
             },

@@ -1,0 +1,958 @@
+{
+  "politicMission": {
+    "po_mission_00005": {
+      "id": "po_mission_00005",
+      "index": 5,
+      "iconFileName": "mission_000002",
+      "iconIndex": 5,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00004"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconProduce",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "resourceCount"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "any"
+      ],
+      "conditionTargets1": [
+        "food"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00005_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_000005_01",
+      "exitScript": "scr1_000005_03"
+    },
+    "po_mission_00006": {
+      "id": "po_mission_00006",
+      "index": 6,
+      "iconFileName": "mission_000002",
+      "iconIndex": 6,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00004"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconConstruct",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "categoryGradeCount"
+      ],
+      "conditionGrades1": [
+        "any"
+      ],
+      "conditionLevels1": [
+        "any"
+      ],
+      "conditionTargets1": [
+        "road"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00006_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_000006_01",
+      "exitScript": "scr1_000006_03"
+    },
+    "po_mission_00007": {
+      "id": "po_mission_00007",
+      "index": 7,
+      "iconFileName": "mission_000002",
+      "iconIndex": 7,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00005",
+        "po_mission_00006"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconConstruct",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "totalBuildingCount",
+        "totalBuildingCount",
+        "totalBuildingCount"
+      ],
+      "conditionGrades1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionLevels1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionTargets1": [
+        "building200_036_01_01_1_1",
+        "building200_036_02_01_1_1",
+        "building200_036_03_01_1_1"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than",
+        "eq_greater_than",
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1,
+        1,
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00007_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_000007_01",
+      "exitScript": "scr1_000007_03"
+    },
+    "po_mission_00008": {
+      "id": "po_mission_00008",
+      "index": 8,
+      "iconFileName": "mission_000002",
+      "iconIndex": 8,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00007"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconConstruct",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "totalBuildingCount",
+        "totalBuildingCount",
+        "totalBuildingCount"
+      ],
+      "conditionGrades1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionLevels1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionTargets1": [
+        "building200_039_01_01_1_1",
+        "building200_039_02_01_1_1",
+        "building200_039_03_01_1_1"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than",
+        "eq_greater_than",
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1,
+        1,
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00008_01",
+      "acceptUnlocks": [
+        "unlockShop"
+      ],
+      "clearUnlocks": [],
+      "enterScript": "scr1_000008_01",
+      "exitScript": "scr1_000008_03"
+    },
+    "po_mission_00009": {
+      "id": "po_mission_00009",
+      "index": 9,
+      "iconFileName": "mission_000002",
+      "iconIndex": 9,
+      "bootCheckFunc": "clear_mission",
+      "bootCheckData": [
+        "po_mission_00008"
+      ],
+      "isAutoStart": "FALSE",
+      "missionType": "clientCheck",
+      "target": "all",
+      "needClearCount": 1,
+      "displayIcon1": "IconConstruct",
+      "conditionCount1": 1,
+      "conditionTypes1": [
+        "totalBuildingCount",
+        "totalBuildingCount",
+        "totalBuildingCount"
+      ],
+      "conditionGrades1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionLevels1": [
+        "any",
+        "any",
+        "any"
+      ],
+      "conditionTargets1": [
+        "building200_040_01_01_1_1",
+        "building200_040_02_01_1_1",
+        "building200_040_03_01_1_1"
+      ],
+      "conditionCheckers1": [
+        "eq_greater_than",
+        "eq_greater_than",
+        "eq_greater_than"
+      ],
+      "conditionArgs1": [
+        1,
+        1,
+        1
+      ],
+      "displayIcon2": "IconConstruct",
+      "conditionCount2": 0,
+      "conditionTypes2": [],
+      "conditionGrades2": [],
+      "conditionLevels2": [],
+      "conditionTargets2": [],
+      "conditionCheckers2": [],
+      "conditionArgs2": [],
+      "displayIcon3": "IconConstruct",
+      "conditionCount3": 0,
+      "conditionTypes3": [],
+      "conditionGrades3": [],
+      "conditionLevels3": [],
+      "conditionTargets3": [],
+      "conditionCheckers3": [],
+      "conditionArgs3": [],
+      "clearReward": "reward01_04_00009_01",
+      "acceptUnlocks": [],
+      "clearUnlocks": [],
+      "enterScript": "scr1_000009_01",
+      "exitScript": "scr1_000009_03"
+    }
+  },
+  "building": {
+    "building200_040_01_01_1_1": {
+      "id": "building200_040_01_01_1_1",
+      "name": "精炼炉",
+      "desc": "铁矿生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_009_01_01_1_1",
+        "product060_010_01_01_1_1",
+        "product060_014_01_01_1_1",
+        "product060_015_01_01_1_1",
+        "product060_024_01_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200040",
+      "waitImages": [
+        "building200_040_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_014",
+      "sortno": 406,
+      "openShopItemId1": [
+        "shop0000034"
+      ],
+      "openLevel1": 7,
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_040_02_01_1_1": {
+      "id": "building200_040_02_01_1_1",
+      "name": "精炼炉",
+      "desc": "铁矿生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 2,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_009_02_01_1_1",
+        "product060_010_02_01_1_1",
+        "product060_014_02_01_1_1",
+        "product060_015_02_01_1_1",
+        "product060_024_02_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200040",
+      "waitImages": [
+        "building200_040_02_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_014",
+      "sortno": 407,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 80,
+      "kokudakaMax": 96,
+      "regularSoldier": 0,
+      "dedication": 3,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_040_03_01_1_1": {
+      "id": "building200_040_03_01_1_1",
+      "name": "精炼炉",
+      "desc": "铁矿生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 3,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_009_03_01_1_1",
+        "product060_010_03_01_1_1",
+        "product060_014_03_01_1_1",
+        "product060_015_03_01_1_1",
+        "product060_024_03_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200040",
+      "waitImages": [
+        "building200_040_03_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_014",
+      "sortno": 408,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 187,
+      "kokudakaMax": 206,
+      "regularSoldier": 0,
+      "dedication": 8,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_051_01_01_1_1": {
+      "id": "building200_051_01_01_1_1",
+      "name": "道路",
+      "desc": "影响周围",
+      "category": "road",
+      "size": [
+        1,
+        1
+      ],
+      "grade": 1,
+      "costTypes": [],
+      "costAmounts": [],
+      "products": [],
+      "produceType": "none",
+      "durability": 10001,
+      "levelUpTypeId": "early",
+      "connectChipType": "road",
+      "itemId": "item05_0200051",
+      "waitImages": [
+        "building200_051_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 600,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 0,
+      "kokudakaMax": 0,
+      "regularSoldier": 0,
+      "dedication": 0,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_036_01_01_1_1": {
+      "id": "building200_036_01_01_1_1",
+      "name": "饭馆",
+      "desc": "店铺",
+      "category": "store",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold",
+        "food"
+      ],
+      "costAmounts": [
+        400,
+        100
+      ],
+      "products": [
+        "building200_036_01_01_1_1"
+      ],
+      "produceType": "single",
+      "durability": 10001,
+      "levelUpTypeId": "product_store",
+      "connectChipType": "none",
+      "itemId": "item05_0200036",
+      "waitImages": [
+        "building200_036_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 418,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 2,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_036_02_01_1_1": {
+      "id": "building200_036_02_01_1_1",
+      "name": "饭馆",
+      "desc": "店铺",
+      "category": "store",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 2,
+      "costTypes": [
+        "gold",
+        "food"
+      ],
+      "costAmounts": [
+        400,
+        100
+      ],
+      "products": [
+        "building200_036_02_01_1_1"
+      ],
+      "produceType": "single",
+      "durability": 10001,
+      "levelUpTypeId": "product_store",
+      "connectChipType": "none",
+      "itemId": "item05_0200036",
+      "waitImages": [
+        "building200_036_02_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 419,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 80,
+      "kokudakaMax": 96,
+      "regularSoldier": 0,
+      "dedication": 5,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_036_03_01_1_1": {
+      "id": "building200_036_03_01_1_1",
+      "name": "饭馆",
+      "desc": "店铺",
+      "category": "store",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 3,
+      "costTypes": [
+        "gold",
+        "food"
+      ],
+      "costAmounts": [
+        400,
+        100
+      ],
+      "products": [
+        "building200_036_03_01_1_1"
+      ],
+      "produceType": "single",
+      "durability": 10001,
+      "levelUpTypeId": "product_store",
+      "connectChipType": "none",
+      "itemId": "item05_0200036",
+      "waitImages": [
+        "building200_036_03_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 420,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 187,
+      "kokudakaMax": 206,
+      "regularSoldier": 0,
+      "dedication": 13,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_039_01_01_1_1": {
+      "id": "building200_039_01_01_1_1",
+      "name": "植林地",
+      "desc": "木材生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_011_01_01_1_1",
+        "product060_012_01_01_1_1",
+        "product060_016_01_01_1_1",
+        "product060_017_01_01_1_1",
+        "product060_025_01_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200039",
+      "waitImages": [
+        "building200_039_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_012",
+      "sortno": 403,
+      "openShopItemId1": [
+        "shop0000040"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": [
+        "shop0000033"
+      ],
+      "openLevel2": 7,
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_039_02_01_1_1": {
+      "id": "building200_039_02_01_1_1",
+      "name": "植林地",
+      "desc": "木材生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 2,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_011_02_01_1_1",
+        "product060_012_02_01_1_1",
+        "product060_016_02_01_1_1",
+        "product060_017_02_01_1_1",
+        "product060_025_02_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200039",
+      "waitImages": [
+        "building200_039_02_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_012",
+      "sortno": 404,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 80,
+      "kokudakaMax": 96,
+      "regularSoldier": 0,
+      "dedication": 3,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_039_03_01_1_1": {
+      "id": "building200_039_03_01_1_1",
+      "name": "植林地",
+      "desc": "木材生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 3,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_011_03_01_1_1",
+        "product060_012_03_01_1_1",
+        "product060_016_03_01_1_1",
+        "product060_017_03_01_1_1",
+        "product060_025_03_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200039",
+      "waitImages": [
+        "building200_039_03_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_012",
+      "sortno": 405,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 187,
+      "kokudakaMax": 206,
+      "regularSoldier": 0,
+      "dedication": 8,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    }
+  },
+  "draft": {
+    "draft2000040": {
+      "id": "draft2000040",
+      "name": "ITEM_MSG_04_0200040_NAME",
+      "desc": "铁矿生产",
+      "buildType": "building200_040_01_01_1_1",
+      "isConsume": true,
+      "progressCount": 0,
+      "immediateBuild": false,
+      "continueBuild": false,
+      "initialAmount": 0
+    }
+  },
+  "reward01_politic": {
+    "reward01_04_00009_01": {
+      "id": "reward01_04_00009_01",
+      "group1": "A",
+      "ratio1min": 1,
+      "ratio1max": 1,
+      "itemId1": "item11_0000101",
+      "count1min": 2000,
+      "count1max": 2000,
+      "group2": "B",
+      "ratio2min": 1,
+      "ratio2max": 1,
+      "itemId2": "item11_0000501",
+      "count2min": 50,
+      "count2max": 50,
+      "group3": "C",
+      "ratio3min": 1,
+      "ratio3max": 1,
+      "itemId3": "item11_0000401",
+      "count3min": 300,
+      "count3max": 300,
+      "group4": "none",
+      "ratio4min": 0,
+      "ratio4max": 0,
+      "itemId4": "none",
+      "count4min": 0,
+      "count4max": 0,
+      "group5": "none",
+      "ratio5min": 0,
+      "ratio5max": 0,
+      "itemId5": "none",
+      "count5min": 0,
+      "count5max": 0,
+      "group6": "none",
+      "ratio6min": 0,
+      "ratio6max": 0,
+      "itemId6": "none",
+      "count6min": 0,
+      "count6max": 0,
+      "group7": "none",
+      "ratio7min": 0,
+      "ratio7max": 0,
+      "itemId7": "none",
+      "count7min": 0,
+      "count7max": 0,
+      "group8": "none",
+      "ratio8min": 0,
+      "ratio8max": 0,
+      "itemId8": "none",
+      "count8min": 0,
+      "count8max": 0,
+      "group9": "none",
+      "ratio9min": 0,
+      "ratio9max": 0,
+      "itemId9": "none",
+      "count9min": 0,
+      "count9max": 0,
+      "group10": "none",
+      "ratio10min": 0,
+      "ratio10max": 0,
+      "itemId10": "none",
+      "count10min": 0,
+      "count10max": 0
+    }
+  }
+}
