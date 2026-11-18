@@ -16,3 +16,4 @@ lesson.json	lesson	fixture
 potion.json	potion	fixture
 shop_item.json	shop_item	fixture
 shop_item_country.json	shop_item_country	fixture
+product.json	product	ProductsTableAccessor

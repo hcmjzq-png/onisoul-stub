@@ -238,6 +238,7 @@ class AccountProgressTrophyTest(unittest.TestCase):
 
     def test_exact_original_reward_and_claim_ledger_persist_after_login(self):
         self.level()
+        self.call('common/getPlayerParams')  # Initialize recovery after synthetic cap change.
         before = self.saved()
         result = self.claim(playerId='other', level=99, reward=99999)
         self.assertTrue(result['succeeded'])

@@ -11,3 +11,15 @@ reward06_trophy.json	reward06_trophy	RewardTableAccessor	original trophy reward 
 skillRefreshG2.json	skillRefreshG2		original G2 refresh candidates; execution rules still unresolved
 skillRefreshG4.json	skillRefreshG4		original G4 refresh candidates; execution rules still unresolved
 skillRefreshG6.json	skillRefreshG6		original G6 refresh candidates; execution rules still unresolved
+item02.json	item02	ItemsTableAccessor	original dynamically named equipment items
+item03.json	item03	ItemsTableAccessor	original dynamically named tactic items
+item05.json	item05	ItemsTableAccessor	original dynamically named building items
+item06.json	item06	ItemsTableAccessor	original dynamically named ticket items
+item07.json	item07	ItemsTableAccessor	original dynamically named consumable items
+item09.json	item09	ItemsTableAccessor	original dynamically named artifact items
+item10.json	item10	ItemsTableAccessor	original dynamically named product items
+item11.json	item11	ItemsTableAccessor	original dynamically named resource and soul parameters
+item12.json	item12	ItemsTableAccessor	original dynamically named navigator items
+item15.json	item15	ItemsTableAccessor	original dynamically named cannon shot items
+item16.json	item16	ItemsTableAccessor	original dynamically named equipment items
+skillMessage.json	message	MessageTableAccessor	original skill descriptions including production percentages; load by filename

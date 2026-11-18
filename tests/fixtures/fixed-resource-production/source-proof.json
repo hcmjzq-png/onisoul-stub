@@ -1,0 +1,638 @@
+{
+  "supported": [
+    {
+      "building": "building200_036_01_01_1_1",
+      "name": "饭馆",
+      "type": "single",
+      "grade": 1,
+      "products": [
+        "building200_036_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_036_02_01_1_1",
+      "name": "饭馆",
+      "type": "single",
+      "grade": 2,
+      "products": [
+        "building200_036_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_036_03_01_1_1",
+      "name": "饭馆",
+      "type": "single",
+      "grade": 3,
+      "products": [
+        "building200_036_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_036_04_01_1_1",
+      "name": "饭馆",
+      "type": "single",
+      "grade": 4,
+      "products": [
+        "building200_036_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_036_05_01_1_1",
+      "name": "饭馆",
+      "type": "single",
+      "grade": 5,
+      "products": [
+        "building200_036_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_037_01_01_1_1",
+      "name": "家具屋",
+      "type": "single",
+      "grade": 1,
+      "products": [
+        "building200_037_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_037_02_01_1_1",
+      "name": "家具屋",
+      "type": "single",
+      "grade": 2,
+      "products": [
+        "building200_037_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_037_03_01_1_1",
+      "name": "家具屋",
+      "type": "single",
+      "grade": 3,
+      "products": [
+        "building200_037_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_037_04_01_1_1",
+      "name": "家具屋",
+      "type": "single",
+      "grade": 4,
+      "products": [
+        "building200_037_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_037_05_01_1_1",
+      "name": "家具屋",
+      "type": "single",
+      "grade": 5,
+      "products": [
+        "building200_037_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_038_01_01_1_1",
+      "name": "五金行",
+      "type": "single",
+      "grade": 1,
+      "products": [
+        "building200_038_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_038_02_01_1_1",
+      "name": "五金行",
+      "type": "single",
+      "grade": 2,
+      "products": [
+        "building200_038_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_038_03_01_1_1",
+      "name": "五金行",
+      "type": "single",
+      "grade": 3,
+      "products": [
+        "building200_038_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_038_04_01_1_1",
+      "name": "五金行",
+      "type": "single",
+      "grade": 4,
+      "products": [
+        "building200_038_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_038_05_01_1_1",
+      "name": "五金行",
+      "type": "single",
+      "grade": 5,
+      "products": [
+        "building200_038_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_039_01_01_1_1",
+      "name": "植林地",
+      "type": "manual",
+      "grade": 1,
+      "products": [
+        "product060_011_01_01_1_1",
+        "product060_012_01_01_1_1",
+        "product060_016_01_01_1_1",
+        "product060_017_01_01_1_1",
+        "product060_025_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_039_02_01_1_1",
+      "name": "植林地",
+      "type": "manual",
+      "grade": 2,
+      "products": [
+        "product060_011_02_01_1_1",
+        "product060_012_02_01_1_1",
+        "product060_016_02_01_1_1",
+        "product060_017_02_01_1_1",
+        "product060_025_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_039_03_01_1_1",
+      "name": "植林地",
+      "type": "manual",
+      "grade": 3,
+      "products": [
+        "product060_011_03_01_1_1",
+        "product060_012_03_01_1_1",
+        "product060_016_03_01_1_1",
+        "product060_017_03_01_1_1",
+        "product060_025_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_039_04_01_1_1",
+      "name": "植林地",
+      "type": "manual",
+      "grade": 4,
+      "products": [
+        "product060_011_04_01_1_1",
+        "product060_012_04_01_1_1",
+        "product060_016_04_01_1_1",
+        "product060_017_04_01_1_1",
+        "product060_025_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_039_05_01_1_1",
+      "name": "植林地",
+      "type": "manual",
+      "grade": 5,
+      "products": [
+        "product060_011_05_01_1_1",
+        "product060_012_05_01_1_1",
+        "product060_016_05_01_1_1",
+        "product060_017_05_01_1_1",
+        "product060_025_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_040_01_01_1_1",
+      "name": "精炼炉",
+      "type": "manual",
+      "grade": 1,
+      "products": [
+        "product060_009_01_01_1_1",
+        "product060_010_01_01_1_1",
+        "product060_014_01_01_1_1",
+        "product060_015_01_01_1_1",
+        "product060_024_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_040_02_01_1_1",
+      "name": "精炼炉",
+      "type": "manual",
+      "grade": 2,
+      "products": [
+        "product060_009_02_01_1_1",
+        "product060_010_02_01_1_1",
+        "product060_014_02_01_1_1",
+        "product060_015_02_01_1_1",
+        "product060_024_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_040_03_01_1_1",
+      "name": "精炼炉",
+      "type": "manual",
+      "grade": 3,
+      "products": [
+        "product060_009_03_01_1_1",
+        "product060_010_03_01_1_1",
+        "product060_014_03_01_1_1",
+        "product060_015_03_01_1_1",
+        "product060_024_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_040_04_01_1_1",
+      "name": "精炼炉",
+      "type": "manual",
+      "grade": 4,
+      "products": [
+        "product060_009_04_01_1_1",
+        "product060_010_04_01_1_1",
+        "product060_014_04_01_1_1",
+        "product060_015_04_01_1_1",
+        "product060_024_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_040_05_01_1_1",
+      "name": "精炼炉",
+      "type": "manual",
+      "grade": 5,
+      "products": [
+        "product060_009_05_01_1_1",
+        "product060_010_05_01_1_1",
+        "product060_014_05_01_1_1",
+        "product060_015_05_01_1_1",
+        "product060_024_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_041_01_01_1_1",
+      "name": "田地",
+      "type": "manual",
+      "grade": 1,
+      "products": [
+        "product060_023_01_01_1_1",
+        "product060_001_01_01_1_1",
+        "product060_018_01_01_1_1",
+        "product060_007_01_01_1_1",
+        "product060_019_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_041_02_01_1_1",
+      "name": "田地",
+      "type": "manual",
+      "grade": 2,
+      "products": [
+        "product060_023_02_01_1_1",
+        "product060_001_02_01_1_1",
+        "product060_018_02_01_1_1",
+        "product060_007_02_01_1_1",
+        "product060_019_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_041_03_01_1_1",
+      "name": "田地",
+      "type": "manual",
+      "grade": 3,
+      "products": [
+        "product060_023_03_01_1_1",
+        "product060_001_03_01_1_1",
+        "product060_018_03_01_1_1",
+        "product060_007_03_01_1_1",
+        "product060_019_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_041_04_01_1_1",
+      "name": "田地",
+      "type": "manual",
+      "grade": 4,
+      "products": [
+        "product060_023_04_01_1_1",
+        "product060_001_04_01_1_1",
+        "product060_018_04_01_1_1",
+        "product060_007_04_01_1_1",
+        "product060_019_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_041_05_01_1_1",
+      "name": "田地",
+      "type": "manual",
+      "grade": 5,
+      "products": [
+        "product060_023_05_01_1_1",
+        "product060_001_05_01_1_1",
+        "product060_018_05_01_1_1",
+        "product060_007_05_01_1_1",
+        "product060_019_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_042_01_01_1_1",
+      "name": "市场",
+      "type": "manual",
+      "grade": 1,
+      "products": [
+        "product060_020_01_01_1_1",
+        "product060_020_01_02_1_1",
+        "product060_020_01_03_1_1",
+        "product060_021_01_01_1_1",
+        "product060_021_01_02_1_1",
+        "product060_021_01_03_1_1",
+        "product060_022_01_01_1_1",
+        "product060_022_01_02_1_1",
+        "product060_022_01_03_1_1",
+        "product060_020_01_04_1_1",
+        "product060_021_01_04_1_1",
+        "product060_022_01_04_1_1"
+      ]
+    },
+    {
+      "building": "building200_042_02_01_1_1",
+      "name": "市场",
+      "type": "manual",
+      "grade": 2,
+      "products": [
+        "product060_020_02_01_1_1",
+        "product060_020_02_02_1_1",
+        "product060_020_02_03_1_1",
+        "product060_021_02_01_1_1",
+        "product060_021_02_02_1_1",
+        "product060_021_02_03_1_1",
+        "product060_022_02_01_1_1",
+        "product060_022_02_02_1_1",
+        "product060_022_02_03_1_1",
+        "product060_020_02_04_1_1",
+        "product060_021_02_04_1_1",
+        "product060_022_02_04_1_1"
+      ]
+    },
+    {
+      "building": "building200_042_03_01_1_1",
+      "name": "市场",
+      "type": "manual",
+      "grade": 3,
+      "products": [
+        "product060_020_03_01_1_1",
+        "product060_020_03_02_1_1",
+        "product060_020_03_03_1_1",
+        "product060_021_03_01_1_1",
+        "product060_021_03_02_1_1",
+        "product060_021_03_03_1_1",
+        "product060_022_03_01_1_1",
+        "product060_022_03_02_1_1",
+        "product060_022_03_03_1_1",
+        "product060_020_03_04_1_1",
+        "product060_021_03_04_1_1",
+        "product060_022_03_04_1_1"
+      ]
+    },
+    {
+      "building": "building200_042_04_01_1_1",
+      "name": "市场",
+      "type": "manual",
+      "grade": 4,
+      "products": [
+        "product060_020_04_01_1_1",
+        "product060_020_04_02_1_1",
+        "product060_020_04_03_1_1",
+        "product060_021_04_01_1_1",
+        "product060_021_04_02_1_1",
+        "product060_021_04_03_1_1",
+        "product060_022_04_01_1_1",
+        "product060_022_04_02_1_1",
+        "product060_022_04_03_1_1",
+        "product060_020_04_04_1_1",
+        "product060_021_04_04_1_1",
+        "product060_022_04_04_1_1"
+      ]
+    },
+    {
+      "building": "building200_042_05_01_1_1",
+      "name": "市场",
+      "type": "manual",
+      "grade": 5,
+      "products": [
+        "product060_020_05_01_1_1",
+        "product060_020_05_02_1_1",
+        "product060_020_05_03_1_1",
+        "product060_021_05_01_1_1",
+        "product060_021_05_02_1_1",
+        "product060_021_05_03_1_1",
+        "product060_022_05_01_1_1",
+        "product060_022_05_02_1_1",
+        "product060_022_05_03_1_1",
+        "product060_020_05_04_1_1",
+        "product060_021_05_04_1_1",
+        "product060_022_05_04_1_1"
+      ]
+    },
+    {
+      "building": "building200_731_01_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 1,
+      "products": [
+        "product060_035_01_01_1_1",
+        "product060_036_01_01_1_1",
+        "product060_037_01_01_1_1",
+        "product060_038_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_731_02_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 2,
+      "products": [
+        "product060_035_02_01_1_1",
+        "product060_036_02_01_1_1",
+        "product060_037_02_01_1_1",
+        "product060_038_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_731_03_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 3,
+      "products": [
+        "product060_035_03_01_1_1",
+        "product060_036_03_01_1_1",
+        "product060_037_03_01_1_1",
+        "product060_038_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_731_04_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 4,
+      "products": [
+        "product060_035_04_01_1_1",
+        "product060_036_04_01_1_1",
+        "product060_037_04_01_1_1",
+        "product060_038_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_731_05_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 5,
+      "products": [
+        "product060_035_05_01_1_1",
+        "product060_036_05_01_1_1",
+        "product060_037_05_01_1_1",
+        "product060_038_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_735_01_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 1,
+      "products": [
+        "product060_039_01_01_1_1",
+        "product060_040_01_01_1_1",
+        "product060_041_01_01_1_1",
+        "product060_042_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_735_02_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 2,
+      "products": [
+        "product060_039_02_01_1_1",
+        "product060_040_02_01_1_1",
+        "product060_041_02_01_1_1",
+        "product060_042_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_735_03_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 3,
+      "products": [
+        "product060_039_03_01_1_1",
+        "product060_040_03_01_1_1",
+        "product060_041_03_01_1_1",
+        "product060_042_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_735_04_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 4,
+      "products": [
+        "product060_039_04_01_1_1",
+        "product060_040_04_01_1_1",
+        "product060_041_04_01_1_1",
+        "product060_042_04_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_735_05_01_1_1",
+      "name": "大植林地",
+      "type": "manual",
+      "grade": 5,
+      "products": [
+        "product060_039_05_01_1_1",
+        "product060_040_05_01_1_1",
+        "product060_041_05_01_1_1",
+        "product060_042_05_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_747_01_01_1_1",
+      "name": "制铁所",
+      "type": "manual",
+      "grade": 1,
+      "products": [
+        "product060_011_01_01_1_1",
+        "product060_012_01_01_1_1",
+        "product060_016_01_01_1_1",
+        "product060_017_01_01_1_1",
+        "product060_025_01_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_747_02_01_1_1",
+      "name": "制铁所",
+      "type": "manual",
+      "grade": 2,
+      "products": [
+        "product060_011_02_01_1_1",
+        "product060_012_02_01_1_1",
+        "product060_016_02_01_1_1",
+        "product060_017_02_01_1_1",
+        "product060_025_02_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_747_03_01_1_1",
+      "name": "制铁所",
+      "type": "manual",
+      "grade": 3,
+      "products": [
+        "product060_011_03_01_1_1",
+        "product060_012_03_01_1_1",
+        "product060_016_03_01_1_1",
+        "product060_017_03_01_1_1",
+        "product060_025_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_747_04_01_1_1",
+      "name": "制铁所",
+      "type": "manual",
+      "grade": 4,
+      "products": [
+        "product060_011_03_01_1_1",
+        "product060_012_03_01_1_1",
+        "product060_016_03_01_1_1",
+        "product060_017_03_01_1_1",
+        "product060_025_03_01_1_1"
+      ]
+    },
+    {
+      "building": "building200_747_05_01_1_1",
+      "name": "制铁所",
+      "type": "manual",
+      "grade": 5,
+      "products": [
+        "product060_011_03_01_1_1",
+        "product060_012_03_01_1_1",
+        "product060_016_03_01_1_1",
+        "product060_017_03_01_1_1",
+        "product060_025_03_01_1_1"
+      ]
+    }
+  ],
+  "excluded": {
+    "auto": {
+      "building": "building200_000_01_01_1_1",
+      "product": "building200_000_01_01_1_1"
+    },
+    "selection": {
+      "building": "building200_022_01_01_1_1",
+      "product": "building200_022_01_01_1_1"
+    },
+    "missing_reward": {
+      "building": "building200_030_03_01_1_1",
+      "product": "building200_030_03_01_1_1"
+    },
+    "finite": {
+      "building": "building200_048_01_01_1_1",
+      "product": "building200_048_01_01_1_1"
+    }
+  },
+  "basis": "Selected test metadata. Presentation fields are omitted and skill message examples are synthetic."
+}

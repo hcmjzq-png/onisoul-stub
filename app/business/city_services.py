@@ -13,6 +13,7 @@ import struct
 from typing import Any
 
 from app.business.player_services import PlayerServices, integer
+from app.business.production_availability import recipe_available
 
 
 def building_id(value: Any) -> str:
@@ -54,13 +55,13 @@ class CityServices(PlayerServices):
             registry.register(api, self.service._guard(api, partial(self.call, api, action)))
 
     def products(self, player: dict, params: dict) -> dict:
-        """Original UI consumes keys only; unlocking uses the player's level."""
+        """Return the recipes currently available to start."""
         _, _, building = self.owned(player, params.get("buildingId"))
         codes = building.get("products")
         if not isinstance(codes, list):
             raise ValueError("stub has no assets: building products list missing")
         catalogue = self.table("product")
-        level = integer(player["entity"]["level"], 1)
+        missions = self.service.missions.rows()
         products = {}
         for code in codes:
             if code == "none":
@@ -68,11 +69,7 @@ class CityServices(PlayerServices):
             if not isinstance(code, str) or not isinstance(catalogue.get(code), dict):
                 raise ValueError("stub has no assets: referenced product row missing")
             row = catalogue[code]
-            # All 1,288 original rows use the literal string "null". Do not
-            # silently invent a mission-unlock rule for a different catalogue.
-            if row.get("openMission") != "null":
-                raise ValueError("product mission unlock rules are not implemented")
-            if integer(row.get("openLevel")) <= level:
+            if recipe_available(player, building, code, row, missions):
                 products[code] = {}
         return {"products": products}
 
@@ -145,7 +142,11 @@ class CityServices(PlayerServices):
                 raise ValueError("duplicate building in relocatedGrids")
             position = tuple(map(int, match.groups()))
             if position != (record.get("x"), record.get("y")):
-                self.idle(player, key, record)
+                row = self.table("building")[record["buildingTypeId"]]
+                if row.get("produceType") in ("auto", "friend") and key in player["produce"]:
+                    self.service.automatic_production.active(player, key)
+                else:
+                    self.idle(player, key, record)
             positions[key] = position
         expected = {key for key, row in player["buildings"].items() if row.get("deployedMapKey") == current}
         if set(positions) != expected:
@@ -156,8 +157,8 @@ class CityServices(PlayerServices):
         return {}
 
     def storage_supported(self, row: dict) -> None:
-        if row.get("connectChipType") != "none" or row.get("produceType") not in ("none", "manual", "single"):
-            raise ValueError("connected decorations/automatic production storage is not implemented")
+        if row.get("connectChipType") != "none" or row.get("produceType") not in ("none", "manual", "single", "auto", "friend"):
+            raise ValueError("connected decorations/special production storage is not implemented")
 
     def store_buildings(self, player: dict, params: dict) -> dict:
         for key in self.ids(params.get("buildingIds")):
@@ -165,6 +166,8 @@ class CityServices(PlayerServices):
             stored = isinstance(record, dict) and record.get("deployedMapKey") == "none"
             key, record, row = self.owned(player, key, stored=stored)
             self.storage_supported(row)
+            if row.get("produceType") in ("auto", "friend") and key in player["produce"]:
+                self.service.automatic_production.discard(player, key)
             self.idle(player, key, record)
             record.update(deployedMapKey="none", status="waiting")
         self.validate_layout(player)
@@ -177,6 +180,11 @@ class CityServices(PlayerServices):
         stored = isinstance(record, dict) and record.get("deployedMapKey") == "none"
         key, record, row = self.owned(player, key, stored=stored)
         self.storage_supported(row)
+        if (not stored and row.get("produceType") in ("auto", "friend") and key in player["produce"]
+                and position == (record.get("x"), record.get("y"))):
+            self.service.automatic_production.active(player, key)
+            return {"buildingId": float(key), "building": record,
+                    "autoProducings": {key: copy.deepcopy(player["produce"][key])}}
         self.idle(player, key, record)
         if not stored and position != (record.get("x"), record.get("y")):
             raise ValueError("placed building must be moved using relocateEnded")
@@ -184,7 +192,8 @@ class CityServices(PlayerServices):
             raise ValueError("building not permitted on main map")
         record.update(deployedMapKey=self.current_map(player), x=position[0], y=position[1], status="waiting")
         self.validate_layout(player)
-        return {"buildingId": float(key), "building": record, "autoProducings": {}}
+        tasks = self.service.automatic_production.activate(player, key)
+        return {"buildingId": float(key), "building": record, "autoProducings": tasks}
 
     def upgrade(self, player: dict, params: dict, *, mode: str) -> dict:
         keys = [building_id(params.get("buildingId"))] if mode == "single" else self.ids(params.get("buildingIds"))
@@ -200,10 +209,14 @@ class CityServices(PlayerServices):
         if point_cost != 1:
             raise ValueError("unsupported politic_expend_point version")
         levels = self.table("building_level")
-        output, costs, total_points = {}, {}, 0
+        output, costs, total_points, active_auto = {}, {}, 0, []
         for key, count in zip(keys, times):
             key, record, row = self.owned(player, key)
-            self.idle(player, key, record)
+            if row.get("produceType") in ("auto", "friend") and key in player["produce"]:
+                self.service.automatic_production.active(player, key)
+                active_auto.append(key)
+            else:
+                self.idle(player, key, record)
             count = integer(count, 1, len(levels))
             level, exp = integer(record.get("level"), 1), integer(record.get("exp"))
             grade = integer(row.get("grade"), 1)
@@ -237,6 +250,8 @@ class CityServices(PlayerServices):
         point["point"] -= total_points
         for resource, amount in costs.items():
             player["resources"][resource]["amount"] -= amount
+        for key in active_auto:
+            self.service.automatic_production.refresh_level(player, key)
         if mode == "single":
             return {"building": output[keys[0]]}
         if mode == "batch":

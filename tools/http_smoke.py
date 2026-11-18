@@ -129,7 +129,7 @@ def run(host: str, port: int) -> None:
         assert api("politic/mypage/getLessonStates", {"token": token})["states"]["1"] == "L"
         shop = api("politic/shop/getShopItems", {"token": token, "category": "draft"})
         assert "shop0000041" in shop["shopItems"] and isinstance(shop["recommendedItems"], dict)
-        purchase = {"token": token, "shopItemId": "shop0000041", "quantity": 2, "index": 0, "storetable": "shop_item"}
+        purchase = {"token": token, "shopItemId": "shop0000041", "quantity": 2, "index": -1, "storetable": "shop_item"}
         gold = api("common/getPlayerParams", {"token": token})["resources"]["gold"]["amount"]
         bought = api("politic/shop/buyShopItem", purchase)
         assert bought["succeeded"] and bought["resources"]["gold"]["amount"] == gold - 2000
@@ -172,28 +172,26 @@ def run(host: str, port: int) -> None:
         assert api("common/increasePlayerLevel", own)["succeeded"]
         assert api("common/getPlayerParams", own)["entity"]["level"] == 2
         print("[http-smoke] lesson claim/retry/prerequisites, level gates/cumulative experience, clock/heartbeat/entity: OK")
-        # City checks use only this same disposable account. Grant a building's
-        # experience as a test fixture; production earning rules are not inferred.
+        # City checks use only this same disposable account.
         built = api("politic/task/submitBuildAndComplete", {**own, "draftId": "draft2000041", "originCoord": [20, 20]})
         assert built["succeeded"]
         field_id = built["buildingId"]
         recipes = api("politic/building/getProductsByBuilding", {**own, "buildingId": int(field_id)})
-        assert recipes["succeeded"] and recipes["products"] == {"product060_023_01_01_1_1": {}}
+        assert recipes["succeeded"] and recipes["products"] == {"product060_001_01_01_1_1": {}}
         assert "level" not in recipes and "buildingTypeId" not in recipes
         before_production = state.load(initial["playerId"])
-        for name in ("submitProduceTask", "submitBulkProduceTasks", "cancelTasks", "accelerateProduceTask"):
-            blocked = api("politic/task/" + name, {**own, "buildingId": int(field_id),
-                          "buildingIds": [int(field_id)], "productId": "product060_023_01_01_1_1"})
+        short_recipe = "product060_023_01_01_1_1"
+        for name, args in (
+            ("submitProduceTask", {"buildingId": int(field_id), "productId": short_recipe}),
+            ("submitBulkProduceTasks", {"buildingIds": [int(field_id)], "productIds": [short_recipe]}),
+            ("cancelTasks", {"buildingIds": [int(field_id)]}),
+            ("accelerateProduceTask", {"buildingId": int(field_id)}),
+        ):
+            blocked = api("politic/task/" + name, {**own, **args})
             assert not blocked["succeeded"]
             assert blocked["errorReason"] == blocked["message"]
-            if name == "submitProduceTask":
-                # The task-5 recipe is implemented. This fresh audit account has
-                # not accepted task 5, so this is a prerequisite rejection.
-                assert "task 5" in blocked["message"], blocked
-            else:
-                assert "no stub response" in blocked["message"], blocked
         assert state.load(initial["playerId"]) == before_production
-        print("[http-smoke] recipe query, task-5 prerequisite rejection and unsupported bulk/cancel/acceleration without writes: OK")
+        print("[http-smoke] recipe query, locked tutorial recipe and inactive task rejection without writes: OK")
         fixture = state.load(initial["playerId"])
         assert fixture["entity"]["username"] == account
         fixture["buildings"][field_id]["exp"] = 120

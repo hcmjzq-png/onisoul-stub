@@ -199,7 +199,8 @@ class GameplayFlowTest(unittest.TestCase):
         castle_id = build["buildingId"]
         self.assertEqual(build["building"]["status"], "building")
         completed = self.service.complete_tasks({"buildingIds": [castle_id]}, session)
-        self.assertEqual(completed["buildings"][castle_id]["status"], "none")
+        self.assertEqual(completed["buildings"][castle_id]["status"], "producing")
+        self.assertIn(castle_id, completed["autoProducings"])
         self.assertEqual(
             self.service.get_build_counts({}, session)["type"],
             {"building200_001_01_01_1_1": 1.0},

@@ -13,6 +13,7 @@ from app import config, db, state, environment
 from app.business.gameplay import GameplayService
 from app.business.social_services import SocialServices
 from app.business.social_inbox_services import SocialInboxServices
+from app.business.friend_production import FriendProduction
 from app.business.periodic import register as register_periodic
 from app.business.turf_war import register as register_turf_war
 from app.business.registry import Registry
@@ -29,6 +30,7 @@ def build_registry() -> Registry:
     gameplay.register(registry)
     social = SocialServices(gameplay, atomic_players=state.atomic_players)
     social.register(registry)
+    FriendProduction(gameplay, social).register(registry)
     SocialInboxServices(gameplay).register(registry)
     register_turf_war(registry)
     register_periodic(registry, notification_provider=social.notifications)

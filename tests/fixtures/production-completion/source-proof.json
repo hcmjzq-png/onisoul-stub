@@ -1,0 +1,13 @@
+{
+  "cases": {
+    "shrine": "building200_487_01_01_1_1",
+    "tactics": "building200_772_01_01_1_1",
+    "cannon": "building200_783_01_01_1_1",
+    "wildcard": "building200_605_01_01_1_1",
+    "castle": "building200_001_01_01_1_1",
+    "missing_reward": "building200_030_03_01_1_1",
+    "friend": "building200_782_01_01_1_1",
+    "house": "building200_004_01_01_1_1"
+  },
+  "basis": "Selected test metadata. Presentation fields are omitted and skill message examples are synthetic."
+}

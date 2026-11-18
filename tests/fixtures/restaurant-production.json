@@ -1,0 +1,31 @@
+{
+  "building": {
+    "building200_036_01_01_1_1": {"id":"building200_036_01_01_1_1","name":"饭馆","category":"store","size":[2,2],"grade":1,"costTypes":["gold","food"],"costAmounts":[400,100],"products":["building200_036_01_01_1_1"],"produceType":"single","durability":10001,"levelUpTypeId":"product_store","connectChipType":"none","itemId":"item05_0200036","waitImages":["building200_036_01_01_1_1"],"buildingImages":["hoge.img","hoge.img"],"producingImages":["hoge.img","hoge.img"],"startProductImage":"ui1_550_011","sortno":418,"openShopItemId1":"","openLevel1":"","openShopItemId2":"","openLevel2":"","openShopItemId3":"","openLevel3":"","kokudakaMin":10,"kokudakaMax":40,"regularSoldier":0,"dedication":2,"map0":true,"map1":true,"map2":false,"map3":false,"map4":false},
+    "building200_051_01_01_1_1": {"id":"building200_051_01_01_1_1","name":"道路","category":"road","size":[1,1],"grade":1,"costTypes":[],"costAmounts":[],"products":[],"produceType":"none","durability":10001,"levelUpTypeId":"early","connectChipType":"road","itemId":"item05_0200051","waitImages":["building200_051_01_01_1_1"],"buildingImages":["hoge.img","hoge.img"],"producingImages":["hoge.img","hoge.img"],"startProductImage":"ui1_550_011","sortno":600,"openShopItemId1":"","openLevel1":"","openShopItemId2":"","openLevel2":"","openShopItemId3":"","openLevel3":"","kokudakaMin":0,"kokudakaMax":0,"regularSoldier":0,"dedication":0,"map0":true,"map1":true,"map2":false,"map3":false,"map4":false}
+  },
+  "product": {
+    "building200_036_01_01_1_1": {"id":"building200_036_01_01_1_1","costTypes":["food"],"costAmounts":[100],"dueInterval":900,"rewardId":"reward01_01_00050_01","openLevel":1,"openMission":"null","buyable":"null","buyableLevel":"null","buyableMission":"null","itemId":"","buildingExp":40,"sortno":999}
+  },
+  "reward01_politic": {
+    "reward01_01_00050_01": {"id":"reward01_01_00050_01","group1":"A","ratio1min":1,"ratio1max":1,"itemId1":"item11_0000101","count1min":125,"count1max":2550,"group2":"B","ratio2min":1,"ratio2max":1,"itemId2":"item11_0000501","count2min":12,"count2max":12,"group3":"none","ratio3min":0,"ratio3max":0,"itemId3":"none","count3min":0,"count3max":0,"group4":"none","ratio4min":0,"ratio4max":0,"itemId4":"none","count4min":0,"count4max":0,"group5":"none","ratio5min":0,"ratio5max":0,"itemId5":"none","count5min":0,"count5max":0,"group6":"none","ratio6min":0,"ratio6max":0,"itemId6":"none","count6min":0,"count6max":0,"group7":"none","ratio7min":0,"ratio7max":0,"itemId7":"none","count7min":0,"count7max":0,"group8":"none","ratio8min":0,"ratio8max":0,"itemId8":"none","count8min":0,"count8max":0,"group9":"none","ratio9min":0,"ratio9max":0,"itemId9":"none","count9min":0,"count9max":0,"group10":"none","ratio10min":0,"ratio10max":0,"itemId10":"none","count10min":0,"count10max":0}
+  },
+  "building_level": {
+    "product_store1001": {"id":"product_store1001","needExp":280,"needCostRatio":1,"costRatio":1,"intervalRatio":1},
+    "product_store1002": {"id":"product_store1002","needExp":378,"needCostRatio":2,"costRatio":2.2178,"intervalRatio":1},
+    "product_store1003": {"id":"product_store1003","needExp":401,"needCostRatio":4,"costRatio":3.4356,"intervalRatio":1},
+    "product_store1004": {"id":"product_store1004","needExp":420,"needCostRatio":6,"costRatio":4.6533,"intervalRatio":1},
+    "product_store1005": {"id":"product_store1005","needExp":436,"needCostRatio":8,"costRatio":5.8711,"intervalRatio":1},
+    "product_store1006": {"id":"product_store1006","needExp":451,"needCostRatio":10,"costRatio":7.0326,"intervalRatio":1},
+    "product_store1007": {"id":"product_store1007","needExp":465,"needCostRatio":12,"costRatio":8.1759,"intervalRatio":1},
+    "product_store1008": {"id":"product_store1008","needExp":477,"needCostRatio":14,"costRatio":9.3012,"intervalRatio":1},
+    "product_store1009": {"id":"product_store1009","needExp":490,"needCostRatio":16,"costRatio":10.4091,"intervalRatio":1},
+    "product_store1010": {"id":"product_store1010","needExp":0,"needCostRatio":30,"costRatio":11.5,"intervalRatio":1}
+  },
+  "defines": {
+    "politic_expend_point": {"id":"politic_expend_point","value":1},
+    "infinite_building_durability": {"id":"infinite_building_durability","value":10001}
+  },
+  "draft": {
+    "draft2000036": {"id":"draft2000036","buildType":"building200_036_01_01_1_1","isConsume":true,"progressCount":0,"immediateBuild":false,"continueBuild":false,"initialAmount":0}
+  }
+}

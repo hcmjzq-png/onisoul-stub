@@ -1,4 +1,4 @@
-"""Original recipe unlocks and rejection of unimplemented production writes."""
+"""Original recipe unlocks and authoritative active-task requirements."""
 import copy
 from pathlib import Path
 import unittest
@@ -14,7 +14,7 @@ QUERY = "politic/building/getProductsByBuilding"
 FIRST = "product060_023_01_01_1_1"
 SECOND = "product060_001_01_01_1_1"
 WRITES = ["politic/task/" + name for name in
-          ("submitBulkProduceTasks", "cancelTasks", "accelerateProduceTask")]
+          ("cancelTasks", "accelerateProduceTask")]
 
 
 class ProductionContractTest(unittest.TestCase):
@@ -50,12 +50,12 @@ class ProductionContractTest(unittest.TestCase):
         return body
 
     def test_player_level_unlocks_recipes_independently_of_building_level(self):
-        self.assertEqual(self.call(QUERY, buildingId=1)["products"], {FIRST: {}})
+        self.assertEqual(self.call(QUERY, buildingId=1)["products"], {SECOND: {}})
         p = self.saved(); p["buildings"]["1"]["level"] = 10; self.save(p)
-        self.assertEqual(self.call(QUERY, buildingId=1)["products"], {FIRST: {}})
-        p = self.saved(); p["entity"]["level"] = 5; p["buildings"]["1"]["level"] = 1; self.save(p)
+        self.assertEqual(self.call(QUERY, buildingId=1)["products"], {SECOND: {}})
+        p = self.saved(); p["entity"]["level"] = 8; p["buildings"]["1"]["level"] = 1; self.save(p)
         result = self.call(QUERY, buildingId=1)
-        self.assertEqual(set(result["products"]), {FIRST, SECOND})
+        self.assertEqual(set(result["products"]), {SECOND, "product060_018_01_01_1_1"})
         # PoliticFSMProduct adds these keys itself with Hashtable.Add.
         self.assertNotIn("level", result)
         self.assertNotIn("buildingTypeId", result)
@@ -95,14 +95,14 @@ class ProductionContractTest(unittest.TestCase):
         with patch.object(self.service.catalog, "load", side_effect=lambda name: products if name == "product" else load(name)):
             self.assertFalse(self.call(QUERY, buildingId=1)["succeeded"])
 
-    def test_blocked_production_writes_stay_placeholders_and_never_change_state(self):
+    def test_cancel_and_accelerate_require_an_owned_authoritative_active_task(self):
         before = self.saved()
         for api in WRITES:
             body = self.call(api, buildingId=1, buildingIds=[1], productId=FIRST, productIds=[FIRST])
             self.assertFalse(body["succeeded"])
             self.assertIn("no stub response", body["message"])
             self.assertEqual(body["errorReason"], body["message"])
-            self.assertEqual(self.registry._handlers[api].__module__, "app.business.placeholders")
+            self.assertNotEqual(self.registry._handlers[api].__module__, "app.business.placeholders")
         self.assertEqual(self.saved(), before)
 
     def test_mixed_harvest_and_construction_batch_fails_before_any_completion(self):

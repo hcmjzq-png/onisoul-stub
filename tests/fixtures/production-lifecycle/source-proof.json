@@ -1,0 +1,12 @@
+{
+  "cases": {
+    "finite_auto": "building200_031_01_01_1_1",
+    "infinite_auto": "building200_032_01_01_1_1",
+    "grade5_auto": "building200_032_05_01_1_1",
+    "finite_single": "building200_048_01_01_1_1",
+    "one_use_manual": "building200_132_01_01_1_1",
+    "unsupported_selection_auto": "building200_000_01_01_1_1",
+    "special_reward_auto": "building200_487_01_01_1_1"
+  },
+  "basis": "Selected test metadata. Presentation fields are omitted and skill message examples are synthetic."
+}

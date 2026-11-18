@@ -133,7 +133,7 @@ class ProductionStartTest(Harness):
                      lambda p: p["buildings"]["1"].update(durability=10),
                      lambda p: p["buildings"]["1"].update(deployedMapKey="none"),
                      lambda p: p["buildings"]["1"].update(status="event"),
-                     lambda p: p["decks"].update(politic={"0": {"ids": {"0": 1}}})]
+                     lambda p: p["decks"].update(politic={"0": {"ids": {"0": 999999}}})]
         for mutate in mutations:
             p = copy.deepcopy(original); mutate(p); self.save(p)
             self.fails(START, buildingId=1, productId=PAID)

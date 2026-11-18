@@ -148,6 +148,17 @@ class PlayerServicesTest(unittest.TestCase):
         self.assertEqual(result["result"], {"item04_0200001": 1.0})
         self.assertNotIn("countryshop_00001", self.saved()["items"])
 
+    def test_native_whole_set_purchase_can_be_built_as_an_owned_draft(self):
+        self.fund(amount=5000)
+        result = self.buy(index=-1, quantity=2)
+        self.assertTrue(result["succeeded"], result)
+        self.assertEqual(result["resources"]["gold"]["amount"], 3000)
+        self.assertEqual(result["result"]["item04_0200041"], 2)
+        self.reload()
+        built = self.call("politic/task/submitBuildTask", draftId="draft2000041", originCoord=[10, 10])
+        self.assertTrue(built["succeeded"], built)
+        self.assertEqual(self.saved()["items"]["item04_0200041"], 1)
+
     def test_purchase_rejections_do_not_deduct_or_grant_anything(self):
         self.fund(amount=500)
         before = self.saved()

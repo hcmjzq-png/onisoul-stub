@@ -2,7 +2,7 @@
 
 All helpers are pure. Reward slots are catalogue data, never granted rewards.
 No probability, road multiplier, finite-durability decrement or experience gain
-is inferred. The HTTP production routes remain disabled pending those rules.
+is inferred. Mounted production subsets define their own settlement policies.
 """
 from __future__ import annotations
 
@@ -116,8 +116,8 @@ def durability_kind(value: int, defines: dict) -> str:
 def harvest_display_point_cost(count: int, defines: dict) -> int:
     """PoliticFSMAutoHarvest.noticeResult / PluginRunner_DoHarvest.
 
-    For successful production harvests only, not mixed construction batches.
-    This is the client's displayed debit, not yet an enabled server charge.
+    Used by the mounted batch settlement. Count production tasks only; the
+    original auto-harvest list excludes construction. Single harvests cost one.
     """
     count = integer(count, 1)
     if count == 1:

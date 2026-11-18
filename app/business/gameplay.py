@@ -14,6 +14,13 @@ from collections.abc import Callable
 from typing import Any
 
 from app.business.tutorial_production import TutorialFieldProduction
+from app.business.restaurant_production import RestaurantProduction
+from app.business.fixed_resource_production import FixedResourceProduction
+from app.business.production_batch import ProductionBatch
+from app.business.automatic_production import AutomaticProduction
+from app.business.production_task_actions import ProductionTaskActions
+from app.business.building_evolution import BuildingEvolution
+from app.business.action_points import recover_politic_points, mark_politic_point_spend
 from app import db, sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import (
@@ -151,13 +158,19 @@ class GameplayService:
             "politic/task/progressBuildTask": self.progress_build_task,
             "politic/task/submitBuildAndComplete": self.submit_build_and_complete,
             "politic/task/submitBuildTask": self.submit_build_task,
+            "politic/task/submitProduceTask": self.submit_produce_task,
+            "politic/task/submitBulkProduceTasks": self.submit_bulk_produce_tasks,
         }
         for api, handler in handlers.items():
             registry.register(api, self._guard(api, handler))
         PlayerServices(self).register(registry)
         ProgressionServices(self).register(registry)
         CityServices(self).register(registry)
-        self.tutorial_production.register(registry)
+        ProductionTaskActions(self).register(registry)
+        evolution = BuildingEvolution(self)
+        registry.register("politic/building/conflateBuilding", self._guard(
+            "politic/building/conflateBuilding",
+            lambda params, session: evolution.call("politic/building/conflateBuilding", evolution.evolve, params, session)))
         # A-H integration review: only endpoints backed by current save state
         # and complete local transactions. Provider-dependent candidates stay
         # unmounted; see docs/analysis/parallel-342/review/README.md.
@@ -236,7 +249,49 @@ class GameplayService:
     def tutorial_production(self) -> TutorialFieldProduction:
         return TutorialFieldProduction(self)
 
+    @cached_property
+    def restaurant_production(self) -> RestaurantProduction:
+        return RestaurantProduction(self)
+
+    @cached_property
+    def fixed_production(self) -> FixedResourceProduction:
+        return FixedResourceProduction(self)
+
+    @cached_property
+    def production_batch(self) -> ProductionBatch:
+        return ProductionBatch(self)
+
+    @cached_property
+    def automatic_production(self) -> AutomaticProduction:
+        return AutomaticProduction(self)
+
+    def _production_for(self, player: dict, building_id: Any, product_id: Any = None):
+        key, record, row = self.tutorial_production.owned(player, building_id)
+        if row.get("produceType") in ("auto", "friend"):
+            return self.automatic_production
+        if record.get("buildingTypeId") == RestaurantProduction.FIELD:
+            return self.restaurant_production
+        if (record.get("buildingTypeId") == TutorialFieldProduction.FIELD
+                and (product_id == TutorialFieldProduction.PRODUCT
+                     or key in self.tutorial_production.plans(player))):
+            return self.tutorial_production
+        return self.fixed_production
+
+    def submit_produce_task(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        api = "politic/task/submitProduceTask"
+
+        def start(player: dict, request: dict) -> dict:
+            return self._production_for(player, request.get("buildingId"), request.get("productId")).start(player, request)
+
+        return self.tutorial_production.call(api, start, params, session)
+
+    def submit_bulk_produce_tasks(self, params: dict[str, Any], session: dict[str, Any] | None) -> dict[str, Any]:
+        api = "politic/task/submitBulkProduceTasks"
+        return self.production_batch.call(api, self.production_batch.start, params, session)
+
     def _save(self, player: dict[str, Any], player_id: str) -> None:
+        if player.get("entity", {}).get("created"):
+            mark_politic_point_spend(player, int(_now()))
         self.save_state(player, player_id)
 
     def _level_row(self, level: int = 1) -> dict[str, Any]:
@@ -342,6 +397,8 @@ class GameplayService:
         result["counters"]["buildingCount"] = len(result["buildings"])
         result["counters"]["characterCount"] = len(result["characters"])
         self._apply_limits(result)
+        if result["entity"].get("created"):
+            recover_politic_points(result, int(_now()))
         country = str(result["entity"].get("country") or DEFAULT_COUNTRY)
         result["decks"] = decks.initialize(
             result, self._level_row(int(result["entity"].get("level") or 1)),
@@ -1091,6 +1148,10 @@ class GameplayService:
         if isinstance(found, dict):
             return found
         player_id, player, dirty = found
+        try:
+            dirty = self.automatic_production.restore(player) or dirty
+        except ValueError as exc:
+            return self._failure("politic/map/getMapData", str(exc))
         map_data, building_groups = self._map_state(player)
         navigator = player.get("navigator") or {}
         active = {
@@ -1175,6 +1236,13 @@ class GameplayService:
         row = self._table("building").get(building_type) or {}
         if not draft or not row:
             return None
+        if (not player["entity"].get("created")
+                or player["entity"].get("currentMapKey") != "map001"
+                or row.get("map0") is not True):
+            return None
+        capacity = self._possession_limits(player)["building"]["result"]
+        if len(player["buildings"]) >= capacity:
+            return None
         # Original immediate decorations (including roads) do not spend PP.
         point_cost = 0 if draft.get("immediateBuild") is True else 1
         if int(player["actionPoints"]["politicPoint"].get("point") or 0) < point_cost:
@@ -1232,6 +1300,8 @@ class GameplayService:
             "politicPoint", {"point": 0, "maxPoint": 0, "confirmTime": 0.0}
         )
         point["point"] = int(point.get("point") or 0) - point_cost
+        if completed:
+            self.automatic_production.activate(player, str(instance_id))
         return record
 
     def submit_build_task(
@@ -1260,12 +1330,15 @@ class GameplayService:
         position = _coord(params.get("originCoord"))
         if position is None:
             return self._failure(api, "originCoord is required")
-        record = self._build_from_draft(
-            player,
-            str(params.get("draftId") or ""),
-            position,
-            completed=completed,
-        )
+        try:
+            record = self._build_from_draft(
+                player,
+                str(params.get("draftId") or ""),
+                position,
+                completed=completed,
+            )
+        except ValueError as exc:
+            return self._failure(api, str(exc))
         if record is None:
             return self._failure(api, "draft, coordinates, or resources are invalid")
         self._save(player, player_id)
@@ -1275,7 +1348,8 @@ class GameplayService:
                 "buildingId": str(record["instanceId"]),
                 "building": _deep(record),
                 "buildingCount": float(len(player["buildings"])),
-                "autoProducings": {},
+                "autoProducings": {str(record["instanceId"]): _deep(player["produce"][str(record["instanceId"])])}
+                    if str(record["instanceId"]) in player["produce"] else {},
             },
         )
 
@@ -1300,6 +1374,10 @@ class GameplayService:
         key, record = self._find_building(player, params.get("buildingId"))
         if record is None:
             return self._failure("politic/task/progressBuildTask", "building not found")
+        if (record.get("deployedMapKey") != player["entity"].get("currentMapKey")
+                or player["entity"].get("currentMapKey") != "map001"
+                or record.get("status") != "building" or str(key) in player["produce"]):
+            return self._failure("politic/task/progressBuildTask", "building is not under construction on the current map")
         remaining = max(0, int(record.get("remainedClickCount") or 0) - 1)
         record["remainedClickCount"] = remaining
         self._save(player, player_id)
@@ -1326,31 +1404,43 @@ class GameplayService:
         try:
             requested = self.tutorial_production.ids(params.get("buildingIds"))
             production_ids = []
+            inactive_ids = []
             for value in requested:
-                key, record, _ = self.tutorial_production.owned(player, value)
+                key, record, row = self.tutorial_production.owned(player, value)
                 if str(key) in player["produce"] or record.get("status") == "producing":
+                    if row.get("produceType") == "friend":
+                        raise ValueError("this production can only be collected by a visiting friend")
                     production_ids.append(key)
-            harvested = self.tutorial_production.harvest(player, production_ids)
+                elif record.get("status") != "building":
+                    inactive_ids.append(key)
+            if production_ids and inactive_ids:
+                raise ValueError("production batch changed; reload the map before harvesting")
+            harvested = self.production_batch.harvest(player, production_ids)
         except ValueError as exc:
             return self._failure("politic/task/completeTasks", str(exc))
         changed = bool(harvested)
-        for value in requested:
-            key, record = self._find_building(player, value)
-            if record is None or str(record.get("status") or "") != "building":
-                continue
-            if int(record.get("remainedClickCount") or 0) > 0:
-                continue
-            record["status"] = "none"
-            record["remainedClickCount"] = 0
-            completed[str(key)] = _deep(record)
-            changed = True
+        try:
+            for value in requested:
+                key, record = self._find_building(player, value)
+                if record is None or str(record.get("status") or "") != "building":
+                    continue
+                if int(record.get("remainedClickCount") or 0) > 0:
+                    continue
+                record["status"] = "none"
+                record["remainedClickCount"] = 0
+                self.automatic_production.activate(player, str(key))
+                completed[str(key)] = _deep(record)
+                changed = True
+        except ValueError as exc:
+            return self._failure("politic/task/completeTasks", str(exc))
         if changed:
             self._save(player, player_id)
         return self._success(
             "politic/task/completeTasks",
             {
                 "buildings": {**completed, **{key: entry["building"] for key, entry in harvested.items()}},
-                "autoProducings": {},
+                "autoProducings": {key: _deep(player["produce"][key]) for key in (*completed, *harvested)
+                                   if key in player["produce"]},
                 "producings": harvested,
                 "buildingCount": float(len(player["buildings"])),
                 "kokudaka": float(player.get("kokudaka") or 0),
