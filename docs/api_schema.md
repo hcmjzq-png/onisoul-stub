@@ -73,8 +73,14 @@ getCharacters 请求偏好 IgBinary，服务端返回 application/json 仍使用
 本批服务器实现 none/clear_mission 前置检查，以及 missionStatus、totalBuildingCount、
 categoryGradeCount（建筑 grade/level=any）、eq_greater_than 条件。
 真实表的新手 1—4 任务已覆盖；第 4 任务的三种田地是任选一种，不能误写成全部完成。
-未完成建筑不计数；未知条件返回失败，不发奖。批量请求中任何一项不合法都不保存。
+建筑完成时序按[任务 4 记录](analysis/tutorial-build-contract-20261118/README.md)区分：
+totalBuildingCount 接受服务端明确剩余点击数为 0 的待确认建筑；categoryGradeCount 仍要求完工。
+未知条件返回失败，不发奖。批量请求中任何一项不合法都不保存。
 客户端可合并状态更新，所以接受 accepted→closed，但仍检查真实条件。
+**bundle**：`PoliticMissionProgressStatus.cs:305-343` 的 phaseOpened 对提前达标的非手动任务
+直接请求 opened→finished，不发送 accepted。服务端统一兼容该分支，仍检查前置与完成条件，
+不允许 locked→finished 或 opened→closed；自接受条件不生成虚构的 accepted。
+来源、精炼炉复现及其他任务回归见[任务状态转换](analysis/mission-state-transitions-20261118/README.md)。
 
 `missionChecks` 是仅服务端使用的完成组记录，不回传为协议字段。旧存档中已 finished
 但没有此记录的自接受教学任务允许继续领取；建筑条件仍必须重新验证。

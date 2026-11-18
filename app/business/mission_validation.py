@@ -118,7 +118,13 @@ def transition(player: dict, rows: dict, buildings: dict, code: str, target: str
     if not eligible(player, rows, code):
         raise ValueError("mission prerequisites are not satisfied or not implemented")
     if target in ("finished", "closed"):
-        if previous not in ("accepted", "finished") or not completed(player, rows, buildings, code):
+        # PoliticMissionProgressStatus.phaseOpened (PC:305-343) goes directly to
+        # finished when conditions were met before acceptance. No accepted RPC
+        # is sent in that branch. Still require the same server-owned proofs;
+        # this does not permit locked -> finished or opened -> closed.
+        allowed_previous = (previous in ("accepted", "finished")
+                            or previous == "opened" and target == "finished")
+        if not allowed_previous or not completed(player, rows, buildings, code):
             raise ValueError("mission completion conditions are not satisfied")
     player["missions"][str(rows[code]["index"])] = STATE_TO_LETTER[target]
     if target == "accepted":
