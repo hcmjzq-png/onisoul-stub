@@ -852,6 +852,9 @@ class GameplayService:
         payload = _deep(player["decks"])
         payload.update({"inheritPoint": float(player.get("inheritPoint") or 0),
                         "skillCoins": float(player.get("skillCoins") or 0),
+                        # DeckMake.setDeckCard unboxes this unconditionally.
+                        # Siege entry is not mounted; the local server has no active entry.
+                        "isEntrySiege": False,
                         "possessionLimits": self._possession_limits(player)})
         return response_shapes.success(api, payload)
 
