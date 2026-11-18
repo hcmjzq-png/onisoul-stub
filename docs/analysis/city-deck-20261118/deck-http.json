@@ -1,0 +1,13 @@
+{
+  "entry": "hosts loopback -> gateway80 -> proxy18082 -> stub18081",
+  "checks": [
+    "registered disposable account through gateway80",
+    "getDecks boolean false; forged true ignored",
+    "getDecks does not overwrite formation or save",
+    "setDecks returns original empty success map",
+    "deck and required boolean survive relogin",
+    "boolean metadata not persisted into deck",
+    "exact owned temporary account cleaned up"
+  ],
+  "passed": true
+}

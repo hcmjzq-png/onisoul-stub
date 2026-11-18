@@ -37,6 +37,43 @@
     ]
   },
   {
+    "cid": "chara1_09292",
+    "canonical_hash": "c2cee3a35fee193421ec8cbe58339ec3",
+    "bundle_sha256": "3a301120041d61fe30a25990cbb571bb731e588628d4f42bb6b132cc9ff54d87",
+    "bytes": 93371,
+    "source_kind": "reconstructed from exact-name original TGA, not original PC bundle bytes",
+    "textures": [
+      {
+        "name": "chara1_09292_01_1_03",
+        "width": 256,
+        "height": 256,
+        "tga_sha256": "d58e7ab67ecde41266e32394e2c0dc260ce03d979bbae31226596a44a8deb802",
+        "rgba_mae": 1.2894
+      },
+      {
+        "name": "chara1_09292_01_1_01",
+        "width": 128,
+        "height": 128,
+        "tga_sha256": "f89a8bed005bc80f20fe7159324c2c15f0bba7ea73152939fcd83ceea9171eda",
+        "rgba_mae": 0.9872
+      },
+      {
+        "name": "chara1_09292_01_3_01",
+        "width": 1024,
+        "height": 1024,
+        "tga_sha256": "36f0daa90ca782a77ee963ca38eb0e0019f3ab81db9c1fa3ca8d170316a1a1b1",
+        "rgba_mae": 0.2776
+      },
+      {
+        "name": "chara1_09292_01_1_02",
+        "width": 128,
+        "height": 256,
+        "tga_sha256": "22c4f2aa5b34d1b751ba637a18c337bc779caa36c46a27f9621b4d2069ad9cbc",
+        "rgba_mae": 1.1432
+      }
+    ]
+  },
+  {
     "cid": "chara1_09294",
     "canonical_hash": "1c8778dbcdfd338e464ac201ca59dc3d",
     "bundle_sha256": "91976a6826ac1de539b9c5343e3adde9206300f25c5e46f3fd012d7c5eef7526",
@@ -144,6 +181,43 @@
         "height": 256,
         "tga_sha256": "3787397fd8ba47153df9d0b682f0952dff2fa4e456a3cba0e5bae5a01b61fbf3",
         "rgba_mae": 1.3288
+      }
+    ]
+  },
+  {
+    "cid": "chara1_09299",
+    "canonical_hash": "6b7709587d28b09b902a2e27654b72b8",
+    "bundle_sha256": "85d461d5f8da634964ad6d732761259e266711e270b1d5aacf9efec3e7d6fd2e",
+    "bytes": 95600,
+    "source_kind": "reconstructed from exact-name original TGA, not original PC bundle bytes",
+    "textures": [
+      {
+        "name": "chara1_09299_01_1_03",
+        "width": 256,
+        "height": 256,
+        "tga_sha256": "39d128b96dc6d8a49ce7e2fbeac36285238a2925944aa3e2857da34a1834970b",
+        "rgba_mae": 1.1877
+      },
+      {
+        "name": "chara1_09299_01_1_01",
+        "width": 128,
+        "height": 128,
+        "tga_sha256": "a286c5a3a2108564b9e9c35c151347a4a095bff0f4efde4f33e69121c8259a93",
+        "rgba_mae": 0.7259
+      },
+      {
+        "name": "chara1_09299_01_3_01",
+        "width": 1024,
+        "height": 1024,
+        "tga_sha256": "1a081cb46a6be08b40d2f0cbfbc487fbd59520279dd3542b4397efa1636afc63",
+        "rgba_mae": 0.2283
+      },
+      {
+        "name": "chara1_09299_01_1_02",
+        "width": 128,
+        "height": 256,
+        "tga_sha256": "b65a8f0a09488d2a21b65729b4702b4176b8156d68c9ec8d34d6c4ef7af51f0f",
+        "rgba_mae": 1.1536
       }
     ]
   }

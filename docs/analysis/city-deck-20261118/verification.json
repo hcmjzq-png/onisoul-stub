@@ -1,72 +1,162 @@
 {
   "environment": "local-test",
   "sql": {
-    "test_count": 795,
+    "test_count": 796,
     "skipped": 0,
     "mysql": "8.0.46",
     "disposable_datadir": true,
     "system_database_used": false,
     "mysql_process_stopped": true,
     "exit_code": 0,
-    "tested_working_tree_committed_as": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860"
+    "tested_working_tree_committed_as": "958ec475f6b27f9f67769ae10a0b77a41a9082c9",
+    "working_tree_base_when_tests_started": "085cff43a6c09e167c68323820d6ee4833a68441"
   },
   "assets": [
     {
-      "cid": "chara1_09291",
+      "logical": "chara1_09291_01",
       "path": "/client/pc/jp/assets/chara/c575d98ec2e53d8adab6c27bd28b398d.unity3d",
-      "sha256": "e44a2bbbb3e25a92ab8e26740c72ba05f26020b7644d90e8b7cd64afafc3c6d0",
-      "bytes": 117313,
+      "sha256": "c4b205d8281418589945b28a1728b2c1b41606240e0c4a241b5991eb3bc81059",
+      "bytes": 117253,
       "http_status": 200,
-      "previously_present": false
+      "action": "replaced_own_prior_file"
     },
     {
-      "cid": "chara1_09294",
+      "logical": "chara1_09292_01",
+      "path": "/client/pc/jp/assets/chara/c2cee3a35fee193421ec8cbe58339ec3.unity3d",
+      "sha256": "18156fbbdb71c34726424452d00bfe1267ff99b84d6904d82eeb2ab0933086d5",
+      "bytes": 93331,
+      "http_status": 200,
+      "action": "added"
+    },
+    {
+      "logical": "chara1_09294_01",
       "path": "/client/pc/jp/assets/chara/1c8778dbcdfd338e464ac201ca59dc3d.unity3d",
-      "sha256": "91976a6826ac1de539b9c5343e3adde9206300f25c5e46f3fd012d7c5eef7526",
-      "bytes": 89224,
+      "sha256": "2f79f00063f2eacc220a6b5369045c64dc8b13fe6bd02f283054b7c88ec019a0",
+      "bytes": 89284,
       "http_status": 200,
-      "previously_present": false
+      "action": "replaced_own_prior_file"
     },
     {
-      "cid": "chara1_09296",
+      "logical": "chara1_09296_01",
       "path": "/client/pc/jp/assets/chara/f22f49b8f98e72d80638d821448d4505.unity3d",
-      "sha256": "688097650649162d981afce3e0a5524c310c36bb5ed24bacd188058897d9bd12",
-      "bytes": 90754,
+      "sha256": "c9eb916d0668adc7a7d452af21dc9e8022f233e2f198920e47ce9aaaf89ca5ad",
+      "bytes": 90736,
       "http_status": 200,
-      "previously_present": false
+      "action": "replaced_own_prior_file"
     },
     {
-      "cid": "chara1_09298",
+      "logical": "chara1_09298_01",
       "path": "/client/pc/jp/assets/chara/35e359a61fc0cbb9591ae845dec3164d.unity3d",
-      "sha256": "356eee0182435ecd17fa202aa48cde618ad40dd6fd93ef18bcf111de5476902b",
-      "bytes": 110224,
+      "sha256": "7ab39113de50db6e54e6a70e1b6dd749fe49b99158b17dea9f42f6d7a0259e05",
+      "bytes": 110230,
       "http_status": 200,
-      "previously_present": false
+      "action": "replaced_own_prior_file"
+    },
+    {
+      "logical": "chara1_09299_01",
+      "path": "/client/pc/jp/assets/chara/6b7709587d28b09b902a2e27654b72b8.unity3d",
+      "sha256": "113d145a2d5c17f17576d83934b2fd5f7f7197efead92f527ec20eca896e1ac1",
+      "bytes": 95570,
+      "http_status": 200,
+      "action": "added"
     }
   ],
   "runtime": {
     "deployed": true,
     "environment": "local-test",
-    "code_commit": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860",
-    "build_id": "city-deck-v1-20261118-36eb346",
+    "code_commit": "958ec475f6b27f9f67769ae10a0b77a41a9082c9",
+    "build_id": "deck-init-v1-20261118-958ec47",
     "health_ports": [
       80,
       18082,
       18081
     ],
-    "previous_code_commit": "807adc7e44ac36d5df0f0caad9b4e7364bc3f7e7",
+    "previous_code_commit": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860",
     "profile_backup_created": true,
     "cloud_deployed": false
   },
   "unity": {
-    "before_fix": "Observed blank deck scene and 0 kokudaka in local client",
-    "asset_loading": "16/16 textures loaded offline and through original-domain HTTP in the running PC engine",
-    "after_fix_gameplay": "Not verified; user stopped Computer Use with physical Escape",
-    "next_step": "Re-enter the game after the prior failed resource requests; verify deck UI and kokudaka display"
+    "before_fix": "Blank deck scene and zero kokudaka",
+    "kokudaka": {
+      "user_verified": true,
+      "displayed": 1323,
+      "source": "User-provided screenshot and confirmation"
+    },
+    "character_list_after_contract_fix": "User confirmed generals appeared",
+    "after_asset_fix": {
+      "user_verified": true,
+      "cards_load": true,
+      "portrait_switching": true,
+      "source": "User manual restart after targeted cache clear; explicit confirmation"
+    },
+    "computer_use": "Stopped after physical Escape; no subsequent automated UI operation",
+    "remaining_scope": "Actual player formation changes, save and relogin not independently verified"
   },
   "remote": {
     "github_branch_pushed": false,
     "cloud_deployed": false,
     "lan_verified": false
-  }
+  },
+  "tool_tests": {
+    "passed": 16,
+    "skipped": 0,
+    "command": "python -m unittest tests.test_character_archive_fix tests.test_port_legacy_media tests.test_probe_legacy_media -q"
+  },
+  "asset_inventory": [
+    {
+      "base_id": "chara1_00866_01",
+      "sha256": "aac2fe0d7a6a446598a7d1cf03325bfab0017951125a4cbbb4f988ef7dda100c",
+      "expected_textures_present": 4
+    },
+    {
+      "base_id": "chara1_09291_01",
+      "sha256": "c4b205d8281418589945b28a1728b2c1b41606240e0c4a241b5991eb3bc81059",
+      "expected_textures_present": 4
+    },
+    {
+      "base_id": "chara1_09292_01",
+      "sha256": "18156fbbdb71c34726424452d00bfe1267ff99b84d6904d82eeb2ab0933086d5",
+      "expected_textures_present": 4
+    },
+    {
+      "base_id": "chara1_09294_01",
+      "sha256": "2f79f00063f2eacc220a6b5369045c64dc8b13fe6bd02f283054b7c88ec019a0",
+      "expected_textures_present": 4
+    },
+    {
+      "base_id": "chara1_09296_01",
+      "sha256": "c9eb916d0668adc7a7d452af21dc9e8022f233e2f198920e47ce9aaaf89ca5ad",
+      "expected_textures_present": 4
+    },
+    {
+      "base_id": "chara1_09298_01",
+      "sha256": "7ab39113de50db6e54e6a70e1b6dd749fe49b99158b17dea9f42f6d7a0259e05",
+      "expected_textures_present": 4
+    },
+    {
+      "base_id": "chara1_09299_01",
+      "sha256": "113d145a2d5c17f17576d83934b2fd5f7f7197efead92f527ec20eca896e1ac1",
+      "expected_textures_present": 4
+    }
+  ],
+  "asset_publication": {
+    "evidence": "publication-v2.json",
+    "release_manifest": "character-archives-v2.json",
+    "retained_native_evidence": "native-retained-v2.json",
+    "unchanged_existing_character": "chara1_00866_01"
+  },
+  "included_local_fixes": [
+    {
+      "area": "main-city base kokudaka",
+      "code_commit": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860"
+    },
+    {
+      "area": "deck initialization required siege boolean",
+      "code_commit": "958ec475f6b27f9f67769ae10a0b77a41a9082c9"
+    },
+    {
+      "area": "six character assets and local cache",
+      "evidence": "publication-v2.json"
+    }
+  ]
 }

@@ -61,7 +61,25 @@
       "skipped": 0,
       "disposable_mysql": true
     },
-    "runtime": "pending",
-    "unity_after_fix": "pending"
+    "runtime": {
+      "deployed": true,
+      "environment": "local-test",
+      "code_commit": "958ec475f6b27f9f67769ae10a0b77a41a9082c9",
+      "build_id": "deck-init-v1-20261118-958ec47",
+      "health_ports": [
+        80,
+        18082,
+        18081
+      ],
+      "previous_code_commit": "36eb3466a7a2aa28a65f11bbb17c37a4ee981860",
+      "profile_backup_created": true,
+      "cloud_deployed": false
+    },
+    "unity_after_fix": "User confirmed generals appeared; after v2 publication/cache reset/restart, cards and portrait switching work",
+    "http": {
+      "passed": true,
+      "evidence": "deck-http.json",
+      "disposable_account_cleaned": true
+    }
   }
 }
