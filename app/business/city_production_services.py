@@ -1,7 +1,8 @@
 """Group A: verified inventory sales and explicitly owned background selection.
 
-GameplayService mounts inventory sales only. ManualProductionServices below is
-an unmounted start/timer component; production settlement is unimplemented.
+GameplayService mounts inventory sales only from CityProductionServices.
+ManualProductionServices is a start/timer base used by the mounted production
+engines; this module does not register a settlement engine on its own.
 items/mapBackgrounds are SERVER-INTERNAL save fields, not original wire fields.
 The original background UI is subcity-only (mapId=1). It needs a verified
 subcity provider before mounting; no ownership or city unlock is granted here.
@@ -17,6 +18,8 @@ from typing import Any, Callable
 from app.business.city_services import CityServices
 from app.business.city_production_rules import durability_kind, production_costs
 from app.business.player_services import integer
+from app.business.production_availability import FIELD_LESSON_RECIPE, recipe_available
+from app.business.production_modifiers import validate_formation
 
 
 class CityProductionServices(CityServices):
@@ -126,14 +129,15 @@ class CityProductionServices(CityServices):
 
 
 class ManualProductionServices(CityServices):
-    """Unmounted start/timer component; NOT a working harvest economy.
+    """Shared start/timer component; settlement-owning subclasses are mounted.
 
-    Scope: the original G1 field, no politic deck modifiers, infinite durability.
-    Roads remain in the map; this component never claims to calculate their yield.
-    A future settlement implementation must be reviewed before mounting starts.
+    The default recipe validator is narrow. Mounted subclasses own their
+    settlement and decide which building and recipe pairs they support.
     """
 
     FIELD = "building200_041_01_01_1_1"
+    PRODUCE_TYPE = "manual"
+    APPLY_LESSON_POLICY = False  # Unmounted start-only component.
     # Ordinary resource recipes only: special flower/random drops are excluded.
     PRODUCTS = frozenset({"product060_023_01_01_1_1", "product060_001_01_01_1_1"})
 
@@ -151,16 +155,8 @@ class ManualProductionServices(CityServices):
 
     @staticmethod
     def no_modifiers(player: dict) -> None:
-        decks = (player.get("decks") or {}).get("politic", {})
-        if not isinstance(decks, dict):
-            raise ValueError("no stub response: invalid politic deck")
-        for deck in decks.values():
-            if not isinstance(deck, dict):
-                raise ValueError("no stub response: invalid politic deck")
-            for field in ("ids", "equip", "tactics"):
-                values = deck.get(field, {})
-                if not isinstance(values, dict) or any(value != "empty" for value in values.values()):
-                    raise ValueError("no stub response: production deck modifiers are unsupported")
+        # Legacy method name retained for existing settlement engines.
+        validate_formation(player)
 
     def submit(self, player: dict, params: dict, *, bulk: bool = False) -> dict:
         # Work on a private candidate even for direct component callers.
@@ -169,6 +165,14 @@ class ManualProductionServices(CityServices):
         player.clear()
         player.update(candidate)
         return payload
+
+    def validate_recipe(self, record: dict, row: dict, code: Any, defines: dict) -> None:
+        if (record.get("buildingTypeId") != self.FIELD or row.get("produceType") != self.PRODUCE_TYPE
+                or durability_kind(record.get("durability"), defines) != "infinite"):
+            raise ValueError("no stub response: unsupported manual production building")
+        if (not isinstance(row.get("products"), list) or not isinstance(code, str)
+                or code not in self.PRODUCTS or code not in row["products"]):
+            raise ValueError("no stub response: unsupported production recipe")
 
     def _submit(self, player: dict, params: dict, *, bulk: bool) -> dict:
         self.current_map(player)
@@ -188,6 +192,8 @@ class ManualProductionServices(CityServices):
             raise ValueError("no stub response: production clock out of range")
         output, costs = {}, {}
         catalogue, levels, defines = self.table("product"), self.table("building_level"), self.table("defines")
+        missions = self.service.missions.rows() if self.APPLY_LESSON_POLICY else {}
+        lesson_started = False
         for key, code in zip(keys, codes):
             key, record, row = self.owned(player, key)
             # Replaying bulk success reruns payoutCosts in the original client.
@@ -195,17 +201,21 @@ class ManualProductionServices(CityServices):
             if key in player["produce"]:
                 raise ValueError("no stub response: production already exists; reload authoritative map/resources")
             self.idle(player, key, record)
-            if (record.get("buildingTypeId") != self.FIELD or row.get("produceType") != "manual"
-                    or durability_kind(record.get("durability"), defines) != "infinite"):
-                raise ValueError("no stub response: unsupported manual production building")
-            if (not isinstance(row.get("products"), list) or not isinstance(code, str)
-                    or code not in self.PRODUCTS or code not in row["products"]):
-                raise ValueError("no stub response: unsupported production recipe")
+            self.validate_recipe(record, row, code, defines)
             product = catalogue.get(code)
             if not isinstance(product, dict):
                 raise ValueError("no stub response: referenced product row missing")
-            if product.get("openMission") != "null" or integer(product.get("openLevel")) > integer(player["entity"].get("level"), 1):
+            if self.APPLY_LESSON_POLICY:
+                allowed = recipe_available(player, row, code, product, missions)
+            else:
+                allowed = (product.get("openMission") == "null"
+                           and integer(product.get("openLevel")) <= integer(player["entity"].get("level"), 1))
+            if not allowed:
                 raise ValueError("production recipe is locked or unsupported")
+            if self.APPLY_LESSON_POLICY and code == FIELD_LESSON_RECIPE:
+                if lesson_started:
+                    raise ValueError("only one field lesson production can be active")
+                lesson_started = True
             grade = integer(row.get("grade"), 1)
             level = integer(record.get("level"), 1, grade * 10)
             step = levels.get(f"{row.get('levelUpTypeId')}{grade * 1000 + level}")

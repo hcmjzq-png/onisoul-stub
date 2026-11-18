@@ -114,6 +114,21 @@ class TutorialMySQLTest(unittest.TestCase):
         self.assertEqual(self.api("common/getPlayerParams")["entity"]["exp"], 25)
         self.assertIn("errorReason", self.api("politic/mission/setWorkingValue", missionId="po_mission_00000", indexes=[0], values=[0xfffffff]))
 
+    def test_shop_whole_set_purchase_and_construction_over_http(self):
+        player = state.load(self.pid)
+        player["resources"]["gold"]["amount"] = 5000
+        state.save(player, self.pid)
+        self.assertIn("shop0000041", self.api("politic/shop/getShopItems", category="draft")["shopItems"])
+        bought = self.api("politic/shop/buyShopItem", shopItemId="shop0000041",
+                          storetable="shop_item", index=-1.0, quantity=1)
+        self.assertTrue(bought["succeeded"], bought)
+        self.assertNotIn("errorReason", bought)
+        self.assertEqual(bought["result"]["item04_0200041"], 1)
+        self.login()
+        placed = self.api("politic/task/submitBuildTask", draftId="draft2000041", originCoord=[10, 10])
+        self.assertTrue(placed["succeeded"], placed)
+        self.assertNotIn("item04_0200041", state.load(self.pid)["items"])
+
     def test_unique_name_index_blocks_races_and_direct_create_bypass(self):
         from concurrent.futures import ThreadPoolExecutor
         import uuid
@@ -272,6 +287,460 @@ class TutorialMySQLTest(unittest.TestCase):
         restart(); self.login()
         self.assertEqual(self.api("politic/mission/getStatesFromAllMissions")["states"]["5"], "C")
         self.assertEqual(self.api("common/getPlayerParams")["resources"]["food"]["amount"], 313)
+
+    def test_restaurant_build_seven_cycles_upgrade_and_restart_over_http_sql(self):
+        from app.business.gameplay import GameplayService
+        from app.business.registry import Registry
+        from app.business.restaurant_production import RestaurantProduction
+        from app.tables import TableError
+        sample = json.loads((Path(__file__).parent / "fixtures/restaurant-production.json").read_text("utf-8"))
+        original = self.catalog.load
+
+        def load(name):
+            try:
+                value = original(name)
+            except TableError:
+                if name not in sample:
+                    raise
+                value = {}
+            return {**value, **sample.get(name, {})}
+
+        self.catalog.load = load
+        # Isolated database: supply inventory/resources, then build through HTTP.
+        player = state.load(self.pid)
+        player["drafts"]["draft2000036"] = 1
+        player["resources"]["food"]["amount"] = 3000
+        player["resources"]["gold"]["amount"] = 5000
+        player["actionPoints"]["politicPoint"]["point"] = 100
+        state.save(player, self.pid)
+        now = [2000000000.75]
+
+        def restart():
+            self.close_server()
+            service = GameplayService(catalog=self.catalog)
+            service.restaurant_production.clock = lambda: now[0]
+            registry = service.register(Registry()).register_contract_defaults()
+            self.httpd = serve("127.0.0.1", 0, registry)
+            self.worker = threading.Thread(target=self.httpd.serve_forever, daemon=True)
+            self.worker.start()
+
+        restart()
+        built = self.api("politic/task/submitBuildTask", draftId="draft2000036", originCoord=[10, 10])
+        self.assertTrue(built["succeeded"], built)
+        key = built["buildingId"]
+        self.assertTrue(self.api("politic/task/completeTasks", buildingIds=[key])["succeeded"])
+        baseline = state.load(self.pid)
+        for cycle in range(7):
+            started = self.api("politic/task/submitProduceTask", buildingId=int(key), productId=RestaurantProduction.PRODUCT)
+            self.assertTrue(started["succeeded"], started)
+            self.assertNotIn("errorReason", started)
+            self.assertEqual(started["dueTime"] - started["createdTime"], 900)
+            active = state.load(self.pid)
+            self.assertFalse(self.api("politic/task/completeTasks", buildingIds=[key])["succeeded"])
+            self.assertEqual(state.load(self.pid), active)
+            if cycle == 0:
+                restart()
+                self.login()
+                self.assertEqual(self.api("politic/map/getMapData")["producings"][key]["dueTime"], started["dueTime"])
+            now[0] += 900  # Only this isolated service clock; original duration stays 900.
+            harvested = self.api("politic/task/completeTasks", buildingIds=[key])
+            self.assertTrue(harvested["succeeded"], harvested)
+            self.assertEqual(harvested["producings"][key]["reward"], {"item11_0000101": 125, "item11_0000501": 12})
+            after = state.load(self.pid)
+            self.assertEqual(self.api("politic/task/completeTasks", buildingIds=[key])["producings"], {})
+            self.assertEqual(state.load(self.pid), after)
+        result = self.api("politic/building/levelUpBuilding", buildingId=int(key))
+        self.assertTrue(result["succeeded"], result)
+        self.assertEqual((result["building"]["level"], result["building"]["exp"]), (2, 0))
+        after = state.load(self.pid)
+        self.assertEqual(after["resources"]["gold"]["amount"], baseline["resources"]["gold"]["amount"] + 875 - 400)
+        self.assertEqual(after["resources"]["food"]["amount"], baseline["resources"]["food"]["amount"] - 700 - 100)
+        self.assertEqual(after["actionPoints"]["politicPoint"]["point"], baseline["actionPoints"]["politicPoint"]["point"] - 15)
+        restart()
+        self.login()
+        mapped = self.api("politic/map/getMapData")
+        self.assertEqual((mapped["buildings"][key]["level"], mapped["buildings"][key]["exp"]), (2, 0))
+        self.assertEqual(mapped["producings"], {})
+
+    def test_resource_buildings_multiple_recipes_restart_and_upgrade_over_http_sql(self):
+        from app.business.gameplay import GameplayService
+        from app.business.registry import Registry
+        from app.tables import TableError
+        from tests.test_fixed_resource_production import TABLES
+        original = self.catalog.load
+
+        def load(name):
+            try:
+                value = original(name)
+            except TableError:
+                if name not in TABLES:
+                    raise
+                value = {}
+            return {**value, **TABLES.get(name, {})}
+
+        self.catalog.load = load
+        player = state.load(self.pid)
+        # Owned temporary SQL player only; original drafts/costs/times are used.
+        for draft in ("draft2000037", "draft2000039", "draft2000042"):
+            player["drafts"][draft] = 1
+        for resource in ("gold", "wood", "food", "iron"):
+            player["resources"][resource]["amount"] = 50000
+        player["actionPoints"]["politicPoint"].update(point=100, confirmTime=0.0)
+        state.save(player, self.pid)
+        now = [2000000000.0]
+
+        def restart():
+            self.close_server()
+            service = GameplayService(catalog=self.catalog)
+            service.fixed_production.clock = lambda: now[0]
+            registry = service.register(Registry()).register_contract_defaults()
+            self.httpd = serve("127.0.0.1", 0, registry)
+            self.worker = threading.Thread(target=self.httpd.serve_forever, daemon=True)
+            self.worker.start()
+
+        restart()
+        self.api("common/getPlayerParams")
+        instances = []
+        for draft, coordinate in (("draft2000037", [10, 10]), ("draft2000039", [15, 15]),
+                                  ("draft2000042", [20, 20])):
+            built = self.api("politic/task/submitBuildTask", draftId=draft, originCoord=coordinate)
+            self.assertTrue(built["succeeded"], built)
+            key = built["buildingId"]
+            instances.append(key)
+            remaining = state.load(self.pid)["buildings"][key]["remainedClickCount"]
+            for _ in range(int(remaining)):
+                self.assertTrue(self.api("politic/task/progressBuildTask", buildingId=int(key))["succeeded"])
+        completed = self.api("politic/task/completeTasks", buildingIds=instances)
+        self.assertTrue(completed["succeeded"], completed)
+        self.assertEqual(completed["completeCount"], 3)
+        recipes = ["building200_037_01_01_1_1", "product060_012_01_01_1_1", "product060_020_01_01_1_1"]
+        for key, product in zip(instances, recipes):
+            result = self.api("politic/task/submitProduceTask", buildingId=int(key), productId=product)
+            self.assertTrue(result["succeeded"], result)
+            self.assertEqual(result["dueTime"] - result["createdTime"], TABLES["product"][product]["dueInterval"])
+        active = state.load(self.pid)
+        self.assertFalse(self.api("politic/task/completeTasks", buildingIds=instances[:2])["succeeded"])
+        self.assertEqual(state.load(self.pid), active)
+        restart()
+        self.login()
+        mapped = self.api("politic/map/getMapData")
+        self.assertEqual(set(mapped["producings"]), set(instances))
+        for index in sorted(range(len(recipes)), key=lambda i: TABLES["product"][recipes[i]]["dueInterval"]):
+            key, product = instances[index], recipes[index]
+            now[0] = 2000000000.0 + TABLES["product"][product]["dueInterval"]
+            result = self.api("politic/task/completeTasks", buildingIds=[key])
+            self.assertTrue(result["succeeded"], result)
+            self.assertEqual(result["buildings"][key]["exp"], TABLES["product"][product]["buildingExp"])
+            after = state.load(self.pid)
+            self.assertEqual(self.api("politic/task/completeTasks", buildingIds=[key])["producings"], {})
+            self.assertEqual(state.load(self.pid), after)
+        key, product = instances[0], recipes[0]
+        for _ in range(6):
+            self.assertTrue(self.api("politic/task/submitProduceTask", buildingId=int(key), productId=product)["succeeded"])
+            now[0] += 900
+            self.assertTrue(self.api("politic/task/completeTasks", buildingIds=[key])["succeeded"])
+        result = self.api("politic/building/levelUpBuilding", buildingId=int(key))
+        self.assertTrue(result["succeeded"], result)
+        self.assertEqual((result["building"]["level"], result["building"]["exp"]), (2, 0))
+        restart()
+        self.login()
+        mapped = self.api("politic/map/getMapData")
+        self.assertEqual(mapped["buildings"][key]["level"], 2)
+        self.assertEqual(mapped["producings"], {})
+
+        # Original collective-production and auto-harvest callbacks use one
+        # start PP per building, then ten PP for the whole multi-harvest.
+        before = state.load(self.pid)
+        started = self.api("politic/task/submitBulkProduceTasks", buildingIds=instances, productIds=recipes)
+        self.assertTrue(started["succeeded"], started)
+        self.assertEqual(set(started["producings"]), set(instances))
+        active = state.load(self.pid)
+        self.assertEqual(active["actionPoints"]["politicPoint"]["point"],
+                         before["actionPoints"]["politicPoint"]["point"] - 3)
+        self.assertFalse(self.api("politic/task/completeTasks", buildingIds=instances)["succeeded"])
+        self.assertEqual(state.load(self.pid), active)
+        restart()
+        self.login()
+        self.assertEqual(set(self.api("politic/map/getMapData")["producings"]), set(instances))
+        now[0] += 900
+        harvested = self.api("politic/task/completeTasks", buildingIds=instances)
+        self.assertTrue(harvested["succeeded"], harvested)
+        self.assertEqual(set(harvested["producings"]), set(instances))
+        after = state.load(self.pid)
+        self.assertEqual(after["actionPoints"]["politicPoint"]["point"],
+                         active["actionPoints"]["politicPoint"]["point"] - 10)
+        self.assertEqual(after["buildings"][key]["level"], 2)
+        self.assertEqual(self.api("politic/task/completeTasks", buildingIds=instances)["producings"], {})
+        self.assertEqual(state.load(self.pid), after)
+
+    def test_automatic_finite_cancel_and_accelerate_over_http_sql(self):
+        from app.business.gameplay import GameplayService
+        from app.business.registry import Registry
+        from app.tables import TableError
+        from tests.test_fixed_resource_production import TABLES
+        from tests.test_production_lifecycle import EXTRA, CASES
+        tables = {name: {**TABLES.get(name, {}), **EXTRA.get(name, {})} for name in {*TABLES, *EXTRA}}
+        original = self.catalog.load
+
+        def load(name):
+            try:
+                value = original(name)
+            except TableError:
+                if name not in tables:
+                    raise
+                value = {}
+            return {**value, **tables.get(name, {})}
+
+        self.catalog.load = load
+        player = state.load(self.pid)
+        player["drafts"].update(draft2000031=1, draft2000032=1, draft2000037=1)
+        # Original Lv3 gold cap is 300,000, enough for ten 20,000-gold harvests.
+        player["entity"]["level"] = 3
+        for kind in ("gold", "wood", "food", "iron"):
+            player["resources"][kind]["amount"] = 50000
+        player["resources"]["credit"]["amount"] = 100
+        player["actionPoints"]["politicPoint"].update(point=100, confirmTime=0.0)
+        state.save(player, self.pid)
+        now = [2000000000.0]
+
+        def restart():
+            self.close_server()
+            service = GameplayService(catalog=self.catalog)
+            for engine in (service.fixed_production, service.automatic_production, service.restaurant_production):
+                engine.clock = lambda: now[0]
+            registry = service.register(Registry()).register_contract_defaults()
+            self.httpd = serve("127.0.0.1", 0, registry)
+            self.worker = threading.Thread(target=self.httpd.serve_forever, daemon=True)
+            self.worker.start()
+
+        restart()
+        ids = []
+        for draft, coord in (("draft2000031", [10, 10]), ("draft2000032", [15, 15]), ("draft2000037", [20, 20])):
+            built = self.api("politic/task/submitBuildTask", draftId=draft, originCoord=coord)
+            self.assertTrue(built["succeeded"], built)
+            key = built["buildingId"]
+            ids.append(key)
+            for _ in range(state.load(self.pid)["buildings"][key]["remainedClickCount"]):
+                self.assertTrue(self.api("politic/task/progressBuildTask", buildingId=int(key))["succeeded"])
+        completed = self.api("politic/task/completeTasks", buildingIds=ids)
+        self.assertTrue(completed["succeeded"], completed)
+        self.assertEqual(set(completed["autoProducings"]), set(ids[:2]))
+        furniture = ids[2]
+        self.assertTrue(self.api("politic/task/submitProduceTask", buildingId=int(furniture), productId="building200_037_01_01_1_1")["succeeded"])
+        active = state.load(self.pid)
+        self.assertTrue(self.api("politic/task/cancelTasks", buildingIds=[furniture])["succeeded"])
+        self.assertEqual(state.load(self.pid)["resources"], active["resources"])
+        restart()
+        self.login()
+        mapped = self.api("politic/map/getMapData")
+        self.assertEqual(set(mapped["producings"]), set(ids[:2]))
+        water = ids[1]
+        accelerated = self.api("politic/task/accelerateProduceTask", buildingId=int(water), id="produce_accel_0001", count=1)
+        self.assertTrue(accelerated["succeeded"], accelerated)
+        self.assertEqual(accelerated["producings"][water]["dueTime"], 2000006600)
+        now[0] += 7200
+        first = self.api("politic/task/completeTasks", buildingIds=ids[:2])
+        self.assertTrue(first["succeeded"], first)
+        self.assertEqual(first["buildings"][ids[0]]["durability"], 9)
+        self.assertEqual(set(first["autoProducings"]), set(ids[:2]))
+        upgraded = self.api("politic/building/levelUpBuilding", buildingId=int(water))
+        self.assertTrue(upgraded["succeeded"], upgraded)
+        self.assertEqual(upgraded["building"]["level"], 2)
+        mine = ids[0]
+        for _ in range(9):
+            now[0] = state.load(self.pid)["produce"][mine]["dueTime"]
+            harvested = self.api("politic/task/completeTasks", buildingIds=[mine])
+            self.assertTrue(harvested["succeeded"], harvested)
+        final = state.load(self.pid)
+        self.assertNotIn(mine, final["buildings"])
+        self.assertNotIn(mine, final["produce"])
+        self.assertNotIn(mine, final["occupiedGrids"].values())
+        self.assertIn(water, final["produce"])
+        self.assertEqual(final["buildings"][water]["level"], 2)
+        self.assertEqual(final["resources"]["credit"]["amount"], 99)
+        restart()
+        self.login()
+        mapped = self.api("politic/map/getMapData")
+        self.assertNotIn(mine, mapped["buildings"])
+        self.assertEqual(mapped["producings"][water], final["produce"][water])
+
+    def test_special_inventory_friend_atomic_help_and_evolution_survive_http_sql_restart(self):
+        from app.business.gameplay import GameplayService
+        from app.business.registry import Registry
+        from app.business.social_services import SocialServices
+        from app.business.friend_production import FriendProduction
+        from app.tables import TableError
+        from tests.test_fixed_resource_production import TABLES
+        from tests.test_production_lifecycle import EXTRA as LIFECYCLE
+        from tests.test_production_completion import EXTRA, CASES, EVOLVE, RESTAURANT
+        tables = {}
+        for group in (TABLES, LIFECYCLE, EXTRA):
+            for name, rows in group.items():
+                tables[name] = {**tables.get(name, {}), **rows}
+        original = self.catalog.load
+
+        def load(name):
+            try:
+                value = original(name)
+            except TableError:
+                if name not in tables:
+                    raise
+                value = {}
+            return {**value, **tables.get(name, {})}
+
+        self.catalog.load = load
+        now = [2000000000.0]
+
+        def restart():
+            self.close_server()
+            service = GameplayService(catalog=self.catalog)
+            for engine in (service.fixed_production, service.automatic_production,
+                           service.tutorial_production, service.restaurant_production):
+                engine.clock = lambda: now[0]
+            registry = service.register(Registry())
+            social = SocialServices(service, atomic_players=state.atomic_players, clock=lambda: now[0])
+            social.register(registry)
+            FriendProduction(service, social).register(registry)
+            self.httpd = serve("127.0.0.1", 0, registry.register_contract_defaults())
+            self.worker = threading.Thread(target=self.httpd.serve_forever, daemon=True)
+            self.worker.start()
+
+        restart()
+        actor = (self.pid, self.account, self.password)
+        owner_account, owner_password = "prod_" + uuid.uuid4().hex[:12], uuid.uuid4().hex
+        self.request("/index.php/gwz/client/login/?page=register", dict(account=owner_account, password=owner_password))
+        self.account, self.password = owner_account, owner_password
+        self.login()
+        owner_id = self.api("auth/gameLogin")["playerId"]
+        self.assertTrue(self.api("auth/registerName", username=owner_account)["succeeded"])
+        self.assertTrue(self.api("auth/createPlayer", username=owner_account, countryId="country01",
+                                navigatorId="navi8000101", colorIndex="color1")["succeeded"])
+        owner = (owner_id, owner_account, owner_password)
+
+        def switch(account):
+            self.pid, self.account, self.password = account
+            self.login()
+
+        for account in (actor, owner):
+            player = state.load(account[0])
+            player["entity"]["level"] = 100
+            player["actionPoints"]["politicPoint"].update(point=25, confirmTime=0.0)
+            for kind in ("gold", "wood", "food", "iron"):
+                player["resources"][kind]["amount"] = 0
+            state.save(player, account[0])
+        switch(actor)
+        self.assertTrue(self.api("friend/sendFriendOffer", friendPlayerId=owner_id)["result"])
+        switch(owner)
+        self.assertTrue(self.api("friend/feedbackFriendOffer", friendPlayerId=actor[0], reply="ok")["result"])
+
+        # Isolated SQL prerequisites: original owned building snapshots. Other
+        # HTTP tests cover draft costs and construction clicks independently.
+        player = state.load(owner_id)
+        player["buildings"] = {"1": {"instanceId": 1, "buildingTypeId": CASES["friend"],
+            "level": 1, "exp": 0, "status": "none", "durability": 10001,
+            "deployedMapKey": "map001", "x": 10, "y": 10, "remainedClickCount": 0}}
+        player["occupiedGrids"] = {"10,10": "1"}
+        player["counters"].update(nextBuildingId=2, buildingCount=1)
+        state.save(player, owner_id)
+        switch(actor)
+        mapped = self.api("friend/getFriendMapData2", friendPlayerId=owner_id, mapId=-1)
+        self.assertIn("1", mapped["producings"])
+        visit = self.api("friend/visitFriendMap", friendPlayerId=owner_id)
+        self.assertIs(visit["isFirst"], False)
+        self.assertEqual(visit["reward"], {})
+        accelerated = self.api("friend/task/accelerateFriendProduceTask", friendPlayerId=owner_id,
+                               mapId=0, buildingId=1, id="produce_accel_0001")
+        self.assertTrue(accelerated["succeeded"], accelerated)
+        now[0] = accelerated["producings"]["1"]["dueTime"]
+        restart()
+        switch(actor)
+        before = {pid: state.load(pid) for pid in (actor[0], owner_id)}
+        import pymysql.cursors
+        real_execute = pymysql.cursors.DictCursor.execute
+        writes = [0]
+
+        def fail_second(cursor, query, args=None):
+            if query.startswith("UPDATE players SET state_json"):
+                writes[0] += 1
+                if writes[0] == 2:
+                    raise state.StateConflictError("isolated second-player failure")
+            return real_execute(cursor, query, args)
+
+        with patch.object(pymysql.cursors.DictCursor, "execute", fail_second):
+            refused = self.api("friend/task/completeFriendTasks", friendPlayerId=owner_id, mapId=0, buildingId=1)
+            self.assertFalse(refused["succeeded"], refused)
+        self.assertEqual({pid: state.load(pid) for pid in before}, before)
+        result = self.api("friend/task/completeFriendTasks", friendPlayerId=owner_id, mapId=0, buildingId=1)
+        self.assertTrue(result["succeeded"], result)
+        self.assertNotIn("errno", result)
+        self.assertEqual(self.api("friend/task/completeFriendTasks", friendPlayerId=owner_id, mapId=0, buildingId=1)["errno"], 1)
+        for pid in before:
+            saved = state.load(pid)
+            self.assertEqual(saved["resources"]["gold"]["amount"], 18000)
+            self.assertEqual(saved["actionPoints"]["politicPoint"]["point"], 25)
+
+        # Three original reward categories must use the same inventory keys on
+        # harvest, after a service restart and through their query routes.
+        for label in ("shrine", "tactics", "cannon"):
+            player = state.load(actor[0])
+            for kind in ("gold", "wood", "food", "iron"):
+                player["resources"][kind]["amount"] = 5000000
+            bid = CASES[label]
+            player["buildings"] = {"1": {"instanceId": 1, "buildingTypeId": bid, "level": 1, "exp": 0,
+                "status": "none", "durability": tables["building"][bid]["durability"],
+                "deployedMapKey": "map001", "x": 10, "y": 10, "remainedClickCount": 0}}
+            player["produce"] = {}
+            player["automaticResourceProductionV1"] = {}
+            player["occupiedGrids"] = {"10,10": "1"}
+            state.save(player, actor[0])
+            mapped = self.api("politic/map/getMapData")
+            if tables["building"][bid]["produceType"] == "auto":
+                now[0] = mapped["producings"]["1"]["dueTime"]
+            else:
+                started = self.api("politic/task/submitProduceTask", buildingId=1,
+                                   productId=tables["building"][bid]["products"][0])
+                self.assertTrue(started["succeeded"], started)
+                now[0] = started["dueTime"]
+            result = self.api("politic/task/completeTasks", buildingIds=[1])
+            self.assertTrue(result["succeeded"], result)
+            for code, amount in result["producings"]["1"]["reward"].items():
+                if code.startswith("item03_"):
+                    key = tables["item03"][code]["parameterId"]
+                    self.assertEqual(self.api("common/getTactics")[key]["amount"], amount)
+                elif code.startswith(("item07_", "item15_")):
+                    self.assertEqual(state.load(actor[0])["items"][code], amount)
+            restart()
+            switch(actor)
+
+        player = state.load(actor[0])
+        base = {"instanceId": 1, "buildingTypeId": RESTAURANT, "level": 10, "exp": 0,
+                "status": "waiting", "durability": 10001, "deployedMapKey": "none", "x": 10, "y": 10,
+                "remainedClickCount": 0}
+        player["buildings"] = {"1": base, "2": {**base, "instanceId": 2}}
+        player["produce"], player["automaticResourceProductionV1"], player["occupiedGrids"] = {}, {}, {}
+        player["counters"].update(nextBuildingId=3, buildingCount=2)
+        state.save(player, actor[0])
+        result = self.api(EVOLVE, first=1, second=2)
+        self.assertTrue(result["succeeded"], result)
+        self.assertEqual(result["building"]["buildingTypeId"], "building200_036_02_01_1_1")
+        restart()
+        switch(actor)
+        self.assertEqual(set(self.api("politic/map/getMapData")["buildings"]), {"3"})
+        self.assertFalse(self.api(EVOLVE, first=1, second=2)["succeeded"])
+        player = state.load(actor[0])
+        player["resources"]["food"]["amount"] = 5000  # Explicit isolated recipe prerequisite.
+        state.save(player, actor[0])
+        deployed = self.api("politic/building/deployBuilding", buildingId=3, originCoord=[10, 10])
+        self.assertTrue(deployed["succeeded"], deployed)
+        code = tables["building"][result["building"]["buildingTypeId"]]["products"][0]
+        started = self.api("politic/task/submitProduceTask", buildingId=3, productId=code)
+        self.assertTrue(started["succeeded"], started)
+        now[0] = started["dueTime"]
+        self.assertTrue(self.api("politic/task/completeTasks", buildingIds=[3])["succeeded"])
+        final = state.load(actor[0])
+        restart()
+        switch(actor)
+        self.assertEqual(self.api("politic/map/getMapData")["buildings"]["3"], final["buildings"]["3"])
 
     def test_commit_failure_preserves_old_state_and_backup(self):
         plan = self.plan_for(self.pid); before = state.load(self.pid)

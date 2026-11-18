@@ -56,6 +56,7 @@ class TutorialProductionTest(unittest.TestCase):
         self.service = GameplayService(catalog=self.catalog, load_state=self.states.load,
                                        save_state=self.states.save, session_store=self.sessions)
         self.service.tutorial_production.clock = lambda: self.now
+        self.service.fixed_production.clock = lambda: self.now
         self.registry = self.service.register(Registry()).register_contract_defaults()
 
     def saved(self):
@@ -146,6 +147,37 @@ class TutorialProductionTest(unittest.TestCase):
         self.assertEqual(self.saved()["resources"]["food"]["amount"], 13)
         self.assertEqual(self.saved()["actionPoints"]["politicPoint"]["point"], 23)
 
+    def test_lesson_short_recipe_is_once_per_player_and_normal_recipe_survives_restart(self):
+        from tests.test_fixed_resource_production import TABLES
+        for name in ("building", "building_level", "product", "reward01_politic"):
+            self.tables[name] = {**TABLES[name], **self.tables.get(name, {})}
+        query = "politic/building/getProductsByBuilding"
+        normal = "product060_001_01_01_1_1"
+        short = TutorialFieldProduction.PRODUCT
+        player = self.saved()
+        player["buildings"]["2"] = {**player["buildings"]["1"], "instanceId": 2, "x": 8}
+        self.save(player)
+        self.assertIn(short, self.call(query, buildingId=1)["products"])
+        self.assertTrue(self.start()["succeeded"])
+        self.fails(START, buildingId=2, productId=short)
+        self.assertTrue(self.call("politic/task/cancelTasks", buildingIds=[1])["succeeded"])
+        task = self.start()
+        self.assertTrue(task["succeeded"], task)
+        self.now = task["dueTime"]
+        self.assertTrue(self.call(HARVEST, buildingIds=[1])["succeeded"])
+        self.mount()
+        self.assertEqual(self.call(query, buildingId=2)["products"], {normal: {}})
+        self.fails(START, buildingId=2, productId=short)
+        task = self.call(START, buildingId=1, productId=normal)
+        self.assertTrue(task["succeeded"], task)
+        self.assertEqual(task["dueTime"] - task["createdTime"], 900)
+        self.now = task["dueTime"]
+        result = self.call(HARVEST, buildingIds=[1])
+        self.assertEqual(result["producings"]["1"]["reward"]["item11_0000301"], 60)
+        self.assertEqual(self.saved()["buildings"]["1"]["exp"], 40)
+        upgraded = self.call("politic/building/levelUpBuilding", buildingId=1)
+        self.assertEqual(upgraded["building"]["level"], 2)
+
     def test_insufficient_capacity_points_and_save_conflict_keep_task(self):
         self.start(); self.now += 10
         original = self.saved()
@@ -172,15 +204,23 @@ class TutorialProductionTest(unittest.TestCase):
         self.assertEqual(result["completeCount"], 2)
         self.assertEqual(self.saved()["buildings"]["2"]["status"], "none")
 
-    def test_unsupported_recipe_road_modifiers_and_locked_mission_do_not_charge(self):
+    def test_unsupported_recipe_modifiers_and_locked_mission_do_not_charge(self):
         self.fails(START, buildingId=1, productId="product060_001_01_01_1_1")
         original = self.saved()
         for mutate in (lambda p: p["missions"].update({"5": "O"}),
-                       lambda p: p["decks"].update(politic={"0": {"ids": {"0": 1}}}),
-                       lambda p: p["buildings"].update({"2": {**p["buildings"]["1"],
-                           "buildingTypeId": "building200_051_01_01_1_1"}})):
+                       lambda p: p["decks"].update(politic={"0": {"ids": {"0": 999999}}})):
             p = copy.deepcopy(original); mutate(p); self.save(p)
             self.fails(START, buildingId=1, productId=TutorialFieldProduction.PRODUCT)
+
+    def test_adjacent_road_applies_compatible_bonus_without_changing_the_road(self):
+        player = self.saved()
+        player["buildings"]["2"] = {**player["buildings"]["1"], "instanceId": 2,
+            "x": 5, "buildingTypeId": "building200_051_01_01_1_1"}
+        self.save(player)
+        self.assertTrue(self.start()["succeeded"])
+        self.now += 10
+        self.assertEqual(self.call(HARVEST, buildingIds=[1])["producings"]["1"]["reward"]["item11_0000301"], 15)
+        self.assertEqual(self.saved()["buildings"]["2"], player["buildings"]["2"])
 
     def test_missing_assets_bad_reference_and_corrupt_ledger_are_distinct(self):
         load = self.catalog.load

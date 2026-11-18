@@ -192,11 +192,13 @@ class PlayerServices:
         if not isinstance(ids, list) or not ids or not isinstance(amounts, list) or len(ids) != len(amounts):
             raise ValueError("invalid shop catalogue quantities")
         if row.get("isSet"):
-            if index != 0:
-                raise ValueError("set purchases require index zero")
+            # Native customers send -1 for the whole set. Zero also supports
+            # older local callers of the same bundle purchase.
+            if index not in (-1, 0):
+                raise ValueError("invalid set purchase index")
             selected = list(zip(ids, amounts))
         else:
-            if index >= len(ids):
+            if not 0 <= index < len(ids):
                 raise ValueError("shop item index out of range")
             selected = [(ids[index], amounts[index])]
         drafts = self.table("item04")
@@ -252,7 +254,7 @@ class PlayerServices:
         if params.get("storetable") != "shop_item":
             raise ValueError("only the normal shop catalogue is supported")
         quantity = integer(params.get("quantity"), 1)
-        index = integer(params.get("index"))
+        index = integer(params.get("index"), -1)
         item_id = params.get("shopItemId")
         if not isinstance(item_id, str):
             raise ValueError("shopItemId required")

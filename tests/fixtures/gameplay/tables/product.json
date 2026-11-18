@@ -1,0 +1,21 @@
+{
+  "product": {
+    "building200_001_01_01_1_1": {
+      "id": "building200_001_01_01_1_1",
+      "costTypes": [],
+      "costAmounts": [
+        0
+      ],
+      "dueInterval": 1800,
+      "rewardId": "reward01_01_00013_01",
+      "openLevel": 1,
+      "openMission": "null",
+      "buyable": "null",
+      "buyableLevel": "null",
+      "buyableMission": "null",
+      "itemId": "",
+      "buildingExp": 55,
+      "sortno": 999
+    }
+  }
+}

@@ -19,6 +19,10 @@
     "default_extend_character_store": {
       "id": "default_extend_character_store",
       "value": 100
+    },
+    "infinite_building_durability": {
+      "id": "infinite_building_durability",
+      "value": 10001
     }
   }
 }

@@ -80,8 +80,10 @@ class ParallelIntegrationTest(unittest.TestCase):
         for api in HELD:
             self.assertEqual(self.registry._handlers[api].__module__, "app.business.placeholders", api)
         self.assertEqual(sum(h.__module__ == "app.business.placeholders"
-                             for h in self.registry._handlers.values()), 321)
+                             for h in self.registry._handlers.values()), 310)
         self.assertNotEqual(self.registry._handlers["politic/task/submitProduceTask"].__module__,
+                            "app.business.placeholders")
+        self.assertNotEqual(self.registry._handlers["politic/task/submitBulkProduceTasks"].__module__,
                             "app.business.placeholders")
 
     def test_shared_transactions_survive_concurrent_calls_and_relogin(self):

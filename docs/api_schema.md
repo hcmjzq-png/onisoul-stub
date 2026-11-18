@@ -5,7 +5,11 @@
 用于本机启动器核对目标，非原版游戏协议。只在显式配置环境身份时启用；
 不加入 auth、politic 等业务响应。原画布尺寸和资源包保持原有格式。
 
-2026-11-18 任务 5：**bundle / 本服兼容结算**。单体开工根 dueTime/now/remainedClickCount
+2026-11-18 生产与商店：配方查询、单体与批量开工共用资格。一次性任务 5 收获标记只保存在服务端。
+普通商店 `buyShopItem` 的整套 `index=-1` 来自客户端 `ShopItemBuild.cs:146`、
+`ShopItemSupport.cs:329`，保持已有购买与建设回包。范围见 [本机生产与商店](analysis/production-completion-20261118/README.md)。
+
+2026-11-18 任务 5 初版（历史）：**bundle / 本服兼容结算**。单体开工根 dueTime/now/remainedClickCount
 及 producings.<id>.productId/createdTime/dueTime 来自 StateManualProduce、PoliticBuildingParameter；
 收获 producings.<id>.reward/building/collaborator 来自 StateAutoProduce，建筑 exp 是绝对值。
 内部 tutorialFieldProductionV1 不下发。免费 10 秒田地采用菜单插值产量、原表 buildingExp 增量是
@@ -101,7 +105,7 @@ categoryGradeCount（建筑 grade/level=any）、eq_greater_than 条件。
 | `politic/mypage/getLessonStates.states` | bundle | `LessonMissionSimpleStatusManager.cs:66-127`、`LessonMissionSimpleStatus.cs:20-33`，索引数字字符串对应 L/C。枚举 lesson 表，按 lessonsDone 返回；未读不标完成。2026-11-15 从原表包找到 reward14_lesson（24 行）；takeLesson 已实现的限定范围见下文成长流程复核。 |
 | `politic/support_item/getPotions.potions.<id>.amount` | bundle | `PoliticItemInventory.setup/putInItemList`、`PotionTableAccessor.getItemId`，potion.itemID 映射已有 items；不把 initialAmount 字段当免费赠送。全自动用药条目明确回零余额，其余按实际库存返回。恢复公式尚未证实，usePotions 未纳入完成计数。 |
 | `politic/shop/getShopItems.shopItems/recommendedItems` | bundle / 待验证 | `ShopUpdate.cs:57-110,204-210` 要求两张表；条目读 state/isNewBuyable/discount。当前仅列出 isInitialSale=true、无折扣、有正价格且能发放的图纸/消耗品，其他商品不展示。isInitialSale 作为白名单是本模拟服保守策略，未声称复原原服上架/解锁规则。 |
-| `politic/shop/buyShopItem.resources/result` | bundle | `WebApiClient.cs:1036-1046` 请求 shopItemId/index/quantity/storetable；`ShopItemBuild/Support.saleWindowResult` 读取 resources，`DailyMissionScene.cs:440-450` 读取 result 中购买后物品余额。只接受普通 shop_item 表；整套/单件按 isSet/itemIds/quantities；countryshop 通过 shop_item_country 映射本国物品。 |
+| `politic/shop/buyShopItem.resources/result` | bundle | `WebApiClient.cs:1036-1046` 请求 shopItemId/index/quantity/storetable；`ShopItemBuild/Support.saleWindowResult` 读取 resources，`DailyMissionScene.cs:440-450` 读取 result 中购买后物品余额。普通 shop_item 表按 isSet/itemIds/quantities 交付。整套接受客户端的 -1 及旧本地调用的 0；逐件使用非负下标。countryshop 通过 shop_item_country 映射本国物品。 |
 | 商店费用 | bundle | `ShopUpdate.cs:114-146`、`ShopItem.sortResource`：credit 类型使用行内 credit 替换 costAmounts，不能相加；其他资源按表值。缺余额/未知商品/非整数或非正数量/错误下标/未知促销表均失败，整笔不扣款、不发物品。写入沿用玩家锁与数据库 revision 校验。 |
 
 新逻辑对应 `app/business/player_services.py`。商店发放进入现有 items，图纸通过
@@ -153,7 +157,7 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 
 ## 2026-11-15 生产链追加证据（历史基线）
 
-字段证据继续保留；当前支持范围以顶部任务 5 说明和系统台账 S05 为准。
+字段证据继续保留。当前支持范围见顶部生产与商店说明和系统台账 S05。
 
 | 字段 / 行为 | 来源 | 证据与限制 |
 | --- | --- | --- |

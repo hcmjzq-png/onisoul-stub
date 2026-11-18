@@ -140,7 +140,7 @@ class Research331EIAdapterTest(unittest.TestCase):
             registry = main.build_registry()
         constructor.assert_called_once_with(self.service, atomic_players=state.atomic_players)
         self.assertEqual(sum(h.__module__ == "app.business.placeholders"
-                             for h in registry._handlers.values()), 321)
+                             for h in registry._handlers.values()), 310)
         server = http_server.serve("127.0.0.1", 0, registry)
         worker = threading.Thread(target=server.serve_forever, daemon=True)
         worker.start()

@@ -65,6 +65,34 @@ class CityTest(unittest.TestCase):
         p = self.saved(); p["actionPoints"]["politicPoint"]["point"] = 0; self.save(p)
         self.failed_without_writes("politic/task/submitBuildTask", draftId="draft2000041", originCoord=[20, 20])
 
+    def test_building_map_restriction_matches_deployment_and_cannot_be_bypassed(self):
+        original = self.service.catalog.load
+        buildings = original("building").copy()
+        buildings[FIELD] = {**buildings[FIELD], "map0": False}  # Controlled permission mutation.
+        with patch.object(self.service.catalog, "load", side_effect=lambda name: buildings if name == "building" else original(name)):
+            for api in ("politic/task/submitBuildTask", "politic/task/submitBuildAndComplete"):
+                self.failed_without_writes(api, draftId="draft2000041", originCoord=[20, 20])
+
+    def test_all_build_paths_enforce_the_authoritative_possession_limit(self):
+        original = self.service.catalog.load
+        levels = {key: {**row, "maxBuilding": 2} for key, row in original("playerLevel").items()}
+        with patch.object(self.service.catalog, "load", side_effect=lambda name: levels if name == "playerLevel" else original(name)):
+            self.call("common/getPlayerParams")  # Normalize the controlled cap first.
+            for api, params in (
+                ("politic/task/submitBuildTask", {"draftId": "draft2000041", "originCoord": [20, 20]}),
+                ("politic/task/submitBuildAndComplete", {"draftId": "draft2000051", "originCoord": [20, 20]}),
+                ("politic/task/submitBulkBuildAndComplete", {"draftId": "draft2000051", "originCoords": [[20, 20]]}),
+                ("politic/task/submitSerialBuildAndComplete", {"draftId": "draft2000051", "originCoords": [[20, 20]]}),
+            ):
+                self.failed_without_writes(api, **params)
+
+    def test_progress_rejects_stored_and_completed_instances_without_writes(self):
+        self.failed_without_writes("politic/task/progressBuildTask", buildingId=1)
+        player = self.saved()
+        player["buildings"]["1"].update(deployedMapKey="none", status="building", remainedClickCount=2)
+        self.save(player)
+        self.failed_without_writes("politic/task/progressBuildTask", buildingId=1)
+
     def test_bulk_roads_match_client_coordinate_maps_and_retries_do_not_duplicate(self):
         api = "politic/task/submitBulkBuildAndComplete"
         params = {"draftId": "draft2000051", "originCoords": [[20, 20], [21, 20]]}
