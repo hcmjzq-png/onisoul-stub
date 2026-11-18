@@ -535,6 +535,346 @@
       "map2": false,
       "map3": false,
       "map4": false
+    },
+    "building200_036_01_01_1_1": {
+      "id": "building200_036_01_01_1_1",
+      "name": "饭馆",
+      "desc": "店铺",
+      "category": "store",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold",
+        "food"
+      ],
+      "costAmounts": [
+        400,
+        100
+      ],
+      "products": [
+        "building200_036_01_01_1_1"
+      ],
+      "produceType": "single",
+      "durability": 10001,
+      "levelUpTypeId": "product_store",
+      "connectChipType": "none",
+      "itemId": "item05_0200036",
+      "waitImages": [
+        "building200_036_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 418,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 2,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_036_02_01_1_1": {
+      "id": "building200_036_02_01_1_1",
+      "name": "饭馆",
+      "desc": "店铺",
+      "category": "store",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 2,
+      "costTypes": [
+        "gold",
+        "food"
+      ],
+      "costAmounts": [
+        400,
+        100
+      ],
+      "products": [
+        "building200_036_02_01_1_1"
+      ],
+      "produceType": "single",
+      "durability": 10001,
+      "levelUpTypeId": "product_store",
+      "connectChipType": "none",
+      "itemId": "item05_0200036",
+      "waitImages": [
+        "building200_036_02_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 419,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 80,
+      "kokudakaMax": 96,
+      "regularSoldier": 0,
+      "dedication": 5,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_036_03_01_1_1": {
+      "id": "building200_036_03_01_1_1",
+      "name": "饭馆",
+      "desc": "店铺",
+      "category": "store",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 3,
+      "costTypes": [
+        "gold",
+        "food"
+      ],
+      "costAmounts": [
+        400,
+        100
+      ],
+      "products": [
+        "building200_036_03_01_1_1"
+      ],
+      "produceType": "single",
+      "durability": 10001,
+      "levelUpTypeId": "product_store",
+      "connectChipType": "none",
+      "itemId": "item05_0200036",
+      "waitImages": [
+        "building200_036_03_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_011",
+      "sortno": 420,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 187,
+      "kokudakaMax": 206,
+      "regularSoldier": 0,
+      "dedication": 13,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_039_01_01_1_1": {
+      "id": "building200_039_01_01_1_1",
+      "name": "植林地",
+      "desc": "木材生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 1,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_011_01_01_1_1",
+        "product060_012_01_01_1_1",
+        "product060_016_01_01_1_1",
+        "product060_017_01_01_1_1",
+        "product060_025_01_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200039",
+      "waitImages": [
+        "building200_039_01_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_012",
+      "sortno": 403,
+      "openShopItemId1": [
+        "shop0000040"
+      ],
+      "openLevel1": 1,
+      "openShopItemId2": [
+        "shop0000033"
+      ],
+      "openLevel2": 7,
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 10,
+      "kokudakaMax": 40,
+      "regularSoldier": 0,
+      "dedication": 1,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_039_02_01_1_1": {
+      "id": "building200_039_02_01_1_1",
+      "name": "植林地",
+      "desc": "木材生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 2,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_011_02_01_1_1",
+        "product060_012_02_01_1_1",
+        "product060_016_02_01_1_1",
+        "product060_017_02_01_1_1",
+        "product060_025_02_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200039",
+      "waitImages": [
+        "building200_039_02_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_012",
+      "sortno": 404,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 80,
+      "kokudakaMax": 96,
+      "regularSoldier": 0,
+      "dedication": 3,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
+    },
+    "building200_039_03_01_1_1": {
+      "id": "building200_039_03_01_1_1",
+      "name": "植林地",
+      "desc": "木材生产",
+      "category": "factory",
+      "size": [
+        2,
+        2
+      ],
+      "grade": 3,
+      "costTypes": [
+        "gold"
+      ],
+      "costAmounts": [
+        200
+      ],
+      "products": [
+        "product060_011_03_01_1_1",
+        "product060_012_03_01_1_1",
+        "product060_016_03_01_1_1",
+        "product060_017_03_01_1_1",
+        "product060_025_03_01_1_1"
+      ],
+      "produceType": "manual",
+      "durability": 10001,
+      "levelUpTypeId": "product_early",
+      "connectChipType": "none",
+      "itemId": "item05_0200039",
+      "waitImages": [
+        "building200_039_03_01_1_1"
+      ],
+      "buildingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "producingImages": [
+        "hoge.img",
+        "hoge.img"
+      ],
+      "startProductImage": "ui1_550_012",
+      "sortno": 405,
+      "openShopItemId1": "",
+      "openLevel1": "",
+      "openShopItemId2": "",
+      "openLevel2": "",
+      "openShopItemId3": "",
+      "openLevel3": "",
+      "kokudakaMin": 187,
+      "kokudakaMax": 206,
+      "regularSoldier": 0,
+      "dedication": 8,
+      "map0": true,
+      "map1": true,
+      "map2": false,
+      "map3": false,
+      "map4": false
     }
   },
   "draft": {

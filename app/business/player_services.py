@@ -66,6 +66,11 @@ class PlayerServices:
         before = copy.deepcopy(player)
         try:
             payload = action(player, params)
+            if (api in {"politic/building/putInBuildings", "politic/building/deployBuilding",
+                        "politic/building/levelUpBuilding", "politic/building/levelUpBuildings",
+                        "politic/building/levelUpBuildingCollectively", "politic/building/conflateBuilding"}
+                    and player.get("buildings") != before.get("buildings")):
+                payload["kokudaka"] = float(self.service._refresh_kokudaka(player))
         except ValueError as exc:
             return self.service._failure(api, str(exc))
         if dirty or player != before:

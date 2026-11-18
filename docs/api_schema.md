@@ -1,5 +1,10 @@
 # 本批服务端字段来源与边界
 
+2026-11-18 石高：主城完工建筑按原 `grade/kokudakaMin/kokudakaMax` 的 float32 插值汇总，
+在登录读取、完工、升级、进化、收纳及再部署后刷新 `kokudaka`。
+`UserStatus.updateKokudaka` 及建筑 FSM 读取已有根字段；道路批量根仍只包含建筑索引。
+主城汇总是本服兼容策略，技能、支城加成尚未核实，见[石高与编成修复](analysis/city-deck-20261118/README.md)。
+
 2026-11-17：`GET /client/status` 的 `environment`、`instance_id`、`build_id`
 以及 HTTP `X-OniSoul-Environment` / `X-OniSoul-Instance` 是**本服运维自定义**，
 用于本机启动器核对目标，非原版游戏协议。只在显式配置环境身份时启用；
@@ -157,7 +162,7 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | 库存 deployedMapKey="none"；`deployBuilding.buildingId/building/autoProducings` | bundle | PoliticBuildingParameter.cs:284-291、PoliticMap.cs:278-287、PoliticBuilding.cs:842-895。只接入空闲普通建筑，不接自动生产/道路移除。 |
 | `levelUpBuilding.building` / `levelUpBuildings.output_buildings` | bundle | PoliticBuilding.cs:931-951、PoliticFSMBatchUpgrade.cs:77-111、PluginRunner_LevelUp.cs:46-69。建筑字段沿用原持久记录；缺经验/成本/PP 或非空闲失败。 |
 | `levelUpBuildingCollectively.resultBuildings/totalUsedPoint/restResources.<resource>.amount` | bundle | PoliticFSMProduct.cs:1086-1124；PoliticBuilding.cs:2258-2332。原 amount 在 restResources 内，非根字段。逐级扣经验与费用，未发放经验。 |
-| 城市回包 kokudaka | 待验证 | 单体贡献 helper 可见于 BuildingsTableAccessor.cs:637，但全局汇总/加成尚未核实。本批新入口省略可选字段，保留原存档值；UserStatus.cs:1820-1830 容许缺省。 |
+| 城市回包 kokudaka | bundle / 本服兼容汇总 | 单体插值来自 BuildingsTableAccessor.cs:617-642；主城已完工建筑基础值汇总，更新旧缓存。建设/完工、收纳/再部署、升级/进化回包沿用原消费者读取的可选根字段。道路批量保留数字索引形状。技能和支城加成尚未核实；见 2026-11-18 石高记录。 |
 | `submitProduceTask.dueTime/now` | bundle | StateManualProduce.cs:51-66 → PoliticBuildingParameter.cs:172-182；2026-11-15 当时仅修契约。现已接入顶部 2026-11-18 所述受限任务 5 田地模式。 |
 | `submitBulkProduceTasks.producings.<id>.productId/createdTime/dueTime` | bundle | PoliticFSMCollectiveProduce.cs:98-125 → PoliticBuildingParameter.cs:191-199；仅修契约。收获时同名 producings 另有 reward/building/collaborator。 |
 

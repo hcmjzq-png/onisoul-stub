@@ -84,7 +84,7 @@ class MissionStateTransitionsTest(unittest.TestCase):
                               if value.get("category") == target)
             for index in range(1, amount + 1):
                 player["buildings"][str(index)] = {
-                    "instanceId": index, "buildingTypeId": target, "status": "none",
+                    "instanceId": index, "buildingTypeId": target, "status": "none", "level": 1,
                     "remainedClickCount": 0, "deployedMapKey": "map001",
                 }
         self.save(player)

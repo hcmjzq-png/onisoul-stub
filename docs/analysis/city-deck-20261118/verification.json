@@ -1,0 +1,58 @@
+{
+  "environment": "local-test",
+  "sql": {
+    "test_count": 795,
+    "skipped": 0,
+    "mysql": "8.0.46",
+    "disposable_datadir": true,
+    "system_database_used": false,
+    "mysql_process_stopped": true,
+    "exit_code": 0
+  },
+  "assets": [
+    {
+      "cid": "chara1_09291",
+      "path": "/client/pc/jp/assets/chara/c575d98ec2e53d8adab6c27bd28b398d.unity3d",
+      "sha256": "e44a2bbbb3e25a92ab8e26740c72ba05f26020b7644d90e8b7cd64afafc3c6d0",
+      "bytes": 117313,
+      "http_status": 200,
+      "previously_present": false
+    },
+    {
+      "cid": "chara1_09294",
+      "path": "/client/pc/jp/assets/chara/1c8778dbcdfd338e464ac201ca59dc3d.unity3d",
+      "sha256": "91976a6826ac1de539b9c5343e3adde9206300f25c5e46f3fd012d7c5eef7526",
+      "bytes": 89224,
+      "http_status": 200,
+      "previously_present": false
+    },
+    {
+      "cid": "chara1_09296",
+      "path": "/client/pc/jp/assets/chara/f22f49b8f98e72d80638d821448d4505.unity3d",
+      "sha256": "688097650649162d981afce3e0a5524c310c36bb5ed24bacd188058897d9bd12",
+      "bytes": 90754,
+      "http_status": 200,
+      "previously_present": false
+    },
+    {
+      "cid": "chara1_09298",
+      "path": "/client/pc/jp/assets/chara/35e359a61fc0cbb9591ae845dec3164d.unity3d",
+      "sha256": "356eee0182435ecd17fa202aa48cde618ad40dd6fd93ef18bcf111de5476902b",
+      "bytes": 110224,
+      "http_status": 200,
+      "previously_present": false
+    }
+  ],
+  "runtime": {
+    "deployed": false
+  },
+  "unity": {
+    "deck": "pending restart after asset publication",
+    "kokudaka": "pending code deployment"
+  },
+  "remote": {
+    "github_branch_pushed": false,
+    "cloud_deployed": false,
+    "lan_verified": false
+  }
+}
