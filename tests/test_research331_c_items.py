@@ -50,6 +50,7 @@ class ItemTransactionsTest(unittest.TestCase):
         player["characters"]["90"] = copy.deepcopy(player["characters"]["1"])
         player["items"].update({f"item07_004{i:04d}": 20 for i in range(1, 21)})
         player["resources"]["credit"]["amount"] = 2000
+        player["missions"]["8"] = "C"
         self.save(player)
         self.original = copy.deepcopy(self.saved()["characters"]["90"])
 

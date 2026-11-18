@@ -127,8 +127,15 @@ def run(host: str, port: int) -> None:
         assert api("politic/map/setMapName2", {"token": token, "mapId": 0, "mapName": "AuditTown"}) == {}
         assert api("politic/map/getMapData", {"token": token})["map"]["name"] == "AuditTown"
         assert api("politic/mypage/getLessonStates", {"token": token})["states"]["1"] == "L"
+        # Seed only this audit account's prerequisite for the shop tutorial.
+        fixture = state.load(initial["playerId"])
+        assert fixture["entity"]["username"] == account and fixture["entity"]["created"]
+        fixture["missions"]["7"] = "C"
+        state.save(fixture, initial["playerId"])
+        assert api("politic/mission/changeState", {"token": token, "missionIds": ["po_mission_00008"],
+                    "states": ["accepted"]})["succeeded"]
         shop = api("politic/shop/getShopItems", {"token": token, "category": "draft"})
-        assert "shop0000041" in shop["shopItems"] and isinstance(shop["recommendedItems"], dict)
+        assert shop["shopItems"]["shop0000041"]["state"] == "open" and isinstance(shop["recommendedItems"], dict)
         purchase = {"token": token, "shopItemId": "shop0000041", "quantity": 2, "index": -1, "storetable": "shop_item"}
         gold = api("common/getPlayerParams", {"token": token})["resources"]["gold"]["amount"]
         bought = api("politic/shop/buyShopItem", purchase)
