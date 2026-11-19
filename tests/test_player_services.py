@@ -5,6 +5,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
+from app import state
 from app.business.gameplay import GameplayService
 from app.business.registry import Registry
 from app.tables import TableCatalog, MissingTableError
@@ -141,6 +142,71 @@ class PlayerServicesTest(unittest.TestCase):
         self.assertEqual(self.call("politic/support_item/getPotions")["potions"],
                          {"potion0000102": {"amount": 0.0}})
         self.assertEqual(self.saved()["items"], {})
+
+    def test_recovery_potion_updates_absolute_points_and_stock_across_reload(self):
+        player = self.saved()
+        player["items"].update(item07_0010003=5, item07_0010002=1)
+        player["actionPoints"]["battlePoint"]["point"] = 0
+        player["actionPoints"]["missionPoint"]["point"] = 10
+        self.save(player)
+        with patch("app.business.gameplay._now", return_value=1000):
+            reply = self.call("politic/support_item/usePotions", potionId="potion0000103", quantity=1)
+            self.assertEqual(reply["result"], {"battlePoint": {"point": 50.0}})
+            self.assertIsInstance(reply["result"]["battlePoint"]["point"], float)
+            reply = self.call("politic/support_item/usePotions", potionId="potion0000102", quantity=1)
+            self.assertEqual(reply["result"], {"missionPoint": {"point": 25.0}})
+            self.reload()
+            saved = self.call("common/getPlayerParams")["actionPoints"]
+            self.assertEqual(saved["battlePoint"], {"point": 50, "maxPoint": 100, "confirmTime": 1000.0})
+            self.assertEqual(saved["missionPoint"]["confirmTime"], 0.0)
+            self.assertEqual(self.call("politic/support_item/getPotions")["potions"], {
+                "potion0000102": {"amount": 0.0}, "potion0000103": {"amount": 4.0},
+            })
+        with patch("app.business.gameplay._now", return_value=1120):
+            self.assertEqual(self.call("common/getPlayerParams")["actionPoints"]["battlePoint"]["point"], 51)
+
+    def test_combined_potion_truncates_half_and_preserves_points_above_cap(self):
+        player = self.saved()
+        player["items"]["item07_0010007"] = 2
+        player["actionPoints"]["politicPoint"]["point"] = 5
+        player["actionPoints"]["battlePoint"]["point"] = 105
+        self.save(player)
+        result = self.call("politic/support_item/usePotions", potionId="potion0000107", quantity=1)
+        self.assertEqual(result["result"], {
+            "politicPoint": {"point": 17.0}, "missionPoint": {"point": 25.0}, "battlePoint": {"point": 105.0},
+        })
+        self.assertEqual(self.saved()["items"]["item07_0010007"], 1)
+
+    def test_invalid_or_failed_potion_use_preserves_inventory_and_points(self):
+        player = self.saved()
+        player["items"]["item07_0010003"] = 1
+        self.save(player)
+        before = self.saved()
+        for potion_id, quantity in (("potion0000103", 1), ("potion0000103", 2),
+                                    ("potion0000103", True), ("potion0000801", 1), ("potion0000102", 1)):
+            reply = self.call("politic/support_item/usePotions", potionId=potion_id, quantity=quantity)
+            self.assertFalse(reply["succeeded"], reply)
+            self.assertIn("errorReason", reply)
+            self.assertEqual(self.saved(), before)
+        player["actionPoints"]["battlePoint"]["point"] = 0
+        self.save(player)
+        before = self.saved()
+        with patch.object(self.service, "save_state", side_effect=state.StateConflictError("changed")):
+            reply = self.call("politic/support_item/usePotions", potionId="potion0000103", quantity=1)
+        self.assertFalse(reply["succeeded"], reply)
+        self.assertEqual(self.saved(), before)
+
+    def test_two_requests_for_last_potion_settle_once(self):
+        player = self.saved()
+        player["items"]["item07_0010003"] = 1
+        player["actionPoints"]["battlePoint"]["point"] = 0
+        self.save(player)
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            args = dict(potionId="potion0000103", quantity=1)
+            requests = [pool.submit(self.call, "politic/support_item/usePotions", **args) for _ in range(2)]
+            self.assertEqual(sorted(request.result()["succeeded"] for request in requests), [False, True])
+        self.assertEqual(self.saved()["actionPoints"]["battlePoint"]["point"], 50)
+        self.assertEqual(self.saved()["items"]["item07_0010003"], 0)
 
     def test_country_shop_item_resolves_before_grant(self):
         self.fund(amount=50000)

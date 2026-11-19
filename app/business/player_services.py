@@ -15,6 +15,8 @@ from app.business.decks import character_id
 from app.business.shop_availability import shop_item_is_open
 from app.tables import TableError
 
+RECOVERY_POTION_IDS = frozenset(f"potion{number:07d}" for number in range(101, 109))
+
 
 def integer(value: Any, minimum: int = 0, maximum: int = 2147483647) -> int:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
@@ -46,6 +48,7 @@ class PlayerServices:
             "politic/map/setMapName2": self.set_map_name,
             "politic/mypage/getLessonStates": self.lesson_states,
             "politic/support_item/getPotions": self.potions,
+            "politic/support_item/usePotions": self.use_potion,
             "politic/shop/getShopItems": self.shop_items,
             "politic/shop/buyShopItem": self.buy_item,
         }
@@ -188,6 +191,44 @@ class PlayerServices:
         # Explicit zero balance for the full-auto-skip potion (never a free grant).
         amounts.setdefault("potion0000102", {"amount": 0.0})
         return {"potions": amounts}
+
+    def use_potion(self, player: dict, params: dict) -> dict:
+        if not player["entity"].get("created"):
+            raise ValueError("create a player before using a recovery potion")
+        potion_id = params.get("potionId")
+        if not isinstance(potion_id, str) or potion_id not in RECOVERY_POTION_IDS:
+            raise ValueError("unsupported recovery potion")
+        quantity = integer(params.get("quantity"), 1, 1)
+        row = self.table("potion").get(potion_id) or {}
+        item_id, uses, effects = row.get("itemID"), row.get("uses"), row.get("effects")
+        points = player["actionPoints"]
+        if (row.get("category") != "potion" or not isinstance(item_id, str) or not item_id
+                or not isinstance(uses, list) or not uses
+                or not isinstance(effects, list) or len(uses) != len(effects)
+                or any(not isinstance(key, str) or key not in points for key in uses)
+                or len(set(uses)) != len(uses) or any(effect not in (50, 100) for effect in effects)):
+            raise ValueError("stub has no assets: recovery potion definition mismatch")
+
+        items = player["items"]
+        amount = integer(items.get(item_id, 0))
+        if amount < quantity:
+            raise ValueError("insufficient recovery potions")
+
+        restored = {}
+        for key, effect in zip(uses, effects, strict=True):
+            point = integer(points[key]["point"])
+            maximum = integer(points[key]["maxPoint"], 1)
+            # PC consumers truncate the resulting balance to whole points.
+            healed = min(maximum, point + maximum * integer(effect) // 100)
+            if healed > point:
+                restored[key] = healed
+        if not restored:
+            raise ValueError("no action points can be restored")
+
+        for key, value in restored.items():
+            points[key]["point"] = value
+        items[item_id] = amount - quantity
+        return {"result": {key: {"point": float(points[key]["point"])} for key in uses}}
 
     def shop_delivery_tables(self, category: str) -> dict:
         names = ("item04", "potion", "shop_item_country")

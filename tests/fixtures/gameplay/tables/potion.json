@@ -15,6 +15,17 @@
       "itemID": "item07_0010002",
       "sortno": 4
     },
+    "potion0000103": {
+      "id": "potion0000103",
+      "name": "POTION_MSG_0000103_NAME",
+      "category": "potion",
+      "uses": ["battlePoint"],
+      "effects": [50],
+      "range": [],
+      "initialAmount": 50,
+      "itemID": "item07_0010003",
+      "sortno": 5
+    },
     "potion0000106": {
       "id": "potion0000106",
       "name": "POTION_MSG_0000106_NAME",
@@ -29,6 +40,17 @@
       "initialAmount": 50,
       "itemID": "item07_0010006",
       "sortno": 2
+    },
+    "potion0000107": {
+      "id": "potion0000107",
+      "name": "POTION_MSG_0000107_NAME",
+      "category": "potion",
+      "uses": ["politicPoint", "missionPoint", "battlePoint"],
+      "effects": [50, 50, 50],
+      "range": [],
+      "initialAmount": 50,
+      "itemID": "item07_0010007",
+      "sortno": 7
     },
     "potion0000801": {
       "id": "potion0000801",

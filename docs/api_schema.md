@@ -127,14 +127,15 @@ totalBuildingCount 接受服务端明确剩余点击数为 0 的待确认建筑�
 | `politic/mypage/setSelfIntroduction` | bundle | `mypageSelfIntroduction.confirmCallback` 传 message 与 habits.0/1/2；长度按 defines.self_introduction_message_min/max_length，偏好 ID 按 habit 表，保存后 profile 返回。 |
 | `politic/map/setMapName2`，`getMapData.map.name` | bundle | `WebApiClient.cs:704-711` 的 mapId/mapName；`UserStatus.cs:1301-1332,1371-1404` 从 map.name 读取，none 容器以空表判改名成功。只支持主城 mapId=0，长度按 defines；不将支城旧实现引入。 |
 | `politic/mypage/getLessonStates.states` | bundle | `LessonMissionSimpleStatusManager.cs:66-127`、`LessonMissionSimpleStatus.cs:20-33`，索引数字字符串对应 L/C。枚举 lesson 表，按 lessonsDone 返回；未读不标完成。2026-11-15 从原表包找到 reward14_lesson（24 行）；takeLesson 已实现的限定范围见下文成长流程复核。 |
-| `politic/support_item/getPotions.potions.<id>.amount` | bundle | `PoliticItemInventory.setup/putInItemList`、`PotionTableAccessor.getItemId`，potion.itemID 映射已有 items；不把 initialAmount 字段当免费赠送。全自动用药条目明确回零余额，其余按实际库存返回。恢复公式尚未证实，usePotions 未纳入完成计数。 |
+| `politic/support_item/getPotions.potions.<id>.amount` | bundle | `PoliticItemInventory.setup/putInItemList`、`PotionTableAccessor.getItemId`，potion.itemID 映射已有 items。全自动用药条目在无库存时明确回零，其余按实际库存返回。 |
+| `politic/support_item/usePotions.result.<pointKind>.point` | bundle / 本服兼容规则 | `WebApiClient.cs:2129–2137` 发送 potionId、quantity、token。`PoliticItemInventory.cs:107–138` 和 `SimpleInventoryDialog.cs:250–267` 消费 `politicPoint`、`missionPoint` 或 `battlePoint` 下的 double 绝对余额。`potion`、`item07Message` 证实 `potion0000101` 至 `potion0000108` 的效果；PC 背包一次用一瓶。半回复取上限的一半并向下取整，全回复补到上限。只在至少一项增加时扣药，保留已有超上限余额。奇数取整、满点用药和溢出采用本服规则，原服行为待验证。点数及库存同一次 revision 写入。 |
 | `politic/shop/getShopItems.shopItems/recommendedItems` | bundle / 本机规则 | `ShopUpdate.cs:57-110,204-210` 读取 state/isNewBuyable/discount；`ShopItemBuild.cs:37-42` 对 state=lock 禁用购买。验证价格和交付后，按任务 8 商店解锁、isInitialSale 或建筑里程碑返回 open/lock。无明确解锁条件的商品保持锁定。 |
 | `politic/shop/buyShopItem.resources/result` | bundle | `WebApiClient.cs:1036-1046` 请求 shopItemId/index/quantity/storetable；`ShopItemBuild/Support.saleWindowResult` 读取 resources，`DailyMissionScene.cs:440-450` 读取 result 中购买后物品余额。普通 shop_item 表按 isSet/itemIds/quantities 交付。整套接受客户端的 -1 及旧本地调用的 0；逐件使用非负下标。countryshop 通过 shop_item_country 映射本国物品。 |
 | 商店费用 | bundle | `ShopUpdate.cs:114-146`、`ShopItem.sortResource`：credit 类型使用行内 credit 替换 costAmounts，不能相加；其他资源按表值。缺余额/未知商品/非整数或非正数量/错误下标/未知促销表均失败，整笔不扣款、不发物品。写入沿用玩家锁与数据库 revision 校验。 |
 
 新逻辑对应 `app/business/player_services.py`。商店发放进入现有 items，图纸通过
 getDrafts 可见，消耗品通过 getPotions 可见；保护、介绍、改名跨重登保留。
-没有实现战斗、关卡随机事件、领奖概率、药品恢复、付费扩仓和九项争议玩法。
+战斗、关卡随机事件、领奖概率、付费扩仓和九项争议玩法不在本批范围。
 
 ## 2026-11-15 动态关卡表复核
 
@@ -158,7 +159,7 @@ quest 扁平字段并非完整协议，后续实现以该复核记录为依据�
 | `auth/keepAliveContainer` | bundle | `SessionKeeper.cs:207-218` 回调不读负载；返回已有确认信封，HTTP token 解析层触碰会话。删除旧契约误抄 guestLogin 的 isCreatedPlayer/loginHash。 |
 | 点数超过 maxPoint 的存档读取 | bundle | `UserStatus.cs:861-890` 的 setActionPoint 允许 0..999，不以 maxPoint 截断；读取时保留超额值。药水公式及实际溢出上限仍待验证。 |
 
-`usePotions` 及 4 个 dailymission 入口仍是待办；新发现的准确响应层级记录于复核报告，不以缺乏规则的空成功回包代替业务实现。
+4 个 dailymission 入口仍是待办。恢复药的当前接入范围见上表。
 
 ## 2026-11-15 城市与道路复核
 

@@ -1,4 +1,4 @@
-"""Server-side politic-point recovery matching the original PC's 120s interval.
+"""Server-side action-point recovery matching the original PC's 120s interval.
 
 Integer points, retained partial interval and offline catch-up are persistence
 policy. Legacy zero timestamps start a fresh interval without retroactive gifts.
@@ -8,17 +8,23 @@ from __future__ import annotations
 from app.business.player_services import integer
 
 RECOVER_INTERVAL = 120  # Original PC Configs.get_RecoverIntervalTime @ 0x4378c.
+ACTION_POINT_KEYS = ("politicPoint", "missionPoint", "battlePoint")
+MAX_TIMESTAMP = 9007199254740991
 
 
-def recover_politic_points(player: dict, now: int) -> None:
-    now = integer(now, 1, 9007199254740991)
-    box = player["actionPoints"]["politicPoint"]
+def recover_action_points(player: dict, now: int) -> None:
+    now = integer(now, 1, MAX_TIMESTAMP)
+    for key in ACTION_POINT_KEYS:
+        _recover(player["actionPoints"][key], now)
+
+
+def _recover(box: dict, now: int) -> None:
     point, maximum = integer(box["point"]), integer(box["maxPoint"])
     if point >= maximum:
         # Do not accumulate recovery while full, or destroy excess owned points.
         box["confirmTime"] = 0.0
         return
-    stamp = integer(box.get("confirmTime", 0), 0, 9007199254740991)
+    stamp = integer(box.get("confirmTime", 0), 0, MAX_TIMESTAMP)
     if stamp == 0:
         box["confirmTime"] = float(now)
         return
@@ -31,10 +37,12 @@ def recover_politic_points(player: dict, now: int) -> None:
                               else float(stamp + recovered * RECOVER_INTERVAL))
 
 
-def mark_politic_point_spend(player: dict, now: int) -> None:
-    """Start an interval on the first debit from full; preserve ongoing cadence."""
-    box = player["actionPoints"]["politicPoint"]
-    if box["point"] >= box["maxPoint"]:
-        box["confirmTime"] = 0.0
-    elif not box.get("confirmTime"):
-        box["confirmTime"] = float(integer(now, 1, 9007199254740991))
+def sync_action_point_timers(player: dict, now: int) -> None:
+    """Start a timer after spending from full and stop it at the cap."""
+    now = integer(now, 1, MAX_TIMESTAMP)
+    for key in ACTION_POINT_KEYS:
+        box = player["actionPoints"][key]
+        if box["point"] >= box["maxPoint"]:
+            box["confirmTime"] = 0.0
+        elif not box.get("confirmTime"):
+            box["confirmTime"] = float(now)
