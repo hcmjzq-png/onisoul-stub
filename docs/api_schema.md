@@ -14,6 +14,18 @@
 普通商店 `buyShopItem` 的整套 `index=-1` 来自客户端 `ShopItemBuild.cs:146`、
 `ShopItemSupport.cs:329`，保持已有购买与建设回包。范围见 [本机生产与商店](analysis/production-completion-20261118/README.md)。
 
+2026-11-19 鬼物语隔离验收使用以下契约。常规注册器沿用原有行为。
+
+| 接口与字段 | 来源与隔离服行为 |
+| --- | --- |
+| `quest/openQuest` 的 `questType/questIds/addWork` | **bundle**，原 PC 选择器读取物语类型和开放记录。本地无活动排期时，活动类型的 `questIds` 为空。 |
+| `quest/getQuestProgress`、`quest/getQuestCompleteFlags`、`quest/getQuestRewardOpenFlags` | **bundle**，沿用原 PC `QuestDataCache` 的进度和 `chapter1` 至 `chapter5` 的格式。预览用关卡表的 `enable/clientEnable` 决定可见范围，收藏和完成状态按实际存档或未播放状态返回。 |
+| `quest/getChapterData` 的 `complete/clearCount/areaN`，区域的 `step/maxStep/itemN.open` | **bundle**，原 PC 区域选择器使用 `quest_1_index` 的步数和首个小节的奖励槽。补测其余章时回传未开始进度。 |
+| `quest/executeQuestEx` 的 `expectedStep/operationId` | **验收工具字段**，由隔离客户端追加，复用一次点击的身份以防重试重复扣点。 |
+| `battle/executeBattle` 的首回合及奖励 | **隔离兼容结算，原版数值待验证**，按可追溯队伍、怪物 HP 和原奖励表结算单一遭遇。服务端结算账本保存在 `adventureV1`。 |
+
+[场景、存档与客户端验收记录](analysis/local-story-expedition-20261118.md)
+
 2026-11-18 任务 5 初版（历史）：**bundle / 本服兼容结算**。单体开工根 dueTime/now/remainedClickCount
 及 producings.<id>.productId/createdTime/dueTime 来自 StateManualProduce、PoliticBuildingParameter；
 收获 producings.<id>.reward/building/collaborator 来自 StateAutoProduce，建筑 exp 是绝对值。
