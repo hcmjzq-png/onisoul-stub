@@ -28,6 +28,7 @@ from app.business.player_services import integer
 
 PRODUCER = "research331-story-prefix-v1"
 QUEST = "quest_1_0000"
+TUTORIAL_BATTLE_POLICY = "qa-tutorial-first-turn-v1"
 
 
 @dataclass(frozen=True)
@@ -112,9 +113,15 @@ class AdventureEvents(AdventureServices):
             raise ValueError("no stub response: inconsistent story event ledger")
         for key, event in life["events"].items():
             event = mapping(event)
+            settlement = event.get("battle")
+            terminal = key == "5" and isinstance(settlement, dict)
+            if terminal and (settlement.get("policy") != TUTORIAL_BATTLE_POLICY
+                             or settlement.get("encountId") != 5 or settlement.get("winner") != "attacker"
+                             or settlement.get("originOperationId") != event.get("operationId")):
+                raise ValueError("no stub response: inconsistent tutorial battle receipt")
             if (event.get("step") != int(key) or not isinstance(event.get("operationId"), str)
                     or life["receipts"].get(event["operationId"]) != int(key)
-                    or event.get("status") != ("pending" if key == "5" else "resolved")):
+                    or event.get("status") != ("pending" if key == "5" and not terminal else "resolved")):
                 raise ValueError("no stub response: inconsistent story event receipt")
         return life
 

@@ -316,6 +316,43 @@ class StoryPrefixTest(unittest.TestCase):
                 battle.prepare_quest_battle(bad, params)
         self.assertEqual(self.saved(), original)
 
+    def test_isolated_tutorial_settlement_retries_use_the_committed_receipt(self):
+        self.open()
+        self.advance(5)
+        battle = AdventureBattles(self.service)
+        battle.table = self.events.table
+        player = self.saved()
+        member = next(iter(player["characters"]))
+        char = player["characters"][member]
+        char.update(atk=1250, defAdd=0, atkAdd=0, intAdd=0, skills={})
+        player["decks"]["quest"]["0"]["ids"] = {"4": int(member)}
+        self.states.save(player, self.session["playerId"])
+        self.overrides.update(
+            country_setting={"country01": {"attribute": "oni"}},
+            character={char["baseId"]: {"attribute": "oni", "atk": 1250, "def": char["def"], "int": char["int"]}},
+            commonEffect={"effect_00001_01": {
+                "activateRatio": 100, "timing": "battle", "condition1A": "self",
+                "condition1B": "playerAttribute", "condition2A": "self", "condition2B": "characterAttribute",
+                "sign": "equal", "effect1Target": "self", "effect1Action": "paramUpRatio",
+                "effect1ValueA": "attack", "effect1ValueB": 25,
+            }},
+        )
+        params = {"battleInformation": {"battleType": "QUEST_BATTLE", "questType": "story",
+                                         "encountId": 5, "deckIndex": {"attacker": 0, "defender": 0}}}
+        api = "battle/executeBattle"
+
+        def settle():
+            return battle.call(api, battle.settle_tutorial_win, params, self.session)
+
+        first = settle()
+        committed = self.saved()
+        self.assertEqual(first["damage"][0]["damage"], 1562)
+        self.assertEqual(committed["entity"]["exp"] - player["entity"]["exp"], 20)
+        self.assertEqual(committed["souls"]["purple"], first["reward"]["item11_0001101"])
+        self.assertEqual(battle.encounters(committed, {}), {})
+        self.assertEqual(first["reward"], settle()["reward"])
+        self.assertEqual(self.saved(), committed)
+
     def test_broken_event_receipt_and_false_completion_are_rejected_on_read(self):
         self.open()
         self.advance(3)
