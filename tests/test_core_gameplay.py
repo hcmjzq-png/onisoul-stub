@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 
 from app.business import decks, mission_validation
-from app.business.gameplay import GameplayService
+from app.business.gameplay import GameplayService, TUTORIAL_CARD_MISSION
 from app.business.registry import Registry
 from app.tables import TableCatalog
 from tools.gameplay_smoke import MemoryState, MemorySessions
@@ -159,6 +159,67 @@ class CoreGameplayTest(unittest.TestCase):
         self.assertEqual(self.change(1, "closed")["reward"], {})
         self.assertFalse(self.change(1, "accepted")["succeeded"])
         self.assertEqual(self.saved()["resources"], before)
+
+    def prepare_tutorial_card_reward(self, legacy=False):
+        load = self.service.catalog.load
+        base, source = next(iter(load("character").items()))
+        items = {f"item01_{i:07}": 1 for i in range(9000001, 9000006)}
+        definitions = {
+            item: {"enable": True, "category": "character", "parameterId": base}
+            for item in items
+        }
+        template = next(iter(load("politicMission").values()))
+        mission = {**template, "id": TUTORIAL_CARD_MISSION, "index": 24, "bootCheckFunc": "none",
+                   "needClearCount": 1, "conditionCount1": 1, "conditionCount2": 0, "conditionCount3": 0,
+                   "conditionTypes1": ["missionStatus"], "conditionGrades1": ["any"],
+                   "conditionLevels1": ["accepted"], "conditionTargets1": [TUTORIAL_CARD_MISSION],
+                   "conditionCheckers1": ["eq_greater_than"], "conditionArgs1": [1],
+                   "clearReward": "tutorial_cards"}
+        reward = {}
+        for i, (item, amount) in enumerate(items.items(), 1):
+            reward.update({f"itemId{i}": item, f"group{i}": chr(64 + i), f"ratio{i}min": 1,
+                           f"ratio{i}max": 1, f"count{i}min": amount, f"count{i}max": amount})
+        extra = {"politicMission": {TUTORIAL_CARD_MISSION: mission},
+                 "reward01_politic": {"tutorial_cards": reward}, "item01": definitions,
+                 "character": {base: {**source, "id": base}}}
+        self.service.catalog.load = lambda name: {**load(name), **extra.get(name, {})}
+        state = self.saved()
+        state["storedCharacters"] = {"40": copy.deepcopy(next(iter(state["characters"].values())))}
+        state["missions"]["24"] = "C" if legacy else "F"
+        state["missionProgress"][TUTORIAL_CARD_MISSION] = {"state": "closed" if legacy else "finished"}
+        if legacy:
+            state["missionRewards"][TUTORIAL_CARD_MISSION] = {"items": items}
+            state["items"].update(items)
+            state["items"][next(iter(items))] += 1
+        self.states.save(state, self.session["playerId"])
+        return items, base
+
+    def test_tutorial_card_reward_creates_instances_once(self):
+        items, base = self.prepare_tutorial_card_reward()
+        self.assertEqual(self.change(24, "closed")["reward"], items)
+        chars = self.service.get_characters({}, self.session)
+        self.assertEqual({chars[str(i)]["baseId"] for i in range(41, 46)}, {base})
+        self.assertTrue(items.keys().isdisjoint(self.saved()["items"]))
+        self.assertEqual(self.change(24, "closed")["reward"], {})
+        self.assertEqual(self.service.get_characters({}, self.session), chars)
+
+    def test_tutorial_card_reward_converts_old_receipt_without_replaying_it(self):
+        items, base = self.prepare_tutorial_card_reward(legacy=True)
+        chars = self.service.get_characters({}, self.session)
+        self.assertEqual({chars[str(i)]["baseId"] for i in range(41, 46)}, {base})
+        self.assertEqual(self.saved()["items"][next(iter(items))], 1)
+        self.assertTrue(self.saved()["missionRewards"][TUTORIAL_CARD_MISSION]["charactersDelivered"])
+        self.assertEqual(self.service.get_characters({}, self.session), chars)
+        self.assertEqual(self.change(24, "closed")["reward"], {})
+
+    def test_tutorial_card_reward_capacity_failure_does_not_close_mission(self):
+        self.prepare_tutorial_card_reward()
+        before = self.saved()
+        with patch.object(self.service, "_possession_limits", return_value={"character": {"result": 4}}):
+            response = self.change(24, "closed")
+        self.assertFalse(response["succeeded"])
+        self.assertIn("insufficient space", response["errorReason"])
+        self.assertEqual(self.saved(), before)
 
     def test_unknown_completion_predicate_never_grants_reward(self):
         initial_gold = self.saved()["resources"]["gold"]["amount"]
