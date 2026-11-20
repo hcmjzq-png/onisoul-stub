@@ -19,7 +19,7 @@ assets/pc/web/client/*
 !assets/pc/web/client/inbox/
 assets/pc/web/client/inbox/*
 !assets/pc/web/client/inbox/inbox.html
-!assets/pc/web/client/inbox/inbox-v4.js
+!assets/pc/web/client/inbox/inbox-v5.js
 
 # Python
 __pycache__/

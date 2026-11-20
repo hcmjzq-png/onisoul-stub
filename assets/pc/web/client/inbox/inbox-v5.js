@@ -42,9 +42,14 @@
         refresh.disabled = locked;
     }
 
-    function drawRewards(container, data) {
-        var rewards = data.rewards || {};
-        var captions = Object.keys(rewards);
+    function drawMetadata(container, data) {
+        container.appendChild(element("strong", "parcel-sender", data.name || "包裹"));
+        if (data.createdTime) {
+            container.appendChild(element("time", "parcel-time", data.createdTime));
+        }
+    }
+
+    function drawRewards(container, data, captions) {
         var items = element("ul", "rewards");
         for (var i = 0; i < captions.length; i++) {
             var caption = captions[i];
@@ -52,7 +57,7 @@
             var item = element("li", "reward");
             var icon = element("span", "reward-icon");
             var info = element("div", "reward-details");
-            var path = rewards[caption];
+            var path = data.rewards[caption];
             if (typeof path === "string" && /^assets\/item\/[0-9a-f]{8}\/[0-9a-f]{8}\.png$/i.test(path)) {
                 var image = element("img");
                 image.alt = "";
@@ -65,10 +70,7 @@
             } else {
                 icon.title = "图标缺失";
             }
-            if (i === 0) {
-                info.appendChild(element("strong", "parcel-sender", data.name || "包裹"));
-                if (data.createdTime) { info.appendChild(element("time", "parcel-time", data.createdTime)); }
-            }
+            if (captions.length === 1) { drawMetadata(info, data); }
             var label = element("span", "reward-caption", parts ? parts[1] : caption);
             if (parts) { label.appendChild(element("span", "reward-count", " ×" + parts[2])); }
             info.appendChild(label);
@@ -80,10 +82,13 @@
     }
 
     function drawParcel(id, data) {
-        var style = "parcel" + (data.text ? " has-note" : "");
+        var captions = Object.keys(data.rewards || {});
+        var multiple = captions.length > 1;
+        var style = "parcel" + (multiple ? " multiple" : "");
+        if (captions.length === 2) { style += " pair"; }
         var row = element("article", style);
         var actions = element("div", "parcel-actions");
-        var button = element("button", "", "领取报酬");
+        var button = element("button", "", multiple ? "领取整包" : "领取报酬");
         button.type = "button";
         button.onclick = function () { submit([id]); };
         actions.appendChild(button);
@@ -96,7 +101,15 @@
         row.appendChild(actions);
 
         var content = element("div", "parcel-main");
-        drawRewards(content, data);
+        if (captions.length !== 1) {
+            var heading = element("div", "parcel-heading");
+            if (multiple) {
+                heading.appendChild(element("span", "reward-types", captions.length + " 种奖励"));
+            }
+            drawMetadata(heading, data);
+            content.appendChild(heading);
+        }
+        drawRewards(content, data, captions);
         row.appendChild(content);
         if (data.text) { row.appendChild(element("div", "parcel-note", data.text)); }
         list.appendChild(row);
