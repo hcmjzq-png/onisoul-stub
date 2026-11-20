@@ -94,6 +94,8 @@
 | S03.5 成就 | 部分接入：已证实的成就检查/领取/消息确认 | 首档 HTTP，含受控测试状态；不是自然养成验收 | 真实玩法触发首档并领取一次，验证其他类型前逐条扩展 |
 | S03.6 日常、消耗任务与诏令 | 占位或候选未接入 | 研究证据与候选测试 | 确认任务来源、周期和奖励，完成一个周期的接取/结算/恢复 |
 
+入门任务 13 的奖励窗口使用 `RewardMenu.cs:361–390` 从 `item07.iconName` 请求 Unity 纹理包。`po_mission_00012` 指向 `reward01_04_00012_01`。本地 PC 实际请求中，攻、防、知、神四种极石和恶鬼全回复药的包均返回 404，同名网页 PNG 均可读。使用美术库中这五项已有的 `_01` 和 `_91` PNG，以 `item07_0010003` PC 包为模板生成候选，包内十张纹理的名称、绑定、平台和 RGBA 像素回读一致。现有本地测试端仅新增这五个文件，网关、代理及 Stub 的 `assets` 和 `assets2` 路径共 30 项请求由 404 变为 200，回包 SHA-256 与候选一致。三个原先正常显示的奖励图标回包一致。新版 PC 奖励窗口渲染待验。重建入口见 [图标构建工具](../../tools/build_mission13_reward_icons.py)。
+
 来源：[任务校验](../../app/business/mission_validation.py)、[课题与等级](../../app/business/progression.py)、
 [成就](../../app/business/account_progress_trophies.py)、[新手记录](../analysis/research-331/review/deployment65-20261115.md)。
 
