@@ -2,7 +2,7 @@
 data/
 logs/
 
-# 资源默认不入库；仅登录链路所需的原版 Web 页素材例外（见 docs/repro-launcher-login.md）
+# 资源默认不入库；登录链路素材和仓库维护的兼容页列为例外（见 docs/repro-launcher-login.md）
 assets/*
 !assets/pc/
 assets/pc/*
@@ -15,6 +15,11 @@ assets/pc/web/client/*
 !assets/pc/web/client/js/
 !assets/pc/web/client/img/
 !assets/pc/web/client/login/
+# Authored inbox compatibility page and legacy bridge adapter.
+!assets/pc/web/client/inbox/
+assets/pc/web/client/inbox/*
+!assets/pc/web/client/inbox/inbox.html
+!assets/pc/web/client/inbox/inbox-v4.js
 
 # Python
 __pycache__/

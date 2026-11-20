@@ -190,6 +190,8 @@
 
 客户端的 `InboxReader.cs` 第 182 行为 Low 布局选择 `inbox.html`，其余布局选择 `inbox_mid.html`。本地运行目录为既有收件箱页面添加了第二个文件名，游戏代理回读两种地址的 HTML 一致。静态路由回归验证缺页时的回退，以及独立中高布局页面的优先级。
 
+本地收件箱兼容页根据旧 PC 截图使用横向包裹行。左侧领取单个包裹，中间显示图标、名称、数量和收件时间，桥接提供备注时显示在右侧。包裹无标题时显示「包裹」。同一个包裹的多种奖励保持成组，底部保留批量领取。模拟桥接的 1100×700 浏览器验收覆盖单包、批量、空列表和图标，本地 Stub 与游戏代理回读两种页面和新脚本。PC 领取及重登待验。
+
 来源：[好友](../../app/business/social_services.py)、[包裹](../../app/business/social_inbox_services.py)、
 [SQL/HTTP 发布验收](../analysis/research-331/review/deployment-acceptance-20261115.md)。
 
