@@ -25,6 +25,7 @@
 | `deck/setDecks` | `DeckMake.cs:deckSave` |
 | `deck/setEquipProtect` | `CharacterConflatePreview_Equip.cs:protectOrRelease` |
 | `friend/findFriends` | `FriendListWindow.cs:getFindData` |
+| `friend/findFriendsAndSend` | `FriendListMissionWindow.cs:getSendData` |
 | `friend/getFriends` | `FriendListWindow.cs:getFriendData` |
 | `politic/building/getDrafts` | `UserStatus.cs:setDraftInfo` |
 | `politic/map/setMapName2` | `UserStatus.cs:setMapName`（none 容器分支） |
@@ -48,7 +49,6 @@
 ```bash
 python tools/verify_response_shape_evidence.py \
   --assembly app_unity3d.bin
-# 期望输出：[shape-evidence] checked=26 failed=0
 ```
 
 改一条证据就必须附上这次命令的输出，否则视为未验证。
@@ -61,9 +61,8 @@ python tools/verify_response_shape_evidence.py \
   --assembly app_unity3d.bin
 ```
 
-逐端点判决和证据偏移见 `docs/analysis/response_shapes.tsv`：402 个端点中
-21 个是 bare-map 覆盖端点，381 个走 envelope；另有 5 个 `SCALAR_ROOT_EVIDENCE`
-端点明确保留 envelope 根级标量键。
+证据偏移见 `docs/analysis/response_shapes.tsv`，当前运行分类以 `shape_for()` 为准。
+402 个端点中 25 个走裸映射、1 个走编号行、376 个走信封。
 
 ## 不是裸映射
 

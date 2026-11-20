@@ -118,8 +118,8 @@ class IlArtifactTest(unittest.TestCase):
         contract = {row["endpoint"] for row in rows("api_contract.tsv")}
         shape_rows = rows("response_shapes.tsv")
         self.assertEqual({row["endpoint"] for row in shape_rows}, contract)
-        self.assertEqual(sum(row["shape"] == "bare_map" for row in shape_rows), 21)
-        self.assertEqual(sum(row["shape"] == "envelope" for row in shape_rows), 381)
+        self.assertEqual(sum(row["shape"] == "bare_map" for row in shape_rows), 22)
+        self.assertEqual(sum(row["shape"] == "envelope" for row in shape_rows), 380)
         periodic = next(
             row for row in shape_rows if row["endpoint"] == "common/periodicInquiry"
         )

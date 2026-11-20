@@ -3,8 +3,10 @@ import copy
 import json
 from pathlib import Path
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 
 from app.business.gameplay import GameplayService
+from app.business.mission_chain import FRIEND_TUTORIAL
 from app.business.registry import Registry
 from app.tables import TableCatalog, TableError
 from tools.gameplay_smoke import MemorySessions, MemoryState
@@ -13,6 +15,7 @@ FIXTURES = Path(__file__).parent / "fixtures"
 SAMPLE = json.loads((FIXTURES / "mission-state-transitions.json").read_text("utf-8"))
 CHANGE = "politic/mission/changeState"
 REFINERY = "po_mission_00009"
+OPEN_FRIEND_TUTORIAL = "friend/findFriendsAndSend"
 
 
 class MissionStateTransitionsTest(unittest.TestCase):
@@ -111,6 +114,60 @@ class MissionStateTransitionsTest(unittest.TestCase):
                     self.assertNotIn("errorReason", result)
                     self.assertEqual(result["reward"], {})
                     self.assertEqual(self.saved()["missions"][str(number)], "F")
+
+    def prepare_friend_tutorial(self):
+        self.tables.setdefault("politicMission", {}).update({
+            "po_mission_00024": {"index": 24},
+            FRIEND_TUTORIAL: {
+                "index": 294, "bootCheckFunc": "clear_mission", "bootCheckData": ["po_mission_00024"],
+                "acceptUnlocks": ["unlockFriend"], "clearReward": "tutorial_friend_test",
+                "needClearCount": 1, "conditionCount1": 1, "conditionTypes1": ["friendFirstClick"],
+                "conditionGrades1": ["any"], "conditionLevels1": ["any"], "conditionTargets1": ["any"],
+                "conditionCheckers1": ["eq_greater_than"], "conditionArgs1": [1],
+            },
+        })
+        self.tables.setdefault("reward01_politic", {})["tutorial_friend_test"] = {
+            "itemId1": "item11_0000101", "count1min": 1000, "ratio1max": 1,
+            "itemId2": "item11_0000501", "count2min": 50, "ratio2max": 1,
+        }
+        self.prepare(FRIEND_TUTORIAL)
+
+    def test_friend_tutorial_window_records_click_and_preserves_reward_until_claim(self):
+        self.prepare_friend_tutorial()
+        self.assertTrue(self.change(FRIEND_TUTORIAL, "accepted")["succeeded"])
+        self.fails(FRIEND_TUTORIAL, "finished")
+        before = self.saved()
+        with ThreadPoolExecutor(2) as executor:
+            self.assertEqual([job.result() for job in (
+                executor.submit(self.call, OPEN_FRIEND_TUTORIAL, friendMax=8),
+                executor.submit(self.call, OPEN_FRIEND_TUTORIAL, friendMax=8),
+            )], [{}, {}])
+        after = self.saved()
+        self.assertIs(after.pop("friendTutorialOpened"), True)
+        self.assertEqual(after, before)
+        self.mount()
+        self.assertEqual(self.call(OPEN_FRIEND_TUTORIAL, friendMax=8), {})
+        self.assertTrue(self.change(FRIEND_TUTORIAL, "finished")["succeeded"])
+        claim = self.change(FRIEND_TUTORIAL, "closed")
+        self.assertEqual(claim["reward"], {"item11_0000101": 1000.0, "item11_0000501": 50.0})
+        self.mount()
+        self.assertEqual(self.call("politic/mission/getStatesFromAllMissions")["states"]["294"], "C")
+        self.assertEqual(self.call(OPEN_FRIEND_TUTORIAL, friendMax=8), {})
+        self.assertEqual(self.change(FRIEND_TUTORIAL, "closed")["reward"], {})
+        self.assertEqual(self.saved()["resources"]["gold"]["amount"], before["resources"]["gold"]["amount"] + 1000)
+        self.assertEqual(self.saved()["entity"]["exp"], before["entity"]["exp"] + 50)
+
+    def test_friend_tutorial_requires_accepted_mission_and_original_request(self):
+        self.prepare_friend_tutorial()
+        before = self.saved()
+        self.assertIn("errorReason", self.registry.dispatch(OPEN_FRIEND_TUTORIAL, {"friendMax": 8}, None)[1])
+        self.assertIn("errorReason", self.call(OPEN_FRIEND_TUTORIAL, friendMax=8))
+        self.assertEqual(self.saved(), before)
+        self.assertTrue(self.change(FRIEND_TUTORIAL, "accepted")["succeeded"])
+        before = self.saved()
+        for invalid in (None, True, 7, 9):
+            self.assertIn("errorReason", self.call(OPEN_FRIEND_TUTORIAL, friendMax=invalid))
+        self.assertEqual(self.saved(), before)
 
     def test_build_refinery_before_acceptance_reload_and_claim_once(self):
         self.prepare(REFINERY)

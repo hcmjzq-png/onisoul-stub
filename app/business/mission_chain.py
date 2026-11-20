@@ -38,6 +38,7 @@ UNLOCK_BITS: dict[str, int] = {
 }
 
 SYSTEM_MISSION = "po_mission_00000"
+FRIEND_TUTORIAL = "po_mission_00269"
 # PoliticButtonManager.init/calcNowUnlock: mapped default buttons are auction,
 # presentBox and batchUpgrade. flagBtnUnlock.all omits the latter despite the
 # client actually sending it; do not use that debug constant as the wire mask.

@@ -25,7 +25,7 @@ from app.business.shop_availability import SHOP_UNLOCKS, remember_shop_unlocks
 from app import db, sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import (
-    DEFAULT_BUTTON_BITS, SCREENSHOT_BIT, WIRE_BUTTON_MASK, MissionChain, SYSTEM_MISSION,
+    DEFAULT_BUTTON_BITS, FRIEND_TUTORIAL, SCREENSHOT_BIT, WIRE_BUTTON_MASK, MissionChain, SYSTEM_MISSION,
 )
 from app.business.registry import Registry
 from app.business.player_services import PlayerServices, integer
@@ -150,6 +150,7 @@ class GameplayService:
             "deck/getAvatarCharacters": self.get_avatar_characters,
             "deck/getDecks": self.get_decks,
             "deck/setDecks": self.set_decks,
+            "friend/findFriendsAndSend": self.open_friend_tutorial,
             "politic/map/getMapData": self.get_map_data,
             "politic/building/getBuildCounts": self.get_build_counts,
             "politic/building/getDrafts": self.get_drafts,
@@ -974,6 +975,33 @@ class GameplayService:
             player["unlockBits"] = self._unlock_bits(player)
             self._save(player, player_id)
         return self._success(api)
+
+    def open_friend_tutorial(
+        self, params: dict[str, Any], session: dict[str, Any] | None
+    ) -> dict[str, Any]:
+        api = "friend/findFriendsAndSend"
+        found = self._session_player(api, session)
+        if isinstance(found, dict):
+            return found
+        player_id, player, _dirty = found
+        rows = self.missions.rows()
+        try:
+            integer(params.get("friendMax"), 8, 8)
+            mission_validation.validate_progress(player, rows)
+            status = mission_validation.state_of(player, rows, FRIEND_TUTORIAL)
+            opened = player.get("friendTutorialOpened") is True
+            if (not player["entity"].get("created") or FRIEND_TUTORIAL not in rows
+                    or not mission_validation.eligible(player, rows, FRIEND_TUTORIAL)
+                    or (status != "accepted" and not (opened and status in ("finished", "closed")))):
+                raise ValueError("friend tutorial must be accepted before opening")
+        except ValueError as exc:
+            return self._failure(api, str(exc))
+        if not opened:
+            player["friendTutorialOpened"] = True
+            self._save(player, player_id)
+        # The client completes the click condition even with zero rows. The
+        # original automatic recipient selection rule is unverified.
+        return response_shapes.success(api, {})
 
     def change_mission_state(
         self, params: dict[str, Any], session: dict[str, Any] | None
