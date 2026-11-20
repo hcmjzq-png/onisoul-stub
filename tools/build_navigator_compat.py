@@ -35,7 +35,8 @@ def clone(value):
     return value
 
 
-def rebuild(template: bytes, textures: dict) -> tuple[bytes, list[dict]]:
+def rebuild(template: bytes, textures: dict, *,
+            name_map: dict[str, str] | None = None) -> tuple[bytes, list[dict]]:
     import UnityPy
     from PIL import Image
 
@@ -45,25 +46,31 @@ def rebuild(template: bytes, textures: dict) -> tuple[bytes, list[dict]]:
     container = next(o for o in objects if o.type.name == 'AssetBundle')
     if len(objects) != len(textures) + 1 or len(targets) != len(textures):
         raise ValueError('template object count differs from supplied textures')
+    if name_map is not None and (len(name_map) != len(textures)
+                                 or set(name_map.values()) != set(textures)):
+        raise ValueError('explicit names must map to each texture once')
     changes = {}
     container_tree = clone(container.read_typetree())
     old_to_new = {}
     for target in targets:
         tree = clone(target.read_typetree())
         old = tree['m_Name']
-        matches = [name for name in textures if name.endswith(old[-3:])]
-        if len(matches) != 1:
-            raise ValueError('texture suffix is not unique')
-        name = matches[0]
+        if name_map is None:
+            matches = [name for name in textures if name.endswith(old[-3:])]
+            if len(matches) != 1:
+                raise ValueError('texture suffix is not unique')
+            name = matches[0]
+        else:
+            name = name_map[old]
         image = textures[name].convert('RGBA')
         pixels = image.transpose(Image.Transpose.FLIP_TOP_BOTTOM).tobytes()
         tree.update(m_Name=name, m_Width=image.width, m_Height=image.height,
                     m_CompleteImageSize=len(pixels), m_TextureFormat=4, m_MipMap=False)
         tree['image data'] = pixels
         changes[target.path_id] = target.save_typetree(tree)
-        old_to_new[old] = name
+        old_to_new[old.lower()] = name
     container_tree['m_Container'] = [
-        (old_to_new[name].lower(), binding) for name, binding in container_tree['m_Container']]
+        (old_to_new[name.lower()].lower(), binding) for name, binding in container_tree['m_Container']]
     changes[container.path_id] = container.save_typetree(container_tree)
     node = repack_serialized(raw, targets[0].assets_file, changes)
     archive = 'CustomAssetBundle-' + hashlib.md5(node).hexdigest()
