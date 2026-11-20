@@ -263,7 +263,7 @@ S04	politic/shop/sellBuildings	dedicated_handler	app.business.gameplay	guarded	�
 S06	politic/support_item/getPotions	dedicated_handler	app.business.gameplay	guarded	仅查询药品；使用药品另计
 S06	politic/support_item/useDopingItem	contract_default	app.business.placeholders	placeholder_politic_support_item_useDopingItem	仅契约默认回包；未实现玩法
 S06	politic/support_item/useDopingRemoveItem	contract_default	app.business.placeholders	placeholder_politic_support_item_useDopingRemoveItem	仅契约默认回包；未实现玩法
-S06	politic/support_item/usePotions	contract_default	app.business.placeholders	placeholder_politic_support_item_usePotions	仅契约默认回包；未实现玩法
+S06	politic/support_item/usePotions	dedicated_handler	app.business.gameplay	guarded	单瓶中回复药或全回复药；同次保存点数和扣瓶结果
 S06	politic/support_item/useSkillPotion	contract_default	app.business.placeholders	placeholder_politic_support_item_useSkillPotion	仅契约默认回包；未实现玩法
 S05	politic/task/accelerateProduceTask	dedicated_handler	app.business.gameplay	guarded	自己生产按原加速表扣朱魂币、更新 dueTime；不提前发奖
 S05	politic/task/cancelTasks	dedicated_handler	app.business.gameplay	guarded	手动/固定生产取消，无退款；自动计时通过收纳停止

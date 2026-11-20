@@ -92,6 +92,7 @@ NOTES = {
     "politic/task/cancelTasks": "手动/固定生产取消，无退款；自动计时通过收纳停止",
     "politic/task/accelerateProduceTask": "自己生产按原加速表扣朱魂币、更新 dueTime；不提前发奖",
     "politic/support_item/getPotions": "仅查询药品；使用药品另计",
+    "politic/support_item/usePotions": "单瓶中回复药或全回复药；同次保存点数和扣瓶结果",
     "debug/debugLogin": "受显式调试密钥限制；不算正常玩家功能",
     "debug/devLogin": "受显式调试密钥限制；不算正常玩家功能",
 }

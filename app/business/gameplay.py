@@ -20,7 +20,7 @@ from app.business.production_batch import ProductionBatch
 from app.business.automatic_production import AutomaticProduction
 from app.business.production_task_actions import ProductionTaskActions
 from app.business.building_evolution import BuildingEvolution
-from app.business.action_points import recover_politic_points, mark_politic_point_spend
+from app.business.action_points import recover_action_points, sync_action_point_timers
 from app.business.shop_availability import SHOP_UNLOCKS, remember_shop_unlocks
 from app import db, sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
@@ -296,7 +296,7 @@ class GameplayService:
     def _save(self, player: dict[str, Any], player_id: str) -> None:
         self._refresh_kokudaka(player)
         if player.get("entity", {}).get("created"):
-            mark_politic_point_spend(player, int(_now()))
+            sync_action_point_timers(player, int(_now()))
         self.save_state(player, player_id)
 
     def _refresh_kokudaka(self, player: dict[str, Any]) -> int:
@@ -411,7 +411,7 @@ class GameplayService:
         result["counters"]["characterCount"] = len(result["characters"])
         self._apply_limits(result)
         if result["entity"].get("created"):
-            recover_politic_points(result, int(_now()))
+            recover_action_points(result, int(_now()))
         country = str(result["entity"].get("country") or DEFAULT_COUNTRY)
         result["decks"] = decks.initialize(
             result, self._level_row(int(result["entity"].get("level") or 1)),

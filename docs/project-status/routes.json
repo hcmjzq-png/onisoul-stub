@@ -1,14 +1,14 @@
 {
-  "source_commit": "ceffaef8949dc7bab1949ec25e162dd2ae17a5b0",
+  "source_commit": "0674e668c620536f036677562cfc9bd340fba274",
   "scope": "route registration only; no API dispatch, DB access or Unity acceptance",
   "registered": 402,
   "runtime_kinds": {
-    "contract_default": 265,
-    "dedicated_handler": 92,
+    "contract_default": 264,
+    "dedicated_handler": 93,
     "disabled": 32,
     "explicit_failure": 13
   },
-  "legacy_placeholder_total": 310,
+  "legacy_placeholder_total": 309,
   "systems": {
     "S01": {
       "name": "接入与账号",
@@ -53,8 +53,8 @@
       "name": "武将与养成",
       "registered": 48,
       "runtime_kinds": {
-        "contract_default": 30,
-        "dedicated_handler": 18
+        "contract_default": 29,
+        "dedicated_handler": 19
       }
     },
     "S07": {

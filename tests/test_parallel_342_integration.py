@@ -80,7 +80,9 @@ class ParallelIntegrationTest(unittest.TestCase):
         for api in HELD:
             self.assertEqual(self.registry._handlers[api].__module__, "app.business.placeholders", api)
         self.assertEqual(sum(h.__module__ == "app.business.placeholders"
-                             for h in self.registry._handlers.values()), 310)
+                             for h in self.registry._handlers.values()), 309)
+        self.assertNotEqual(self.registry._handlers["politic/support_item/usePotions"].__module__,
+                            "app.business.placeholders")
         self.assertNotEqual(self.registry._handlers["politic/task/submitProduceTask"].__module__,
                             "app.business.placeholders")
         self.assertNotEqual(self.registry._handlers["politic/task/submitBulkProduceTasks"].__module__,
