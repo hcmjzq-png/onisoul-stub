@@ -104,6 +104,10 @@
 
 本机只增补运行工作树的武将奖励逻辑，沿用其他本机改动。授权的本地样本先备份后经正常接口迁移。两次并发库存请求和再次读取均返回 18 张，迁移前为 13 张。MySQL 复核五个实例、同一收据和扣销的错误余额。原 PC 重登后请求 `deck/getDecks` 和 `common/getCharacters`，服务端返回 18 张。自动回归覆盖新领取、旧收据、重复请求及容量不足回滚。五张卡逐张画面和编入卡组待验，奖励图标包仍缺。本轮未变更路由或部署云端。
 
+2026-11-20，S03.2「入门 16」`po_mission_00269` 的实际点击在 22:53:16 连续五次请求失败。原表指定 `scr1_000269_01` 与 `scr1_000269_03`，对应 `scr/04cc3b88581b56b8e6b0a08a500605ce.unity3d`。复用[构建工具](../../tools/build_mission14_dialogue.py)，选 `--tutorial 16` 读取已安装九份小姓表中 `POM_MES_000269` 的对应键。兼容演出使用原生任务面板和当前小姓立绘，原包及配图时序待确认。六个 TextAsset 回读通过。已向现有本地测试端加包，网关、代理和 Stub 的 `assets` 与 `assets2` 六项完整下载由 404 变为 200，SHA-256 一致为 `8c031fa6a6595621d7ff16ef9b66da7eb6c4dfb6f53f7620f48d6c2f5080f492`。控制组重新生成的入门 14 包摘要一致。
+
+客户端重登后任务 16 仍为 `O`，补包后的逐页渲染与接受面板待实机复核。原客户端 `FriendListMissionWindow.cs:34–55` 在发送好友申请教程回调后设置完成标志，`friend/findFriendsAndSend` 仍走默认处理器，后续的好友申请和任务完成另行验收。本轮未变更该接口或路由。回滚时核对摘要并将本轮新增脚本包移出本地静态目录。
+
 来源：[任务校验](../../app/business/mission_validation.py)、[课题与等级](../../app/business/progression.py)、
 [成就](../../app/business/account_progress_trophies.py)、[新手记录](../analysis/research-331/review/deployment65-20261115.md)。
 
