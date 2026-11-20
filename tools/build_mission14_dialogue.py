@@ -26,6 +26,7 @@ class Dialogue:
     icon_index: int
     enter_pages: int = 3
     icon_file: str = "mission_000002"
+    blank_menu_rows: tuple[int, ...] = ()
 
     @property
     def mission(self) -> str:
@@ -69,7 +70,10 @@ def script(dialogue: Dialogue, part: str) -> str:
     if part == "02":
         event = node("function", ident=f"{name}:event")
         block = node("block")
-        block.append(call("politic_waitEnterMenu", *(message(key) for key in dialogue.keys("02", 4))))
+        block.append(call("politic_waitEnterMenu", *(
+            node("string", "") if i in dialogue.blank_menu_rows else message(key)
+            for i, key in enumerate(dialogue.keys("02", 4), 1)
+        )))
         event.extend([node("identifire_list"), block])
         flow.append(event)
     else:
@@ -102,34 +106,41 @@ def script(dialogue: Dialogue, part: str) -> str:
     return ET.tostring(root, encoding="unicode", xml_declaration=True)
 
 
-def verify_client_inputs(tables: Path, bundles: Path, dialogue: Dialogue) -> int:
+def navigator_messages(tables: Path, bundles: Path) -> dict:
     import UnityPy
-
-    row = table(tables, "politicMission")[dialogue.mission]
-    if (row["iconFileName"], row["iconIndex"], row["enterScript"], row["exitScript"]) != (
-        dialogue.icon_file, dialogue.icon_index, dialogue.script + "_01", dialogue.script + "_03",
-    ):
-        raise ValueError(f"unexpected PC mission table row: {dialogue.mission}")
 
     filenames = {row["messageFile"] + ".json" for row in table(tables, "navigator").values()
                  if row["messageFile"] != "none"}
+    if not filenames:
+        raise ValueError("PC navigator table does not name any message files")
     scene = UnityPy.load(str(bundles / "scene" / TABLE_SCENE))
-    keys = dialogue.keys("01", dialogue.enter_pages) + dialogue.keys("02", 4) + dialogue.keys("03", dialogue.reward_title)
-    tables_seen = set()
+    messages = {}
     for obj in scene.objects:
         if obj.type.name != "TextAsset":
             continue
         asset = obj.read()
         if asset.m_Name not in filenames:
             continue
-        rows = parse_json_document(bytes(asset.m_Script).decode("utf-8-sig"))["naviMessage"]
+        messages[asset.m_Name] = parse_json_document(bytes(asset.m_Script).decode("utf-8-sig"))["naviMessage"]
+    if messages.keys() != filenames:
+        raise ValueError(f"missing client navigator tables: {sorted(filenames - messages.keys())}")
+    return messages
+
+
+def verify_client_inputs(tables: Path, bundles: Path, dialogue: Dialogue) -> int:
+    row = table(tables, "politicMission")[dialogue.mission]
+    if (row["iconFileName"], row["iconIndex"], row["enterScript"], row["exitScript"]) != (
+        dialogue.icon_file, dialogue.icon_index, dialogue.script + "_01", dialogue.script + "_03",
+    ):
+        raise ValueError(f"unexpected PC mission table row: {dialogue.mission}")
+
+    messages = navigator_messages(tables, bundles)
+    keys = dialogue.keys("01", dialogue.enter_pages) + dialogue.keys("02", 4) + dialogue.keys("03", dialogue.reward_title)
+    for filename, rows in messages.items():
         for key in keys:
             if not rows.get(key, {}).get("tw"):
-                raise ValueError(f"missing client message {asset.m_Name}: {key}")
-        tables_seen.add(asset.m_Name)
-    if tables_seen != filenames:
-        raise ValueError(f"missing client navigator tables: {sorted(filenames - tables_seen)}")
-    return len(tables_seen)
+                raise ValueError(f"missing client message {filename}: {key}")
+    return len(messages)
 
 
 def build(template: bytes, dialogue: Dialogue) -> bytes:
