@@ -27,6 +27,7 @@
 | [contract_check.py](contract_check.py) | 契约、调用图和批次结构校验 | 只读仓库输入 |
 | [test_local.ps1](test_local.ps1) | 一条命令执行本机完整 SQL 回归 | 读取私有 development.local.json，调用隔离实例工具并保留本次日志 |
 | [check_public_config.py](check_public_config.py) | 提交前检查公网地址/凭据标记/私有文件 | --staged 检查实际暂存内容，不打印匹配值；不扫描 Git 历史 |
+| [build_inbox_client.py](build_inbox_client.py) | 构建本地 PC 收件箱领取桥接包 | 核对输入主包指纹，使用现有 Mono.Cecil 和原客户端引用，输出独立候选包 |
 | [run_isolated_mysql_tests.py](run_isolated_mysql_tests.py) | Windows/Linux 全量回归及真实 SQL 测试 | 用 --mysqld 指定本机程序；启停一次性 MySQL、写日志并清理临时实例，不使用系统库 |
 | [export_system_status.py](export_system_status.py) | 按系统导出全部路由状态 | 写指定输出目录；不调用接口、不连接 DB |
 | [endpoint_progress.py](endpoint_progress.py)、[index_remaining_endpoints.py](index_remaining_endpoints.py) | 旧接口研究快照/索引 | 会写报告；旧默认目录可能是历史研究目录，先检查参数和目标 |

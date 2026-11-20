@@ -4,7 +4,7 @@
     var doc = document, list = doc.getElementById("list"), status = doc.getElementById("status");
     var claim = doc.getElementById("claim"), all = doc.getElementById("select-all");
     var refresh = doc.getElementById("refresh"), close = doc.getElementById("close");
-    var choices = [], busy = false, submitted = false, ticket = 0;
+    var choices = [], busy = false, submitted = false, keepOpen = false, ticket = 0;
     var owns = Object.prototype.hasOwnProperty;
 
     function element(tag, className, text) {
@@ -32,18 +32,20 @@
             var choice = choices[i];
             if (choice.box.checked) { selected++; }
             choice.row.className = choice.style + (choice.box.checked ? " selected" : "");
-            choice.box.disabled = locked;
-            choice.button.disabled = locked;
+            choice.box.disabled = locked || !keepOpen;
+            choice.button.disabled = locked || !keepOpen;
         }
-        all.disabled = locked || !choices.length;
+        all.disabled = locked || !keepOpen || !choices.length;
         all.textContent = selected && selected === choices.length ? "取消全选" : "全选";
-        claim.disabled = locked || !selected;
+        claim.disabled = locked || !keepOpen || !selected;
         claim.textContent = selected ? "领取所选（" + selected + "）" : "领取所选";
         refresh.disabled = locked;
+        close.disabled = submitted;
     }
 
     function drawMetadata(container, data) {
-        container.appendChild(element("strong", "parcel-sender", data.name || "包裹"));
+        var source = data.name ? "来源 " + data.name : "来源未记录";
+        container.appendChild(element("strong", "parcel-sender", source));
         if (data.createdTime) {
             container.appendChild(element("time", "parcel-time", data.createdTime));
         }
@@ -116,11 +118,12 @@
         choices.push({id: id, row: row, style: style, box: box, button: button});
     }
 
-    function draw(result) {
+    function draw(result, claimedIds) {
         if (!result || !result.parcels || !Array.isArray(result.index)) {
             tell("包裹列表读取失败，请刷新或返回游戏。");
             return;
         }
+        keepOpen = result.inboxKeepOpen === true;
         list.textContent = "";
         choices = [];
         var parcels = result.parcels, ids = result.index;
@@ -130,11 +133,23 @@
                 drawParcel(id, parcels[id]);
             }
         }
-        tell(choices.length ? choices.length + " 件待领取" : "");
         if (!choices.length) { list.appendChild(element("p", "empty", "没有待领取的包裹。")); }
+        if (!keepOpen && choices.length) {
+            tell("请重新进入本地客户端，加载新版领取功能。");
+        } else if (claimedIds) {
+            var remaining = 0;
+            for (var j = 0; j < claimedIds.length; j++) {
+                if (owns.call(parcels, claimedIds[j])) { remaining++; }
+            }
+            var received = claimedIds.length - remaining;
+            var message = received ? "已领取 " + received + " 封" : "本次未领取到包裹";
+            tell(message + (remaining ? "，" + remaining + " 封仍可查看" : ""));
+        } else {
+            tell(choices.length ? choices.length + " 件待领取" : "");
+        }
     }
 
-    function reload() {
+    function reload(claimedIds) {
         if (busy || submitted) { return; }
         busy = true;
         updateButtons();
@@ -144,7 +159,7 @@
             if (current !== ticket) { return; }
             ++ticket;
             busy = false;
-            draw(result);
+            draw(result, claimedIds);
             updateButtons();
         }
         var timer = window.setTimeout(function () { finish(null); }, 8000);
@@ -160,24 +175,31 @@
     }
 
     function submit(ids) {
-        if (busy || submitted || !ids.length) { return; }
+        if (busy || submitted || !keepOpen || !ids.length) { return; }
         var responses = Object.create(null);
         for (var i = 0; i < ids.length; i++) { responses[ids[i]] = "accept"; }
         submitted = true;
         updateButtons();
         tell("已交给游戏处理领取请求…");
         var timer = window.setTimeout(function () {
-            tell("未收到游戏确认。请返回游戏后重新打开收件箱查看结果。");
-        }, 8000);
+            close.disabled = false;
+            tell("领取仍在处理，稍后会刷新列表。");
+        }, 12000);
         try {
-            proxy().send("resolve", responses, function () {
+            proxy().send("resolve", responses, function (result) {
                 window.clearTimeout(timer);
-                // InboxReader acknowledges dispatch immediately, then Unity applies the reward.
-                closePage();
+                submitted = false;
+                if (result && result.busy) {
+                    updateButtons();
+                    tell("游戏正在处理上一笔领取，请稍后再试。");
+                } else {
+                    reload(ids);
+                }
             });
         } catch (err) {
             window.clearTimeout(timer);
-            tell("无法确认领取请求。请返回游戏后重新查看包裹。");
+            close.disabled = false;
+            tell("无法确认领取结果，请返回游戏后重新打开收件箱查看。");
         }
     }
 
@@ -197,6 +219,6 @@
     };
 
     close.onclick = closePage;
-    refresh.onclick = reload;
+    refresh.onclick = function () { reload(); };
     reload();
 }());

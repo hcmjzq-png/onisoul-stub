@@ -111,6 +111,31 @@ class SocialInboxServices(PlayerServices):
         return {"createdTime": float(stamp),
                 "rewards": {item: float(integer(amount, 1)) for item, amount in rewards.items()}}
 
+    @staticmethod
+    def add_source_names(player: dict, parcels: dict) -> None:
+        """Copy a public label from trusted issuance receipts into the response."""
+        issuance = player.get("socialInboxIssuances")
+        grants = issuance.get("grants") if isinstance(issuance, dict) else None
+        if not parcels or not isinstance(grants, dict):
+            return
+        for receipt in grants.values():
+            if not isinstance(receipt, dict):
+                continue
+            key = receipt.get("parcelId")
+            source = receipt.get("source")
+            if not isinstance(key, str) or key not in parcels or not isinstance(source, dict):
+                continue
+            parcel = parcels[key]
+            if receipt.get("createdTime") != parcel["createdTime"] or receipt.get("rewards") != parcel["rewards"]:
+                continue
+            kind = source.get("kind")
+            authority = source.get("authority")
+            if kind == "administrator":
+                portal = isinstance(authority, str) and authority.startswith("local-portal:")
+                parcel["name"] = "网页管理后台发放" if portal else "管理员发放"
+            elif kind == "gameplay":
+                parcel["name"] = "玩法奖励"
+
     def parcels(self, player: dict, params: dict) -> dict:
         ledger = self.ledger(player)
         start = integer(params.get("start"))
@@ -122,7 +147,9 @@ class SocialInboxServices(PlayerServices):
         pending = {key: self.parcel(row) for key, row in ledger["pending"].items()}
         ids = sorted(pending, key=lambda key: (-pending[key]["createdTime"], key))
         selected = ids[start:] if end == -1 else ids[start:end + 1]
-        return {"parcels": {key: pending[key] for key in selected}, "totalCount": float(len(ids))}
+        parcels = {key: pending[key] for key in selected}
+        self.add_source_names(player, parcels)
+        return {"parcels": parcels, "totalCount": float(len(ids))}
 
     def resolve(self, player: dict, params: dict) -> dict:
         ledger = copy.deepcopy(self.ledger(player))

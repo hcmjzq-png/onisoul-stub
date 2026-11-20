@@ -99,10 +99,12 @@ class Research331EIntegrationTest(unittest.TestCase):
         inbox = SocialInboxServices(h.service)
         with h.states.transaction((h.a["playerId"],)) as rows:
             parcel = inbox.stage_parcel(rows[h.a["playerId"]], issuance_id="integration-event",
-                source={"kind": "administrator", "authority": "test", "reference": "integration"},
+                source={"kind": "administrator", "authority": "local-portal:test", "reference": "private reference"},
                 rewards={"item11_0000101": 7}, created_time=h.now)
         self.assertEqual(self.registry.dispatch("common/periodicInquiry", {}, h.a)[1]["inboxParcel"], 1.)
-        self.assertEqual(self.registry.dispatch("inbox/getParcels", {"start": 0, "end": 499}, h.a)
-                         [1]["parcels"][parcel]["rewards"], {"item11_0000101": 7.})
+        listing = self.registry.dispatch("inbox/getParcels", {"start": 0, "end": 499}, h.a)[1]
+        self.assertEqual(listing["parcels"][parcel], {
+            "createdTime": h.now, "rewards": {"item11_0000101": 7.}, "name": "网页管理后台发放",
+        })
         self.registry.dispatch("inbox/resolveParcels", {"responses": {parcel: "accept"}}, h.a)
         self.assertEqual(self.registry.dispatch("common/periodicInquiry", {}, h.a)[1]["inboxParcel"], 0.)
