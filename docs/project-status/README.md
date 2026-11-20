@@ -96,6 +96,10 @@
 
 入门任务 13 的奖励窗口使用 `RewardMenu.cs:361–390` 从 `item07.iconName` 请求 Unity 纹理包。`po_mission_00012` 指向 `reward01_04_00012_01`。本地 PC 实际请求中，攻、防、知、神四种极石和恶鬼全回复药的包均返回 404，同名网页 PNG 均可读。使用美术库中这五项已有的 `_01` 和 `_91` PNG，以 `item07_0010003` PC 包为模板生成候选，包内十张纹理的名称、绑定、平台和 RGBA 像素回读一致。现有本地测试端仅新增这五个文件，网关、代理及 Stub 的 `assets` 和 `assets2` 路径共 30 项请求由 404 变为 200，回包 SHA-256 与候选一致。三个原先正常显示的奖励图标回包一致。新版 PC 奖励窗口渲染待验。重建入口见 [图标构建工具](../../tools/build_mission13_reward_icons.py)。
 
+2026-11-20，S03.2 本地「入门 14」点选有语音却无文本。PC `politicMission` 的 `iconIndex=14` 对应 `po_mission_00024`「关于合战」。`PoliticMissionManager.cs:307–318` 单独播放点选语音。任务资源 `scr1_000024` 在 22:28:50 连续五次返回 404，归类为 **stub has no assets**。本机归档未发现同名原包。以 `scr1_000485` 的 PC 容器为模板，用[构建工具](../../tools/build_mission14_dialogue.py)生成兼容脚本，按 `POM_MES_000024` 键读取已安装的中文台词，并调用客户端原生任务及奖励面板。脚本演出采用主城和当前小姓立绘，原配图切换顺序待验证。
+
+本机补包版本 SHA-256 为 `f215d361b51abca083debcbeed8896b270031db39642ee5cee6296ed093486a4`。构建回读通过六个 PC TextAsset 和九份小姓表。现有本地测试端只增补 `scr/d669d415f6b37b41d88fef3724114346.unity3d`。网关、代理和 Stub 的 `assets`、`assets2` 六个完整 GET 从 404 变为 200，回包摘要一致。静态服务、任务状态和核心玩法共 44 项自动回归通过。原 PC 客户端重开后通过主城入口下载新包，显示「关于合战」任务面板、小姓立绘和「关于合战 达成！」奖励面板。实际 HTTP 记录 `opened → accepted → finished → closed`，本机 MySQL 只读确认 `C` 及五项武将奖励各一份。逐页台词画面和领奖后重登待独立复核，奖励面板的五个图标请求另见 404。路由未变，本轮发布仅限本地测试。回滚时核对摘要并将上述新增文件移出静态目录。
+
 来源：[任务校验](../../app/business/mission_validation.py)、[课题与等级](../../app/business/progression.py)、
 [成就](../../app/business/account_progress_trophies.py)、[新手记录](../analysis/research-331/review/deployment65-20261115.md)。
 
