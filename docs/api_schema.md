@@ -256,6 +256,7 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 | `updateFriendData.count.ok/send/receive`、`remove.<peer>` | bundle / 本服通知策略 | FriendWindowControll.cs:118-127、FriendConfirmationWindow.cs:168-187；remove 消费键，具体原因文案与保留/刷新策略为内部实现。 |
 | `periodicInquiry.friendOffer/inboxParcel` | bundle | UserStatus.cs:148-164 按绝对数字赋值，不累加；不发送未实现的 unreadMail。SessionKeeper.cs:176-199 登录即开轮询，未创建角色时省略社交计数并保留 gmMessage/show_off。 |
 | `getParcels.parcels.<id>.createdTime/rewards,totalCount` | bundle / 本服分页策略 | InboxReader.cs:92-177；真实发行记录，时间倒序再按 ID 排序、包含 end 为本服策略；没有普通玩家指定奖励的发行入口。 |
+| `inbox/getParcels.parcels.<id>.name` | bundle 展示字段 / 本服来源标签 | InboxReader.cs 的测试参数使用字符串 `name`，转换保留该字段。根据同一包裹的可信发行记录给出固定公开标签。缺少匹配发行记录的旧包裹省略该字段。 |
 | `resolveParcels.successful.<id>.rewards,failed` | bundle / 本服重试策略 | InboxResolveWorker.cs:11-105、PluginRunner_DoReceiveMail.cs:12-66；失败只消费 Count。已领取重试不重放奖励增量，仅返回空 rewards。奖励与领取墓碑同一 CAS 保存。 |
 | item11_0000101/201/301/401 → gold/wood/food/iron | bundle | RewardProcessor.cs:51-73。仅四资源，不扩展付费货币、卡牌或随机奖；容量不足该包裹失败。无已证期限，此发行子集明确无自动过期。 |
 | 管理/调试拒绝的根 `errorReason` | bundle 字段 / 本服关闭策略 | GameRestarter.cs:79-99 在成功消费者之前检查。32 项在 HTTP 认证及 Registry 直调均拒绝；原包装器存在不构成管理员授权。 |

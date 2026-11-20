@@ -42,6 +42,24 @@ class StaticFilesTest(unittest.TestCase):
         self.assertEqual(resource.content_type, "text/html")
         self.assertEqual(resource.cache_control, NO_STORE)
 
+    def test_inbox_mid_falls_back_to_the_available_inbox_page(self):
+        target = "/client/inbox/inbox_mid.html?revision=1"
+        self.assertIsNone(self.static.resolve(target))
+
+        directory = self.web / "client" / "inbox"
+        directory.mkdir()
+        fallback = directory / "inbox.html"
+        fallback.write_text("<html>inbox</html>", encoding="utf-8")
+
+        resource = self.static.resolve(target)
+        self.assertEqual(resource.path, fallback.resolve())
+        self.assertEqual(resource.content_type, "text/html")
+        self.assertEqual(resource.cache_control, NO_STORE)
+
+        dedicated_page = directory / "inbox_mid.html"
+        dedicated_page.write_text("<html>mid layout</html>", encoding="utf-8")
+        self.assertEqual(self.static.resolve(target).path, dedicated_page.resolve())
+
     def test_bundle_and_cache_fallbacks(self):
         direct = self.static.resolve("/client/pc/jp/assets/building/abc.unity3d?r=1")
         cached = self.static.resolve("/client/pc/jp/assets/mission/def.unity3d")

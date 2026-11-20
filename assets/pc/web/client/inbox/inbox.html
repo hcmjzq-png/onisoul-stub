@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>收件箱</title>
+<style>
+html, body {
+    width: 100%; height: 100%; margin: 0; overflow: hidden;
+    background: #14120f; color: #eee5d5; font: 14px "Microsoft YaHei", sans-serif;
+}
+.inbox {
+    position: absolute; top: 24px; right: 26px; bottom: 24px; left: 26px;
+    border: 1px solid #716047; background: #1e1a16;
+    box-shadow: inset 0 0 0 3px #151310, 0 6px 20px #0e0c0a;
+}
+header, footer { position: absolute; right: 22px; left: 22px; }
+header { top: 0; height: 78px; border-bottom: 1px solid #60513b; }
+h1 { margin: 13px 0 0; color: #f0dcb5; font-size: 26px; line-height: 34px; }
+#status { margin: 2px 122px 0 0; color: #c9b89d; line-height: 20px; }
+#close { position: absolute; top: 19px; right: 0; }
+#list {
+    position: absolute; top: 79px; right: 22px; bottom: 60px; left: 22px;
+    padding: 12px 2px 6px; overflow: auto;
+}
+#list::-webkit-scrollbar { width: 9px; background: #211c16; }
+#list::-webkit-scrollbar-thumb { border: 2px solid #211c16; background: #766043; border-radius: 5px; }
+footer { height: 59px; bottom: 0; border-top: 1px solid #60513b; }
+button {
+    min-height: 33px; padding: 3px 13px; border: 1px solid #827052; border-radius: 2px;
+    background: #2e281f; background: -webkit-linear-gradient(top, #3e3428, #25211b);
+    color: #f1e3cc; font: inherit; cursor: pointer;
+}
+button:hover:enabled { border-color: #d5b17c; background: #493a2b; }
+button:disabled { color: #8e8373; border-color: #52483b; background: #2c2721; cursor: default; }
+button:focus, .parcel input:focus { outline: 1px solid #e9c285; outline-offset: 2px; }
+footer button { margin: 12px 8px 0 0; }
+#claim { float: right; min-width: 124px; margin-right: 0; }
+#claim:enabled { border-color: #d0ad72; color: #251c12; background: #d1b079; font-weight: bold; }
+#claim:hover:enabled { background: #eac992; }
+.parcel {
+    box-sizing: border-box; display: table; table-layout: fixed; width: 100%; margin-bottom: 8px;
+    border: 1px solid #554833; border-left: 2px solid #aa8c5e; background: #221f1b;
+    background: -webkit-linear-gradient(top, #28231c, #1c1a17);
+}
+.parcel.selected { background: #30281d; border-color: #9d7e4f; border-left-color: #ddba80; }
+.parcel-actions, .parcel-main, .parcel-note { display: table-cell; vertical-align: middle; }
+.parcel-actions { width: 112px; padding: 9px 11px; border-right: 1px solid #41392c; }
+.parcel-actions button { width: 100%; white-space: nowrap; padding: 3px 8px; }
+.parcel-select {
+    display: block; margin: 6px 0 0; color: #c5b69e; font-size: 12px;
+    line-height: 15px; text-align: center; cursor: pointer;
+}
+.parcel-select input { margin: 0 5px 0 0; vertical-align: -2px; }
+.parcel-main { padding: 0 9px; }
+.parcel-note {
+    box-sizing: border-box; width: 26%; padding: 10px 14px;
+    border-left: 1px solid #41392c; color: #d2c1a5; white-space: pre-wrap; word-wrap: break-word;
+}
+.rewards { margin: 0; padding: 0; list-style: none; }
+.reward { box-sizing: border-box; min-height: 79px; padding: 7px 9px 7px 0; }
+.multiple .parcel-actions, .multiple .parcel-note { vertical-align: top; }
+.multiple .parcel-main { padding: 8px 10px 9px; }
+.parcel-heading {
+    min-height: 21px; margin: 0 2px 6px; line-height: 21px; word-wrap: break-word;
+}
+.parcel-heading .parcel-sender, .parcel-heading .parcel-time { display: inline; }
+.parcel-heading .parcel-time { margin-left: 12px; }
+.reward-types { float: right; margin-left: 10px; color: #d0b99a; font-size: 12px; }
+.multiple .rewards { border: 1px solid #4e4232; background: #191713; }
+.multiple .reward {
+    display: inline-block; width: 33.333%; min-height: 62px; padding: 8px;
+    vertical-align: top; border-right: 1px solid #3d3429;
+}
+.multiple .reward:nth-child(3n), .multiple .reward:last-child { border-right: 0; }
+.pair .reward { width: 50%; }
+.multiple .reward:nth-child(n+4) { border-top: 1px solid #3d3429; }
+.reward-icon {
+    box-sizing: border-box; float: left; width: 65px; height: 65px;
+    border: 1px solid #847252; background: #181612;
+}
+.reward-icon img { display: block; width: 100%; height: 100%; }
+.reward-details { margin-left: 75px; padding-top: 3px; line-height: 20px; word-wrap: break-word; }
+.multiple .reward-icon { width: 44px; height: 44px; }
+.multiple .reward-details { margin-left: 53px; padding-top: 1px; }
+.multiple .reward-count { display: block; }
+.parcel-sender { display: block; color: #f0e1c9; }
+.parcel-time { display: block; color: #c3b49d; font-size: 12px; }
+.reward-caption { color: #f1e6d5; }
+.reward-count { color: #e1bb80; white-space: nowrap; }
+.empty {
+    margin: 0; padding: 48px 18px; background: #211d18;
+    border: 1px dashed #66563f; color: #cdbda3; text-align: center;
+}
+@media (max-width: 900px) {
+    .inbox { right: 14px; left: 14px; }
+    .parcel-actions { width: 100px; }
+    .multiple .reward { width: 50%; }
+    .multiple .reward:nth-child(3n) { border-right: 1px solid #3d3429; }
+    .multiple .reward:nth-child(2n), .multiple .reward:last-child { border-right: 0; }
+    .multiple .reward:nth-child(n+3) { border-top: 1px solid #3d3429; }
+}
+</style>
+</head>
+<body>
+<main class="inbox">
+    <header>
+        <h1>收件箱</h1>
+        <p id="status" role="status" aria-live="polite">正在读取包裹…</p>
+        <button id="close" type="button">返回游戏</button>
+    </header>
+    <section id="list" aria-label="包裹列表"></section>
+    <footer>
+        <button id="refresh" type="button">刷新</button>
+        <button id="select-all" type="button" disabled>全选</button>
+        <button id="claim" type="button" disabled>领取所选</button>
+    </footer>
+</main>
+<script src="inbox-v6.js"></script>
+</body>
+</html>

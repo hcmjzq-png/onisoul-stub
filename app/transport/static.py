@@ -177,6 +177,9 @@ class StaticFiles:
 
         if parts[0] == "client":
             resource = self._file(self.web_dir, Path(*parts))
+            if resource is None and parts == ["client", "inbox", "inbox_mid.html"]:
+                # InboxReader uses this URL for every layout except Low.
+                return self._file(self.web_dir, Path("client", "inbox", "inbox.html"))
             if resource is not None or not parts[-1].lower().endswith((".unity3d", ".unity")):
                 return resource
 
