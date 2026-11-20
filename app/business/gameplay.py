@@ -43,6 +43,7 @@ StateSaver = Callable[[dict[str, Any], str], None]
 DEFAULT_COUNTRY = "country01"
 DEFAULT_NAVIGATOR = "navi8000101"
 DEFAULT_COLOR = "color1"
+TUTORIAL_CARD_MISSION = "po_mission_00024"
 
 ITEM_TO_RESOURCE = {
     "item11_0000101": "gold",
@@ -403,6 +404,7 @@ class GameplayService:
         for key in ("buildings", "occupiedGrids", "produce", "items", "characters", "decks"):
             if not isinstance(result.get(key), dict):
                 result[key] = {}
+        self._restore_tutorial_card_rewards(result)
         if result["entity"].get("created") and not isinstance(result.get(SHOP_UNLOCKS), list):
             definitions = self._table("building")
             if definitions:
@@ -470,23 +472,27 @@ class GameplayService:
                 continue
             seen.add(base_id)
             source = characters.get(base_id) or {}
-            result[str(len(result) + 1)] = {
-                "atk": float(source.get("atk") or 0),
-                "def": float(source.get("def") or 0),
-                "int": float(source.get("int") or 0),
-                "atkAdd": 0.0,
-                "defAdd": 0.0,
-                "intAdd": 0.0,
-                "grade": 1.0,
-                "level": 1.0,
-                "baseId": base_id,
-                "exp": 0.0,
-                "combinedPoint": 0.0,
-                "purchasedVoiceId": "",
-                "voice": str(source.get("voice") or ""),
-                "skills": {},
-            }
+            result[str(len(result) + 1)] = self._new_character(base_id, source)
         return result
+
+    @staticmethod
+    def _new_character(base_id: str, source: dict) -> dict:
+        return {
+            "atk": float(source.get("atk") or 0),
+            "def": float(source.get("def") or 0),
+            "int": float(source.get("int") or 0),
+            "atkAdd": 0.0,
+            "defAdd": 0.0,
+            "intAdd": 0.0,
+            "grade": 1.0,
+            "level": 1.0,
+            "baseId": base_id,
+            "exp": 0.0,
+            "combinedPoint": 0.0,
+            "purchasedVoiceId": "",
+            "voice": str(source.get("voice") or ""),
+            "skills": {},
+        }
 
     def _create_player(
         self,
@@ -1008,8 +1014,13 @@ class GameplayService:
                     reward_id = self.missions.clear_reward(mission_id)
                     if reward_id and reward_id not in self._table("reward01_politic"):
                         return self._failure(api, "mission reward table row is missing")
-                    items = self._mission_reward(player, mission_id)
+                    try:
+                        items = self._mission_reward(player, mission_id)
+                    except ValueError as exc:
+                        return self._failure(api, str(exc))
                     granted = {"items": {str(key): int(value) for key, value in items.items()}}
+                    if mission_id == TUTORIAL_CARD_MISSION:
+                        granted["charactersDelivered"] = True
                     player["missionRewards"][mission_id] = granted
                     for item_id, amount in items.items():
                         reward_total[item_id] = reward_total.get(item_id, 0) + amount
@@ -1033,11 +1044,20 @@ class GameplayService:
     def _mission_reward(
         self, player: dict[str, Any], mission_id: str
     ) -> dict[str, int]:
+        items = self._mission_reward_items(mission_id, str(player["entity"].get("country") or ""))
+        if mission_id == TUTORIAL_CARD_MISSION:
+            self._grant_tutorial_cards(player, items)
+        else:
+            self._grant_items(player, items)
+        return items
+
+    def _mission_reward_items(self, mission_id: str, country: str) -> dict[str, int]:
         reward_id = self.missions.clear_reward(mission_id)
         if not reward_id:
             return {}
         row = self._table("reward01_politic").get(reward_id) or {}
         raw: dict[str, int] = {}
+        groups = set()
         for index in range(1, 11):
             item_id = str(row.get(f"itemId{index}") or "")
             if not item_id or item_id == "none":
@@ -1045,13 +1065,68 @@ class GameplayService:
             if int(row.get(f"ratio{index}max") or 0) <= 0:
                 continue
             amount = int(row.get(f"count{index}min") or 0)
+            if mission_id == TUTORIAL_CARD_MISSION:
+                group = row.get(f"group{index}")
+                if (group not in ("A", "B", "C", "D", "E") or group in groups
+                        or row.get(f"ratio{index}min") != row.get(f"ratio{index}max")
+                        or amount != 1 or row.get(f"count{index}max") != 1):
+                    raise ValueError("no stub response: unsupported tutorial card reward distribution")
+                groups.add(group)
             if amount > 0:
                 raw[item_id] = raw.get(item_id, 0) + amount
-        resolved = self._resolve_country_rewards(
-            raw, str(player["entity"].get("country") or "")
-        )
-        self._grant_items(player, resolved)
-        return resolved
+        return self._resolve_country_rewards(raw, country)
+
+    def _grant_tutorial_cards(self, player: dict, items: dict[str, int]) -> None:
+        if len(items) != 5 or any(type(count) is not int or count != 1 for count in items.values()):
+            raise ValueError("no stub response: unsupported tutorial card reward")
+        owned = player["characters"]
+        stored = player.get("storedCharacters", {})
+        if not isinstance(stored, dict):
+            raise ValueError("no stub response: invalid stored character data")
+        limit = self._possession_limits(player)["character"]["result"]
+        if len(owned) + len(items) > limit:
+            raise ValueError("no stub response: insufficient space for tutorial cards")
+        last_id = max((int(decks.character_id(key)) for key in owned.keys() | stored.keys()), default=0)
+        item_table, character_table = self._table("item01"), self._table("character")
+        granted = {}
+        for offset, item_id in enumerate(items, 1):
+            item = item_table.get(item_id) or {}
+            if item.get("category") != "character" or item.get("enable") is not True:
+                raise ValueError("no stub response: invalid tutorial card item")
+            base = item.get("parameterId")
+            source = character_table.get(base) or {}
+            if (not isinstance(base, str) or source.get("id") != base
+                    or not isinstance(source.get("voice"), str)
+                    or any(type(source.get(stat)) is not int for stat in ("atk", "def", "int"))):
+                raise ValueError("no stub response: missing tutorial character data")
+            granted[decks.character_id(last_id + offset)] = self._new_character(base, source)
+        owned.update(granted)
+        player["counters"]["characterCount"] = len(owned)
+
+    def _restore_tutorial_card_rewards(self, player: dict) -> None:
+        receipts = player.get("missionRewards")
+        receipt = receipts.get(TUTORIAL_CARD_MISSION) if isinstance(receipts, dict) else None
+        if (not isinstance(receipt, dict) or receipt.get("charactersDelivered")
+                or mission_validation.state_of(player, self.missions.rows(), TUTORIAL_CARD_MISSION) != "closed"):
+            return
+        inventory = player["items"]
+        try:
+            items = self._mission_reward_items(TUTORIAL_CARD_MISSION, str(player["entity"].get("country") or ""))
+            if (not items or receipt.get("items") != items
+                    or any(type(inventory.get(key)) is not int or inventory[key] < amount
+                           for key, amount in items.items())):
+                return
+            self._grant_tutorial_cards(player, items)
+        except ValueError:
+            # Keep the original balances and retry after the tables or capacity are restored.
+            return
+        for key, amount in items.items():
+            balance = inventory[key] - amount
+            if balance:
+                inventory[key] = balance
+            else:
+                del inventory[key]
+        receipt["charactersDelivered"] = True
 
     def _resolve_country_rewards(
         self, items: dict[str, int], country: str

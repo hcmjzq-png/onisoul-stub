@@ -283,6 +283,12 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 不新增协议字段、不自动升等级，也不自动修复未经核对的旧奖励记录。
 真机发现与 #65 上线边界见 [部署验收](analysis/research-331/review/deployment65-20261115.md)。
 
+## 2026-11-20 入门 14 武将奖励
+
+**bundle**：`politicMission` 的 `po_mission_00024` → `reward01_04_00024_01` → 五条固定 `item01` → `item01.parameterId` → `character`。`RewardProcessor.cs:154–167` 将 `character` 奖励映射到客户端库存计数，`common/getCharacters` 从武将实例重新加载具体卡片。
+
+**本服存档策略**：任务状态、新武将和奖励收据同一次 CAS 保存。`missionRewards.<id>.charactersDelivered` 是本服内部标记。限定已核实的奖励，完整匹配旧收据和物品余额时一次性修复缺失实例。`politic/mission/changeState` 与 `common/getCharacters` 的回包结构沿用现有契约。
+
 ## 2026-11-15 昵称唯一性
 
 来源：**bundle**，`LoginEnvironment.registerName` 按 succeeded 判断命名能否继续；

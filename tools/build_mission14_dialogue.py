@@ -1,7 +1,8 @@
-"""Build a PC compatibility script for tutorial 14 using installed dialogue keys."""
+"""Build PC compatibility scripts for tutorials 14 and 16 from installed dialogue keys."""
 from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
 import hashlib
 from pathlib import Path
 import sys
@@ -14,17 +15,32 @@ from tools.port_legacy_media import pack_pc, repack_serialized
 from tools.repair_unityweb_lzma import layout
 
 
-MISSION = "po_mission_00024"
-SCRIPT = "scr1_000024"
 TEMPLATE = "scr1_000485"
 TABLE_SCENE = "1243ea6aa67634ac98d68538c84a3a84.unity3d"
-ENTER_KEYS = tuple(f"POM_MES_000024_01_{i:03}" for i in range(1, 4))
-MENU_KEYS = tuple(f"POM_MES_000024_02_{i:03}" for i in range(1, 5))
-EXIT_KEYS = tuple(f"POM_MES_000024_03_{i:03}" for i in range(1, 10))
 
 
-def script(part: str) -> str:
-    name = f"{SCRIPT}_{part}"
+@dataclass(frozen=True)
+class Tutorial:
+    mission_number: int
+    reward_title: int
+
+    @property
+    def mission(self) -> str:
+        return f"po_mission_{self.mission_number:05}"
+
+    @property
+    def script(self) -> str:
+        return f"scr1_{self.mission_number:06}"
+
+    def keys(self, part: str, count: int) -> tuple[str, ...]:
+        return tuple(f"POM_MES_{self.mission_number:06}_{part}_{i:03}" for i in range(1, count + 1))
+
+
+TUTORIALS = {14: Tutorial(24, 9), 16: Tutorial(269, 8)}
+
+
+def script(tutorial: Tutorial, part: str) -> str:
+    name = f"{tutorial.script}_{part}"
 
     def node(tag, value=None, *, ident=None):
         element = ET.Element(tag, {"line": "1", "prefix": name})
@@ -49,7 +65,7 @@ def script(part: str) -> str:
     if part == "02":
         event = node("function", ident=f"{name}:event")
         block = node("block")
-        block.append(call("politic_waitEnterMenu", *(message(key) for key in MENU_KEYS)))
+        block.append(call("politic_waitEnterMenu", *(message(key) for key in tutorial.keys("02", 4))))
         event.extend([node("identifire_list"), block])
         flow.append(event)
     else:
@@ -64,14 +80,16 @@ def script(part: str) -> str:
             call("setVisible", node("var", "navigator"), node("boolean", "true")),
             call("setVisibleMessage", node("boolean", "true")),
         ])
-        keys = ENTER_KEYS if part == "01" else EXIT_KEYS[:-1]
+        keys = tutorial.keys(part, 3) if part == "01" else tutorial.keys(part, tutorial.reward_title)[:-1]
         flow.extend(call("politic_drawNavigatorMessage", node("string", key)) for key in keys)
         if part == "01":
-            flow.extend([node("import", ident=f"{SCRIPT}_02"), call(f"{SCRIPT}_02:event")])
+            menu = f"{tutorial.script}_02"
+            flow.extend([node("import", ident=menu), call(f"{menu}:event")])
         else:
+            title = tutorial.keys("03", tutorial.reward_title)[-1]
             flow.extend([
                 call("politic_playNavigatorVoice", node("string", "Admiration")),
-                call("politic_waitRewardMenu", message(EXIT_KEYS[-1])),
+                call("politic_waitRewardMenu", message(title)),
             ])
         flow.extend([
             call("setVisibleMessage", node("boolean", "false")),
@@ -80,18 +98,20 @@ def script(part: str) -> str:
     return ET.tostring(root, encoding="unicode", xml_declaration=True)
 
 
-def verify_client_inputs(tables: Path, bundles: Path) -> int:
+def verify_client_inputs(tables: Path, bundles: Path, icon_index: int) -> int:
     import UnityPy
 
-    row = table(tables, "politicMission")[MISSION]
+    tutorial = TUTORIALS[icon_index]
+    row = table(tables, "politicMission")[tutorial.mission]
     if (row["iconFileName"], row["iconIndex"], row["enterScript"], row["exitScript"]) != (
-        "mission_000002", 14, SCRIPT + "_01", SCRIPT + "_03",
+        "mission_000002", icon_index, tutorial.script + "_01", tutorial.script + "_03",
     ):
-        raise ValueError("unexpected PC tutorial 14 table row")
+        raise ValueError(f"unexpected PC tutorial {icon_index} table row")
 
     filenames = {row["messageFile"] + ".json" for row in table(tables, "navigator").values()
                  if row["messageFile"] != "none"}
     scene = UnityPy.load(str(bundles / "scene" / TABLE_SCENE))
+    keys = tutorial.keys("01", 3) + tutorial.keys("02", 4) + tutorial.keys("03", tutorial.reward_title)
     tables_seen = set()
     for obj in scene.objects:
         if obj.type.name != "TextAsset":
@@ -100,7 +120,7 @@ def verify_client_inputs(tables: Path, bundles: Path) -> int:
         if asset.m_Name not in filenames:
             continue
         rows = parse_json_document(bytes(asset.m_Script).decode("utf-8-sig"))["naviMessage"]
-        for key in ENTER_KEYS + MENU_KEYS + EXIT_KEYS:
+        for key in keys:
             if not rows.get(key, {}).get("tw"):
                 raise ValueError(f"missing client message {asset.m_Name}: {key}")
         tables_seen.add(asset.m_Name)
@@ -109,13 +129,13 @@ def verify_client_inputs(tables: Path, bundles: Path) -> int:
     return len(tables_seen)
 
 
-def build(template: bytes) -> bytes:
+def build(template: bytes, tutorial: Tutorial) -> bytes:
     import UnityPy
 
     payloads = {}
     for part in ("01", "02", "03"):
-        name = f"{SCRIPT}_{part}"
-        payloads[name] = script(part)
+        name = f"{tutorial.script}_{part}"
+        payloads[name] = script(tutorial, part)
         payloads[name + "_stringtable.json"] = '{"message":{}}'
 
     assets = list(UnityPy.load(template).objects)
@@ -130,7 +150,7 @@ def build(template: bytes) -> bytes:
         old_name = tree["m_Name"]
         if not old_name.startswith(TEMPLATE + "_"):
             raise ValueError(f"unexpected template asset name: {old_name}")
-        name = SCRIPT + old_name[len(TEMPLATE):]
+        name = tutorial.script + old_name[len(TEMPLATE):]
         names[old_name] = name
         tree.update(m_Name=name, m_Script=payloads[name], m_PathName="")
         replacements[obj.path_id] = obj.save_typetree(tree)
@@ -158,13 +178,15 @@ def build(template: bytes) -> bytes:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--tutorial", type=int, choices=TUTORIALS, default=14)
     for name in ("tables", "bundles", "out"):
         parser.add_argument("--" + name, type=Path, required=True)
     args = parser.parse_args()
-    navigator_count = verify_client_inputs(args.tables, args.bundles)
+    tutorial = TUTORIALS[args.tutorial]
+    navigator_count = verify_client_inputs(args.tables, args.bundles, args.tutorial)
     template = args.bundles / "scr" / (asset_id(TEMPLATE) + ".unity3d")
-    blob = build(template.read_bytes())
-    output = args.out / "scr" / (asset_id(SCRIPT) + ".unity3d")
+    blob = build(template.read_bytes(), tutorial)
+    output = args.out / "scr" / (asset_id(tutorial.script) + ".unity3d")
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("xb") as stream:
         stream.write(blob)
