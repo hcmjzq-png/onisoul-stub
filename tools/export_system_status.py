@@ -85,6 +85,7 @@ NOTES = {
     "friend/getFriendMapData": "已接受双向好友主城投影；-1 默认主城；不含私人库存",
     "friend/getFriendMapData2": "已接受双向好友主城投影；-1 默认主城；不含私人库存",
     "friend/visitFriendMap": "原小姓与奖励菜单字段；不虚构访问赠礼",
+    "friend/findFriendsAndSend": "入门 16 好友面板兼容与持久化；当前候选为空",
     "friend/building/getFriendProductsByBuilding": "城主实际建筑配方与等级门槛",
     "friend/task/completeFriendTasks": "同事务给双方完整同额奖励、消耗一轮且续产；分配/日次数属兼容策略",
     "friend/task/accelerateFriendProduceTask": "免费按原表缩短时长；独立日次数属兼容策略",

@@ -25,7 +25,7 @@ from app.business.shop_availability import SHOP_UNLOCKS, remember_shop_unlocks
 from app import db, sessions, state
 from app.business import decks, mission_validation, placeholders, response_shapes
 from app.business.mission_chain import (
-    DEFAULT_BUTTON_BITS, SCREENSHOT_BIT, WIRE_BUTTON_MASK, MissionChain, SYSTEM_MISSION,
+    DEFAULT_BUTTON_BITS, FRIEND_TUTORIAL, SCREENSHOT_BIT, WIRE_BUTTON_MASK, MissionChain, SYSTEM_MISSION,
 )
 from app.business.registry import Registry
 from app.business.player_services import PlayerServices, integer
@@ -44,6 +44,9 @@ DEFAULT_COUNTRY = "country01"
 DEFAULT_NAVIGATOR = "navi8000101"
 DEFAULT_COLOR = "color1"
 TUTORIAL_CARD_MISSION = "po_mission_00024"
+TUTORIAL_FINALE = "po_mission_00013"
+# Original fixed reward slots and number of cards for each verified mission.
+TUTORIAL_CARD_REWARDS = {TUTORIAL_CARD_MISSION: (5, 5), TUTORIAL_FINALE: (7, 1)}
 
 ITEM_TO_RESOURCE = {
     "item11_0000101": "gold",
@@ -150,6 +153,7 @@ class GameplayService:
             "deck/getAvatarCharacters": self.get_avatar_characters,
             "deck/getDecks": self.get_decks,
             "deck/setDecks": self.set_decks,
+            "friend/findFriendsAndSend": self.open_friend_tutorial,
             "politic/map/getMapData": self.get_map_data,
             "politic/building/getBuildCounts": self.get_build_counts,
             "politic/building/getDrafts": self.get_drafts,
@@ -975,6 +979,33 @@ class GameplayService:
             self._save(player, player_id)
         return self._success(api)
 
+    def open_friend_tutorial(
+        self, params: dict[str, Any], session: dict[str, Any] | None
+    ) -> dict[str, Any]:
+        api = "friend/findFriendsAndSend"
+        found = self._session_player(api, session)
+        if isinstance(found, dict):
+            return found
+        player_id, player, _dirty = found
+        rows = self.missions.rows()
+        try:
+            integer(params.get("friendMax"), 8, 8)
+            mission_validation.validate_progress(player, rows)
+            status = mission_validation.state_of(player, rows, FRIEND_TUTORIAL)
+            opened = player.get("friendTutorialOpened") is True
+            if (not player["entity"].get("created") or FRIEND_TUTORIAL not in rows
+                    or not mission_validation.eligible(player, rows, FRIEND_TUTORIAL)
+                    or (status != "accepted" and not (opened and status in ("finished", "closed")))):
+                raise ValueError("friend tutorial must be accepted before opening")
+        except ValueError as exc:
+            return self._failure(api, str(exc))
+        if not opened:
+            player["friendTutorialOpened"] = True
+            self._save(player, player_id)
+        # The client completes the click condition even with zero rows. The
+        # original automatic recipient selection rule is unverified.
+        return response_shapes.success(api, {})
+
     def change_mission_state(
         self, params: dict[str, Any], session: dict[str, Any] | None
     ) -> dict[str, Any]:
@@ -1019,7 +1050,7 @@ class GameplayService:
                     except ValueError as exc:
                         return self._failure(api, str(exc))
                     granted = {"items": {str(key): int(value) for key, value in items.items()}}
-                    if mission_id == TUTORIAL_CARD_MISSION:
+                    if mission_id in TUTORIAL_CARD_REWARDS:
                         granted["charactersDelivered"] = True
                     player["missionRewards"][mission_id] = granted
                     for item_id, amount in items.items():
@@ -1045,10 +1076,11 @@ class GameplayService:
         self, player: dict[str, Any], mission_id: str
     ) -> dict[str, int]:
         items = self._mission_reward_items(mission_id, str(player["entity"].get("country") or ""))
-        if mission_id == TUTORIAL_CARD_MISSION:
-            self._grant_tutorial_cards(player, items)
-        else:
-            self._grant_items(player, items)
+        cards = {}
+        if mission_id in TUTORIAL_CARD_REWARDS:
+            cards = self._tutorial_card_items(mission_id, items)
+            self._grant_tutorial_cards(player, cards)
+        self._grant_items(player, {key: count for key, count in items.items() if key not in cards})
         return items
 
     def _mission_reward_items(self, mission_id: str, country: str) -> dict[str, int]:
@@ -1058,6 +1090,8 @@ class GameplayService:
         row = self._table("reward01_politic").get(reward_id) or {}
         raw: dict[str, int] = {}
         groups = set()
+        fixed_reward = TUTORIAL_CARD_REWARDS.get(mission_id)
+        allowed_groups = tuple("ABCDEFG"[:fixed_reward[0]]) if fixed_reward else ()
         for index in range(1, 11):
             item_id = str(row.get(f"itemId{index}") or "")
             if not item_id or item_id == "none":
@@ -1065,20 +1099,28 @@ class GameplayService:
             if int(row.get(f"ratio{index}max") or 0) <= 0:
                 continue
             amount = int(row.get(f"count{index}min") or 0)
-            if mission_id == TUTORIAL_CARD_MISSION:
+            if fixed_reward:
                 group = row.get(f"group{index}")
-                if (group not in ("A", "B", "C", "D", "E") or group in groups
+                if (group not in allowed_groups or group in groups
                         or row.get(f"ratio{index}min") != row.get(f"ratio{index}max")
-                        or amount != 1 or row.get(f"count{index}max") != 1):
+                        or amount <= 0 or row.get(f"count{index}max") != amount):
                     raise ValueError("no stub response: unsupported tutorial card reward distribution")
                 groups.add(group)
             if amount > 0:
                 raw[item_id] = raw.get(item_id, 0) + amount
+        if fixed_reward and len(raw) != fixed_reward[0]:
+            raise ValueError("no stub response: incomplete tutorial card reward")
         return self._resolve_country_rewards(raw, country)
 
-    def _grant_tutorial_cards(self, player: dict, items: dict[str, int]) -> None:
-        if len(items) != 5 or any(type(count) is not int or count != 1 for count in items.values()):
+    @staticmethod
+    def _tutorial_card_items(mission_id: str, items: dict[str, int]) -> dict[str, int]:
+        cards = {key: count for key, count in items.items() if key.startswith("item01_")}
+        if (len(cards) != TUTORIAL_CARD_REWARDS[mission_id][1]
+                or any(count != 1 for count in cards.values())):
             raise ValueError("no stub response: unsupported tutorial card reward")
+        return cards
+
+    def _grant_tutorial_cards(self, player: dict, items: dict[str, int]) -> None:
         owned = player["characters"]
         stored = player.get("storedCharacters", {})
         if not isinstance(stored, dict):
@@ -1105,22 +1147,27 @@ class GameplayService:
 
     def _restore_tutorial_card_rewards(self, player: dict) -> None:
         receipts = player.get("missionRewards")
-        receipt = receipts.get(TUTORIAL_CARD_MISSION) if isinstance(receipts, dict) else None
+        if not isinstance(receipts, dict):
+            return
+        for mission_id in TUTORIAL_CARD_REWARDS.keys() & receipts.keys():
+            self._restore_tutorial_cards(player, mission_id, receipts[mission_id])
+
+    def _restore_tutorial_cards(self, player: dict, mission_id: str, receipt: dict) -> None:
         if (not isinstance(receipt, dict) or receipt.get("charactersDelivered")
-                or mission_validation.state_of(player, self.missions.rows(), TUTORIAL_CARD_MISSION) != "closed"):
+                or mission_validation.state_of(player, self.missions.rows(), mission_id) != "closed"):
             return
         inventory = player["items"]
         try:
-            items = self._mission_reward_items(TUTORIAL_CARD_MISSION, str(player["entity"].get("country") or ""))
-            if (not items or receipt.get("items") != items
-                    or any(type(inventory.get(key)) is not int or inventory[key] < amount
-                           for key, amount in items.items())):
+            items = self._mission_reward_items(mission_id, str(player["entity"].get("country") or ""))
+            cards = self._tutorial_card_items(mission_id, items)
+            if (receipt.get("items") != items
+                    or any(type(inventory.get(key)) is not int or inventory[key] < amount for key, amount in cards.items())):
                 return
-            self._grant_tutorial_cards(player, items)
+            self._grant_tutorial_cards(player, cards)
         except ValueError:
             # Keep the original balances and retry after the tables or capacity are restored.
             return
-        for key, amount in items.items():
+        for key, amount in cards.items():
             balance = inventory[key] - amount
             if balance:
                 inventory[key] = balance

@@ -41,6 +41,7 @@ BARE_MAP_EVIDENCE: dict[str, str] = {
     "deck/setDecks": "DeckMake.cs:deckSave@0x2F8508",
     "deck/setEquipProtect": "CharacterConflatePreview_Equip.cs:protectOrRelease@0x2EAA64",
     "friend/findFriends": "FriendListWindow.cs:getFindData@0x30D6E8",
+    "friend/findFriendsAndSend": "FriendListMissionWindow.cs:getSendData@0x30A288",
     "friend/getFriends": "FriendListWindow.cs:getFriendData@0x30D6A8",
     "politic/building/getDrafts": "UserStatus.cs:setDraftInfo@0x28FE58",
     "politic/lottery/getSouls": "onikujiWork.cs:initSoul:199-206 (root values cast to double)",

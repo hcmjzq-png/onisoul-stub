@@ -1,7 +1,7 @@
 """Server checks for verified mission predicates, without trusting client work values."""
 from __future__ import annotations
 
-from app.business.mission_chain import STATE_TO_LETTER, SYSTEM_MISSION
+from app.business.mission_chain import FRIEND_TUTORIAL, STATE_TO_LETTER, SYSTEM_MISSION
 
 
 def state_of(player: dict, rows: dict, code: str) -> str:
@@ -46,6 +46,8 @@ def validate_progress(player: dict, rows: dict) -> None:
 
 
 def _measure(player: dict, rows: dict, buildings: dict, kind: str, grade: str, level: str, target: str, code: str) -> int:
+    if (kind, grade, level, target, code) == ("friendFirstClick", "any", "any", "any", FRIEND_TUTORIAL):
+        return int(player.get("friendTutorialOpened") is True)
     if kind == "missionStatus":
         if target not in rows or level not in STATE_TO_LETTER:
             raise ValueError("unsupported mission status condition")

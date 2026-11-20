@@ -150,7 +150,7 @@ S09	friend/cancelFriendOffer	dedicated_handler	app.business.social_services	muta
 S09	friend/dissolutionFriend	dedicated_handler	app.business.social_services	mutate	专用处理器；支持范围和验收见功能台账
 S09	friend/feedbackFriendOffer	dedicated_handler	app.business.social_services	mutate	专用处理器；支持范围和验收见功能台账
 S09	friend/findFriends	contract_default	app.business.placeholders	placeholder_friend_findFriends	仅契约默认回包；未实现玩法
-S09	friend/findFriendsAndSend	contract_default	app.business.placeholders	placeholder_friend_findFriendsAndSend	仅契约默认回包；未实现玩法
+S09	friend/findFriendsAndSend	dedicated_handler	app.business.gameplay	guarded	入门 16 好友面板兼容与持久化；当前候选为空
 S09	friend/getFriendMap	dedicated_handler	app.business.friend_production	call_friend	已接受双向好友主城投影；-1 默认主城；不含私人库存
 S09	friend/getFriendMapData	dedicated_handler	app.business.friend_production	call_friend	已接受双向好友主城投影；-1 默认主城；不含私人库存
 S09	friend/getFriendMapData2	dedicated_handler	app.business.friend_production	call_friend	已接受双向好友主城投影；-1 默认主城；不含私人库存

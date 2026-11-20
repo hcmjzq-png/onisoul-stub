@@ -150,7 +150,7 @@ friend/cancelFriendOffer	envelope	WebApiClient::_httpCall@0x1C0840 -> WebApiClie
 friend/dissolutionFriend	envelope	WebApiClient::_httpCall@0x1C0840 -> WebApiClient::CheckExceedTimes@0x1C086C	0x1C0840	default successful/error envelope path
 friend/feedbackFriendOffer	envelope	WebApiClient::_httpCall@0x1C0840 -> WebApiClient::CheckExceedTimes@0x1C086C	0x1C0840	default successful/error envelope path
 friend/findFriends	bare_map	FriendListWindow.cs:getFindData@0x30D6E8	0x30D6E8	root enumeration override: FriendListWindow::getFindData
-friend/findFriendsAndSend	envelope	WebApiClient::_httpCall@0x1C0840 -> WebApiClient::CheckExceedTimes@0x1C086C	0x1C0840	default successful/error envelope path
+friend/findFriendsAndSend	bare_map	FriendListMissionWindow.cs:getSendData@0x30A288	0x30A288	root enumeration override: FriendListMissionWindow tutorial results
 friend/getFriendMap	envelope	WebApiClient::_httpCall@0x1C0840 -> WebApiClient::CheckExceedTimes@0x1C086C	0x1C0840	default successful/error envelope path
 friend/getFriendMapData	envelope	WebApiClient::_httpCall@0x1C0840 -> WebApiClient::CheckExceedTimes@0x1C086C	0x1C0840	default successful/error envelope path
 friend/getFriendMapData2	envelope	WebApiClient::_httpCall@0x1C0840 -> WebApiClient::CheckExceedTimes@0x1C086C	0x1C0840	default successful/error envelope path

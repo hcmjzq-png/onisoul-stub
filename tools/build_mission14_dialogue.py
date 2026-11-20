@@ -1,4 +1,4 @@
-"""Build PC compatibility scripts for tutorials 14 and 16 from installed dialogue keys."""
+"""Build PC tutorial compatibility scripts from installed dialogue keys."""
 from __future__ import annotations
 
 import argparse
@@ -23,6 +23,7 @@ TABLE_SCENE = "1243ea6aa67634ac98d68538c84a3a84.unity3d"
 class Tutorial:
     mission_number: int
     reward_title: int
+    enter_pages: int = 3
 
     @property
     def mission(self) -> str:
@@ -36,7 +37,7 @@ class Tutorial:
         return tuple(f"POM_MES_{self.mission_number:06}_{part}_{i:03}" for i in range(1, count + 1))
 
 
-TUTORIALS = {14: Tutorial(24, 9), 16: Tutorial(269, 8)}
+TUTORIALS = {14: Tutorial(24, 9), 16: Tutorial(269, 8), 17: Tutorial(13, 3, enter_pages=1)}
 
 
 def script(tutorial: Tutorial, part: str) -> str:
@@ -80,7 +81,7 @@ def script(tutorial: Tutorial, part: str) -> str:
             call("setVisible", node("var", "navigator"), node("boolean", "true")),
             call("setVisibleMessage", node("boolean", "true")),
         ])
-        keys = tutorial.keys(part, 3) if part == "01" else tutorial.keys(part, tutorial.reward_title)[:-1]
+        keys = tutorial.keys(part, tutorial.enter_pages) if part == "01" else tutorial.keys(part, tutorial.reward_title)[:-1]
         flow.extend(call("politic_drawNavigatorMessage", node("string", key)) for key in keys)
         if part == "01":
             menu = f"{tutorial.script}_02"
@@ -111,7 +112,7 @@ def verify_client_inputs(tables: Path, bundles: Path, icon_index: int) -> int:
     filenames = {row["messageFile"] + ".json" for row in table(tables, "navigator").values()
                  if row["messageFile"] != "none"}
     scene = UnityPy.load(str(bundles / "scene" / TABLE_SCENE))
-    keys = tutorial.keys("01", 3) + tutorial.keys("02", 4) + tutorial.keys("03", tutorial.reward_title)
+    keys = tutorial.keys("01", tutorial.enter_pages) + tutorial.keys("02", 4) + tutorial.keys("03", tutorial.reward_title)
     tables_seen = set()
     for obj in scene.objects:
         if obj.type.name != "TextAsset":
