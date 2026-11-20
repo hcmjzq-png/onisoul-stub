@@ -34,18 +34,28 @@ def plate(size: tuple[int, int], title: str, label: str, font_path: Path):
     return image
 
 
-def card_texture(art, size: tuple[int, int]):
-    from PIL import Image, ImageOps
+def card_texture(art, size: tuple[int, int], title: str, font_path: Path):
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
 
     if size == art.size:
         return art
-    # The viewer's title sits along the top of its 1024-pixel battle canvas.
-    # Use the existing illustration for the smaller card views as well.
-    subject = art.crop((0, 48, art.width, art.height))
+    # The PC reads the top-left active rectangle of each padded texture.
+    active_width, active_height = {(128, 128): (75, 100), (128, 256): (120, 160),
+                                   (256, 256): (180, 240)}[size]
+    subject = art.crop((0, 120, art.width, art.height))
     subject = subject.crop(subject.getchannel("A").getbbox())
-    resized = ImageOps.contain(subject, size, Image.Resampling.LANCZOS)
+    label_height = active_height // 9
+    resized = ImageOps.contain(subject, (active_width - 4, active_height - label_height - 4),
+                               Image.Resampling.LANCZOS)
+    face = Image.new("RGBA", (active_width, active_height), "#1d3240")
+    face.alpha_composite(resized, ((active_width - resized.width) // 2,
+                                   active_height - label_height - resized.height))
+    draw = ImageDraw.Draw(face)
+    font = ImageFont.truetype(str(font_path), max(8, label_height - 3))
+    draw.text((active_width // 2, active_height - label_height // 2), title,
+              anchor="mm", font=font, fill="#eef9fc")
     result = Image.new("RGBA", size)
-    result.alpha_composite(resized, ((size[0] - resized.width) // 2, size[1] - resized.height))
+    result.alpha_composite(face)
     return result
 
 
@@ -82,7 +92,8 @@ def main() -> None:
                 name = prefix + tex.m_Name.removeprefix(template)
                 name_map[tex.m_Name] = name
                 size = (tex.m_Width, tex.m_Height)
-                textures[name] = card_texture(art, size) if art else plate(size, title, label, args.font)
+                textures[name] = (card_texture(art, size, title, args.font) if art else
+                                  plate(size, title, label, args.font))
         blob, _ = rebuild(data, textures, name_map=name_map)
         if set(UnityPy.load(blob).container) != {name.lower() for name in textures}:
             raise ValueError(f"incorrect PC bindings for {prefix}")

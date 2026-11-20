@@ -1,4 +1,4 @@
-"""Provision the PvE skill deck in a fresh account on the existing local-test instance."""
+"""Provision or grant the PvE skill roster on the existing local-test instance."""
 from __future__ import annotations
 
 import argparse
@@ -72,14 +72,58 @@ def build_cards(service) -> list[dict]:
     return result
 
 
-def provision(manager: Environments, credentials_path: Path) -> dict:
+def use_local_test(manager: Environments) -> None:
     for port in (80, 18081):
         validate_health(get_json(port), "local-test", manager.settings["local_instance"])
-    if not credentials_path.resolve().is_relative_to(manager.private):
-        raise ValueError("store the test credentials under the private profiles directory")
     os.environ.update(manager.local_env())
 
+
+def add_cards(service, player_id: str, username: str) -> tuple[dict[str, int], int]:
     from app import state
+
+    cards = build_cards(service)
+    with state.atomic_players((player_id,)) as players:
+        player = players[player_id]
+        if player["entity"]["username"] != username or not player["entity"]["created"]:
+            raise ValueError("local test account does not match the selected save")
+        inventory = player["characters"]
+        limit = int(service._possession_limits(player)["character"]["result"])
+        next_id = max(map(int, inventory), default=0) + 1
+        ids, added = {}, 0
+        for slot, card in enumerate(cards):
+            existing = next((int(key) for key, row in inventory.items() if row == card), None)
+            if existing is None:
+                if len(inventory) >= limit:
+                    raise ValueError("character inventory is full")
+                existing = next_id
+                inventory[str(existing)] = card
+                next_id += 1
+                added += 1
+            ids[str(slot)] = existing
+        if added:
+            player["counters"]["characterCount"] = len(inventory)
+    return ids, added
+
+
+def grant_existing(manager: Environments, username: str) -> dict:
+    use_local_test(manager)
+    from app import db
+    from app.business.gameplay import GameplayService
+
+    with db.connection() as connection, connection.cursor() as cursor:
+        cursor.execute("SELECT player_id FROM players WHERE username_key = %s", (username.encode("utf-8"),))
+        match = cursor.fetchone()
+    if match is None:
+        raise ValueError("local test character name not found")
+    ids, added = add_cards(GameplayService(), str(match["player_id"]), username)
+    return {"cards": len(ids), "added": added}
+
+
+def provision(manager: Environments, credentials_path: Path) -> dict:
+    use_local_test(manager)
+    if not credentials_path.resolve().is_relative_to(manager.private):
+        raise ValueError("store the test credentials under the private profiles directory")
+
     from app.business.gameplay import GameplayService
 
     service = GameplayService()
@@ -100,15 +144,7 @@ def provision(manager: Environments, credentials_path: Path) -> dict:
     call("auth/createPlayer", token, username=account, countryId="country01",
          navigatorId="navi8000101", colorIndex="color1")
 
-    with state.atomic_players((player_id,)) as players:
-        player = players[player_id]
-        if player["entity"]["username"] != account or not player["entity"]["created"]:
-            raise ValueError("local test account does not match the new save")
-        inventory = player["characters"]
-        first = max(map(int, inventory), default=0) + 1
-        ids = {str(slot): first + slot for slot in range(len(cards))}
-        inventory.update({str(first + slot): card for slot, card in enumerate(cards)})
-        player["counters"]["characterCount"] = len(inventory)
+    ids, _ = add_cards(service, player_id, account)
 
     original = call("deck/getDecks", token)
     decks = {key: deepcopy(original[key]) for key in
@@ -130,11 +166,14 @@ def provision(manager: Environments, credentials_path: Path) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--credentials-name", default="pve-skill-test.local.json")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--credentials-name")
+    mode.add_argument("--grant-to", help="Exact name of an existing local test character")
     args = parser.parse_args()
     profile = Path(os.environ["LOCALAPPDATA"]) / "OniSoul/environments/profiles.local.json"
     manager = Environments(profile)
-    result = provision(manager, manager.private / args.credentials_name)
+    result = (grant_existing(manager, args.grant_to) if args.grant_to is not None else
+              provision(manager, manager.private / (args.credentials_name or "pve-skill-test.local.json")))
     print(json.dumps(result))
 
 

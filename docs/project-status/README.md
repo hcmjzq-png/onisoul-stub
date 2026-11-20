@@ -136,6 +136,8 @@
 来源：[玩家库存](../../app/business/player_services.py)、[编队](../../app/business/decks.py)、
 [养成候选与接入范围](../../app/business/card_growth_services.py)。
 
+2026-11-20，本机当前测试角色的武将库存由 8 张增至 13 张。重登打开编成后，五张新增 PvE 卡图及千葉伊勢的技能详情均有 PC 画面验证。已有编队经 SQL 和常规读接口复核。[当前测试角色补发记录](../analysis/local-pve-skill-roster-20261120.md#当前测试角色补发与编成验收)
+
 #### 行动点与恢复药排查
 
 2026-11-20 排查基于远端 `main` 的 `c4092c6` 和本机测试服源码 `59d8e39` 及其现有工作树改动。运行实例报告的构建标签为 `local-story-tutorial-battle-c4092c6`。当前本机入口、转发和 stub 的健康回包均匹配本地测试实例。路由快照使用 `ceffaef`，本轮用实际注册器复核了药品查询及用药入口。
