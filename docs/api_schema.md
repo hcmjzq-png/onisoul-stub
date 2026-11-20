@@ -252,6 +252,7 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 | --- | --- | --- |
 | 好友写入 `result`、失败 `detail.0` | bundle / 本服重试策略 | FriendConfirmationWindow.cs:127-154,195-299。成功回调增减客户端计数；无实际状态转换的重复操作返回 false，避免重放增量。已提交丢回包需重新查询，不能证明跨全新申请周期的幂等性。 |
 | `getFriends` 裸 playerId 映射，name/country/level/baseId/grade/status | bundle | FriendData.cs:40-59。原 option 为 ""/ok/send/receive；基于双边关系投影，不返回伪造 isFirst/访城许可。 |
+| `friend/findFriendsAndSend` 的 `friendMax=8` 及成功回包裸玩家映射 | bundle / 本服兼容策略 | `WebApiClient.cs:2734–2740`、`FriendListMissionWindow.cs:40–55`。回调把根节点的每项值转成玩家表，并在枚举前设置 `IsClearFriendTutorial`。当前候选为空，回 `{}`。任务 16 已接受后记录本服内部 `friendTutorialOpened`，由正常任务状态接口完成及领奖。自动筛选和批量发申请的原服规则待证。 |
 | `getFriendProfile`、selfIntroduction.habits | bundle / 本服兼容策略 | FriendData.cs:61-94。仅 forHTML=false；现有缺历史统计的 0/空字符串保持明确兼容范围，不代表恢复战果。 |
 | `updateFriendData.count.ok/send/receive`、`remove.<peer>` | bundle / 本服通知策略 | FriendWindowControll.cs:118-127、FriendConfirmationWindow.cs:168-187；remove 消费键，具体原因文案与保留/刷新策略为内部实现。 |
 | `periodicInquiry.friendOffer/inboxParcel` | bundle | UserStatus.cs:148-164 按绝对数字赋值，不累加；不发送未实现的 unreadMail。SessionKeeper.cs:176-199 登录即开轮询，未创建角色时省略社交计数并保留 gmMessage/show_off。 |
@@ -283,11 +284,13 @@ A 的生产费用/预览/耐久 helper 和 G 的数值精度检查没有新增�
 不新增协议字段、不自动升等级，也不自动修复未经核对的旧奖励记录。
 真机发现与 #65 上线边界见 [部署验收](analysis/research-331/review/deployment65-20261115.md)。
 
-## 2026-11-20 入门 14 武将奖励
+## 2026-11-20 入门 14 和 17 武将奖励
 
 **bundle**：`politicMission` 的 `po_mission_00024` → `reward01_04_00024_01` → 五条固定 `item01` → `item01.parameterId` → `character`。`RewardProcessor.cs:154–167` 将 `character` 奖励映射到客户端库存计数，`common/getCharacters` 从武将实例重新加载具体卡片。
 
-**本服存档策略**：任务状态、新武将和奖励收据同一次 CAS 保存。`missionRewards.<id>.charactersDelivered` 是本服内部标记。限定已核实的奖励，完整匹配旧收据和物品余额时一次性修复缺失实例。`politic/mission/changeState` 与 `common/getCharacters` 的回包结构沿用现有契约。
+同一规则用于入门 17 的 `po_mission_00013`。`reward01_04_00013_01` 中 `item01_0209401` 通过原表映射到 `chara1_02094_01`。其余六个奖励槽为金币、经验和四种药品，沿用已有发奖逻辑。
+
+**本服存档策略**：任务状态、新武将和奖励收据同一次 CAS 保存。`missionRewards.<id>.charactersDelivered` 是本服内部标记。限定这两项固定奖励，匹配完整旧收据及卡牌余额时一次性恢复卡牌实例。`politic/mission/changeState` 与 `common/getCharacters` 的回包结构沿用现有契约。
 
 ## 2026-11-15 昵称唯一性
 

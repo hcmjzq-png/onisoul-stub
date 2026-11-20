@@ -35,7 +35,7 @@ def build(blob, template, target, art):
     for obj in textures:
         record = obj.read_typetree()
         old = record["m_Name"]
-        if not old.startswith(template + "_"):
+        if old != template and not old.startswith(template + "_"):
             raise ValueError("unexpected item name")
         name = target + old[len(template):]
         with Image.open(art[name]) as raw:
